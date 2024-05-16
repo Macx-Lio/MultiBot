@@ -22,7 +22,5 @@ Buttons are available for the following actions:<br>
 - Stay or Follow
 - Group Release
 - Group Revive
-# Not Supported yet
-RAID
-QUEST
-INVENTORY
+# Currently not supported
+RAID - QUEST - INVENTORY
