@@ -24,3 +24,5 @@ Buttons are available for the following actions:<br>
 - Group Revive
 # Not Supported yet
 RAID
+QUEST
+INVENTORY
