@@ -7,7 +7,7 @@ Example: "C:\WorldOfWarcraft\Interface\AddOns\MultiBot"
 # Use
 Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
 # Current Status
-Reads the account list and offers a button for the available playerbots.<br>
+Reads the account list and offers a button for the available Playerbots.<br>
 Simply press the corresponding button to start the Playerbot.<br><br>
 The interface retrieves the current strategies and offers a selection structure for settings.<br>
 This allows you to define the behavior of the individual player bots.<br><br>
@@ -22,3 +22,5 @@ Buttons are available for the following actions:<br>
 - Stay or Follow
 - Group Release
 - Group Revive
+# Not Supported yet
+RAID
