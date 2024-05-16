@@ -1,8 +1,24 @@
 # MultiBot
-User interface for AzerothCore-Module "Playerbot" by Liyunfan1223.
+User interface for AzerothCore-Module "Playerbot" by Liyunfan1223.<br>
 Tested with American and German 3.3.5 Wotlk-Client.
 # Installation
 Simply place the files in a folder called "MultiBot" in your World of Warcraft AddOns directory.<br>
 Example: "C:\WorldOfWarcraft\Interface\AddOns\MultiBot"
 # Use
 Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
+# Current Status
+Reads the account list and offers a button for the available playerbots.<br>
+Simply press the corresponding button to start the Playerbot.<br><br>
+The interface retrieves the current strategies and offers a selection structure for settings.<br>
+This allows you to define the behavior of the individual player bots.<br><br>
+Various strategies depend on each other or cancel each other out.<br>
+I tried to display the dependencies in the user interface.<br>
+This is the reason why the tank button goes off when you activate the DPS button.<br><br>
+I also added a simple group control.<br>
+Buttons are available for the following actions:<br>
+- @Tank attack my Target
+- Group attack my Target
+- Toggle passive mode
+- Stay or Follow
+- Group Release
+- Group Revive
