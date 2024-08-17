@@ -24,3 +24,9 @@ Buttons are available for the following actions:<br>
 - Group Revive
 # Currently not supported
 RAID - QUEST - INVENTORY
+# Missing Class Icons
+Depending on the client versions, some icons may not be displayed.
+Then you should get an icon set from the Internet.
+I use this icon set:
+
+https://www.wowinterface.com/downloads/info17710
