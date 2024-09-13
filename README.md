@@ -32,7 +32,7 @@ The basic functions are:<br><br>
 <li>Left click on Items will sell them to the targeted Merchent</li>
 <li>Right click on Items will drop them</li>
 </ul>
-<br>
+<br>&nbsp;
 # Currently not supported
 RAID - QUEST<br>
 # Missing Class Icons
