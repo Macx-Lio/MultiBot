@@ -39,18 +39,18 @@ RAID - QUEST<br>
 Some client versions doesn't support the Class-Icons.<br>
 So I replaced them with a Scroll-Icon.
 # Screenshots
-![You will see the MultiBot-Interface without any active Bot.](https://github.com/Macx-Lio/MultiBot/blob/Master/MultiBot-Startet.jpg?raw=true)
+![You will see the MultiBot-Interface without any active Bot.](https://github.com/Macx-Lio/MultiBot/blob/main/MultiBot-Startet.jpg?raw=true)
 This Picture shows the default MultiBot without any active Bot.<br>
 The grey Scrolls represent the Characters in your list.<br>
 The Hint tells you the Class and Name of the Character.<br>
 Left click the Character-Icon the start a Bot.<br><br>
-![You will see the MultiBot-Interface with some active Bot.](https://github.com/Macx-Lio/MultiBot/blob/Master/MultiBot-Active-Characters.jpg?raw=true)
+![You will see the MultiBot-Interface with some active Bot.](https://github.com/Macx-Lio/MultiBot/blob/main/MultiBot-Minimized.jpg?raw=true)
 This Picture shows MultiBot with some active Bots.<br><br>
 On the left Side of the Character-Icon is the Behaviour-Control for Combat- and Non-Combat-Actions.<br>
 Behaviors that exclude each other are taken into account and the interface is set automatically.<br>
 These Options will be differend for each Character-Class.<br><br>
 On the right Side of the Character-Icon you will find the Summon, Group|Ungroup, Food, Loot, Gather and Inventory-Buttons.<br>
-![You will see the minimized MultiBot-Interface.](https://github.com/Macx-Lio/MultiBot/blob/Master/MultiBot-Minimized.jpg?raw=true)
+![You will see the minimized MultiBot-Interface.](https://github.com/Macx-Lio/MultiBot/blob/main/MultiBot-Active-Characters.jpg?raw=true)
 This Picture shows the minimized MultiBot-Interface.<br>
 A simple left click on the MultiBot-Icon will mini- or maximize it.<br>
 You will find the same functionallity by the Character-Icons.<br>
