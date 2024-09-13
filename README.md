@@ -23,13 +23,12 @@ Buttons are available for the following actions:<br>
 - Group Release
 - Group Revive
 - Group Summon of all active Bots<br>
-<br>
 With my last Update I added a simple Inventory.
 - Left click the Backpack-Icon to open and close the Inventory
 - Left click on Items will sell them to the targeted Merchent
 - Right click on Items will drop them
 # Currently not supported
-RAID - QUEST
+RAID - QUEST<br>
 # Missing Class Icons
 Some client versions doesn't support the Class-Icons.<br>
 So I replaced them with a Scroll-Icon.
