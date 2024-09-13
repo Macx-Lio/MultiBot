@@ -27,7 +27,10 @@ With my last Update I added a simple Inventory.<br>
 The basic functions are:<br><br>
 - Left click the Backpack-Icon to open and close the Inventory
 - Left click on Items will sell them to the targeted Merchent
-- Right click on Items will drop them<br>
+- Right click on Items will drop them<br><br>
+It is realy basic stuff, so dont expext too much.<br>
+In the future, the inventory should look exactly like a normal backpack.<br>
+The item notes should also be as close to the original as possible.<br>
 # Currently not supported
 RAID - QUEST<br>
 # Missing Class Icons
