@@ -15,24 +15,20 @@ Various strategies depend on each other or cancel each other out.<br>
 I tried to display the dependencies in the user interface.<br>
 This is the reason why the tank button goes off when you activate the DPS button.<br><br>
 I also added a simple group control.<br>
-Buttons are available for the following actions:<br>
-<ul>
-<li>@Tank attack my Target</li>
-<li>Group attack my Target</li>
-<li>Toggle passive mode</li>
-<li>Stay or Follow</li>
-<li>Group Release</li>
-<li>Group Revive</li>
-<li>Group Summon of all active Bots</li>
-</ul>
+Buttons are available for the following actions:<br><br>
+- @Tank attack my Target
+- Group attack my Target
+- Toggle passive mode
+- Stay or Follow
+- Group Release
+- Group Revive
+- Group Summon of all active Bots
 With my last Update I added a simple Inventory.<br>
 The basic functions are:<br><br>
-<ul>
-<li>Left click the Backpack-Icon to open and close the Inventory</li>
-<li>Left click on Items will sell them to the targeted Merchent</li>
-<li>Right click on Items will drop them</li>
-</ul>
-<br>&nbsp;
+- Left click the Backpack-Icon to open and close the Inventory
+- Left click on Items will sell them to the targeted Merchent
+- Right click on Items will drop them
+<br>
 # Currently not supported
 RAID - QUEST<br>
 # Missing Class Icons
