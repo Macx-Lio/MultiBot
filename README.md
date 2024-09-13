@@ -22,13 +22,12 @@ Buttons are available for the following actions:<br><br>
 - Stay or Follow
 - Group Release
 - Group Revive
-- Group Summon of all active Bots
+- Group Summon of all active Bots<br>
 With my last Update I added a simple Inventory.<br>
 The basic functions are:<br><br>
 - Left click the Backpack-Icon to open and close the Inventory
 - Left click on Items will sell them to the targeted Merchent
-- Right click on Items will drop them
-<br>
+- Right click on Items will drop them<br>
 # Currently not supported
 RAID - QUEST<br>
 # Missing Class Icons
