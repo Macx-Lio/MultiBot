@@ -103,12 +103,30 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 		button:SetSize(button.parent.size - 2, button.parent.size - 2)
 		
 		if(button.state) then
+			if(MultiBot.isInside(button.config[4], "=== Inventory:Close ===")) then
+				MultiBot.chars[button.parent.getName()].inventory.doClose()
+			end
+		else
+			if(MultiBot.isInside(button.config[5], "=== Inventory:Open ===")) then
+				for key, value in pairs(MultiBot.chars) do
+					if(value.right ~= nil) then
+						value.right.buttons[button.config[2]].setState(false)
+						value.inventory.doClose()
+					end
+				end
+				
+				MultiBot.chars[button.parent.getName()].waitFor = "=== Inventory ==="
+				SendChatMessage(button.config[8], button.chat, nil, button.parent.getName())
+			end
+		end
+		
+		if(button.state) then
 			button.setState(false)
 			SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
 			button.parent.setLink(button)
 		else
-			button.setState(true)
-			SendChatMessage(button.config[5], button.chat, nil, button.parent.getName())			
+			button.setState(true) 
+			SendChatMessage(button.config[5], button.chat, nil, button.parent.getName())
 			button.parent.setRadio(button)
 			button.parent.setLink(button)
 		end

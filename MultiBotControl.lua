@@ -6,7 +6,7 @@ MultiBot.eventHandler:RegisterEvent("CHAT_MSG_ADDON")
 MultiBot.eventHandler:RegisterEvent("UPDATE")
 MultiBot.eventHandler:Hide()
 
-MultiBot.waitFor = {}
+-- MultiBot.waitFor = {}
 
 MultiBot.eventHandler:SetScript("OnEvent", function()
 	if (event == "PLAYER_TARGET_CHANGED") then
@@ -37,10 +37,14 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			MultiBot.right = MultiBot.newFrame(MultiBot, 39, 2, 36)
 			local tX = 0
 			
+			
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.release).setChat("PARTY")
 			tX = tX + 39
 			
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.revive).setChat("PARTY")
+			tX = tX + 39
+			
+			MultiBot.right.addSingle(tX, 0, MultiBot.config.sumall).setChat("WHISPER")
 			tX = tX + 39
 			
 			MultiBot.setRoster(string.sub(arg1, 13))
@@ -82,6 +86,16 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			MultiBot.chars[arg2].setCombat(string.sub(arg1, 13))
 			SendChatMessage("nc ?", "WHISPER", nil, arg2)
 			SendChatMessage("Asked " .. arg2 .. " for Normal Strategies", "SAY")
+		end
+		
+		if(MultiBot.chars[arg2].waitFor == "=== Inventory ===" and MultiBot.isInside(arg1, "Bag")) then
+			MultiBot.chars[arg2].inventory:Show()
+			MultiBot.chars[arg2].waitFor = ""
+		end
+		
+		if(MultiBot.chars[arg2].waitFor == "=== Inventory ===" and arg1 ~= "=== Inventory ===") then
+			SendChatMessage("stats", "WHISPER", nil, arg2)
+			MultiBot.chars[arg2].inventory.addItem(arg1)
 		end
 	end
 end)

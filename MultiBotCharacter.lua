@@ -1,5 +1,6 @@
 MultiBot.newCharacter = function(pParent, pName, pClass, pX, pY, pSize)
 	local frame = CreateFrame("Frame", nil, pParent)
+	frame.inventory = MultiBot.newInventory(MultiBot, pName)
 	frame.button = nil
 	frame.combat = nil
 	frame.normal = nil
@@ -254,6 +255,9 @@ MultiBot.newCharacter = function(pParent, pName, pClass, pX, pY, pSize)
 		tX = tX + 39
 		
 		frame.right.addSwitch(tX, 0, MultiBot.config.gather, frame.normal)
+		tX = tX + 39
+		
+		frame.right.addSwitch(tX, 0, MultiBot.config.inventory, frame.normal)
 		tX = tX + 39
 		return frame
 	end

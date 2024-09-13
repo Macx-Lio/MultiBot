@@ -6,6 +6,7 @@ MultiBot:Hide()
 MultiBot.left = nil
 MultiBot.right = nil
 MultiBot.button = nil
+MultiBot.inventory = nil
 MultiBot.chars = {}
 MultiBot.size = 40
 
@@ -41,7 +42,8 @@ MultiBot.setRoster = function(pRoster)
 		local tConfig = {
 			"TOGGLE",
 			tName,
-			"classicon_" .. tClass,
+			-- "class_" .. strlower(tClass),
+			"inv_scroll_05",
 			".playerbot bot remove " .. tName,
 			".playerbot bot add " .. tName,
 			"Left to show or hide Options | Right to logout " .. tName,

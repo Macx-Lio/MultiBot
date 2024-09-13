@@ -15,7 +15,9 @@ MultiBotSelect.lua
 MultiBotOption.lua
 MultiBotSwitchbar.lua
 MultiBotCharacter.lua
+MultiBotInventory.lua
 MultiBotControl.lua
+MultiBotItem.lua
 MultiBot.lua
 MultiBotConfigDeathKnight.lua
 MultiBotConfigDruid.lua

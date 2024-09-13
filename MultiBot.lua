@@ -122,6 +122,18 @@ MultiBot.config.gather = {
 	"gather"
 }
 
+-- USE: All
+MultiBot.config.inventory = {
+	"SWITCH",
+	"inventory",
+	"inv_misc_bag_08",
+	"=== Inventory:Close ===",
+	"=== Inventory:Open ===",
+	"Click to close Inventory",
+	"Click to open Inventory",
+	"items"
+}
+
 -- GROUP --
 
 MultiBot.config.revive = {
@@ -138,6 +150,14 @@ MultiBot.config.release = {
 	"achievement_bg_xkills_avgraveyard",
 	"release",
 	"Click for Release"
+}
+
+MultiBot.config.sumall = {
+	"SINGLE",
+	"=== Summon:All ===",
+	"ability_hunter_beastcall",
+	"summon",
+	"Click to summon all active Bots"
 }
 
 MultiBot.config.flee = {

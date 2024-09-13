@@ -45,9 +45,17 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 	button:SetScript("OnClick", function()
 		button:SetPoint("BOTTOMRIGHT", button.x - 1, button.y + 1)
 		button:SetSize(button.parent.size - 2, button.parent.size - 2)
-		if(button.chat == "WHISPER")
-		then SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
-		else SendChatMessage(button.config[4], button.chat)
+		
+		if(button.chat == "WHISPER") then
+			if(button.config[2] == "=== Summon:All ===") then
+				for key, value in pairs(MultiBot.chars) do
+					if(value.left ~= nil) then SendChatMessage(button.config[4], button.chat, nil, key) end
+				end
+			else
+				SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
+			end
+		else
+			SendChatMessage(button.config[4], button.chat)
 		end
 	end)
 	
