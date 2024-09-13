@@ -25,9 +25,9 @@ Buttons are available for the following actions:<br>
 - Group Summon of all active Bots<br>
 <br>
 With my last Update I added a simple Inventory:<br>
-- Left click the Backpack-Icon to open and close the Inventory
-- Left click on Items will sell them to the targeted Merchent
-- Right click on Items will drop them
+- Left click the Backpack-Icon to open and close the Inventory<br>
+- Left click on Items will sell them to the targeted Merchent<br>
+- Right click on Items will drop them<br>
 # Currently not supported
 RAID - QUEST<br>
 # Missing Class Icons
