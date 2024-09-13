@@ -22,7 +22,7 @@ Buttons are available for the following actions:<br>
 - Stay or Follow
 - Group Release
 - Group Revive
-- Group Summon of all active Bots<br><br>
+- Group Summon of all active Bots<br>
 
 With my last Update I added a simple Inventory.<br>
 The basic functions are:<br>
