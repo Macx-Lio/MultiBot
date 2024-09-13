@@ -22,7 +22,7 @@ Buttons are available for the following actions:<br><br>
 - Stay or Follow
 - Group Release
 - Group Revive
-- Group Summon of all active Bots<br>
+- Group Summon of all active Bots<br><br>
 With my last Update I added a simple Inventory.<br>
 The basic functions are:<br><br>
 - Left click the Backpack-Icon to open and close the Inventory
