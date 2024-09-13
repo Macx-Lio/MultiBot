@@ -48,9 +48,9 @@ Left click the Character-Icon the start a Bot.<br><br>
 This Picture shows MultiBot with some active Bots.<br>
 On the left Side of the Character-Icon is the Behaviour-Control for Combat- and Non-Combat-Actions.<br>
 Behaviors that exclude each other are taken into account and the interface is set automatically.<br>
-These Options will be differend for each Character-Class.<br>
 On the right Side of the Character-Icon you will find the Summon, Group|Ungroup, Food, Loot, Gather and Inventory-Buttons.<br><br>
 ![You will see the minimized MultiBot-Interface.](https://github.com/Macx-Lio/MultiBot/blob/main/MultiBot-Minimized.jpg?raw=true)
 This Picture shows the minimized MultiBot-Interface.<br>
 A simple left click on the MultiBot-Icon will mini- or maximize it.<br>
 You will find the same functionallity by the Character-Icons.<br>
+To understand the Buttons you should read the Hints.
