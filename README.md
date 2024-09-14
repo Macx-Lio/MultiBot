@@ -36,14 +36,14 @@ The item notes should also be as close to the original as possible.<br><br>
 
 With the Update from 09/14/2024, I added a simple raid control.<br>
 The Buttons from the group control will send the commands to Raid-Channel if the amount of Party-Members is bigger than 5.<br>
-I am planing a separate group control for each raid group.<br><br>
+I am planing a separate group control for each raid group.<br>
 
 # Currently not supported
-QUEST<br><br>
+QUEST<br>
 
 # Missing Class Icons
 Some client versions doesn't support the Class-Icons.<br>
-So I replaced them with a Scroll-Icon.<br><br>
+So I replaced them with a Scroll-Icon.<br>
 
 # Screenshots
 ![You will see the MultiBot-Interface without any active Bot.](https://github.com/Macx-Lio/MultiBot/blob/main/MultiBot-Startet.jpg?raw=true)
