@@ -43,7 +43,7 @@ QUEST<br>
 
 # Missing Class Icons
 Some client versions doesn't support the Class-Icons.<br>
-So I replaced them with a Scroll-Icon.<br>
+So I replaced them with a Scroll-Icon.
 
 # Screenshots
 ![You will see the MultiBot-Interface without any active Bot.](https://github.com/Macx-Lio/MultiBot/blob/main/MultiBot-Startet.jpg?raw=true)
