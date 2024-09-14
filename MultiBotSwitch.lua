@@ -109,7 +109,7 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 		else
 			if(MultiBot.isInside(button.config[5], "=== Inventory:Open ===")) then
 				for key, value in pairs(MultiBot.chars) do
-					if(value.right ~= nil) then
+					if(value.button.state == true) then
 						value.right.buttons[button.config[2]].setState(false)
 						value.inventory.doClose()
 					end

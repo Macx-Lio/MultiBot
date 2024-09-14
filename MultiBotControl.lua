@@ -37,7 +37,6 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			MultiBot.right = MultiBot.newFrame(MultiBot, 39, 2, 36)
 			local tX = 0
 			
-			
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.release).setChat("PARTY")
 			tX = tX + 39
 			

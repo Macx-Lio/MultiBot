@@ -28,6 +28,14 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 		return button
 	end
 	
+	-- GET --
+	
+	button.getChat = function()
+		if(GetNumPartyMembers() > 5) then return "RAID" end
+		if(GetNumPartyMembers() > 0) then return "PARTY" end
+		return "WHISPER"
+	end
+	
 	-- EVENT --
 	
 	button:SetScript("OnEnter", function()
@@ -45,19 +53,29 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 	button:SetScript("OnClick", function()
 		button:SetPoint("BOTTOMRIGHT", button.x - 1, button.y + 1)
 		button:SetSize(button.parent.size - 2, button.parent.size - 2)
-		
-		if(button.chat == "WHISPER") then
-			if(button.config[2] == "=== Summon:All ===") then
-				for key, value in pairs(MultiBot.chars) do
-					if(value.left ~= nil) then SendChatMessage(button.config[4], button.chat, nil, key) end
-				end
-			else
-				SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
-			end
-		else
-			SendChatMessage(button.config[4], button.chat)
+		if(button.chat == "WHISPER")
+		then button.doWhisper()
+		else button.doParty()
 		end
 	end)
+	
+	-- DO --
+	
+	button.doWhisper = function()
+		if(button.config[2] == "=== Summon:All ===") then
+			for key, value in pairs(MultiBot.chars) do
+				if(value.button.state == true) then
+					SendChatMessage(button.config[4], button.chat, nil, key)
+				end
+			end
+		else
+			SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
+		end
+	end
+	
+	button.doParty = function()
+		SendChatMessage(button.config[4], button.getChat())
+	end
 	
 	-- RETURN --
 	

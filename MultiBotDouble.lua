@@ -53,6 +53,14 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 		return button
 	end
 	
+	-- GET --
+	
+	button.getChat = function()
+		if(GetNumPartyMembers() > 5) then return "RAID" end
+		if(GetNumPartyMembers() > 0) then return "PARTY" end
+		return "WHISPER"
+	end
+	
 	-- EVENT --
 	
 	button:SetScript("OnEnter", function()
@@ -117,17 +125,17 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 	button.doParty = function(pButton)
 		if(pButton == "LeftButton") then
 			if(button.state) then
-				SendChatMessage(button.config[5], button.chat)
+				SendChatMessage(button.config[5], button.getChat())
 				button.setState(false)
 			else
-				SendChatMessage(button.config[6], button.chat)
+				SendChatMessage(button.config[6], button.getChat())
 				button.setState(true)
 			end
 		end
 		
 		if(pButton == "RightButton") then
 			if(button.config[9] ~= nil) then
-				SendChatMessage(button.config[9], button.chat)
+				SendChatMessage(button.config[9], button.getChat())
 			end
 		end
 	end
