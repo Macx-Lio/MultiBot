@@ -32,14 +32,14 @@ The basic functions are:<br>
 
 It is realy basic stuff, so dont expext too much.<br>
 In the future, the inventory should look exactly like a normal backpack.<br>
-The item notes should also be as close to the original as possible.<br><br>
+The item notes should also be as close to the original as possible.<br>
 
 With the Update from 09/14/2024, I added a simple raid control.<br>
 The Buttons from the group control will send the commands to Raid-Channel if the amount of Party-Members is bigger than 5.<br>
-I am planing a separate group control for each raid group.<br>
+I am planing a separate group control for each raid group.
 
 # Currently not supported
-QUEST<br>
+QUEST
 
 # Missing Class Icons
 Some client versions doesn't support the Class-Icons.<br>
