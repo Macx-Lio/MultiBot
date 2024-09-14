@@ -24,7 +24,7 @@ Buttons are available for the following actions:<br>
 - Group Revive
 - Group Summon of all active Bots<br>
 
-With my last Update I added a simple Inventory.<br>
+With the Update from 09/13/2024, I added a simple Inventory.<br>
 The basic functions are:<br>
 - Left click the Backpack-Icon to open and close the Inventory
 - Left click on Items will sell them to the targeted Merchent
@@ -32,12 +32,19 @@ The basic functions are:<br>
 
 It is realy basic stuff, so dont expext too much.<br>
 In the future, the inventory should look exactly like a normal backpack.<br>
-The item notes should also be as close to the original as possible.<br>
+The item notes should also be as close to the original as possible.<br><br>
+
+With the Update from 09/14/2024, I added a simple raid control.<br>
+The Buttons from the group control will send the commands to Raid-Channel if the amount of Party-Members is bigger than 5.<br>
+I am planing a separate group control for each raid group.<br><br>
+
 # Currently not supported
-RAID - QUEST<br>
+QUEST<br><br>
+
 # Missing Class Icons
 Some client versions doesn't support the Class-Icons.<br>
-So I replaced them with a Scroll-Icon.
+So I replaced them with a Scroll-Icon.<br><br>
+
 # Screenshots
 ![You will see the MultiBot-Interface without any active Bot.](https://github.com/Macx-Lio/MultiBot/blob/main/MultiBot-Startet.jpg?raw=true)
 This Picture shows the default MultiBot without any active Bot.<br>
