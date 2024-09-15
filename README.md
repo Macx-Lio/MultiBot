@@ -34,12 +34,22 @@ It is realy basic stuff, so dont expext too much.<br>
 In the future, the inventory should look exactly like a normal backpack.<br>
 The item notes should also be as close to the original as possible.<br>
 
-With the Update from 09/14/2024, I added a simple raid control.<br>
-The Buttons from the group control will send the commands to Raid-Channel if the amount of Party-Members is bigger than 5.<br>
-I am planing a separate group control for each raid group.
+With the Update from 09/15/2024, I added separate raid controls.<br>
+As soon as there are more than 5 members in a party, the group control sends to the raid channel.<br>
+This makes it the main control unit that can be used to control all bots at the same time.<br>
+Depending on the number of raid members you will receive group control units.<br><br>
+
+The main control unit is pinned to the red scroll button.<br>
+The group control units are pinned to the green scroll button.<br>
+From top to bottom, the group control units represent the respective raid groups.<br><br>
+
+The separate control units allow you to give the groups different commands.<br>
+For example, group 1 can guard an area while group 2 follows you.<br>
+Or Tank1 attack MonsterA and Tank2 attack MonsterB.<br>
+There are many options, just give it a try.<br><br>
 
 # Currently not supported
-QUEST
+25 RAIDS - QUEST
 
 # Missing Class Icons
 Some client versions doesn't support the Class-Icons.<br>
@@ -62,3 +72,8 @@ This Picture shows the minimized MultiBot-Interface.<br>
 A simple left click on the MultiBot-Icon will mini- or maximize it.<br>
 You will find the same functionallity by the Character-Icons.<br>
 To understand the Buttons you should read the Hints.
+![You will see the MultiBot-Interface for Raids.](https://github.com/Macx-Lio/MultiBot/blob/main/MultiBot-Raid-Control.jpg?raw=true)
+This Picture shows the Raid-Control of the MultiBot-Interface.<br>
+The main control unit is pinned to the red scroll button.<br>
+The group control units are pinned to the green scroll button.<br>
+From top to bottom, the group control units represent the respective raid groups.<br>
