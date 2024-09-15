@@ -37,16 +37,16 @@ The item notes should also be as close to the original as possible.<br>
 With the Update from 09/15/2024, I added separate raid controls.<br>
 As soon as there are more than 5 members in a party, the group control sends to the raid channel.<br>
 This makes it the main control unit that can be used to control all bots at the same time.<br>
-Depending on the number of raid members you will receive group control units.<br><br>
+Depending on the number of raid members you will receive group control units.<br>
 
 The main control unit is pinned to the red scroll button.<br>
 The group control units are pinned to the green scroll button.<br>
-From top to bottom, the group control units represent the respective raid groups.<br><br>
+From top to bottom, the group control units represent the respective raid groups.<br>
 
 The separate control units allow you to give the groups different commands.<br>
 For example, group 1 can guard an area while group 2 follows you.<br>
 Or Tank1 attack MonsterA and Tank2 attack MonsterB.<br>
-There are many options, just give it a try.<br><br>
+There are many options, just give it a try.<br>
 
 # Currently not supported
 25 RAIDS - QUEST
