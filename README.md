@@ -42,6 +42,7 @@ Depending on the number of raid members you will receive group control units.<br
 The main control unit is pinned to the red scroll button.<br>
 The group control units are pinned to the green scroll button.<br>
 From top to bottom, the group control units represent the respective raid groups.<br>
+Take a look at the Screenshots at the bottom of this Page.<br>
 
 The separate control units allow you to give the groups different commands.<br>
 For example, group 1 can guard an area while group 2 follows you.<br>
