@@ -6,8 +6,6 @@ MultiBot.eventHandler:RegisterEvent("CHAT_MSG_ADDON")
 MultiBot.eventHandler:RegisterEvent("UPDATE")
 MultiBot.eventHandler:Hide()
 
--- MultiBot.waitFor = {}
-
 MultiBot.eventHandler:SetScript("OnEvent", function()
 	if (event == "PLAYER_TARGET_CHANGED") then
 	end
@@ -16,35 +14,41 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 		if(MultiBot.isInside(arg1, "Bot roster: ")) then
 			MultiBot.button = MultiBot.newDouble(MultiBot, 0, 0, MultiBot.config.start, "SHOW")
 			
-			MultiBot.left = MultiBot.newFrame(MultiBot, -43, 2, 36)
+			-- LEFT --
+			
+			MultiBot.left = MultiBot.newFrame(MultiBot, 0 - MultiBot.size - 2, 2, MultiBot.size - 4)
 			local tX = 0
 			
 			MultiBot.left.addSingle(tX, 0, MultiBot.config.flee).setChat("PARTY")
-			tX = tX - 39
+			tX = tX - MultiBot.size + 2
 			
 			MultiBot.left.addDouble(tX, 0, MultiBot.config.stay, "follow").setChat("PARTY")
-			tX = tX - 39
+			tX = tX - MultiBot.size + 2
 			
 			MultiBot.left.addDouble(tX, 0, MultiBot.config.passive, "").setState(true).setChat("PARTY")
-			tX = tX - 39
+			tX = tX - MultiBot.size + 2
 			
 			MultiBot.left.addSingle(tX, 0, MultiBot.config.attack).setChat("PARTY")
-			tX = tX - 39
+			tX = tX - MultiBot.size + 2
 			
 			MultiBot.left.addSingle(tX, 0, MultiBot.config.tanker).setChat("PARTY")
-			tX = tX + 39
+			tX = tX - MultiBot.size + 2
 			
-			MultiBot.right = MultiBot.newFrame(MultiBot, 39, 2, 36)
+			-- RIGHT --
+			
+			MultiBot.right = MultiBot.newFrame(MultiBot, MultiBot.size - 2, 2, MultiBot.size - 4)
 			local tX = 0
 			
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.release).setChat("PARTY")
-			tX = tX + 39
+			tX = tX + MultiBot.size - 2
 			
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.revive).setChat("PARTY")
-			tX = tX + 39
+			tX = tX + MultiBot.size - 2
 			
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.sumall).setChat("WHISPER")
-			tX = tX + 39
+			tX = tX + MultiBot.size - 2
+			
+			-- CONTROL --
 			
 			MultiBot.addControl(1)
 			MultiBot.addControl(2)
@@ -52,6 +56,8 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			MultiBot.addControl(4)
 			MultiBot.addControl(5)
 			MultiBot.doRaid()
+			
+			-- ROSTER --
 			
 			MultiBot.setRoster(string.sub(arg1, 13))
 		end

@@ -32,7 +32,7 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 	
 	button.getChat = function()
 		if(GetNumRaidMembers() > 5) then return "RAID" end
-		if(GetNumRaidMembers() > 0) then return "PARTY" end
+		if(GetNumPartyMembers() > 0) then return "PARTY" end
 		return "WHISPER"
 	end
 	

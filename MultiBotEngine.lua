@@ -1,27 +1,29 @@
 MultiBot = CreateFrame("Frame", nil, UIParent)
-MultiBot:SetPoint("BOTTOMRIGHT", -304, 104)
-MultiBot:SetSize(40, 40)
-MultiBot:Hide()
-
-MultiBot.left = nil
-MultiBot.right = nil
-MultiBot.button = nil
 MultiBot.inventory = nil
+MultiBot.button = nil
+MultiBot.right = nil
+MultiBot.left = nil
+
 MultiBot.chars = {}
 MultiBot.raid = {}
-MultiBot.size = 40
+
+MultiBot.size = 36
+
+MultiBot:SetPoint("BOTTOMRIGHT", -304, 104)
+MultiBot:SetSize(MultiBot.size, MultiBot.size)
+MultiBot:Hide()
 
 MultiBot.newTip = function(pParent, pTip)
 	return { pTip, "ANCHOR_TOPRIGHT", -(pParent.size + 2), 2 }
 end
 
 MultiBot.addCharacter = function(pName, pClass, pX, pY)
-	if(MultiBot.chars[pName] == nil) then MultiBot.chars[pName] = MultiBot.newCharacter(MultiBot, pName, pClass, pX, pY, 40) end
+	if(MultiBot.chars[pName] == nil) then MultiBot.chars[pName] = MultiBot.newCharacter(MultiBot, pName, pClass, pX, pY, MultiBot.size) end
 	return MultiBot.chars[pName]
 end
 
 MultiBot.addControl = function(pGroup)
-	MultiBot.raid[pGroup] = MultiBot.newControl(pGroup)
+	MultiBot.raid[pGroup] = MultiBot.newControl(pGroup, MultiBot.size)
 	return MultiBot.raid[pGroup]
 end
 
@@ -58,7 +60,7 @@ MultiBot.setRoster = function(pRoster)
 		}
 		
 		MultiBot
-		.addCharacter(tName, tClass, 0, i * 42)
+		.addCharacter(tName, tClass, 0, i * (MultiBot.size + 2))
 		.setButton(tConfig)
 	end
 end

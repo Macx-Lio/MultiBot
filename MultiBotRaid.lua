@@ -1,4 +1,4 @@
-MultiBot.newControl = function(pGroup)
+MultiBot.newControl = function(pGroup, pSize)
 	local frame = CreateFrame("Frame", nil, MultiBot)
 	frame.active = false
 	frame.button = nil
@@ -6,10 +6,10 @@ MultiBot.newControl = function(pGroup)
 	frame.left = nil
 	
 	frame.parent = MultiBot
-	frame.size = 40
+	frame.size = pSize
 	
-	frame:SetPoint("BOTTOMRIGHT", 0, pGroup * -42)
-	frame:SetSize(40, 40)
+	frame:SetPoint("BOTTOMRIGHT", 0, pGroup * -(pSize + 2))
+	frame:SetSize(pSize, pSize)
 	frame:Hide()
 	
 	-- SET
@@ -17,32 +17,36 @@ MultiBot.newControl = function(pGroup)
 	frame.setFrame = function(pGroup)
 		frame.button = MultiBot.newDouble(frame, 0, 0, MultiBot.config.raid[pGroup].start, "SHOW")
 		
-		frame.left = MultiBot.newFrame(frame, -43, 2, 36)
+		-- LEFT --
+		
+		frame.left = MultiBot.newFrame(frame, 0 - frame.size - 2, 2, frame.size - 4)
 		local tX = 0
 		
 		frame.left.addSingle(tX, 0, MultiBot.config.raid[pGroup].flee).setChat("PARTY")
-		tX = tX - 39
+		tX = tX - frame.size + 2
 		
 		frame.left.addDouble(tX, 0, MultiBot.config.raid[pGroup].stay, "@group" .. pGroup .. " follow").setChat("PARTY")
-		tX = tX - 39
+		tX = tX - frame.size + 2
 		
 		frame.left.addDouble(tX, 0, MultiBot.config.raid[pGroup].passive, "").setState(true).setChat("PARTY")
-		tX = tX - 39
+		tX = tX - frame.size + 2
 		
 		frame.left.addSingle(tX, 0, MultiBot.config.raid[pGroup].attack).setChat("PARTY")
-		tX = tX - 39
+		tX = tX - frame.size + 2
 		
 		frame.left.addSingle(tX, 0, MultiBot.config.raid[pGroup].tanker).setChat("PARTY")
-		tX = tX + 39
+		tX = tX - frame.size + 2
 		
-		frame.right = MultiBot.newFrame(frame, 39, 2, 36)
+		-- RIGHT --
+		
+		frame.right = MultiBot.newFrame(frame, frame.size - 2, 2, frame.size - 4)
 		local tX = 0
 		
 		frame.right.addSingle(tX, 0, MultiBot.config.raid[pGroup].release).setChat("PARTY")
-		tX = tX + 39
+		tX = tX + frame.size - 2
 		
 		frame.right.addSingle(tX, 0, MultiBot.config.raid[pGroup].revive).setChat("PARTY")
-		tX = tX + 39
+		tX = tX + frame.size - 2
 		
 		return frame
 	end
@@ -52,7 +56,7 @@ MultiBot.newControl = function(pGroup)
 	frame.doDisable = function()
 		if(frame.active == false) then return end
 		local tPoint, tRelativeTo, tRelativePoint, tX, tY = MultiBot:GetPoint()
-		MultiBot:SetPoint("BOTTOMRIGHT", tX, tY - 42)
+		MultiBot:SetPoint("BOTTOMRIGHT", tX, tY - (frame.size + 2))
 		frame.active = false
 		frame:Hide()
 	end
@@ -60,7 +64,7 @@ MultiBot.newControl = function(pGroup)
 	frame.doEnable = function()
 		if(frame.active == true) then return end
 		local tPoint, tRelativeTo, tRelativePoint, tX, tY = MultiBot:GetPoint()
-		MultiBot:SetPoint("BOTTOMRIGHT", tX, tY + 42)
+		MultiBot:SetPoint("BOTTOMRIGHT", tX, tY + (frame.size + 2))
 		frame.active = true
 		frame:Show()
 	end

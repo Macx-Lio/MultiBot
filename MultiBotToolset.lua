@@ -28,12 +28,14 @@ MultiBot.isInside = function(pString, pPattern)
 end
 
 MultiBot.isMember = function(pName)
-	--for i = 1, 4 do
-	--	if(UnitName("party" .. i) == pName) then return true end
-	--end
-	
-	for i = 1, GetNumRaidMembers() do
-		if(UnitName("raid" .. i) == pName) then return true end
+	if(GetNumRaidMembers() > 5) then
+		for i = 1, GetNumRaidMembers() do
+			if(UnitName("raid" .. i) == pName) then return true end
+		end
+	else
+		for i = 1, 4 do
+			if(UnitName("party" .. i) == pName) then return true end
+		end
 	end
 	
 	return false

@@ -72,193 +72,193 @@ MultiBot.newCharacter = function(pParent, pName, pClass, pX, pY, pSize)
 	end
 	
 	frame.setLeft = function()
-		frame.left = MultiBot.newFrame(frame, -43, 2, 36)
+		frame.left = MultiBot.newFrame(frame, 0 - frame.size - 2, 2, frame.size - 4)
 		local tX = 0
 		
 		if(frame.class == "DeathKnight") then
 			frame.left.addSelect(tX, 0, MultiBot.config.deathknight.presence, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.deathknight.dps, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.assist, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			return frame
 		end
 		
 		if(frame.class == "Druid") then
 			frame.left.addSwitch(tX, 0, MultiBot.config.heal, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.druid.buff, frame.normal)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.druid.playbook, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.druid.dps, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.assist, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.tank, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			return frame
 		end
 		
 		if(frame.class == "Hunter") then
 			frame.left.addSelect(tX, 0, MultiBot.config.hunter.naspect, frame.normal)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSelect(tX, 0, MultiBot.config.hunter.caspect, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.hunter.dps, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.assist, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			return frame
 		end
 		
 		if(frame.class == "Mage") then
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.mage.buff, frame.normal)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.mage.playbook, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.mage.dps, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.assist, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			return frame
 		end
 		
 		if(frame.class == "Paladin") then
 			frame.left.addSwitch(tX, 0, MultiBot.config.heal, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSelect(tX, 0, MultiBot.config.paladin.seal, frame.normal)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSelect(tX, 0, MultiBot.config.paladin.naura, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSelect(tX, 0, MultiBot.config.paladin.caura, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.paladin.dps, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.assist, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.tank, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			return frame
 		end
 		
 		if(frame.class == "Priest") then
 			frame.left.addSwitch(tX, 0, MultiBot.config.heal, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.priest.buff, frame.normal)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.priest.playbook, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.priest.dps, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.assist, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			return frame
 		end
 		
 		if(frame.class == "Shaman") then
 			frame.left.addSwitch(tX, 0, MultiBot.config.heal, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSelect(tX, 0, MultiBot.config.shaman.ntotem, frame.normal)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSelect(tX, 0, MultiBot.config.shaman.ctotem, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.shaman.playbook, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.shaman.dps, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.assist, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			return frame
 		end
 		
 		if(frame.class == "Rogue") then
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.rogue.dps, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.assist, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			return frame
 		end
 		
 		if(frame.class == "Warlock") then
 			frame.left.addSelect(tX, 0, MultiBot.config.warlock.buff, frame.normal)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.warlock.dps, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.assist, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.tank, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			return frame
 		end
 		
 		if(frame.class == "Warrior") then
 			frame.left.addSwitchbar(tX, 0, MultiBot.config.warrior.dps, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.assist, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			
 			frame.left.addSwitch(tX, 0, MultiBot.config.tank, frame.combat)
-			tX = tX - 39
+			tX = tX - frame.size + 2
 			return frame
 		end
 	end
 	
 	frame.setRight = function()
-		frame.right = MultiBot.newFrame(frame, 39, 2, 36)
+		frame.right = MultiBot.newFrame(frame, frame.size - 2, 2, frame.size - 4)
 		local tX = 0
 		
 		frame.right.addSingle(tX, 0, MultiBot.config.summon, frame.normal)
-		tX = tX + 39
+		tX = tX + frame.size - 2
 		
 		frame.right.addDouble(tX, 0, MultiBot.config.group, frame.normal).setState(MultiBot.isMember(frame.name))
-		tX = tX + 39
+		tX = tX + frame.size - 2
 		
 		frame.right.addSwitch(tX, 0, MultiBot.config.food, frame.normal)
-		tX = tX + 39
+		tX = tX + frame.size - 2
 		
 		frame.right.addSwitch(tX, 0, MultiBot.config.loot, frame.normal)
-		tX = tX + 39
+		tX = tX + frame.size - 2
 		
 		frame.right.addSwitch(tX, 0, MultiBot.config.gather, frame.normal)
-		tX = tX + 39
+		tX = tX + frame.size - 2
 		
 		frame.right.addSwitch(tX, 0, MultiBot.config.inventory, frame.normal)
-		tX = tX + 39
+		tX = tX + frame.size - 2
 		return frame
 	end
 	
