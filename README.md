@@ -71,9 +71,9 @@ Please notice that the Inventory is still experimental.<br><br>
 This Picture shows the minimized MultiBot-Interface.<br>
 A simple left click on the MultiBot-Icon will mini- or maximize it.<br>
 You will find the same functionallity by the Character-Icons.<br>
-To understand the Buttons you should read the Hints.
+To understand the Buttons you should read the Hints.<br><br>
 ![You will see the MultiBot-Interface for Raids.](https://github.com/Macx-Lio/MultiBot/blob/main/MultiBot-Raid-Control.jpg?raw=true)
 This Picture shows the Raid-Control of the MultiBot-Interface.<br>
 The main control unit is pinned to the red scroll button.<br>
 The group control units are pinned to the green scroll button.<br>
-From top to bottom, the group control units represent the respective raid groups.<br>
+From top to bottom, the group control units represent the respective raid groups.<br><br>
