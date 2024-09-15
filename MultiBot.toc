@@ -18,6 +18,7 @@ MultiBotCharacter.lua
 MultiBotInventory.lua
 MultiBotControl.lua
 MultiBotItem.lua
+MultiBotRaid.lua
 MultiBot.lua
 MultiBotConfigDeathKnight.lua
 MultiBotConfigDruid.lua

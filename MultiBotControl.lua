@@ -46,6 +46,13 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.sumall).setChat("WHISPER")
 			tX = tX + 39
 			
+			MultiBot.addControl(1)
+			MultiBot.addControl(2)
+			MultiBot.addControl(3)
+			MultiBot.addControl(4)
+			MultiBot.addControl(5)
+			MultiBot.doRaid()
+			
 			MultiBot.setRoster(string.sub(arg1, 13))
 		end
 		
@@ -66,6 +73,14 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 	
 	if(event == "CHAT_MSG_WHISPER") then
 		if(MultiBot.chars[arg2] == nil) then return end
+		
+		if(arg1 == "Hello") then
+			MultiBot.doRaid()
+		end
+		
+		if(arg1 == "Goodbye!") then
+			MultiBot.doRaid()
+		end
 		
 		if(arg1 == "Hello!") then
 			MultiBot.chars[arg2].waitFor = "CO"

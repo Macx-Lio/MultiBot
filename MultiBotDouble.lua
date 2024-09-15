@@ -56,8 +56,8 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 	-- GET --
 	
 	button.getChat = function()
-		if(GetNumPartyMembers() > 5) then return "RAID" end
-		if(GetNumPartyMembers() > 0) then return "PARTY" end
+		if(GetNumRaidMembers() > 5) then return "RAID" end
+		if(GetNumRaidMembers() > 0) then return "PARTY" end
 		return "WHISPER"
 	end
 	

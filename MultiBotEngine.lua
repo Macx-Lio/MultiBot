@@ -8,6 +8,7 @@ MultiBot.right = nil
 MultiBot.button = nil
 MultiBot.inventory = nil
 MultiBot.chars = {}
+MultiBot.raid = {}
 MultiBot.size = 40
 
 MultiBot.newTip = function(pParent, pTip)
@@ -17,6 +18,11 @@ end
 MultiBot.addCharacter = function(pName, pClass, pX, pY)
 	if(MultiBot.chars[pName] == nil) then MultiBot.chars[pName] = MultiBot.newCharacter(MultiBot, pName, pClass, pX, pY, 40) end
 	return MultiBot.chars[pName]
+end
+
+MultiBot.addControl = function(pGroup)
+	MultiBot.raid[pGroup] = MultiBot.newControl(pGroup)
+	return MultiBot.raid[pGroup]
 end
 
 MultiBot.setButton = function(pX, pIndex, pConfig)
@@ -54,6 +60,34 @@ MultiBot.setRoster = function(pRoster)
 		MultiBot
 		.addCharacter(tName, tClass, 0, i * 42)
 		.setButton(tConfig)
+	end
+end
+
+MultiBot.doRaid = function()
+	if(GetNumRaidMembers() > 20) then
+		MultiBot.raid[5].doEnable()
+	else
+		MultiBot.raid[5].doDisable()
+	end
+	
+	if(GetNumRaidMembers() > 15) then 
+		MultiBot.raid[4].doEnable()
+	else
+		MultiBot.raid[4].doDisable()
+	end
+	
+	if(GetNumRaidMembers() > 10) then
+		MultiBot.raid[3].doEnable()
+	else
+		MultiBot.raid[3].doDisable()
+	end
+	
+	if(GetNumRaidMembers() > 5) then
+		MultiBot.raid[2].doEnable()
+		MultiBot.raid[1].doEnable()
+	else
+		MultiBot.raid[2].doDisable()
+		MultiBot.raid[1].doDisable()
 	end
 end
 
