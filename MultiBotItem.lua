@@ -1,6 +1,5 @@
 MultiBot.newItem = function(pParent, pIndex, pInfo)
 	local button = CreateFrame("Button", nil, pParent)
-	button.tip = MultiBot.newTip(pParent, pInfo)
 	button.parent = pParent
 	button.chat = "WHISPER"
 	
@@ -29,13 +28,14 @@ MultiBot.newItem = function(pParent, pIndex, pInfo)
 	
 	button.setItem = function()
 		local iName, iLink, iRarity, iLevel, iMinLevel, iType, iSubType, iStackCount, iEquipLoc, iTexture, iSellPrice = GetItemInfo(button.id)
+		button.tip = MultiBot.newTip(button.parent, iLink)
 		button.link = iLink
 		return button
 	end
 	
 	button:SetScript("OnEnter", function()
 		if(button.tip ~= nil) then
-			MultiBot.setTip(button, button.tip)
+			MultiBot.setItemTip(button, button.tip)
 		end
 	end)
 	

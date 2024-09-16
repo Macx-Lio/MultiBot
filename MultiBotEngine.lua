@@ -32,6 +32,12 @@ MultiBot.setButton = function(pX, pIndex, pConfig)
 	return MultiBot.button
 end
 
+MultiBot.setItemTip = function(pParent, pTip)
+	GameTooltip:SetOwner(pParent, pTip[2], pTip[3], pTip[4])
+	GameTooltip:SetHyperlink(pTip[1])
+	GameTooltip:Show()
+end
+
 MultiBot.setTip = function(pParent, pTip)
 	GameTooltip:SetOwner(pParent, pTip[2], pTip[3], pTip[4])
 	GameTooltip:SetText(pTip[1])
