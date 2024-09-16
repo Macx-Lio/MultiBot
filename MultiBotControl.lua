@@ -48,6 +48,9 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.sumall).setChat("WHISPER")
 			tX = tX + MultiBot.size - 2
 			
+			--MultiBot.right.addSingle(tX, 0, MultiBot.config.resize).setChat("WHISPER")
+			--tX = tX + MultiBot.size - 2
+			
 			-- CONTROL --
 			
 			MultiBot.addControl(1)

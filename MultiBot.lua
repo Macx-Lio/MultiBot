@@ -24,6 +24,14 @@ MultiBot.config.start = {
 	"/multibot"
 }
 
+MultiBot.config.resize = {
+	"SINGLE",
+	"resize",
+	"inv_misc_gear_05",
+	"=== Resize ===",
+	"Click to resize MultiBot"
+}
+
 -- LEFT --
 
 -- USE: Druid, Paladin, Priest, Shaman

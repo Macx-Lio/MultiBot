@@ -32,8 +32,7 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 	
 	button.getChat = function()
 		if(GetNumRaidMembers() > 5) then return "RAID" end
-		if(GetNumPartyMembers() > 0) then return "PARTY" end
-		return "WHISPER"
+		return "PARTY"
 	end
 	
 	-- EVENT --
@@ -68,6 +67,8 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 					SendChatMessage(button.config[4], button.chat, nil, key)
 				end
 			end
+		elseif(button.config[2] == "=== Resize ===") then
+			
 		else
 			SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
 		end

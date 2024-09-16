@@ -32,7 +32,9 @@ MultiBot.isMember = function(pName)
 		for i = 1, GetNumRaidMembers() do
 			if(UnitName("raid" .. i) == pName) then return true end
 		end
-	else
+	end
+	
+	if(GetNumPartyMembers() > 0) then
 		for i = 1, 4 do
 			if(UnitName("party" .. i) == pName) then return true end
 		end
