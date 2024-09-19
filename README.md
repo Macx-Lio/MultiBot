@@ -105,7 +105,7 @@ On Mouse over you will get the well known Item-Tooltips.<br>
 Sometimes MultiBot has Problems to identifiy a Item, then you will see a simplyfied Hint with the Name of the Item.<br>
 
 # Comming soon
-Next i work on the Group- and Raid-Controls.
+Currently i am working on the Group- and Raid-Controls.
 
 # Currently not supported
 QUEST
