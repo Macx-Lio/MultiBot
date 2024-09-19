@@ -18,32 +18,33 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize)
 	end
 	
 	frame.addSingle = function(pX, pIndex, pConfig)
-		frame.buttons[pConfig[2]] = MultiBot.newSingle(frame, pX, (frame.size + 3) * pIndex, pConfig)
+		frame.buttons[pConfig[2]] = MultiBot.newSingle(frame, pX, (frame.size + 2) * pIndex, pConfig)
 		return frame.buttons[pConfig[2]]
 	end
 	
 	frame.addDouble = function(pX, pIndex, pConfig, pStrate)
-		frame.buttons[pConfig[2]] = MultiBot.newDouble(frame, pX, (frame.size + 3) * pIndex, pConfig, pStrate)
+		frame.buttons[pConfig[2]] = MultiBot.newDouble(frame, pX, (frame.size + 2) * pIndex, pConfig, pStrate)
 		return frame.buttons[pConfig[2]]
 	end
 	
 	frame.addSwitch = function(pX, pIndex, pConfig, pStrate)
-		frame.buttons[pConfig[2]] = MultiBot.newSwitch(frame, pX, (frame.size + 3) * pIndex, pConfig, pStrate)
+		frame.buttons[pConfig[2]] = MultiBot.newSwitch(frame, pX, (frame.size + 2) * pIndex, pConfig, pStrate)
 		return frame.buttons[pConfig[2]]
 	end
 	
 	frame.addSelect = function(pX, pIndex, pConfig, pStrate)
-		frame.buttons[pConfig[2]] = MultiBot.newSelect(frame, pX, (frame.size + 3) * pIndex, pConfig)
+		frame.buttons[pConfig[2]] = MultiBot.newSelect(frame, pX, (frame.size + 2) * pIndex, pConfig)
 		return frame.buttons[pConfig[2]].addOptions(pStrate)
 	end
 	
 	frame.addOption = function(pX, pIndex, pSelect, pConfig)
-		frame.buttons[pConfig[2]] = MultiBot.newOption(frame, pX, (frame.size + 3) * pIndex, pSelect, pConfig)
+		if(pSelect.horizontal == false) then frame.buttons[pConfig[2]] = MultiBot.newOption(frame, pX, (frame.size + 2) * pIndex, pSelect, pConfig) end
+		if(pSelect.horizontal == true) then frame.buttons[pConfig[2]] = MultiBot.newOption(frame, -(frame.size + 2) * pIndex, pX, pSelect, pConfig) end
 		return frame.buttons[pConfig[2]]
 	end
 	
 	frame.addSwitchbar = function(pX, pIndex, pConfig, pStrate)
-		frame.buttons[pConfig[2]] = MultiBot.newSwitchbar(frame,  pX, (frame.size + 3) * pIndex, pConfig, pStrate)
+		frame.buttons[pConfig[2]] = MultiBot.newSwitchbar(frame,  pX, (frame.size + 2) * pIndex, pConfig, pStrate)
 		return frame.buttons[pConfig[2]].addSwitches(pStrate)
 	end
 	
@@ -56,6 +57,10 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize)
 	end
 	
 	-- SET --
+	
+	frame.setPoint = function(pX, pY)
+		frame:SetPoint("BOTTOMRIGHT", pX, pY)
+	end
 	
 	frame.setRadio = function(pButton)
 		frame.parent.setRadio(pButton)

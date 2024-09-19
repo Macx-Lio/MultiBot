@@ -20,6 +20,12 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 	
 	-- SET --
 	
+	button.setPoint = function(pX, pY)
+		button:SetPoint("BOTTOMRIGHT", pX, pY)
+		button.x = pX
+		button.y = pY
+	end
+	
 	button.setDouble = function(pStrate)
 		button.state = MultiBot.isInside(pStrate, button.config[6])
 		
@@ -90,8 +96,10 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 			if(button.state) then
 				if(string.sub(button.config[5], 1, 1) == "/") then
 					MultiBot.doSlash(button.config[5], button.parent.getName())
-				elseif(button.config[5] == "HIDE") then
-					button.parent.doHide()
+				elseif(button.config[5] == "HIDE:PLAYERS") then
+					MultiBot.doHide("PLAYERS")
+				elseif(button.config[5] == "HIDE:FRIENDS") then
+					MultiBot.doHide("FRIENDS")
 				else
 					SendChatMessage(button.config[5], button.chat, nil, button.parent.getName())
 				end
@@ -100,8 +108,10 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 			else
 				if(string.sub(button.config[6], 1, 1) == "/") then
 					MultiBot.doSlash(button.config[6], button.parent.getName())
-				elseif(button.config[6] == "SHOW") then
-					button.parent.doShow()
+				elseif(button.config[6] == "SHOW:PLAYERS") then
+					MultiBot.doShow("PLAYERS")
+				elseif(button.config[6] == "SHOW:FRIENDS") then
+					MultiBot.doShow("FRIENDS")
 				else
 					SendChatMessage(button.config[6], button.chat, nil, button.parent.getName())
 				end
@@ -114,6 +124,8 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 			if(button.config[9] ~= nil) then
 				if(string.sub(button.config[9], 1, 1) == "/") then
 					MultiBot.doSlash(button.config[9], "")
+				elseif(button.config[9] == "FRIENDS:REFRESH") then
+					MultiBot.friends.doRefresh()
 				else
 					SendChatMessage(button.config[9], button.chat, nil, button.parent.getName())
 				end

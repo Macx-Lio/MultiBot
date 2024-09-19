@@ -1,7 +1,9 @@
-MultiBot.newSelect = function(pParent, pX, pY, pConfig)
+MultiBot.newSelect = function(pParent, pX, pY, pConfig, pHorizontal)
 	local button = CreateFrame("Button", nil, pParent)
-	button.options = MultiBot.newFrame(pParent, -2, pParent.size + 3, pParent.size -4)
+	if(pHorizontal == nil) then button.options = MultiBot.newFrame(pParent, -2, pParent.size + 2, pParent.size - 4) end
+	if(pHorizontal ~= nil) then button.options = MultiBot.newFrame(pParent, -2 - pParent.size, pY + 2, pParent.size - 4) end
 	
+	button.horizontal = pHorizontal ~= nil
 	button.parent = pParent
 	button.config = pConfig
 	button.chat = "WHISPER"
@@ -38,6 +40,13 @@ MultiBot.newSelect = function(pParent, pX, pY, pConfig)
 	
 	-- SET --
 	
+	button.setPoint = function(pX, pY)
+		if(button.horizontal == true) then button.options.setPoint(-2 - button.parent.size, pY + 2) end
+		button:SetPoint("BOTTOMRIGHT", pX, pY)
+		button.x = pX
+		button.y = pY
+	end
+	
 	button.setSelect = function(pStrate)
 		for i = 1, table.getn(button.config[3]) do
 			if(MultiBot.isInside(pStrate, button.config[3][i][7])) then button.setEnable(button.config[3][i]) end
@@ -50,7 +59,9 @@ MultiBot.newSelect = function(pParent, pX, pY, pConfig)
 	
 	button.setDisable = function(pConfig)
 		if(pConfig ~= nil) then
-			button.icon:SetTexture("Interface/Icons/" .. pConfig[3])
+			if(string.sub(pConfig[3], 1, 9) ~= "Interface")
+			then button.icon:SetTexture("Interface/Icons/" .. pConfig[3])
+			else button.icon:SetTexture(pConfig[3]) end
 			button.action = pConfig
 		end
 		
@@ -61,7 +72,9 @@ MultiBot.newSelect = function(pParent, pX, pY, pConfig)
 	
 	button.setEnable = function(pConfig)
 		if(pConfig ~= nil) then
-			button.icon:SetTexture("Interface/Icons/" .. pConfig[3])
+			if(string.sub(pConfig[3], 1, 9) ~= "Interface")
+			then button.icon:SetTexture("Interface/Icons/" .. pConfig[3])
+			else button.icon:SetTexture(pConfig[3]) end
 			button.action = pConfig
 		end
 		
@@ -102,7 +115,10 @@ MultiBot.newSelect = function(pParent, pX, pY, pConfig)
 		end
 		
 		if(pButton == "RightButton" and button.action ~= nil) then
-			if(button.state) then
+			if(button.action[4] == "FRIENDS:NONE") then
+				button.setSelect("none")
+				MultiBot.friends.doBrowse(0)
+			elseif(button.state) then
 				SendChatMessage(button.action[4], button.chat, nil, button.parent.getName())
 				button.setDisable()
 			else

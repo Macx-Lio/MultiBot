@@ -15,7 +15,9 @@ MultiBot.newOption = function(pParent, pX, pY, pSelect, pConfig)
 	button:SetSize(button.parent.size, button.parent.size)
 	
 	button.icon = button:CreateTexture(nil, "BACKGROUND")
-	button.icon:SetTexture("Interface/Icons/" .. button.config[3])
+	if(string.sub(button.config[3], 1, 9) ~= "Interface")
+	then button.icon:SetTexture("Interface/Icons/" .. button.config[3])
+	else button.icon:SetTexture(button.config[3]) end
 	button.icon:SetAllPoints(button)
 	button.icon:Show()
 	
@@ -23,6 +25,12 @@ MultiBot.newOption = function(pParent, pX, pY, pSelect, pConfig)
 	button:SetPushedTexture("Interface/Buttons/UI-Quickslot-Depress")
 	
 	-- SET --
+	
+	button.setPoint = function(pX, pY)
+		button:SetPoint("BOTTOMRIGHT", pX, pY)
+		button.x = pX
+		button.y = pY
+	end
 	
 	button.setChat = function(pChat)
 		button.chat = pChat
@@ -46,11 +54,14 @@ MultiBot.newOption = function(pParent, pX, pY, pSelect, pConfig)
 	button:SetScript("OnClick", function()
 		button:SetPoint("BOTTOMRIGHT", button.x - 1, button.y + 1)
 		button:SetSize(button.parent.size - 2, button.parent.size - 2)
-		
-		SendChatMessage(button.config[5], button.chat, nil, button.parent.getName())
-		
 		button.select.setEnable(button.config)
 		button.parent:Hide()
+		
+		if(string.sub(button.config[5], 1, 7) == "FRIENDS") then
+			MultiBot.friends.doBrowse(0)
+		else
+			SendChatMessage(button.config[5], button.chat, nil, button.parent.getName())
+		end
 	end)
 	
 	-- RETURN --

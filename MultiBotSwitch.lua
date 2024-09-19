@@ -15,7 +15,9 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 	button:SetSize(button.parent.size, button.parent.size)
 	
 	button.icon = button:CreateTexture(nil, "BACKGROUND")
-	button.icon:SetTexture("Interface/Icons/" .. button.config[3])
+	if(string.sub(button.config[3], 1, 9) ~= "Interface")
+	then button.icon:SetTexture("Interface/Icons/" .. button.config[3])
+	else button.icon:SetTexture(button.config[3]) end
 	button.icon:SetAllPoints(button)
 	button.icon:Show()
 	
@@ -34,6 +36,12 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 	end
 	
 	-- SET --
+	
+	button.setPoint = function(pX, pY)
+		button:SetPoint("BOTTOMRIGHT", pX, pY)
+		button.x = pX
+		button.y = pY
+	end
 	
 	button.setSwitch = function(pStrate)
 		button.state = MultiBot.isInside(pStrate, button.config[8])
@@ -66,16 +74,16 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 	button.setRadio = function()
 		if(button.radio == nil) then return end
 		
-		for k, v in pairs(MultiBot.config.radio[button.radio]) do
-			if(k ~= button.config[2]) then v.setState(false) end
+		for key, value in pairs(MultiBot.config.radio[button.radio]) do
+			if(key ~= button.config[2]) then value.setState(false) end
 		end
 	end
 	
 	button.setLink = function()
 		if(button.link == nil) then return end
 		
-		for k, v in pairs(MultiBot.config.link[button.link]) do
-			if(k ~= button.config[2]) then v.setState(button.state) end
+		for key, value in pairs(MultiBot.config.link[button.link]) do
+			if(key ~= button.config[2]) then value.setState(button.state) end
 		end
 	end
 	
@@ -99,38 +107,44 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 	end)
 	
 	button:SetScript("OnClick", function()
+		local bot = MultiBot.getBot(button.parent.getName())
+		if(bot == nil) then return end
+		
 		button:SetPoint("BOTTOMRIGHT", button.x - 1, button.y + 1)
 		button:SetSize(button.parent.size - 2, button.parent.size - 2)
 		
 		if(button.state) then
-			if(MultiBot.isInside(button.config[4], "=== Inventory:Close ===")) then
-				MultiBot.chars[button.parent.getName()].inventory.doClose()
-			end
-		else
-			if(MultiBot.isInside(button.config[5], "=== Inventory:Open ===")) then
-				for key, value in pairs(MultiBot.chars) do
-					if(value.button.state == true) then
-						value.right.buttons[button.config[2]].setState(false)
-						value.inventory.doClose()
-					end
-				end
-				
-				MultiBot.chars[button.parent.getName()].waitFor = "=== Inventory ==="
-				SendChatMessage(button.config[8], button.chat, nil, button.parent.getName())
-			end
-		end
-		
-		if(button.state) then
 			button.setState(false)
-			SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
+			if(button.doCloseInventory(bot)) then return end
+			SendChatMessage(button.config[4], button.chat, nil, bot.name)
 			button.parent.setLink(button)
 		else
-			button.setState(true) 
-			SendChatMessage(button.config[5], button.chat, nil, button.parent.getName())
+			button.setState(true)
+			if(button.doOpenInventory(bot)) then return end
+			SendChatMessage(button.config[5], button.chat, nil, bot.name)
 			button.parent.setRadio(button)
 			button.parent.setLink(button)
 		end
 	end)
+	
+	-- DO
+	
+	button.doCloseInventory = function(bot)
+		if(button.config[4] ~= "INVENTORY:CLOSE") then return false end
+		bot.inventory.doClose()
+		return true
+	end
+	
+	button.doOpenInventory = function(bot)
+		if(button.config[5] ~= "INVENTORY:OPEN") then return false end
+		
+		MultiBot.players.doCloseInventories(bot.name)
+		MultiBot.friends.doCloseInventories(bot.name)
+		bot.inventory.doOpen()
+		
+		SendChatMessage(button.config[8], button.chat, nil, bot.name)
+		return true
+	end
 	
 	return button.setSwitch(pStrate)
 end

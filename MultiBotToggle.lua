@@ -13,7 +13,9 @@ MultiBot.newToggle = function(pParent, pX, pY, pConfig, pState)
 	button:SetSize(button.parent.size, button.parent.size)
 	
 	button.icon = button:CreateTexture(nil, "BACKGROUND")
-	button.icon:SetTexture("Interface/Icons/" .. button.config[3])
+	if(string.sub(button.config[3], 1, 9) ~= "Interface")
+	then button.icon:SetTexture("Interface/Icons/" .. button.config[3])
+	else button.icon:SetTexture(button.config[3]) end
 	button.icon:SetAllPoints(button)
 	button.icon:Show()
 	
@@ -61,11 +63,16 @@ MultiBot.newToggle = function(pParent, pX, pY, pConfig, pState)
 		
 		if(pButton == "LeftButton") then
 			if(button.state) then
-				if(button.parent.left:IsVisible()) then
-					button.parent.doHide()
+				if(button.parent.left == nil) then
+					button.setState(false)
+				elseif(button.parent.left:IsVisible()) then
+					button.parent.doHide(string.sub(button.config[1], 8))
 				else
-					button.parent.doShow()
+					button.parent.doShow(string.sub(button.config[1], 8))
 				end
+			elseif(string.sub(button.config[5], 1, 1) == "/") then
+				MultiBot.doSlash(button.config[5], button.parent.getName())
+				button.setState(true)
 			else
 				SendChatMessage(button.config[5], button.chat, nil, button.parent.getName())
 				button.setState(true)
@@ -73,8 +80,15 @@ MultiBot.newToggle = function(pParent, pX, pY, pConfig, pState)
 		end
 		
 		if(pButton == "RightButton") then
-			SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
-			button.setState(false)
+			if(string.sub(button.config[4], 1, 1) == "/") then
+				MultiBot.doSlash(button.config[4], button.parent.getName())
+				button.setState(false)
+				button.parent.doHide()
+			else
+				SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
+				button.setState(false)
+				button.parent.doHide()
+			end
 		end
 	end)
 	

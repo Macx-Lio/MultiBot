@@ -12,24 +12,28 @@ MultiBot.config.warlock = {}
 MultiBot.config.warrior = {}
 
 -- USE: All
-MultiBot.config.start = {
+MultiBot.config.players = {
 	"DOUBLE",
 	"start",
 	"inv_scroll_04",
 	"inv_scroll_03",
-	"HIDE",
-	"SHOW",
+	"HIDE:PLAYERS",
+	"SHOW:PLAYERS",
 	"Left Click to hide Playerbots | Right Click to close MultiBot",
 	"Left Click to show Playerbots | Right Click to close Multibot",
 	"/multibot"
 }
 
-MultiBot.config.resize = {
-	"SINGLE",
-	"resize",
-	"inv_misc_gear_05",
-	"=== Resize ===",
-	"Click to resize MultiBot"
+MultiBot.config.friends = {
+	"DOUBLE",
+	"start",
+	"inv_scroll_05",
+	"inv_scroll_03",
+	"HIDE:FRIENDS",
+	"SHOW:FRIENDS",
+	"Left Click to hide Friendbots | Right Click to refresh Friendbots",
+	"Left Click to show Friendbots | Right Click to refresh Friendbots",
+	"FRIENDS:REFRESH"
 }
 
 -- LEFT --
@@ -131,16 +135,169 @@ MultiBot.config.gather = {
 	"gather"
 }
 
--- USE: All
+-- Friends --
+
+MultiBot.config.browse = {
+	"SINGLE",
+	"browse",
+	"Interface\\AddOns\\MultiBot\\Icons\\filter_browse.blp",
+	"FRIENDS:BROWSE",
+	"Click to browse Friendbots"
+}
+
+MultiBot.config.filter = {
+	"SELECT",
+	"filter",
+	{
+		{
+			"OPTION",
+			"deathknight",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_deathknight.blp",
+			"FRIENDS:NONE",
+			"FRIENDS:DEATHKNIGHT",
+			"Click to filter by DeathKnights",
+			"deathknight"
+		},{
+			"OPTION",
+			"druid",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_druid.blp",
+			"FRIENDS:NONE",
+			"FRIENDS:DRUID",
+			"Click to filter by Druids",
+			"druid"
+		},{
+			"OPTION",
+			"hunter",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_hunter.blp",
+			"FRIENDS:NONE",
+			"FRIENDS:HUNTER",
+			"Click to filter by Hunters",
+			"hunter"
+		},{
+			"OPTION",
+			"mage",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_mage.blp",
+			"FRIENDS:NONE",
+			"FRIENDS:MAGE",
+			"Click to filter by Mages",
+			"mage"
+		},{
+			"OPTION",
+			"paladin",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_paladin.blp",
+			"FRIENDS:NONE",
+			"FRIENDS:PALADIN",
+			"Click to filter by Paladins",
+			"paladin"
+		},{
+			"OPTION",
+			"priest",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_priest.blp",
+			"FRIENDS:NONE",
+			"FRIENDS:PRIEST",
+			"Click to filter by Priests",
+			"priest"
+		},{
+			"OPTION",
+			"rogue",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_rogue.blp",
+			"FRIENDS:NONE",
+			"FRIENDS:ROGUE",
+			"Click to filter by Rogues",
+			"rogue"
+		},{
+			"OPTION",
+			"shaman",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_shaman.blp",
+			"FRIENDS:NONE",
+			"FRIENDS:SHAMAN",
+			"Click to filter by Shamans",
+			"shaman"
+		},{
+			"OPTION",
+			"warlock",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_warlock.blp",
+			"FRIENDS:NONE",
+			"FRIENDS:WARLOCK",
+			"Click to filter by Warlocks",
+			"warlock"
+		},{
+			"OPTION",
+			"warrior",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_warrior.blp",
+			"FRIENDS:NONE",
+			"FRIENDS:WARRIOR",
+			"Click to filter by Warriors",
+			"warrior"
+		},{
+			"OPTION",
+			"none",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp",
+			"FRIENDS:NONE",
+			"FRIENDS:NONE",
+			"Click to disable Filter",
+			"none"
+		}
+	},
+	"Left Click for Options | Right Click for disable Filter",
+	"Left Click for Options | Right Click for enable Filter"
+}
+
+-- Inventory --
+
 MultiBot.config.inventory = {
 	"SWITCH",
 	"inventory",
 	"inv_misc_bag_08",
-	"=== Inventory:Close ===",
-	"=== Inventory:Open ===",
+	"INVENTORY:CLOSE",
+	"INVENTORY:OPEN",
 	"Click to close Inventory",
 	"Click to open Inventory",
 	"items"
+}
+
+MultiBot.config.sell = {
+	"SWITCH:inventory",
+	"sell",
+	"inv_misc_coin_16",
+	"INVENTORY:NONE",
+	"INVENTORY:SELL",
+	"Click to disable Sell\nIMPORTANT: Needs Merchent as Target",
+	"Click to sell Items\nIMPORTANT: Needs Merchant as Target)",
+	"SELL"
+}
+
+MultiBot.config.equip = {
+	"SWITCH:inventory",
+	"equip",
+	"inv_helmet_22",
+	"INVENTORY:NONE",
+	"INVENTORY:EQUIP",
+	"Click to disable Equip",
+	"Click to equip Items",
+	"EQUIP"
+}
+
+MultiBot.config.use = {
+	"SWITCH:inventory",
+	"use",
+	"inv_gauntlets_25",
+	"INVENTORY:NONE",
+	"INVENTORY:USE",
+	"Click to disable Use",
+	"Click to use Items",
+	"USE"
+}
+
+MultiBot.config.drop = {
+	"SWITCH:inventory",
+	"drop",
+	"inv_hammer_15",
+	"INVENTORY:NONE",
+	"INVENTORY:DROP",
+	"Click to disable Destroy",
+	"Click to destroy Items",
+	"DROP"
 }
 
 -- GROUP --
@@ -163,9 +320,9 @@ MultiBot.config.release = {
 
 MultiBot.config.sumall = {
 	"SINGLE",
-	"=== Summon:All ===",
-	"ability_hunter_beastcall",
 	"summon",
+	"ability_hunter_beastcall",
+	"SUMMON:ALL",
 	"Click to summon all active Bots"
 }
 

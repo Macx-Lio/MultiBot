@@ -86,8 +86,8 @@ MultiBot.config.paladin.naura = {
 			"barmor"
 		}
 	},
-	"Normal | Left Click for Options | Right Click for disable Aura",
-	"Normal | Left Click for Options | Right Click for enable Aura"
+	"Non-Combat | Left Click for Options | Right Click for disable Aura",
+	"Non-Combat | Left Click for Options | Right Click for enable Aura"
 }
 
 MultiBot.config.paladin.caura = {

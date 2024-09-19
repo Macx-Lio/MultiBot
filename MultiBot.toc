@@ -14,9 +14,12 @@ MultiBotSwitch.lua
 MultiBotSelect.lua
 MultiBotOption.lua
 MultiBotSwitchbar.lua
-MultiBotCharacter.lua
 MultiBotInventory.lua
 MultiBotControl.lua
+MultiBotPlayers.lua
+MultiBotFriends.lua
+MultiBotPlayer.lua
+MultiBotFriend.lua
 MultiBotItem.lua
 MultiBotRaid.lua
 MultiBot.lua

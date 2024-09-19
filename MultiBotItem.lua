@@ -5,13 +5,13 @@ MultiBot.newItem = function(pParent, pIndex, pInfo)
 	
 	button.index = pIndex + 1
 	button.id = MultiBot.doSplit(pInfo, ":")[2]
-	button.x = pIndex%4 * (pParent.size + 4)
-	button.y = math.floor(pIndex / 4) * (pParent.size + 4) * -1
+	button.x = pIndex%8 * (pParent.size + 6) + pParent.ox
+	button.y = math.floor(pIndex / 8) * (pParent.size + 5) * -1 - pParent.oy
 	
 	button:EnableMouse(true)
-	button:SetPoint("BOTTOMRIGHT", button.x, button.y)
-	button:SetSize(button.parent.size, button.parent.size)
-	button:RegisterForClicks("LeftButtonDown", "RightButtonDown")
+	button:SetPoint("TOPLEFT", button.x, button.y)
+	button:SetSize(button.parent.size + 4, button.parent.size + 4)
+	button:RegisterForClicks("LeftButtonDown")
 	
 	button.icon = button:CreateTexture(nil, "BACKGROUND")
 	button.icon:SetTexture(GetItemIcon(button.id))
@@ -26,16 +26,26 @@ MultiBot.newItem = function(pParent, pIndex, pInfo)
 	button.amount:SetPoint("BOTTOMRIGHT", 0, 0)
 	button.amount:SetText(string.sub(MultiBot.doSplit(MultiBot.doSplit(pInfo, "]")[2], " ")[1], 6))
 	
-	button.setItem = function()
+	button.setItem = function(pInfo)
 		local iName, iLink, iRarity, iLevel, iMinLevel, iType, iSubType, iStackCount, iEquipLoc, iTexture, iSellPrice = GetItemInfo(button.id)
-		button.tip = MultiBot.newTip(button.parent, iLink)
+		
+		if(iLink == nil) then
+			button.tip = MultiBot.newTip(button.parent, pInfo)
+		else
+			button.tip = MultiBot.newTip(button.parent, iLink)
+		end
+		
 		button.link = iLink
 		return button
 	end
 	
 	button:SetScript("OnEnter", function()
 		if(button.tip ~= nil) then
-			MultiBot.setItemTip(button, button.tip)
+			if(button.link ~= nil) then
+				MultiBot.setItemTip(button, button.tip)
+			else
+				MultiBot.setTip(button, button.tip)
+			end
 		end
 	end)
 	
@@ -44,18 +54,29 @@ MultiBot.newItem = function(pParent, pIndex, pInfo)
 	end)
 	
 	button:SetScript("OnClick", function(pSelf, pButton)
-		if(pButton == "LeftButton") then
+		local tAction = button.parent.getAction()
+		
+		if(tAction == "SELL") then
 			SendChatMessage("s " .. button.link, button.chat, nil, button.parent.name)
 			button:Hide()
 		end
 		
-		if(pButton == "RightButton") then
+		if(tAction == "EQUIP") then
+			SendChatMessage("e " .. button.link, button.chat, nil, button.parent.name)
+			MultiBot.getBot(button.parent.name).waitFor = "equipping"
+		end
+		
+		if(tAction == "USE") then
+			SendChatMessage("u " .. button.link, button.chat, nil, button.parent.name)
+		end
+		
+		if(tAction == "DROP") then
 			SendChatMessage("destroy " .. button.link, button.chat, nil, button.parent.name)
 			button:Hide()
 		end
 	end)
 	
-	return button.setItem()
+	return button.setItem(pInfo)
 end
 
 print("AfterMultiBotItem")

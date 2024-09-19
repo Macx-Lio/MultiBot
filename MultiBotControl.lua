@@ -12,7 +12,15 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 
 	if (event == "CHAT_MSG_SYSTEM") then
 		if(MultiBot.isInside(arg1, "Bot roster: ")) then
-			MultiBot.button = MultiBot.newDouble(MultiBot, 0, 0, MultiBot.config.start, "SHOW")
+			local tX = 0
+			
+			MultiBot.players = MultiBot.newPlayers(MultiBot, tX, 0, MultiBot.size)
+			MultiBot.players.setButton(MultiBot.config.players, "SHOW:PLAYERS")
+			tX = tX + MultiBot.size + 2
+			
+			MultiBot.friends = MultiBot.newFriends(MultiBot, tX, 0, MultiBot.size)
+			MultiBot.friends.setButton(MultiBot.config.friends, "HIDE:FRIENDS")
+			tX = tX + MultiBot.size + 2
 			
 			-- LEFT --
 			
@@ -36,7 +44,7 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			
 			-- RIGHT --
 			
-			MultiBot.right = MultiBot.newFrame(MultiBot, MultiBot.size - 2, 2, MultiBot.size - 4)
+			MultiBot.right = MultiBot.newFrame(MultiBot, MultiBot.size * 2, 2, MultiBot.size - 4)
 			local tX = 0
 			
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.release).setChat("PARTY")
@@ -60,30 +68,43 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			MultiBot.addControl(5)
 			MultiBot.doRaid()
 			
-			-- ROSTER --
+			-- ROOSTER --
 			
-			MultiBot.setRoster(string.sub(arg1, 13))
+			MultiBot.players.setPlayers(string.sub(arg1, 13))
 		end
 		
 		if(MultiBot.isInside(arg1, " - player already logged in")) then
-			local tName = string.sub(arg1, 6, string.find(arg1, " ", 6) - 1)
-			SendChatMessage("Asked " .. tName .. " for Combat Strategies", "SAY")
-			SendChatMessage("co ?", "WHISPER", nil, tName)
-			MultiBot.chars[tName].waitFor = "CO"
+			local bot = MultiBot.getBot(string.sub(arg1, 6, string.find(arg1, " ", 6) - 1))
+			if(bot == nil) then return end
+			
+			if(MultiBot.isMember(bot.name)) then
+				bot.waitFor = "CO"
+				SendChatMessage("Asked " .. bot.name .. " for Combat Strategies", "SAY")
+				SendChatMessage("co ?", "WHISPER", nil, bot.name)
+			else
+				if(GetNumPartyMembers() == 4) then ConvertToRaid() end
+				MultiBot.doSlash("/invite", bot.name)
+			end
 		end
 		
 		if(MultiBot.isInside(arg1, "remove: ")) then
-			local tName = string.sub(arg1, 9, string.find(arg1, " ", 9) - 1)
-			if(MultiBot.chars[tName] == nil) then SendChatMessage(string.sub(arg1, 9, string.find(arg1, " ", 9) - 1), "SAY") end
-			MultiBot.chars[tName].button.setState(false)
-			MultiBot.chars[tName].doHide()
+			local bot = MultiBot.getBot(string.sub(arg1, 9, string.find(arg1, " ", 9) - 1))
+			if(bot == nil) then return end
+			
+			bot.button.setState(false)
+			bot.doHide()
 		end
 	end
 	
 	if(event == "CHAT_MSG_WHISPER") then
-		if(MultiBot.chars[arg2] == nil) then return end
+		local bot = MultiBot.getBot(arg2)
+		if(bot == nil) then return end
 		
 		if(arg1 == "Hello") then
+			bot.waitFor = "CO"
+			bot.button.setState(true)
+			SendChatMessage("co ?", "WHISPER", nil, arg2)
+			SendChatMessage("Asked " .. arg2 .. " for Combat Strategies", "SAY")
 			MultiBot.doRaid()
 		end
 		
@@ -92,33 +113,39 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 		end
 		
 		if(arg1 == "Hello!") then
-			MultiBot.chars[arg2].waitFor = "CO"
-			MultiBot.chars[arg2].button.setState(true)
+			bot.waitFor = "CO"
+			bot.button.setState(true)
 			SendChatMessage("co ?", "WHISPER", nil, arg2)
 			SendChatMessage("Asked " .. arg2 .. " for Combat Strategies", "SAY")
+			MultiBot.doRaid()
 		end
 		
-		if(MultiBot.chars[arg2].waitFor == "NC" and MultiBot.isInside(arg1, "Strategies: ")) then
-			MultiBot.chars[arg2].waitFor = ""
-			MultiBot.chars[arg2].setNormal(string.sub(arg1, 13))
-			MultiBot.chars[arg2].setStrate()
+		if(bot.waitFor == "NC" and MultiBot.isInside(arg1, "Strategies: ")) then
+			bot.waitFor = ""
+			bot.setNormal(string.sub(arg1, 13))
+			bot.setStrate()
 		end
 		
-		if(MultiBot.chars[arg2].waitFor == "CO" and MultiBot.isInside(arg1, "Strategies: ")) then
-			MultiBot.chars[arg2].waitFor = "NC"
-			MultiBot.chars[arg2].setCombat(string.sub(arg1, 13))
+		if(bot.waitFor == "CO" and MultiBot.isInside(arg1, "Strategies: ")) then
+			bot.waitFor = "NC"
+			bot.setCombat(string.sub(arg1, 13))
 			SendChatMessage("nc ?", "WHISPER", nil, arg2)
 			SendChatMessage("Asked " .. arg2 .. " for Normal Strategies", "SAY")
 		end
 		
-		if(MultiBot.chars[arg2].waitFor == "=== Inventory ===" and MultiBot.isInside(arg1, "Bag")) then
-			MultiBot.chars[arg2].inventory:Show()
-			MultiBot.chars[arg2].waitFor = ""
+		if(bot.waitFor == "=== Inventory ===" and MultiBot.isInside(arg1, "Bag")) then
+			InspectUnit(bot.name)
+			bot.inventory:Show()
+			bot.waitFor = ""
 		end
 		
-		if(MultiBot.chars[arg2].waitFor == "=== Inventory ===" and arg1 ~= "=== Inventory ===") then
+		if(bot.waitFor == "=== Inventory ===" and arg1 ~= "=== Inventory ===") then
 			SendChatMessage("stats", "WHISPER", nil, arg2)
-			MultiBot.chars[arg2].inventory.addItem(arg1)
+			bot.inventory.addItem(arg1)
+		end
+		
+		if(bot.waitFor == "equipping" and MultiBot.isInside(arg1, "equipping")) then
+			bot.inventory.doRefresh()
 		end
 	end
 end)
@@ -129,7 +156,19 @@ SLASH_MULTIBOT3 = "/mb"
 
 SlashCmdList["MULTIBOT"] = function()
 	if(MultiBot:IsVisible()) then
+		for key, value in pairs(MultiBot.players.players) do value.inventory.doClose() end
+		for key, value in pairs(MultiBot.friends.friends) do value.inventory.doClose() end
+		for key, value in pairs(MultiBot.raid) do value:Hide() end
+		
+		MultiBot.players:Hide()
+		MultiBot.friends:Hide()
+		MultiBot.right:Hide()
+		MultiBot.left:Hide()
 		MultiBot:Hide()
+		
+		table.wipe(MultiBot.players.players)
+		table.wipe(MultiBot.friends.friends)
+		table.wipe(MultiBot.raid)
 	else
 		SendChatMessage(".playerbot bot list", "SAY")
 		MultiBot:Show()

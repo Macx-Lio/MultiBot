@@ -14,7 +14,9 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 	button:SetSize(button.parent.size, button.parent.size)
 	
 	button.icon = button:CreateTexture(nil, "BACKGROUND")
-	button.icon:SetTexture("Interface/Icons/" .. button.config[3])
+	if(string.sub(button.config[3], 1, 9) ~= "Interface")
+	then button.icon:SetTexture("Interface/Icons/" .. button.config[3])
+	else button.icon:SetTexture(button.config[3]) end
 	button.icon:SetAllPoints(button)
 	button.icon:Show()
 	
@@ -22,6 +24,12 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 	button:SetPushedTexture("Interface/Buttons/UI-Quickslot-Depress")
 	
 	-- SET --
+	
+	button.setPoint = function(pX, pY)
+		button:SetPoint("BOTTOMRIGHT", pX, pY)
+		button.x = pX
+		button.y = pY
+	end
 	
 	button.setChat = function(pChat)
 		button.chat = pChat
@@ -61,14 +69,11 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 	-- DO --
 	
 	button.doWhisper = function()
-		if(button.config[2] == "=== Summon:All ===") then
-			for key, value in pairs(MultiBot.chars) do
-				if(value.button.state == true) then
-					SendChatMessage(button.config[4], button.chat, nil, key)
-				end
-			end
-		elseif(button.config[2] == "=== Resize ===") then
-			
+		if(button.config[4] == "SUMMON:ALL") then
+			MultiBot.players.doSummon()
+			MultiBot.friends.doSummon()
+		elseif(button.config[4] == "FRIENDS:BROWSE") then
+			MultiBot.friends.doBrowse()
 		else
 			SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
 		end
