@@ -90,7 +90,7 @@ A left click on the Backpack-Icon also opens the Inspect-Window, as long your Bo
 The Inventory set to sell by default.<br>
 This means that a left click on a Item sells this Item to the targeted Merchant.<br><br>
 
-![You will see the MultiBot-Interface with open Bot-Inventory.](https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/MultiBot-15-Equip-Option.jpg?raw=true)
+![You will see the MultiBot-Interface with open Bot-Inventory.](https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/MultiBot-15-Eqiup-Option.jpg?raw=true)
 The 2nd Button will switch the left click from "Sell" the "Equip".<br><br>
 
 ![You will see the MultiBot-Interface with open Bot-Inventory.](https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/MultiBot-16-Use-Option.jpg?raw=true)
