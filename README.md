@@ -109,7 +109,3 @@ Next i work on the Group- and Raid-Controls.
 
 # Currently not supported
 QUEST
-This Picture shows the Raid-Control of the MultiBot-Interface.<br>
-The main control unit is pinned to the red scroll button.<br>
-The group control units are pinned to the green scroll button.<br>
-From top to bottom, the group control units represent the respective raid groups.<br><br>
