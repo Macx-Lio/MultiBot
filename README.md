@@ -121,12 +121,16 @@ Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
     </td>
   </tr>
   <tr>
-    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-01-Inventory.png"></td>
-    <td></td>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-04-Hide-Playerbot-Control.png"></td>
+    <td>
+      With a left click on the Character-Button you can hide and show the Playerbot-Control.
+    </td>
   </tr>
   <tr>
-    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-01-Inventory.png"></td>
-    <td></td>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-05-Hide-Playerbots.png"></td>
+    <td>
+      With a left click on the left Scroll-Button you can hide and show the Playerbots.
+    </td>
   </tr>
   <tr>
     <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-01-Inventory.png"></td>
