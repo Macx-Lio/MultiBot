@@ -1,5 +1,6 @@
 MultiBot.config = {}
-MultiBot.config.raid = { {}, {}, {}, {}, {} }
+MultiBot.config.raid = {}
+MultiBot.config.beastmaster = {}
 MultiBot.config.deathknight = {}
 MultiBot.config.druid = {}
 MultiBot.config.hunter = {}
@@ -11,22 +12,38 @@ MultiBot.config.shaman = {}
 MultiBot.config.warlock = {}
 MultiBot.config.warrior = {}
 
+MultiBot.notice = {}
+MultiBot.notice.allrounder = "\n|cffff0000Notice: |r|cfff9f9f9This Button works with Target, Group and Raid.|r"
+MultiBot.notice.merchant = "\n|cffff0000Notice: |r|cfff9f9f9You will need a Merchant as Target.|r"
+
 -- USE: All
+MultiBot.config.control = {
+	"DOUBLE",
+	"control",
+	"inv_gizmo_02",
+	"inv_gizmo_02",
+	"HIDE:CONTROL",
+	"SHOW:CONTROL",
+	"Left Click to hide AI-Control | Right Click to close MultiBot",
+	"Left Click to show AI-Control | Right Click to close Multibot",
+	"/multibot"
+}
+
 MultiBot.config.players = {
 	"DOUBLE",
-	"start",
+	"players",
 	"inv_scroll_04",
 	"inv_scroll_03",
 	"HIDE:PLAYERS",
 	"SHOW:PLAYERS",
-	"Left Click to hide Playerbots | Right Click to close MultiBot",
-	"Left Click to show Playerbots | Right Click to close Multibot",
-	"/multibot"
+	"Left Click to hide Playerbots",
+	"Left Click to show Playerbots",
+	"PLAYERS:REFRESH"
 }
 
 MultiBot.config.friends = {
 	"DOUBLE",
-	"start",
+	"friends",
 	"inv_scroll_05",
 	"inv_scroll_03",
 	"HIDE:FRIENDS",
@@ -34,6 +51,32 @@ MultiBot.config.friends = {
 	"Left Click to hide Friendbots | Right Click to refresh Friendbots",
 	"Left Click to show Friendbots | Right Click to refresh Friendbots",
 	"FRIENDS:REFRESH"
+}
+
+-- CONTROL --
+
+MultiBot.config.naxx = {
+	"SINGLE",
+	"naxx",
+	"achievement_boss_kelthuzad_01",
+	"CONTROL:naxx",
+	"Click to activate AI for Naxxramas" .. MultiBot.notice.allrounder
+}
+
+MultiBot.config.reset = {
+	"SINGLE",
+	"reset",
+	"inv_misc_tournaments_symbol_gnome",
+	"CONTROL:reset botAI",
+	"Click to reset AI" .. MultiBot.notice.allrounder
+}
+
+MultiBot.config.action = {
+	"SINGLE",
+	"action",
+	"inv_helmet_02",
+	"CONTROL:reset",
+	"Click to reset Actions" .. MultiBot.notice.allrounder
 }
 
 -- LEFT --
@@ -133,6 +176,56 @@ MultiBot.config.gather = {
 	"Click to disable Gather",
 	"Click to enable Gather",
 	"gather"
+}
+
+-- BEASTMASTER --
+
+MultiBot.config.beastmaster.start = {
+	"SINGLE",
+	"start",
+	"ability_mount_swiftredwindrider",
+	"BEASTMASTER:SWITCH",
+	"Click to show or hide Beastmaster-Actions"
+}
+
+MultiBot.config.beastmaster.call = {
+	"SINGLE",
+	"call",
+	"ability_hunter_beastcall",
+	"BEASTMASTER:883",
+	"Click to call the Beast" .. MultiBot.notice.allrounder
+}
+
+MultiBot.config.beastmaster.feed = {
+	"SINGLE",
+	"feed",
+	"ability_hunter_beasttraining",
+	"BEASTMASTER:6991",
+	"Click to feed the Beast" .. MultiBot.notice.allrounder
+}
+
+MultiBot.config.beastmaster.heal = {
+	"SINGLE",
+	"heal",
+	"ability_hunter_mendpet",
+	"BEASTMASTER:48990",
+	"Click to heal the Beast" .. MultiBot.notice.allrounder
+}
+
+MultiBot.config.beastmaster.revive = {
+	"SINGLE",
+	"revive",
+	"ability_hunter_beastsoothe",
+	"BEASTMASTER:982",
+	"Click to revive the Beast" .. MultiBot.notice.allrounder
+}
+
+MultiBot.config.beastmaster.release = {
+	"SINGLE",
+	"release",
+	"spell_nature_spiritwolf",
+	"BEASTMASTER:2641",
+	"Click to release the Beast" .. MultiBot.notice.allrounder
 }
 
 -- Friends --
@@ -262,8 +355,8 @@ MultiBot.config.sell = {
 	"inv_misc_coin_16",
 	"INVENTORY:NONE",
 	"INVENTORY:SELL",
-	"Click to disable Sell\nIMPORTANT: Needs Merchent as Target",
-	"Click to sell Items\nIMPORTANT: Needs Merchant as Target)",
+	"Click to disable Sell" .. MultiBot.notice.merchant,
+	"Click to sell Items" .. MultiBot.notice.merchant,
 	"SELL"
 }
 
@@ -302,6 +395,14 @@ MultiBot.config.drop = {
 
 -- GROUP --
 
+MultiBot.config.drink = {
+	"SINGLE",
+	"drink",
+	"inv_drink_24_sealwhey",
+	"drink",
+	"Click for Drink"
+}
+
 MultiBot.config.revive = {
 	"SINGLE",
 	"revive",
@@ -326,42 +427,212 @@ MultiBot.config.sumall = {
 	"Click to summon all active Bots"
 }
 
+MultiBot.config.formation = {
+	"SELECT",
+	"formation",
+	{
+		{
+			"OPTION",
+			"arrow",
+			"Interface\\AddOns\\MultiBot\\Icons\\formation_arrow.blp",
+			"formation",
+			"formation arrow",
+			"Click for Arrow-Formation",
+			"arrow"
+		},{
+			"OPTION",
+			"queue",
+			"Interface\\AddOns\\MultiBot\\Icons\\formation_queue.blp",
+			"formation",
+			"formation queue",
+			"Click for Queue-Formation",
+			"queue"
+		},{
+			"OPTION",
+			"near",
+			"Interface\\AddOns\\MultiBot\\Icons\\formation_near.blp",
+			"formation",
+			"formation near",
+			"Click for Near-Formation",
+			"near"
+		},{
+			"OPTION",
+			"melee",
+			"Interface\\AddOns\\MultiBot\\Icons\\formation_melee.blp",
+			"formation",
+			"formation melee",
+			"Click for Melee-Formation",
+			"melee"
+		},{
+			"OPTION",
+			"line",
+			"Interface\\AddOns\\MultiBot\\Icons\\formation_line.blp",
+			"formation",
+			"formation line",
+			"Click for Line-Formation",
+			"line"
+		},{
+			"OPTION",
+			"circle",
+			"Interface\\AddOns\\MultiBot\\Icons\\formation_circle.blp",
+			"formation",
+			"formation circle",
+			"Click for Circle-Formation",
+			"circle"
+		},{
+			"OPTION",
+			"chaos",
+			"Interface\\AddOns\\MultiBot\\Icons\\formation_chaos.blp",
+			"formation",
+			"formation chaos",
+			"Click for Chaos-Formation",
+			"chaos"
+		},{
+			"OPTION",
+			"shield",
+			"Interface\\AddOns\\MultiBot\\Icons\\formation_shield.blp",
+			"formation",
+			"formation shield",
+			"Click for Shield-Formation",
+			"shield"
+		}
+	},
+	"Left Click for Options | Right Click to ask for Formation",
+	"Left Click for Options | Right Click to ask for Formation"
+}
+
 MultiBot.config.flee = {
-	"SINGLE",
+	"ACTIONBAR",
 	"flee",
-	"achievement_bg_returnxflags_def_wsg",
-	"flee",
-	"Click for Flee"
+	{
+		{
+			"ACTION",
+			"flee",
+			"Interface\\AddOns\\MultiBot\\Icons\\flee.blp",
+			"flee",
+			"Click for All to flee | Right Click for set as Default"
+		},{
+			"ACTION",
+			"range",
+			"Interface\\AddOns\\MultiBot\\Icons\\flee_range.blp",
+			"@ranged flee",
+			"Click for Ranged to flee | Right Click for set as Default"
+		},{
+			"ACTION",
+			"melee",
+			"Interface\\AddOns\\MultiBot\\Icons\\flee_melee.blp",
+			"@melee flee",
+			"Click for Melee to flee | Right Click for set as Default"
+		},{
+			"ACTION",
+			"healer",
+			"Interface\\AddOns\\MultiBot\\Icons\\flee_healer.blp",
+			"@healer flee",
+			"Click for Healer to flee | Right Click for set as Default"
+		},{
+			"ACTION",
+			"dps",
+			"Interface\\AddOns\\MultiBot\\Icons\\flee_dps.blp",
+			"@dps flee",
+			"Click for DPS to flee | Right Click for set as Default"
+		},{
+			"ACTION",
+			"tank",
+			"Interface\\AddOns\\MultiBot\\Icons\\flee_tank.blp",
+			"@tank flee",
+			"Click for Tank to flee | Right Click for set as Default"
+		},{
+			"ACTION",
+			"target",
+			"Interface\\AddOns\\MultiBot\\Icons\\flee_target.blp",
+			"@target flee",
+			"Click for Target to flee | Right Click for set as Default"
+		}
+	},
+	"Left Click for default Action | Right Click for advance Actions"
 }
 
 MultiBot.config.stay = {
 	"DOUBLE",
 	"stay",
-	"spell_holy_crusade",
-	"achievement_bg_ab_defendflags",
+	"Interface\\AddOns\\MultiBot\\Icons\\command_follow.blp",
+	"Interface\\AddOns\\MultiBot\\Icons\\command_stay.blp",
 	"stay",
 	"follow",
 	"Click for Stay",
 	"Click for Follow"
 }
 
-MultiBot.config.passive = {
-	"DOUBLE",
-	"passive",
-	"spell_holy_weaponmastery",
-	"ability_dualwield",
-	"co +passive,?",
-	"co -passive,?",
-	"Click for passive Mode",
-	"Click for active Mode"
+MultiBot.config.mode = {
+	"MODEBAR",
+	"flee",
+	{
+		{
+			"MODE",
+			"passive",
+			"Interface\\AddOns\\MultiBot\\Icons\\mode_passive.blp",
+			"co -passive,-grind,?",
+			"co +passive,?",
+			"Click to disable Passive-Mode",
+			"Click to enable Passive-Mode",
+			"passive"
+		},{
+			"MODE",
+			"grind",
+			"Interface\\AddOns\\MultiBot\\Icons\\mode_grind.blp",
+			"co -passive,-grind,?",
+			"co +grind,?",
+			"Click to disable Grind-Mode",
+			"Click to enable Grind-Mode",
+			"grind"
+		}
+	},
+	"Left Click to toggle Mode | Right Click to select Mode"
 }
 
 MultiBot.config.attack = {
-	"SINGLE",
+	"ACTIONBAR",
 	"attack",
-	"ability_rogue_ambush",
-	"d attack my target",
-	"Click for Attack"
+	{
+		{
+			"ACTION",
+			"attack",
+			"Interface\\AddOns\\MultiBot\\Icons\\attack.blp",
+			"d attack my target",
+			"Click for All to attack | Right Click for set as Default"
+		},{
+			"ACTION",
+			"range",
+			"Interface\\AddOns\\MultiBot\\Icons\\attack_range.blp",
+			"@ranged d attack my target",
+			"Click for Ranged to attack | Right Click for set as Default"
+		},{
+			"ACTION",
+			"melee",
+			"Interface\\AddOns\\MultiBot\\Icons\\attack_melee.blp",
+			"@melee d attack my target",
+			"Click for Melee to attack | Right Click for set as Default"
+		},{
+			"ACTION",
+			"healer",
+			"Interface\\AddOns\\MultiBot\\Icons\\attack_healer.blp",
+			"@healer d attack my target",
+			"Click for Healer to attack | Right Click for set as Default"
+		},{
+			"ACTION",
+			"dps",
+			"Interface\\AddOns\\MultiBot\\Icons\\attack_dps.blp",
+			"@dps d attack my target",
+			"Click for DPS to attack | Right Click for set as Default"
+		},{
+			"ACTION",
+			"tank",
+			"Interface\\AddOns\\MultiBot\\Icons\\attack_tank.blp",
+			"@tank d attack my target",
+			"Click for Tank to attack | Right Click for set as Default"
+		}
+	},
+	"Left Click for default Action | Right Click for advance Actions"
 }
 
 MultiBot.config.tanker = {
@@ -372,383 +643,63 @@ MultiBot.config.tanker = {
 	"Click for Attack by Tank"
 }
 
--- RAID:GROUP1 --
+-- RAID --
 
-MultiBot.config.raid[1].start = {
+MultiBot.config.raid.start = {
 	"DOUBLE",
 	"start",
 	"inv_scroll_06",
 	"inv_scroll_03",
-	"HIDE",
-	"SHOW",
-	"Left Click to hide Group-Control",
-	"Left Click to show Group-Control",
+	"HIDE:RAID",
+	"SHOW:RAID",
+	"Left Click to hide Group-Controls",
+	"Left Click to show Group-Controls",
 	""
 }
 
-MultiBot.config.raid[1].revive = {
-	"SINGLE",
-	"revive",
-	"spell_holy_guardianspirit",
-	"@group1 revive",
-	"Click for Revive"
-}
-
-MultiBot.config.raid[1].release = {
-	"SINGLE",
-	"release",
-	"achievement_bg_xkills_avgraveyard",
-	"@group1 release",
-	"Click for Release"
-}
-
-MultiBot.config.raid[1].flee = {
+MultiBot.config.raid.flee = {
 	"SINGLE",
 	"flee",
 	"achievement_bg_returnxflags_def_wsg",
-	"@group1 flee",
+	"flee",
 	"Click for Flee"
 }
 
-MultiBot.config.raid[1].stay = {
+MultiBot.config.raid.stay = {
 	"DOUBLE",
 	"stay",
 	"spell_holy_crusade",
 	"achievement_bg_ab_defendflags",
-	"@group1 stay",
-	"@group1 follow",
-	"Click for Stay",
-	"Click for Follow"
-}
-
-MultiBot.config.raid[1].passive = {
-	"DOUBLE",
-	"passive",
-	"spell_holy_weaponmastery",
-	"ability_dualwield",
-	"@group1 co +passive,?",
-	"@group1 co passive,-passive,?",
-	"Click for passive Mode",
-	"Click for active Mode"
-}
-
-MultiBot.config.raid[1].attack = {
-	"SINGLE",
-	"attack",
-	"ability_rogue_ambush",
-	"@group1 d attack my target",
-	"Click for Attack"
-}
-
-MultiBot.config.raid[1].tanker = {
-	"SINGLE",
-	"tanker",
-	"ability_warrior_shieldbash",
-	"@group1 @tank d attack my target",
-	"Click for Attack by Tank"
-}
-
--- RAID:GROUP2 --
-
-MultiBot.config.raid[2].start = {
-	"DOUBLE",
-	"start",
-	"inv_scroll_06",
-	"inv_scroll_03",
-	"HIDE",
-	"SHOW",
-	"Left Click to hide Group-Control",
-	"Left Click to show Group-Control",
-	""
-}
-
-MultiBot.config.raid[2].revive = {
-	"SINGLE",
-	"revive",
-	"spell_holy_guardianspirit",
-	"@group2 revive",
-	"Click for Revive"
-}
-
-MultiBot.config.raid[2].release = {
-	"SINGLE",
-	"release",
-	"achievement_bg_xkills_avgraveyard",
-	"@group2 release",
-	"Click for Release"
-}
-
-MultiBot.config.raid[2].flee = {
-	"SINGLE",
-	"flee",
-	"achievement_bg_returnxflags_def_wsg",
-	"@group2 flee",
-	"Click for Flee"
-}
-
-MultiBot.config.raid[2].stay = {
-	"DOUBLE",
 	"stay",
-	"spell_holy_crusade",
-	"achievement_bg_ab_defendflags",
-	"@group2 stay",
-	"@group2 follow",
+	"follow",
 	"Click for Stay",
 	"Click for Follow"
 }
 
-MultiBot.config.raid[2].passive = {
-	"DOUBLE",
+MultiBot.config.raid.passive = {
+	"SWITCH",
 	"passive",
-	"spell_holy_weaponmastery",
-	"ability_dualwield",
-	"@group2 co +passive,?",
-	"@group2 co passive,-passive,?",
+	"achievement_bg_winwsg_underxminutes",
+	"co +passive,?",
+	"co +passive,-passive,?",
 	"Click for passive Mode",
-	"Click for active Mode"
+	"Click for active Mode",
+	"stay"
 }
 
-MultiBot.config.raid[2].attack = {
+MultiBot.config.raid.attack = {
 	"SINGLE",
 	"attack",
-	"ability_rogue_ambush",
-	"@group2 d attack my target",
+	"ability_warrior_challange",
+	"d attack my target",
 	"Click for Attack"
 }
 
-MultiBot.config.raid[2].tanker = {
+MultiBot.config.raid.tanker = {
 	"SINGLE",
 	"tanker",
 	"ability_warrior_shieldbash",
-	"@group2 @tank d attack my target",
-	"Click for Attack by Tank"
-}
-
--- RAID:GROUP3 --
-
-MultiBot.config.raid[3].start = {
-	"DOUBLE",
-	"start",
-	"inv_scroll_06",
-	"inv_scroll_03",
-	"HIDE",
-	"SHOW",
-	"Left Click to hide Group-Control",
-	"Left Click to show Group-Control",
-	""
-}
-
-MultiBot.config.raid[3].revive = {
-	"SINGLE",
-	"revive",
-	"spell_holy_guardianspirit",
-	"@group3 revive",
-	"Click for Revive"
-}
-
-MultiBot.config.raid[3].release = {
-	"SINGLE",
-	"release",
-	"achievement_bg_xkills_avgraveyard",
-	"@group3 release",
-	"Click for Release"
-}
-
-MultiBot.config.raid[3].flee = {
-	"SINGLE",
-	"flee",
-	"achievement_bg_returnxflags_def_wsg",
-	"@group3 flee",
-	"Click for Flee"
-}
-
-MultiBot.config.raid[3].stay = {
-	"DOUBLE",
-	"stay",
-	"spell_holy_crusade",
-	"achievement_bg_ab_defendflags",
-	"@group3 stay",
-	"@group3 follow",
-	"Click for Stay",
-	"Click for Follow"
-}
-
-MultiBot.config.raid[3].passive = {
-	"DOUBLE",
-	"passive",
-	"spell_holy_weaponmastery",
-	"ability_dualwield",
-	"@group3 co +passive,?",
-	"@group3 co passive,-passive,?",
-	"Click for passive Mode",
-	"Click for active Mode"
-}
-
-MultiBot.config.raid[3].attack = {
-	"SINGLE",
-	"attack",
-	"ability_rogue_ambush",
-	"@group3 d attack my target",
-	"Click for Attack"
-}
-
-MultiBot.config.raid[3].tanker = {
-	"SINGLE",
-	"tanker",
-	"ability_warrior_shieldbash",
-	"@group3 @tank d attack my target",
-	"Click for Attack by Tank"
-}
-
--- RAID:GROUP4 --
-
-MultiBot.config.raid[4].start = {
-	"DOUBLE",
-	"start",
-	"inv_scroll_06",
-	"inv_scroll_03",
-	"HIDE",
-	"SHOW",
-	"Left Click to hide Group-Control",
-	"Left Click to show Group-Control",
-	""
-}
-
-MultiBot.config.raid[4].revive = {
-	"SINGLE",
-	"revive",
-	"spell_holy_guardianspirit",
-	"@group4 revive",
-	"Click for Revive"
-}
-
-MultiBot.config.raid[4].release = {
-	"SINGLE",
-	"release",
-	"achievement_bg_xkills_avgraveyard",
-	"@group4 release",
-	"Click for Release"
-}
-
-MultiBot.config.raid[4].flee = {
-	"SINGLE",
-	"flee",
-	"achievement_bg_returnxflags_def_wsg",
-	"@group4 flee",
-	"Click for Flee"
-}
-
-MultiBot.config.raid[4].stay = {
-	"DOUBLE",
-	"stay",
-	"spell_holy_crusade",
-	"achievement_bg_ab_defendflags",
-	"@group4 stay",
-	"@group4 follow",
-	"Click for Stay",
-	"Click for Follow"
-}
-
-MultiBot.config.raid[4].passive = {
-	"DOUBLE",
-	"passive",
-	"spell_holy_weaponmastery",
-	"ability_dualwield",
-	"@group4 co +passive,?",
-	"@group4 co passive,-passive,?",
-	"Click for passive Mode",
-	"Click for active Mode"
-}
-
-MultiBot.config.raid[4].attack = {
-	"SINGLE",
-	"attack",
-	"ability_rogue_ambush",
-	"@group4 d attack my target",
-	"Click for Attack"
-}
-
-MultiBot.config.raid[4].tanker = {
-	"SINGLE",
-	"tanker",
-	"ability_warrior_shieldbash",
-	"@group4 @tank d attack my target",
-	"Click for Attack by Tank"
-}
-
--- RAID:GROUP5 --
-
-MultiBot.config.raid[5].start = {
-	"DOUBLE",
-	"start",
-	"inv_scroll_06",
-	"inv_scroll_03",
-	"HIDE",
-	"SHOW",
-	"Left Click to hide Group-Control",
-	"Left Click to show Group-Control",
-	""
-}
-
-MultiBot.config.raid[5].revive = {
-	"SINGLE",
-	"revive",
-	"spell_holy_guardianspirit",
-	"@group5 revive",
-	"Click for Revive"
-}
-
-MultiBot.config.raid[5].release = {
-	"SINGLE",
-	"release",
-	"achievement_bg_xkills_avgraveyard",
-	"@group5 release",
-	"Click for Release"
-}
-
-MultiBot.config.raid[5].flee = {
-	"SINGLE",
-	"flee",
-	"achievement_bg_returnxflags_def_wsg",
-	"@group5 flee",
-	"Click for Flee"
-}
-
-MultiBot.config.raid[5].stay = {
-	"DOUBLE",
-	"stay",
-	"spell_holy_crusade",
-	"achievement_bg_ab_defendflags",
-	"@group5 stay",
-	"@group5 follow",
-	"Click for Stay",
-	"Click for Follow"
-}
-
-MultiBot.config.raid[5].passive = {
-	"DOUBLE",
-	"passive",
-	"spell_holy_weaponmastery",
-	"ability_dualwield",
-	"@group5 co +passive,?",
-	"@group5 co passive,-passive,?",
-	"Click for passive Mode",
-	"Click for active Mode"
-}
-
-MultiBot.config.raid[5].attack = {
-	"SINGLE",
-	"attack",
-	"ability_rogue_ambush",
-	"@group5 d attack my target",
-	"Click for Attack"
-}
-
-MultiBot.config.raid[5].tanker = {
-	"SINGLE",
-	"tanker",
-	"ability_warrior_shieldbash",
-	"@group5 @tank d attack my target",
+	"@tank d attack my target",
 	"Click for Attack by Tank"
 }
 

@@ -48,6 +48,26 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize)
 		return frame.buttons[pConfig[2]].addSwitches(pStrate)
 	end
 	
+	frame.addActionbar = function(pX, pIndex, pConfig, pDefault)
+		frame.buttons[pConfig[2]] = MultiBot.newActionbar(frame, pX, (frame.size + 2) * pIndex, pConfig)
+		return frame.buttons[pConfig[2]].addActions(pDefault)
+	end
+	
+	frame.addAction = function(pX, pIndex, pActionbar, pConfig)
+		frame.buttons[pConfig[2]] = MultiBot.newAction(frame, pX, (frame.size + 2) * pIndex, pActionbar, pConfig)
+		return frame.buttons[pConfig[2]]
+	end
+	
+	frame.addModebar = function(pX, pIndex, pConfig, pDefault)
+		frame.buttons[pConfig[2]] = MultiBot.newModebar(frame, pX, (frame.size + 2) * pIndex, pConfig)
+		return frame.buttons[pConfig[2]].addModes(pDefault)
+	end
+	
+	frame.addMode = function(pX, pIndex, pModebar, pConfig)
+		frame.buttons[pConfig[2]] = MultiBot.newMode(frame, pX, (frame.size + 2) * pIndex, pModebar, pConfig)
+		return frame.buttons[pConfig[2]]
+	end
+	
 	frame.addRadio = function(pButton, pIndex)
 		frame.parent.addRadio(pButton, pIndex)
 	end

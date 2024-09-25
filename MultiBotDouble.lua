@@ -30,10 +30,10 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 		button.state = MultiBot.isInside(pStrate, button.config[6])
 		
 		if(button.state) then
-			button.icon:SetTexture("Interface/Icons/" .. button.config[3])
+			button.icon:SetTexture(MultiBot.IF(string.sub(pConfig[3], 1, 9) ~= "Interface", "Interface/Icons/", "")  .. pConfig[3])
 			button.tip = MultiBot.newTip(button.parent, button.config[7])
 		else
-			button.icon:SetTexture("Interface/Icons/" .. button.config[4])
+			button.icon:SetTexture(MultiBot.IF(string.sub(pConfig[4], 1, 9) ~= "Interface", "Interface/Icons/", "")  .. pConfig[4])
 			button.tip = MultiBot.newTip(button.parent, button.config[8])
 		end
 		
@@ -44,10 +44,10 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 		button.state = pState
 		
 		if(pState) then
-			button.icon:SetTexture("Interface/Icons/" .. button.config[3])
+			button.icon:SetTexture(MultiBot.IF(string.sub(pConfig[3], 1, 9) ~= "Interface", "Interface/Icons/", "")  .. pConfig[3])
 			button.tip = MultiBot.newTip(button.parent, button.config[7])
 		else
-			button.icon:SetTexture("Interface/Icons/" .. button.config[4])
+			button.icon:SetTexture(MultiBot.IF(string.sub(pConfig[4], 1, 9) ~= "Interface", "Interface/Icons/", "")  .. pConfig[4])
 			button.tip = MultiBot.newTip(button.parent, button.config[8])
 		end
 		
@@ -57,13 +57,6 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 	button.setChat = function(pChat)
 		button.chat = pChat
 		return button
-	end
-	
-	-- GET --
-	
-	button.getChat = function()
-		if(GetNumRaidMembers() > 5) then return "RAID" end
-		return "PARTY"
 	end
 	
 	-- EVENT --
@@ -96,10 +89,14 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 			if(button.state) then
 				if(string.sub(button.config[5], 1, 1) == "/") then
 					MultiBot.doSlash(button.config[5], button.parent.getName())
+				elseif(button.config[5] == "HIDE:CONTROL") then
+					MultiBot.control.frames["controls"]:Hide()
 				elseif(button.config[5] == "HIDE:PLAYERS") then
 					MultiBot.doHide("PLAYERS")
 				elseif(button.config[5] == "HIDE:FRIENDS") then
 					MultiBot.doHide("FRIENDS")
+				elseif(button.config[5] == "HIDE:RAID") then
+					button.parent.doHide()
 				else
 					SendChatMessage(button.config[5], button.chat, nil, button.parent.getName())
 				end
@@ -108,10 +105,14 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 			else
 				if(string.sub(button.config[6], 1, 1) == "/") then
 					MultiBot.doSlash(button.config[6], button.parent.getName())
+				elseif(button.config[6] == "SHOW:CONTROL") then
+					MultiBot.control.frames["controls"]:Show()
 				elseif(button.config[6] == "SHOW:PLAYERS") then
 					MultiBot.doShow("PLAYERS")
 				elseif(button.config[6] == "SHOW:FRIENDS") then
 					MultiBot.doShow("FRIENDS")
+				elseif(button.config[6] == "SHOW:RAID") then
+					button.parent.doShow()
 				else
 					SendChatMessage(button.config[6], button.chat, nil, button.parent.getName())
 				end
@@ -124,6 +125,8 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 			if(button.config[9] ~= nil) then
 				if(string.sub(button.config[9], 1, 1) == "/") then
 					MultiBot.doSlash(button.config[9], "")
+				elseif(button.config[9] == "PLAYERS:REFRESH") then
+					MultiBot.doShow("PLAYERS")
 				elseif(button.config[9] == "FRIENDS:REFRESH") then
 					MultiBot.friends.doRefresh()
 				else
@@ -136,17 +139,27 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 	button.doParty = function(pButton)
 		if(pButton == "LeftButton") then
 			if(button.state) then
-				SendChatMessage(button.config[5], button.getChat())
+				if(string.sub(button.chat, 1, 4) == "RAID") then
+					SendChatMessage(string.sub(button.chat, 6) .. " " .. button.config[5], MultiBot.getChat())
+				else
+					SendChatMessage(button.config[5], MultiBot.getChat())
+				end
+				
 				button.setState(false)
 			else
-				SendChatMessage(button.config[6], button.getChat())
+				if(string.sub(button.chat, 1, 4) == "RAID") then
+					SendChatMessage(string.sub(button.chat, 6) .. " " .. button.config[6], MultiBot.getChat())
+				else
+					SendChatMessage(button.config[6], MultiBot.getChat())
+				end
+				
 				button.setState(true)
 			end
 		end
 		
 		if(pButton == "RightButton") then
 			if(button.config[9] ~= nil) then
-				SendChatMessage(button.config[9], button.getChat())
+				SendChatMessage(button.config[9], MultiBot.getChat())
 			end
 		end
 	end

@@ -1,4 +1,4 @@
-MultiBot.newControl = function(pGroup, pSize)
+MultiBot.newRaidbar = function(pIndex, pX, pY, pSize)
 	local frame = CreateFrame("Frame", nil, MultiBot)
 	frame.active = false
 	frame.button = nil
@@ -6,58 +6,76 @@ MultiBot.newControl = function(pGroup, pSize)
 	frame.left = nil
 	
 	frame.parent = MultiBot
+	frame.index = pIndex
 	frame.size = pSize
 	
-	frame:SetPoint("BOTTOMRIGHT", 0, pGroup * -(pSize + 2))
+	frame:SetPoint("BOTTOMRIGHT", pX, pY)
 	frame:SetSize(pSize, pSize)
 	frame:Hide()
 	
-	-- SET
+	-- ADD --
 	
-	frame.setFrame = function(pGroup)
-		frame.button = MultiBot.newDouble(frame, 0, 0, MultiBot.config.raid[pGroup].start, "SHOW")
+	frame.addGroup = function(pGroup)
+		if(frame.left == nil) then
+			frame.left = MultiBot.newFrame(frame, 0 - frame.size - 2, 2, frame.size - 4)
+			local tX = 0
+			
+			frame.left.addSingle(tX, 0, MultiBot.config.raid.flee).setChat("RAID:@group" .. pGroup)
+			tX = tX - frame.size + 2
+			
+			frame.left.addDouble(tX, 0, MultiBot.config.raid.stay, "").setState(true).setChat("RAID:@group" .. pGroup)
+			tX = tX - frame.size + 2
+			
+			frame.left.addSwitch(tX, 0, MultiBot.config.raid.passive, "").setState(false).setChat("RAID:@group" .. pGroup)
+			tX = tX - frame.size + 2
+			
+			frame.left.addSingle(tX, 0, MultiBot.config.raid.attack).setChat("RAID:@group" .. pGroup)
+			tX = tX - frame.size + 2
+			
+			frame.left.addSingle(tX, 0, MultiBot.config.raid.tanker).setChat("RAID:@group" .. pGroup)
+			tX = tX - frame.size + 2
+		end
 		
-		-- LEFT --
+		if(frame.right == nil) then
+			frame.right = MultiBot.newFrame(frame, frame.size - 2, 2, frame.size - 4)
+			local tX = 0
+			
+			frame.right.addSingle(tX, 0, MultiBot.config.raid.flee).setChat("RAID:@group" .. pGroup)
+			tX = tX + frame.size - 2
+			
+			frame.right.addDouble(tX, 0, MultiBot.config.raid.stay, "").setState(true).setChat("RAID:@group" .. pGroup)
+			tX = tX + frame.size - 2
+			
+			frame.right.addSwitch(tX, 0, MultiBot.config.raid.passive, "").setState(false).setChat("RAID:@group" .. pGroup)
+			tX = tX + frame.size - 2
+			
+			frame.right.addSingle(tX, 0, MultiBot.config.raid.attack).setChat("RAID:@group" .. pGroup)
+			tX = tX + frame.size - 2
+			
+			frame.right.addSingle(tX, 0, MultiBot.config.raid.tanker).setChat("RAID:@group" .. pGroup)
+			tX = tX + frame.size - 2
+		end
 		
-		frame.left = MultiBot.newFrame(frame, 0 - frame.size - 2, 2, frame.size - 4)
-		local tX = 0
-		
-		frame.left.addSingle(tX, 0, MultiBot.config.raid[pGroup].flee).setChat("PARTY")
-		tX = tX - frame.size + 2
-		
-		frame.left.addDouble(tX, 0, MultiBot.config.raid[pGroup].stay, "@group" .. pGroup .. " follow").setChat("PARTY")
-		tX = tX - frame.size + 2
-		
-		frame.left.addDouble(tX, 0, MultiBot.config.raid[pGroup].passive, "").setState(true).setChat("PARTY")
-		tX = tX - frame.size + 2
-		
-		frame.left.addSingle(tX, 0, MultiBot.config.raid[pGroup].attack).setChat("PARTY")
-		tX = tX - frame.size + 2
-		
-		frame.left.addSingle(tX, 0, MultiBot.config.raid[pGroup].tanker).setChat("PARTY")
-		tX = tX - frame.size + 2
-		
-		-- RIGHT --
-		
-		frame.right = MultiBot.newFrame(frame, frame.size - 2, 2, frame.size - 4)
-		local tX = 0
-		
-		frame.right.addSingle(tX, 0, MultiBot.config.raid[pGroup].release).setChat("PARTY")
-		tX = tX + frame.size - 2
-		
-		frame.right.addSingle(tX, 0, MultiBot.config.raid[pGroup].revive).setChat("PARTY")
-		tX = tX + frame.size - 2
-		
+		frame.right:Hide()
+		frame.left:Hide()
 		return frame
 	end
 	
-	-- DO
+	-- SET --
+	
+	frame.setButton = function()
+		frame.button = MultiBot.newDouble(frame, 0, 0, MultiBot.config.raid.start, "").setState(true)
+		return frame
+	end
+	
+	-- DO --
 	
 	frame.doDisable = function()
 		if(frame.active == false) then return end
 		local tPoint, tRelativeTo, tRelativePoint, tX, tY = MultiBot:GetPoint()
 		MultiBot:SetPoint("BOTTOMRIGHT", tX, tY - (frame.size + 2))
 		frame.active = false
+		frame.doHide()
 		frame:Hide()
 	end
 	
@@ -66,6 +84,7 @@ MultiBot.newControl = function(pGroup, pSize)
 		local tPoint, tRelativeTo, tRelativePoint, tX, tY = MultiBot:GetPoint()
 		MultiBot:SetPoint("BOTTOMRIGHT", tX, tY + (frame.size + 2))
 		frame.active = true
+		frame.doShow()
 		frame:Show()
 	end
 	
@@ -75,11 +94,11 @@ MultiBot.newControl = function(pGroup, pSize)
 	end
 	
 	frame.doShow = function()
-		frame.right:Show()
-		frame.left:Show()
+		if(GetNumRaidMembers() > (frame.index * 2 - 1) * 5) then frame.right:Show() end
+		if(GetNumRaidMembers() > (frame.index * 2 - 2) * 5) then frame.left:Show() end
 	end
 	
-	return frame.setFrame(pGroup)
+	return frame.setButton()
 end
 
 print("AfterMultiBotRaid")

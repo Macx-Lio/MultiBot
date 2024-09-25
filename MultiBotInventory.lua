@@ -9,7 +9,7 @@ MultiBot.newInventory = function(pParent, pName)
 	frame.ox = 11
 	frame.oy = 44
 	
-	frame:SetPoint("TOPLEFT", -820, 602)
+	frame:SetPoint("TOPLEFT", -820, 560)
 	frame:SetSize(442, 884)
 	frame:Hide()
 	

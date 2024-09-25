@@ -15,9 +15,7 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 	button:SetSize(button.parent.size, button.parent.size)
 	
 	button.icon = button:CreateTexture(nil, "BACKGROUND")
-	if(string.sub(button.config[3], 1, 9) ~= "Interface")
-	then button.icon:SetTexture("Interface/Icons/" .. button.config[3])
-	else button.icon:SetTexture(button.config[3]) end
+	button.icon:SetTexture(MultiBot.IF(string.sub(pConfig[3], 1, 9) ~= "Interface", "Interface/Icons/", "")  .. pConfig[3])
 	button.icon:SetAllPoints(button)
 	button.icon:Show()
 	
@@ -114,20 +112,32 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 		button:SetSize(button.parent.size - 2, button.parent.size - 2)
 		
 		if(button.state) then
+			if(button.doCloseInventory(bot)) then
+				return button.setState(false)
+			elseif(string.sub(button.chat, 1, 4) == "RAID") then
+				SendChatMessage(string.sub(button.chat, 6) .. " " .. button.config[4], MultiBot.getChat())
+			else
+				SendChatMessage(button.config[4], button.chat, nil, bot.name)
+				button.parent.setLink(button)
+			end
+			
 			button.setState(false)
-			if(button.doCloseInventory(bot)) then return end
-			SendChatMessage(button.config[4], button.chat, nil, bot.name)
-			button.parent.setLink(button)
 		else
+			if(button.doOpenInventory(bot)) then
+				return button.setState(true)
+			elseif(string.sub(button.chat, 1, 4) == "RAID") then
+				SendChatMessage(string.sub(button.chat, 6) .. " " .. button.config[5], MultiBot.getChat())
+			else
+				SendChatMessage(button.config[5], button.chat, nil, bot.name)
+				button.parent.setRadio(button)
+				button.parent.setLink(button)
+			end
+			
 			button.setState(true)
-			if(button.doOpenInventory(bot)) then return end
-			SendChatMessage(button.config[5], button.chat, nil, bot.name)
-			button.parent.setRadio(button)
-			button.parent.setLink(button)
 		end
 	end)
 	
-	-- DO
+	-- DO --
 	
 	button.doCloseInventory = function(bot)
 		if(button.config[4] ~= "INVENTORY:CLOSE") then return false end

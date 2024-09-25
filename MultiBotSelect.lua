@@ -59,28 +59,26 @@ MultiBot.newSelect = function(pParent, pX, pY, pConfig, pHorizontal)
 	
 	button.setDisable = function(pConfig)
 		if(pConfig ~= nil) then
-			if(string.sub(pConfig[3], 1, 9) ~= "Interface")
-			then button.icon:SetTexture("Interface/Icons/" .. pConfig[3])
-			else button.icon:SetTexture(pConfig[3]) end
+			button.icon:SetTexture(MultiBot.IF(string.sub(pConfig[3], 1, 9) ~= "Interface", "Interface/Icons/", "")  .. pConfig[3])
 			button.action = pConfig
 		end
 		
 		button.tip = MultiBot.newTip(button.parent, button.config[5])
 		button.icon:SetDesaturated(1)
 		button.state = false
+		return button
 	end
 	
 	button.setEnable = function(pConfig)
 		if(pConfig ~= nil) then
-			if(string.sub(pConfig[3], 1, 9) ~= "Interface")
-			then button.icon:SetTexture("Interface/Icons/" .. pConfig[3])
-			else button.icon:SetTexture(pConfig[3]) end
+			button.icon:SetTexture(MultiBot.IF(string.sub(pConfig[3], 1, 9) ~= "Interface", "Interface/Icons/", "")  .. pConfig[3])
 			button.action = pConfig
 		end
 		
 		button.tip = MultiBot.newTip(button.parent, button.config[4])
 		button.icon:SetDesaturated(nil)
 		button.state = true
+		return button
 	end
 	
 	button.setChat = function(pChat)
@@ -105,25 +103,34 @@ MultiBot.newSelect = function(pParent, pX, pY, pConfig, pHorizontal)
 	button:SetScript("OnClick", function(pSelf, pButton)
 		button:SetPoint("BOTTOMRIGHT", button.x - 1, button.y + 1)
 		button:SetSize(button.parent.size - 2, button.parent.size - 2)
+		if(button.options == nil) then return end
 		
-		if(pButton == "LeftButton" and button.options ~= nil) then
-			if(button.options:IsVisible()) then
-				button.options:Hide()
-			else
-				button.options:Show()
+		if(pButton == "LeftButton") then
+			if(button.options:IsVisible())
+			then button.options:Hide()
+			else button.options:Show()
 			end
 		end
 		
-		if(pButton == "RightButton" and button.action ~= nil) then
+		if(pButton == "RightButton") then
 			if(button.action[4] == "FRIENDS:NONE") then
 				button.setSelect("none")
 				MultiBot.friends.doBrowse(0)
-			elseif(button.state) then
-				SendChatMessage(button.action[4], button.chat, nil, button.parent.getName())
-				button.setDisable()
 			else
-				SendChatMessage(button.action[5], button.chat, nil, button.parent.getName())
-				button.setEnable()
+				if(button.state)
+				then
+					if(button.chat == "WHISPER")
+					then SendChatMessage(button.action[4], button.chat, nil, button.parent.getName())
+					else SendChatMessage(button.action[4], MultiBot.getChat())
+					end
+					if(button.config[2] ~= "formation") then button.setDisable() end
+				else
+					if(button.chat == "WHISPER")
+					then SendChatMessage(button.action[5], button.chat, nil, button.parent.getName())
+					else SendChatMessage(button.action[5], MultiBot.getChat())
+					end
+					button.setEnable()
+				end
 			end
 		end
 	end)

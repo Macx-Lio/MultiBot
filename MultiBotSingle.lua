@@ -14,9 +14,7 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 	button:SetSize(button.parent.size, button.parent.size)
 	
 	button.icon = button:CreateTexture(nil, "BACKGROUND")
-	if(string.sub(button.config[3], 1, 9) ~= "Interface")
-	then button.icon:SetTexture("Interface/Icons/" .. button.config[3])
-	else button.icon:SetTexture(button.config[3]) end
+	button.icon:SetTexture(MultiBot.IF(string.sub(pConfig[3], 1, 9) ~= "Interface", "Interface/Icons/", "")  .. pConfig[3])
 	button.icon:SetAllPoints(button)
 	button.icon:Show()
 	
@@ -36,13 +34,6 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 		return button
 	end
 	
-	-- GET --
-	
-	button.getChat = function()
-		if(GetNumRaidMembers() > 5) then return "RAID" end
-		return "PARTY"
-	end
-	
 	-- EVENT --
 	
 	button:SetScript("OnEnter", function()
@@ -60,27 +51,50 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 	button:SetScript("OnClick", function()
 		button:SetPoint("BOTTOMRIGHT", button.x - 1, button.y + 1)
 		button:SetSize(button.parent.size - 2, button.parent.size - 2)
-		if(button.chat == "WHISPER")
-		then button.doWhisper()
-		else button.doParty()
+		
+		if(button.config[4] == "SUMMON:ALL") then
+			MultiBot.players.doSummon()
+			MultiBot.friends.doSummon()
+		elseif(button.config[4] == "FRIENDS:BROWSE") then
+			MultiBot.friends.doBrowse(UnitName("target"))
+		elseif(string.sub(button.chat, 1, 4) == "RAID") then
+			button.doRaid(button.config[4], string.sub(button.chat, 6))
+		elseif(string.sub(button.config[4], 1, 7) == "CONTROL") then
+			button.doControl(string.sub(button.config[4], 9), UnitName("target"))
+		elseif(string.sub(button.config[4], 1, 11) == "BEASTMASTER") then
+			button.doBeastmaster(string.sub(button.config[4], 13), UnitName("target"))
+		elseif(button.chat == "WHISPER") then
+			SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
+		else
+			SendChatMessage(button.config[4], MultiBot.getChat())
 		end
 	end)
 	
 	-- DO --
 	
-	button.doWhisper = function()
-		if(button.config[4] == "SUMMON:ALL") then
-			MultiBot.players.doSummon()
-			MultiBot.friends.doSummon()
-		elseif(button.config[4] == "FRIENDS:BROWSE") then
-			MultiBot.friends.doBrowse()
+	button.doBeastmaster = function(pAction, pName)
+		if(pAction == "SWITCH") then
+			if(button.parent.frames["SPELLS"]:IsVisible())
+			then button.parent.frames["SPELLS"]:Hide()
+			else button.parent.frames["SPELLS"]:Show()
+			end
 		else
-			SendChatMessage(button.config[4], button.chat, nil, button.parent.getName())
+			if(pName == nil or pName == "Unknown Entity")
+			then SendChatMessage("cast " .. pAction, MultiBot.getChat())
+			else SendChatMessage("cast " .. pAction, "WHISPER", nil, pName)
+			end
 		end
 	end
 	
-	button.doParty = function()
-		SendChatMessage(button.config[4], button.getChat())
+	button.doControl = function(pAction, pName)
+		if(pName == nil or pName == "Unknown Entity")
+		then SendChatMessage(pAction, MultiBot.getChat())
+		else SendChatMessage(pAction, "WHISPER", nil, pName)
+		end
+	end
+	
+	button.doRaid = function(pAction, pGroup)
+		SendChatMessage(pGroup .. " " .. pAction, MultiBot.getChat())
 	end
 	
 	-- RETURN --

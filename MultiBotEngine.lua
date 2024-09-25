@@ -1,23 +1,20 @@
 MultiBot = CreateFrame("Frame", nil, UIParent)
 MultiBot.inventory = nil
-MultiBot.player = nil
+MultiBot.control = nil
+MultiBot.players = nil
+MultiBot.friends = nil
 MultiBot.right = nil
 MultiBot.left = nil
-
-MultiBot.friends = {}
-MultiBot.players = {}
-MultiBot.index = {}
 MultiBot.raid = {}
-
 MultiBot.size = 36
 
-MultiBot:SetPoint("BOTTOMRIGHT", -304, 104)
+MultiBot:SetPoint("BOTTOMRIGHT", -304, 144)
 MultiBot:SetSize(MultiBot.size, MultiBot.size)
 MultiBot:Hide()
 
-MultiBot.addControl = function(pGroup)
-	MultiBot.raid[pGroup] = MultiBot.newControl(pGroup, MultiBot.size)
-	return MultiBot.raid[pGroup]
+MultiBot.addRaidbar = function(pIndex, pX, pY, pSize)
+	MultiBot.raid[pIndex] = MultiBot.newRaidbar(pIndex, pX, pY, pSize)
+	return MultiBot.raid[pIndex]
 end
 
 MultiBot.setItemTip = function(pParent, pTip)
@@ -44,31 +41,30 @@ MultiBot.getBot = function(pName)
 	return tBot
 end
 
+MultiBot.getChat = function()
+	if(GetNumRaidMembers() > 5) then return "RAID" end
+	return "PARTY"
+end
+
 MultiBot.doRaid = function()
-	if(GetNumRaidMembers() > 20) then
-		MultiBot.raid[5].doEnable()
-	else
-		MultiBot.raid[5].doDisable()
+	if(GetNumRaidMembers() > 30)
+	then MultiBot.raid[2].doEnable()
+	else MultiBot.raid[2].doDisable()
 	end
 	
-	if(GetNumRaidMembers() > 15) then 
-		MultiBot.raid[4].doEnable()
-	else
-		MultiBot.raid[4].doDisable()
+	if(GetNumRaidMembers() > 20)
+	then MultiBot.raid[3].doEnable()
+	else MultiBot.raid[3].doDisable()
 	end
 	
-	if(GetNumRaidMembers() > 10) then
-		MultiBot.raid[3].doEnable()
-	else
-		MultiBot.raid[3].doDisable()
+	if(GetNumRaidMembers() > 10)
+	then MultiBot.raid[2].doEnable()
+	else MultiBot.raid[2].doDisable()
 	end
 	
-	if(GetNumRaidMembers() > 5) then
-		MultiBot.raid[2].doEnable()
-		MultiBot.raid[1].doEnable()
-	else
-		MultiBot.raid[2].doDisable()
-		MultiBot.raid[1].doDisable()
+	if(GetNumRaidMembers() > 5)
+	then MultiBot.raid[1].doEnable()
+	else MultiBot.raid[1].doDisable()
 	end
 end
 
@@ -86,12 +82,14 @@ MultiBot.doShow = function(pType)
 	if(pType == "PLAYERS") then
 		MultiBot.doHide("FRIENDS")
 		MultiBot.friends.setState(false)
+		MultiBot.players.setState(true)
 		MultiBot.players.doShow()
 	end
 	
 	if(pType == "FRIENDS") then
 		MultiBot.doHide("PLAYERS")
 		MultiBot.players.setState(false)
+		MultiBot.friends.setState(true)
 		MultiBot.friends.doShow()
 	end
 end

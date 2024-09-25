@@ -1,9 +1,9 @@
-MultiBot.newOption = function(pParent, pX, pY, pSelect, pConfig)
+MultiBot.newMode = function(pParent, pX, pY, pModebar, pConfig)
 	local button = CreateFrame("Button", nil, pParent)
-	button.tip = MultiBot.newTip(pParent, pConfig[6])
+	button.tip = MultiBot.newTip(pParent, pConfig[7])
 	
+	button.modebar = pModebar
 	button.parent = pParent
-	button.select = pSelect
 	button.config = pConfig
 	button.x = pX
 	button.y = pY
@@ -21,14 +21,6 @@ MultiBot.newOption = function(pParent, pX, pY, pSelect, pConfig)
 	button:SetHighlightTexture("Interface/Buttons/ButtonHilight-Square", "ADD")
 	button:SetPushedTexture("Interface/Buttons/UI-Quickslot-Depress")
 	
-	-- SET --
-	
-	button.setPoint = function(pX, pY)
-		button:SetPoint("BOTTOMRIGHT", pX, pY)
-		button.x = pX
-		button.y = pY
-	end
-	
 	-- EVENT --
 	
 	button:SetScript("OnEnter", function()
@@ -43,19 +35,14 @@ MultiBot.newOption = function(pParent, pX, pY, pSelect, pConfig)
 		GameTooltip:Hide()
 	end)
 	
-	button:SetScript("OnClick", function()
+	button:SetScript("OnClick", function(pSelf, pButton)
 		button:SetPoint("BOTTOMRIGHT", button.x - 1, button.y + 1)
 		button:SetSize(button.parent.size - 2, button.parent.size - 2)
-		button.select.setEnable(button.config)
-		button.parent:Hide()
 		
-		if(string.sub(button.config[5], 1, 7) == "FRIENDS") then
-			MultiBot.friends.doBrowse(0)
-		else
-			if(button.select.chat == "WHISPER")
-			then SendChatMessage(button.config[5], button.select.chat, nil, button.parent.getName())
-			else SendChatMessage(button.config[5], MultiBot.getChat())
-			end
+		if(pButton == "LeftButton") then
+			button.modebar.doExecute(button.config[4])
+			button.modebar.setMode(button.config)
+			button.parent:Hide()
 		end
 	end)
 	
@@ -64,4 +51,4 @@ MultiBot.newOption = function(pParent, pX, pY, pSelect, pConfig)
 	return button
 end
 
-print("AfterMultiBotOption")
+print("AfterMultiBotMode")

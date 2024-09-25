@@ -18,25 +18,44 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			MultiBot.players.setButton(MultiBot.config.players, "SHOW:PLAYERS")
 			tX = tX + MultiBot.size + 2
 			
+			MultiBot.control = MultiBot.newFrame(MultiBot, tX, 0, MultiBot.size)
+			MultiBot.control.addDouble(0, 0, MultiBot.config.control, "HIDE:CONTROL")
+			tX = tX + MultiBot.size + 2
+			
 			MultiBot.friends = MultiBot.newFriends(MultiBot, tX, 0, MultiBot.size)
 			MultiBot.friends.setButton(MultiBot.config.friends, "HIDE:FRIENDS")
 			tX = tX + MultiBot.size + 2
+			
+			-- CONTROL --
+			
+			local tFrame = MultiBot.control.addFrame("controls", -2, 4, MultiBot.size - 4)
+			tFrame.addSingle(0, 1, MultiBot.config.naxx)
+			tFrame.addSingle(0, 2, MultiBot.config.reset)
+			tFrame.addSingle(0, 3, MultiBot.config.action)
+			tFrame:Hide()
 			
 			-- LEFT --
 			
 			MultiBot.left = MultiBot.newFrame(MultiBot, 0 - MultiBot.size - 2, 2, MultiBot.size - 4)
 			local tX = 0
 			
-			MultiBot.left.addSingle(tX, 0, MultiBot.config.flee).setChat("PARTY")
+			local tFrame = MultiBot.left.addFrame("beastmaster", tX, 0, MultiBot.size - 4)
+			tFrame.addSingle(0, 0, MultiBot.config.beastmaster.start)
+			tX = tX - MultiBot.size + 2
+			
+			MultiBot.left.addSelect(tX, 0, MultiBot.config.formation, "near").setChat("PARTY")
+			tX = tX - MultiBot.size + 2
+			
+			MultiBot.left.addActionbar(tX, 0, MultiBot.config.flee, 1).setChat("PARTY")
 			tX = tX - MultiBot.size + 2
 			
 			MultiBot.left.addDouble(tX, 0, MultiBot.config.stay, "follow").setChat("PARTY")
 			tX = tX - MultiBot.size + 2
 			
-			MultiBot.left.addDouble(tX, 0, MultiBot.config.passive, "").setState(true).setChat("PARTY")
+			MultiBot.left.addModebar(tX, 0, MultiBot.config.mode, 1).setChat("PARTY").setState(false)
 			tX = tX - MultiBot.size + 2
 			
-			MultiBot.left.addSingle(tX, 0, MultiBot.config.attack).setChat("PARTY")
+			MultiBot.left.addActionbar(tX, 0, MultiBot.config.attack, 1).setChat("PARTY")
 			tX = tX - MultiBot.size + 2
 			
 			MultiBot.left.addSingle(tX, 0, MultiBot.config.tanker).setChat("PARTY")
@@ -44,8 +63,11 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			
 			-- RIGHT --
 			
-			MultiBot.right = MultiBot.newFrame(MultiBot, MultiBot.size * 2, 2, MultiBot.size - 4)
+			MultiBot.right = MultiBot.newFrame(MultiBot, MultiBot.size * 3 + 2, 2, MultiBot.size - 4)
 			local tX = 0
+			
+			MultiBot.right.addSingle(tX, 0, MultiBot.config.drink).setChat("PARTY")
+			tX = tX + MultiBot.size - 2
 			
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.release).setChat("PARTY")
 			tX = tX + MultiBot.size - 2
@@ -56,17 +78,32 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.sumall).setChat("WHISPER")
 			tX = tX + MultiBot.size - 2
 			
-			--MultiBot.right.addSingle(tX, 0, MultiBot.config.resize).setChat("WHISPER")
-			--tX = tX + MultiBot.size - 2
+			-- BEASTMASTER --
 			
-			-- CONTROL --
+			local tFrame = tFrame.addFrame("SPELLS", -2, MultiBot.size - 2, MultiBot.size - 8)
+			tFrame.addSingle(0, 0, MultiBot.config.beastmaster.release)
+			tFrame.addSingle(0, 1, MultiBot.config.beastmaster.revive)
+			tFrame.addSingle(0, 2, MultiBot.config.beastmaster.heal)
+			tFrame.addSingle(0, 3, MultiBot.config.beastmaster.feed)
+			tFrame.addSingle(0, 4, MultiBot.config.beastmaster.call)
+			tFrame:Hide()
 			
-			MultiBot.addControl(1)
-			MultiBot.addControl(2)
-			MultiBot.addControl(3)
-			MultiBot.addControl(4)
-			MultiBot.addControl(5)
-			MultiBot.doRaid()
+			-- RAID --
+			
+			local tY = 0 - MultiBot.size + 2
+			local tX = MultiBot.size
+			
+			MultiBot.addRaidbar(1, tX, tY, MultiBot.size - 4).addGroup(1).addGroup(2)
+			tY = tY - MultiBot.size + 2
+			
+			MultiBot.addRaidbar(2, tX, tY, MultiBot.size - 4).addGroup(3).addGroup(4)
+			tY = tY - MultiBot.size + 2
+			
+			MultiBot.addRaidbar(3, tX, tY, MultiBot.size - 4).addGroup(5).addGroup(6)
+			tY = tY - MultiBot.size + 2
+			
+			MultiBot.addRaidbar(4, tX, tY, MultiBot.size - 4).addGroup(7).addGroup(8)
+			tY = tY - MultiBot.size + 2
 			
 			-- ROOSTER --
 			
@@ -160,6 +197,7 @@ SlashCmdList["MULTIBOT"] = function()
 		for key, value in pairs(MultiBot.friends.friends) do value.inventory.doClose() end
 		for key, value in pairs(MultiBot.raid) do value:Hide() end
 		
+		MultiBot.control:Hide()
 		MultiBot.players:Hide()
 		MultiBot.friends:Hide()
 		MultiBot.right:Hide()

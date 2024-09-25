@@ -1,3 +1,8 @@
+MultiBot.IF = function(pCondition, pSuccess, pFailure)
+	if(pCondition) then return pSuccess end
+	return pFailure
+end
+
 MultiBot.doSplit = function(pString, pPattern)
 	local tResult = {}
 	local tStart = 1

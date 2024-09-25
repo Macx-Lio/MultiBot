@@ -1,7 +1,6 @@
 MultiBot.newFriend = function(pParent, pName, pClass, pX, pY, pSize)
 	local frame = CreateFrame("Frame", nil, pParent)
 	frame.inventory = MultiBot.newInventory(MultiBot, pName)
-	frame.members = MultiBot.friends
 	frame.button = nil
 	frame.combat = nil
 	frame.normal = nil
