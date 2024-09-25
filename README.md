@@ -288,10 +288,6 @@ Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
       This Button will summon all active Friend- and Playerbots.
     </td>
   </tr>
-  <tr>
-    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-01-Inventory.png"></td>
-    <td></td>
-  </tr>
 </table>
 
 # Comming soon
