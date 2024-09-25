@@ -189,8 +189,104 @@ Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
     </td>
   </tr>
   <tr>
-    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-01-Inventory.png"></td>
-    <td></td>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Tank-Attack.png"></td>
+    <td>
+      
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Actionbar-Attack.png"></td>
+    <td>
+      This is the Attack-Actionbar.
+      A left click on the Button executes the selected Action.
+      A right click on the Button will show and hide the Optional-Actions.
+      To replace the selected Action, right click a Optional-Action.
+      To execute a Optional-Action, left click it.
+      The default Action is "All attack my target".
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Modebar.png"></td>
+    <td>
+      This is the Modebar.
+      A left click on the Button enables and disables the selected Mode.
+      A right click on the Button will show and hide the Mode-Selection.
+      To select another Mode, left click the Mode-Option.
+      The Mode will activated by selection.
+      The default Mode-Toggle is "passive".
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Stay-Follow.png"></td>
+    <td>
+      This is the Stay-Follow-Toggle-Button.
+      A left click on the Button sends the Stay-Command to the Party or Raid.
+      Another left click on the Button sends the Follow-Command to the Party or Raid.
+      The Icon will show the current State.
+      The default State is "Follow".
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Actionbar-Flee.png"></td>
+    <td>
+      This is the Flee-Actionbar.
+      A left click on the Button executes the selected Action.
+      A right click on the Button will show and hide the Optional-Actions.
+      To replace the selected Action, right click a Optional-Action.
+      To execute a Optional-Action, left click it.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Formation.png"></td>
+    <td>
+      This is the Formation-Selector.
+      A left click on the Button will show and hide the Options.
+      A left click on the Option-Button will send the corresponding Formation-Command to the Party or Raid.
+      A right click on the Button will ask the Party or Raid for the current Formation.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Beastmaster.png"></td>
+    <td>
+      This is the Beastmaster-Control.
+      A left click on the Button will show and hide the Actions.
+      A left click on the Action will send the corresponding Command to the Party or Raid.
+      It supports the "mod-beastmaster"-Module of the Azerothcore.
+      These Buttons work with Target, Group and Raid.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Control.png"></td>
+    <td>
+      This is the MultiBot-Control.
+      A left click on the Button will show and hide the Controls.
+      Here you will find the "reset", "reset botAI" and "naxx"-Commands for your Bots.
+      These Buttons works with Target, Group and Raid.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Drink.png"></td>
+    <td>
+      This Button will send the "drink"-Command to the Party or Raid.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Release.png"></td>
+    <td>
+      This Button will send the "release"-Command to the Party or Raid.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Revive.png"></td>
+    <td>
+      This Button will send the "revive"-Command to the Party or Raid.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Summon.png"></td>
+    <td>
+      This Button will summon all active Friend- and Playerbots.
+    </td>
   </tr>
   <tr>
     <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-01-Inventory.png"></td>
