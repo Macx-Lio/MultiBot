@@ -75,15 +75,61 @@ Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
     </td>
   </tr>
   <tr>
-    <td></td>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-02-Inspect-And-Inventory.png"></td>
+    <td>
+      A Left-Click on the Inventory-Button opens the Inspect- and Inventory-Window of your Playerbot.
+      Notice: The Inspect-Window only will be open if the Playerbot is in reach.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-03-Sell-Mode.png"></td>
+    <td>
+      The Inventory will automatically open in Sale-Mode.
+      In the Sell-Mode a left click on a Item will sell it.
+      Notice: You must have a Merchent as Target.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-03-Equip-Mode.png"></td>
+    <td>
+      With this Button you can switch to the Equip-Mode.
+      In the Equip-Mode a left click on a Item will equip it.
+      Notice: Only works with Equipment.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-03-Use-Mode.png"></td>
+    <td>
+      With this Button you can switch to the Use-Mode.
+      In the Use-Mode a left click on a Item will use it.
+      Notice: Only works with usable Items.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-03-Destroy-Mode.png"></td>
+    <td>
+      With this Button you can switch to the Destroy-Mode.
+      In the Destroy-Mode a left click on a Item will destroy it.
+      Important: There is no security Quest and it will work with every Item.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-03-View-Mode.png"></td>
+    <td>
+      Items can be viewed regardless of the selected Mode.
+      Means: View-Mode is always active.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-01-Inventory.png"></td>
     <td></td>
   </tr>
   <tr>
-    <td></td>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-01-Inventory.png"></td>
     <td></td>
   </tr>
   <tr>
-    <td></td>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-01-Inventory.png"></td>
     <td></td>
   </tr>
 </table>
