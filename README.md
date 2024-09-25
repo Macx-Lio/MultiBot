@@ -17,7 +17,7 @@ Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
   <tr>
     <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-00-Main-Control.png"></td>
     <td>
-      The horizontal button bar is the Main-Control.
+      The horizontal Buttonbar is the Main-Control.
       Commands from the Main-Control go to all bots in a Group or Raid.
       Differences in functionality are commented on in the tooltips.
     </td>
@@ -25,9 +25,9 @@ Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
   <tr>
     <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-00-Playerbots.png"></td>
     <td>
-      The vertical button bar is the Playerbot-Selection.
+      The vertical Buttonbar is the Playerbot-Selection.
       Here you will find the Characters of your Account.
-      There is a button for each character.
+      There is a button for each Character.
     </td>
   </tr>
   <tr>
@@ -131,6 +131,66 @@ Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
     <td>
       With a left click on the left Scroll-Button you can hide and show the Playerbots.
     </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-06-Show-Friendbots.png"></td>
+    <td>
+      With a left click on the right Scroll-Button you can hide and show the Friendbots.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-06-Firendbots.png"></td>
+    <td>
+      The vertical Buttonbar is the Friend-Selection.
+      Here you will find the Characters of your Friendlist.
+      There are max 10 Buttons visible.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-06-Browse-Friendbots.png"></td>
+    <td>
+      With this Button you could browse throu your Friendlist.
+      Each click will show the next 10 Characters.
+      If you reach the End it starts from the Beginning.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-07-Filter-Selection.png"></td>
+    <td>
+      You can limit the Selection to make it easier to find the wished Friendbot.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-07-Filter-By-Classes.png"></td>
+    <td>
+      Simply press one of these Filter-Buttons to narrow down the Selection.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-08-No-Browse-Button.png"></td>
+    <td>
+      As you can see, the browse button has disappeared.
+      This is because the Filter reduced the Selection to less than 10 Friendbots.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-08-Shows-Filter.png"></td>
+    <td>
+      The filter shows you the current limitation.
+      In this example, we filtered to Warrior.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-08-Friendbot-Button.png"></td>
+    <td>
+      This button is the result of our filter.
+      The functionality is almost identical to that of the Playerbots.
+      Therefore we save ourselves a further explanation.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-01-Inventory.png"></td>
+    <td></td>
   </tr>
   <tr>
     <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-01-Inventory.png"></td>
