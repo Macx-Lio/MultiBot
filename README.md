@@ -9,7 +9,7 @@ Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
 # Current Status
 <table>
   <tr>
-    <td>![You will see the MultiBot-Interface.](https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-00-Start.png?raw=true)</td>
+    <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-00-Start.png"></td>
     <td>
       This Picture shows the default MultiBot-Interface after start.<br>
     </td>
