@@ -84,7 +84,7 @@ Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
   <tr>
     <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-03-Sell-Mode.png"></td>
     <td>
-      The Inventory will automatically open in Sale-Mode.
+      The Inventory will automatically open in Sell-Mode.
       In the Sell-Mode a left click on a Item will sell it.
       Notice: You must have a Merchent as Target.
     </td>
