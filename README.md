@@ -251,7 +251,7 @@ Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
     <td>
       This is the Beastmaster-Control.
       A left click on the Button will show and hide the Actions.
-      A left click on the Action will send the corresponding Command to the Party or Raid.
+      A left click on the Action will send the corresponding Command to your Target, Party or Raid.
       It supports the "mod-beastmaster"-Module of the Azerothcore.
       These Buttons work with Target, Group and Raid.
     </td>
