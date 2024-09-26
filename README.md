@@ -192,7 +192,7 @@ Start World of Warcraft and enter "/multibot" or "/mbot" or "/mb" in the chat.
     <td><img src="https://github.com/Macx-Lio/MultiBot/blob/main/Screenshots/Handout-09-Tank-Attack.png"></td>
     <td>
       This is the Tank-Attack-Button.
-      A left click on the Button lets all Tanks attack you Target.
+      A left click on the Button let all Tanks attack you Target.
     </td>
   </tr>
   <tr>
