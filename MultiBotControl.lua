@@ -1,16 +1,35 @@
-MultiBot.eventHandler = CreateFrame("Frame")
+MultiBot.eventHandler = CreateFrame("Frame", nil, UIParent)
 MultiBot.eventHandler:RegisterEvent("PLAYER_TARGET_CHANGED")
 MultiBot.eventHandler:RegisterEvent("CHAT_MSG_WHISPER")
 MultiBot.eventHandler:RegisterEvent("CHAT_MSG_SYSTEM")
 MultiBot.eventHandler:RegisterEvent("CHAT_MSG_ADDON")
-MultiBot.eventHandler:RegisterEvent("UPDATE")
-MultiBot.eventHandler:Hide()
-
+MultiBot.eventHandler:SetPoint("BOTTOMRIGHT", 1, 1)
+MultiBot.eventHandler:SetSize(1, 1)
+MultiBot.eventHandler:Show()
+--[[
+MultiBot.eventHandler:SetScript("OnUpdate", function(pSelf, pElapsed)
+	MultiBot.elapsed = MultiBot.elapsed + pElapsed
+	
+    if(true == false and MultiBot.elapsed >= MultiBot.interval) then
+        if(GetNumRaidMembers() > 5)
+		then MultiBot.doAutoRelease("raid", GetNumRaidMembers())
+		elseif(GetNumPartyMembers() > 0)
+		then MultiBot.doAutoRelease("party", GetNumPartyMembers())
+		end
+		
+        MultiBot.elapsed = 0
+    end
+end)
+]]--
 MultiBot.eventHandler:SetScript("OnEvent", function()
-	if (event == "PLAYER_TARGET_CHANGED") then
+	if(event == "PLAYER_TARGET_CHANGED") then
 	end
-
-	if (event == "CHAT_MSG_SYSTEM") then
+	
+	if(event == "CHAT_MSG_SYSTEM") then
+		if(MultiBot.auto.release and (MultiBot.isInside(arg1, "ist tot") or MultiBot.isInside(arg1, "has died"))) then
+			SendChatMessage("release", "WHISPER", nil, MultiBot.doSplit(arg1, " ")[1])
+		end
+		
 		if(MultiBot.isInside(arg1, "Bot roster: ")) then
 			local tX = 0
 			
@@ -29,9 +48,10 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			-- CONTROL --
 			
 			local tFrame = MultiBot.control.addFrame("controls", -2, 4, MultiBot.size - 4)
-			tFrame.addSingle(0, 1, MultiBot.config.naxx)
-			tFrame.addSingle(0, 2, MultiBot.config.reset)
-			tFrame.addSingle(0, 3, MultiBot.config.action)
+			tFrame.addSwitch(0, 1, MultiBot.config.auto.release, "")
+			tFrame.addSingle(0, 2, MultiBot.config.naxx)
+			tFrame.addSingle(0, 3, MultiBot.config.reset)
+			tFrame.addSingle(0, 4, MultiBot.config.action)
 			tFrame:Hide()
 			
 			-- LEFT --
@@ -136,6 +156,10 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 	if(event == "CHAT_MSG_WHISPER") then
 		local bot = MultiBot.getBot(arg2)
 		if(bot == nil) then return end
+		
+		if(MultiBot.auto.release and arg1 == "Meet me at the graveyard") then
+			SendChatMessage("summon", "WHISPER", nil, bot.name)
+		end
 		
 		if(arg1 == "Hello") then
 			bot.waitFor = "CO"

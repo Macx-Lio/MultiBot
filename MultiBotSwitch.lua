@@ -105,35 +105,47 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 	end)
 	
 	button:SetScript("OnClick", function()
-		local bot = MultiBot.getBot(button.parent.getName())
-		if(bot == nil) then return end
-		
 		button:SetPoint("BOTTOMRIGHT", button.x - 1, button.y + 1)
 		button:SetSize(button.parent.size - 2, button.parent.size - 2)
 		
 		if(button.state) then
+			if(string.sub(button.chat, 1, 4) == "RAID") then
+				SendChatMessage(string.sub(button.chat, 6) .. " " .. button.config[4], MultiBot.getChat())
+				return button.setState(false)
+			elseif(button.config[4] == "RELEASE:DISABLE") then
+				MultiBot.auto.release = false
+				return button.setState(false)
+			end
+		else
+			if(string.sub(button.chat, 1, 4) == "RAID") then
+				SendChatMessage(string.sub(button.chat, 6) .. " " .. button.config[5], MultiBot.getChat())
+				return button.setState(true)
+			elseif(button.config[5] == "RELEASE:ENABLE") then
+				MultiBot.auto.release = true
+				return button.setState(true)
+			end
+		end
+		
+		local bot = MultiBot.getBot(button.parent.getName())
+		if(bot == nil) then return end
+		
+		if(button.state) then
 			if(button.doCloseInventory(bot)) then
 				return button.setState(false)
-			elseif(string.sub(button.chat, 1, 4) == "RAID") then
-				SendChatMessage(string.sub(button.chat, 6) .. " " .. button.config[4], MultiBot.getChat())
 			else
 				SendChatMessage(button.config[4], button.chat, nil, bot.name)
 				button.parent.setLink(button)
+				return button.setState(false)
 			end
-			
-			button.setState(false)
 		else
 			if(button.doOpenInventory(bot)) then
 				return button.setState(true)
-			elseif(string.sub(button.chat, 1, 4) == "RAID") then
-				SendChatMessage(string.sub(button.chat, 6) .. " " .. button.config[5], MultiBot.getChat())
 			else
 				SendChatMessage(button.config[5], button.chat, nil, bot.name)
 				button.parent.setRadio(button)
 				button.parent.setLink(button)
+				return button.setState(true)
 			end
-			
-			button.setState(true)
 		end
 	end)
 	

@@ -6,6 +6,9 @@ MultiBot.friends = nil
 MultiBot.right = nil
 MultiBot.left = nil
 MultiBot.raid = {}
+MultiBot.auto = {}
+
+MultiBot.auto.release = false
 MultiBot.size = 36
 
 MultiBot:SetPoint("BOTTOMRIGHT", -304, 144)
@@ -44,6 +47,16 @@ end
 MultiBot.getChat = function()
 	if(GetNumRaidMembers() > 5) then return "RAID" end
 	return "PARTY"
+end
+
+MultiBot.doAutoRelease = function(pPrefix, pAmount)
+	for i = 1, pAmount do
+		local tName = UnitName(pPrefix .. i)
+		
+		if(tName ~= nil and UnitIsDead(tName) ~= nil) then
+			SendChatMessage("release", "WHISPER", nil, tName)
+		end
+	end
 end
 
 MultiBot.doRaid = function()
