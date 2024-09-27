@@ -1,8 +1,7 @@
 MultiBot = CreateFrame("Frame", nil, UIParent)
 MultiBot.inventory = nil
 MultiBot.control = nil
-MultiBot.players = nil
-MultiBot.friends = nil
+MultiBot.units = nil
 MultiBot.right = nil
 MultiBot.left = nil
 MultiBot.raid = {}
@@ -37,12 +36,7 @@ MultiBot.newTip = function(pParent, pTip)
 end
 
 MultiBot.getBot = function(pName)
-	local tBot = nil
-	if(MultiBot.players ~= nil and tBot == nil) then tBot = MultiBot.players.getBotByName(pName) end
-	if(MultiBot.members ~= nil and tBot == nil) then tBot = MultiBot.members.getBotByName(pName) end
-	if(MultiBot.friends ~= nil and tBot == nil) then tBot = MultiBot.friends.getBotByName(pName) end
-	--if(tBot == nil) then SendChatMessage("Could not find " .. pName, "SAY") end
-	return tBot
+	return MultiBot.units.getBot(pName)
 end
 
 MultiBot.getChat = function()

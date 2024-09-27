@@ -49,10 +49,8 @@ MultiBot.newOption = function(pParent, pX, pY, pSelect, pConfig)
 		button.select.setEnable(button.config)
 		button.parent:Hide()
 		
-		if(string.sub(button.config[5], 1, 7) == "MEMBERS") then
-			MultiBot.members.doBrowse(0)
-		elseif(string.sub(button.config[5], 1, 7) == "FRIENDS") then
-			MultiBot.friends.doBrowse(0)
+		if(string.sub(button.config[5], 1, 5) == "UNITS") then
+			MultiBot.units.doBrowse(0)
 		else
 			if(button.select.chat == "WHISPER")
 			then SendChatMessage(button.config[5], button.select.chat, nil, button.parent.getName())

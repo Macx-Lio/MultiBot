@@ -68,16 +68,26 @@ MultiBot.newToggle = function(pParent, pX, pY, pConfig, pState)
 				else
 					button.parent.doShow(string.sub(button.config[1], 8))
 				end
-			elseif(string.sub(button.config[5], 1, 1) == "/") then
-				MultiBot.doSlash(button.config[5], button.parent.getName())
-				button.setState(true)
 			else
-				SendChatMessage(button.config[5], button.chat, nil, button.parent.getName())
-				button.setState(true)
+				if(button.config[1] == "TOGGLE:UNITS") then
+					button.parent.doEnable()
+				end
+				
+				if(string.sub(button.config[5], 1, 1) == "/") then
+					MultiBot.doSlash(button.config[5], button.parent.getName())
+					button.setState(true)
+				else
+					SendChatMessage(button.config[5], button.chat, nil, button.parent.getName())
+					button.setState(true)
+				end
 			end
 		end
 		
 		if(pButton == "RightButton") then
+			if(button.config[1] == "TOGGLE:UNITS") then
+				button.parent.doDisable()
+			end
+			
 			if(string.sub(button.config[4], 1, 1) == "/") then
 				MultiBot.doSlash(button.config[4], button.parent.getName())
 				button.setState(false)

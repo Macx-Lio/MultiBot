@@ -91,12 +91,8 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 					MultiBot.doSlash(button.config[5], button.parent.getName())
 				elseif(button.config[5] == "HIDE:CONTROL") then
 					MultiBot.control.frames["controls"]:Hide()
-				elseif(button.config[5] == "HIDE:PLAYERS") then
-					MultiBot.doHide("PLAYERS")
-				elseif(button.config[5] == "HIDE:MEMBERS") then
-					MultiBot.doHide("MEMBERS")
-				elseif(button.config[5] == "HIDE:FRIENDS") then
-					MultiBot.doHide("FRIENDS")
+				elseif(button.config[5] == "HIDE:UNITS") then
+					MultiBot.units.doHide()
 				elseif(button.config[5] == "HIDE:RAID") then
 					button.parent.doHide()
 				else
@@ -109,12 +105,8 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 					MultiBot.doSlash(button.config[6], button.parent.getName())
 				elseif(button.config[6] == "SHOW:CONTROL") then
 					MultiBot.control.frames["controls"]:Show()
-				elseif(button.config[6] == "SHOW:PLAYERS") then
-					MultiBot.doShow("PLAYERS")
-				elseif(button.config[6] == "SHOW:MEMBERS") then
-					MultiBot.doShow("MEMBERS")
-				elseif(button.config[6] == "SHOW:FRIENDS") then
-					MultiBot.doShow("FRIENDS")
+				elseif(button.config[6] == "SHOW:UNITS") then
+					MultiBot.units.doShow()
 				elseif(button.config[6] == "SHOW:RAID") then
 					button.parent.doShow()
 				else
@@ -129,12 +121,8 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 			if(button.config[9] ~= nil) then
 				if(string.sub(button.config[9], 1, 1) == "/") then
 					MultiBot.doSlash(button.config[9], "")
-				elseif(button.config[9] == "PLAYERS:REFRESH") then
-					MultiBot.doShow("PLAYERS")
-				elseif(button.config[9] == "MEMBERS:REFRESH") then
-					MultiBot.members.doRefresh()
-				elseif(button.config[9] == "FRIENDS:REFRESH") then
-					MultiBot.friends.doRefresh()
+				elseif(button.config[9] == "UNITS:REFRESH") then
+					MultiBot.units.doRefresh()
 				else
 					SendChatMessage(button.config[9], button.chat, nil, button.parent.getName())
 				end

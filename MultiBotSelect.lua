@@ -113,12 +113,14 @@ MultiBot.newSelect = function(pParent, pX, pY, pConfig, pHorizontal)
 		end
 		
 		if(pButton == "RightButton") then
-			if(button.action[4] == "MEMBERS:NONE") then
+			if(button.action[4] == "UNITS:NONE") then
+				button.options:Hide()
 				button.setSelect("none")
-				MultiBot.members.doBrowse(0)
-			elseif(button.action[4] == "FRIENDS:NONE") then
-				button.setSelect("none")
-				MultiBot.friends.doBrowse(0)
+				MultiBot.units.doBrowse(0)
+			elseif(button.action[4] == "UNITS:PLAYERS") then
+				button.options:Hide()
+				button.setSelect("players")
+				MultiBot.units.doBrowse(0)
 			else
 				if(button.state) then
 					if(button.chat == "WHISPER")

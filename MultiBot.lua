@@ -32,40 +32,16 @@ MultiBot.config.control = {
 	"/multibot"
 }
 
-MultiBot.config.players.start = {
+MultiBot.config.units = {
 	"DOUBLE",
-	"players",
+	"units",
 	"inv_scroll_04",
 	"inv_scroll_03",
-	"HIDE:PLAYERS",
-	"SHOW:PLAYERS",
-	"Left Click to hide Roosterbots",
-	"Left Click to show Roosterbots",
-	"PLAYERS:REFRESH"
-}
-
-MultiBot.config.members.start = {
-	"DOUBLE",
-	"members",
-	"inv_scroll_06",
-	"inv_scroll_03",
-	"HIDE:MEMBERS",
-	"SHOW:MEMBERS",
-	"Left Click to hide Guildbots | Right Click to refresh Guildbots",
-	"Left Click to show Guildbots | Right Click to refresh Guildbots",
-	"MEMBERS:REFRESH"
-}
-
-MultiBot.config.friends.start = {
-	"DOUBLE",
-	"friends",
-	"inv_scroll_05",
-	"inv_scroll_03",
-	"HIDE:FRIENDS",
-	"SHOW:FRIENDS",
-	"Left Click to hide Friendbots | Right Click to refresh Friendbots",
-	"Left Click to show Friendbots | Right Click to refresh Friendbots",
-	"FRIENDS:REFRESH"
+	"HIDE:UNITS",
+	"SHOW:UNITS",
+	"Left Click to hide Units",
+	"Left Click to show Units",
+	"UNITS:REFRESH"
 }
 
 -- CONTROL --
@@ -254,220 +230,154 @@ MultiBot.config.beastmaster.release = {
 	"Click to release the Beast" .. MultiBot.notice.allrounder
 }
 
--- Friends --
+-- UNITS --
 
-MultiBot.config.friends.browse = {
+MultiBot.config.browse = {
 	"SINGLE",
 	"browse",
 	"Interface\\AddOns\\MultiBot\\Icons\\filter_browse.blp",
-	"FRIENDS:BROWSE",
-	"Click to browse Friendbots"
+	"UNITS:BROWSE",
+	"Click to browse Units"
 }
 
-MultiBot.config.friends.filter = {
+MultiBot.config.types = {
 	"SELECT",
-	"filter",
+	"types",
+	{
+		{
+			"OPTION",
+			"friends",
+			"inv_misc_summerfest_brazierblue",
+			"UNITS:PLAYERS",
+			"UNITS:FRIENDS",
+			"Click to filter by Friendlist",
+			"friends"
+		},{
+			"OPTION",
+			"members",
+			"inv_misc_summerfest_brazierorange",
+			"UNITS:PLAYERS",
+			"UNITS:MEMBERS",
+			"Click to filter by Guildlist",
+			"members"
+		},{
+			"OPTION",
+			"players",
+			"inv_misc_summerfest_brazierred",
+			"UNITS:PLAYERS",
+			"UNITS:PLAYERS",
+			"Click to filter by Roster",
+			"players"
+		},{
+			"OPTION",
+			"actives",
+			"inv_misc_summerfest_braziergreen",
+			"UNITS:PLAYERS",
+			"UNITS:ACTIVES",
+			"Click to filter by Active",
+			"actives"
+		}
+	},
+	"Left Click for Options | Right Click for reset to Roster",
+	"Left Click for Options | Right Click for reset to Roster"
+}
+
+MultiBot.config.classes = {
+	"SELECT",
+	"classes",
 	{
 		{
 			"OPTION",
 			"deathknight",
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_deathknight.blp",
-			"FRIENDS:NONE",
-			"FRIENDS:DEATHKNIGHT",
+			"UNITS:NONE",
+			"UNITS:DEATHKNIGHT",
 			"Click to filter by DeathKnights",
 			"deathknight"
 		},{
 			"OPTION",
 			"druid",
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_druid.blp",
-			"FRIENDS:NONE",
-			"FRIENDS:DRUID",
+			"UNITS:NONE",
+			"UNITS:DRUID",
 			"Click to filter by Druids",
 			"druid"
 		},{
 			"OPTION",
 			"hunter",
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_hunter.blp",
-			"FRIENDS:NONE",
-			"FRIENDS:HUNTER",
+			"UNITS:NONE",
+			"UNITS:HUNTER",
 			"Click to filter by Hunters",
 			"hunter"
 		},{
 			"OPTION",
 			"mage",
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_mage.blp",
-			"FRIENDS:NONE",
-			"FRIENDS:MAGE",
+			"UNITS:NONE",
+			"UNITS:MAGE",
 			"Click to filter by Mages",
 			"mage"
 		},{
 			"OPTION",
 			"paladin",
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_paladin.blp",
-			"FRIENDS:NONE",
-			"FRIENDS:PALADIN",
+			"UNITS:NONE",
+			"UNITS:PALADIN",
 			"Click to filter by Paladins",
 			"paladin"
 		},{
 			"OPTION",
 			"priest",
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_priest.blp",
-			"FRIENDS:NONE",
-			"FRIENDS:PRIEST",
+			"UNITS:NONE",
+			"UNITS:PRIEST",
 			"Click to filter by Priests",
 			"priest"
 		},{
 			"OPTION",
 			"rogue",
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_rogue.blp",
-			"FRIENDS:NONE",
-			"FRIENDS:ROGUE",
+			"UNITS:NONE",
+			"UNITS:ROGUE",
 			"Click to filter by Rogues",
 			"rogue"
 		},{
 			"OPTION",
 			"shaman",
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_shaman.blp",
-			"FRIENDS:NONE",
-			"FRIENDS:SHAMAN",
+			"UNITS:NONE",
+			"UNITS:SHAMAN",
 			"Click to filter by Shamans",
 			"shaman"
 		},{
 			"OPTION",
 			"warlock",
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_warlock.blp",
-			"FRIENDS:NONE",
-			"FRIENDS:WARLOCK",
+			"UNITS:NONE",
+			"UNITS:WARLOCK",
 			"Click to filter by Warlocks",
 			"warlock"
 		},{
 			"OPTION",
 			"warrior",
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_warrior.blp",
-			"FRIENDS:NONE",
-			"FRIENDS:WARRIOR",
+			"UNITS:NONE",
+			"UNITS:WARRIOR",
 			"Click to filter by Warriors",
 			"warrior"
 		},{
 			"OPTION",
 			"none",
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp",
-			"FRIENDS:NONE",
-			"FRIENDS:NONE",
+			"UNITS:NONE",
+			"UNITS:NONE",
 			"Click to disable Filter",
 			"none"
 		}
 	},
 	"Left Click for Options | Right Click for disable Filter",
-	"Left Click for Options | Right Click for enable Filter"
-}
-
--- Members --
-
-MultiBot.config.members.browse = {
-	"SINGLE",
-	"browse",
-	"Interface\\AddOns\\MultiBot\\Icons\\filter_browse.blp",
-	"MEMBERS:BROWSE",
-	"Click to browse Guildbots"
-}
-
-MultiBot.config.members.filter = {
-	"SELECT",
-	"filter",
-	{
-		{
-			"OPTION",
-			"deathknight",
-			"Interface\\AddOns\\MultiBot\\Icons\\filter_deathknight.blp",
-			"MEMBERS:NONE",
-			"MEMBERS:DEATHKNIGHT",
-			"Click to filter by DeathKnights",
-			"deathknight"
-		},{
-			"OPTION",
-			"druid",
-			"Interface\\AddOns\\MultiBot\\Icons\\filter_druid.blp",
-			"MEMBERS:NONE",
-			"MEMBERS:DRUID",
-			"Click to filter by Druids",
-			"druid"
-		},{
-			"OPTION",
-			"hunter",
-			"Interface\\AddOns\\MultiBot\\Icons\\filter_hunter.blp",
-			"MEMBERS:NONE",
-			"MEMBERS:HUNTER",
-			"Click to filter by Hunters",
-			"hunter"
-		},{
-			"OPTION",
-			"mage",
-			"Interface\\AddOns\\MultiBot\\Icons\\filter_mage.blp",
-			"MEMBERS:NONE",
-			"MEMBERS:MAGE",
-			"Click to filter by Mages",
-			"mage"
-		},{
-			"OPTION",
-			"paladin",
-			"Interface\\AddOns\\MultiBot\\Icons\\filter_paladin.blp",
-			"MEMBERS:NONE",
-			"MEMBERS:PALADIN",
-			"Click to filter by Paladins",
-			"paladin"
-		},{
-			"OPTION",
-			"priest",
-			"Interface\\AddOns\\MultiBot\\Icons\\filter_priest.blp",
-			"MEMBERS:NONE",
-			"MEMBERS:PRIEST",
-			"Click to filter by Priests",
-			"priest"
-		},{
-			"OPTION",
-			"rogue",
-			"Interface\\AddOns\\MultiBot\\Icons\\filter_rogue.blp",
-			"MEMBERS:NONE",
-			"MEMBERS:ROGUE",
-			"Click to filter by Rogues",
-			"rogue"
-		},{
-			"OPTION",
-			"shaman",
-			"Interface\\AddOns\\MultiBot\\Icons\\filter_shaman.blp",
-			"MEMBERS:NONE",
-			"MEMBERS:SHAMAN",
-			"Click to filter by Shamans",
-			"shaman"
-		},{
-			"OPTION",
-			"warlock",
-			"Interface\\AddOns\\MultiBot\\Icons\\filter_warlock.blp",
-			"MEMBERS:NONE",
-			"MEMBERS:WARLOCK",
-			"Click to filter by Warlocks",
-			"warlock"
-		},{
-			"OPTION",
-			"warrior",
-			"Interface\\AddOns\\MultiBot\\Icons\\filter_warrior.blp",
-			"MEMBERS:NONE",
-			"MEMBERS:WARRIOR",
-			"Click to filter by Warriors",
-			"warrior"
-		},{
-			"OPTION",
-			"none",
-			"Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp",
-			"MEMBERS:NONE",
-			"MEMBERS:NONE",
-			"Click to disable Filter",
-			"none"
-		}
-	},
-	"Left Click for Options | Right Click for disable Filter",
-	"Left Click for Options | Right Click for enable Filter"
+	"Left Click for Options | Right Click for disable Filter"
 }
 
 -- Inventory --
