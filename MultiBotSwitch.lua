@@ -160,8 +160,7 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 	button.doOpenInventory = function(bot)
 		if(button.config[5] ~= "INVENTORY:OPEN") then return false end
 		
-		MultiBot.players.doCloseInventories(bot.name)
-		MultiBot.friends.doCloseInventories(bot.name)
+		MultiBot.units.doCloseInventories(bot.name)
 		bot.inventory.doOpen()
 		
 		SendChatMessage(button.config[8], button.chat, nil, bot.name)
