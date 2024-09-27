@@ -54,7 +54,10 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 		
 		if(button.config[4] == "SUMMON:ALL") then
 			MultiBot.players.doSummon()
+			MultiBot.members.doSummon()
 			MultiBot.friends.doSummon()
+		elseif(button.config[4] == "MEMBERS:BROWSE") then
+			MultiBot.members.doBrowse(UnitName("target"))
 		elseif(button.config[4] == "FRIENDS:BROWSE") then
 			MultiBot.friends.doBrowse(UnitName("target"))
 		elseif(string.sub(button.chat, 1, 4) == "RAID") then

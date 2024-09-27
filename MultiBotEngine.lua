@@ -11,7 +11,7 @@ MultiBot.auto = {}
 MultiBot.auto.release = false
 MultiBot.size = 36
 
-MultiBot:SetPoint("BOTTOMRIGHT", -304, 144)
+MultiBot:SetPoint("BOTTOMRIGHT", -262, 144)
 MultiBot:SetSize(MultiBot.size, MultiBot.size)
 MultiBot:Hide()
 
@@ -39,8 +39,9 @@ end
 MultiBot.getBot = function(pName)
 	local tBot = nil
 	if(MultiBot.players ~= nil and tBot == nil) then tBot = MultiBot.players.getBotByName(pName) end
+	if(MultiBot.members ~= nil and tBot == nil) then tBot = MultiBot.members.getBotByName(pName) end
 	if(MultiBot.friends ~= nil and tBot == nil) then tBot = MultiBot.friends.getBotByName(pName) end
-	if(tBot == nil) then SendChatMessage("Could not find " .. pName, "SAY") end
+	--if(tBot == nil) then SendChatMessage("Could not find " .. pName, "SAY") end
 	return tBot
 end
 
@@ -86,6 +87,10 @@ MultiBot.doHide = function(pType)
 		MultiBot.players.doHide()
 	end
 	
+	if(pType == "MEMBERS") then
+		MultiBot.members.doHide()
+	end
+	
 	if(pType == "FRIENDS") then
 		MultiBot.friends.doHide()
 	end
@@ -93,15 +98,28 @@ end
 
 MultiBot.doShow = function(pType)
 	if(pType == "PLAYERS") then
+		MultiBot.doHide("MEMBERS")
 		MultiBot.doHide("FRIENDS")
+		MultiBot.members.setState(false)
 		MultiBot.friends.setState(false)
 		MultiBot.players.setState(true)
 		MultiBot.players.doShow()
 	end
 	
+	if(pType == "MEMBERS") then
+		MultiBot.doHide("PLAYERS")
+		MultiBot.doHide("FRIENDS")
+		MultiBot.players.setState(false)
+		MultiBot.friends.setState(false)
+		MultiBot.members.setState(true)
+		MultiBot.members.doShow()
+	end
+	
 	if(pType == "FRIENDS") then
 		MultiBot.doHide("PLAYERS")
+		MultiBot.doHide("MEMBERS")
 		MultiBot.players.setState(false)
+		MultiBot.members.setState(false)
 		MultiBot.friends.setState(true)
 		MultiBot.friends.doShow()
 	end

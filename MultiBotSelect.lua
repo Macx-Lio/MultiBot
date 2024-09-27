@@ -113,12 +113,14 @@ MultiBot.newSelect = function(pParent, pX, pY, pConfig, pHorizontal)
 		end
 		
 		if(pButton == "RightButton") then
-			if(button.action[4] == "FRIENDS:NONE") then
+			if(button.action[4] == "MEMBERS:NONE") then
+				button.setSelect("none")
+				MultiBot.members.doBrowse(0)
+			elseif(button.action[4] == "FRIENDS:NONE") then
 				button.setSelect("none")
 				MultiBot.friends.doBrowse(0)
 			else
-				if(button.state)
-				then
+				if(button.state) then
 					if(button.chat == "WHISPER")
 					then SendChatMessage(button.action[4], button.chat, nil, button.parent.getName())
 					else SendChatMessage(button.action[4], MultiBot.getChat())

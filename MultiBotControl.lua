@@ -6,21 +6,7 @@ MultiBot.eventHandler:RegisterEvent("CHAT_MSG_ADDON")
 MultiBot.eventHandler:SetPoint("BOTTOMRIGHT", 1, 1)
 MultiBot.eventHandler:SetSize(1, 1)
 MultiBot.eventHandler:Show()
---[[
-MultiBot.eventHandler:SetScript("OnUpdate", function(pSelf, pElapsed)
-	MultiBot.elapsed = MultiBot.elapsed + pElapsed
-	
-    if(true == false and MultiBot.elapsed >= MultiBot.interval) then
-        if(GetNumRaidMembers() > 5)
-		then MultiBot.doAutoRelease("raid", GetNumRaidMembers())
-		elseif(GetNumPartyMembers() > 0)
-		then MultiBot.doAutoRelease("party", GetNumPartyMembers())
-		end
-		
-        MultiBot.elapsed = 0
-    end
-end)
-]]--
+
 MultiBot.eventHandler:SetScript("OnEvent", function()
 	if(event == "PLAYER_TARGET_CHANGED") then
 	end
@@ -31,18 +17,23 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 		end
 		
 		if(MultiBot.isInside(arg1, "Bot roster: ")) then
-			local tX = 0
+			local tX = -3 * (MultiBot.size + 2)
 			
 			MultiBot.players = MultiBot.newPlayers(MultiBot, tX, 0, MultiBot.size)
-			MultiBot.players.setButton(MultiBot.config.players, "SHOW:PLAYERS")
+			MultiBot.players.setButton(MultiBot.config.players.start, "SHOW:PLAYERS")
+			MultiBot.players.setPlayers(string.sub(arg1, 13))
+			tX = tX + MultiBot.size + 2
+			
+			MultiBot.members = MultiBot.newMembers(MultiBot, tX, 0, MultiBot.size)
+			MultiBot.members.setButton(MultiBot.config.members.start, "SHOW:PLAYERS")
+			tX = tX + MultiBot.size + 2
+			
+			MultiBot.friends = MultiBot.newFriends(MultiBot, tX, 0, MultiBot.size)
+			MultiBot.friends.setButton(MultiBot.config.friends.start, "HIDE:FRIENDS")
 			tX = tX + MultiBot.size + 2
 			
 			MultiBot.control = MultiBot.newFrame(MultiBot, tX, 0, MultiBot.size)
 			MultiBot.control.addDouble(0, 0, MultiBot.config.control, "HIDE:CONTROL")
-			tX = tX + MultiBot.size + 2
-			
-			MultiBot.friends = MultiBot.newFriends(MultiBot, tX, 0, MultiBot.size)
-			MultiBot.friends.setButton(MultiBot.config.friends, "HIDE:FRIENDS")
 			tX = tX + MultiBot.size + 2
 			
 			-- CONTROL --
@@ -56,7 +47,7 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			
 			-- LEFT --
 			
-			MultiBot.left = MultiBot.newFrame(MultiBot, 0 - MultiBot.size - 2, 2, MultiBot.size - 4)
+			MultiBot.left = MultiBot.newFrame(MultiBot, -4 * (MultiBot.size + 2), 2, MultiBot.size - 4)
 			local tX = 0
 			
 			local tFrame = MultiBot.left.addFrame("beastmaster", tX, 0, MultiBot.size - 4)
@@ -83,7 +74,7 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			
 			-- RIGHT --
 			
-			MultiBot.right = MultiBot.newFrame(MultiBot, MultiBot.size * 3 + 2, 2, MultiBot.size - 4)
+			MultiBot.right = MultiBot.newFrame(MultiBot, MultiBot.size - 2, 2, MultiBot.size - 4)
 			local tX = 0
 			
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.drink).setChat("PARTY")
@@ -111,23 +102,18 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			-- RAID --
 			
 			local tY = 0 - MultiBot.size + 2
-			local tX = MultiBot.size
 			
-			MultiBot.addRaidbar(1, tX, tY, MultiBot.size - 4).addGroup(1).addGroup(2)
+			MultiBot.addRaidbar(1, -2, tY, MultiBot.size - 4).addGroup(1).addGroup(2)
 			tY = tY - MultiBot.size + 2
 			
-			MultiBot.addRaidbar(2, tX, tY, MultiBot.size - 4).addGroup(3).addGroup(4)
+			MultiBot.addRaidbar(2, -2, tY, MultiBot.size - 4).addGroup(3).addGroup(4)
 			tY = tY - MultiBot.size + 2
 			
-			MultiBot.addRaidbar(3, tX, tY, MultiBot.size - 4).addGroup(5).addGroup(6)
+			MultiBot.addRaidbar(3, -2, tY, MultiBot.size - 4).addGroup(5).addGroup(6)
 			tY = tY - MultiBot.size + 2
 			
-			MultiBot.addRaidbar(4, tX, tY, MultiBot.size - 4).addGroup(7).addGroup(8)
+			MultiBot.addRaidbar(4, -2, tY, MultiBot.size - 4).addGroup(7).addGroup(8)
 			tY = tY - MultiBot.size + 2
-			
-			-- ROOSTER --
-			
-			MultiBot.players.setPlayers(string.sub(arg1, 13))
 		end
 		
 		if(MultiBot.isInside(arg1, " - player already logged in")) then
@@ -218,17 +204,20 @@ SLASH_MULTIBOT3 = "/mb"
 SlashCmdList["MULTIBOT"] = function()
 	if(MultiBot:IsVisible()) then
 		for key, value in pairs(MultiBot.players.players) do value.inventory.doClose() end
+		for key, value in pairs(MultiBot.members.members) do value.inventory.doClose() end
 		for key, value in pairs(MultiBot.friends.friends) do value.inventory.doClose() end
 		for key, value in pairs(MultiBot.raid) do value:Hide() end
 		
 		MultiBot.control:Hide()
 		MultiBot.players:Hide()
+		MultiBot.members:Hide()
 		MultiBot.friends:Hide()
 		MultiBot.right:Hide()
 		MultiBot.left:Hide()
 		MultiBot:Hide()
 		
 		table.wipe(MultiBot.players.players)
+		table.wipe(MultiBot.members.members)
 		table.wipe(MultiBot.friends.friends)
 		table.wipe(MultiBot.raid)
 	else

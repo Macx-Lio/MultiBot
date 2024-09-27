@@ -1,6 +1,9 @@
 MultiBot.config = {}
 MultiBot.config.raid = {}
 MultiBot.config.auto = {}
+MultiBot.config.players = {}
+MultiBot.config.members = {}
+MultiBot.config.friends = {}
 MultiBot.config.beastmaster = {}
 MultiBot.config.deathknight = {}
 MultiBot.config.druid = {}
@@ -29,19 +32,31 @@ MultiBot.config.control = {
 	"/multibot"
 }
 
-MultiBot.config.players = {
+MultiBot.config.players.start = {
 	"DOUBLE",
 	"players",
 	"inv_scroll_04",
 	"inv_scroll_03",
 	"HIDE:PLAYERS",
 	"SHOW:PLAYERS",
-	"Left Click to hide Playerbots",
-	"Left Click to show Playerbots",
+	"Left Click to hide Roosterbots",
+	"Left Click to show Roosterbots",
 	"PLAYERS:REFRESH"
 }
 
-MultiBot.config.friends = {
+MultiBot.config.members.start = {
+	"DOUBLE",
+	"members",
+	"inv_scroll_06",
+	"inv_scroll_03",
+	"HIDE:MEMBERS",
+	"SHOW:MEMBERS",
+	"Left Click to hide Guildbots | Right Click to refresh Guildbots",
+	"Left Click to show Guildbots | Right Click to refresh Guildbots",
+	"MEMBERS:REFRESH"
+}
+
+MultiBot.config.friends.start = {
 	"DOUBLE",
 	"friends",
 	"inv_scroll_05",
@@ -241,7 +256,7 @@ MultiBot.config.beastmaster.release = {
 
 -- Friends --
 
-MultiBot.config.browse = {
+MultiBot.config.friends.browse = {
 	"SINGLE",
 	"browse",
 	"Interface\\AddOns\\MultiBot\\Icons\\filter_browse.blp",
@@ -249,7 +264,7 @@ MultiBot.config.browse = {
 	"Click to browse Friendbots"
 }
 
-MultiBot.config.filter = {
+MultiBot.config.friends.filter = {
 	"SELECT",
 	"filter",
 	{
@@ -339,6 +354,114 @@ MultiBot.config.filter = {
 			"Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp",
 			"FRIENDS:NONE",
 			"FRIENDS:NONE",
+			"Click to disable Filter",
+			"none"
+		}
+	},
+	"Left Click for Options | Right Click for disable Filter",
+	"Left Click for Options | Right Click for enable Filter"
+}
+
+-- Members --
+
+MultiBot.config.members.browse = {
+	"SINGLE",
+	"browse",
+	"Interface\\AddOns\\MultiBot\\Icons\\filter_browse.blp",
+	"MEMBERS:BROWSE",
+	"Click to browse Guildbots"
+}
+
+MultiBot.config.members.filter = {
+	"SELECT",
+	"filter",
+	{
+		{
+			"OPTION",
+			"deathknight",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_deathknight.blp",
+			"MEMBERS:NONE",
+			"MEMBERS:DEATHKNIGHT",
+			"Click to filter by DeathKnights",
+			"deathknight"
+		},{
+			"OPTION",
+			"druid",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_druid.blp",
+			"MEMBERS:NONE",
+			"MEMBERS:DRUID",
+			"Click to filter by Druids",
+			"druid"
+		},{
+			"OPTION",
+			"hunter",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_hunter.blp",
+			"MEMBERS:NONE",
+			"MEMBERS:HUNTER",
+			"Click to filter by Hunters",
+			"hunter"
+		},{
+			"OPTION",
+			"mage",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_mage.blp",
+			"MEMBERS:NONE",
+			"MEMBERS:MAGE",
+			"Click to filter by Mages",
+			"mage"
+		},{
+			"OPTION",
+			"paladin",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_paladin.blp",
+			"MEMBERS:NONE",
+			"MEMBERS:PALADIN",
+			"Click to filter by Paladins",
+			"paladin"
+		},{
+			"OPTION",
+			"priest",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_priest.blp",
+			"MEMBERS:NONE",
+			"MEMBERS:PRIEST",
+			"Click to filter by Priests",
+			"priest"
+		},{
+			"OPTION",
+			"rogue",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_rogue.blp",
+			"MEMBERS:NONE",
+			"MEMBERS:ROGUE",
+			"Click to filter by Rogues",
+			"rogue"
+		},{
+			"OPTION",
+			"shaman",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_shaman.blp",
+			"MEMBERS:NONE",
+			"MEMBERS:SHAMAN",
+			"Click to filter by Shamans",
+			"shaman"
+		},{
+			"OPTION",
+			"warlock",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_warlock.blp",
+			"MEMBERS:NONE",
+			"MEMBERS:WARLOCK",
+			"Click to filter by Warlocks",
+			"warlock"
+		},{
+			"OPTION",
+			"warrior",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_warrior.blp",
+			"MEMBERS:NONE",
+			"MEMBERS:WARRIOR",
+			"Click to filter by Warriors",
+			"warrior"
+		},{
+			"OPTION",
+			"none",
+			"Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp",
+			"MEMBERS:NONE",
+			"MEMBERS:NONE",
 			"Click to disable Filter",
 			"none"
 		}

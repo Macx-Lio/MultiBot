@@ -1,4 +1,4 @@
-MultiBot.newPlayer = function(pParent, pName, pClass, pX, pY, pSize)
+MultiBot.newMember = function(pParent, pName, pClass, pX, pY, pSize)
 	local frame = CreateFrame("Frame", nil, pParent)
 	frame.inventory = MultiBot.newInventory(MultiBot, pName)
 	frame.button = nil
@@ -7,7 +7,6 @@ MultiBot.newPlayer = function(pParent, pName, pClass, pX, pY, pSize)
 	frame.right = nil
 	frame.left = nil
 	
-	frame.players = {}
 	frame.radio = {}
 	frame.link = {}
 	
@@ -77,7 +76,6 @@ MultiBot.newPlayer = function(pParent, pName, pClass, pX, pY, pSize)
 	end
 	
 	frame.setLeft = function()
-		if(frame.left ~= nil) then frame.left:Hide() end
 		frame.left = MultiBot.newFrame(frame, 0 - frame.size - 2, 2, frame.size - 4)
 		local tX = 0
 		
@@ -245,7 +243,6 @@ MultiBot.newPlayer = function(pParent, pName, pClass, pX, pY, pSize)
 	end
 	
 	frame.setRight = function()
-		if(frame.right ~= nil) then frame.right:Hide() end
 		frame.right = MultiBot.newFrame(frame, frame.size - 2, 2, frame.size - 4)
 		local tX = 0
 		
@@ -305,4 +302,4 @@ MultiBot.newPlayer = function(pParent, pName, pClass, pX, pY, pSize)
 	return frame
 end
 
-print("AfterMultiBotPlayer")
+print("AfterMultiBotMember")

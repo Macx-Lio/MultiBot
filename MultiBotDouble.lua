@@ -93,6 +93,8 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 					MultiBot.control.frames["controls"]:Hide()
 				elseif(button.config[5] == "HIDE:PLAYERS") then
 					MultiBot.doHide("PLAYERS")
+				elseif(button.config[5] == "HIDE:MEMBERS") then
+					MultiBot.doHide("MEMBERS")
 				elseif(button.config[5] == "HIDE:FRIENDS") then
 					MultiBot.doHide("FRIENDS")
 				elseif(button.config[5] == "HIDE:RAID") then
@@ -109,6 +111,8 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 					MultiBot.control.frames["controls"]:Show()
 				elseif(button.config[6] == "SHOW:PLAYERS") then
 					MultiBot.doShow("PLAYERS")
+				elseif(button.config[6] == "SHOW:MEMBERS") then
+					MultiBot.doShow("MEMBERS")
 				elseif(button.config[6] == "SHOW:FRIENDS") then
 					MultiBot.doShow("FRIENDS")
 				elseif(button.config[6] == "SHOW:RAID") then
@@ -127,6 +131,8 @@ MultiBot.newDouble = function(pParent, pX, pY, pConfig, pStrate)
 					MultiBot.doSlash(button.config[9], "")
 				elseif(button.config[9] == "PLAYERS:REFRESH") then
 					MultiBot.doShow("PLAYERS")
+				elseif(button.config[9] == "MEMBERS:REFRESH") then
+					MultiBot.members.doRefresh()
 				elseif(button.config[9] == "FRIENDS:REFRESH") then
 					MultiBot.friends.doRefresh()
 				else

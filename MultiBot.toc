@@ -23,6 +23,8 @@ MultiBotInventory.lua
 MultiBotItem.lua
 MultiBotPlayers.lua
 MultiBotPlayer.lua
+MultiBotMembers.lua
+MultiBotMember.lua
 MultiBotFriends.lua
 MultiBotFriend.lua
 MultiBotRaid.lua
