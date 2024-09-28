@@ -60,6 +60,8 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 			button.doRaid(button.config[4], string.sub(button.chat, 6))
 		elseif(string.sub(button.config[4], 1, 7) == "CONTROL") then
 			button.doControl(string.sub(button.config[4], 9), UnitName("target"))
+		elseif(string.sub(button.config[4], 1, 10) == "GAMEMASTER") then
+			button.doGamemaster(string.sub(button.config[4], 12), UnitName("target"))
 		elseif(string.sub(button.config[4], 1, 11) == "BEASTMASTER") then
 			button.doBeastmaster(string.sub(button.config[4], 13), UnitName("target"))
 		elseif(button.chat == "WHISPER") then
@@ -81,6 +83,20 @@ MultiBot.newSingle = function(pParent, pX, pY, pConfig)
 			if(pName == nil or pName == "Unknown Entity")
 			then SendChatMessage("cast " .. pAction, MultiBot.getChat())
 			else SendChatMessage("cast " .. pAction, "WHISPER", nil, pName)
+			end
+		end
+	end
+	
+	button.doGamemaster = function(pAction, pName)
+		if(pAction == "SWITCH") then
+			if(button.parent.frames["CONTROLS"]:IsVisible())
+			then button.parent.frames["CONTROLS"]:Hide()
+			else button.parent.frames["CONTROLS"]:Show()
+			end
+		else
+			if(pName == nil or pName == "Unknown Entity")
+			then SendChatMessage("I have no target.", "SAY")
+			else SendChatMessage(pAction, "SAY")
 			end
 		end
 	end

@@ -76,47 +76,4 @@ MultiBot.doRaid = function()
 	end
 end
 
-MultiBot.doHide = function(pType)
-	if(pType == "PLAYERS") then
-		MultiBot.players.doHide()
-	end
-	
-	if(pType == "MEMBERS") then
-		MultiBot.members.doHide()
-	end
-	
-	if(pType == "FRIENDS") then
-		MultiBot.friends.doHide()
-	end
-end
-
-MultiBot.doShow = function(pType)
-	if(pType == "PLAYERS") then
-		MultiBot.doHide("MEMBERS")
-		MultiBot.doHide("FRIENDS")
-		MultiBot.members.setState(false)
-		MultiBot.friends.setState(false)
-		MultiBot.players.setState(true)
-		MultiBot.players.doShow()
-	end
-	
-	if(pType == "MEMBERS") then
-		MultiBot.doHide("PLAYERS")
-		MultiBot.doHide("FRIENDS")
-		MultiBot.players.setState(false)
-		MultiBot.friends.setState(false)
-		MultiBot.members.setState(true)
-		MultiBot.members.doShow()
-	end
-	
-	if(pType == "FRIENDS") then
-		MultiBot.doHide("PLAYERS")
-		MultiBot.doHide("MEMBERS")
-		MultiBot.players.setState(false)
-		MultiBot.members.setState(false)
-		MultiBot.friends.setState(true)
-		MultiBot.friends.doShow()
-	end
-end
-
 print("AfterMultiBotEngine")

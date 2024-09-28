@@ -30,6 +30,17 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			MultiBot.control.addDouble(0, 0, MultiBot.config.control, "HIDE:CONTROL")
 			tX = tX + MultiBot.size + 2
 			
+			MultiBot.gamemaster = MultiBot.newFrame(MultiBot, tX, 0, MultiBot.size)
+			MultiBot.gamemaster.addSingle(0, 0, MultiBot.config.gamemaster.start)
+			tX = tX + MultiBot.size + 2
+			
+			-- GAMEMASTER --
+			
+			local tFrame = MultiBot.gamemaster.addFrame("CONTROLS", -2, 4, MultiBot.size - 4)
+			tFrame.addSingle(0, 1, MultiBot.config.gamemaster.summon)
+			tFrame.addSingle(0, 2, MultiBot.config.gamemaster.appear)
+			tFrame:Hide()
+			
 			-- CONTROL --
 			
 			local tFrame = MultiBot.control.addFrame("controls", -2, 4, MultiBot.size - 4)
@@ -68,7 +79,7 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			
 			-- RIGHT --
 			
-			MultiBot.right = MultiBot.newFrame(MultiBot, MultiBot.size - 2, 2, MultiBot.size - 4)
+			MultiBot.right = MultiBot.newFrame(MultiBot, 2 * MultiBot.size, 2, MultiBot.size - 4)
 			local tX = 0
 			
 			MultiBot.right.addSingle(tX, 0, MultiBot.config.drink).setChat("PARTY")
@@ -127,6 +138,10 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 		if(MultiBot.isInside(arg1, "remove: ")) then
 			local bot = MultiBot.getBot(string.sub(arg1, 9, string.find(arg1, " ", 9) - 1))
 			if(bot == nil) then return end
+			
+			if(MultiBot.isInside(arg1, "not your bot")) then
+				SendChatMessage("leave", "WHISPER", nil, bot.name)
+			end
 			
 			bot.button.setState(false)
 			bot.doHide()

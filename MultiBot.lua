@@ -4,6 +4,7 @@ MultiBot.config.auto = {}
 MultiBot.config.players = {}
 MultiBot.config.members = {}
 MultiBot.config.friends = {}
+MultiBot.config.gamemaster = {}
 MultiBot.config.beastmaster = {}
 MultiBot.config.deathknight = {}
 MultiBot.config.druid = {}
@@ -178,6 +179,32 @@ MultiBot.config.gather = {
 	"Click to disable Gather",
 	"Click to enable Gather",
 	"gather"
+}
+
+-- GAMEMASTER --
+
+MultiBot.config.gamemaster.start = {
+	"SINGLE",
+	"start",
+	"mail_gmicon",
+	"GAMEMASTER:SWITCH",
+	"Click to show or hide Gamemaster-Actions"
+}
+
+MultiBot.config.gamemaster.summon = {
+	"SINGLE",
+	"summon",
+	"spell_holy_prayerofspirit",
+	"GAMEMASTER:.summon",
+	"Click to summon your target"
+}
+
+MultiBot.config.gamemaster.appear = {
+	"SINGLE",
+	"appear",
+	"spell_holy_divinespirit",
+	"GAMEMASTER:.appear",
+	"Click to appear at your target"
 }
 
 -- BEASTMASTER --
