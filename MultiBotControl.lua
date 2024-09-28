@@ -146,6 +146,19 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			bot.button.setState(false)
 			bot.doHide()
 		end
+		
+		if(arg1 == "Enable player botAI") then
+			local bot = MultiBot.getBot(UnitName("player"))
+			bot.waitFor = "CO"
+			bot.button.setState("true")
+			SendChatMessage("co ?", "WHISPER", nil, bot.name)
+			SendChatMessage("Asked " .. bot.name .. " for Combat Strategies", "SAY")
+			MultiBot.doRaid()
+		end
+		
+		if(arg1 == "Disable player botAI") then
+			MultiBot.doRaid()
+		end
 	end
 	
 	if(event == "CHAT_MSG_WHISPER") then

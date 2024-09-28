@@ -45,6 +45,10 @@ MultiBot.isMember = function(pName)
 		end
 	end
 	
+	if(UnitName("player") == pName) then
+		return true
+	end
+	
 	return false
 end
 
