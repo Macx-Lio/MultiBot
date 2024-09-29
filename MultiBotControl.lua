@@ -13,7 +13,7 @@ MultiBot.eventHandler:SetScript("OnUpdate", function(pSelf, pElapsed)
 	if(MultiBot.elapsed >= MultiBot.interval) then
 		if(MultiBot.auto.stats) then
 			for key, value in pairs(MultiBot.stats.stats) do
-				SendChatMessage("stats", "WHISPER", nil, UnitName(key))
+				if(value:IsVisible()) then SendChatMessage("stats", "WHISPER", nil, UnitName(key)) end
 			end
 		end
 		
