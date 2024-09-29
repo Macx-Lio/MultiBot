@@ -197,6 +197,7 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			SendChatMessage("Stats of Player " .. tXP .. " " .. tMana, "WHISPER", nil, arg2)
 		end
 		
+		if(MultiBot:IsVisible() == false) then return end
 		local bot = MultiBot.getBot(arg2)
 		if(bot == nil) then return end
 		
