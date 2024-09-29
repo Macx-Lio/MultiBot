@@ -7,6 +7,20 @@ MultiBot.eventHandler:SetPoint("BOTTOMRIGHT", 1, 1)
 MultiBot.eventHandler:SetSize(1, 1)
 MultiBot.eventHandler:Show()
 
+MultiBot.eventHandler:SetScript("OnUpdate", function(pSelf, pElapsed)
+	MultiBot.elapsed = MultiBot.elapsed + pElapsed
+	
+	if(MultiBot.elapsed >= MultiBot.interval) then
+		if(MultiBot.auto.stats) then
+			for key, value in pairs(MultiBot.stats.stats) do
+				SendChatMessage("stats", "WHISPER", nil, key)
+			end
+		end
+		
+		MultiBot.elapsed = 0
+	end
+end)
+
 MultiBot.eventHandler:SetScript("OnEvent", function()
 	if(event == "PLAYER_TARGET_CHANGED") then
 	end
@@ -45,9 +59,10 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			
 			local tFrame = MultiBot.control.addFrame("controls", -2, 4, MultiBot.size - 4)
 			tFrame.addSwitch(0, 1, MultiBot.config.auto.release, "")
-			tFrame.addSingle(0, 2, MultiBot.config.naxx)
-			tFrame.addSingle(0, 3, MultiBot.config.reset)
-			tFrame.addSingle(0, 4, MultiBot.config.action)
+			tFrame.addSwitch(0, 2, MultiBot.config.auto.stats, "")
+			tFrame.addSingle(0, 3, MultiBot.config.naxx)
+			tFrame.addSingle(0, 4, MultiBot.config.reset)
+			tFrame.addSingle(0, 5, MultiBot.config.action)
 			tFrame:Hide()
 			
 			-- LEFT --
@@ -119,6 +134,10 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			
 			MultiBot.addRaidbar(4, -2, tY, MultiBot.size - 4).addGroup(7).addGroup(8)
 			tY = tY - MultiBot.size + 2
+			
+			-- STATS --
+			
+			MultiBot.stats = MultiBot.newStats(MultiBot, 200, 480)
 		end
 		
 		if(MultiBot.isInside(arg1, " - player already logged in")) then
@@ -215,6 +234,12 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 		
 		if(bot.waitFor == "equipping" and MultiBot.isInside(arg1, "equipping")) then
 			bot.inventory.doRefresh()
+		end
+		
+		if(MultiBot.isInside(arg1, "Bag") and MultiBot.isInside(arg1, "Dur")) then
+			if(MultiBot.stats.hasStat(arg2)) then
+				MultiBot.stats.stats[arg2].setStat(arg2, UnitLevel(MultiBot.toUnit(arg2)), arg1)
+			end
 		end
 	end
 end)

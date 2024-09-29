@@ -115,6 +115,9 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 			elseif(button.config[4] == "RELEASE:DISABLE") then
 				MultiBot.auto.release = false
 				return button.setState(false)
+			elseif(button.config[4] == "STATS:DISABLE") then
+				MultiBot.stats.doDisable()
+				return button.setState(false)
 			end
 		else
 			if(string.sub(button.chat, 1, 4) == "RAID") then
@@ -122,6 +125,9 @@ MultiBot.newSwitch = function(pParent, pX, pY, pConfig, pStrate)
 				return button.setState(true)
 			elseif(button.config[5] == "RELEASE:ENABLE") then
 				MultiBot.auto.release = true
+				return button.setState(true)
+			elseif(button.config[5] == "STATS:ENABLE") then
+				MultiBot.stats.doEnable()
 				return button.setState(true)
 			end
 		end

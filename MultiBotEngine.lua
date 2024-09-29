@@ -8,6 +8,9 @@ MultiBot.raid = {}
 MultiBot.auto = {}
 
 MultiBot.auto.release = false
+MultiBot.auto.stats = false
+MultiBot.interval = 60
+MultiBot.elapsed = 0
 MultiBot.size = 36
 
 MultiBot:SetPoint("BOTTOMRIGHT", -262, 144)

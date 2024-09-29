@@ -20,6 +20,7 @@ MultiBot.config.warrior = {}
 MultiBot.notice = {}
 MultiBot.notice.allrounder = "\n|cffff0000Notice: |r|cfff9f9f9This Button works with Target, Group and Raid.|r"
 MultiBot.notice.merchant = "\n|cffff0000Notice: |r|cfff9f9f9You will need a Merchant as Target.|r"
+MultiBot.notice.stats = "\n|cffff0000Notice: |r|cfff9f9f9Auto-Stats supports only a single Party.|r"
 
 MultiBot.config.control = {
 	"DOUBLE",
@@ -56,6 +57,17 @@ MultiBot.config.auto.release = {
 	"Click to disable Auto-Release",
 	"Click to enable Auto-Release",
 	"release"
+}
+
+MultiBot.config.auto.stats = {
+	"SWITCH",
+	"stats",
+	"inv_inscription_scroll",
+	"STATS:DISABLE",
+	"STATS:ENABLE",
+	"Click to disable Auto-Stats" .. MultiBot.notice.stats,
+	"Click to enable Auto-Stats" .. MultiBot.notice.stats,
+	"stats"
 }
 
 MultiBot.config.naxx = {

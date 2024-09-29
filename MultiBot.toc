@@ -23,6 +23,8 @@ MultiBotInventory.lua
 MultiBotItem.lua
 MultiBotUnits.lua
 MultiBotUnit.lua
+MultiBotStats.lua
+MultiBotStat.lua
 MultiBotRaid.lua
 MultiBot.lua
 MultiBotConfigDeathKnight.lua
