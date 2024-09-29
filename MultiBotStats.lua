@@ -11,23 +11,28 @@ MultiBot.newStats = function(pParent, pX, pY)
 	frame:SetSize(frame.parent.size, frame.parent.size)
 	frame:Hide()
 	
-	-- ADD --
+	-- SET --
 	
-	frame.addStat = function(pName, pX, pY)
-		if(pName == nil or pName == "Unknown Entity") then return false end
-		frame.stats[pName] = MultiBot.newStat(frame, pX, pY)
-		SendChatMessage("stats", "WHISPER", nil, pName)
-		return true
+	frame.setStats = function()
+		for i = 1, 4 do frame.stats["party" .. i] = MultiBot.newStat(frame, 0, (i - 1) * -60) end
+		return frame
 	end
 	
-	-- HAS --
+	-- GET --
 	
-	frame.hasStat = function(pName)
-		if(frame.stats[pName] == nil) then return false end
-		return true
+	frame.getStat = function(pName)
+		local tUnit = MultiBot.toUnit(pName)
+		if(tUnit == nil or frame.stats[tUnit] == nil) then return nil end
+		return frame.stats[tUnit]
 	end
 	
 	-- DO --
+	
+	frame.doWhisper = function(pName)
+		if(pName == nil or pName == "Unknown Entity") then return false end
+		SendChatMessage("stats", "WHISPER", nil, pName)
+		return true
+	end
 	
 	frame.doDisable = function()
 		for key, value in pairs(frame.stats) do value:Hide() end
@@ -36,21 +41,14 @@ MultiBot.newStats = function(pParent, pX, pY)
 	end
 	
 	frame.doEnable = function()
+		for i = 1, 4 do frame.doWhisper(UnitName("party" .. i)) end
 		MultiBot.auto.stats = true
-		
-		for i = 1, 4 do
-			if(UnitIsConnected("party" .. i))
-			then if(frame.addStat(UnitName("party" .. i), 0, (i - 1) * -60) == false) then break end
-			else break
-			end
-		end
-		
 		frame:Show()
 	end
 	
 	-- RETURN --
 	
-	return frame
+	return frame.setStats()
 end
 
 print("AfterMultiBotStats")

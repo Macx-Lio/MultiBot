@@ -9,7 +9,7 @@ MultiBot.newStat = function(pParent, pX, pY)
 	
 	frame:SetPoint("TOPRIGHT", frame.x, frame.y)
 	frame:SetSize(192, 96)
-	frame:Show()
+	frame:Hide()
 	
 	frame.texture = frame:CreateTexture(nil, "BACKGROUND")
 	frame.texture:SetTexture("Interface\\AddOns\\MultiBot\\Textures\\Stats.blp")
@@ -71,6 +71,26 @@ MultiBot.newStat = function(pParent, pX, pY)
 			local tXP = tonumber(string.sub(MultiBot.doSplit(tStats[4], "|")[2], 10))
 			frame.percent:SetText(frame.setProgress(tXP) .. "%\nXP")
 		end
+		
+		frame:Show()
+	end
+	
+	frame.setStatOfPlayer = function(pName, pLevel, pStats)
+		local tStats = MultiBot.doSplit(pStats, " ")
+		local tMana = tonumber(tStats[5])
+		local tXP = tonumber(tStats[4])
+		
+		frame.name:SetText(pName)
+		frame.level:SetText(pLevel)
+		frame.additional:SetText("Player")
+		
+		if(pLevel == 80) then
+			frame.percent:SetText(frame.setProgress(tMana) .. "%\nMP")
+		else
+			frame.percent:SetText(frame.setProgress(tXP) .. "%\nXP")
+		end
+		
+		frame:Show()
 	end
 	
 	frame.setProgress = function(pProgress)

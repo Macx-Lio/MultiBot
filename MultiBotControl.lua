@@ -181,6 +181,22 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 	end
 	
 	if(event == "CHAT_MSG_WHISPER") then
+		if(MultiBot.isInside(arg1, "Bag") and MultiBot.isInside(arg1, "Dur")) then
+			local tStat = MultiBot.stats.getStat(arg2)
+			if(tStat ~= nil) then tStat.setStat(arg2, UnitLevel(MultiBot.toUnit(arg2)), arg1) end
+		end
+		
+		if(MultiBot.isInside(arg1, "Stats of Player")) then
+			local tStat = MultiBot.stats.getStat(arg2)
+			if(tStat ~= nil) then tStat.setStatOfPlayer(arg2, UnitLevel(MultiBot.toUnit(arg2)), arg1) end
+		end
+		
+		if(arg1 == "stats" and arg2 ~= UnitName("player")) then
+			local tXP = math.floor(100.0 / UnitXPMax("player") * UnitXP("player"))
+			local tMana = math.floor(100.0 / UnitManaMax("player") * UnitMana("player"))
+			SendChatMessage("Stats of Player " .. tXP .. " " .. tMana, "WHISPER", nil, arg2)
+		end
+		
 		local bot = MultiBot.getBot(arg2)
 		if(bot == nil) then return end
 		
@@ -234,12 +250,6 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 		
 		if(bot.waitFor == "equipping" and MultiBot.isInside(arg1, "equipping")) then
 			bot.inventory.doRefresh()
-		end
-		
-		if(MultiBot.isInside(arg1, "Bag") and MultiBot.isInside(arg1, "Dur")) then
-			if(MultiBot.stats.hasStat(arg2)) then
-				MultiBot.stats.stats[arg2].setStat(arg2, UnitLevel(MultiBot.toUnit(arg2)), arg1)
-			end
 		end
 	end
 end)
