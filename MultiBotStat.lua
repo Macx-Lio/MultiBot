@@ -80,7 +80,7 @@ MultiBot.newStat = function(pParent, pX, pY)
 			value:Hide()
 		end
 		
-		frame.progress[tFound]:Show()
+		if(tFound > 0) then frame.progress[tFound]:Show() end
 		return pProgress
 	end
 	
