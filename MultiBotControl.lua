@@ -13,7 +13,7 @@ MultiBot.eventHandler:SetScript("OnUpdate", function(pSelf, pElapsed)
 	if(MultiBot.elapsed >= MultiBot.interval) then
 		if(MultiBot.auto.stats) then
 			for key, value in pairs(MultiBot.stats.stats) do
-				SendChatMessage("stats", "WHISPER", nil, key)
+				SendChatMessage("stats", "WHISPER", nil, UnitName(key))
 			end
 		end
 		
@@ -197,7 +197,6 @@ MultiBot.eventHandler:SetScript("OnEvent", function()
 			SendChatMessage("Stats of Player " .. tXP .. " " .. tMana, "WHISPER", nil, arg2)
 		end
 		
-		if(MultiBot:IsVisible() == false) then return end
 		local bot = MultiBot.getBot(arg2)
 		if(bot == nil) then return end
 		
@@ -260,7 +259,8 @@ SLASH_MULTIBOT2 = "/mbot"
 SLASH_MULTIBOT3 = "/mb"
 
 SlashCmdList["MULTIBOT"] = function()
-	if(MultiBot:IsVisible()) then
+	if(MultiBot.state) then
+		MultiBot.state = false
 		for key, value in pairs(MultiBot.units.units) do value.inventory.doClose() end
 		for key, value in pairs(MultiBot.raid) do value:Hide() end
 		
@@ -274,6 +274,7 @@ SlashCmdList["MULTIBOT"] = function()
 		table.wipe(MultiBot.raid)
 	else
 		SendChatMessage(".playerbot bot list", "SAY")
+		MultiBot.state = true
 		MultiBot:Show()
 	end
 end

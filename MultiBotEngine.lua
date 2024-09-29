@@ -39,6 +39,7 @@ MultiBot.newTip = function(pParent, pTip)
 end
 
 MultiBot.getBot = function(pName)
+	if(MultiBot.units == nil) then return nil end
 	return MultiBot.units.getBot(pName)
 end
 
