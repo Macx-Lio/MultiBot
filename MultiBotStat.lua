@@ -1,7 +1,7 @@
 MultiBot.newStat = function(pParent, pX, pY)
 	local frame = CreateFrame("Frame", nil, pParent)
 	frame.progress = {}
-	frame.config = { 99, 90, 81, 72, 63, 54, 45, 36, 27, 19, 9 }
+	frame.config = { 99, 90, 81, 72, 63, 54, 45, 36, 27, 18, 9 }
 	
 	frame.parent = pParent
 	frame.x = pX
@@ -18,6 +18,7 @@ MultiBot.newStat = function(pParent, pX, pY)
 	
 	for key, value in pairs(frame.config) do
 		frame.progress[value] = CreateFrame("Frame", nil, frame)
+		frame.progress[value].value = value
 		frame.progress[value]:SetPoint("TOPRIGHT", -2, -2)
 		frame.progress[value]:SetSize(48, 48)
 		frame.progress[value]:Hide()
@@ -47,14 +48,14 @@ MultiBot.newStat = function(pParent, pX, pY)
 	
 	frame.percent = frame.data:CreateFontString(nil, "ARTWORK")
 	frame.percent:SetFont("Fonts\\ARIALN.ttf", 13, "OUTLINE")
-	frame.percent:SetPoint("TOPLEFT", 153, -15)
+	frame.percent:SetPoint("TOPLEFT", 153, -14)
 	
 	-- SET --
 	
 	frame.setStat = function(pName, pLevel, pStats)
 		local tStats = MultiBot.doSplit(pStats, ", ")
 		local tMoney = "|cffffdd55" .. tStats[1] .. "|r, "
-		local tBag = frame.getColoredBag(tStats[2]) .. " Bag"
+		local tBag = tStats[2]
 		
 		frame.name:SetText(pName)
 		frame.level:SetText(pLevel)
@@ -73,39 +74,22 @@ MultiBot.newStat = function(pParent, pX, pY)
 	end
 	
 	frame.setProgress = function(pProgress)
-		local tFound = 0
+		for key, value in pairs(frame.progress) do value:Hide() end
 		
-		for key, value in pairs(frame.progress) do
-			if(pProgress >= key and tFound == 0) then tFound = key end
-			value:Hide()
+		if(pProgress >= 99) then frame.progress[99]:Show()
+		elseif(pProgress >= 90) then frame.progress[90]:Show()
+		elseif(pProgress >= 81) then frame.progress[81]:Show()
+		elseif(pProgress >= 72) then frame.progress[72]:Show()
+		elseif(pProgress >= 63) then frame.progress[63]:Show()
+		elseif(pProgress >= 54) then frame.progress[54]:Show()
+		elseif(pProgress >= 45) then frame.progress[45]:Show()
+		elseif(pProgress >= 36) then frame.progress[36]:Show()
+		elseif(pProgress >= 27) then frame.progress[27]:Show()
+		elseif(pProgress >= 18) then frame.progress[18]:Show()
+		elseif(pProgress >= 9) then frame.progress[9]:Show()
 		end
 		
-		if(tFound > 0) then frame.progress[tFound]:Show() end
 		return pProgress
-	end
-	
-	-- GET --
-	
-	frame.getColoredBag = function(pBag)
-		local tBag = MultiBot.doSplit(MultiBot.doSplit(MultiBot.doSplit(pBag, "|")[3], "|")[1], "/")
-		local tUse = tonumber(string.sub(tBag[1], 10) .. ".0")
-		local tMax = tonumber(tBag[2] .. ".0")
-		local tPercent = math.floor(tUse / tMax * 100)
-		return frame.getPosColor(tPercent) .. tUse .. "/" .. tMax .. "|r"
-	end
-	
-	frame.getPosColor = function(pPercent)
-		if(pPercent > 74) then return "|cff00ff00" end
-		if(pPercent > 49) then return "|cffffdd55" end
-		if(pPercent > 24) then return "|cffff6600" end
-		return "|cffff0000"
-	end
-	
-	frame.getNegColor = function(pPercent)
-		if(pPercent > 74) then return "|cffff0000" end
-		if(pPercent > 49) then return "|cffff6600" end
-		if(pPercent > 24) then return "|cffffdd55" end
-		return "|cff00ff00"
 	end
 	
 	-- RETURN --
