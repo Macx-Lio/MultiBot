@@ -91,7 +91,7 @@ MultiBot.newStat = function(pParent, pX, pY)
 		local tUse = tonumber(string.sub(tBag[1], 10) .. ".0")
 		local tMax = tonumber(tBag[2] .. ".0")
 		local tPercent = math.floor(tUse / tMax * 100)
-		return frame.getNegColor(tPercent) .. tUse .. "/" .. tMax .. "|r"
+		return frame.getPosColor(tPercent) .. tUse .. "/" .. tMax .. "|r"
 	end
 	
 	frame.getPosColor = function(pPercent)
