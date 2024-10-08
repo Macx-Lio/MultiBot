@@ -1,0 +1,22 @@
+## Interface: 30300
+## Version: 2.0.0
+## Title: MultiBot
+## Notes: User Interface for Playerbot
+## Author: Nico Löbbert
+
+MultiBotEngine.lua
+MultiBotHandler.lua
+MultiBotDeathKnight.lua
+MultiBotDruid.lua
+MultiBotHunter.lua
+MultiBotMage.lua
+MultiBotPaladin.lua
+MultiBotPriest.lua
+MultiBotRogue.lua
+MultiBotShaman.lua
+MultiBotWarlock.lua
+MultiBotWarrior.lua
+MultiBotEvery.lua
+MultiBotStats.lua
+MultiBotItem.lua
+MultiBot.lua
