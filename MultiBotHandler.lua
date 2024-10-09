@@ -242,9 +242,12 @@ MultiBot:SetScript("OnEvent", function()
 		
 		-- REQUIREMENT --
 		
-		local tPlayer = MultiBot.getBot(UnitName("player"))
 		
-		if(tPlayer.waitFor == "COORDS" and MultiBot.isInside(arg1, "Zone:", "zone:")) then
+		
+		if(MultiBot.isInside(arg1, "Zone:", "zone:")) then
+			local tPlayer = MultiBot.getBot(UnitName("player"))
+			if(tPlayer.waitFor ~= "COORDS") then return end
+			
 			local tLocation = MultiBot.doSplit(arg1, " ")
 			local tZone = string.sub(tLocation[6], 2, string.len(tLocation[6]) - 1)
 			local tMap = string.sub(tLocation[3], 2, string.len(tLocation[3]) - 1)
@@ -254,7 +257,10 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
-		if(tPlayer.waitFor == "COORDS" and MultiBot.isInside(arg1, "X:") and MultiBot.isInside(arg1, "Y:")) then
+		if(MultiBot.isInside(arg1, "X:") and MultiBot.isInside(arg1, "Y:")) then
+			local tPlayer = MultiBot.getBot(UnitName("player"))
+			if(tPlayer.waitFor ~= "COORDS") then return end
+			
 			local tCoords = MultiBot.doSplit(arg1, " ")
 			tPlayer.memory.goX = tCoords[2]
 			tPlayer.memory.goY = tCoords[4]
