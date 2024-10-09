@@ -239,6 +239,30 @@ MultiBot:SetScript("OnEvent", function()
 			--MultiBot.doRaid()
 			return
 		end
+		
+		-- REQUIREMENT --
+		
+		local tPlayer = MultiBot.getBot(UnitName("player"))
+		
+		if(tPlayer.waitFor == "COORDS" and MultiBot.isInside(arg1, "Zone:", "zone:")) then
+			local tLocation = MultiBot.doSplit(arg1, " ")
+			local tZone = string.sub(tLocation[6], 2, string.len(tLocation[6]) - 1)
+			local tMap = string.sub(tLocation[3], 2, string.len(tLocation[3]) - 1)
+			
+			tPlayer.memory.goMap = tLocation[2]
+			tPlayer.memory.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "will teleport you to '" .. tMap .. "-" .. tZone .. "'.")
+			return
+		end
+		
+		if(tPlayer.waitFor == "COORDS" and MultiBot.isInside(arg1, "X:") and MultiBot.isInside(arg1, "Y:")) then
+			local tCoords = MultiBot.doSplit(arg1, " ")
+			tPlayer.memory.goX = tCoords[2]
+			tPlayer.memory.goY = tCoords[4]
+			tPlayer.memory.goZ = tCoords[6]
+			tPlayer.memory.setEnable()
+			tPlayer.waitFor = ""
+			return
+		end
 	end
 	
 	if(event == "CHAT_MSG_WHISPER") then
@@ -258,7 +282,7 @@ MultiBot:SetScript("OnEvent", function()
 			SendChatMessage("StatsOfPlayer " .. tXP .. " " .. tMana, "WHISPER", nil, arg2)
 		end
 		
-		-- Requirement --
+		-- REQUIREMENT --
 		
 		local tButton = MultiBot.frames["MultiBar"].frames["Units"].buttons[arg2]
 		if(tButton == nil) then return end

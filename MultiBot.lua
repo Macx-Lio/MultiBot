@@ -1176,14 +1176,90 @@ end
 local tMasters = tMultiBar.addFrame("Masters", 36, 38)
 tMasters:Hide()
 
-tMasters.addButton("Summon", 0, 0, "spell_holy_prayerofspirit", MultiBot.tips.game.summon)
+tMasters.addButton("Summon", 0, 34, "spell_holy_prayerofspirit", MultiBot.tips.game.summon)
 .doLeft = function(pButton)
 	MultiBot.doDotWithTarget(".summon")
 end
 
-tMasters.addButton("Appear", 0, 34, "spell_holy_divinespirit", MultiBot.tips.game.appear)
+tMasters.addButton("Appear", 0, 68, "spell_holy_divinespirit", MultiBot.tips.game.appear)
 .doLeft = function(pButton)
 	MultiBot.doDotWithTarget(".appear")
+end
+
+-- MASTERS:PORTAL --
+
+MultiBot.tips.game.portal =
+"Memory-Portal\n|cffffffff"..
+"In this Box you will find the Memory-Gems.\n"..
+"Use the Memory-Gems to store your current Location.\n"..
+"You can teleport yourself to stored Locations by using the Memory-Gems.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to show or hide the Soulgems|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.game.memory =
+"Memory-Gem\n|cffffffff"..
+"This Memory-Gem ABOUT.\n"..
+"You need GameMaster-Rights to use this Button.|r\n\n"..
+"|cffff0000Left-Click to store or teleport to the Location|r\n"..
+"|cff999999(Execution-Order: Target)|r\n\n"..
+"|cffff0000Right-Click to forget the Location|r\n"..
+"|cff999999(Execution-Order: Target)|r";
+
+tMasters.addButton("Portal", 0, 0, "inv_box_04", MultiBot.tips.game.portal)
+.doLeft = function(pButton)
+	MultiBot.ShowHideSwitch(pButton.parent.frames["Portal"])
+end
+
+local tPortal = tMasters.addFrame("Portal", 30, 2)
+tPortal:Hide()
+
+local tButton = tPortal.addButton("Red", 0, 0, "inv_jewelcrafting_gem_16", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable()
+tButton.doRight = function(pButton)
+	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end
+	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")
+	pButton.setDisable()
+end
+tButton.doLeft = function(pButton)
+	local tPlayer = MultiBot.getBot(UnitName("player"))
+	if(tPlayer.waitFor == nil) then tPlayer.waitFor = "" end
+	if(tPlayer.waitFor ~= "") then return SendChatMessage("I am still in the process of saving my position.", "SAY") end
+	if(pButton.state) then return SendChatMessage(".go xyz " .. pButton.goX .. " " .. pButton.goY .. " " .. pButton.goZ .. " " .. pButton.goMap, "SAY")	end
+	tPlayer.memory = pButton
+	tPlayer.waitFor = "COORDS"
+	SendChatMessage(".gps", "SAY")
+end
+
+local tButton = tPortal.addButton("Green", 30, 0, "inv_jewelcrafting_gem_13", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable()
+tButton.doRight = function(pButton)
+	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end
+	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")
+	pButton.setDisable()
+end
+tButton.doLeft = function(pButton)
+	local tPlayer = MultiBot.getBot(UnitName("player"))
+	if(tPlayer.waitFor == nil) then tPlayer.waitFor = "" end
+	if(tPlayer.waitFor ~= "") then return SendChatMessage("I am still in the process of saving my position.", "SAY") end
+	if(pButton.state) then return SendChatMessage(".go xyz " .. pButton.goX .. " " .. pButton.goY .. " " .. pButton.goZ .. " " .. pButton.goMap, "SAY")	end
+	tPlayer.memory = pButton
+	tPlayer.waitFor = "COORDS"
+	SendChatMessage(".gps", "SAY")
+end
+
+local tButton = tPortal.addButton("Blue", 60, 0, "inv_jewelcrafting_gem_17", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable()
+tButton.doRight = function(pButton)
+	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end
+	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")
+	pButton.setDisable()
+end
+tButton.doLeft = function(pButton)
+	local tPlayer = MultiBot.getBot(UnitName("player"))
+	if(tPlayer.waitFor == nil) then tPlayer.waitFor = "" end
+	if(tPlayer.waitFor ~= "") then return SendChatMessage("I am still in the process of saving my position.", "SAY") end
+	if(pButton.state) then return SendChatMessage(".go xyz " .. pButton.goX .. " " .. pButton.goY .. " " .. pButton.goZ .. " " .. pButton.goMap, "SAY")	end
+	tPlayer.memory = pButton
+	tPlayer.waitFor = "COORDS"
+	SendChatMessage(".gps", "SAY")
 end
 
 -- RIGHT --
@@ -1198,7 +1274,7 @@ MultiBot.tips.drink.group =
 "With this Button you order the Group to drink.\n"..
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
 "|cffff0000Left-Click to execute Group-Drink|r\n"..
-"|cff999999(Execution-Order: Raid, Group)|r";
+"|cff999999(Execution-Order: Raid, Party)|r";
 
 tRight.addButton("Drink", 0, 0, "inv_drink_24_sealwhey", MultiBot.tips.drink.group)
 .doLeft = function(pButton)
@@ -1213,7 +1289,7 @@ MultiBot.tips.release.group =
 "With this Button the dead Bots will release there Ghosts to the next Graveyard.\n"..
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
 "|cffff0000Left-Click to execute Group-Release|r\n"..
-"|cff999999(Execution-Order: Raid, Group)|r";
+"|cff999999(Execution-Order: Raid, Party)|r";
 
 tRight.addButton("Release", 34, 0, "achievement_bg_xkills_avgraveyard", MultiBot.tips.release.group)
 .doLeft = function(pButton)
@@ -1228,7 +1304,7 @@ MultiBot.tips.revive.group =
 "With this Button the Ghost-Bots will revive on the next Graveyard.\n"..
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
 "|cffff0000Left-Click to execute Group-Revive|r\n"..
-"|cff999999(Execution-Order: Raid, Group)|r";
+"|cff999999(Execution-Order: Raid, Party)|r";
 
 tRight.addButton("Revive", 68, 0, "spell_holy_guardianspirit", MultiBot.tips.revive.group)
 .doLeft = function(pButton)

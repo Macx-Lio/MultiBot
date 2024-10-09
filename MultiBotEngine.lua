@@ -601,3 +601,9 @@ MultiBot.addFriend = function(pName, pClass, pTexture, pTip)
 	table.insert(MultiBot.index.friends, pName)
 	return tButton
 end
+
+-- MULTIBOT:GET --
+
+MultiBot.getBot = function(pName)
+	return MultiBot.frames["MultiBar"].frames["Units"].buttons[pName]
+end
