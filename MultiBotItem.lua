@@ -8,6 +8,10 @@ MultiBot.addItem = function(pFrame, pInfo)
 	local tX = (pFrame.index%8) * 38
 	local tY = math.floor(pFrame.index/8) * -38
 	
+	tName = MultiBot.IF(tName == nil, string.sub(tInfo[4], 3, string.len(tInfo[4]) - 1), tName)
+	tLink = MultiBot.IF(tLink == nil, "|" .. tInfo[2] .. "|" .. tInfo[3] .. "|" .. tInfo[4] .. "|h|r", tLink)
+	tRare = MultiBot.IF(tRare == nil, 0, tRare)
+	
 	local tButton = pFrame.addButton(tName, tX, tY, tIcon, tLink)
 	
 	tButton.item = {}
