@@ -31,6 +31,9 @@ MultiBot.addItem = function(pFrame, pInfo)
 		end
 		
 		if(tAction == "s" and MultiBot.isTarget()) then
+			if(pButton.item.id == "6948") then return SendChatMessage("I cant sell this Item.", "SAY") end
+			if(MultiBot.isInside(pButton.item.info, "key")) then return SendChatMessage("I will not sell Keys.", "SAY") end
+			if(MultiBot.isInside(pButton.item.info, "Key")) then return SendChatMessage("I will not sell Keys.", "SAY") end
 			SendChatMessage(tAction .. " " .. pButton.tip, "WHISPER", nil, tName)
 			pButton:Hide()
 			return
@@ -39,7 +42,7 @@ MultiBot.addItem = function(pFrame, pInfo)
 		if(tAction == "e" or tAction == "u") then
 			SendChatMessage(tAction .. " " .. pButton.tip, "WHISPER", nil, tName)
 			MultiBot.frames["MultiBar"].frames["Units"].buttons[tName].waitFor = "INVENTORY"
-			SendChatMessage("items", "WHISPER", nil, tButton.name)
+			SendChatMessage("items", "WHISPER", nil, tName)
 			return
 		end
 		
