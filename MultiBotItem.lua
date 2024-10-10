@@ -10,7 +10,7 @@ MultiBot.addItem = function(pFrame, pInfo)
 	
 	tName = MultiBot.IF(tName == nil, string.sub(tInfo[4], 3, string.len(tInfo[4]) - 1), tName)
 	tLink = MultiBot.IF(tLink == nil, "|" .. tInfo[2] .. "|" .. tInfo[3] .. "|" .. tInfo[4] .. "|h|r", tLink)
-	tRare = MultiBot.IF(tRare == nil, 0, tRare)
+	tRare = MultiBot.IF(tRare == nil, 4, tRare) -- by Security
 	
 	local tButton = pFrame.addButton(tName, tX, tY, tIcon, tLink)
 	
@@ -46,7 +46,7 @@ MultiBot.addItem = function(pFrame, pInfo)
 			return
 		end
 		
-		if(tAction == "drop") then
+		if(tAction == "destroy") then
 			if(pButton.item.id == "6948") then return SendChatMessage("I cant drop this Item.", "SAY") end
 			if(MultiBot.isInside(pButton.item.info, "key")) then return SendChatMessage("I will not drop Keys.", "SAY") end
 			if(MultiBot.isInside(pButton.item.info, "Key")) then return SendChatMessage("I will not drop Keys.", "SAY") end

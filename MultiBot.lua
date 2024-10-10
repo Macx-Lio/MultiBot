@@ -1333,7 +1333,10 @@ MultiBot.tips.inventory = {}
 MultiBot.tips.inventory.sell =
 "Sell-Items|cffffffff\n"..
 "It enables the Sell-Mode of the Inventory.\n"..
-"You must have a Merchent as Target.|r\n\n"..
+"You must have a Merchent as Target.\n"..
+"For security Resons your Bot will not sell:\n"..
+"- every Item with 'Key' in its Name\n"..
+"- the Hearthstone|r\n\n"..
 "|cffff0000Left-Click to sell a Item|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
@@ -1412,7 +1415,7 @@ MultiBot.inventory.addButton("Destroy", -94, 694, "inv_hammer_15", MultiBot.tips
 		MultiBot.inventory.action = ""
 		pButton.setDisable()
 	else
-		MultiBot.inventory.action = "drop"
+		MultiBot.inventory.action = "destroy"
 		pButton.getButton("Equip").setDisable()
 		pButton.getButton("Sell").setDisable()
 		pButton.getButton("Use").setDisable()

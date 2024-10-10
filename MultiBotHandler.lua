@@ -240,10 +240,6 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
-		-- REQUIREMENT --
-		
-		
-		
 		if(MultiBot.isInside(arg1, "Zone:", "zone:")) then
 			local tPlayer = MultiBot.getBot(UnitName("player"))
 			if(tPlayer.waitFor ~= "COORDS") then return end
@@ -354,7 +350,7 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
-		if(tButton.waitFor == "ITEM" and MultiBot.isInside(arg1, "Bag")) then
+		if(tButton.waitFor == "ITEM" and MultiBot.isInside(arg1, "Bag", "Dur", "XP")) then
 			MultiBot.inventory:Show()
 			tButton.waitFor = ""
 			InspectUnit(arg2)
