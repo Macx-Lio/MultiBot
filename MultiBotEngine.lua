@@ -8,6 +8,7 @@ MultiBot:SetPoint("BOTTOMRIGHT", 1, 1)
 MultiBot:SetSize(1, 1)
 MultiBot:Show()
 
+MultiBot.data = {}
 MultiBot.index = {}
 MultiBot.index.classes = {}
 MultiBot.index.classes.actives = {}
@@ -53,11 +54,11 @@ MultiBot.doSlash = function(pCommand, pArguments)
 	return false
 end
 
-MultiBot.doDotWithTarget = function(pCommand)
+MultiBot.doDotWithTarget = function(pCommand, oArguments)
 	local tName = UnitName("target")
 	
 	if(tName ~= nil and tName ~= "Unknown Entity") then
-		SendChatMessage(pCommand .. tName, "SAY")
+		SendChatMessage(pCommand .. " " .. tName .. MultiBot.IF(oArguments ~= nil, " " .. oArguments, ""), "SAY")
 		return true
 	end
 	
@@ -367,6 +368,12 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 		return frame.texts[pIndex]
 	end
 	
+	frame.wowButton = function(pName, pX, pY, pWidth, pHeight, pSize)
+		if(frame.buttons[pName] ~= nil) then frame.buttons[pName]:Hide() end
+		frame.buttons[pName] = MultiBot.wowButton(frame, pName, pX, pY, pWidth, pHeight, pSize)
+		return frame.buttons[pName]
+	end
+	
 	frame.addButton = function(pName, pX, pY, pTexture, pTip)
 		if(frame.buttons[pName] ~= nil) then frame.buttons[pName]:Hide() end
 		frame.buttons[pName] = MultiBot.newButton(frame, pX, pY, frame.size, pTexture, pTip)
@@ -390,6 +397,12 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 		frame.texture:SetTexture(MultiBot.IF(string.sub(pTexture, 1, 9) ~= "Interface", "Interface/Icons/", "") .. pTexture)
 		frame.texture:SetAllPoints(frame)
 		frame.texture:Show()
+		return true
+	end
+	
+	frame.setText = function(pIndex, pText)
+		frame.texts[pIndex]:SetText(pText)
+		frame.texts[pIndex]:Show()
 		return true
 	end
 	
@@ -557,6 +570,51 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
 		button:SetSize(button.size - 2, button.size - 2)
 		GameTooltip:Hide()
 		
+		if(pEvent == "RightButton" and button.doRight ~= nil) then button.doRight(button) end
+		if(pEvent == "LeftButton" and button.doLeft ~= nil) then button.doLeft(button) end
+	end)
+	
+	return button
+end
+
+MultiBot.wowButton = function(pParent, pName, pX, pY, pWidth, pHeight, pSize)
+	local button = CreateFrame("Button", nil, pParent, "UIPanelButtonTemplate")
+	button:SetPoint("BOTTOMRIGHT", pX, pY)
+	button:SetSize(pWidth, pHeight)
+	button:Show()
+	
+	button.text = button:CreateFontString(nil, "ARTWORK")
+	button.text:SetFont("Fonts\\ARIALN.ttf", pSize, "OUTLINE")
+	button.text:SetPoint("CENTER", 0, 0)
+	button.text:SetText("|cffffcc00" .. pName .. "|r")
+	button.text:Show()
+	
+	button:EnableMouse(true)
+	button:RegisterForClicks("LeftButtonDown", "RightButtonDown")
+	
+	-- DO --
+	
+	button.doHide = function()
+		button:Hide()
+		return button
+	end
+	
+	button.doShow = function()
+		button:Show()
+		return button
+	end
+	
+	-- EVENT --
+	
+	button:SetScript("OnEnter", function()
+	end)
+	
+	button:SetScript("OnLeave", function()
+		button.text:SetPoint("CENTER", 0, 0)
+	end)
+	
+	button:SetScript("OnClick", function(pSelf, pEvent)
+		button.text:SetPoint("CENTER", -1, -1)
 		if(pEvent == "RightButton" and button.doRight ~= nil) then button.doRight(button) end
 		if(pEvent == "LeftButton" and button.doLeft ~= nil) then button.doLeft(button) end
 	end)

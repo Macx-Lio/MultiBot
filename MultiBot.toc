@@ -20,3 +20,4 @@ MultiBotEvery.lua
 MultiBotStats.lua
 MultiBotItem.lua
 MultiBot.lua
+MultiBotItemus.lua

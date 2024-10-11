@@ -1154,6 +1154,33 @@ MultiBot.tips.game.master =
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
+MultiBot.tips.game.portal =
+"Memory-Portal\n|cffffffff"..
+"In this Box you will find the Memory-Gems.\n"..
+"Use the Memory-Gems to store your current Location.\n"..
+"You can teleport yourself to stored Locations by using the Memory-Gems.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to show or hide the Soulgems|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.game.memory =
+"Memory-Gem\n|cffffffff"..
+"This Memory-Gem ABOUT.\n"..
+"You need GameMaster-Rights to use this Button.|r\n\n"..
+"|cffff0000Left-Click to store or teleport to the Location|r\n"..
+"|cff999999(Execution-Order: Target)|r\n\n"..
+"|cffff0000Right-Click to forget the Location|r\n"..
+"|cff999999(Execution-Order: Target)|r";
+
+MultiBot.tips.game.itemus = 
+"Itemus\n|cffffffff"..
+"Youl will find every Item in the Bag of the GamerMaster.\n"..
+"Just target the Player or Bot, left click the Item and the wish come true.\n"..
+"Important, not every Item can be generated, so you must try to find out.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to open or close the Itemus|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
 MultiBot.tips.game.summon =
 "Summon\n|cffffffff"..
 "Summons your Target to your Position.\n"..
@@ -1176,37 +1203,7 @@ end
 local tMasters = tMultiBar.addFrame("Masters", 36, 38)
 tMasters:Hide()
 
-tMasters.addButton("Summon", 0, 34, "spell_holy_prayerofspirit", MultiBot.tips.game.summon)
-.doLeft = function(pButton)
-	MultiBot.doDotWithTarget(".summon")
-end
-
-tMasters.addButton("Appear", 0, 68, "spell_holy_divinespirit", MultiBot.tips.game.appear)
-.doLeft = function(pButton)
-	MultiBot.doDotWithTarget(".appear")
-end
-
--- MASTERS:PORTAL --
-
-MultiBot.tips.game.portal =
-"Memory-Portal\n|cffffffff"..
-"In this Box you will find the Memory-Gems.\n"..
-"Use the Memory-Gems to store your current Location.\n"..
-"You can teleport yourself to stored Locations by using the Memory-Gems.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Soulgems|r\n"..
-"|cff999999(Execution-Order: System)|r";
-
-MultiBot.tips.game.memory =
-"Memory-Gem\n|cffffffff"..
-"This Memory-Gem ABOUT.\n"..
-"You need GameMaster-Rights to use this Button.|r\n\n"..
-"|cffff0000Left-Click to store or teleport to the Location|r\n"..
-"|cff999999(Execution-Order: Target)|r\n\n"..
-"|cffff0000Right-Click to forget the Location|r\n"..
-"|cff999999(Execution-Order: Target)|r";
-
-tMasters.addButton("Portal", 0, 0, "inv_box_04", MultiBot.tips.game.portal)
+tMasters.addButton("Portal", 0, 0, "inv_box_02", MultiBot.tips.game.portal)
 .doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Portal"])
 end
@@ -1260,6 +1257,23 @@ tButton.doLeft = function(pButton)
 	tPlayer.memory = pButton
 	tPlayer.waitFor = "COORDS"
 	SendChatMessage(".gps", "SAY")
+end
+
+tMasters.addButton("Itemus", 0, 34, "inv_box_01", MultiBot.tips.game.itemus)
+.doLeft = function(pButton)
+	if(MultiBot.ShowHideSwitch(MultiBot.itemus)) then
+		MultiBot.itemus.addItems()
+	end
+end
+
+tMasters.addButton("Summon", 0, 68, "spell_holy_prayerofspirit", MultiBot.tips.game.summon)
+.doLeft = function(pButton)
+	MultiBot.doDotWithTarget(".summon")
+end
+
+tMasters.addButton("Appear", 0, 102, "spell_holy_divinespirit", MultiBot.tips.game.appear)
+.doLeft = function(pButton)
+	MultiBot.doDotWithTarget(".appear")
 end
 
 -- RIGHT --
@@ -1367,6 +1381,13 @@ MultiBot.inventory.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Inventory.
 MultiBot.inventory.action = "s"
 MultiBot.inventory:Hide()
 
+MultiBot.inventory.wowButton("X", -126, 862, 15, 18, 13)
+.doLeft = function(pButton)
+	local tUnits = MultiBot.frames["MultiBar"].frames["Units"]
+	local tButton = tUnits.frames[MultiBot.inventory.name].buttons["Inventory"]
+	tButton.doLeft(tButton)
+end
+
 MultiBot.inventory.addButton("Sell", -94, 806, "inv_misc_coin_16", MultiBot.tips.inventory.sell).setEnable()
 .doLeft = function(pButton)
 	if(pButton.state) then
@@ -1433,6 +1454,713 @@ MultiBot.addStats(MultiBot.stats, "party1", 0,    0, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party2", 0,  -60, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party3", 0, -120, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party4", 0, -180, 32, 192, 96)
+
+-- ITEMUS --
+
+MultiBot.tips.itemus = {}
+
+MultiBot.itemus = MultiBot.newFrame(MultiBot, -860, -144, 32, 442, 884)
+MultiBot.itemus.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Inventory.blp")
+MultiBot.itemus.addText("Title", "Itemus", "CENTER", -57, 429, 13)
+MultiBot.itemus.addText("Pages", "0/0", "CENTER", -57, 409, 13)
+MultiBot.itemus.name = UnitName("Player")
+MultiBot.itemus.index = {}
+MultiBot.itemus.color = "cff9d9d9d"
+MultiBot.itemus.level = "L10"
+MultiBot.itemus.rare = "R00"
+MultiBot.itemus.slot = "S00"
+MultiBot.itemus.type = "PC"
+MultiBot.itemus.max = 1
+MultiBot.itemus.now = 1
+MultiBot.itemus:Hide()
+
+MultiBot.itemus.wowButton("<", -319, 841, 15, 18, 13).doHide()
+.doLeft = function(pButton)
+	MultiBot.itemus.now = MultiBot.itemus.now - 1
+	MultiBot.itemus.addItems()
+end
+
+MultiBot.itemus.wowButton(">", -225, 841, 15, 18, 13).doHide()
+.doLeft = function(pButton)
+	MultiBot.itemus.now = MultiBot.itemus.now + 1
+	MultiBot.itemus.addItems()
+end
+
+MultiBot.itemus.wowButton("X", -126, 862, 15, 18, 13)
+.doLeft = function(pButton)
+	MultiBot.itemus:Hide()
+end
+
+local tFrame = MultiBot.itemus.addFrame("Items", -397, 807, 32)
+tFrame:Show()
+
+-- ITEMUS:LEVEL --
+
+MultiBot.tips.itemus.level = {}
+MultiBot.tips.itemus.level.master =
+"Level-Filter|cffffffff\n"..
+"Filters the Items by Level in a range of 10.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.level.L10 =
+"Level 0 to 10|cffffffff\n"..
+"Shows the Items with a required Level between 0 and 10.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.level.L20 =
+"Level 11 to 20|cffffffff\n"..
+"Shows the Items with a required Level between 11 and 20.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.level.L30 =
+"Level 21 to 30|cffffffff\n"..
+"Shows the Items with a required Level between 21 and 30.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.level.L40 =
+"Level 31 to 40|cffffffff\n"..
+"Shows the Items with a required Level between 31 and 40.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.level.L50 =
+"Level 41 to 50|cffffffff\n"..
+"Shows the Items with a required Level between 41 and 50.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.level.L60 =
+"Level 51 to 60|cffffffff\n"..
+"Shows the Items with a required Level between 51 and 60.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.level.L70 =
+"Level 61 to 70|cffffffff\n"..
+"Shows the Items with a required Level between 61 and 70.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.level.L80 =
+"Level 71 to 80|cffffffff\n"..
+"Shows the Items with a required Level between 71 and 80.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.itemus.addButton("Level", -94, 806, "achievement_level_10", MultiBot.tips.itemus.level.master).setEnable()
+.doLeft = function(pButton)
+	MultiBot.ShowHideSwitch(pButton.parent.frames["Level"])
+end
+
+local tFrame = MultiBot.itemus.addFrame("Level", -61, 808, 28)
+tFrame:Hide()
+
+tFrame.addButton("L10", 0, 0, "achievement_level_10", MultiBot.tips.itemus.level.L10)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Level", pButton.texture)
+	MultiBot.itemus.level = "L10"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("L20", 30, 0, "achievement_level_20", MultiBot.tips.itemus.level.L20)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Level", pButton.texture)
+	MultiBot.itemus.level = "L20"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("L30", 60, 0, "achievement_level_30", MultiBot.tips.itemus.level.L30)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Level", pButton.texture)
+	MultiBot.itemus.level = "L30"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("L40", 90, 0, "achievement_level_40", MultiBot.tips.itemus.level.L40)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Level", pButton.texture)
+	MultiBot.itemus.level = "L40"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("L50", 120, 0, "achievement_level_50", MultiBot.tips.itemus.level.L50)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Level", pButton.texture)
+	MultiBot.itemus.level = "L50"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("L60", 150, 0, "achievement_level_60", MultiBot.tips.itemus.level.L60)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Level", pButton.texture)
+	MultiBot.itemus.level = "L60"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("L70", 180, 0, "achievement_level_70", MultiBot.tips.itemus.level.L70)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Level", pButton.texture)
+	MultiBot.itemus.level = "L70"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("L80", 210, 0, "achievement_level_80", MultiBot.tips.itemus.level.L80)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Level", pButton.texture)
+	MultiBot.itemus.level = "L80"
+	MultiBot.itemus.addItems(1)
+end
+
+-- ITEMUS:RARE --
+
+MultiBot.tips.itemus.rare = {}
+MultiBot.tips.itemus.rare.master =
+"Quality-Filter|cffffffff\n"..
+"Filters the Items by Quality.\n"..
+"This Filter is additive to the Level-Filter.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.rare.R00 =
+"Poor-Quality|cffffffff\n"..
+"Shows the Items with a Poor-Quality.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.rare.R01 =
+"Common-Quality|cffffffff\n"..
+"Shows the Items with a Common-Quality.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.rare.R02 =
+"Non-Common-Quality|cffffffff\n"..
+"Shows the Items with a Non-Common-Quality.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.rare.R03 =
+"Rare-Quality|cffffffff\n"..
+"Shows the Items with a Rare-Quality.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.rare.R04 =
+"Epic-Quality|cffffffff\n"..
+"Shows the Items with a Epic-Quality.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.rare.R05 =
+"Legendary-Quality|cffffffff\n"..
+"Shows the Items with a Legendary-Quality.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.rare.R06 =
+"Artifact-Quality|cffffffff\n"..
+"Shows the Items with a Artifact-Quality.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.rare.R07 =
+"Heirlooms-Quality|cffffffff\n"..
+"Shows the Items with a Heirlooms-Quality.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.itemus.addButton("Rare", -94, 768, "achievement_quests_completed_01", MultiBot.tips.itemus.rare.master)
+.doLeft = function(pButton)
+	MultiBot.ShowHideSwitch(pButton.parent.frames["Rare"])
+end
+
+local tFrame = MultiBot.itemus.addFrame("Rare", -61, 770)
+tFrame:Hide()
+
+tFrame.addButton("R00", 0, 0, "achievement_quests_completed_01", MultiBot.tips.itemus.rare.R00)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Rare", pButton.texture)
+	MultiBot.itemus.color = "cff9d9d9d"
+	MultiBot.itemus.rare = "R00"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("R01", 30, 0, "achievement_quests_completed_02", MultiBot.tips.itemus.rare.R01)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Rare", pButton.texture)
+	MultiBot.itemus.color = "cffffffff"
+	MultiBot.itemus.rare = "R01"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("R02", 60, 0, "achievement_quests_completed_03", MultiBot.tips.itemus.rare.R02)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Rare", pButton.texture)
+	MultiBot.itemus.color = "cff1eff00"
+	MultiBot.itemus.rare = "R02"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("R03", 90, 0, "achievement_quests_completed_04", MultiBot.tips.itemus.rare.R03)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Rare", pButton.texture)
+	MultiBot.itemus.color = "cff0070dd"
+	MultiBot.itemus.rare = "R03"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("R04", 120, 0, "achievement_quests_completed_05", MultiBot.tips.itemus.rare.R04)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Rare", pButton.texture)
+	MultiBot.itemus.color = "cffa335ee"
+	MultiBot.itemus.rare = "R04"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("R05", 150, 0, "achievement_quests_completed_06", MultiBot.tips.itemus.rare.R05)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Rare", pButton.texture)
+	MultiBot.itemus.color = "cffff8000"
+	MultiBot.itemus.rare = "R05"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("R06", 180, 0, "achievement_quests_completed_07", MultiBot.tips.itemus.rare.R06)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Rare", pButton.texture)
+	MultiBot.itemus.color = "cffff0000"
+	MultiBot.itemus.rare = "R06"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("R07", 210, 0, "achievement_quests_completed_08", MultiBot.tips.itemus.rare.R07)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Rare", pButton.texture)
+	MultiBot.itemus.color = "cffe6cc80"
+	MultiBot.itemus.rare = "R07"
+	MultiBot.itemus.addItems(1)
+end
+
+-- ITEMUS:SLOT --
+
+MultiBot.tips.itemus.slot = {}
+MultiBot.tips.itemus.slot.master =
+"Slot-Filter|cffffffff\n"..
+"Filters the Items by Slot.\n"..
+"This Filter is additive to the Level- and Quality-Filter.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S00 =
+"Non-Equipable|cffffffff\n"..
+"Shows the Items which are not equipable.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S01 =
+"Head-Slot|cffffffff\n"..
+"Shows the Items for the Head-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S02 =
+"Neck-Slot|cffffffff\n"..
+"Shows the Items for the Neck-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S03 =
+"Shoulder-Slot|cffffffff\n"..
+"Shows the Items for the Shoulder-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S04 =
+"Shirt-Slot|cffffffff\n"..
+"Shows the Items for the Shirt-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S05 =
+"Chest-Slot|cffffffff\n"..
+"Shows the Items for the Chest-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S06 =
+"Waist-Slot|cffffffff\n"..
+"Shows the Items for the Waist-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S07 =
+"Legs-Slot|cffffffff\n"..
+"Shows the Items for the Legs-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S08 =
+"Feets-Slot|cffffffff\n"..
+"Shows the Items for the Feets-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S09 =
+"Wrists-Slot|cffffffff\n"..
+"Shows the Items for the Wrists-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S10 =
+"Hands-Slot|cffffffff\n"..
+"Shows the Items for the Hands-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S11 =
+"Finger-Slot|cffffffff\n"..
+"Shows the Items for the Finger-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S12 =
+"Trinket-Slot|cffffffff\n"..
+"Shows the Items for the Trinket-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S13 =
+"One-Hand-Weapon-Slot|cffffffff\n"..
+"Shows the Items for the One-Hand-Weapon-Slot.\n"..
+"Notice that this Item could be used as Main- and Off-Hand-Weapons.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S14 =
+"Shield-Slot|cffffffff\n"..
+"Shows the Items for the Shield-Slot.\n"..
+"Notice that this Slot is the same as Off-Hand-Weapons.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S15 =
+"Ranged-Slot|cffffffff\n"..
+"Shows the Items for the Ranged-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S16 =
+"Back-Slot|cffffffff\n"..
+"Shows the Items for the Back-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S17 =
+"Two-Hand-Weapon-Slot|cffffffff\n"..
+"Shows the Items for the Two-Hand-Weapon-Slot.\n"..
+"Notice that this Slot is the same as Main-Hand-Weapons.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S18 =
+"Bag-Slot|cffffffff\n"..
+"Shows the Items for the Bag-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S19 =
+"Tabard-Slot|cffffffff\n"..
+"Shows the Items for the Tabard-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S20 =
+"Robe-Slot|cffffffff\n"..
+"Shows the Items for the Robe-Slot.\n"..
+"Notice that this Slot is the same as for Chests.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S21 =
+"Main-Hand-Weapons-Slot|cffffffff\n"..
+"Shows the Items for the Main-Hand-Weapons-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S22 =
+"Off-Hand-Weapons-Slot|cffffffff\n"..
+"Shows the Items for the Off-Hand-Weapons-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S23 =
+"Off-Hand-Items-Slot|cffffffff\n"..
+"Shows the Items for the Off-Hand-Items-Slot.\n"..
+"Notice that this Slot is the same as Off-Hand-Weapons.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S24 =
+"Ammo-Slot|cffffffff\n"..
+"Shows the Items for the Ammo-Slot.\n"..
+"Notice that this Slot is the same as Ranged-Right.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S25 =
+"Throw-Slot|cffffffff\n"..
+"Shows the Items for the Throw-Slot.\n"..
+"Notice that this Slot is the same as Ranged.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S26 =
+"Ranged-Right-Slot|cffffffff\n"..
+"Shows the Items for the Ranged-Right-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S27 =
+"Quiver-Slot|cffffffff\n"..
+"Shows the Items for the Quiver-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.itemus.slot.S28 =
+"Relic-Slot|cffffffff\n"..
+"Shows the Items for the Relic-Slot.|r\n\n"..
+"|cffff0000Left-Click to set Filter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.itemus.addButton("Slot", -94, 731, "inv_drink_18", MultiBot.tips.itemus.slot.master)
+.doLeft = function(pButton)
+	MultiBot.ShowHideSwitch(pButton.parent.frames["Slot"])
+end
+
+local tFrame = MultiBot.itemus.addFrame("Slot", -61, 733)
+tFrame:Hide()
+
+tFrame.addButton("S00", 0, 0, "inv_drink_18", MultiBot.tips.itemus.slot.S00)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S00"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S01", 30, 0, "inv_misc_desecrated_platehelm", MultiBot.tips.itemus.slot.S01)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S01"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S02", 60, 0, "inv_jewelry_necklace_22", MultiBot.tips.itemus.slot.S02)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S02"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S03", 90, 0, "inv_misc_desecrated_plateshoulder", MultiBot.tips.itemus.slot.S03)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S03"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S04", 120, 0, "inv_shirt_grey_01", MultiBot.tips.itemus.slot.S04)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S04"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S05", 150, 0, "inv_misc_desecrated_platechest", MultiBot.tips.itemus.slot.S05)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S05"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S06", 180, 0, "inv_misc_desecrated_platebelt", MultiBot.tips.itemus.slot.S06)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S06"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S07", 210, 0, "inv_misc_desecrated_platepants", MultiBot.tips.itemus.slot.S07)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S07"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S08", 0, -30, "inv_misc_desecrated_plateboots", MultiBot.tips.itemus.slot.S08)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S08"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S09", 30, -30, "inv_misc_desecrated_platebracer", MultiBot.tips.itemus.slot.S09)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S09"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S10", 60, -30, "inv_misc_desecrated_plategloves", MultiBot.tips.itemus.slot.S10)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S10"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S11", 90, -30, "inv_jewelry_ring_19", MultiBot.tips.itemus.slot.S11)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S11"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S12", 120, -30, "inv_jewelry_ring_07", MultiBot.tips.itemus.slot.S12)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S12"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S13", 150, -30, "inv_sword_23", MultiBot.tips.itemus.slot.S13)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S13"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S14", 180, -30, "inv_shield_04", MultiBot.tips.itemus.slot.S14)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S14"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S15", 210, -30, "inv_weapon_bow_05", MultiBot.tips.itemus.slot.S15)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S15"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S16", 0, -60, "inv_misc_cape_20", MultiBot.tips.itemus.slot.S16)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S16"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S17", 30, -60, "inv_axe_14", MultiBot.tips.itemus.slot.S17)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S17"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S18", 60, -60, "inv_misc_bag_07_black", MultiBot.tips.itemus.slot.S18)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S18"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S19", 90, -60, "inv_shirt_guildtabard_01", MultiBot.tips.itemus.slot.S19)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S19"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S20", 120, -60, "inv_misc_desecrated_clothchest", MultiBot.tips.itemus.slot.S20)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S20"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S21", 150, -60, "inv_hammer_07", MultiBot.tips.itemus.slot.S21)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S21"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S22", 180, -60, "inv_sword_15", MultiBot.tips.itemus.slot.S22)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S22"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S23", 210, -60, "inv_misc_book_09", MultiBot.tips.itemus.slot.S23)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S23"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S24", 0, -90, "inv_misc_ammo_arrow_01", MultiBot.tips.itemus.slot.S24)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S24"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S25", 30, -90, "inv_throwingknife_02", MultiBot.tips.itemus.slot.S25)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S25"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S26", 60, -90, "inv_wand_07", MultiBot.tips.itemus.slot.S26)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S26"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S27", 90, -90, "inv_misc_quiver_07", MultiBot.tips.itemus.slot.S27)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S26"
+	MultiBot.itemus.addItems(1)
+end
+
+tFrame.addButton("S28", 120, -90, "inv_relics_idolofrejuvenation", MultiBot.tips.itemus.slot.S28)
+.doLeft = function(pButton)
+	MultiBot.Select(MultiBot.itemus, "Slot", pButton.texture)
+	MultiBot.itemus.slot = "S28"
+	MultiBot.itemus.addItems(1)
+end
+
+-- ITEMUS:TYPE --
+
+MultiBot.tips.itemus.type =
+"Type-Filter|cffffffff\n"..
+"With this Filter you can switch between Player-Character and Non-Player-Character Items.\n"..
+"This Filter is additive to the Level-, Quality- and Slot-Filter.|r\n\n"..
+"|cffff0000Left-Click to enable or disable NPC-Stuff|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.itemus.addButton("Type", -94, 694, "inv_misc_head_clockworkgnome_01", MultiBot.tips.itemus.type).setDisable()
+.doLeft = function(pButton)
+	MultiBot.itemus.type = MultiBot.IF(MultiBot.OnOffSwitch(pButton), "NPC", "PC")
+	MultiBot.itemus.addItems(1)
+end
 
 -- FINISH --
 
