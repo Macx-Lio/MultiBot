@@ -1174,9 +1174,16 @@ MultiBot.tips.game.memory =
 
 MultiBot.tips.game.itemus = 
 "Itemus\n|cffffffff"..
-"Youl will find every Item in the Bag of the GamerMaster.\n"..
+"You will find every Item in the Box of the GamerMaster.\n"..
 "Just target the Player or Bot, left click the Item and the wish come true.\n"..
 "Important, not every Item can be generated, so you must try to find out.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to open or close the Itemus|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.game.iconos = 
+"Iconos\n|cffffffff"..
+"You will find every Icon and his Path in this Tool.\n"..
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
 "|cffff0000Left-Click to open or close the Itemus|r\n"..
 "|cff999999(Execution-Order: System)|r";
@@ -1266,12 +1273,19 @@ tMasters.addButton("Itemus", 0, 34, "inv_box_01", MultiBot.tips.game.itemus)
 	end
 end
 
-tMasters.addButton("Summon", 0, 68, "spell_holy_prayerofspirit", MultiBot.tips.game.summon)
+tMasters.addButton("Iconos", 0, 68, "inv_mask_01", MultiBot.tips.game.iconos)
+.doLeft = function(pButton)
+	if(MultiBot.ShowHideSwitch(MultiBot.iconos)) then
+		MultiBot.iconos.addIcons()
+	end
+end
+
+tMasters.addButton("Summon", 0, 102, "spell_holy_prayerofspirit", MultiBot.tips.game.summon)
 .doLeft = function(pButton)
 	MultiBot.doDotWithTarget(".summon")
 end
 
-tMasters.addButton("Appear", 0, 102, "spell_holy_divinespirit", MultiBot.tips.game.appear)
+tMasters.addButton("Appear", 0, 136, "spell_holy_divinespirit", MultiBot.tips.game.appear)
 .doLeft = function(pButton)
 	MultiBot.doDotWithTarget(".appear")
 end
@@ -2161,6 +2175,36 @@ MultiBot.itemus.addButton("Type", -94, 694, "inv_misc_head_clockworkgnome_01", M
 	MultiBot.itemus.type = MultiBot.IF(MultiBot.OnOffSwitch(pButton), "NPC", "PC")
 	MultiBot.itemus.addItems(1)
 end
+
+-- ICONOS --
+
+MultiBot.iconos = MultiBot.newFrame(MultiBot, -860, -144, 32, 442, 884)
+MultiBot.iconos.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Iconos.blp")
+MultiBot.iconos.addText("Title", "Iconos", "CENTER", -57, 429, 13)
+MultiBot.iconos.addText("Pages", "0/0", "CENTER", -57, 409, 13)
+MultiBot.iconos.max = 1
+MultiBot.iconos.now = 1
+MultiBot.iconos:Hide()
+
+MultiBot.iconos.wowButton("<", -319, 841, 15, 18, 13).doHide()
+.doLeft = function(pButton)
+	MultiBot.iconos.now = MultiBot.iconos.now - 1
+	MultiBot.iconos.addIcons()
+end
+
+MultiBot.iconos.wowButton(">", -225, 841, 15, 18, 13).doHide()
+.doLeft = function(pButton)
+	MultiBot.iconos.now = MultiBot.iconos.now + 1
+	MultiBot.iconos.addIcons()
+end
+
+MultiBot.iconos.wowButton("X", -126, 862, 15, 18, 13)
+.doLeft = function(pButton)
+	MultiBot.iconos:Hide()
+end
+
+local tFrame = MultiBot.iconos.addFrame("Icons", -397, 807, 32)
+tFrame:Show()
 
 -- FINISH --
 

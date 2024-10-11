@@ -21,3 +21,4 @@ MultiBotStats.lua
 MultiBotItem.lua
 MultiBot.lua
 MultiBotItemus.lua
+MultiBotIconos.lua

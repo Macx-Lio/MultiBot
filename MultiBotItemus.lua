@@ -43917,8 +43917,14 @@ MultiBot.itemus.addItems = function(pNow)
 	for key, value in pairs(tItems.buttons) do value:Hide() end
 	table.wipe(tItems.buttons)
 	
-	if(tTable == nil) then return SendChatMessage("There are no Items for this Combination.", "SAY") end
-		
+	if(tTable == nil) then
+		SendChatMessage("There are no Items for this Combination.", "SAY")
+		MultiBot.itemus.setText("Pages", "0/0")
+		MultiBot.itemus.buttons[">"]:Hide()
+		MultiBot.itemus.buttons["<"]:Hide()
+		return
+	end
+	
 	MultiBot.itemus.max = math.ceil(table.getn(tTable) / 112)
 	MultiBot.itemus.now = MultiBot.IF(pNow ~= nil, pNow, MultiBot.itemus.now)
 	MultiBot.itemus.setText("Pages", MultiBot.itemus.now .. "/" .. MultiBot.itemus.max)
