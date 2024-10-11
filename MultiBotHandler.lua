@@ -116,10 +116,11 @@ MultiBot:SetScript("OnEvent", function()
 			
 			for i = 1, 50 do
 				local tName, tRank, tIndex, tLevel, tClass = GetGuildRosterInfo(i)
-				local tClass = MultiBot.toClass(tClass)
+				
 				
 				-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
 				if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
+					local tClass = MultiBot.toClass(tClass)
 					local tTip = tClass .. " - " .. tLevel .. " - " .. tName .. MultiBot.doReplace(MultiBot.doReplace(MultiBot.doReplace(MultiBot.tips.unit.button, "NAME", tName), "NAME", tName), "NAME", tName)
 					local tMember = MultiBot.addMember(tName, tClass, "Interface\\AddOns\\MultiBot\\Icons\\class_" .. string.lower(tClass) .. ".blp", tTip).setDisable()
 					tMember.class = tClass
@@ -148,10 +149,10 @@ MultiBot:SetScript("OnEvent", function()
 			
 			for i = 1, 50 do
 				local tName, tLevel, tClass = GetFriendInfo(i)
-				local tClass = MultiBot.toClass(tClass)
 				
 				-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
 				if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
+					local tClass = MultiBot.toClass(tClass)
 					local tTip = tClass .. " - " .. tLevel .. " - " .. tName .. MultiBot.doReplace(MultiBot.doReplace(MultiBot.doReplace(MultiBot.tips.unit.button, "NAME", tName), "NAME", tName), "NAME", tName)
 					local tFriend = MultiBot.addFriend(tName, tClass, "Interface\\AddOns\\MultiBot\\Icons\\class_" .. string.lower(tClass) .. ".blp", tTip).setDisable()
 					tFriend.class = tClass
