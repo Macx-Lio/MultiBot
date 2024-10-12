@@ -117,7 +117,6 @@ MultiBot:SetScript("OnEvent", function()
 			for i = 1, 50 do
 				local tName, tRank, tIndex, tLevel, tClass = GetGuildRosterInfo(i)
 				
-				
 				-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
 				if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
 					local tClass = MultiBot.toClass(tClass)
