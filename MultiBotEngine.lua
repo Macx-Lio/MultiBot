@@ -58,8 +58,11 @@ MultiBot.doDotWithTarget = function(pCommand, oArguments)
 	local tName = UnitName("target")
 	
 	if(tName ~= nil and tName ~= "Unknown Entity") then
-		if(oArguments ~= nil) then SendChatMessage(pCommand .. " " .. tName .. " " .. oArgumments)
-		else SendChatMessage(pCommand .. " " .. tName) end
+		if(oArguments ~= nil)
+		then SendChatMessage(pCommand .. " " .. tName .. " " .. oArguments)
+		else SendChatMessage(pCommand .. " " .. tName)
+		end
+		
 		return true
 	end
 	
