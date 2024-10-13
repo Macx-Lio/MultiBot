@@ -1,13 +1,16 @@
 MultiBot = CreateFrame("Frame", nil, UIParent)
 MultiBot:RegisterEvent("PLAYER_ENTERING_WORLD")
 MultiBot:RegisterEvent("PLAYER_TARGET_CHANGED")
+MultiBot:RegisterEvent("PLAYER_LOGOUT")
 MultiBot:RegisterEvent("CHAT_MSG_WHISPER")
 MultiBot:RegisterEvent("CHAT_MSG_SYSTEM")
 MultiBot:RegisterEvent("CHAT_MSG_ADDON")
-MultiBot:SetPoint("BOTTOMRIGHT", 1, 1)
+MultiBot:RegisterEvent("ADDON_LOADED")
+MultiBot:SetPoint("BOTTOMRIGHT", 0, 0)
 MultiBot:SetSize(1, 1)
 MultiBot:Show()
 
+MultiBotSave = {}
 MultiBot.data = {}
 MultiBot.index = {}
 MultiBot.index.classes = {}
@@ -190,6 +193,16 @@ MultiBot.toUnit = function(pName)
 	end
 	
 	return nil
+end
+
+MultiBot.toPoint = function(pFrame)
+	local tX = pFrame:GetRight()
+	local tY = pFrame:GetBottom()
+	local tResolution = MultiBot.doSplit(({ GetScreenResolutions() })[GetCurrentResolution()], "x")
+	local tHeight = tonumber(tResolution[2])
+	local tWidth = tonumber(tResolution[1])
+	local tScale = 1 / tWidth * MultiBot:GetRight()
+	return math.floor(tX - (tWidth * tScale)), math.floor(tY)
 end
 
 MultiBot.ActionToTarget = function(pAction, oTarget)

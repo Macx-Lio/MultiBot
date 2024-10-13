@@ -1067,6 +1067,13 @@ MultiBot.tips.main.master =
 "|cffff0000Right-Click to close MultiBot|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
+MultiBot.tips.main.coords =
+"Reset-Coords\n|cffffffff"..
+"Reset the Coordinates of the Features:\n"..
+"MultiBar, Inventory, Spellbook, Itemus and Iconos|r\n\n"..
+"|cffff0000Left-Click to reset Coordinates|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
 MultiBot.tips.main.release =
 "Auto-Release\n|cffffffff"..
 "This Feature detects the Death of Bots.\n"..
@@ -1110,7 +1117,16 @@ end
 local tMain = tMultiBar.addFrame("Main", -2, 38)
 tMain:Hide()
 
-tMain.addButton("Release", 0, 0, "achievement_bg_xkills_avgraveyard", MultiBot.tips.main.release).setDisable()
+tMain.addButton("Coords", 0, 0, "inv_gizmo_03", MultiBot.tips.main.coords)
+.doLeft = function(pButton)
+	MultiBot.frames["MultiBar"].setPoint(-262, 144)
+	MultiBot.inventory.setPoint(-700, -144)
+	MultiBot.spellbook.setPoint(-566, 170)
+	MultiBot.itemus.setPoint(-860, -144)
+	MultiBot.iconos.setPoint(-860, -144)
+end
+
+tMain.addButton("Release", 0, 34, "achievement_bg_xkills_avgraveyard", MultiBot.tips.main.release).setDisable()
 .doLeft = function(pButton)
 	if(MultiBot.OnOffSwitch(pButton)) then
 		MultiBot.auto.release = true
@@ -1119,7 +1135,7 @@ tMain.addButton("Release", 0, 0, "achievement_bg_xkills_avgraveyard", MultiBot.t
 	end
 end
 
-tMain.addButton("Stats", 0, 34, "inv_scroll_08", MultiBot.tips.main.stats).setDisable()
+tMain.addButton("Stats", 0, 68, "inv_scroll_08", MultiBot.tips.main.stats).setDisable()
 .doLeft = function(pButton)
 	if(MultiBot.OnOffSwitch(pButton)) then
 		MultiBot.auto.stats = true
@@ -1130,17 +1146,17 @@ tMain.addButton("Stats", 0, 34, "inv_scroll_08", MultiBot.tips.main.stats).setDi
 	end
 end
 
-tMain.addButton("Naxx", 0, 68, "achievement_boss_kelthuzad_01", MultiBot.tips.main.naxx)
+tMain.addButton("Naxx", 0, 102, "achievement_boss_kelthuzad_01", MultiBot.tips.main.naxx)
 .doLeft = function(pButton)
 	MultiBot.ActionToTargetOrGroup("naxx")
 end
 
-tMain.addButton("Reset", 0, 102, "inv_misc_tournaments_symbol_gnome", MultiBot.tips.main.reset)
+tMain.addButton("Reset", 0, 136, "inv_misc_tournaments_symbol_gnome", MultiBot.tips.main.reset)
 .doLeft = function(pButton)
 	MultiBot.ActionToTargetOrGroup("reset botAI")
 end
 
-tMain.addButton("Actions", 0, 136, "inv_helmet_02", MultiBot.tips.main.action)
+tMain.addButton("Actions", 0, 170, "inv_helmet_02", MultiBot.tips.main.action)
 .doLeft = function(pButton)
 	MultiBot.ActionToTargetOrGroup("reset")
 end

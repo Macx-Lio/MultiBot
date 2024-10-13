@@ -54,11 +54,62 @@ end)
 -- HANDLER --
 
 MultiBot:SetScript("OnEvent", function()
+	if(event == "PLAYER_LOGOUT") then
+		local tX, tY = MultiBot.toPoint(MultiBot.frames["MultiBar"])
+		MultiBotSave["MultiBarPoint"] = tX .. ", " .. tY
+		
+		local tX, tY = MultiBot.toPoint(MultiBot.inventory)
+		MultiBotSave["InventoryPoint"] = tX .. ", " .. tY
+		
+		local tX, tY = MultiBot.toPoint(MultiBot.spellbook)
+		MultiBotSave["SpellbookPoint"] = tX .. ", " .. tY
+		
+		local tX, tY = MultiBot.toPoint(MultiBot.itemus)
+		MultiBotSave["ItemusPoint"] = tX .. ", " .. tY
+		
+		local tX, tY = MultiBot.toPoint(MultiBot.iconos)
+		MultiBotSave["IconosPoint"] = tX .. ", " .. tY
+		
+		return
+	end
+	
+	if(event == "ADDON_LOADED" and arg1 == "MultiBot") then
+		if(MultiBotSave["MultiBarPoint"] ~= nil) then
+			local tPoint = MultiBot.doSplit(MultiBotSave["MultiBarPoint"], ", ")
+			MultiBot.frames["MultiBar"].setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
+		end
+		
+		if(MultiBotSave["InventoryPoint"] ~= nil) then
+			local tPoint = MultiBot.doSplit(MultiBotSave["InventoryPoint"], ", ")
+			MultiBot.inventory.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
+		end
+		
+		if(MultiBotSave["SpellbookPoint"] ~= nil) then
+			local tPoint = MultiBot.doSplit(MultiBotSave["SpellbookPoint"], ", ")
+			MultiBot.spellbook.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
+		end
+		
+		if(MultiBotSave["ItemusPoint"] ~= nil) then
+			local tPoint = MultiBot.doSplit(MultiBotSave["ItemusPoint"], ", ")
+			MultiBot.itemus.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
+		end
+		
+		if(MultiBotSave["IconosPoint"] ~= nil) then
+			local tPoint = MultiBot.doSplit(MultiBotSave["IconosPoint"], ", ")
+			MultiBot.iconos.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
+		end
+		
+		return
+	end
+	
 	if(event == "PLAYER_ENTERING_WORLD") then
 		if(MultiBot.init == nil) then
 			SendChatMessage(".playerbot bot list", "SAY")
 			MultiBot.init = true
+			return
 		end
+		
+		return
 	end
 	
 	if(event == "CHAT_MSG_SYSTEM") then
