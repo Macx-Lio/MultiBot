@@ -384,6 +384,12 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 		return frame.buttons[pName]
 	end
 	
+	frame.movButton = function(pName, pX, pY, pSize, pTip)
+		if(frame.buttons[pName] ~= nil) then frame.buttons[pName]:Hide() end
+		frame.buttons[pName] = MultiBot.movButton(frame, pX, pY, pSize, pTip)
+		return frame.buttons[pName]
+	end
+	
 	frame.addFrame = function(pName, pX, pY, oSize, oWidth, oHeight)
 		if(frame.frames[pName] ~= nil) then frame.frames[pName]:Hide() end
 		frame.frames[pName] = MultiBot.newFrame(frame, pX, pY, MultiBot.IF(oSize ~= nil, oSize, frame.size - 4), oWidth, oHeight)
@@ -634,6 +640,51 @@ MultiBot.wowButton = function(pParent, pName, pX, pY, pWidth, pHeight, pSize)
 		button.text:SetPoint("CENTER", -1, -1)
 		if(pEvent == "RightButton" and button.doRight ~= nil) then button.doRight(button) end
 		if(pEvent == "LeftButton" and button.doLeft ~= nil) then button.doLeft(button) end
+	end)
+	
+	return button
+end
+
+-- MOVE --
+
+MultiBot.movButton = function(pParent, pX, pY, pSize, pTip)
+	local button = CreateFrame("Button", nil, pParent)
+	button:SetPoint("BOTTOMRIGHT", pX, pY)
+	button:SetSize(pSize, pSize)
+	button:Show()
+	
+	button:EnableMouse(true)
+	button:RegisterForClicks("RightButtonDown")
+	button:RegisterForDrag("RightButton")
+	
+	button.parent = pParent
+	button.size = pSize
+	button.tip = pTip
+	button.x = pX
+	button.y = pY
+	
+	-- EVENT --
+	
+	button:SetScript("OnEnter", function()
+		GameTooltip:SetOwner(button, "ANCHOR_TOPRIGHT", 0 - button.size, 2)
+		GameTooltip:SetText(button.tip)
+		GameTooltip:Show()
+	end)
+	
+	button:SetScript("OnLeave", function()
+		GameTooltip:Hide()
+	end)
+	
+	button:SetScript("OnClick", function(pSelf, pEvent)
+		GameTooltip:Hide()
+	end)
+	
+	button:SetScript("OnDragStart", function()
+		button.parent:StartMoving()
+	end)
+	
+	button:SetScript("OnDragStop", function()
+		button.parent:StopMovingOrSizing()
 	end)
 	
 	return button

@@ -1,6 +1,7 @@
 -- MULTIBAR --
 
 local tMultiBar = MultiBot.addFrame("MultiBar", -262, 144, 36)
+tMultiBar:SetMovable(true)
 
 -- LEFT --
 
@@ -1152,6 +1153,8 @@ MultiBot.tips.game.master =
 "In this Control you will find useful GameMaster-Commands.\n"..
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to drag and move MultiBot|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.game.portal =
@@ -1202,8 +1205,15 @@ MultiBot.tips.game.appear =
 "|cffff0000Left-Click to appear at your Target|r\n"..
 "|cff999999(Execution-Order: Target)|r";
 
-tMultiBar.addButton("Masters", 38, 0, "mail_gmicon", MultiBot.tips.game.master)
-.doLeft = function(pButton)
+local tButton = tMultiBar.addButton("Masters", 38, 0, "mail_gmicon", MultiBot.tips.game.master)
+tButton:RegisterForDrag("RightButton")
+tButton:SetScript("OnDragStart", function()
+	MultiBot.frames["MultiBar"]:StartMoving()
+end)
+tButton:SetScript("OnDragStop", function()
+	MultiBot.frames["MultiBar"]:StopMovingOrSizing()
+end)
+tButton.doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Masters"])
 end
 
@@ -1392,8 +1402,12 @@ MultiBot.tips.inventory.drop =
 
 MultiBot.inventory = MultiBot.newFrame(MultiBot, -700, -144, 32, 442, 884)
 MultiBot.inventory.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Inventory.blp")
+MultiBot.inventory.addText("Title", "Inventory", "CENTER", -58, 429, 12)
 MultiBot.inventory.action = "s"
+MultiBot.inventory:SetMovable(true)
 MultiBot.inventory:Hide()
+
+MultiBot.inventory.movButton("Move", -406, 849, 34, "Right-Click to drag and move the Inventory")
 
 MultiBot.inventory.wowButton("X", -126, 862, 15, 18, 13)
 .doLeft = function(pButton)
@@ -1486,7 +1500,10 @@ MultiBot.itemus.slot = "S00"
 MultiBot.itemus.type = "PC"
 MultiBot.itemus.max = 1
 MultiBot.itemus.now = 1
+MultiBot.itemus:SetMovable(true)
 MultiBot.itemus:Hide()
+
+MultiBot.itemus.movButton("Move", -407, 850, 32, "Right-Click to drag and move Itemus")
 
 MultiBot.itemus.wowButton("<", -319, 841, 15, 18, 13).doHide()
 .doLeft = function(pButton)
@@ -2184,7 +2201,10 @@ MultiBot.iconos.addText("Title", "Iconos", "CENTER", -57, 429, 13)
 MultiBot.iconos.addText("Pages", "0/0", "CENTER", -57, 409, 13)
 MultiBot.iconos.max = 1
 MultiBot.iconos.now = 1
+MultiBot.iconos:SetMovable(true)
 MultiBot.iconos:Hide()
+
+MultiBot.iconos.movButton("Move", -407, 850, 32, "Right-Click to drag and move Iconos")
 
 MultiBot.iconos.wowButton("<", -319, 841, 15, 18, 13).doHide()
 .doLeft = function(pButton)
@@ -2215,7 +2235,10 @@ MultiBot.spellbook.addText("Title", "Spellbook", "CENTER", -128, 270, 11)
 MultiBot.spellbook.spells = {}
 MultiBot.spellbook.max = 1
 MultiBot.spellbook.now = 1
+MultiBot.spellbook:SetMovable(true)
 MultiBot.spellbook:Hide()
+
+MultiBot.spellbook.movButton("Move", -525, 525, 48, "Right-Click to drag and move the Spellbook")
 
 MultiBot.spellbook.wowButton("<", -540, 225, 15, 18, 13).doShow()
 .doLeft = function(pButton)

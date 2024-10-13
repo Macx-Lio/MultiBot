@@ -344,6 +344,8 @@ MultiBot:SetScript("OnEvent", function()
 			local tItems = MultiBot.inventory.frames["Items"]
 			for key, value in pairs(tItems.buttons) do value:Hide() end
 			table.wipe(tItems.buttons)
+			MultiBot.inventory.setText("Title", "Inventory of " .. arg2)
+			MultiBot.inventory.name = arg2
 			tItems.index = 0
 			tButton.waitFor = "ITEM"
 			SendChatMessage("stats", "WHISPER", nil, arg2)

@@ -91,6 +91,12 @@ MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 		else
 			local tUnits = MultiBot.frames["MultiBar"].frames["Units"]
 			for key, value in pairs(MultiBot.index.actives) do tUnits.frames[value].getButton("Inventory").setDisable() end
+			
+			--if(MultiBot.spellbook:IsVisible()) then
+			--	tUnits.frames[MultiBot.spellbook.name].buttons["Spellbook"].setDisable()
+			--	MultiBot.spellbook:Hide()
+			--end
+			
 			pButton.setEnable()
 			MultiBot.inventory.name = pButton.getName()
 			tUnits.buttons[MultiBot.inventory.name].waitFor = "INVENTORY"
@@ -106,6 +112,12 @@ MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 		else
 			local tUnits = MultiBot.frames["MultiBar"].frames["Units"]
 			for key, value in pairs(MultiBot.index.actives) do tUnits.frames[value].getButton("Spellbook").setDisable() end
+			
+			--if(MultiBot.inventory:IsVisible()) then
+			--	tUnits.frames[MultiBot.inventory.name].buttons["Inventory"].setDisable()
+			--	MultiBot.inventory:Hide()
+			--end
+			
 			pButton.setEnable()
 			MultiBot.spellbook.name = pButton.getName()
 			tUnits.buttons[MultiBot.spellbook.name].waitFor = "SPELLBOOK"
