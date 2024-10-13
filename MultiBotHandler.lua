@@ -289,7 +289,7 @@ MultiBot:SetScript("OnEvent", function()
 		local tButton = MultiBot.frames["MultiBar"].frames["Units"].buttons[arg2]
 		if(tButton == nil) then return end
 		
-		if(tButton.waitFor ~= "ITEM" and MultiBot.isInside(arg1, "Bag")) then
+		if(tButton.waitFor ~= "ITEM" and tButton.waitFor ~= "SPELL" and MultiBot.isInside(arg1, "Bag")) then
 			local tUnit = MultiBot.toUnit(arg2)
 			if(MultiBot.stats.frames[tUnit] == nil) then MultiBot.addStats(MultiBot.stats, "party1", 0, 0, 32, 192, 96) end
 			MultiBot.stats.frames[tUnit].setStats(arg2, UnitLevel(tUnit), arg1)
@@ -359,6 +359,37 @@ MultiBot:SetScript("OnEvent", function()
 		
 		if(tButton.waitFor == "ITEM") then
 			MultiBot.addItem(MultiBot.inventory.frames["Items"], arg1)
+			return
+		end
+		
+		-- Spellbook --
+		
+		if(tButton.waitFor == "SPELLBOOK" and MultiBot.isInside(arg1, "Spells")) then
+			table.wipe(MultiBot.spellbook.spells)
+			MultiBot.spellbook.setText("Title", "Spellbook of " .. arg2)
+			MultiBot.spellbook.name = arg2
+			MultiBot.spellbook.index = 0
+			MultiBot.spellbook.from = 1
+			MultiBot.spellbook.to = 12
+			tButton.waitFor = "SPELL"
+			SendChatMessage("stats", "WHISPER", nil, arg2)
+			return
+		end
+		
+		if(tButton.waitFor == "SPELL" and MultiBot.isInside(arg1, "Bag", "Dur", "XP")) then
+			MultiBot.spellbook.now = 1
+			MultiBot.spellbook.max = math.ceil(MultiBot.spellbook.index / 12)
+			MultiBot.spellbook.setText("Pages", "|cffffcc00" .. MultiBot.spellbook.now .. "/" .. MultiBot.spellbook.max .. "|r")
+			if(MultiBot.spellbook.now == MultiBot.spellbook.max) then MultiBot.spellbook.buttons[">"].doHide() end
+			MultiBot.spellbook.buttons["<"].doHide()
+			MultiBot.spellbook:Show()
+			tButton.waitFor = ""
+			InspectUnit(arg2)
+			return
+		end
+		
+		if(tButton.waitFor == "SPELL") then
+			MultiBot.addSpell(arg1)
 			return
 		end
 		

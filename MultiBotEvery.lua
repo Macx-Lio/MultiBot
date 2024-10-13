@@ -42,6 +42,12 @@ MultiBot.tips.every.inventory =
 "|cffff0000Left-Click to open or close the Inventory|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
+MultiBot.tips.every.spellbook =
+"Spellbook|cffffffff\n"..
+"It opens or closes the Spellbook of this Bot.|r\n\n"..
+"|cffff0000Left-Click to open or close the Spellbook|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
 MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 	pFrame.addButton("Summon", 64, 0, "ability_hunter_beastcall", MultiBot.tips.every.summon)
 	.doLeft = function(pButton)
@@ -89,6 +95,21 @@ MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 			MultiBot.inventory.name = pButton.getName()
 			tUnits.buttons[MultiBot.inventory.name].waitFor = "INVENTORY"
 			SendChatMessage("items", "WHISPER", nil, pButton.getName())
+		end
+	end
+	
+	pFrame.addButton("Spellbook", 244, 0, "inv_misc_book_09", MultiBot.tips.every.spellbook).setDisable()
+	.doLeft = function(pButton)
+		if(pButton.state) then
+			MultiBot.spellbook:Hide()
+			pButton.setDisable()
+		else
+			local tUnits = MultiBot.frames["MultiBar"].frames["Units"]
+			for key, value in pairs(MultiBot.index.actives) do tUnits.frames[value].getButton("Spellbook").setDisable() end
+			pButton.setEnable()
+			MultiBot.spellbook.name = pButton.getName()
+			tUnits.buttons[MultiBot.spellbook.name].waitFor = "SPELLBOOK"
+			SendChatMessage("spells", "WHISPER", nil, pButton.getName())
 		end
 	end
 	

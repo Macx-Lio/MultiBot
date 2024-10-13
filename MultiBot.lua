@@ -2206,6 +2206,130 @@ end
 local tFrame = MultiBot.iconos.addFrame("Icons", -397, 807, 32)
 tFrame:Show()
 
+-- SPELLBOOK --
+
+MultiBot.spellbook = MultiBot.newFrame(MultiBot, -566, 170, 32, 576, 576)
+MultiBot.spellbook.addTexture("Interface\\AddOns\\MultiBot\\Textures\\spellbook.blp")
+MultiBot.spellbook.addText("Pages", "|cffffcc000/0|r", "CENTER", -138, -54, 13)
+MultiBot.spellbook.addText("Title", "Spellbook", "CENTER", -128, 270, 11)
+MultiBot.spellbook.spells = {}
+MultiBot.spellbook.max = 1
+MultiBot.spellbook.now = 1
+MultiBot.spellbook:Hide()
+
+MultiBot.spellbook.wowButton("<", -540, 225, 15, 18, 13).doShow()
+.doLeft = function(pButton)
+	MultiBot.spellbook.to = MultiBot.spellbook.to - 12
+	MultiBot.spellbook.now = MultiBot.spellbook.now - 1
+	MultiBot.spellbook.from = MultiBot.spellbook.from - 12
+	MultiBot.spellbook.setText("Pages", "|cffffcc00" .. MultiBot.spellbook.now .. "/" .. MultiBot.spellbook.max .. "|r")
+	MultiBot.spellbook.buttons[">"].doShow()
+	
+	if(MultiBot.spellbook.now == 1) then pButton.doHide() end
+	local tIndex = 1
+	
+	for i = MultiBot.spellbook.from, MultiBot.spellbook.to do
+		MultiBot.setSpell(tIndex, MultiBot.spellbook.spells[i])
+		tIndex = tIndex + 1
+	end
+end
+
+MultiBot.spellbook.wowButton(">", -300, 225, 15, 18, 13).doShow()
+.doLeft = function(pButton)
+	MultiBot.spellbook.to = MultiBot.spellbook.to + 12
+	MultiBot.spellbook.now = MultiBot.spellbook.now + 1
+	MultiBot.spellbook.from = MultiBot.spellbook.from + 12
+	MultiBot.spellbook.setText("Pages", "|cffffcc00" .. MultiBot.spellbook.now .. "/" .. MultiBot.spellbook.max .. "|r")
+	MultiBot.spellbook.buttons["<"].doShow()
+	
+	if(MultiBot.spellbook.now == MultiBot.spellbook.max) then pButton.doHide() end
+	local tIndex = 1
+	
+	for i = MultiBot.spellbook.from, MultiBot.spellbook.to do
+		MultiBot.setSpell(tIndex, MultiBot.spellbook.spells[i])
+		tIndex = tIndex + 1
+	end
+end
+
+MultiBot.spellbook.wowButton("X", -287, 548, 15, 18, 13)
+.doLeft = function(pButton)
+	local tUnits = MultiBot.frames["MultiBar"].frames["Units"]
+	local tButton = tUnits.frames[MultiBot.spellbook.name].buttons["Spellbook"]
+	tButton.doLeft(tButton)
+end
+
+MultiBot.spellbook.addText("R01", "|cff806040Rank|r", "TOPLEFT", 58, -88, 11)
+MultiBot.spellbook.addText("T01", "|cffffcc00Title|r", "TOPLEFT", 58, -72, 12)
+MultiBot.spellbook.addButton("S01", -522, 475, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
+MultiBot.spellbook.addText("R02", "|cff806040Rank|r", "TOPLEFT", 190, -88, 11)
+MultiBot.spellbook.addText("T02", "|cffffcc00Title|r", "TOPLEFT", 190, -72, 12)
+MultiBot.spellbook.addButton("S02", -389, 475, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
+MultiBot.spellbook.addText("R03", "|cff806040Rank|r", "TOPLEFT", 58, -131, 11)
+MultiBot.spellbook.addText("T03", "|cffffcc00Title|r", "TOPLEFT", 58, -115, 12)
+MultiBot.spellbook.addButton("S03", -522, 432, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
+MultiBot.spellbook.addText("R04", "|cff806040Rank|r", "TOPLEFT", 190, -131, 11)
+MultiBot.spellbook.addText("T04", "|cffffcc00Title|r", "TOPLEFT", 190, -115, 12)
+MultiBot.spellbook.addButton("S04", -389, 432, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
+MultiBot.spellbook.addText("R05", "|cff806040Rank|r", "TOPLEFT", 58, -174, 11)
+MultiBot.spellbook.addText("T05", "|cffffcc00Title|r", "TOPLEFT", 58, -158, 12)
+MultiBot.spellbook.addButton("S05", -522, 389, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
+MultiBot.spellbook.addText("R06", "|cff806040Rank|r", "TOPLEFT", 190, -174, 11)
+MultiBot.spellbook.addText("T06", "|cffffcc00Title|r", "TOPLEFT", 190, -158, 12)
+MultiBot.spellbook.addButton("S06", -389, 389, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
+MultiBot.spellbook.addText("R07", "|cff806040Rank|r", "TOPLEFT", 58, -217, 11)
+MultiBot.spellbook.addText("T07", "|cffffcc00Title|r", "TOPLEFT", 58, -201, 12)
+MultiBot.spellbook.addButton("S07", -522, 346, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
+MultiBot.spellbook.addText("R08", "|cff806040Rank|r", "TOPLEFT", 190, -217, 11)
+MultiBot.spellbook.addText("T08", "|cffffcc00Title|r", "TOPLEFT", 190, -201, 12)
+MultiBot.spellbook.addButton("S08", -389, 346, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
+MultiBot.spellbook.addText("R09", "|cff806040Rank|r", "TOPLEFT", 58, -260, 11)
+MultiBot.spellbook.addText("T09", "|cffffcc00Title|r", "TOPLEFT", 58, -244, 12)
+MultiBot.spellbook.addButton("S09", -522, 303, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
+MultiBot.spellbook.addText("R10", "|cff806040Rank|r", "TOPLEFT", 190, -260, 11)
+MultiBot.spellbook.addText("T10", "|cffffcc00Title|r", "TOPLEFT", 190, -244, 12)
+MultiBot.spellbook.addButton("S10", -389, 303, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
+MultiBot.spellbook.addText("R11", "|cff806040Rank|r", "TOPLEFT", 58, -303, 11)
+MultiBot.spellbook.addText("T11", "|cffffcc00Title|r", "TOPLEFT", 58, -287, 12)
+MultiBot.spellbook.addButton("S11", -522, 260, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
+MultiBot.spellbook.addText("R12", "|cff806040Rank|r", "TOPLEFT", 190, -303, 11)
+MultiBot.spellbook.addText("T12", "|cffffcc00Title|r", "TOPLEFT", 190, -287, 12)
+MultiBot.spellbook.addButton("S12", -389, 260, "inv_misc_questionmark", "Text")
+.doLeft = function(pButton)
+end
+
 -- FINISH --
 
 MultiBot.state = true

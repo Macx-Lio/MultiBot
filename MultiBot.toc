@@ -18,6 +18,7 @@ MultiBotWarlock.lua
 MultiBotWarrior.lua
 MultiBotEvery.lua
 MultiBotStats.lua
+MultiBotSpell.lua
 MultiBotItem.lua
 MultiBot.lua
 MultiBotItemus.lua

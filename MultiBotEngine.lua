@@ -397,6 +397,11 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 		return true
 	end
 	
+	frame.setButton = function(pIndex, pTexture, pTip)
+		frame.buttons[pIndex].setButton(pTexture, pTip)
+		return true
+	end
+	
 	frame.setTexture = function(pTexture)
 		frame.texture:SetTexture(MultiBot.IF(string.sub(pTexture, 1, 9) ~= "Interface", "Interface/Icons/", "") .. pTexture)
 		frame.texture:SetAllPoints(frame)
@@ -487,6 +492,14 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
 		button:SetPoint("BOTTOMRIGHT", pX, pY)
 		button.x = pX
 		button.y = pY
+		return button
+	end
+	
+	button.setButton = function(pTexture, pTip)
+		button.icon:SetTexture(MultiBot.IF(string.sub(pTexture, 1, 9) ~= "Interface", "Interface/Icons/", "") .. pTexture)
+		button.icon:SetAllPoints(button)
+		button.texture = pTexture
+		button.tip = pTip
 		return button
 	end
 	
