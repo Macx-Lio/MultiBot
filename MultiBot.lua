@@ -1247,7 +1247,7 @@ tPortal:Hide()
 local tButton = tPortal.addButton("Red", 0, 0, "inv_jewelcrafting_gem_16", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable()
 tButton.doRight = function(pButton)
 	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end
-	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")
+	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside")
 	pButton.setDisable()
 end
 tButton.doLeft = function(pButton)
@@ -1263,7 +1263,7 @@ end
 local tButton = tPortal.addButton("Green", 30, 0, "inv_jewelcrafting_gem_13", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable()
 tButton.doRight = function(pButton)
 	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end
-	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")
+	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside")
 	pButton.setDisable()
 end
 tButton.doLeft = function(pButton)
@@ -1279,7 +1279,7 @@ end
 local tButton = tPortal.addButton("Blue", 60, 0, "inv_jewelcrafting_gem_17", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable()
 tButton.doRight = function(pButton)
 	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end
-	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")
+	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside")
 	pButton.setDisable()
 end
 tButton.doLeft = function(pButton)

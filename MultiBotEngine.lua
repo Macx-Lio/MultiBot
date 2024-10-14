@@ -205,6 +205,29 @@ MultiBot.toPoint = function(pFrame)
 	return math.floor(tX - (tWidth * tScale)), math.floor(tY)
 end
 
+MultiBot.SavePortal = function(pButton)
+	local tSave = pButton.goMap
+	tSave = tSave .. ";" .. (math.ceil(pButton.goX * 1000) / 1000)
+	tSave = tSave .. ";" .. (math.ceil(pButton.goY * 1000) / 1000)
+	tSave = tSave .. ";" .. (math.ceil(pButton.goZ * 1000) / 1000)
+	tSave = tSave .. ";" .. pButton.tip
+	tSave = tSave .. ";" .. MultiBot.IF(pButton.state, 1, 0)
+	return tSave
+end
+
+MultiBot.LoadPortal = function(pButton, pValue)
+	local tValue = MultiBot.doSplit(pValue, ";")
+	pButton.goMap = tonumber(tValue[1])
+	pButton.goX = tonumber(tValue[2])
+	pButton.goY = tonumber(tValue[3])
+	pButton.goZ = tonumber(tValue[4])
+	pButton.tip = tValue[5]
+	if(tValue[6] == "1")
+	then pButton.setEnable()
+	else pButton.setDisable()
+	end
+end
+
 MultiBot.ActionToTarget = function(pAction, oTarget)
 	local tName = MultiBot.IF(oTarget == nil, UnitName("target"), oTarget)
 	

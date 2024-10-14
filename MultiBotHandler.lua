@@ -70,6 +70,11 @@ MultiBot:SetScript("OnEvent", function()
 		local tX, tY = MultiBot.toPoint(MultiBot.iconos)
 		MultiBotSave["IconosPoint"] = tX .. ", " .. tY
 		
+		local tPortal = MultiBot.frames["MultiBar"].frames["Masters"].frames["Portal"]
+		MultiBotSave["MemoryGem1"] =  MultiBot.SavePortal(tPortal.buttons["Red"])
+		MultiBotSave["MemoryGem2"] =  MultiBot.SavePortal(tPortal.buttons["Green"])
+		MultiBotSave["MemoryGem3"] =  MultiBot.SavePortal(tPortal.buttons["Blue"])
+		
 		return
 	end
 	
@@ -97,6 +102,21 @@ MultiBot:SetScript("OnEvent", function()
 		if(MultiBotSave["IconosPoint"] ~= nil) then
 			local tPoint = MultiBot.doSplit(MultiBotSave["IconosPoint"], ", ")
 			MultiBot.iconos.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
+		end
+		
+		if(MultiBotSave["MemoryGem1"] ~= nil) then
+			local tGem = MultiBot.frames["MultiBar"].frames["Masters"].frames["Portal"].buttons["Red"]
+			MultiBot.LoadPortal(tGem, MultiBotSave["MemoryGem1"])
+		end
+		
+		if(MultiBotSave["MemoryGem2"] ~= nil) then
+			local tGem = MultiBot.frames["MultiBar"].frames["Masters"].frames["Portal"].buttons["Green"]
+			MultiBot.LoadPortal(tGem, MultiBotSave["MemoryGem2"])
+		end
+		
+		if(MultiBotSave["MemoryGem3"] ~= nil) then
+			local tGem = MultiBot.frames["MultiBar"].frames["Masters"].frames["Portal"].buttons["Blue"]
+			MultiBot.LoadPortal(tGem, MultiBotSave["MemoryGem3"])
 		end
 		
 		return
@@ -300,7 +320,7 @@ MultiBot:SetScript("OnEvent", function()
 			local tMap = string.sub(tLocation[3], 2, string.len(tLocation[3]) - 1)
 			
 			tPlayer.memory.goMap = tLocation[2]
-			tPlayer.memory.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "will teleport you to '" .. tMap .. "-" .. tZone .. "'.")
+			tPlayer.memory.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "will teleport you to '" .. tMap .. "-" .. tZone .. "'")
 			return
 		end
 		
