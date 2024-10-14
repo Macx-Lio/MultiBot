@@ -594,6 +594,7 @@ tButton.roster = "players"
 tButton.filter = "none"
 
 tButton.doRight = function(pButton)
+	
 end
 
 tButton.doLeft = function(pButton, oRoster, oFilter)

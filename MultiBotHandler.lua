@@ -161,11 +161,7 @@ MultiBot:SetScript("OnEvent", function()
 				local tClass = MultiBot.toClass(tBot[2])
 				local tOnline = string.sub(tBot[1], 1, 1)
 				
-				
-				local tTip = tClass .. " - " .. tName .. MultiBot.doReplace(MultiBot.doReplace(MultiBot.doReplace(MultiBot.tips.unit.button, "NAME", tName), "NAME", tName), "NAME", tName)
-				local tPlayer = MultiBot.addPlayer(tName, tClass, "Interface\\AddOns\\MultiBot\\Icons\\class_" .. string.lower(tClass) .. ".blp", tTip).setDisable()
-				tPlayer.class = tClass
-				tPlayer.name = tName
+				local tPlayer = MultiBot.addPlayer(tName, tClass, tName).setDisable()
 				
 				tPlayer.doRight = function(pButton)
 					SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
@@ -190,11 +186,7 @@ MultiBot:SetScript("OnEvent", function()
 				
 				-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
 				if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
-					local tClass = MultiBot.toClass(tClass)
-					local tTip = tClass .. " - " .. tLevel .. " - " .. tName .. MultiBot.doReplace(MultiBot.doReplace(MultiBot.doReplace(MultiBot.tips.unit.button, "NAME", tName), "NAME", tName), "NAME", tName)
-					local tMember = MultiBot.addMember(tName, tClass, "Interface\\AddOns\\MultiBot\\Icons\\class_" .. string.lower(tClass) .. ".blp", tTip).setDisable()
-					tMember.class = tClass
-					tMember.name = tName
+					local tMember = MultiBot.addMember(tName, tClass, tLevel .. " - " .. tName).setDisable()
 					
 					tMember.doRight = function(pButton)
 						SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
@@ -222,11 +214,7 @@ MultiBot:SetScript("OnEvent", function()
 				
 				-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
 				if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
-					local tClass = MultiBot.toClass(tClass)
-					local tTip = tClass .. " - " .. tLevel .. " - " .. tName .. MultiBot.doReplace(MultiBot.doReplace(MultiBot.doReplace(MultiBot.tips.unit.button, "NAME", tName), "NAME", tName), "NAME", tName)
-					local tFriend = MultiBot.addFriend(tName, tClass, "Interface\\AddOns\\MultiBot\\Icons\\class_" .. string.lower(tClass) .. ".blp", tTip).setDisable()
-					tFriend.class = tClass
-					tFriend.name = tName
+					local tFriend = MultiBot.addFriend(tName, tClass, tLevel .. " - " .. tName).setDisable()
 					
 					tFriend.doRight = function(pButton)
 						SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
@@ -358,15 +346,38 @@ MultiBot:SetScript("OnEvent", function()
 		-- REQUIREMENT --
 		
 		local tButton = MultiBot.frames["MultiBar"].frames["Units"].buttons[arg2]
-		if(tButton == nil) then return end
+		if(tButton == nil and MultiBot.isInside(arg1, "Hello")) then
+			local tUnit = MultiBot.toUnit(arg2)
+			
+			local tLevel = UnitLevel(tUnit)
+			local tLocClass, tClass = UnitClass(tUnit)
+			
+			tButton = MultiBot.addActive(arg2, tClass, tLevel .. " - " .. arg2).setDisable()
+			
+			tButton.doRight = function(pButton)
+				SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
+				if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
+				pButton.setDisable()
+			end
+					
+			tButton.doLeft = function(pButton)
+				if(pButton.state) then
+					if(pButton.parent.frames[pButton.name] ~= nil) then MultiBot.ShowHideSwitch(pButton.parent.frames[pButton.name]) end
+				else
+					SendChatMessage(".playerbot bot add " .. pButton.name, "SAY")
+					pButton.setEnable()
+				end
+			end
+		end
 		
 		if(tButton.waitFor ~= "ITEM" and tButton.waitFor ~= "SPELL" and MultiBot.isInside(arg1, "Bag")) then
 			local tUnit = MultiBot.toUnit(arg2)
 			if(MultiBot.stats.frames[tUnit] == nil) then MultiBot.addStats(MultiBot.stats, "party1", 0, 0, 32, 192, 96) end
 			MultiBot.stats.frames[tUnit].setStats(arg2, UnitLevel(tUnit), arg1)
+			return
 		end
 		
-		if(arg1 == "Hello" or arg1 == "Hello!") then
+		if(MultiBot.isInside(arg1, "Hello")) then
 			tButton.waitFor = "CO"
 			SendChatMessage("Asked " .. arg2 .. " for Combat-Strategies.", "SAY")
 			SendChatMessage("co ?", "WHISPER", nil, arg2)
