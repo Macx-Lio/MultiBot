@@ -305,12 +305,8 @@ MultiBot:SetScript("OnEvent", function()
 			
 			if(GetNumRaidMembers() > 4) then
 				for i = 1, GetNumRaidMembers() do
-					local tButton = MultiBot.getBot(UnitName("raid" .. i))
-					
-					if(tButton ~= nil) then
-						tButton.waitFor = "CO"
-						SendChatMessage("co ?", "WHISPER", nil, tButton.name)
-					end
+					local tName = UnitName("raid" .. i)
+					SendChatMessage(".playerbot bot add " .. tName, "SAY")
 				end
 				
 				return
@@ -320,12 +316,8 @@ MultiBot:SetScript("OnEvent", function()
 			
 			if(GetNumPartyMembers() > 0) then
 				for i = 1, GetNumPartyMembers() do
-					local tButton = MultiBot.getBot(UnitName("party" .. i))
-					
-					if(tButton ~= nil) then
-						tButton.waitFor = "CO"
-						SendChatMessage("co ?", "WHISPER", nil, tButton.name)
-					end
+					local tName = UnitName("party" .. i)
+					SendChatMessage(".playerbot bot add " .. tName, "SAY")
 				end
 				
 				return
