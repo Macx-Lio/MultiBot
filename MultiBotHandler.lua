@@ -141,7 +141,7 @@ MultiBot:SetScript("OnEvent", function()
 			local tLocClass, tClass, tLocRace, tRace, tSex, tName = GetPlayerInfoByGUID(UnitGUID("player"))
 			tClass = MultiBot.toClass(tClass)
 			
-			local tPlayer = MultiBot.addPlayer(tName, tClass, "inv_misc_head_clockworkgnome_01", MultiBot.tips.unit.selfbot).setDisable()
+			local tPlayer = MultiBot.addSelf(tClass, tName).setDisable()
 			tPlayer.class = tClass
 			tPlayer.name = tName
 			
@@ -161,7 +161,7 @@ MultiBot:SetScript("OnEvent", function()
 				local tClass = MultiBot.toClass(tBot[2])
 				local tOnline = string.sub(tBot[1], 1, 1)
 				
-				local tPlayer = MultiBot.addPlayer(tName, tClass, tName).setDisable()
+				local tPlayer = MultiBot.addPlayer(tClass, tName).setDisable()
 				
 				tPlayer.doRight = function(pButton)
 					SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
@@ -186,7 +186,7 @@ MultiBot:SetScript("OnEvent", function()
 				
 				-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
 				if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
-					local tMember = MultiBot.addMember(tName, tClass, tLevel .. " - " .. tName).setDisable()
+					local tMember = MultiBot.addMember(tClass, tLevel, tName).setDisable()
 					
 					tMember.doRight = function(pButton)
 						SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
@@ -214,7 +214,7 @@ MultiBot:SetScript("OnEvent", function()
 				
 				-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
 				if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
-					local tFriend = MultiBot.addFriend(tName, tClass, tLevel .. " - " .. tName).setDisable()
+					local tFriend = MultiBot.addFriend(tClass, tLevel, tName).setDisable()
 					
 					tFriend.doRight = function(pButton)
 						SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
@@ -346,13 +346,13 @@ MultiBot:SetScript("OnEvent", function()
 		-- REQUIREMENT --
 		
 		local tButton = MultiBot.frames["MultiBar"].frames["Units"].buttons[arg2]
-		if(tButton == nil and MultiBot.isInside(arg1, "Hello")) then
+		
+		if(MultiBot.isInside(arg1, "Hello") and tButton == nil) then
 			local tUnit = MultiBot.toUnit(arg2)
-			
-			local tLevel = UnitLevel(tUnit)
 			local tLocClass, tClass = UnitClass(tUnit)
+			local tLevel = UnitLevel(tUnit)
 			
-			tButton = MultiBot.addActive(arg2, tClass, tLevel .. " - " .. arg2).setDisable()
+			tButton = MultiBot.addActive(tClass, tLevel, arg2).setDisable()
 			
 			tButton.doRight = function(pButton)
 				SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
@@ -368,13 +368,39 @@ MultiBot:SetScript("OnEvent", function()
 					pButton.setEnable()
 				end
 			end
-		end
+		elseif(tButton == nil) then return end
 		
-		if(tButton.waitFor ~= "ITEM" and tButton.waitFor ~= "SPELL" and MultiBot.isInside(arg1, "Bag")) then
-			local tUnit = MultiBot.toUnit(arg2)
-			if(MultiBot.stats.frames[tUnit] == nil) then MultiBot.addStats(MultiBot.stats, "party1", 0, 0, 32, 192, 96) end
-			MultiBot.stats.frames[tUnit].setStats(arg2, UnitLevel(tUnit), arg1)
-			return
+		if(MultiBot.isInside(arg1, "Hello") and tButton.class == "Unknown" and tButton.roster == "friends") then
+			local tName = ""
+			local tLevel = ""
+			local tClass = ""
+			
+			for i = 1, 50 do
+				tName, tLevel, tClass = GetFriendInfo(i)
+				if(tName == arg2) then break end
+				if(tName == nil) then break end
+			end
+			
+			local tClass = MultiBot.toClass(tClass)
+			local tTable = MultiBot.index.classes[tButton.roster][tButton.class]
+			local tIndex = 0
+			
+			for i = 1, table.getn(tTable) do
+				if(tTable[i] == arg2) then 
+					tIndex = i
+					break
+				end
+			end
+			
+			if(tIndex > 0) then
+				if(MultiBot.index.classes[tButton.roster][tClass] == nil) then MultiBot.index.classes[tButton.roster][tClass] = {} end
+				table.remove(MultiBot.index.classes[tButton.roster][tButton.class], tIndex)
+				table.insert(MultiBot.index.classes[tButton.roster][tClass], tName)
+			end
+			
+			tButton.setTexture("Interface\\AddOns\\MultiBot\\Icons\\class_" .. string.lower(tClass) .. ".blp")
+			tButton.tip = MultiBot.toTip(tClass, tLevel, tName)
+			tButton.class = tClass
 		end
 		
 		if(MultiBot.isInside(arg1, "Hello")) then
@@ -417,6 +443,13 @@ MultiBot:SetScript("OnEvent", function()
 			tButton.combat = string.sub(arg1, 13)
 			SendChatMessage("Asked " .. arg2 .. " for Non-Combat-Strategies.", "SAY")
 			SendChatMessage("nc ?", "WHISPER", nil, arg2)
+			return
+		end
+		
+		if(tButton.waitFor ~= "ITEM" and tButton.waitFor ~= "SPELL" and MultiBot.isInside(arg1, "Bag")) then
+			local tUnit = MultiBot.toUnit(arg2)
+			if(MultiBot.stats.frames[tUnit] == nil) then MultiBot.addStats(MultiBot.stats, "party1", 0, 0, 32, 192, 96) end
+			MultiBot.stats.frames[tUnit].setStats(arg2, UnitLevel(tUnit), arg1)
 			return
 		end
 		
