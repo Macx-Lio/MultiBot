@@ -75,6 +75,14 @@ MultiBot:SetScript("OnEvent", function()
 		MultiBotSave["MemoryGem2"] =  MultiBot.SavePortal(tPortal.buttons["Green"])
 		MultiBotSave["MemoryGem3"] =  MultiBot.SavePortal(tPortal.buttons["Blue"])
 		
+		local tValue = MultiBot.doSplit(MultiBot.frames["MultiBar"].frames["Left"].buttons["Attack"].texture, "\\")[5]
+		tValue = string.sub(tValue, 1, string.len(tValue) - 4)
+		MultiBotSave["AttackButton"] = tValue
+		
+		local tValue = MultiBot.doSplit(MultiBot.frames["MultiBar"].frames["Left"].buttons["Flee"].texture, "\\")[5]
+		tValue = string.sub(tValue, 1, string.len(tValue) - 4)
+		MultiBotSave["FleeButton"] = tValue
+		
 		return
 	end
 	
@@ -117,6 +125,64 @@ MultiBot:SetScript("OnEvent", function()
 		if(MultiBotSave["MemoryGem3"] ~= nil) then
 			local tGem = MultiBot.frames["MultiBar"].frames["Masters"].frames["Portal"].buttons["Blue"]
 			MultiBot.LoadPortal(tGem, MultiBotSave["MemoryGem3"])
+		end
+		
+		if(MultiBotSave["AttackButton"] ~= nil) then
+			if(MultiBotSave["AttackButton"] == "attack") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Attack"].buttons["Attack"]
+				tButton.doRight(tButton)
+				
+			elseif(MultiBotSave["AttackButton"] == "attack_ranged") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Attack"].buttons["Ranged"]
+				tButton.doRight(tButton)
+				
+			elseif(MultiBotSave["AttackButton"] == "attack_melee") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Attack"].buttons["Melee"]
+				tButton.doRight(tButton)
+				
+			elseif(MultiBotSave["AttackButton"] == "attack_healer") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Attack"].buttons["Healer"]
+				tButton.doRight(tButton)
+				
+			elseif(MultiBotSave["AttackButton"] == "attack_dps") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Attack"].buttons["Dps"]
+				tButton.doRight(tButton)
+				
+			elseif(MultiBotSave["AttackButton"] == "attack_tank") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Attack"].buttons["Tank"]
+				tButton.doRight(tButton)
+			end
+		end
+		
+		if(MultiBotSave["FleeButton"] ~= nil) then
+			if(MultiBotSave["FleeButton"] == "flee") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Flee"].buttons["Flee"]
+				tButton.doRight(tButton)
+				
+			elseif(MultiBotSave["FleeButton"] == "flee_ranged") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Flee"].buttons["Ranged"]
+				tButton.doRight(tButton)
+				
+			elseif(MultiBotSave["FleeButton"] == "flee_melee") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Flee"].buttons["Melee"]
+				tButton.doRight(tButton)
+				
+			elseif(MultiBotSave["FleeButton"] == "flee_healer") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Flee"].buttons["Healer"]
+				tButton.doRight(tButton)
+				
+			elseif(MultiBotSave["FleeButton"] == "flee_dps") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Flee"].buttons["Dps"]
+				tButton.doRight(tButton)
+				
+			elseif(MultiBotSave["FleeButton"] == "flee_tank") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Flee"].buttons["Tank"]
+				tButton.doRight(tButton)
+				
+			elseif(MultiBotSave["FleeButton"] == "flee_target") then
+				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Flee"].buttons["Target"]
+				tButton.doRight(tButton)
+			end
 		end
 		
 		return
@@ -233,6 +299,36 @@ MultiBot:SetScript("OnEvent", function()
 				else
 					break
 				end
+			end
+			
+			-- REFRESH:RAID --
+			
+			if(GetNumRaidMembers() > 4) then
+				for i = 1, GetNumRaidMembers() do
+					local tButton = MultiBot.getBot(UnitName("raid" .. i))
+					
+					if(tButton ~= nil) then
+						tButton.waitFor = "CO"
+						SendChatMessage("co ?", "WHISPER", nil, tButton.name)
+					end
+				end
+				
+				return
+			end
+			
+			-- REFRESH:GROUP --
+			
+			if(GetNumPartyMembers() > 0) then
+				for i = 1, GetNumPartyMembers() do
+					local tButton = MultiBot.getBot(UnitName("party" .. i))
+					
+					if(tButton ~= nil) then
+						tButton.waitFor = "CO"
+						SendChatMessage("co ?", "WHISPER", nil, tButton.name)
+					end
+				end
+				
+				return
 			end
 			
 			return

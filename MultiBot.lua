@@ -270,7 +270,7 @@ MultiBot.tips.flee.ranged =
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.flee.melee = 
-"Ranged-Flee\n|cffffffff"..
+"Melee-Flee\n|cffffffff"..
 "With this Command the Melee-Fighters starting to flee.|r\n\n"..
 "|cffff0000Left-Click to execute Melee-Flee|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
