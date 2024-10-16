@@ -195,7 +195,7 @@ tMode.addButton("Passive", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\mode_passi
 	end
 end
 
-tMode.addButton("Passive", 0, 30, "Interface\\AddOns\\MultiBot\\Icons\\mode_grind.blp", MultiBot.tips.mode.grind)
+tMode.addButton("Grind", 0, 30, "Interface\\AddOns\\MultiBot\\Icons\\mode_grind.blp", MultiBot.tips.mode.grind)
 .doLeft = function(pButton)
 	if(MultiBot.SelectToGroup(pButton.parent.parent, "Mode", pButton.texture, "co +grind,?")) then
 		pButton.parent.parent.buttons["Mode"].setEnable().doLeft = function(pButton)
@@ -2369,6 +2369,10 @@ MultiBot.spellbook.addText("T12", "|cffffcc00Title|r", "TOPLEFT", 190, -287, 12)
 MultiBot.spellbook.addButton("S12", -389, 260, "inv_misc_questionmark", "Text")
 .doLeft = function(pButton)
 end
+
+-- WorldMapDetailFrame --
+
+
 
 -- FINISH --
 
