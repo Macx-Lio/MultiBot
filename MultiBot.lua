@@ -1180,6 +1180,15 @@ MultiBot.tips.game.master =
 "|cffff0000Right-Click to drag and move MultiBot|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
+MultiBot.tips.game.necronet =
+"Necro-Network\n|cffffffff"..
+"This Button enables or disables the Necro-Network.\n"..
+"If Necro-Network is active you will find Graveyard-Buttons on the World-Map.\n"..
+"With each Graveyard-Button you could Teleport yourself to the corresponding Graveyard.\n"..
+"You need GameMaster-Rights zo use these Buttons.|r\n\n"..
+"|cffff0000Left-Click to enable or disable the Necro-Network|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
 MultiBot.tips.game.portal =
 "Memory-Portal\n|cffffffff"..
 "In this Box you will find the Memory-Gems.\n"..
@@ -1243,7 +1252,22 @@ end
 local tMasters = tMultiBar.addFrame("Masters", 36, 38)
 tMasters:Hide()
 
-tMasters.addButton("Portal", 0, 0, "inv_box_02", MultiBot.tips.game.portal)
+tMasters.addButton("NecroNet", 0, 0, "achievement_bg_xkills_avgraveyard", MultiBot.tips.game.necronet).setDisable()
+.doLeft = function(pButton)
+	if(pButton.state) then
+		MultiBot.necronet.state = false
+		for key, value in pairs(MultiBot.necronet.buttons) do value:Hide() end
+		pButton.setDisable()
+	else
+		MultiBot.necronet.cont = 0
+		MultiBot.necronet.area = 0
+		MultiBot.necronet.zone = 0
+		MultiBot.necronet.state = true
+		pButton.setEnable()
+	end
+end
+
+tMasters.addButton("Portal", 0, 34, "inv_box_02", MultiBot.tips.game.portal)
 .doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Portal"])
 end
@@ -1299,26 +1323,26 @@ tButton.doLeft = function(pButton)
 	SendChatMessage(".gps", "SAY")
 end
 
-tMasters.addButton("Itemus", 0, 34, "inv_box_01", MultiBot.tips.game.itemus)
+tMasters.addButton("Itemus", 0, 68, "inv_box_01", MultiBot.tips.game.itemus)
 .doLeft = function(pButton)
 	if(MultiBot.ShowHideSwitch(MultiBot.itemus)) then
 		MultiBot.itemus.addItems()
 	end
 end
 
-tMasters.addButton("Iconos", 0, 68, "inv_mask_01", MultiBot.tips.game.iconos)
+tMasters.addButton("Iconos", 0, 102, "inv_mask_01", MultiBot.tips.game.iconos)
 .doLeft = function(pButton)
 	if(MultiBot.ShowHideSwitch(MultiBot.iconos)) then
 		MultiBot.iconos.addIcons()
 	end
 end
 
-tMasters.addButton("Summon", 0, 102, "spell_holy_prayerofspirit", MultiBot.tips.game.summon)
+tMasters.addButton("Summon", 0, 136, "spell_holy_prayerofspirit", MultiBot.tips.game.summon)
 .doLeft = function(pButton)
 	MultiBot.doDotWithTarget(".summon")
 end
 
-tMasters.addButton("Appear", 0, 136, "spell_holy_divinespirit", MultiBot.tips.game.appear)
+tMasters.addButton("Appear", 0, 170, "spell_holy_divinespirit", MultiBot.tips.game.appear)
 .doLeft = function(pButton)
 	MultiBot.doDotWithTarget(".appear")
 end
@@ -2375,8 +2399,6 @@ MultiBot.spellbook.addText("T12", "|cffffcc00Title|r", "TOPLEFT", 190, -287, 12)
 MultiBot.spellbook.addButton("S12", -389, 260, "inv_misc_questionmark", "Text")
 .doLeft = function(pButton)
 end
-
--- WorldMapDetailFrame --
 
 -- FINISH --
 

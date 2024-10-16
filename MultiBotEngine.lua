@@ -6,6 +6,7 @@ MultiBot:RegisterEvent("CHAT_MSG_WHISPER")
 MultiBot:RegisterEvent("CHAT_MSG_SYSTEM")
 MultiBot:RegisterEvent("CHAT_MSG_ADDON")
 MultiBot:RegisterEvent("ADDON_LOADED")
+MultiBot:RegisterEvent("WORLD_MAP_UPDATE")
 MultiBot:SetPoint("BOTTOMRIGHT", 0, 0)
 MultiBot:SetSize(1, 1)
 MultiBot:Show()
@@ -54,6 +55,11 @@ MultiBot.doSlash = function(pCommand, pArguments)
 	end
 	
 	SendChatMessage("Command not found.", "SAY")
+	return false
+end
+
+MultiBot.doDot = function(pCommand, oArguments)
+	SendChatMessage(pCommand .. " " .. oArguments)
 	return false
 end
 
@@ -646,6 +652,8 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
 	return button
 end
 
+-- BUTTON:WOW --
+
 MultiBot.wowButton = function(pParent, pName, pX, pY, pWidth, pHeight, pSize)
 	local button = CreateFrame("Button", nil, pParent, "UIPanelButtonTemplate")
 	button:SetPoint("BOTTOMRIGHT", pX, pY)
@@ -691,7 +699,26 @@ MultiBot.wowButton = function(pParent, pName, pX, pY, pWidth, pHeight, pSize)
 	return button
 end
 
--- MOVE --
+-- BUTTON:MAP --
+
+MultiBot.mapButton = function(pX, pY, pSize, pTexture, pTip)
+	local button = CreateFrame("Button", nil, WorldMapButton)
+	button:SetPoint("BOTTOMLEFT", WorldMapButton:GetWidth() * pX / 100, WorldMapButton:GetHeight() * pY / 100)
+	button:SetSize(pSize, pSize)
+	button:Show()
+	
+	button.icon = button:CreateTexture(nil, "BACKGROUND")
+	button.icon:SetTexture(MultiBot.IF(string.sub(pTexture, 1, 9) ~= "Interface", "Interface/Icons/", "") .. pTexture)
+	button.icon:SetAllPoints(button)
+	button.icon:Show()
+	
+	--button:SetFrameLevel(WorldMapButton:GetFrameLevel()+1)
+    --button:SetFrameStrata("FULLSCREEN")
+	
+	return button
+end
+
+-- BUTTON:MOVE --
 
 MultiBot.movButton = function(pParent, pX, pY, pSize, pTip)
 	local button = CreateFrame("Button", nil, pParent)
