@@ -699,25 +699,6 @@ MultiBot.wowButton = function(pParent, pName, pX, pY, pWidth, pHeight, pSize)
 	return button
 end
 
--- BUTTON:MAP --
-
-MultiBot.mapButton = function(pX, pY, pSize, pTexture, pTip)
-	local button = CreateFrame("Button", nil, WorldMapButton)
-	button:SetPoint("BOTTOMLEFT", WorldMapButton:GetWidth() * pX / 100, WorldMapButton:GetHeight() * pY / 100)
-	button:SetSize(pSize, pSize)
-	button:Show()
-	
-	button.icon = button:CreateTexture(nil, "BACKGROUND")
-	button.icon:SetTexture(MultiBot.IF(string.sub(pTexture, 1, 9) ~= "Interface", "Interface/Icons/", "") .. pTexture)
-	button.icon:SetAllPoints(button)
-	button.icon:Show()
-	
-	--button:SetFrameLevel(WorldMapButton:GetFrameLevel()+1)
-    --button:SetFrameStrata("FULLSCREEN")
-	
-	return button
-end
-
 -- BUTTON:MOVE --
 
 MultiBot.movButton = function(pParent, pX, pY, pSize, pTip)
