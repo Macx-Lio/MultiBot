@@ -176,7 +176,9 @@ end
 tButton.doLeft = function(pButton)
 	if(MultiBot.OnOffSwitch(pButton))
 	then MultiBot.ActionToGroup("co +passive,?")
-	else MultiBot.ActionToGroup("co -passive,-grind,?")
+	else
+		MultiBot.ActionToGroup("co -passive,?")
+		MultiBot.ActionToGroup("follow")
 	end
 end
 
@@ -189,7 +191,9 @@ tMode.addButton("Passive", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\mode_passi
 		pButton.parent.parent.buttons["Mode"].setEnable().doLeft = function(pButton)
 			if(MultiBot.OnOffSwitch(pButton))
 			then MultiBot.ActionToGroup("co +passive,?")
-			else MultiBot.ActionToGroup("co -passive,-grind,?")
+			else
+				MultiBot.ActionToGroup("co -passive,?")
+				MultiBot.ActionToGroup("follow")
 			end
 		end
 	end
@@ -197,11 +201,13 @@ end
 
 tMode.addButton("Grind", 0, 30, "Interface\\AddOns\\MultiBot\\Icons\\mode_grind.blp", MultiBot.tips.mode.grind)
 .doLeft = function(pButton)
-	if(MultiBot.SelectToGroup(pButton.parent.parent, "Mode", pButton.texture, "co +grind,?")) then
+	if(MultiBot.SelectToGroup(pButton.parent.parent, "Mode", pButton.texture, "grind")) then
 		pButton.parent.parent.buttons["Mode"].setEnable().doLeft = function(pButton)
 			if(MultiBot.OnOffSwitch(pButton))
-			then MultiBot.ActionToGroup("co +grind,?")
-			else MultiBot.ActionToGroup("co -passive,-grind,?")
+			then MultiBot.ActionToGroup("grind")
+			else
+				MultiBot.ActionToGroup("co -passive,?")
+				MultiBot.ActionToGroup("follow")
 			end
 		end
 	end
@@ -2371,8 +2377,6 @@ MultiBot.spellbook.addButton("S12", -389, 260, "inv_misc_questionmark", "Text")
 end
 
 -- WorldMapDetailFrame --
-
-
 
 -- FINISH --
 
