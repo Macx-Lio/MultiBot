@@ -244,6 +244,19 @@ MultiBot.LoadPortal = function(pButton, pValue)
 	end
 end
 
+MultiBot.SpellToMacro = function(pName, pSpell, pTexture)
+	local tGlobal, tAmount = GetNumMacros()
+	
+	if(pSpell == nil or pSpell == 0) then return SendChatMessage("I couldnt identify the Spell.", "SAY") end
+	if(tAmount == 18) then return SendChatMessage("I have already the maximum of private Macros.", "SAY") end
+	
+	local tMacro = string.sub(pName, 1, 14) .. tAmount
+	local tSpell, tIcon, tBody = GetMacroInfo(tMacro)
+	
+	if(tSpell == nil) then CreateMacro(tMacro, MultiBot.spellbook.icons[pTexture], "/t " .. pName .. " cast " .. pSpell, true) end
+	PickupMacro(tMacro)
+end
+
 MultiBot.ActionToTarget = function(pAction, oTarget)
 	local tName = MultiBot.IF(oTarget == nil, UnitName("target"), oTarget)
 	

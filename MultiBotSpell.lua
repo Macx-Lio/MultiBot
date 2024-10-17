@@ -10,7 +10,7 @@ MultiBot.addSpell = function(pInfo)
 	if(tIcon == nil) then tIcon = "inv_misc_questionmark" end
 	if(tLink == nil) then tLink = tName end
 	
-	local tSpell = { tId, tName, tRank, tIcon, tLink }
+	local tSpell = { tID, tName, tRank, tIcon, tLink }
 	
 	table.insert(MultiBot.spellbook.spells, tSpell)
 	MultiBot.spellbook.index = MultiBot.spellbook.index + 1
@@ -28,10 +28,12 @@ MultiBot.setSpell = function(pIndex, pSpell)
 		MultiBot.spellbook.setButton("S" .. tIndex, pSpell[4], pSpell[5])
 		MultiBot.spellbook.setText("T" .. tIndex, "|cffffcc00" .. tTitle .. "|r")
 		MultiBot.spellbook.setText("R" .. tIndex, "|cff806040" .. pSpell[3] .. "|r")
+		MultiBot.spellbook.buttons["S" .. tIndex].spell = pSpell[1]
 		MultiBot.spellbook.buttons["S" .. tIndex].doShow()
 		MultiBot.spellbook.texts["T" .. tIndex]:Show()
 		MultiBot.spellbook.texts["R" .. tIndex]:Show()
 	else
+		MultiBot.spellbook.buttons["S" .. tIndex].spell = 0
 		MultiBot.spellbook.buttons["S" .. tIndex].doHide()
 		MultiBot.spellbook.texts["T" .. tIndex]:Hide()
 		MultiBot.spellbook.texts["R" .. tIndex]:Hide()

@@ -44,7 +44,9 @@ MultiBot.tips.every.inventory =
 
 MultiBot.tips.every.spellbook =
 "Spellbook|cffffffff\n"..
-"It opens or closes the Spellbook of this Bot.|r\n\n"..
+"It opens or closes the Spellbook of this Bot.\n"..
+"Left-Click the Spell to cast it immediately.\n"..
+"Right-Click the Spell to pickup a Macro for your Hotbars.|r\n\n"..
 "|cffff0000Left-Click to open or close the Spellbook|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 

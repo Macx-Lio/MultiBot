@@ -86,6 +86,8 @@ MultiBot:SetScript("OnEvent", function()
 		return
 	end
 	
+	-- ADDON:LOADED --
+	
 	if(event == "ADDON_LOADED" and arg1 == "MultiBot") then
 		if(MultiBotSave["MultiBarPoint"] ~= nil) then
 			local tPoint = MultiBot.doSplit(MultiBotSave["MultiBarPoint"], ", ")
@@ -188,6 +190,8 @@ MultiBot:SetScript("OnEvent", function()
 		return
 	end
 	
+	-- PLAYER:ENTERING --
+	
 	if(event == "PLAYER_ENTERING_WORLD") then
 		if(MultiBot.init == nil) then
 			SendChatMessage(".playerbot bot list", "SAY")
@@ -197,6 +201,8 @@ MultiBot:SetScript("OnEvent", function()
 		
 		return
 	end
+	
+	-- CHAT:SYSTEM --
 	
 	if(event == "CHAT_MSG_SYSTEM") then
 		if(MultiBot.auto.release and MultiBot.isInside(arg1, "ist tot", "has dies")) then
@@ -414,6 +420,8 @@ MultiBot:SetScript("OnEvent", function()
 		end
 	end
 	
+	-- CHAT:WHISPER --
+	
 	if(event == "CHAT_MSG_WHISPER") then
 		if(MultiBot.auto.release and arg1 == "Meet me at the graveyard") then
 			SendChatMessage("summon", "WHISPER", nil, arg2)
@@ -500,9 +508,6 @@ MultiBot:SetScript("OnEvent", function()
 		end
 		
 		if(arg1 == "Goodbye!") then
-			--local tFrame = MultiBot.frames["MultiBar"].frames["Units"].frames[arg2]
-			--if(tFrame ~= nil) then tFrame:Hide() end
-			--tButton.setDisable()
 			--MultiBot.doRaid()
 			return
 		end
@@ -600,6 +605,8 @@ MultiBot:SetScript("OnEvent", function()
 		
 		return
 	end
+	
+	-- WORLD:MAP --
 	
 	if(event == "WORLD_MAP_UPDATE") then
 		if(MultiBot.necronet.state == false) then return end
