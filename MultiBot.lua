@@ -883,6 +883,8 @@ tRoster.addButton("Friends", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\roster_f
 .doLeft = function(pButton)
 	local tButton = MultiBot.frames["MultiBar"].buttons["Units"]
 	MultiBot.Select(pButton.parent.parent, "Roster", pButton.texture)
+	pButton.parent.parent.buttons["Invite"].setEnable()
+	pButton.parent.parent.frames["Invite"]:Hide()
 	tButton.doLeft(tButton, "friends")
 end
 
@@ -890,6 +892,8 @@ tRoster.addButton("Members", -26, 0, "Interface\\AddOns\\MultiBot\\Icons\\roster
 .doLeft = function(pButton)
 	local tButton = MultiBot.frames["MultiBar"].buttons["Units"]
 	MultiBot.Select(pButton.parent.parent, "Roster", pButton.texture)
+	pButton.parent.parent.buttons["Invite"].setEnable()
+	pButton.parent.parent.frames["Invite"]:Hide()
 	tButton.doLeft(tButton, "members")
 end
 
@@ -897,6 +901,8 @@ tRoster.addButton("Players", -52, 0, "Interface\\AddOns\\MultiBot\\Icons\\roster
 .doLeft = function(pButton)
 	local tButton = MultiBot.frames["MultiBar"].buttons["Units"]
 	MultiBot.Select(pButton.parent.parent, "Roster", pButton.texture)
+	pButton.parent.parent.buttons["Invite"].setEnable()
+	pButton.parent.parent.frames["Invite"]:Hide()
 	tButton.doLeft(tButton, "players")
 end
 
@@ -904,6 +910,8 @@ tRoster.addButton("Actives", -78, 0, "Interface\\AddOns\\MultiBot\\Icons\\roster
 .doLeft = function(pButton)
 	local tButton = MultiBot.frames["MultiBar"].buttons["Units"]
 	MultiBot.Select(pButton.parent.parent, "Roster", pButton.texture)
+	pButton.parent.parent.buttons["Invite"].setDisable()
+	pButton.parent.parent.frames["Invite"]:Hide()
 	tButton.doLeft(tButton, "actives")
 end
 
@@ -955,9 +963,9 @@ MultiBot.tips.units.inviteRaid40 =
 "|cffff0000Left-Click to invite Raid-Members|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
-tControl.addButton("Invite", 0, 60, "Interface\\AddOns\\MultiBot\\Icons\\invite.blp", MultiBot.tips.units.invite)
+tControl.addButton("Invite", 0, 60, "Interface\\AddOns\\MultiBot\\Icons\\invite.blp", MultiBot.tips.units.invite).setEnable()
 .doLeft = function(pButton)
-	MultiBot.ShowHideSwitch(pButton.parent.frames["Invite"])
+	if(pButton.state) then MultiBot.ShowHideSwitch(pButton.parent.frames["Invite"]) end
 end
 
 local tInvite = tControl.addFrame("Invite", -30, 62)
@@ -1272,7 +1280,7 @@ tMasters.addButton("Portal", 0, 34, "inv_box_02", MultiBot.tips.game.portal)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Portal"])
 end
 
-local tPortal = tMasters.addFrame("Portal", 30, 2)
+local tPortal = tMasters.addFrame("Portal", 30, 36)
 tPortal:Hide()
 
 local tButton = tPortal.addButton("Red", 0, 0, "inv_jewelcrafting_gem_16", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable()
