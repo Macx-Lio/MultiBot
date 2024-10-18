@@ -11,13 +11,13 @@ local tLeft = tMultiBar.addFrame("Left", -76, 2, 32)
 
 MultiBot.tips.tanker = {}
 MultiBot.tips.tanker.master = 
-"Tank-Attack\n|cffffffff"..
-"With this Button the Tanks starting to attack your target.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to execute Tank-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"坦克攻击\n|cffffffff"..
+"按此按钮坦克开始攻击你的目标.\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
+"|cffff0000左键点击执行 坦克攻击|r\n"..
+"|cff999999(执行命令: 团队, 小队)|r";
 
-tLeft.addButton("Tanker", -238, 0, "ability_warrior_shieldbash", MultiBot.tips.tanker.master)
+tLeft.addButton("坦克", -238, 0, "ability_warrior_shieldbash", MultiBot.tips.tanker.master)
 .doLeft = function(pButton)
 	if(MultiBot.isTarget()) then MultiBot.ActionToGroup("@tank do attack my target") end
 end
@@ -26,14 +26,14 @@ end
 
 MultiBot.tips.attack = {}
 MultiBot.tips.attack.master = 
-"Attack-Control\n|cffffffff"..
-"With this Control you can give the Command to attack.\n"..
-"Right-Click the Options to define a new default Action.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to execute the default Action|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"攻击控制\n|cffffffff".. 
+"使用此控制，您可以发出攻击命令。\n".. 
+"右键点击选项来定义新的默认动作。\n".. 
+"执行命令时显示命令的接收者。|r\n\n".. 
+"|cffff0000左键点击执行默认动作|r\n".. 
+"|cff999999(执行命令: 团队, 队伍)|r\n\n".. 
+"|cffff0000右键点击显示或隐藏选项|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.attack.attack = 
 "Attack\n|cffffffff"..
@@ -149,7 +149,7 @@ MultiBot.tips.mode.master =
 "Mode-Control\n|cffffffff"..
 "This Control allows you to switch a Combat-Mode on and off.\n"..
 "Left-Click the Options to select another Combat-Mode.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to switch the Combat-Mode|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to show or hide Options|r\n"..
@@ -219,14 +219,14 @@ MultiBot.tips.stallow = {}
 MultiBot.tips.stallow.stay = 
 "Stay|Follow\n|cffffffff"..
 "With this Button you can give right now the Command to Stay.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to execute Stay|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
 MultiBot.tips.stallow.follow = 
 "Stay|Follow\n|cffffffff"..
 "With this Button you can give right now the Command to Follow.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to execute Follow|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
@@ -253,7 +253,7 @@ MultiBot.tips.flee.master =
 "Flee-Control\n|cffffffff"..
 "With this Control you can give the Command to flee.\n"..
 "Right-Click the Options to define a new default Action.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to execute the default Action|r\n"..
 "|cff999999(Execution-Order: 'Target', Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to show or hide the Options|r\n"..
@@ -388,7 +388,7 @@ MultiBot.tips.format = {}
 MultiBot.tips.format.master = 
 "Formation-Control\n|cffffffff"..
 "This Control allows you to change the Formation of your Bots.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to ask for the current Formation|r\n"..
@@ -515,7 +515,7 @@ MultiBot.tips.beast.master =
 "Mod-Beastmaster allows every Character to have a Pet like Hunters.\n"..
 "Your Charaters can learn the nessasary Spells from White Fang.\n"..
 "White Fang must be placed into the World by the GameMaster.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
@@ -591,7 +591,7 @@ MultiBot.tips.creator.master =
 "The default Limit is 40 Random-Bots per Account.\n"..
 "There is no command to delete them after use.\n"..
 "So invite them to your Friendlist for reuse.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
@@ -731,7 +731,7 @@ MultiBot.tips.units.master =
 "Unit-Control\n|cffffffff"..
 "In this Control you will find the Playerbots.\n"..
 "Each Button stands for one of your Characters, Guild-Members or Friends.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to show or hide the Units|r\n"..
 "|cff999999(Execution-Order: System)|r";
 --"|cffff0000Right-Click to refresh the Units|r\n"..
@@ -1218,7 +1218,7 @@ MultiBot.tips.main = {}
 MultiBot.tips.main.master =
 "Main-Control\n|cffffffff"..
 "In this Control you will find the Auto-Switches, Special-Strategies and Reset-Commands.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to close MultiBot|r\n"..
@@ -1324,7 +1324,7 @@ MultiBot.tips.game = {}
 MultiBot.tips.game.master =
 "GameMaster-Control\n|cffffffff"..
 "In this Control you will find useful GameMaster-Commands.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to drag and move MultiBot|r\n"..
@@ -1344,7 +1344,7 @@ MultiBot.tips.game.portal =
 "In this Box you will find the Memory-Gems.\n"..
 "Use the Memory-Gems to store your current Location.\n"..
 "You can teleport yourself to stored Locations by using the Memory-Gems.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to show or hide the Soulgems|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
@@ -1362,14 +1362,14 @@ MultiBot.tips.game.itemus =
 "You will find every Item in the Box of the GamerMaster.\n"..
 "Just target the Player or Bot, left click the Item and the wish come true.\n"..
 "Important, not every Item can be generated, so you must try to find out.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to open or close the Itemus|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.game.iconos = 
 "Iconos\n|cffffffff"..
 "You will find every Icon and his Path in this Tool.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to open or close the Itemus|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
@@ -1507,7 +1507,7 @@ MultiBot.tips.drink = {}
 MultiBot.tips.drink.group = 
 "Group-Drink\n|cffffffff"..
 "With this Button you order the Group to drink.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to execute Group-Drink|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
@@ -1522,7 +1522,7 @@ MultiBot.tips.release = {}
 MultiBot.tips.release.group = 
 "Group-Release\n|cffffffff"..
 "With this Button the dead Bots will release there Ghosts to the next Graveyard.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to execute Group-Release|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
@@ -1537,7 +1537,7 @@ MultiBot.tips.revive = {}
 MultiBot.tips.revive.group = 
 "Group-Revive\n|cffffffff"..
 "With this Button the Ghost-Bots will revive on the next Graveyard.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to execute Group-Revive|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
@@ -1552,7 +1552,7 @@ MultiBot.tips.summon = {}
 MultiBot.tips.summon.group = 
 "Group-Summon\n|cffffffff"..
 "With this Button you summon the Group to your Position.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000Left-Click to execute Group-Summon|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
