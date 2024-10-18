@@ -17,7 +17,7 @@ MultiBot.tips.tanker.master =
 "|cffff0000Left-Click to execute Tank-Attack|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
-tLeft.addButton("Tanker", -204, 0, "ability_warrior_shieldbash", MultiBot.tips.tanker.master)
+tLeft.addButton("Tanker", -238, 0, "ability_warrior_shieldbash", MultiBot.tips.tanker.master)
 .doLeft = function(pButton)
 	if(MultiBot.isTarget()) then MultiBot.ActionToGroup("@tank do attack my target") end
 end
@@ -83,7 +83,7 @@ MultiBot.tips.attack.tank =
 "|cffff0000Right-Click to define as default Action|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
-local tButton = tLeft.addButton("Attack", -170, 0, "Interface\\AddOns\\MultiBot\\Icons\\attack.blp", MultiBot.tips.attack.master)
+local tButton = tLeft.addButton("Attack", -204, 0, "Interface\\AddOns\\MultiBot\\Icons\\attack.blp", MultiBot.tips.attack.master)
 tButton.doRight = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Attack"])
 end
@@ -91,7 +91,7 @@ tButton.doLeft = function(pButton)
 	if(MultiBot.isTarget()) then MultiBot.ActionToGroup("do attack my target") end
 end
 
-local tAttack = tLeft.addFrame("Attack", -172, 34)
+local tAttack = tLeft.addFrame("Attack", -206, 34)
 tAttack:Hide()
 
 local tButton = tAttack.addButton("Attack", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\attack.blp", MultiBot.tips.attack.attack)
@@ -169,7 +169,7 @@ MultiBot.tips.mode.grind =
 "|cffff0000Left-Click to selet and activate Grind-Mode|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
-local tButton = tLeft.addButton("Mode", -136, 0, "Interface\\AddOns\\MultiBot\\Icons\\mode_passive.blp", MultiBot.tips.mode.master).setDisable()
+local tButton = tLeft.addButton("Mode", -170, 0, "Interface\\AddOns\\MultiBot\\Icons\\mode_passive.blp", MultiBot.tips.mode.master).setDisable()
 tButton.doRight = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Mode"])
 end
@@ -182,7 +182,7 @@ tButton.doLeft = function(pButton)
 	end
 end
 
-local tMode = tLeft.addFrame("Mode", -138, 34)
+local tMode = tLeft.addFrame("Mode", -172, 34)
 tMode:Hide()
 
 tMode.addButton("Passive", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\mode_passive.blp", MultiBot.tips.mode.passive)
@@ -230,7 +230,7 @@ MultiBot.tips.stallow.follow =
 "|cffff0000Left-Click to execute Follow|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
-tLeft.addButton("Stay", -102, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_follow.blp", MultiBot.tips.stallow.stay)
+tLeft.addButton("Stay", -136, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_follow.blp", MultiBot.tips.stallow.stay)
 .doLeft = function(pButton)
 	if(MultiBot.ActionToGroup("stay")) then
 		pButton.parent.buttons["Follow"].doShow()
@@ -238,7 +238,7 @@ tLeft.addButton("Stay", -102, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_fo
 	end
 end
 
-tLeft.addButton("Follow", -102, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_stay.blp", MultiBot.tips.stallow.follow).doHide()
+tLeft.addButton("Follow", -136, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_stay.blp", MultiBot.tips.stallow.follow).doHide()
 .doLeft = function(pButton)
 	if(MultiBot.ActionToGroup("follow")) then
 		pButton.parent.buttons["Stay"].doShow()
@@ -315,7 +315,7 @@ MultiBot.tips.flee.target =
 "|cffff0000Right-Click to define as default Action|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
-local tButton = tLeft.addButton("Flee", -68, 0, "Interface\\AddOns\\MultiBot\\Icons\\flee.blp", MultiBot.tips.flee.master)
+local tButton = tLeft.addButton("Flee", -102, 0, "Interface\\AddOns\\MultiBot\\Icons\\flee.blp", MultiBot.tips.flee.master)
 tButton.doRight = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Flee"])
 end
@@ -323,7 +323,7 @@ tButton.doLeft = function(pButton)
 	MultiBot.ActionToGroup("flee")
 end
 
-local tFlee = tLeft.addFrame("Flee", -70, 34)
+local tFlee = tLeft.addFrame("Flee", -104, 34)
 tFlee:Hide()
 
 local tButton = tFlee.addButton("Flee", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\flee.blp", MultiBot.tips.flee.flee)
@@ -455,7 +455,7 @@ MultiBot.tips.format.shield =
 "|cffff0000Left-Click to select the Shield-Formation|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
-local tButton = tLeft.addButton("Format", -34, 0, "Interface\\AddOns\\MultiBot\\Icons\\formation_near.blp", MultiBot.tips.format.master)
+local tButton = tLeft.addButton("Format", -68, 0, "Interface\\AddOns\\MultiBot\\Icons\\formation_near.blp", MultiBot.tips.format.master)
 tButton.doRight = function(pButton)
 	MultiBot.ActionToGroup("formation")
 end
@@ -463,7 +463,7 @@ tButton.doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Format"])
 end
 
-local tFormat = tLeft.addFrame("Format", -36, 34)
+local tFormat = tLeft.addFrame("Format", -70, 34)
 tFormat:Hide()
 
 tFormat.addButton("Arrow", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\formation_arrow.blp", MultiBot.tips.format.arrow)
@@ -549,12 +549,12 @@ MultiBot.tips.beast.call =
 "|cffff0000Left-Click to call the Beast|r\n"..
 "|cff999999(Execution-Order: Target, Raid, Party)|r";
 
-tLeft.addButton("Beast", 0, 0, "ability_mount_swiftredwindrider", MultiBot.tips.beast.master)
+tLeft.addButton("Beast", -34, 0, "ability_mount_swiftredwindrider", MultiBot.tips.beast.master)
 .doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Beast"])
 end
 
-local tBeast = tLeft.addFrame("Beast", -2, 34)
+local tBeast = tLeft.addFrame("Beast", -36, 34)
 tBeast:Hide()
 
 tBeast.addButton("Release", 0, 0, "spell_nature_spiritwolf", MultiBot.tips.beast.release)
@@ -580,6 +580,148 @@ end
 tBeast.addButton("Call", 0, 120, "ability_hunter_beastcall", MultiBot.tips.beast.call)
 .doLeft = function(pButton)
 	MultiBot.ActionToTargetOrGroup("cast 883")
+end
+
+-- CREATOR --
+
+MultiBot.tips.creator = {}
+MultiBot.tips.creator.master = 
+"Creator-Control\n|cffffffff"..
+"With this Control you can create Random-Bots by Class.\n"..
+"The default Limit is 40 Random-Bots per Account.\n"..
+"There is no command to delete them after use.\n"..
+"So invite them to your Friendlist for reuse.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to show or hide the Options|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.creator.warrior =
+"Create-Warrior\n|cffffffff"..
+"This Button will create a Random-Bot as Warrior.|r\n\n"..
+"|cffff0000Left-Click to create Warrior|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.creator.warlock =
+"Create-Warlock\n|cffffffff"..
+"This Button will create a Random-Bot as Warlock.|r\n\n"..
+"|cffff0000Left-Click to create Warlock|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.creator.shaman =
+"Create-Shaman\n|cffffffff"..
+"This Button will create a Random-Bot as Shaman.|r\n\n"..
+"|cffff0000Left-Click to create Shaman|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.creator.rogue =
+"Create-Rogue\n|cffffffff"..
+"This Button will create a Random-Bot as Rogue.|r\n\n"..
+"|cffff0000Left-Click to create Rogue|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.creator.priest =
+"Create-Priest\n|cffffffff"..
+"This Button will create a Random-Bot as Priest.|r\n\n"..
+"|cffff0000Left-Click to create Priest|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.creator.paladin =
+"Create-Paladin\n|cffffffff"..
+"This Button will create a Random-Bot as Paladin.|r\n\n"..
+"|cffff0000Left-Click to create Paladin|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.creator.mage =
+"Create-Mage\n|cffffffff"..
+"This Button will create a Random-Bot as Mage.|r\n\n"..
+"|cffff0000Left-Click to create Mage|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.creator.hunter =
+"Create-Hunter\n|cffffffff"..
+"This Button will create a Random-Bot as Hunter.|r\n\n"..
+"|cffff0000Left-Click to create Hunter|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.creator.druid =
+"Create-Druid\n|cffffffff"..
+"This Button will create a Random-Bot as Druid.|r\n\n"..
+"|cffff0000Left-Click to create Druid|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.creator.deathknight =
+"Create-DeathKnight\n|cffffffff"..
+"This Button will create a Random-Bot as DeathKnight.|r\n\n"..
+"|cffff0000Left-Click to create DeathKnight|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+tLeft.addButton("Creator", -0, 0, "inv_helmet_145a", MultiBot.tips.creator.master)
+.doLeft = function(pButton)
+	MultiBot.ShowHideSwitch(pButton.parent.frames["Creator"])
+	MultiBot.frames["MultiBar"].frames["Units"]:Hide()
+end
+
+local tCreator = tLeft.addFrame("Creator", -2, 34)
+tCreator:Hide()
+
+tCreator.addButton("Warrior", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\addclass_warrior", MultiBot.tips.creator.warrior)
+.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot addclass warrior", "SAY")
+	pButton.parent:Hide()
+end
+
+tCreator.addButton("Warlock", 0, 30, "Interface\\AddOns\\MultiBot\\Icons\\addclass_warlock", MultiBot.tips.creator.warlock)
+.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot addclass warlock", "SAY")
+	pButton.parent:Hide()
+end
+
+tCreator.addButton("Shaman", 0, 60, "Interface\\AddOns\\MultiBot\\Icons\\addclass_shaman", MultiBot.tips.creator.shaman)
+.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot addclass shaman", "SAY")
+	pButton.parent:Hide()
+end
+
+tCreator.addButton("Rogue", 0, 90, "Interface\\AddOns\\MultiBot\\Icons\\addclass_rogue", MultiBot.tips.creator.rogue)
+.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot addclass rogue", "SAY")
+	pButton.parent:Hide()
+end
+
+tCreator.addButton("Priest", 0, 120, "Interface\\AddOns\\MultiBot\\Icons\\addclass_priest", MultiBot.tips.creator.priest)
+.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot addclass priest", "SAY")
+	pButton.parent:Hide()
+end
+
+tCreator.addButton("Paladin", 0, 150, "Interface\\AddOns\\MultiBot\\Icons\\addclass_paladin", MultiBot.tips.creator.paladin)
+.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot addclass paladin", "SAY")
+	pButton.parent:Hide()
+end
+
+tCreator.addButton("Mage", 0, 180, "Interface\\AddOns\\MultiBot\\Icons\\addclass_mage", MultiBot.tips.creator.mage)
+.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot addclass mage", "SAY")
+	pButton.parent:Hide()
+end
+
+tCreator.addButton("Hunter", 0, 210, "Interface\\AddOns\\MultiBot\\Icons\\addclass_hunter", MultiBot.tips.creator.hunter)
+.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot addclass hunter", "SAY")
+	pButton.parent:Hide()
+end
+
+tCreator.addButton("Druid", 0, 240, "Interface\\AddOns\\MultiBot\\Icons\\addclass_druid", MultiBot.tips.creator.druid)
+.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot addclass druid", "SAY")
+	pButton.parent:Hide()
+end
+
+tCreator.addButton("DeathKnight", 0, 270, "Interface\\AddOns\\MultiBot\\Icons\\addclass_deathknight", MultiBot.tips.creator.deathknight)
+.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot addclass deathknight", "SAY")
+	pButton.parent:Hide()
 end
 
 -- UNITS --
