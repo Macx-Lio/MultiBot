@@ -147,7 +147,7 @@ MultiBot.addDruid = function(pFrame, pCombat, pNormal)
 		MultiBot.ShowHideSwitch(pButton.getFrame("Playbook"))
 	end
 	
-	tFrame = pFrame.addFrame("Playbook", -62, 30)
+	local tFrame = pFrame.addFrame("Playbook", -62, 30)
 	tFrame:Hide()
 	
 	tFrame.addButton("CasterDebuff", 0, 0, "ability_druid_cower", MultiBot.tips.druid.playbook.casterDebuff).setDisable()
