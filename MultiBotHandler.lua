@@ -70,6 +70,9 @@ MultiBot:SetScript("OnEvent", function()
 		local tX, tY = MultiBot.toPoint(MultiBot.iconos)
 		MultiBotSave["IconosPoint"] = tX .. ", " .. tY
 		
+		local tX, tY = MultiBot.toPoint(MultiBot.stats)
+		MultiBotSave["StatsPoint"] = tX .. ", " .. tY
+		
 		local tPortal = MultiBot.frames["MultiBar"].frames["Masters"].frames["Portal"]
 		MultiBotSave["MemoryGem1"] =  MultiBot.SavePortal(tPortal.buttons["Red"])
 		MultiBotSave["MemoryGem2"] =  MultiBot.SavePortal(tPortal.buttons["Green"])
@@ -115,6 +118,11 @@ MultiBot:SetScript("OnEvent", function()
 		if(MultiBotSave["IconosPoint"] ~= nil) then
 			local tPoint = MultiBot.doSplit(MultiBotSave["IconosPoint"], ", ")
 			MultiBot.iconos.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
+		end
+		
+		if(MultiBotSave["StatsPoint"] ~= nil) then
+			local tPoint = MultiBot.doSplit(MultiBotSave["StatsPoint"], ", ")
+			MultiBot.stats.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
 		end
 		
 		if(MultiBotSave["MemoryGem1"] ~= nil) then
@@ -261,6 +269,7 @@ MultiBot:SetScript("OnEvent", function()
 				local tPlayer = MultiBot.addPlayer(tClass, tName).setDisable()
 				
 				tPlayer.doRight = function(pButton)
+					if(pButton.state == false) then return end
 					SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
 					if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
 					pButton.setDisable()
@@ -286,6 +295,7 @@ MultiBot:SetScript("OnEvent", function()
 					local tMember = MultiBot.addMember(tClass, tLevel, tName).setDisable()
 					
 					tMember.doRight = function(pButton)
+						if(pButton.state == false) then return end
 						SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
 						if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
 						pButton.setDisable()
@@ -314,6 +324,7 @@ MultiBot:SetScript("OnEvent", function()
 					local tFriend = MultiBot.addFriend(tClass, tLevel, tName).setDisable()
 					
 					tFriend.doRight = function(pButton)
+						if(pButton.state == false) then return end
 						SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
 						if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
 						pButton.setDisable()

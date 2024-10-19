@@ -765,6 +765,7 @@ tButton.doRight = function(pButton)
 			local tMember = MultiBot.addMember(tClass, tLevel, tName).setDisable()
 			
 			tMember.doRight = function(pButton)
+				if(pButton.state == false) then return end
 				SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
 				if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
 				pButton.setDisable()
@@ -793,6 +794,7 @@ tButton.doRight = function(pButton)
 			local tFriend = MultiBot.addFriend(tClass, tLevel, tName).setDisable()
 			
 			tFriend.doRight = function(pButton)
+				if(pButton.state == false) then return end
 				SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
 				if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
 				pButton.setDisable()
@@ -1372,6 +1374,7 @@ tMain.addButton("Coords", 0, 0, "inv_gizmo_03", MultiBot.tips.main.coords)
 	MultiBot.spellbook.setPoint(-566, 170)
 	MultiBot.itemus.setPoint(-860, -144)
 	MultiBot.iconos.setPoint(-860, -144)
+	MultiBot.stats.setPoint(-60, 560)
 end
 
 tMain.addButton("Release", 0, 34, "achievement_bg_xkills_avgraveyard", MultiBot.tips.main.release).setDisable()
@@ -1766,10 +1769,14 @@ tFrame:Show()
 -- STATS --
 
 MultiBot.stats = MultiBot.newFrame(MultiBot, -60, 560, 32)
+MultiBot.stats:SetMovable(true)
+
 MultiBot.addStats(MultiBot.stats, "party1", 0,    0, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party2", 0,  -60, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party3", 0, -120, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party4", 0, -180, 32, 192, 96)
+
+MultiBot.stats.movButton("Move", 0, -80, 160, "Right-Click to drag and move Auto-Stats")
 
 -- ITEMUS --
 
