@@ -36,52 +36,54 @@ MultiBot.tips.attack.master =
 "|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.attack.attack = 
-"Attack\n|cffffffff"..
-"With this Command the hole Raid or Party starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"攻击\n|cffffffff".. 
+"使用此命令，整个团队或小队将开始攻击你的目标。|r\n\n".. 
+"|cffff0000左键点击执行攻击|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.attack.ranged = 
-"Ranged-Attack\n|cffffffff"..
-"With this Command the Ranged-Fighters starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute Ranged-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"远程攻击\n|cffffffff".. 
+"使用此命令，远程攻击者将开始攻击你的目标。|r\n\n".. 
+"|cffff0000左键点击执行远程攻击|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.attack.melee = 
-"Ranged-Attack\n|cffffffff"..
-"With this Command the Melee-Fighters starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute Melee-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"近战攻击\n|cffffffff".. 
+"使用此命令，近战攻击者将开始攻击你的目标。|r\n\n".. 
+"|cffff0000左键点击执行近战攻击|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
+
 
 MultiBot.tips.attack.healer = 
-"Healer-Attack\n|cffffffff"..
-"With this Command the Healers starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute Healer-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"治疗攻击\n|cffffffff".. 
+"使用此命令，治疗者将开始攻击你的目标。|r\n\n".. 
+"|cffff0000左键点击执行治疗攻击|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.attack.dps = 
-"DPS-Attack\n|cffffffff"..
-"With this Command the DPS starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute DPS-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"DPS攻击\n|cffffffff".. 
+"使用此命令，DPS将开始攻击你的目标。|r\n\n".. 
+"|cffff0000左键点击执行DPS攻击|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.attack.tank = 
-"Tank-Attack\n|cffffffff"..
-"With this Command the Tanks starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute Tank-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"坦克攻击\n|cffffffff".. 
+"使用此命令，坦克将开始攻击你的目标。|r\n\n".. 
+"|cffff0000左键点击执行坦克攻击|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
+
 
 local tButton = tLeft.addButton("Attack", -204, 0, "Interface\\AddOns\\MultiBot\\Icons\\attack.blp", MultiBot.tips.attack.master)
 tButton.doRight = function(pButton)
@@ -146,28 +148,29 @@ end
 
 MultiBot.tips.mode = {}
 MultiBot.tips.mode.master = 
-"Mode-Control\n|cffffffff"..
-"This Control allows you to switch a Combat-Mode on and off.\n"..
-"Left-Click the Options to select another Combat-Mode.\n"..
-"执行命令时显示命令的接收者。|r\n\n"..
-"|cffff0000Left-Click to switch the Combat-Mode|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"模式控制\n|cffffffff".. 
+"此控制允许你开启或关闭战斗模式。\n".. 
+"左键点击选项可选择另一种战斗模式。\n".. 
+"执行命令时显示命令的接收者。|r\n\n".. 
+"|cffff0000左键点击切换战斗模式|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击显示或隐藏选项|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.mode.passive = 
-"Passive-Mode\n|cffffffff"..
-"In the Passive-Mode, your Bots wont attack any Opponent.\n"..
-"This Mode is useful to keep the Tank from running into the Opponents during a pull.|r\n\n"..
-"|cffff0000Left-Click to selet and activate Passive-Mode|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"被动模式\n|cffffffff".. 
+"在被动模式下，你的机器人不会攻击任何对手。\n".. 
+"此模式在拉怪时防止坦克冲向敌人时非常有用。|r\n\n".. 
+"|cffff0000左键点击选择并激活被动模式|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
 
 MultiBot.tips.mode.grind = 
-"Grind-Mode\n|cffffffff"..
-"In the Grind-Mode, your Bots attack each Opponent at random.\n"..
-"This Mode is usefull if you under attack of to much Opponents.|r\n\n"..
-"|cffff0000Left-Click to selet and activate Grind-Mode|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"打怪模式\n|cffffffff".. 
+"在打怪模式下，你的机器人会随机攻击每个对手。\n".. 
+"当你遭遇过多敌人攻击时，此模式非常有用。|r\n\n".. 
+"|cffff0000左键点击选择并激活打怪模式|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
+
 
 local tButton = tLeft.addButton("Mode", -170, 0, "Interface\\AddOns\\MultiBot\\Icons\\mode_passive.blp", MultiBot.tips.mode.master).setDisable()
 tButton.doRight = function(pButton)
@@ -217,18 +220,19 @@ end
 
 MultiBot.tips.stallow = {}
 MultiBot.tips.stallow.stay = 
-"Stay|Follow\n|cffffffff"..
-"With this Button you can give right now the Command to Stay.\n"..
-"执行命令时显示命令的接收者。|r\n\n"..
-"|cffff0000Left-Click to execute Stay|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"停留|跟随\n|cffffffff".. 
+"使用此按钮，你可以立即发出停留命令。\n".. 
+"执行命令时显示命令的接收者。|r\n\n".. 
+"|cffff0000左键点击执行停留|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
 
 MultiBot.tips.stallow.follow = 
-"Stay|Follow\n|cffffffff"..
-"With this Button you can give right now the Command to Follow.\n"..
-"执行命令时显示命令的接收者。|r\n\n"..
-"|cffff0000Left-Click to execute Follow|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"停留|跟随\n|cffffffff".. 
+"使用此按钮，你可以立即发出跟随命令。\n".. 
+"执行命令时显示命令的接收者。|r\n\n".. 
+"|cffff0000左键点击执行跟随|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
+
 
 tLeft.addButton("Stay", -136, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_follow.blp", MultiBot.tips.stallow.stay)
 .doLeft = function(pButton)
@@ -250,70 +254,71 @@ end
 
 MultiBot.tips.flee = {}
 MultiBot.tips.flee.master = 
-"Flee-Control\n|cffffffff"..
-"With this Control you can give the Command to flee.\n"..
-"Right-Click the Options to define a new default Action.\n"..
-"执行命令时显示命令的接收者。|r\n\n"..
-"|cffff0000Left-Click to execute the default Action|r\n"..
-"|cff999999(Execution-Order: 'Target', Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"逃跑控制\n|cffffffff".. 
+"使用此控制，你可以发出逃跑命令。\n".. 
+"右键点击选项以定义新的默认动作。\n".. 
+"执行命令时显示命令的接收者。|r\n\n".. 
+"|cffff0000左键点击执行默认动作|r\n".. 
+"|cff999999(执行命令: '目标', 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击显示或隐藏选项|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.flee.flee = 
-"Flee\n|cffffffff"..
-"With this Command the hole Raid or Party starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"逃跑\n|cffffffff".. 
+"使用此命令，整个团队或小队将开始逃跑。|r\n\n".. 
+"|cffff0000左键点击执行逃跑|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.flee.ranged = 
-"Ranged-Flee\n|cffffffff"..
-"With this Command the Ranged-Fighters starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Ranged-Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"远程逃跑\n|cffffffff".. 
+"使用此命令，远程战斗者将开始逃跑。|r\n\n".. 
+"|cffff0000左键点击执行远程逃跑|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.flee.melee = 
-"Melee-Flee\n|cffffffff"..
-"With this Command the Melee-Fighters starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Melee-Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"近战逃跑\n|cffffffff".. 
+"使用此命令，近战战斗者将开始逃跑。|r\n\n".. 
+"|cffff0000左键点击执行近战逃跑|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.flee.healer = 
-"Healer-Flee\n|cffffffff"..
-"With this Command the Healers starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Healer-Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"治疗逃跑\n|cffffffff".. 
+"使用此命令，治疗者将开始逃跑。|r\n\n".. 
+"|cffff0000左键点击执行治疗逃跑|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.flee.dps = 
-"DPS-Flee\n|cffffffff"..
-"With this Command the DPS starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute DPS-Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"DPS逃跑\n|cffffffff".. 
+"使用此命令，DPS将开始逃跑。|r\n\n".. 
+"|cffff0000左键点击执行DPS逃跑|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.flee.tank = 
-"Tank-Flee\n|cffffffff"..
-"With this Command the Tanks starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Tank-Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"坦克逃跑\n|cffffffff".. 
+"使用此命令，坦克将开始逃跑。|r\n\n".. 
+"|cffff0000左键点击执行坦克逃跑|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.flee.target = 
-"Target-Flee\n|cffffffff"..
-"With this Command the Target starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Target-Flee|r\n"..
-"|cff999999(Execution-Order: Target)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"目标逃跑\n|cffffffff".. 
+"使用此命令，目标将开始逃跑。|r\n\n".. 
+"|cffff0000左键点击执行目标逃跑|r\n".. 
+"|cff999999(执行命令: 目标)|r\n\n".. 
+"|cffff0000右键点击设为默认动作|r\n".. 
+"|cff999999(执行命令: 系统)|r";
+
 
 local tButton = tLeft.addButton("Flee", -102, 0, "Interface\\AddOns\\MultiBot\\Icons\\flee.blp", MultiBot.tips.flee.master)
 tButton.doRight = function(pButton)
@@ -386,74 +391,74 @@ end
 
 MultiBot.tips.format = {}
 MultiBot.tips.format.master = 
-"Formation-Control\n|cffffffff"..
-"This Control allows you to change the Formation of your Bots.\n"..
-"执行命令时显示命令的接收者。|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to ask for the current Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"阵型控制\n|cffffffff".. 
+"此控制允许你改变机器人阵型。\n".. 
+"执行命令时显示命令的接收者。|r\n\n".. 
+"|cffff0000左键点击显示或隐藏选项|r\n".. 
+"|cff999999(执行命令: 系统)|r\n\n".. 
+"|cffff0000右键点击询问当前阵型|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
 
 MultiBot.tips.format.arrow = 
-"Arrow-Formation\n|cffffffff"..
-"The Bots line up in an arrow formation.\n"..
-"The Bots line of sight is in your direction.\n\n"..
-"1. Line are Tanks\n"..
-"2. Line are Melee-Fighters\n"..
-"3. Line are Ranged-Fighters\n"..
-"4. Line are Healers|r\n\n"..
-"|cffff0000Left-Click to select the Arrow-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"箭头阵型\n|cffffffff".. 
+"机器人排列成箭头阵型。\n".. 
+"机器人的视线方向朝向你。\n\n".. 
+"1. 前排为坦克\n".. 
+"2. 第二排为近战战斗者\n".. 
+"3. 第三排为远程战斗者\n".. 
+"4. 最后一排为治疗者|r\n\n".. 
+"|cffff0000左键点击选择箭头阵型|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
 
 MultiBot.tips.format.queue = 
-"Queue-Formation\n|cffffffff"..
-"The Bots line up in an defensive formation.\n"..
-"The Bots line of sight is in your direction.|r\n\n"..
-"|cffff0000Left-Click to select the Queue-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"队列阵型\n|cffffffff".. 
+"机器人排列成防御阵型。\n".. 
+"机器人的视线方向朝向你。|r\n\n".. 
+"|cffff0000左键点击选择队列阵型|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
 
 MultiBot.tips.format.near = 
-"Near-Formation\n|cffffffff"..
-"The Bots line up near by.\n"..
-"The Bots line of sight is in your direction.|r\n\n"..
-"|cffff0000Left-Click to select the Near-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"近距离阵型\n|cffffffff".. 
+"机器人在你附近排列。\n".. 
+"机器人的视线方向朝向你。|r\n\n".. 
+"|cffff0000左键点击选择近距离阵型|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
 
 MultiBot.tips.format.melee = 
-"Near-Formation\n|cffffffff"..
-"The Bots line up for melee fights.\n"..
-"The Bots line of sight is in your direction.|r\n\n"..
-"|cffff0000Left-Click to select the Melee-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"近战阵型\n|cffffffff".. 
+"机器人为近战战斗排列。\n".. 
+"机器人的视线方向朝向你。|r\n\n".. 
+"|cffff0000左键点击选择近战阵型|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
 
 MultiBot.tips.format.line = 
-"Near-Formation\n|cffffffff"..
-"The Bots line up on the left and right side in a parallel line.\n"..
-"The Bots line of sight is in your direction.|r\n\n"..
-"|cffff0000Left-Click to select the Line-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"直线阵型\n|cffffffff".. 
+"机器人在左侧和右侧排列成平行的直线。\n".. 
+"机器人的视线方向朝向你。|r\n\n".. 
+"|cffff0000左键点击选择直线阵型|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
 
 MultiBot.tips.format.circle = 
-"Circle-Formation\n|cffffffff"..
-"The Bots line up in a circle around you.\n"..
-"The Bots line of sight is directed outwards.|r\n\n"..
-"|cffff0000Left-Click to select the Circle-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"圆形阵型\n|cffffffff".. 
+"机器人围绕你排列成圆形。\n".. 
+"机器人的视线朝向外部。|r\n\n".. 
+"|cffff0000左键点击选择圆形阵型|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
 
 MultiBot.tips.format.chaos = 
-"Chaos-Formation\n|cffffffff"..
-"Each Bot follows you by its own.\n"..
-"They line up everywhere they wont.\n"..
-"The line of sight could be every direction.|r\n\n"..
-"|cffff0000Left-Click to select the Chaos-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"混乱阵型\n|cffffffff".. 
+"每个机器人各自跟随你。\n".. 
+"他们会随意排列，视线可以朝向任意方向。|r\n\n".. 
+"|cffff0000左键点击选择混乱阵型|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
 
 MultiBot.tips.format.shield = 
-"Shield-Formation\n|cffffffff"..
-"The Bots line up in the front, on the left and right side.\n"..
-"The Bots line of sight is in your direction.|r\n\n"..
-"|cffff0000Left-Click to select the Shield-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"盾牌阵型\n|cffffffff".. 
+"机器人在前方、左侧和右侧排列。\n".. 
+"机器人的视线方向朝向你。|r\n\n".. 
+"|cffff0000左键点击选择盾牌阵型|r\n".. 
+"|cff999999(执行命令: 团队, 小队)|r";
+
 
 local tButton = tLeft.addButton("Format", -68, 0, "Interface\\AddOns\\MultiBot\\Icons\\formation_near.blp", MultiBot.tips.format.master)
 tButton.doRight = function(pButton)
@@ -510,44 +515,45 @@ end
 
 MultiBot.tips.beast = {}
 MultiBot.tips.beast.master = 
-"Beastmaster-Control\n|cffffffff"..
-"This Control is for the Mod-Beastmaster of the Azerothcore.\n"..
-"Mod-Beastmaster allows every Character to have a Pet like Hunters.\n"..
-"Your Charaters can learn the nessasary Spells from White Fang.\n"..
-"White Fang must be placed into the World by the GameMaster.\n"..
-"执行命令时显示命令的接收者。|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"兽王控制\n|cffffffff".. 
+"此控制用于 Azerothcore 的 Mod-兽王。\n".. 
+"Mod-兽王允许每个角色像猎人一样拥有宠物。\n".. 
+"你的角色可以从白牙那里学习必要的法术。\n".. 
+"白牙必须由游戏管理员放置在世界中。\n".. 
+"执行命令时显示命令的接收者。|r\n\n".. 
+"|cffff0000左键点击显示或隐藏选项|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.beast.release =
-"Release the Beast\n|cffffffff"..
-"This Command will release the Beast.|r\n\n"..
-"|cffff0000Left-Click to release the Beast|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"释放野兽\n|cffffffff".. 
+"此命令将释放野兽。|r\n\n".. 
+"|cffff0000左键点击释放野兽|r\n".. 
+"|cff999999(执行命令: 目标, 团队, 小队)|r";
 
 MultiBot.tips.beast.revive =
-"Revive the Beast\n|cffffffff"..
-"This Command will revive the Beast.|r\n\n"..
-"|cffff0000Left-Click to revive the Beast|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"复活野兽\n|cffffffff".. 
+"此命令将复活野兽。|r\n\n".. 
+"|cffff0000左键点击复活野兽|r\n".. 
+"|cff999999(执行命令: 目标, 团队, 小队)|r";
 
 MultiBot.tips.beast.heal =
-"Heal the Beast\n|cffffffff"..
-"This Command will heal the Beast.|r\n\n"..
-"|cffff0000Left-Click to heal the Beast|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"治疗野兽\n|cffffffff".. 
+"此命令将治疗野兽。|r\n\n".. 
+"|cffff0000左键点击治疗野兽|r\n".. 
+"|cff999999(执行命令: 目标, 团队, 小队)|r";
 
 MultiBot.tips.beast.feed =
-"Feed the Beast\n|cffffffff"..
-"This Command will feed the Beast.|r\n\n"..
-"|cffff0000Left-Click to feed the Beast|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"喂养野兽\n|cffffffff".. 
+"此命令将喂养野兽。|r\n\n".. 
+"|cffff0000左键点击喂养野兽|r\n".. 
+"|cff999999(执行命令: 目标, 团队, 小队)|r";
 
 MultiBot.tips.beast.call =
-"Call the Beast\n|cffffffff"..
-"This Command will call the Beast.|r\n\n"..
-"|cffff0000Left-Click to call the Beast|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"召唤野兽\n|cffffffff".. 
+"此命令将召唤野兽。|r\n\n".. 
+"|cffff0000左键点击召唤野兽|r\n".. 
+"|cff999999(执行命令: 目标, 团队, 小队)|r";
+
 
 tLeft.addButton("Beast", -34, 0, "ability_mount_swiftredwindrider", MultiBot.tips.beast.master)
 .doLeft = function(pButton)
@@ -586,74 +592,75 @@ end
 
 MultiBot.tips.creator = {}
 MultiBot.tips.creator.master = 
-"Creator-Control\n|cffffffff"..
-"With this Control you can create Random-Bots by Class.\n"..
-"The default Limit is 40 Random-Bots per Account.\n"..
-"There is no command to delete them after use.\n"..
-"So invite them to your Friendlist for reuse.\n"..
-"执行命令时显示命令的接收者。|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创造者控制\n|cffffffff".. 
+"使用此控制，你可以按职业创建随机机器人。\n".. 
+"默认限制是每个账号最多40个随机机器人。\n".. 
+"没有命令可以在使用后删除它们。\n".. 
+"所以将它们添加到你的好友列表中以便重用。\n".. 
+"执行命令时显示命令的接收者。|r\n\n".. 
+"|cffff0000左键点击显示或隐藏选项|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.creator.warrior =
-"Create-Warrior\n|cffffffff"..
-"This Button will create a Random-Bot as Warrior.|r\n\n"..
-"|cffff0000Left-Click to create Warrior|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创建战士\n|cffffffff".. 
+"此按钮将创建一个作为战士的随机机器人。|r\n\n".. 
+"|cffff0000左键点击创建战士|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.creator.warlock =
-"Create-Warlock\n|cffffffff"..
-"This Button will create a Random-Bot as Warlock.|r\n\n"..
-"|cffff0000Left-Click to create Warlock|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创建术士\n|cffffffff".. 
+"此按钮将创建一个作为术士的随机机器人。|r\n\n".. 
+"|cffff0000左键点击创建术士|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.creator.shaman =
-"Create-Shaman\n|cffffffff"..
-"This Button will create a Random-Bot as Shaman.|r\n\n"..
-"|cffff0000Left-Click to create Shaman|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创建萨满\n|cffffffff".. 
+"此按钮将创建一个作为萨满的随机机器人。|r\n\n".. 
+"|cffff0000左键点击创建萨满|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.creator.rogue =
-"Create-Rogue\n|cffffffff"..
-"This Button will create a Random-Bot as Rogue.|r\n\n"..
-"|cffff0000Left-Click to create Rogue|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创建潜行者\n|cffffffff".. 
+"此按钮将创建一个作为潜行者的随机机器人。|r\n\n".. 
+"|cffff0000左键点击创建潜行者|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.creator.priest =
-"Create-Priest\n|cffffffff"..
-"This Button will create a Random-Bot as Priest.|r\n\n"..
-"|cffff0000Left-Click to create Priest|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创建牧师\n|cffffffff".. 
+"此按钮将创建一个作为牧师的随机机器人。|r\n\n".. 
+"|cffff0000左键点击创建牧师|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.creator.paladin =
-"Create-Paladin\n|cffffffff"..
-"This Button will create a Random-Bot as Paladin.|r\n\n"..
-"|cffff0000Left-Click to create Paladin|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创建圣骑士\n|cffffffff".. 
+"此按钮将创建一个作为圣骑士的随机机器人。|r\n\n".. 
+"|cffff0000左键点击创建圣骑士|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.creator.mage =
-"Create-Mage\n|cffffffff"..
-"This Button will create a Random-Bot as Mage.|r\n\n"..
-"|cffff0000Left-Click to create Mage|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创建法师\n|cffffffff".. 
+"此按钮将创建一个作为法师的随机机器人。|r\n\n".. 
+"|cffff0000左键点击创建法师|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.creator.hunter =
-"Create-Hunter\n|cffffffff"..
-"This Button will create a Random-Bot as Hunter.|r\n\n"..
-"|cffff0000Left-Click to create Hunter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创建猎人\n|cffffffff".. 
+"此按钮将创建一个作为猎人的随机机器人。|r\n\n".. 
+"|cffff0000左键点击创建猎人|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.creator.druid =
-"Create-Druid\n|cffffffff"..
-"This Button will create a Random-Bot as Druid.|r\n\n"..
-"|cffff0000Left-Click to create Druid|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创建德鲁伊\n|cffffffff".. 
+"此按钮将创建一个作为德鲁伊的随机机器人。|r\n\n".. 
+"|cffff0000左键点击创建德鲁伊|r\n".. 
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.creator.deathknight =
-"Create-DeathKnight\n|cffffffff"..
-"This Button will create a Random-Bot as DeathKnight.|r\n\n"..
-"|cffff0000Left-Click to create DeathKnight|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创建死亡骑士\n|cffffffff".. 
+"此按钮将创建一个作为死亡骑士的随机机器人。|r\n\n".. 
+"|cffff0000左键点击创建死亡骑士|r\n".. 
+"|cff999999(执行命令: 系统)|r";
+
 
 tLeft.addButton("Creator", -0, 0, "inv_helmet_145a", MultiBot.tips.creator.master)
 .doLeft = function(pButton)
@@ -728,7 +735,7 @@ end
 
 MultiBot.tips.units = {}
 MultiBot.tips.units.master =
-"Unit-Control\n|cffffffff"..
+"单位控制\n|cffffffff"..
 "In this Control you will find the Playerbots.\n"..
 "Each Button stands for one of your Characters, Guild-Members or Friends.\n"..
 "执行命令时显示命令的接收者。|r\n\n"..

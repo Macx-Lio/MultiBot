@@ -1,8 +1,8 @@
 ## Interface: 30300
 ## Version: 2.0.0
-## Title: MultiBot
-## Notes: User Interface for Playerbot
-## Author: Nico Löbbert
+## Title: 机器人指挥中心
+## Notes: PlayerBots的玩家控制中心
+## Author: Nico Löbbert 汉化: leewheel
 ## SavedVariables: MultiBotSave
 
 MultiBotEngine.lua
