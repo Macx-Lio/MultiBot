@@ -3,60 +3,60 @@ MultiBot.tips.deathknight.dps = {}
 MultiBot.tips.deathknight.presence = {}
 
 MultiBot.tips.deathknight.presence.master =
-"Presence-Control|cffffffff\n"..
-"This Control allows you to select, enable or disable the default Precence.|r\n\n"..
-"|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to enable or disable the default Presence.|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"姿态控制 |cffffffff\n"..
+"此控制允许您选择、启用或禁用默认姿态。|r\n\n"..
+"|cffff0000左键单击显示或隐藏选项|r\n"..
+"|cff999999(执行命令: 系统)|r\n\n"..
+"|cffff0000右键单击启用或禁用默认姿态。|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.deathknight.presence.unholy =
-"Unholy-Presence|cffffffff\n"..
-"It enables the Unholy-Presence.|r\n\n"..
-"|cffff0000Left-Click to enable Unholy-Presence|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"邪恶姿态 |cffffffff\n"..
+"启用邪恶姿态。|r\n\n"..
+"|cffff0000左键单击启用邪恶姿态|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.deathknight.presence.frost =
-"Frost-Presence|cffffffff\n"..
-"It enables the Frost-Presence.|r\n\n"..
-"|cffff0000Left-Click to enable Frost-Presence|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"冰霜姿态 |cffffffff\n"..
+"启用冰霜姿态。|r\n\n"..
+"|cffff0000左键单击启用冰霜姿态|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.deathknight.presence.blood =
-"Blood-Presence|cffffffff\n"..
-"It enables the Blood-Presence.|r\n\n"..
-"|cffff0000Left-Click to enable Blood-Presence|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"鲜血姿态 |cffffffff\n"..
+"启用鲜血姿态。|r\n\n"..
+"|cffff0000左键单击启用鲜血姿态|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.deathknight.dps.master =
-"DPS-Control|cffffffff\n"..
-"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
-"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"DPS控制 |cffffffff\n"..
+"在DPS控制中，您将找到一般的DPS策略。|r\n\n"..
+"|cffff0000左键单击显示或隐藏DPS控制|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.deathknight.dps.dpsAssist =
-"DPS-Assist|cffffffff\n"..
-"It enables the DPS-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"DPS辅助 |cffffffff\n"..
+"启用DPS辅助策略。\n"..
+"DPS-AOE、DPS辅助和坦克辅助是互斥的。\n"..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用DPS辅助|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.deathknight.dps.dpsAoe =
-"DPS-AOE|cffffffff\n"..
-"It enables the DPS-AOE-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"DPS-AOE |cffffffff\n"..
+"启用DPS-AOE策略。\n"..
+"DPS-AOE、DPS辅助和坦克辅助是互斥的。\n"..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用DPS-AOE|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.deathknight.tankAssist =
-"Tank-Assist|cffffffff\n"..
-"It enables the Tank-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"坦克辅助 |cffffffff\n"..
+"启用坦克辅助策略。\n"..
+"DPS-AOE、DPS辅助和坦克辅助是互斥的。\n"..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用坦克辅助|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.addDeathKnight = function(pFrame, pCombat, pNormal)
 	local tButton = pFrame.addButton("Presence", 0, 0, "spell_deathknight_bloodpresence", MultiBot.tips.deathknight.presence.master).setDisable()

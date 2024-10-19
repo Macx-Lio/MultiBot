@@ -54,7 +54,7 @@ MultiBot.doSlash = function(pCommand, pArguments)
 		end
 	end
 	
-	SendChatMessage("Command not found.", "SAY")
+	SendChatMessage("无效命令.", "SAY")
 	return false
 end
 
@@ -75,7 +75,7 @@ MultiBot.doDotWithTarget = function(pCommand, oArguments)
 		return true
 	end
 	
-	SendChatMessage("I dont have a Target.", "SAY")
+	SendChatMessage("我没有目标.", "SAY")
 	return false
 end
 
@@ -148,7 +148,7 @@ MultiBot.isTarget = function()
 		return true
 	end
 	
-	SendChatMessage("I dont have a Target.", "SAY")
+	SendChatMessage("我没有目标.", "SAY")
 	return false
 end
 
@@ -247,8 +247,8 @@ end
 MultiBot.SpellToMacro = function(pName, pSpell, pTexture)
 	local tGlobal, tAmount = GetNumMacros()
 	
-	if(pSpell == nil or pSpell == 0) then return SendChatMessage("I couldnt identify the Spell.", "SAY") end
-	if(tAmount == 18) then return SendChatMessage("I have already the maximum of private Macros.", "SAY") end
+	if(pSpell == nil or pSpell == 0) then return SendChatMessage("我无法识别这个法术.", "SAY") end
+	if(tAmount == 18) then return SendChatMessage("我已经拥有最大数量的私有宏.", "SAY") end
 	
 	local tMacro = string.sub(pName, 1, 14) .. tAmount
 	local tSpell, tIcon, tBody = GetMacroInfo(tMacro)
@@ -265,7 +265,7 @@ MultiBot.ActionToTarget = function(pAction, oTarget)
 		return true
 	end
 	
-	SendChatMessage("I dont have a Target.", "SAY")
+	SendChatMessage("我没有目标.", "SAY")
 	return false
 end
 
@@ -287,7 +287,7 @@ MultiBot.ActionToTargetOrGroup = function(pAction)
 		return true
 	end
 	
-	SendChatMessage("I neither have a Target nor am I in a Raid or Party.", "SAY")
+	SendChatMessage("我既没有目标，也没有参加团队或小队。", "SAY")
 	return false
 end
 
@@ -302,7 +302,7 @@ MultiBot.ActionToGroup = function(pAction)
 		return true
 	end
 	
-	SendChatMessage("I neither in a Raid nor in a Party.", "SAY")
+	SendChatMessage("我没有在一个团队或者小队中", "SAY")
 	return false
 end
 

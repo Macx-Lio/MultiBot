@@ -1,54 +1,54 @@
 MultiBot.tips.every = {}
 
 MultiBot.tips.every.summon =
-"Summon|cffffffff\n"..
-"Summons this Bot to your Position.|r\n\n"..
-"|cffff0000Left-Click to summons the Bot|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"召唤 |cffffffff\n"..
+"将此机器人召唤到你的位置。|r\n\n"..
+"|cffff0000左键单击召唤机器人|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.every.uninvite =
-"Uninvite|cffffffff\n"..
-"Dismiss this Bot from your Group.|r\n\n"..
-"|cffff0000Left-Click to dismiss the Bot|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"踢出 |cffffffff\n"..
+"将此机器人从你的队伍中移除。|r\n\n"..
+"|cffff0000左键单击踢出机器人|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.every.invite =
-"Invite|cffffffff\n"..
-"Invites this Bot to your Group.|r\n\n"..
-"|cffff0000Left-Click to invite the Bot|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"邀请 |cffffffff\n"..
+"邀请此机器人加入你的队伍。|r\n\n"..
+"|cffff0000左键单击邀请机器人|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.every.food =
-"Food|cffffffff\n"..
-"It enables or disables the Food-Strategies.|r\n\n"..
-"|cffff0000Left-Click to allow Food|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"食物 |cffffffff\n"..
+"启用或禁用进食策略。|r\n\n"..
+"|cffff0000左键单击允许进食|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.every.loot =
-"Loot|cffffffff\n"..
-"It enables or disables the Loot-Strategies.|r\n\n"..
-"|cffff0000Left-Click to allow Loot|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"拾取 |cffffffff\n"..
+"启用或禁用拾取策略。|r\n\n"..
+"|cffff0000左键单击允许拾取|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.every.gather =
-"Gather|cffffffff\n"..
-"It enables or disables the Gather-Strategies.|r\n\n"..
-"|cffff0000Left-Click to allow Gather|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"采集 |cffffffff\n"..
+"启用或禁用采集策略。|r\n\n"..
+"|cffff0000左键单击允许采集|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.every.inventory =
-"Inventory|cffffffff\n"..
-"It opens or closes the Inventory of this Bot.|r\n\n"..
-"|cffff0000Left-Click to open or close the Inventory|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"背包 |cffffffff\n"..
+"打开或关闭此机器人的背包。|r\n\n"..
+"|cffff0000左键单击打开或关闭背包|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.every.spellbook =
-"Spellbook|cffffffff\n"..
-"It opens or closes the Spellbook of this Bot.\n"..
-"Left-Click the Spell to cast it immediately.\n"..
-"Right-Click the Spell to pickup a Macro for your Hotbars.|r\n\n"..
-"|cffff0000Left-Click to open or close the Spellbook|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"法术书 |cffffffff\n"..
+"打开或关闭此机器人的法术书。\n"..
+"左键单击法术立即施放。\n"..
+"右键单击法术可以将宏添加到你的技能栏。|r\n\n"..
+"|cffff0000左键单击打开或关闭法术书|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 	pFrame.addButton("Summon", 64, 0, "ability_hunter_beastcall", MultiBot.tips.every.summon)

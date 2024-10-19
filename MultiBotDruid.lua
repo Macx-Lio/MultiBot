@@ -3,123 +3,123 @@ MultiBot.tips.druid.dps = {}
 MultiBot.tips.druid.playbook = {}
 
 MultiBot.tips.druid.heal =
-"Heal|cffffffff\n"..
-"It makes the Druid to the Healer of the Group.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Heal|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"治疗 |cffffffff\n"..
+"使德鲁伊成为团队的治疗者。\n"..
+"熊形态、猫形态、法系和治疗是互斥的。\n"..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用治疗|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.buff =
-"Buff|cffffffff\n"..
-"It allows the Druid to Buff the Group.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Buff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"增益 |cffffffff\n"..
+"允许德鲁伊为团队成员施加增益法术。|r\n\n"..
+"|cffff0000左键单击启用或禁用增益|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.playbook.master =
-"Playbook|cffffffff\n"..
-"In the Playbook you will find the Strategies typical for the Class.|r\n\n"..
-"|cffff0000Left-Click to show or hide Playbook|r\n"..
-"|cf9999999(Execution-Order: System)|r";
+"玩法手册 |cffffffff\n"..
+"在玩法手册中，您将找到该职业的典型策略。|r\n\n"..
+"|cffff0000左键单击显示或隐藏玩法手册|r\n"..
+"|cf9999999(执行命令: 系统)|r";
 
 MultiBot.tips.druid.playbook.casterDebuff =
-"Caster-Debuff|cffffffff\n"..
-"Allows the Caster to use Debuff-Spells during the Combat.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Caster-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"法系减益 |cffffffff\n"..
+"允许法系德鲁伊在战斗中使用减益法术。|r\n\n"..
+"|cffff0000左键单击启用或禁用法系减益|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.playbook.casterAoe =
-"Caster-AOE|cffffffff\n"..
-"Allows the Caster to use AOE-Spells during the Combat.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Caster-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"法系AOE |cffffffff\n"..
+"允许法系德鲁伊在战斗中使用AOE法术。|r\n\n"..
+"|cffff0000左键单击启用或禁用法系AOE|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.playbook.caster =
-"Caster|cffffffff\n"..
-"The Caster corresponds to a Ranged-Fighter.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Caster|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"法系 |cffffffff\n"..
+"法系对应远程战斗。\n"..
+"熊形态、猫形态、法系和治疗是互斥的。\n"..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用法系|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.playbook.catAoe =
-"Cat-AOE|cffffffff\n"..
-"Allows the Cat to use AOE-Attacks during the Combat.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Cat-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"猫形态AOE |cffffffff\n"..
+"允许猫形态德鲁伊在战斗中使用AOE攻击。|r\n\n"..
+"|cffff0000左键单击启用或禁用猫形态AOE|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.playbook.cat =
-"Cat|cffffffff\n"..
-"The Cat corresponds to a Melee-Fighter.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Cat|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"猫形态 |cffffffff\n"..
+"猫形态对应近战战斗。\n"..
+"熊形态、猫形态、法系和治疗是互斥的。\n"..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用猫形态|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.playbook.bear =
-"Bear|cffffffff\n"..
-"The Bear corresponds to a Tank.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Bear|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"熊形态 |cffffffff\n"..
+"熊形态对应坦克。\n"..
+"熊形态、猫形态、法系和治疗是互斥的。\n"..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用熊形态|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.dps.master =
-"DPS-Control|cffffffff\n"..
-"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
-"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"DPS控制 |cffffffff\n"..
+"在DPS控制中，您将找到一般的DPS策略。|r\n\n"..
+"|cffff0000左键单击显示或隐藏DPS控制|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.dps.dpsAssist =
-"DPS-Assist|cffffffff\n"..
-"It enables the DPS-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"DPS辅助 |cffffffff\n"..
+"启用DPS辅助策略。\n"..
+"DPS-AOE、DPS辅助和坦克辅助是互斥的。\n"..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用DPS辅助|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.dps.dpsDebuff =
-"DPS-Debuff|cffffffff\n"..
-"It enables the Debuff-Strategies.\n"..
-"The Druid can only Debuff as Caster.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"DPS减益 |cffffffff\n"..
+"启用减益策略。\n"..
+"德鲁伊只能在法系形态下施加减益。|r\n\n"..
+"|cffff0000左键单击启用或禁用DPS减益|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.dps.dpsAoe = 
-"DPS-AOE|cffffffff\n"..
-"It enables the DPS-AOE-Strategies.\n"..
-"The Druid can only AOE as Cat or Caster.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"DPS-AOE |cffffffff\n"..
+"启用 DPS-AOE 策略。\n"..
+"德鲁伊只能以猫形态或法系形态进行范围伤害攻击。\n"..
+"DPS-AOE、DPS 辅助和坦克辅助是互斥的。\n" ..
+"熊形态、猫形态、法系和治疗是互斥的。\n" ..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用 DPS-AOE|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.dps.dps = 
-"DPS|cffffffff\n"..
-"It enables the DPS-Strategies.\n"..
-"The Druid can only use DPS-Strategies as Cat.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"DPS |cffffffff\n"..
+"启用 DPS 策略。\n"..
+"德鲁伊只能在猫形态下使用 DPS 策略。\n"..
+"熊形态、猫形态、法系和治疗是互斥的。\n" ..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用 DPS|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.tankAssist = 
-"Tank-Assist|cffffffff\n"..
-"It enables the Tank-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"坦克辅助 |cffffffff\n"..
+"启用坦克辅助策略。\n"..
+"DPS-AOE、DPS 辅助和坦克辅助是互斥的。\n" ..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用坦克辅助|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.tips.druid.tank = 
-"Tank|cffffffff\n"..
-"It enables the Tank-Strategies.\n"..
-"The Druid can only Tank as Bear.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Tank|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"坦克 |cffffffff\n"..
+"启用坦克策略。\n"..
+"德鲁伊只能在熊形态下担任坦克。\n"..
+"熊形态、猫形态、法系和治疗是互斥的。\n" ..
+"一次只能激活其中一种策略。|r\n\n"..
+"|cffff0000左键单击启用或禁用坦克|r\n"..
+"|cf9999999(执行命令: 机器人)|r";
 
 MultiBot.addDruid = function(pFrame, pCombat, pNormal)
 	pFrame.addButton("Heal", 0, 0, "spell_holy_aspiration", MultiBot.tips.druid.heal).setDisable()

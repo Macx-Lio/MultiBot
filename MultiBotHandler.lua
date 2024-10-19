@@ -1,20 +1,20 @@
 MultiBot.tips.unit = {}
 MultiBot.tips.unit.selfbot =
-"Selfbot\n"..
-"|cffffffffThis Button switches the Selfbot-Mode on and off.|r\n\n"..
-"|cffff0000Left-Click to execute Selfbot|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"自我机器人 |cffffffff\n"..    -- 这表示这个按钮控制一个特殊的机器人模式，可能是让机器人模仿玩家自己的操作？？
+"此按钮开关自我机器人模式。|r\n\n"..
+"|cffff0000左键单击执行自我机器人|r\n"..
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.unit.button =
 "|cffffffff\n"..
-"This Button adds or removes NAME to or from your Group.\n"..
-"MultiBot will ask Playerbot about the Combat- and Non-Combat-Strategies.\n"..
-"The Stretegies can be configured with the Buttonbars on the left and right side.\n"..
-"The Buttonbars will appear after adding the Bot.|r\n\n"..
-"|cffff0000Left-Click to add NAME|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to remove NAME|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"此按钮将 NAME 添加到或从你的队伍中移除。\n"..
+"MultiBot 将询问机器人关于战斗和非战斗策略。\n"..
+"策略可以通过左右侧的按钮栏进行配置。\n"..
+"添加机器人后按钮栏将会出现。|r\n\n"..
+"|cffff0000左键单击添加 NAME|r\n"..
+"|cff999999(执行命令: 系统)|r\n\n"..
+"|cffff0000右键单击移除 NAME|r\n"..
+"|cff999999(执行命令: 系统)|r";
 
 -- TIMER --
 
