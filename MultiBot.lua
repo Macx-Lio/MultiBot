@@ -676,61 +676,51 @@ tCreator:Hide()
 tCreator.addButton("Warrior", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\addclass_warrior", MultiBot.tips.creator.warrior)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass warrior", "SAY")
-	pButton.parent:Hide()
 end
 
 tCreator.addButton("Warlock", 0, 30, "Interface\\AddOns\\MultiBot\\Icons\\addclass_warlock", MultiBot.tips.creator.warlock)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass warlock", "SAY")
-	pButton.parent:Hide()
 end
 
 tCreator.addButton("Shaman", 0, 60, "Interface\\AddOns\\MultiBot\\Icons\\addclass_shaman", MultiBot.tips.creator.shaman)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass shaman", "SAY")
-	pButton.parent:Hide()
 end
 
 tCreator.addButton("Rogue", 0, 90, "Interface\\AddOns\\MultiBot\\Icons\\addclass_rogue", MultiBot.tips.creator.rogue)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass rogue", "SAY")
-	pButton.parent:Hide()
 end
 
 tCreator.addButton("Priest", 0, 120, "Interface\\AddOns\\MultiBot\\Icons\\addclass_priest", MultiBot.tips.creator.priest)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass priest", "SAY")
-	pButton.parent:Hide()
 end
 
 tCreator.addButton("Paladin", 0, 150, "Interface\\AddOns\\MultiBot\\Icons\\addclass_paladin", MultiBot.tips.creator.paladin)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass paladin", "SAY")
-	pButton.parent:Hide()
 end
 
 tCreator.addButton("Mage", 0, 180, "Interface\\AddOns\\MultiBot\\Icons\\addclass_mage", MultiBot.tips.creator.mage)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass mage", "SAY")
-	pButton.parent:Hide()
 end
 
 tCreator.addButton("Hunter", 0, 210, "Interface\\AddOns\\MultiBot\\Icons\\addclass_hunter", MultiBot.tips.creator.hunter)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass hunter", "SAY")
-	pButton.parent:Hide()
 end
 
 tCreator.addButton("Druid", 0, 240, "Interface\\AddOns\\MultiBot\\Icons\\addclass_druid", MultiBot.tips.creator.druid)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass druid", "SAY")
-	pButton.parent:Hide()
 end
 
 tCreator.addButton("DeathKnight", 0, 270, "Interface\\AddOns\\MultiBot\\Icons\\addclass_deathknight", MultiBot.tips.creator.deathknight)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass deathknight", "SAY")
-	pButton.parent:Hide()
 end
 
 tCreator.addButton("Init", 0, 300, "inv_misc_enggizmos_27", MultiBot.tips.creator.init)
@@ -740,7 +730,6 @@ tCreator.addButton("Init", 0, 300, "inv_misc_enggizmos_27", MultiBot.tips.creato
 	if(MultiBot.isRoster("players", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Playerbot-Roster.", "SAY") end
 	if(MultiBot.isRoster("members", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Guild-Roster.", "SAY") end
 	SendChatMessage(".playerbot bot init=auto", "WHISPER", nil, tName)
-	pButton.parent:Hide()
 end
 
 -- UNITS --
