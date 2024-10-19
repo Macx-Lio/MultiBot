@@ -741,16 +741,99 @@ MultiBot.tips.units.master =
 "Each Button stands for one of your Characters, Guild-Members or Friends.\n"..
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Units|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to refresh the Roster|r\n"..
 "|cff999999(Execution-Order: System)|r";
---"|cffff0000Right-Click to refresh the Units|r\n"..
---"|cff999999(Execution-Order: System)|r";
 
 local tButton = tMultiBar.addButton("Units", -38, 0, "inv_scroll_04", MultiBot.tips.units.master)
 tButton.roster = "players"
 tButton.filter = "none"
 
 tButton.doRight = function(pButton)
-
+	local tUnits = pButton.parent.frames["Units"]
+	for key, value in pairs(tUnits.buttons) do value:Hide() end
+	for key, value in pairs(tUnits.frames) do value:Hide() end
+	tUnits.frames["Control"]:Hide()
+	
+	-- MEMBERBOTS --
+	
+	for i = 1, 50 do
+		local tName, tRank, tIndex, tLevel, tClass = GetGuildRosterInfo(i)
+		
+		-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
+		if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
+			local tMember = MultiBot.addMember(tClass, tLevel, tName).setDisable()
+			
+			tMember.doRight = function(pButton)
+				SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
+				if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
+				pButton.setDisable()
+			end
+			
+			tMember.doLeft = function(pButton)
+				if(pButton.state) then
+					if(pButton.parent.frames[pButton.name] ~= nil) then MultiBot.ShowHideSwitch(pButton.parent.frames[pButton.name]) end
+				else
+					SendChatMessage(".playerbot bot add " .. pButton.name, "SAY")
+					pButton.setEnable()
+				end
+			end
+		else
+			break
+		end
+	end
+	
+	-- FRIENDBOTS --
+	
+	for i = 1, 50 do
+		local tName, tLevel, tClass = GetFriendInfo(i)
+		
+		-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
+		if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
+			local tFriend = MultiBot.addFriend(tClass, tLevel, tName).setDisable()
+			
+			tFriend.doRight = function(pButton)
+				SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
+				if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
+				pButton.setDisable()
+			end
+			
+			tFriend.doLeft = function(pButton)
+				if(pButton.state) then
+					if(pButton.parent.frames[pButton.name] ~= nil) then MultiBot.ShowHideSwitch(pButton.parent.frames[pButton.name]) end
+				else
+					SendChatMessage(".playerbot bot add " .. pButton.name, "SAY")
+					pButton.setEnable()
+				end
+			end
+		else
+			break
+		end
+	end
+	
+	-- REFRESH:RAID --
+	
+	if(GetNumRaidMembers() > 4) then
+		for i = 1, GetNumRaidMembers() do
+			local tName = UnitName("raid" .. i)
+			SendChatMessage(".playerbot bot add " .. tName, "SAY")
+		end
+		
+		return
+	end
+	
+	-- REFRESH:GROUP --
+	
+	if(GetNumPartyMembers() > 0) then
+		for i = 1, GetNumPartyMembers() do
+			local tName = UnitName("party" .. i)
+			SendChatMessage(".playerbot bot add " .. tName, "SAY")
+		end
+		
+		return
+	end
+	
+	pButton.doLeft(pButton, pButton.roster, pButton.filter)
 end
 
 tButton.doLeft = function(pButton, oRoster, oFilter)
