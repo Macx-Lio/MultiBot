@@ -655,6 +655,15 @@ MultiBot.tips.creator.deathknight =
 "|cffff0000Left-Click to create DeathKnight|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
+MultiBot.tips.creator.init =
+"Auto-Initialize\n|cffffffff"..
+"Use this Button to Auto-Initialize your Target.\n"..
+"There are 2 Limitations, because the Equipment will be overwritten:\n"..
+"- it wont work with anyone on the Playerbot-Roster.\n"..
+"- it wont work with anyone on the Guild-Roster.|r\n\n"..
+"|cffff0000Left-Click to Auto-Initialize|r\n"..
+"|cff999999(Execution-Order: Target)|r";
+
 tLeft.addButton("Creator", -0, 0, "inv_helmet_145a", MultiBot.tips.creator.master)
 .doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Creator"])
@@ -721,6 +730,16 @@ end
 tCreator.addButton("DeathKnight", 0, 270, "Interface\\AddOns\\MultiBot\\Icons\\addclass_deathknight", MultiBot.tips.creator.deathknight)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass deathknight", "SAY")
+	pButton.parent:Hide()
+end
+
+tCreator.addButton("Init", 0, 300, "inv_misc_enggizmos_27", MultiBot.tips.creator.init)
+.doLeft = function(pButton)
+	local tName = UnitName("target")
+	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage("I dont have a Target.", "SAY") end
+	if(MultiBot.isRoster("players", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Playerbot-Roster.", "SAY") end
+	if(MultiBot.isRoster("members", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Guild-Roster.", "SAY") end
+	SendChatMessage(".playerbot bot init=auto", "WHISPER", nil, tName)
 	pButton.parent:Hide()
 end
 

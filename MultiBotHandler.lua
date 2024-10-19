@@ -83,6 +83,9 @@ MultiBot:SetScript("OnEvent", function()
 		tValue = string.sub(tValue, 1, string.len(tValue) - 4)
 		MultiBotSave["FleeButton"] = tValue
 		
+		MultiBotSave["AutoRelease"] = MultiBot.IF(MultiBot.auto.release, "true", "false")
+		MultiBotSave["NecroNet"] = MultiBot.IF(MultiBot.necronet.state, "true", "false")
+		
 		return
 	end
 	
@@ -185,6 +188,28 @@ MultiBot:SetScript("OnEvent", function()
 				local tButton = MultiBot.frames["MultiBar"].frames["Left"].frames["Flee"].buttons["Target"]
 				tButton.doRight(tButton)
 			end
+		end
+		
+		if(MultiBotSave["AutoRelease"] ~= nil) then
+			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["Release"]
+			
+			if(MultiBotSave["AutoRelease"] == "true")
+			then tButton.setDisable()
+			else tButton.setEnable()
+			end
+			
+			tButton.doLeft(tButton)
+		end
+		
+		if(MultiBotSave["NecroNet"] ~= nil) then
+			local tButton = MultiBot.frames["MultiBar"].frames["Masters"].buttons["NecroNet"]
+			
+			if(MultiBotSave["NecroNet"] == "true")
+			then tButton.setDisable()
+			else tButton.setEnable()
+			end
+			
+			tButton.doLeft(tButton)
 		end
 		
 		return
