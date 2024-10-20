@@ -69,7 +69,10 @@ MultiBot:SetScript("OnEvent", function()
 		
 		local tX, tY = MultiBot.toPoint(MultiBot.iconos)
 		MultiBotSave["IconosPoint"] = tX .. ", " .. tY
-		
+
+		local tX, tY = MultiBot.toPoint(MultiBot.stats)
+		MultiBotSave["StatsPoint"] = tX .. ", " .. tY
+
 		local tPortal = MultiBot.frames["MultiBar"].frames["Masters"].frames["Portal"]
 		MultiBotSave["MemoryGem1"] =  MultiBot.SavePortal(tPortal.buttons["Red"])
 		MultiBotSave["MemoryGem2"] =  MultiBot.SavePortal(tPortal.buttons["Green"])
@@ -82,6 +85,9 @@ MultiBot:SetScript("OnEvent", function()
 		local tValue = MultiBot.doSplit(MultiBot.frames["MultiBar"].frames["Left"].buttons["Flee"].texture, "\\")[5]
 		tValue = string.sub(tValue, 1, string.len(tValue) - 4)
 		MultiBotSave["FleeButton"] = tValue
+
+		MultiBotSave["AutoRelease"] = MultiBot.IF(MultiBot.auto.release, "true", "false")
+		MultiBotSave["NecroNet"] = MultiBot.IF(MultiBot.necronet.state, "true", "false")
 		
 		return
 	end
@@ -114,6 +120,11 @@ MultiBot:SetScript("OnEvent", function()
 			MultiBot.iconos.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
 		end
 		
+		if(MultiBotSave["StatsPoint"] ~= nil) then
+			local tPoint = MultiBot.doSplit(MultiBotSave["StatsPoint"], ", ")
+			MultiBot.stats.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
+		end
+
 		if(MultiBotSave["MemoryGem1"] ~= nil) then
 			local tGem = MultiBot.frames["MultiBar"].frames["Masters"].frames["Portal"].buttons["Red"]
 			MultiBot.LoadPortal(tGem, MultiBotSave["MemoryGem1"])
@@ -186,7 +197,29 @@ MultiBot:SetScript("OnEvent", function()
 				tButton.doRight(tButton)
 			end
 		end
+
+		if(MultiBotSave["AutoRelease"] ~= nil) then
+			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["Release"]
+			
+			if(MultiBotSave["AutoRelease"] == "true")
+			then tButton.setDisable()
+			else tButton.setEnable()
+			end
+			
+			tButton.doLeft(tButton)
+		end
 		
+		if(MultiBotSave["NecroNet"] ~= nil) then
+			local tButton = MultiBot.frames["MultiBar"].frames["Masters"].buttons["NecroNet"]
+			
+			if(MultiBotSave["NecroNet"] == "true")
+			then tButton.setDisable()
+			else tButton.setEnable()
+			end
+			
+			tButton.doLeft(tButton)
+		end
+
 		return
 	end
 	
@@ -236,6 +269,7 @@ MultiBot:SetScript("OnEvent", function()
 				local tPlayer = MultiBot.addPlayer(tClass, tName).setDisable()
 				
 				tPlayer.doRight = function(pButton)
+					if(pButton.state == false) then return end
 					SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
 					if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
 					pButton.setDisable()
@@ -261,6 +295,7 @@ MultiBot:SetScript("OnEvent", function()
 					local tMember = MultiBot.addMember(tClass, tLevel, tName).setDisable()
 					
 					tMember.doRight = function(pButton)
+						if(pButton.state == false) then return end
 						SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
 						if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
 						pButton.setDisable()
@@ -289,6 +324,7 @@ MultiBot:SetScript("OnEvent", function()
 					local tFriend = MultiBot.addFriend(tClass, tLevel, tName).setDisable()
 					
 					tFriend.doRight = function(pButton)
+						if(pButton.state == false) then return end
 						SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
 						if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
 						pButton.setDisable()

@@ -662,6 +662,16 @@ MultiBot.tips.creator.deathknight =
 "|cff999999(执行命令: 系统)|r";
 
 
+MultiBot.tips.creator.init =
+"自动初始化\n|cffffffff"..
+"使用此按钮自动初始化您的目标。\n"..
+"由于装备将被覆盖，因此有两个限制：\n"..
+"- 它不适用于玩家机器人名单中的任何人。\n"..
+"- 它不适用于公会名单中的任何人。|r\n\n"..
+"|cff000000左键点击自动初始化|r\n"..
+"|cff999999(执行命令序：目标)|r";
+
+
 tLeft.addButton("Creator", -0, 0, "inv_helmet_145a", MultiBot.tips.creator.master)
 .doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Creator"])
@@ -674,63 +684,72 @@ tCreator:Hide()
 tCreator.addButton("Warrior", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\addclass_warrior", MultiBot.tips.creator.warrior)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass warrior", "SAY")
-	pButton.parent:Hide()
+	--pButton.parent:Hide()
 end
 
 tCreator.addButton("Warlock", 0, 30, "Interface\\AddOns\\MultiBot\\Icons\\addclass_warlock", MultiBot.tips.creator.warlock)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass warlock", "SAY")
-	pButton.parent:Hide()
+	--pButton.parent:Hide()
 end
 
 tCreator.addButton("Shaman", 0, 60, "Interface\\AddOns\\MultiBot\\Icons\\addclass_shaman", MultiBot.tips.creator.shaman)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass shaman", "SAY")
-	pButton.parent:Hide()
+	--pButton.parent:Hide()
 end
 
 tCreator.addButton("Rogue", 0, 90, "Interface\\AddOns\\MultiBot\\Icons\\addclass_rogue", MultiBot.tips.creator.rogue)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass rogue", "SAY")
-	pButton.parent:Hide()
+	--pButton.parent:Hide()
 end
 
 tCreator.addButton("Priest", 0, 120, "Interface\\AddOns\\MultiBot\\Icons\\addclass_priest", MultiBot.tips.creator.priest)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass priest", "SAY")
-	pButton.parent:Hide()
+	--pButton.parent:Hide()
 end
 
 tCreator.addButton("Paladin", 0, 150, "Interface\\AddOns\\MultiBot\\Icons\\addclass_paladin", MultiBot.tips.creator.paladin)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass paladin", "SAY")
-	pButton.parent:Hide()
+	--pButton.parent:Hide()
 end
 
 tCreator.addButton("Mage", 0, 180, "Interface\\AddOns\\MultiBot\\Icons\\addclass_mage", MultiBot.tips.creator.mage)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass mage", "SAY")
-	pButton.parent:Hide()
+	--pButton.parent:Hide()
 end
 
 tCreator.addButton("Hunter", 0, 210, "Interface\\AddOns\\MultiBot\\Icons\\addclass_hunter", MultiBot.tips.creator.hunter)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass hunter", "SAY")
-	pButton.parent:Hide()
+	--pButton.parent:Hide()
 end
 
 tCreator.addButton("Druid", 0, 240, "Interface\\AddOns\\MultiBot\\Icons\\addclass_druid", MultiBot.tips.creator.druid)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass druid", "SAY")
-	pButton.parent:Hide()
+	--pButton.parent:Hide()
 end
 
 tCreator.addButton("DeathKnight", 0, 270, "Interface\\AddOns\\MultiBot\\Icons\\addclass_deathknight", MultiBot.tips.creator.deathknight)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass deathknight", "SAY")
-	pButton.parent:Hide()
+	--pButton.parent:Hide()
 end
 
+tCreator.addButton("Init", 0, 300, "inv_misc_enggizmos_27", MultiBot.tips.creator.init)
+.doLeft = function(pButton)
+	local tName = UnitName("target")
+	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage("I dont have a Target.", "SAY") end
+	if(MultiBot.isRoster("players", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Playerbot-Roster.", "SAY") end
+	if(MultiBot.isRoster("members", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Guild-Roster.", "SAY") end
+	SendChatMessage(".playerbot bot init=auto", "WHISPER", nil, tName)
+	--pButton.parent:Hide()
+end
 -- UNITS --
 
 MultiBot.tips.units = {}
@@ -740,15 +759,103 @@ MultiBot.tips.units.master =
 "每个按钮代表你的一个角色、公会成员或好友。\n"..
 "执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000左键单击显示或隐藏单位|r\n"..
+"|cff999999(执行命令: 系统)|r\n\n"..
+"|cffff0000右击刷新名单|r\n"..
 "|cff999999(执行命令: 系统)|r";
---"|cffff0000右键单击刷新单位|r\n"..
---"|cff999999(执行顺序: 系统)|r";
+
 
 local tButton = tMultiBar.addButton("Units", -38, 0, "inv_scroll_04", MultiBot.tips.units.master)
 tButton.roster = "players"
 tButton.filter = "none"
 
 tButton.doRight = function(pButton)
+
+	local tUnits = pButton.parent.frames["Units"]
+	for key, value in pairs(tUnits.buttons) do value:Hide() end
+	for key, value in pairs(tUnits.frames) do value:Hide() end
+	tUnits.frames["Control"]:Hide()
+	
+	-- MEMBERBOTS --
+	
+	for i = 1, 50 do
+		local tName, tRank, tIndex, tLevel, tClass = GetGuildRosterInfo(i)
+		
+		-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
+		if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
+			local tMember = MultiBot.addMember(tClass, tLevel, tName).setDisable()
+			
+			tMember.doRight = function(pButton)
+				if(pButton.state == false) then return end
+				SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
+				if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
+				pButton.setDisable()
+			end
+			
+			tMember.doLeft = function(pButton)
+				if(pButton.state) then
+					if(pButton.parent.frames[pButton.name] ~= nil) then MultiBot.ShowHideSwitch(pButton.parent.frames[pButton.name]) end
+				else
+					SendChatMessage(".playerbot bot add " .. pButton.name, "SAY")
+					pButton.setEnable()
+				end
+			end
+		else
+			break
+		end
+	end
+	
+	-- FRIENDBOTS --
+	
+	for i = 1, 50 do
+		local tName, tLevel, tClass = GetFriendInfo(i)
+		
+		-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
+		if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
+			local tFriend = MultiBot.addFriend(tClass, tLevel, tName).setDisable()
+			
+			tFriend.doRight = function(pButton)
+				if(pButton.state == false) then return end
+				SendChatMessage(".playerbot bot remove " .. pButton.name, "SAY")
+				if(pButton.parent.frames[pButton.name] ~= nil) then pButton.parent.frames[pButton.name]:Hide() end
+				pButton.setDisable()
+			end
+			
+			tFriend.doLeft = function(pButton)
+				if(pButton.state) then
+					if(pButton.parent.frames[pButton.name] ~= nil) then MultiBot.ShowHideSwitch(pButton.parent.frames[pButton.name]) end
+				else
+					SendChatMessage(".playerbot bot add " .. pButton.name, "SAY")
+					pButton.setEnable()
+				end
+			end
+		else
+			break
+		end
+	end
+	
+	-- REFRESH:RAID --
+	
+	if(GetNumRaidMembers() > 4) then
+		for i = 1, GetNumRaidMembers() do
+			local tName = UnitName("raid" .. i)
+			SendChatMessage(".playerbot bot add " .. tName, "SAY")
+		end
+		
+		return
+	end
+	
+	-- REFRESH:GROUP --
+	
+	if(GetNumPartyMembers() > 0) then
+		for i = 1, GetNumPartyMembers() do
+			local tName = UnitName("party" .. i)
+			SendChatMessage(".playerbot bot add " .. tName, "SAY")
+		end
+		
+		return
+	end
+	
+	pButton.doLeft(pButton, pButton.roster, pButton.filter)
 
 end
 
@@ -1321,6 +1428,7 @@ tMain.addButton("Coords", 0, 0, "inv_gizmo_03", MultiBot.tips.main.coords)
 	MultiBot.spellbook.setPoint(-566, 170)
 	MultiBot.itemus.setPoint(-860, -144)
 	MultiBot.iconos.setPoint(-860, -144)
+	MultiBot.stats.setPoint(-60, 560)
 end
 
 tMain.addButton("Release", 0, 34, "achievement_bg_xkills_avgraveyard", MultiBot.tips.main.release).setDisable()
@@ -1726,11 +1834,12 @@ tFrame:Show()
 -- STATS --
 
 MultiBot.stats = MultiBot.newFrame(MultiBot, -60, 560, 32)
+MultiBot.stats:SetMovable(true)
 MultiBot.addStats(MultiBot.stats, "party1", 0,    0, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party2", 0,  -60, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party3", 0, -120, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party4", 0, -180, 32, 192, 96)
-
+MultiBot.stats.movButton("Move", 0, -80, 160, "Right-Click to drag and move Auto-Stats")
 -- ITEMUS --
 
 MultiBot.tips.itemus = {}

@@ -121,6 +121,11 @@ MultiBot.isInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern)
 	return false
 end
 
+MultiBot.isRoster = function(pRoster, pName)
+	for key, value in pairs(MultiBot.index[pRoster]) do if(pName == value) then return true end end
+	return false
+end
+
 MultiBot.isMember = function(pName)
 	if(GetNumRaidMembers() > 5) then
 		for i = 1, GetNumRaidMembers() do
