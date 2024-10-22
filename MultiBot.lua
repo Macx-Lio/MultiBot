@@ -663,7 +663,7 @@ MultiBot.tips.creator.init =
 "- it wont work with anyone on the Guild-Roster.|r\n\n"..
 "|cffff0000Left-Click to Auto-Initialize your Target|r\n"..
 "|cff999999(Execution-Order: Target)|r\n\n"..
-"|cffff0000Left-Click to Auto-Initialize your Group|r\n"..
+"|cffff0000Right-Click to Auto-Initialize your Group|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
 tLeft.addButton("Creator", -0, 0, "inv_helmet_145a", MultiBot.tips.creator.master)
