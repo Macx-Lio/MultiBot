@@ -732,7 +732,7 @@ tButton.doRight = function(pButton)
 			local tName = UnitName("raid" .. i)
 			if(MultiBot.isRoster("players", tName))	then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Playerbot-Roster.", "SAY")
 			elseif(MultiBot.isRoster("members", tName)) then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Guild-Roster.", "SAY")
-			else SendChatMessage(".playerbot bot init=auto", "WHISPER", nil, tName)
+			elseif(tName ~= UnitName("player")) then SendChatMessage(".playerbot bot init=auto " .. tName, "SAY")
 			end
 		end
 		
@@ -744,7 +744,7 @@ tButton.doRight = function(pButton)
 			local tName = UnitName("party" .. i)
 			if(MultiBot.isRoster("players", tName))	then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Playerbot-Roster.", "SAY")
 			elseif(MultiBot.isRoster("members", tName)) then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Guild-Roster.", "SAY")
-			else SendChatMessage(".playerbot bot init=auto", "WHISPER", nil, tName)
+			elseif(tName ~= UnitName("player")) then SendChatMessage(".playerbot bot init=auto " .. tName, "SAY")
 			end
 		end
 		
@@ -758,7 +758,7 @@ tButton.doLeft = function(pButton)
 	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage("I dont have a Target.", "SAY") end
 	if(MultiBot.isRoster("players", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Playerbot-Roster.", "SAY") end
 	if(MultiBot.isRoster("members", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Guild-Roster.", "SAY") end
-	SendChatMessage(".playerbot bot init=auto", "WHISPER", nil, tName)
+	SendChatMessage(".playerbot bot init=auto " .. tName, "SAY")
 end
 
 -- UNITS --
