@@ -655,6 +655,12 @@ MultiBot.tips.creator.deathknight =
 "|cffff0000Left-Click to create DeathKnight|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
+MultiBot.tips.creator.inspect =
+"Inspect-Target\n|cffffffff"..
+"This Button will open the Inspect-Window of your Target.|r\n\n"..
+"|cffff0000Left-Click to open Inspect-Window|r\n"..
+"|cff999999(Execution-Order: Target)|r";
+
 MultiBot.tips.creator.init =
 "Auto-Initialize\n|cffffffff"..
 "Use this Button to Auto-Initialize your Target, Raid or Party.\n"..
@@ -675,57 +681,64 @@ end
 local tCreator = tLeft.addFrame("Creator", -2, 34)
 tCreator:Hide()
 
-tCreator.addButton("Warrior", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\addclass_warrior", MultiBot.tips.creator.warrior)
+tCreator.addButton("Warrior", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\addclass_warrior.blp", MultiBot.tips.creator.warrior)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass warrior", "SAY")
 end
 
-tCreator.addButton("Warlock", 0, 30, "Interface\\AddOns\\MultiBot\\Icons\\addclass_warlock", MultiBot.tips.creator.warlock)
+tCreator.addButton("Warlock", 0, 30, "Interface\\AddOns\\MultiBot\\Icons\\addclass_warlock.blp", MultiBot.tips.creator.warlock)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass warlock", "SAY")
 end
 
-tCreator.addButton("Shaman", 0, 60, "Interface\\AddOns\\MultiBot\\Icons\\addclass_shaman", MultiBot.tips.creator.shaman)
+tCreator.addButton("Shaman", 0, 60, "Interface\\AddOns\\MultiBot\\Icons\\addclass_shaman.blp", MultiBot.tips.creator.shaman)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass shaman", "SAY")
 end
 
-tCreator.addButton("Rogue", 0, 90, "Interface\\AddOns\\MultiBot\\Icons\\addclass_rogue", MultiBot.tips.creator.rogue)
+tCreator.addButton("Rogue", 0, 90, "Interface\\AddOns\\MultiBot\\Icons\\addclass_rogue.blp", MultiBot.tips.creator.rogue)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass rogue", "SAY")
 end
 
-tCreator.addButton("Priest", 0, 120, "Interface\\AddOns\\MultiBot\\Icons\\addclass_priest", MultiBot.tips.creator.priest)
+tCreator.addButton("Priest", 0, 120, "Interface\\AddOns\\MultiBot\\Icons\\addclass_priest.blp", MultiBot.tips.creator.priest)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass priest", "SAY")
 end
 
-tCreator.addButton("Paladin", 0, 150, "Interface\\AddOns\\MultiBot\\Icons\\addclass_paladin", MultiBot.tips.creator.paladin)
+tCreator.addButton("Paladin", 0, 150, "Interface\\AddOns\\MultiBot\\Icons\\addclass_paladin.blp", MultiBot.tips.creator.paladin)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass paladin", "SAY")
 end
 
-tCreator.addButton("Mage", 0, 180, "Interface\\AddOns\\MultiBot\\Icons\\addclass_mage", MultiBot.tips.creator.mage)
+tCreator.addButton("Mage", 0, 180, "Interface\\AddOns\\MultiBot\\Icons\\addclass_mage.blp", MultiBot.tips.creator.mage)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass mage", "SAY")
 end
 
-tCreator.addButton("Hunter", 0, 210, "Interface\\AddOns\\MultiBot\\Icons\\addclass_hunter", MultiBot.tips.creator.hunter)
+tCreator.addButton("Hunter", 0, 210, "Interface\\AddOns\\MultiBot\\Icons\\addclass_hunter.blp", MultiBot.tips.creator.hunter)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass hunter", "SAY")
 end
 
-tCreator.addButton("Druid", 0, 240, "Interface\\AddOns\\MultiBot\\Icons\\addclass_druid", MultiBot.tips.creator.druid)
+tCreator.addButton("Druid", 0, 240, "Interface\\AddOns\\MultiBot\\Icons\\addclass_druid.blp", MultiBot.tips.creator.druid)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass druid", "SAY")
 end
 
-tCreator.addButton("DeathKnight", 0, 270, "Interface\\AddOns\\MultiBot\\Icons\\addclass_deathknight", MultiBot.tips.creator.deathknight)
+tCreator.addButton("DeathKnight", 0, 270, "Interface\\AddOns\\MultiBot\\Icons\\addclass_deathknight.blp", MultiBot.tips.creator.deathknight)
 .doLeft = function(pButton)
 	SendChatMessage(".playerbot bot addclass deathknight", "SAY")
 end
 
-local tButton = tCreator.addButton("Init", 0, 300, "inv_misc_enggizmos_27", MultiBot.tips.creator.init)
+tCreator.addButton("Inspect", 0, 300, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", MultiBot.tips.creator.inspect)
+.doLeft = function(pButton)
+	local tName = UnitName("target")
+	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage("I dont have a Target.", "SAY") end
+	InspectUnit(tName)
+end
+
+local tButton = tCreator.addButton("Init", 0, 330, "inv_misc_enggizmos_27", MultiBot.tips.creator.init)
 tButton.doRight = function(pButton)
 	if(GetNumRaidMembers() > 0) then
 		for i = 1, GetNumRaidMembers() do
@@ -1191,8 +1204,11 @@ MultiBot.tips.units.browse =
 MultiBot.tips.units.invite =
 "Invite-Control\n|cffffffff"..
 "With this Control you can automaticaly fill up your Group.\n"..
-"The left Button is for 'Party-Invite', the right Buttons are for 'Raid-Invite'.|r\n\n"..
+"The left Button is for 'Party-Invite', the right Buttons are for 'Raid-Invite'.\n"..
+"Additionally a Right-Click on this Button will remove all Bots at once.|r\n\n".. 
 "|cffff0000Left-Click to show or hide the Control|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to remove all Bots|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.units.inviteParty5 =
@@ -1227,8 +1243,12 @@ MultiBot.tips.units.inviteRaid40 =
 "|cffff0000Left-Click to invite Raid-Members|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
-tControl.addButton("Invite", 0, 60, "Interface\\AddOns\\MultiBot\\Icons\\invite.blp", MultiBot.tips.units.invite).setEnable()
-.doLeft = function(pButton)
+local tButton = tControl.addButton("Invite", 0, 60, "Interface\\AddOns\\MultiBot\\Icons\\invite.blp", MultiBot.tips.units.invite).setEnable()
+tButton.doRight = function(pButton)
+	if(GetNumRaidMembers() > 0 or GetNumPartyMembers() > 0) then return SendChatMessage(".playerbot bot remove *", "SAY") end
+	SendChatMessage("I am neigther in a Raid nor in a Party.", "SAY")
+end
+tButton.doLeft = function(pButton)
 	if(pButton.state) then MultiBot.ShowHideSwitch(pButton.parent.frames["Invite"]) end
 end
 
