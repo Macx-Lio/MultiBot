@@ -575,7 +575,7 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
-		if(tButton.waitFor ~= "ITEM" and tButton.waitFor ~= "SPELL" and MultiBot.isInside(arg1, "Bag")) then
+		if(tButton.waitFor ~= "ITEM" and tButton.waitFor ~= "SPELL" and MultiBot.auto.stats and MultiBot.isInside(arg1, "Bag")) then
 			local tUnit = MultiBot.toUnit(arg2)
 			if(MultiBot.stats.frames[tUnit] == nil) then MultiBot.addStats(MultiBot.stats, "party1", 0, 0, 32, 192, 96) end
 			MultiBot.stats.frames[tUnit].setStats(arg2, UnitLevel(tUnit), arg1)
