@@ -2773,7 +2773,7 @@ end
 MultiBot.reward = MultiBot.newFrame(MultiBot, -752, 329, 30, 400, 400)
 MultiBot.reward.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Reward.blp")
 MultiBot.reward.state = false
-MultiBot.reward:Show()
+MultiBot.reward:Hide()
 
 MultiBot.reward.wowButton("X", -72, 377, 15, 16, 13)
 .doLeft = function(pButton)
