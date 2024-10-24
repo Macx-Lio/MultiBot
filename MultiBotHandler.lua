@@ -88,6 +88,7 @@ MultiBot:SetScript("OnEvent", function()
 		
 		MultiBotSave["AutoRelease"] = MultiBot.IF(MultiBot.auto.release, "true", "false")
 		MultiBotSave["NecroNet"] = MultiBot.IF(MultiBot.necronet.state, "true", "false")
+		MultiBotSave["Reward"] = MultiBot.IF(MultiBot.reward.state, "true", "false")
 		
 		return
 	end
@@ -213,6 +214,17 @@ MultiBot:SetScript("OnEvent", function()
 			local tButton = MultiBot.frames["MultiBar"].frames["Masters"].buttons["NecroNet"]
 			
 			if(MultiBotSave["NecroNet"] == "true")
+			then tButton.setDisable()
+			else tButton.setEnable()
+			end
+			
+			tButton.doLeft(tButton)
+		end
+		
+		if(MultiBotSave["Reward"] ~= nil) then
+			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["Reward"]
+			
+			if(MultiBotSave["Reward"] == "true")
 			then tButton.setDisable()
 			else tButton.setEnable()
 			end
@@ -639,6 +651,13 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
+		return
+	end
+	
+	-- QUEST:COMPLETE --
+	
+	if(event == "QUEST_COMPLETE") then
+		MultiBot.setReward()
 		return
 	end
 	

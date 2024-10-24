@@ -1387,6 +1387,21 @@ MultiBot.tips.main.stats =
 "|cffff0000Left-Click to enable or disable Auto-Stats|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
+MultiBot.tips.main.reward =
+"Reward-Selector\n|cffffffff"..
+"This Feature Visualizes the Selection of Rewards.\n"..
+"My Advice is to select the Reward for your Character first.\n"..
+"Then you wont have any Problems using the Inspect-Buttons.\n"..
+"Currently are max 12 Bots supported.|r\n\n"..
+"Important:\n"..
+"Once your Character has completed the Quest, the Bots must also complete the Quest.\n"..
+"So dont cancel the Reward-Selector after your Character has his Reward.\n\n"..
+"|cffffffffMod-Playerbot-Configuration:\n"..
+"- (must) AiPlayerbot.AutoPickReward = no\n"..
+"- (recommanded) AiPlayerbot.SyncQuestWithPlayer = 1|r\n\n"..
+"|cffff0000Left-Click to enable or disable Reward-Selector|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
 MultiBot.tips.main.naxx =
 "Naxx-Strategies\n|cffffffff"..
 "This Button will activate the Naxx-Strategies of your Bots.|r\n\n"..
@@ -1447,17 +1462,22 @@ tMain.addButton("Stats", 0, 68, "inv_scroll_08", MultiBot.tips.main.stats).setDi
 	end
 end
 
-tMain.addButton("Naxx", 0, 102, "achievement_boss_kelthuzad_01", MultiBot.tips.main.naxx)
+tMain.addButton("Reward", 0, 102, "Interface\\AddOns\\MultiBot\\Icons\\reward.blp", MultiBot.tips.main.reward).setDisable()
+.doLeft = function(pButton)
+	MultiBot.reward.state = MultiBot.OnOffSwitch(pButton)
+end
+
+tMain.addButton("Naxx", 0, 136, "achievement_boss_kelthuzad_01", MultiBot.tips.main.naxx)
 .doLeft = function(pButton)
 	MultiBot.ActionToTargetOrGroup("naxx")
 end
 
-tMain.addButton("Reset", 0, 136, "inv_misc_tournaments_symbol_gnome", MultiBot.tips.main.reset)
+tMain.addButton("Reset", 0, 170, "inv_misc_tournaments_symbol_gnome", MultiBot.tips.main.reset)
 .doLeft = function(pButton)
 	MultiBot.ActionToTargetOrGroup("reset botAI")
 end
 
-tMain.addButton("Actions", 0, 170, "inv_helmet_02", MultiBot.tips.main.action)
+tMain.addButton("Actions", 0, 204, "inv_helmet_02", MultiBot.tips.main.action)
 .doLeft = function(pButton)
 	MultiBot.ActionToTargetOrGroup("reset")
 end
@@ -2746,6 +2766,194 @@ tButton.doRight = function(pButton)
 end
 tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
+end
+
+-- QUEST:REWARD --
+
+MultiBot.reward = MultiBot.newFrame(MultiBot, -776, 354, 30, 376, 376)
+MultiBot.reward.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Reward.blp")
+MultiBot.reward:Hide()
+
+MultiBot.reward.wowButton("X", -69, 353, 15, 16, 13)
+.doLeft = function(pButton)
+	MultiBot.reward:Hide()
+end
+
+MultiBot.reward.doClose = function()
+	local tGroup = MultiBot.reward.frames["Group"]
+	for i = 1, 12 do if(tGroup.frames["U" .. MultiBot.IF(i < 10, "0", "") .. i]:IsVisible()) then return end end
+	MultiBot.reward:Hide()
+end
+
+local tGroup = MultiBot.reward.addFrame("Group", -77, 13, 30, 282, 346)
+tGroup.addText("Title", "Select the Rewards", "CENTER", 0, 163, 15)
+
+-- PARTY:U01 --
+
+local tUnit = tGroup.addFrame("U01", -150, 272, 30, 132, 54)
+tUnit.addText("U01", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
+end
+
+-- PARTY:U02 --
+
+local tUnit = tGroup.addFrame("U02", -0, 272, 30, 132, 54)
+tUnit.addText("U02", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
+end
+
+-- PARTY:U03 --
+
+local tUnit = tGroup.addFrame("U03", -150, 218, 30, 132, 54)
+tUnit.addText("U03", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
+end
+
+-- PARTY:U04 --
+
+local tUnit = tGroup.addFrame("U04", -0, 218, 30, 132, 54)
+tUnit.addText("U04", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
+end
+
+-- PARTY:U05 --
+
+local tUnit = tGroup.addFrame("U05", -150, 164, 30, 132, 54)
+tUnit.addText("U05", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
+end
+
+-- PARTY:U06 --
+
+local tUnit = tGroup.addFrame("U06", -0, 164, 30, 132, 54)
+tUnit.addText("U06", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
+end
+
+-- PARTY:U07 --
+
+local tUnit = tGroup.addFrame("U07", -150, 110, 30, 132, 54)
+tUnit.addText("U07", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
+end
+
+-- PARTY:U08 --
+
+local tUnit = tGroup.addFrame("U08", -0, 110, 30, 132, 54)
+tUnit.addText("U08", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
+end
+
+-- PARTY:U09 --
+
+local tUnit = tGroup.addFrame("U09", -150, 56, 30, 132, 54)
+tUnit.addText("U09", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
+end
+
+-- PARTY:U10 --
+
+local tUnit = tGroup.addFrame("U10", -0, 56, 30, 132, 54)
+tUnit.addText("U10", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
+end
+
+-- PARTY:U11 --
+
+local tUnit = tGroup.addFrame("U11", -150, 2, 30, 132, 54)
+tUnit.addText("U11", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
+end
+
+-- PARTY:U12 --
+
+local tUnit = tGroup.addFrame("U12", -0, 2, 30, 132, 54)
+tUnit.addText("U12", "NAME - CLASS", "BOTTOMLEFT", 20, 36, 13)
+tUnit.addButton("R1", -102, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R2", -68, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R3", -34, 0, "inv_misc_questionmark", "Text")
+tUnit.addButton("R4", -0, 0, "inv_misc_questionmark", "Text")
+tUnit.addFrame("Inspector", -116, 34, 16)
+.addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
+.doLeft = function(pButton)
+	InspectUnit(pButton.getName())
 end
 
 -- FINISH --

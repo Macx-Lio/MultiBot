@@ -24,4 +24,5 @@ MultiBotItem.lua
 MultiBot.lua
 MultiBotItemus.lua
 MultiBotIconos.lua
+MultiBotReward.lua
 MultiBotNecronet.lua
