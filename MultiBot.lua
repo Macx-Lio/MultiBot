@@ -2648,7 +2648,7 @@ MultiBot.spellbook.wowButton("X", -287, 548, 15, 18, 13)
 	tButton.doLeft(tButton)
 end
 
-MultiBot.spellbook.addText("R01", "|cff806040Rank|r", "TOPLEFT", 58, -88, 11)
+MultiBot.spellbook.addText("R01", "|cff503010Rank|r", "TOPLEFT", 58, -88, 11)
 MultiBot.spellbook.addText("T01", "|cffffcc00Title|r", "TOPLEFT", 58, -72, 12)
 local tButton = MultiBot.spellbook.addButton("S01", -522, 475, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2658,7 +2658,7 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R02", "|cff806040Rank|r", "TOPLEFT", 190, -88, 11)
+MultiBot.spellbook.addText("R02", "|cff503010Rank|r", "TOPLEFT", 190, -88, 11)
 MultiBot.spellbook.addText("T02", "|cffffcc00Title|r", "TOPLEFT", 190, -72, 12)
 local tButton = MultiBot.spellbook.addButton("S02", -389, 475, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2668,7 +2668,7 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R03", "|cff806040Rank|r", "TOPLEFT", 58, -131, 11)
+MultiBot.spellbook.addText("R03", "|cff503010Rank|r", "TOPLEFT", 58, -131, 11)
 MultiBot.spellbook.addText("T03", "|cffffcc00Title|r", "TOPLEFT", 58, -115, 12)
 local tButton = MultiBot.spellbook.addButton("S03", -522, 432, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2678,7 +2678,7 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R04", "|cff806040Rank|r", "TOPLEFT", 190, -131, 11)
+MultiBot.spellbook.addText("R04", "|cff503010Rank|r", "TOPLEFT", 190, -131, 11)
 MultiBot.spellbook.addText("T04", "|cffffcc00Title|r", "TOPLEFT", 190, -115, 12)
 local tButton = MultiBot.spellbook.addButton("S04", -389, 432, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2688,7 +2688,7 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R05", "|cff806040Rank|r", "TOPLEFT", 58, -174, 11)
+MultiBot.spellbook.addText("R05", "|cff503010Rank|r", "TOPLEFT", 58, -174, 11)
 MultiBot.spellbook.addText("T05", "|cffffcc00Title|r", "TOPLEFT", 58, -158, 12)
 local tButton = MultiBot.spellbook.addButton("S05", -522, 389, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2698,7 +2698,7 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R06", "|cff806040Rank|r", "TOPLEFT", 190, -174, 11)
+MultiBot.spellbook.addText("R06", "|cff503010Rank|r", "TOPLEFT", 190, -174, 11)
 MultiBot.spellbook.addText("T06", "|cffffcc00Title|r", "TOPLEFT", 190, -158, 12)
 local tButton = MultiBot.spellbook.addButton("S06", -389, 389, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2708,7 +2708,7 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R07", "|cff806040Rank|r", "TOPLEFT", 58, -217, 11)
+MultiBot.spellbook.addText("R07", "|cff503010Rank|r", "TOPLEFT", 58, -217, 11)
 MultiBot.spellbook.addText("T07", "|cffffcc00Title|r", "TOPLEFT", 58, -201, 12)
 local tButton = MultiBot.spellbook.addButton("S07", -522, 346, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2718,7 +2718,7 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R08", "|cff806040Rank|r", "TOPLEFT", 190, -217, 11)
+MultiBot.spellbook.addText("R08", "|cff503010Rank|r", "TOPLEFT", 190, -217, 11)
 MultiBot.spellbook.addText("T08", "|cffffcc00Title|r", "TOPLEFT", 190, -201, 12)
 local tButton = MultiBot.spellbook.addButton("S08", -389, 346, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2728,7 +2728,7 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R09", "|cff806040Rank|r", "TOPLEFT", 58, -260, 11)
+MultiBot.spellbook.addText("R09", "|cff503010Rank|r", "TOPLEFT", 58, -260, 11)
 MultiBot.spellbook.addText("T09", "|cffffcc00Title|r", "TOPLEFT", 58, -244, 12)
 local tButton = MultiBot.spellbook.addButton("S09", -522, 303, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2738,7 +2738,7 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R10", "|cff806040Rank|r", "TOPLEFT", 190, -260, 11)
+MultiBot.spellbook.addText("R10", "|cff503010Rank|r", "TOPLEFT", 190, -260, 11)
 MultiBot.spellbook.addText("T10", "|cffffcc00Title|r", "TOPLEFT", 190, -244, 12)
 local tButton = MultiBot.spellbook.addButton("S10", -389, 303, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2748,7 +2748,7 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R11", "|cff806040Rank|r", "TOPLEFT", 58, -303, 11)
+MultiBot.spellbook.addText("R11", "|cff503010Rank|r", "TOPLEFT", 58, -303, 11)
 MultiBot.spellbook.addText("T11", "|cffffcc00Title|r", "TOPLEFT", 58, -287, 12)
 local tButton = MultiBot.spellbook.addButton("S11", -522, 260, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2758,7 +2758,7 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R12", "|cff806040Rank|r", "TOPLEFT", 190, -303, 11)
+MultiBot.spellbook.addText("R12", "|cff503010Rank|r", "TOPLEFT", 190, -303, 11)
 MultiBot.spellbook.addText("T12", "|cffffcc00Title|r", "TOPLEFT", 190, -287, 12)
 local tButton = MultiBot.spellbook.addButton("S12", -389, 260, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
@@ -2787,12 +2787,12 @@ MultiBot.reward.doClose = function()
 end
 
 local tGroup = MultiBot.reward.addFrame("Group", -73, 25, 30, 316, 346)
-tGroup.addText("Title", "Select the Rewards", "CENTER", 0, 173, 15)
+tGroup.addText("Title", "|cff503010Select the Rewards|r", "CENTER", 0, 173, 16)
 
 -- PARTY:U01 --
 
 local tUnit = tGroup.addFrame("U01", -162, 278, 24, 154, 48)
-tUnit.addText("U01", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U01", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
@@ -2808,7 +2808,7 @@ end
 -- PARTY:U02 --
 
 local tUnit = tGroup.addFrame("U02", -0, 278, 24, 154, 48)
-tUnit.addText("U02", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U02", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
@@ -2824,7 +2824,7 @@ end
 -- PARTY:U03 --
 
 local tUnit = tGroup.addFrame("U03", -162, 224, 24, 154, 48)
-tUnit.addText("U03", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U03", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
@@ -2840,7 +2840,7 @@ end
 -- PARTY:U04 --
 
 local tUnit = tGroup.addFrame("U04", -0, 224, 24, 154, 48)
-tUnit.addText("U04", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U04", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
@@ -2856,7 +2856,7 @@ end
 -- PARTY:U05 --
 
 local tUnit = tGroup.addFrame("U05", -162, 170, 24, 154, 48)
-tUnit.addText("U05", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U05", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
@@ -2872,7 +2872,7 @@ end
 -- PARTY:U06 --
 
 local tUnit = tGroup.addFrame("U06", -0, 170, 24, 154, 48)
-tUnit.addText("U06", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U06", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
@@ -2888,7 +2888,7 @@ end
 -- PARTY:U07 --
 
 local tUnit = tGroup.addFrame("U07", -162, 116, 24, 154, 48)
-tUnit.addText("U07", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U07", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
@@ -2904,7 +2904,7 @@ end
 -- PARTY:U08 --
 
 local tUnit = tGroup.addFrame("U08", -0, 116, 24, 154, 48)
-tUnit.addText("U08", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U08", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
@@ -2920,7 +2920,7 @@ end
 -- PARTY:U09 --
 
 local tUnit = tGroup.addFrame("U09", -162, 62, 24, 154, 48)
-tUnit.addText("U09", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U09", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
@@ -2936,7 +2936,7 @@ end
 -- PARTY:U10 --
 
 local tUnit = tGroup.addFrame("U10", -0, 62, 24, 154, 48)
-tUnit.addText("U10", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U10", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
@@ -2952,7 +2952,7 @@ end
 -- PARTY:U11 --
 
 local tUnit = tGroup.addFrame("U11", -162, 8, 24, 154, 48)
-tUnit.addText("U11", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U11", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
@@ -2968,7 +2968,7 @@ end
 -- PARTY:U12 --
 
 local tUnit = tGroup.addFrame("U12", -0, 8, 24, 154, 48)
-tUnit.addText("U12", "NAME - CLASS", "BOTTOMLEFT", 20, 28, 13)
+tUnit.addText("U12", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
 tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
 tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")

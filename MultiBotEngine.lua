@@ -436,7 +436,7 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 	frame.addText = function(pIndex, pText, pAlign, pX, pY, pSize)
 		if(frame.texts[pIndex] ~= nil) then frame.texts[pIndex]:Hide() end
 		frame.texts[pIndex] = frame:CreateFontString(nil, "ARTWORK")
-		frame.texts[pIndex]:SetFont("Fonts\\ARIALN.ttf", pSize, "OUTLINE")
+		frame.texts[pIndex]:SetFont("Fonts\\ARIALN.ttf", pSize, "PLAIN")
 		frame.texts[pIndex]:SetPoint(pAlign, pX, pY)
 		frame.texts[pIndex]:SetText(pText)
 		frame.texts[pIndex]:Show()

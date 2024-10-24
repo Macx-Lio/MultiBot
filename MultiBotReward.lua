@@ -37,7 +37,7 @@ MultiBot.setReward = function()
 			if(tBot ~= nil and tBot.name ~= UnitName("player")) then
 				local tID = "U" .. MultiBot.IF(i < 10, "0", "") .. tIndex
 				local tUnit = tGroup.frames[tID]
-				tUnit.setText(tID, tBot.name .. " - " .. tBot.class)
+				tUnit.setText(tID, "|cff503010" .. tBot.name .. " - " .. tBot.class .. "|r")
 				tUnit.class = tBot.class
 				tUnit.name = tBot.name
 				tUnit:Show()

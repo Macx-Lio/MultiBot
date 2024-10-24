@@ -27,7 +27,7 @@ MultiBot.setSpell = function(pIndex, pSpell)
 		local tTitle = MultiBot.IF(string.len(pSpell[2]) > 16, string.sub(pSpell[2], 1, 16) .. "...", pSpell[2])
 		MultiBot.spellbook.setButton("S" .. tIndex, pSpell[4], pSpell[5])
 		MultiBot.spellbook.setText("T" .. tIndex, "|cffffcc00" .. tTitle .. "|r")
-		MultiBot.spellbook.setText("R" .. tIndex, "|cff806040" .. pSpell[3] .. "|r")
+		MultiBot.spellbook.setText("R" .. tIndex, "|cff503010" .. pSpell[3] .. "|r")
 		MultiBot.spellbook.buttons["S" .. tIndex].spell = pSpell[1]
 		MultiBot.spellbook.buttons["S" .. tIndex].doShow()
 		MultiBot.spellbook.texts["T" .. tIndex]:Show()
