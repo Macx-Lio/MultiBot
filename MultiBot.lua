@@ -1389,7 +1389,7 @@ MultiBot.tips.main.stats =
 
 MultiBot.tips.main.reward =
 "Reward-Selector\n|cffffffff"..
-"This Feature Visualizes the Selection of Rewards.\n"..
+"This Feature visualizes the Selection of Rewards.\n"..
 "My Advice is to select the Reward for your Character first.\n"..
 "Then you wont have any Problems using the Inspect-Buttons.\n"..
 "Currently are max 12 Bots supported.|r\n\n"..
@@ -2772,6 +2772,7 @@ end
 
 MultiBot.reward = MultiBot.newFrame(MultiBot, -776, 354, 30, 376, 376)
 MultiBot.reward.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Reward.blp")
+MultiBot.reward.state = false
 MultiBot.reward:Hide()
 
 MultiBot.reward.wowButton("X", -69, 353, 15, 16, 13)
