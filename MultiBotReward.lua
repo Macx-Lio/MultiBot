@@ -1,7 +1,7 @@
 MultiBot.setReward = function()
 	if(MultiBot.reward.state == false) then return end
 	local tPrefix = MultiBot.IF(GetNumRaidMembers() > 0, "raid", MultiBot.IF(GetNumPartyMembers() > 0, "party", nil))
-	local tChoices = GetNumQuestChoices()
+	local tChoices = MultiBot.IF(GetNumQuestChoices() > 6, 6, GetNumQuestChoices())
 	local tRewards = {}
 	local tPrefix = nil
 	local tUnits = 0
@@ -15,7 +15,7 @@ MultiBot.setReward = function()
 	for i = 1, 12 do
 		local tID = "U" .. MultiBot.IF(i < 10, "0", "") .. i
 		local tUnit = MultiBot.reward.frames["Group"].frames[tID]
-		for j = 1, 4 do tUnit.buttons["R" .. j]:Hide() end
+		for j = 1, 6 do tUnit.buttons["R" .. j]:Hide() end
 		tUnit:Hide()
 	end
 	
