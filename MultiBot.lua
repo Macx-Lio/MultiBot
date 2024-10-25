@@ -1369,7 +1369,7 @@ MultiBot.tips.main.master =
 MultiBot.tips.main.coords =
 "Reset-Coords\n|cffffffff"..
 "Reset the Coordinates of the Features:\n"..
-"MultiBar, Inventory, Spellbook, Itemus and Iconos|r\n\n"..
+"MultiBar, Inventory, Spellbook, Itemus, Iconos and Reward-Selector|r\n\n"..
 "|cffff0000Left-Click to reset Coordinates|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
@@ -2776,7 +2776,7 @@ MultiBot.reward.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Reward.blp")
 MultiBot.reward.movButton("Move", -370, 370, 30, "Right-Click to drag and move Reward-Selector")
 MultiBot.reward.state = false
 MultiBot.reward:SetMovable(true)
-MultiBot.reward:Show()
+MultiBot.reward:Hide()
 
 MultiBot.reward.wowButton("X", -72, 377, 15, 16, 13)
 .doLeft = function(pButton)
