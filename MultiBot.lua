@@ -1439,6 +1439,7 @@ tMain.addButton("Coords", 0, 0, "inv_gizmo_03", MultiBot.tips.main.coords)
 	MultiBot.itemus.setPoint(-860, -144)
 	MultiBot.iconos.setPoint(-860, -144)
 	MultiBot.stats.setPoint(-60, 560)
+	MultiBot.reward.setPoint(-752, 329)
 end
 
 tMain.addButton("Release", 0, 34, "achievement_bg_xkills_avgraveyard", MultiBot.tips.main.release).setDisable()
@@ -2772,8 +2773,10 @@ end
 
 MultiBot.reward = MultiBot.newFrame(MultiBot, -752, 329, 30, 400, 400)
 MultiBot.reward.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Reward.blp")
+MultiBot.reward.movButton("Move", -370, 370, 30, "Right-Click to drag and move Reward-Selector")
 MultiBot.reward.state = false
-MultiBot.reward:Hide()
+MultiBot.reward:SetMovable(true)
+MultiBot.reward:Show()
 
 MultiBot.reward.wowButton("X", -72, 377, 15, 16, 13)
 .doLeft = function(pButton)
