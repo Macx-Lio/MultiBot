@@ -2847,7 +2847,7 @@ MultiBot.reward.max = 1
 MultiBot.reward.now = 1
 MultiBot.reward.to = 12
 MultiBot.reward:SetMovable(true)
-MultiBot.reward:Show()
+MultiBot.reward:Hide()
 
 MultiBot.reward.doClose = function()
 	local tOverlay = MultiBot.reward.frames["Overlay"]
