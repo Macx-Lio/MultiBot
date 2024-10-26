@@ -1400,6 +1400,8 @@ MultiBot.tips.main.reward =
 "- (must) AiPlayerbot.AutoPickReward = no\n"..
 "- (recommanded) AiPlayerbot.SyncQuestWithPlayer = 1|r\n\n"..
 "|cffff0000Left-Click to enable or disable Reward-Selector|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to open Reward-Selector|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.main.naxx =
@@ -1435,11 +1437,11 @@ tMain.addButton("Coords", 0, 0, "inv_gizmo_03", MultiBot.tips.main.coords)
 .doLeft = function(pButton)
 	MultiBot.frames["MultiBar"].setPoint(-262, 144)
 	MultiBot.inventory.setPoint(-700, -144)
-	MultiBot.spellbook.setPoint(-566, 170)
+	MultiBot.spellbook.setPoint(-802, 302)
+	MultiBot.reward.setPoint(-754, 238)
 	MultiBot.itemus.setPoint(-860, -144)
 	MultiBot.iconos.setPoint(-860, -144)
 	MultiBot.stats.setPoint(-60, 560)
-	MultiBot.reward.setPoint(-752, 329)
 end
 
 tMain.addButton("Release", 0, 34, "achievement_bg_xkills_avgraveyard", MultiBot.tips.main.release).setDisable()
@@ -1463,8 +1465,11 @@ tMain.addButton("Stats", 0, 68, "inv_scroll_08", MultiBot.tips.main.stats).setDi
 	end
 end
 
-tMain.addButton("Reward", 0, 102, "Interface\\AddOns\\MultiBot\\Icons\\reward.blp", MultiBot.tips.main.reward).setDisable()
-.doLeft = function(pButton)
+local tButton = tMain.addButton("Reward", 0, 102, "Interface\\AddOns\\MultiBot\\Icons\\reward.blp", MultiBot.tips.main.reward).setDisable()
+tButton.doRight = function(pButton)
+	if(table.getn(MultiBot.reward.rewards) > 0 and table.getn(MultiBot.reward.units) > 0) then MultiBot.reward:Show() end
+end
+tButton.doLeft = function(pButton)
 	MultiBot.reward.state = MultiBot.OnOffSwitch(pButton)
 end
 
@@ -2594,10 +2599,7 @@ tFrame:Show()
 
 -- SPELLBOOK --
 
-MultiBot.spellbook = MultiBot.newFrame(MultiBot, -566, 170, 32, 576, 576)
-MultiBot.spellbook.addTexture("Interface\\AddOns\\MultiBot\\Textures\\spellbook.blp")
-MultiBot.spellbook.addText("Pages", "|cffffcc000/0|r", "CENTER", -138, -54, 13)
-MultiBot.spellbook.addText("Title", "Spellbook", "CENTER", -128, 269, 12)
+MultiBot.spellbook = MultiBot.newFrame(MultiBot, -802, 302, 28, 336, 448)
 MultiBot.spellbook.spells = {}
 MultiBot.spellbook.icons = {}
 MultiBot.spellbook.max = 1
@@ -2605,16 +2607,42 @@ MultiBot.spellbook.now = 1
 MultiBot.spellbook:SetMovable(true)
 MultiBot.spellbook:Hide()
 
-MultiBot.spellbook.movButton("Move", -525, 525, 48, "Right-Click to drag and move the Spellbook")
 for i = 1, GetNumMacroIcons() do MultiBot.spellbook.icons[GetMacroIconInfo(i)] = i end
 
-MultiBot.spellbook.wowButton("<", -540, 225, 15, 18, 13).doShow()
+local tFrame = MultiBot.spellbook.addFrame("Icon", -276, 392, 28, 50, 50)
+tFrame.addTexture("Interface/Spellbook/Spellbook-Icon")
+tFrame:SetFrameLevel(0)
+
+local tFrame = MultiBot.spellbook.addFrame("TopLeft", -112, 224, 28, 224, 224)
+tFrame.addTexture("Interface/ItemTextFrame/UI-ItemText-TopLeft")
+tFrame:SetFrameLevel(1)
+
+local tFrame = MultiBot.spellbook.addFrame("TopRight", -0, 224, 28, 112, 224)
+tFrame.addTexture("Interface/Spellbook/UI-SpellbookPanel-TopRight")
+tFrame:SetFrameLevel(2)
+
+local tFrame = MultiBot.spellbook.addFrame("BottomLeft", -112, 0, 28, 224, 224)
+tFrame.addTexture("Interface/ItemTextFrame/UI-ItemText-BotLeft")
+tFrame:SetFrameLevel(3)
+
+local tFrame = MultiBot.spellbook.addFrame("BottomRight", -0, 0, 28, 112, 224)
+tFrame.addTexture("Interface/Spellbook/UI-SpellbookPanel-BotRight")
+tFrame:SetFrameLevel(4)
+
+local tOverlay = MultiBot.spellbook.addFrame("Overlay", -47, 81, 28, 258, 292)
+tOverlay.addText("Title", "Spellbook", "CENTER", 14, 200, 13)
+tOverlay.addText("Pages", "0/0", "CENTER", 14, 173, 13)
+tOverlay:SetFrameLevel(5)
+
+tOverlay.movButton("Move", -226, 310, 50, "Right-Click to drag and move the Spellbook")
+
+tOverlay.wowButton("<", -159, 309, 15, 18, 13)
 .doLeft = function(pButton)
-	MultiBot.spellbook.to = MultiBot.spellbook.to - 12
+	MultiBot.spellbook.to = MultiBot.spellbook.to - 16
 	MultiBot.spellbook.now = MultiBot.spellbook.now - 1
-	MultiBot.spellbook.from = MultiBot.spellbook.from - 12
-	MultiBot.spellbook.setText("Pages", "|cffffcc00" .. MultiBot.spellbook.now .. "/" .. MultiBot.spellbook.max .. "|r")
-	MultiBot.spellbook.buttons[">"].doShow()
+	MultiBot.spellbook.from = MultiBot.spellbook.from - 16
+	MultiBot.spellbook.frames["Overlay"].setText("Pages", MultiBot.spellbook.now .. "/" .. MultiBot.spellbook.max)
+	MultiBot.spellbook.frames["Overlay"].buttons[">"].doShow()
 	
 	if(MultiBot.spellbook.now == 1) then pButton.doHide() end
 	local tIndex = 1
@@ -2625,13 +2653,13 @@ MultiBot.spellbook.wowButton("<", -540, 225, 15, 18, 13).doShow()
 	end
 end
 
-MultiBot.spellbook.wowButton(">", -300, 225, 15, 18, 13).doShow()
+tOverlay.wowButton(">", -59, 309, 15, 18, 11)
 .doLeft = function(pButton)
-	MultiBot.spellbook.to = MultiBot.spellbook.to + 12
+	MultiBot.spellbook.to = MultiBot.spellbook.to + 16
 	MultiBot.spellbook.now = MultiBot.spellbook.now + 1
-	MultiBot.spellbook.from = MultiBot.spellbook.from + 12
-	MultiBot.spellbook.setText("Pages", "|cffffcc00" .. MultiBot.spellbook.now .. "/" .. MultiBot.spellbook.max .. "|r")
-	MultiBot.spellbook.buttons["<"].doShow()
+	MultiBot.spellbook.from = MultiBot.spellbook.from + 16
+	MultiBot.spellbook.frames["Overlay"].setText("Pages", MultiBot.spellbook.now .. "/" .. MultiBot.spellbook.max)
+	MultiBot.spellbook.frames["Overlay"].buttons["<"].doShow()
 	
 	if(MultiBot.spellbook.now == MultiBot.spellbook.max) then pButton.doHide() end
 	local tIndex = 1
@@ -2642,16 +2670,16 @@ MultiBot.spellbook.wowButton(">", -300, 225, 15, 18, 13).doShow()
 	end
 end
 
-MultiBot.spellbook.wowButton("X", -287, 548, 15, 18, 13)
+tOverlay.wowButton("X", 16, 336, 15, 18, 11)
 .doLeft = function(pButton)
 	local tUnits = MultiBot.frames["MultiBar"].frames["Units"]
 	local tButton = tUnits.frames[MultiBot.spellbook.name].buttons["Spellbook"]
 	tButton.doLeft(tButton)
 end
 
-MultiBot.spellbook.addText("R01", "|cff503010Rank|r", "TOPLEFT", 58, -88, 11)
-MultiBot.spellbook.addText("T01", "|cffffcc00Title|r", "TOPLEFT", 58, -72, 12)
-local tButton = MultiBot.spellbook.addButton("S01", -522, 475, "inv_misc_questionmark", "Text")
+tOverlay.addText("R01", "|cff402000Rank|r", "TOPLEFT", 30, -16, 11)
+tOverlay.addText("T01", "|cffffcc00Title|r", "TOPLEFT", 30, -2, 12)
+local tButton = tOverlay.addButton("S01", -230, 264, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2659,9 +2687,9 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R02", "|cff503010Rank|r", "TOPLEFT", 190, -88, 11)
-MultiBot.spellbook.addText("T02", "|cffffcc00Title|r", "TOPLEFT", 190, -72, 12)
-local tButton = MultiBot.spellbook.addButton("S02", -389, 475, "inv_misc_questionmark", "Text")
+tOverlay.addText("R02", "|cff402000Rank|r", "TOPLEFT", 159, -16, 11)
+tOverlay.addText("T02", "|cffffcc00Title|r", "TOPLEFT", 159, -2, 12)
+local tButton = tOverlay.addButton("S02", -101, 264, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2669,9 +2697,9 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R03", "|cff503010Rank|r", "TOPLEFT", 58, -131, 11)
-MultiBot.spellbook.addText("T03", "|cffffcc00Title|r", "TOPLEFT", 58, -115, 12)
-local tButton = MultiBot.spellbook.addButton("S03", -522, 432, "inv_misc_questionmark", "Text")
+tOverlay.addText("R03", "|cff402000Rank|r", "TOPLEFT", 30, -52, 11)
+tOverlay.addText("T03", "|cffffcc00Title|r", "TOPLEFT", 30, -38, 12)
+local tButton = tOverlay.addButton("S03", -230, 228, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2679,9 +2707,9 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R04", "|cff503010Rank|r", "TOPLEFT", 190, -131, 11)
-MultiBot.spellbook.addText("T04", "|cffffcc00Title|r", "TOPLEFT", 190, -115, 12)
-local tButton = MultiBot.spellbook.addButton("S04", -389, 432, "inv_misc_questionmark", "Text")
+tOverlay.addText("R04", "|cff402000Rank|r", "TOPLEFT", 159, -52, 11)
+tOverlay.addText("T04", "|cffffcc00Title|r", "TOPLEFT", 159, -38, 12)
+local tButton = tOverlay.addButton("S04", -101, 228, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2689,9 +2717,9 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R05", "|cff503010Rank|r", "TOPLEFT", 58, -174, 11)
-MultiBot.spellbook.addText("T05", "|cffffcc00Title|r", "TOPLEFT", 58, -158, 12)
-local tButton = MultiBot.spellbook.addButton("S05", -522, 389, "inv_misc_questionmark", "Text")
+tOverlay.addText("R05", "|cff402000Rank|r", "TOPLEFT", 30, -88, 11)
+tOverlay.addText("T05", "|cffffcc00Title|r", "TOPLEFT", 30, -74, 12)
+local tButton = tOverlay.addButton("S05", -230, 192, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2699,9 +2727,9 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R06", "|cff503010Rank|r", "TOPLEFT", 190, -174, 11)
-MultiBot.spellbook.addText("T06", "|cffffcc00Title|r", "TOPLEFT", 190, -158, 12)
-local tButton = MultiBot.spellbook.addButton("S06", -389, 389, "inv_misc_questionmark", "Text")
+tOverlay.addText("R06", "|cff402000Rank|r", "TOPLEFT", 159, -88, 11)
+tOverlay.addText("T06", "|cffffcc00Title|r", "TOPLEFT", 159, -74, 12)
+local tButton = tOverlay.addButton("S06", -101, 192, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2709,9 +2737,9 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R07", "|cff503010Rank|r", "TOPLEFT", 58, -217, 11)
-MultiBot.spellbook.addText("T07", "|cffffcc00Title|r", "TOPLEFT", 58, -201, 12)
-local tButton = MultiBot.spellbook.addButton("S07", -522, 346, "inv_misc_questionmark", "Text")
+tOverlay.addText("R07", "|cff402000Rank|r", "TOPLEFT", 30, -124, 11)
+tOverlay.addText("T07", "|cffffcc00Title|r", "TOPLEFT", 30, -110, 12)
+local tButton = tOverlay.addButton("S07", -230, 156, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2719,9 +2747,9 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R08", "|cff503010Rank|r", "TOPLEFT", 190, -217, 11)
-MultiBot.spellbook.addText("T08", "|cffffcc00Title|r", "TOPLEFT", 190, -201, 12)
-local tButton = MultiBot.spellbook.addButton("S08", -389, 346, "inv_misc_questionmark", "Text")
+tOverlay.addText("R08", "|cff402000Rank|r", "TOPLEFT", 159, -124, 11)
+tOverlay.addText("T08", "|cffffcc00Title|r", "TOPLEFT", 159, -110, 12)
+local tButton = tOverlay.addButton("S08", -101, 156, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2729,9 +2757,9 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R09", "|cff503010Rank|r", "TOPLEFT", 58, -260, 11)
-MultiBot.spellbook.addText("T09", "|cffffcc00Title|r", "TOPLEFT", 58, -244, 12)
-local tButton = MultiBot.spellbook.addButton("S09", -522, 303, "inv_misc_questionmark", "Text")
+tOverlay.addText("R09", "|cff402000Rank|r", "TOPLEFT", 30, -160, 11)
+tOverlay.addText("T09", "|cffffcc00Title|r", "TOPLEFT", 30, -146, 12)
+local tButton = tOverlay.addButton("S09", -230, 120, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2739,9 +2767,9 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R10", "|cff503010Rank|r", "TOPLEFT", 190, -260, 11)
-MultiBot.spellbook.addText("T10", "|cffffcc00Title|r", "TOPLEFT", 190, -244, 12)
-local tButton = MultiBot.spellbook.addButton("S10", -389, 303, "inv_misc_questionmark", "Text")
+tOverlay.addText("R10", "|cff402000Rank|r", "TOPLEFT", 159, -160, 11)
+tOverlay.addText("T10", "|cffffcc00Title|r", "TOPLEFT", 159, -146, 12)
+local tButton = tOverlay.addButton("S10", -101, 120, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2749,9 +2777,9 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R11", "|cff503010Rank|r", "TOPLEFT", 58, -303, 11)
-MultiBot.spellbook.addText("T11", "|cffffcc00Title|r", "TOPLEFT", 58, -287, 12)
-local tButton = MultiBot.spellbook.addButton("S11", -522, 260, "inv_misc_questionmark", "Text")
+tOverlay.addText("R11", "|cff402000Rank|r", "TOPLEFT", 30, -196, 11)
+tOverlay.addText("T11", "|cffffcc00Title|r", "TOPLEFT", 30, -182, 12)
+local tButton = tOverlay.addButton("S11", -230, 84, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2759,9 +2787,9 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
-MultiBot.spellbook.addText("R12", "|cff503010Rank|r", "TOPLEFT", 190, -303, 11)
-MultiBot.spellbook.addText("T12", "|cffffcc00Title|r", "TOPLEFT", 190, -287, 12)
-local tButton = MultiBot.spellbook.addButton("S12", -389, 260, "inv_misc_questionmark", "Text")
+tOverlay.addText("R12", "|cff402000Rank|r", "TOPLEFT", 159, -196, 11)
+tOverlay.addText("T12", "|cffffcc00Title|r", "TOPLEFT", 159, -182, 12)
+local tButton = tOverlay.addButton("S12", -101, 84, "inv_misc_questionmark", "Text")
 tButton.doRight = function(pButton)
 	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
 end
@@ -2769,216 +2797,323 @@ tButton.doLeft = function(pButton)
 	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
 end
 
--- QUEST:REWARD --
+tOverlay.addText("R13", "|cff402000Rank|r", "TOPLEFT", 30, -232, 11)
+tOverlay.addText("T13", "|cffffcc00Title|r", "TOPLEFT", 30, -218, 12)
+local tButton = tOverlay.addButton("S13", -230, 48, "inv_misc_questionmark", "Text")
+tButton.doRight = function(pButton)
+	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
+end
+tButton.doLeft = function(pButton)
+	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
+end
 
-MultiBot.reward = MultiBot.newFrame(MultiBot, -752, 329, 30, 400, 400)
-MultiBot.reward.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Reward.blp")
-MultiBot.reward.movButton("Move", -370, 370, 30, "Right-Click to drag and move Reward-Selector")
-MultiBot.reward.state = false
+tOverlay.addText("R14", "|cff402000Rank|r", "TOPLEFT", 159, -232, 11)
+tOverlay.addText("T14", "|cffffcc00Title|r", "TOPLEFT", 159, -218, 12)
+local tButton = tOverlay.addButton("S14", -101, 48, "inv_misc_questionmark", "Text")
+tButton.doRight = function(pButton)
+	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
+end
+tButton.doLeft = function(pButton)
+	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
+end
+
+tOverlay.addText("R15", "|cff402000Rank|r", "TOPLEFT", 30, -268, 11)
+tOverlay.addText("T15", "|cffffcc00Title|r", "TOPLEFT", 30, -254, 12)
+local tButton = tOverlay.addButton("S15", -230, 12, "inv_misc_questionmark", "Text")
+tButton.doRight = function(pButton)
+	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
+end
+tButton.doLeft = function(pButton)
+	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
+end
+
+tOverlay.addText("R16", "|cff402000Rank|r", "TOPLEFT", 159, -268, 11)
+tOverlay.addText("T16", "|cffffcc00Title|r", "TOPLEFT", 159, -254, 12)
+local tButton = tOverlay.addButton("S16", -101, 12, "inv_misc_questionmark", "Text")
+tButton.doRight = function(pButton)
+	MultiBot.SpellToMacro(MultiBot.spellbook.name, pButton.spell, pButton.texture)
+end
+tButton.doLeft = function(pButton)
+	SendChatMessage("cast " .. pButton.spell, "WHISPER", nil, MultiBot.spellbook.name)
+end
+
+-- REWARD --
+
+MultiBot.reward = MultiBot.newFrame(MultiBot, -754, 238, 28, 384, 512)
+MultiBot.reward.rewards = {}
+MultiBot.reward.units = {}
+MultiBot.reward.from = 1
+MultiBot.reward.max = 1
+MultiBot.reward.now = 1
+MultiBot.reward.to = 12
 MultiBot.reward:SetMovable(true)
-MultiBot.reward:Hide()
-
-MultiBot.reward.wowButton("X", -72, 377, 15, 16, 13)
-.doLeft = function(pButton)
-	MultiBot.reward:Hide()
-end
+MultiBot.reward:Show()
 
 MultiBot.reward.doClose = function()
-	local tGroup = MultiBot.reward.frames["Group"]
-	for i = 1, 12 do if(tGroup.frames["U" .. MultiBot.IF(i < 10, "0", "") .. i]:IsVisible()) then return end end
+	local tOverlay = MultiBot.reward.frames["Overlay"]
+	for i = 1, 12 do if(tOverlay.frames["U" .. MultiBot.IF(i < 10, "0", "") .. i]:IsVisible()) then return end end
 	MultiBot.reward:Hide()
 end
 
-local tGroup = MultiBot.reward.addFrame("Group", -73, 25, 30, 316, 346)
-tGroup.addText("Title", "|cff503010Select the Rewards|r", "CENTER", 0, 173, 16)
+local tFrame = MultiBot.reward.addFrame("Icon", -313, 443, 28, 64, 64)
+tFrame.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Reward.blp")
+tFrame:SetFrameLevel(0)
 
--- PARTY:U01 --
+local tFrame = MultiBot.reward.addFrame("TopLeft", -128, 256, 28, 256, 256)
+tFrame.addTexture("Interface/ItemTextFrame/UI-ItemText-TopLeft")
+tFrame:SetFrameLevel(1)
 
-local tUnit = tGroup.addFrame("U01", -162, 278, 24, 154, 48)
-tUnit.addText("U01", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = MultiBot.reward.addFrame("TopRight", -0, 256, 28, 128, 256)
+tFrame.addTexture("Interface/Spellbook/UI-SpellbookPanel-TopRight")
+tFrame:SetFrameLevel(2)
+
+local tFrame = MultiBot.reward.addFrame("BottomLeft", -128, 0, 28, 256, 256)
+tFrame.addTexture("Interface/ItemTextFrame/UI-ItemText-BotLeft")
+tFrame:SetFrameLevel(3)
+
+local tFrame = MultiBot.reward.addFrame("BottomRight", -0, 0, 28, 128, 256)
+tFrame.addTexture("Interface/Spellbook/UI-SpellbookPanel-BotRight")
+tFrame:SetFrameLevel(4)
+
+local tOverlay = MultiBot.reward.addFrame("Overlay", -48, 97, 28, 310, 330)
+tOverlay.addText("Title", "Select the Rewards", "CENTER", 16, 226, 13)
+tOverlay.addText("Pages", "0/0", "CENTER", 16, 196, 13)
+tOverlay:SetFrameLevel(5)
+
+tOverlay.movButton("Move", -270, 354, 50, "Right-Click to drag and move the Reward-Selector")
+
+tOverlay.wowButton("<", -182, 351, 15, 18, 13)
+.doLeft = function(pButton)
+	local tOverlay = MultiBot.reward.frames["Overlay"]
+	local tReward = MultiBot.reward
+	
+	tReward.to = tReward.to - 12
+	tReward.now = tReward.now - 1
+	tReward.from = tReward.from - 12
+	tOverlay.setText("Pages", tReward.now .. "/" .. tReward.max)
+	tOverlay.buttons[">"].doShow()
+	
+	if(tReward.now == 1) then pButton.doHide() end
+	local tIndex = 1
+	
+	for i = tReward.from, tReward.to do
+		MultiBot.setReward(tIndex, MultiBot.reward.units[i])
+		tIndex = tIndex + 1
+	end
+end
+
+tOverlay.wowButton(">", -82, 351, 15, 18, 11)
+.doLeft = function(pButton)
+	local tOverlay = MultiBot.reward.frames["Overlay"]
+	local tReward = MultiBot.reward
+	
+	tReward.to = tReward.to + 12
+	tReward.now = tReward.now + 1
+	tReward.from = tReward.from + 12
+	tOverlay.setText("Pages", tReward.now .. "/" .. tReward.max)
+	tOverlay.buttons["<"].doShow()
+	
+	if(tReward.now == tReward.max) then pButton.doHide() end
+	local tIndex = 1
+	
+	for i = tReward.from, tReward.to do
+		MultiBot.setReward(tIndex, MultiBot.reward.units[i])
+		tIndex = tIndex + 1
+	end
+end
+
+tOverlay.wowButton("X", 13, 381, 17, 20, 11)
+.doLeft = function(pButton)
+	MultiBot.reward:Hide()
+end
+
+-- GROUP:U01 --
+
+local tFrame = tOverlay.addFrame("U01", -156, 282, 23, 154, 48)
+tFrame.addText("U01", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())
 end
 
--- PARTY:U02 --
+-- GROUP:U02 --
 
-local tUnit = tGroup.addFrame("U02", -0, 278, 24, 154, 48)
-tUnit.addText("U02", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = tOverlay.addFrame("U02", 0, 282, 23, 154, 48)
+tFrame.addText("U02", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())
 end
 
--- PARTY:U03 --
+-- GROUP:U03 --
 
-local tUnit = tGroup.addFrame("U03", -162, 224, 24, 154, 48)
-tUnit.addText("U03", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = tOverlay.addFrame("U03", -156, 228, 23, 154, 48)
+tFrame.addText("U03", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())
 end
 
--- PARTY:U04 --
+-- GROUP:U04 --
 
-local tUnit = tGroup.addFrame("U04", -0, 224, 24, 154, 48)
-tUnit.addText("U04", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = tOverlay.addFrame("U04", 0, 228, 23, 154, 48)
+tFrame.addText("U04", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())
 end
 
--- PARTY:U05 --
+-- GROUP:U05 --
 
-local tUnit = tGroup.addFrame("U05", -162, 170, 24, 154, 48)
-tUnit.addText("U05", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = tOverlay.addFrame("U05", -156, 174, 23, 154, 48)
+tFrame.addText("U05", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())
 end
 
--- PARTY:U06 --
+-- GROUP:U06 --
 
-local tUnit = tGroup.addFrame("U06", -0, 170, 24, 154, 48)
-tUnit.addText("U06", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = tOverlay.addFrame("U06", 0, 174, 23, 154, 48)
+tFrame.addText("U06", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())
 end
 
--- PARTY:U07 --
+-- GROUP:U07 --
 
-local tUnit = tGroup.addFrame("U07", -162, 116, 24, 154, 48)
-tUnit.addText("U07", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = tOverlay.addFrame("U07", -156, 120, 23, 154, 48)
+tFrame.addText("U07", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())
 end
 
--- PARTY:U08 --
+-- GROUP:U08 --
 
-local tUnit = tGroup.addFrame("U08", -0, 116, 24, 154, 48)
-tUnit.addText("U08", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = tOverlay.addFrame("U08", 0, 120, 23, 154, 48)
+tFrame.addText("U08", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())
 end
 
--- PARTY:U09 --
+-- GROUP:U09 --
 
-local tUnit = tGroup.addFrame("U09", -162, 62, 24, 154, 48)
-tUnit.addText("U09", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = tOverlay.addFrame("U09", -156, 66, 23, 154, 48)
+tFrame.addText("U09", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())
 end
 
--- PARTY:U10 --
+-- GROUP:U10 --
 
-local tUnit = tGroup.addFrame("U10", -0, 62, 24, 154, 48)
-tUnit.addText("U10", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = tOverlay.addFrame("U10", 0, 66, 23, 154, 48)
+tFrame.addText("U10", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())
 end
 
--- PARTY:U11 --
+-- GROUP:U11 --
 
-local tUnit = tGroup.addFrame("U11", -162, 8, 24, 154, 48)
-tUnit.addText("U11", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = tOverlay.addFrame("U11", -156, 12, 23, 154, 48)
+tFrame.addText("U11", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())
 end
 
--- PARTY:U12 --
+-- GROUP:U12 --
 
-local tUnit = tGroup.addFrame("U12", -0, 8, 24, 154, 48)
-tUnit.addText("U12", "|cff503010NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
-tUnit.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
-tUnit.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
-tUnit.addFrame("Inspector", -137, 26, 16)
+local tFrame = tOverlay.addFrame("U12", 0, 12, 23, 154, 48)
+tFrame.addText("U12", "|cffffcc00NAME - CLASS|r", "BOTTOMLEFT", 20, 28, 13)
+tFrame.addButton("R1", -130, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R2", -104, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R3", -78, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R4", -52, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R5", -26, 0, "inv_misc_questionmark", "Text")
+tFrame.addButton("R6", -0, 0, "inv_misc_questionmark", "Text")
+tFrame.addFrame("Inspector", -137, 26, 16)
 .addButton("Inspect", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", "Inspect")
 .doLeft = function(pButton)
 	InspectUnit(pButton.getName())

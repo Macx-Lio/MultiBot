@@ -631,24 +631,28 @@ MultiBot:SetScript("OnEvent", function()
 		-- Spellbook --
 		
 		if(tButton.waitFor == "SPELLBOOK" and MultiBot.isInside(arg1, "Spells")) then
-			table.wipe(MultiBot.spellbook.spells)
-			MultiBot.spellbook.setText("Title", "Spellbook of " .. arg2)
-			MultiBot.spellbook.name = arg2
-			MultiBot.spellbook.index = 0
-			MultiBot.spellbook.from = 1
-			MultiBot.spellbook.to = 12
+			local tOverlay = MultiBot.spellbook.frames["Overlay"]
+			local tSpellbook = MultiBot.spellbook
+			table.wipe(tSpellbook.spells)
+			tSpellbook.frames["Overlay"].setText("Title", "Spellbook of " .. arg2)
+			tSpellbook.name = arg2
+			tSpellbook.index = 0
+			tSpellbook.from = 1
+			tSpellbook.to = 16
 			tButton.waitFor = "SPELL"
 			SendChatMessage("stats", "WHISPER", nil, arg2)
 			return
 		end
 		
 		if(tButton.waitFor == "SPELL" and MultiBot.isInside(arg1, "Bag", "Dur", "XP")) then
-			MultiBot.spellbook.now = 1
-			MultiBot.spellbook.max = math.ceil(MultiBot.spellbook.index / 12)
-			MultiBot.spellbook.setText("Pages", "|cffffcc00" .. MultiBot.spellbook.now .. "/" .. MultiBot.spellbook.max .. "|r")
-			if(MultiBot.spellbook.now == MultiBot.spellbook.max) then MultiBot.spellbook.buttons[">"].doHide() end
-			MultiBot.spellbook.buttons["<"].doHide()
-			MultiBot.spellbook:Show()
+			local tOverlay = MultiBot.spellbook.frames["Overlay"]
+			local tSpellbook = MultiBot.spellbook
+			tSpellbook.now = 1
+			tSpellbook.max = math.ceil(tSpellbook.index / 16)
+			tOverlay.setText("Pages", "|cffffffff" .. tSpellbook.now .. "/" .. tSpellbook.max .. "|r")
+			if(tSpellbook.now == tSpellbook.max) then tOverlay.buttons[">"].doHide() end
+			tOverlay.buttons["<"].doHide()
+			tSpellbook:Show()
 			tButton.waitFor = ""
 			InspectUnit(arg2)
 			return
@@ -665,7 +669,7 @@ MultiBot:SetScript("OnEvent", function()
 	-- QUEST:COMPLETE --
 	
 	if(event == "QUEST_COMPLETE") then
-		MultiBot.setReward()
+		MultiBot.setRewards()
 		return
 	end
 	
