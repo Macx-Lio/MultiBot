@@ -32,7 +32,7 @@ MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
 		local tTable = MultiBot.index[MultiBot.timer.invite.roster]
 		
 		if(MultiBot.isMember(tTable[MultiBot.timer.invite.index]) == false) then
-			SendChatMessage("Inviting " .. tTable[MultiBot.timer.invite.index] .. " to the Group.", "SAY")
+			SendChatMessage("Inviting " .. tTable[MultiBot.timer.invite.index] .. " to the Group.", "SAY") -- <<< HERE
 			SendChatMessage(".playerbot bot add " .. tTable[MultiBot.timer.invite.index], "SAY")
 			MultiBot.timer.invite.needs = MultiBot.timer.invite.needs - 1
 		end
@@ -394,7 +394,7 @@ MultiBot:SetScript("OnEvent", function()
 			
 			if(MultiBot.isMember(tName)) then
 				tButton.waitFor = "CO"
-				SendChatMessage("Asked " .. tName .. " for Combat-Strategies.", "SAY")
+				SendChatMessage("Asked " .. tName .. " for Combat-Strategies.", "SAY") -- <<< HERE
 				SendChatMessage("co ?", "WHISPER", nil, tName)
 				tButton.setEnable()
 				--MultiBot.doRaid()
@@ -430,7 +430,7 @@ MultiBot:SetScript("OnEvent", function()
 			local tButton = MultiBot.frames["MultiBar"].frames["Units"].buttons[tName]
 			if(tButton == nil) then return end
 			tButton.waitFor = "CO"
-			SendChatMessage("Asked " .. tName .. " for Combat-Strategies.", "SAY")
+			SendChatMessage("Asked " .. tName .. " for Combat-Strategies.", "SAY") -- <<< HERE
 			SendChatMessage("co ?", "WHISPER", nil, tName)
 			tButton.setEnable()
 			--MultiBot.doRaid()
@@ -457,7 +457,7 @@ MultiBot:SetScript("OnEvent", function()
 			local tMap = string.sub(tLocation[3], 2, string.len(tLocation[3]) - 1)
 			
 			tPlayer.memory.goMap = tLocation[2]
-			tPlayer.memory.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "will teleport you to '" .. tMap .. "-" .. tZone .. "'")
+			tPlayer.memory.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "will teleport you to '" .. tMap .. "-" .. tZone .. "'") -- <<< HERE
 			return
 		end
 		
@@ -556,7 +556,7 @@ MultiBot:SetScript("OnEvent", function()
 		
 		if(MultiBot.isInside(arg1, "Hello")) then
 			tButton.waitFor = "CO"
-			SendChatMessage("Asked " .. arg2 .. " for Combat-Strategies.", "SAY")
+			SendChatMessage("Asked " .. arg2 .. " for Combat-Strategies.", "SAY") -- <<< HERE
 			SendChatMessage("co ?", "WHISPER", nil, arg2)
 			--MultiBot.doRaid()
 			return
@@ -589,7 +589,7 @@ MultiBot:SetScript("OnEvent", function()
 		if(tButton.waitFor == "CO" and MultiBot.isInside(arg1, "Strategies: ")) then
 			tButton.waitFor = "NC"
 			tButton.combat = string.sub(arg1, 13)
-			SendChatMessage("Asked " .. arg2 .. " for Non-Combat-Strategies.", "SAY")
+			SendChatMessage("Asked " .. arg2 .. " for Non-Combat-Strategies.", "SAY") -- <<< HERE
 			SendChatMessage("nc ?", "WHISPER", nil, arg2)
 			return
 		end
@@ -607,7 +607,7 @@ MultiBot:SetScript("OnEvent", function()
 			local tItems = MultiBot.inventory.frames["Items"]
 			for key, value in pairs(tItems.buttons) do value:Hide() end
 			table.wipe(tItems.buttons)
-			MultiBot.inventory.setText("Title", "Inventory of " .. arg2)
+			MultiBot.inventory.setText("Title", "Inventory of " .. arg2) -- <<< HERE
 			MultiBot.inventory.name = arg2
 			tItems.index = 0
 			tButton.waitFor = "ITEM"
@@ -633,7 +633,7 @@ MultiBot:SetScript("OnEvent", function()
 			local tOverlay = MultiBot.spellbook.frames["Overlay"]
 			local tSpellbook = MultiBot.spellbook
 			table.wipe(tSpellbook.spells)
-			tSpellbook.frames["Overlay"].setText("Title", "Spellbook of " .. arg2)
+			tSpellbook.frames["Overlay"].setText("Title", "Spellbook of " .. arg2) -- <<< HERE
 			tSpellbook.name = arg2
 			tSpellbook.index = 0
 			tSpellbook.from = 1

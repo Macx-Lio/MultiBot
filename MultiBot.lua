@@ -7,6 +7,27 @@ tMultiBar:SetMovable(true)
 
 local tLeft = tMultiBar.addFrame("Left", -76, 2, 32)
 
+-- MOVE --
+
+MultiBot.tips.move = {}
+MultiBot.tips.move.inventory =
+"Right-Click to drag and move the Inventory";
+
+MultiBot.tips.move.stats =
+"Right-Click to drag and move Auto-Stats";
+
+MultiBot.tips.move.itemus =
+"Right-Click to drag and move Itemus";
+
+MultiBot.tips.move.iconos = 
+"Right-Click to drag and move Iconos";
+
+MultiBot.tips.move.spellbook = 
+"Right-Click to drag and move the Spellbook";
+
+MultiBot.tips.move.reward =
+"Right-Click to drag and move the Reward-Selector";
+
 -- TANKER --
 
 MultiBot.tips.tanker = {}
@@ -506,7 +527,7 @@ tFormat.addButton("Shield", 0, 210, "Interface\\AddOns\\MultiBot\\Icons\\formati
 	MultiBot.SelectToGroup(pButton.parent.parent, "Format", pButton.texture, "formation shield")
 end
 
--- BEAST --
+-- BEASTMASTER --
 
 MultiBot.tips.beast = {}
 MultiBot.tips.beast.master = 
@@ -1455,13 +1476,15 @@ end
 
 tMain.addButton("Stats", 0, 68, "inv_scroll_08", MultiBot.tips.main.stats).setDisable()
 .doLeft = function(pButton)
-	if(GetNumRaidMembers() > 4) then return SendChatMessage("Auto-Stats is for Party's not for a Raid's.", "SAY") end
+	if(GetNumRaidMembers() > 0) then return SendChatMessage("Auto-Stats is for Party's not for a Raid's.", "SAY") end -- <<< HERE
 	if(MultiBot.OnOffSwitch(pButton)) then
 		MultiBot.auto.stats = true
 		for i = 1, GetNumPartyMembers() do SendChatMessage("stats", "WHISPER", nil, UnitName("party" .. i)) end
+		MultiBot.stats:Show()
 	else
 		MultiBot.auto.stats = false
 		for key, value in pairs(MultiBot.stats.frames) do value:Hide() end
+		MultiBot.stats:Hide()
 	end
 end
 
@@ -1488,7 +1511,7 @@ tMain.addButton("Actions", 0, 204, "inv_helmet_02", MultiBot.tips.main.action)
 	MultiBot.ActionToTargetOrGroup("reset")
 end
 
--- MASTERS --
+-- GAMEMASTER --
 
 MultiBot.tips.game = {}
 MultiBot.tips.game.master =
@@ -1774,7 +1797,7 @@ MultiBot.inventory.action = "s"
 MultiBot.inventory:SetMovable(true)
 MultiBot.inventory:Hide()
 
-MultiBot.inventory.movButton("Move", -406, 849, 34, "Right-Click to drag and move the Inventory")
+MultiBot.inventory.movButton("Move", -406, 849, 34, MultiBot.tips.move.inventory)
 
 MultiBot.inventory.wowButton("X", -126, 862, 15, 18, 13)
 .doLeft = function(pButton)
@@ -1852,7 +1875,7 @@ MultiBot.addStats(MultiBot.stats, "party2", 0,  -60, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party3", 0, -120, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party4", 0, -180, 32, 192, 96)
 
-MultiBot.stats.movButton("Move", 0, -80, 160, "Right-Click to drag and move Auto-Stats")
+MultiBot.stats.movButton("Move", 0, -80, 160, MultiBot.tips.move.stats)
 
 -- ITEMUS --
 
@@ -1874,7 +1897,7 @@ MultiBot.itemus.now = 1
 MultiBot.itemus:SetMovable(true)
 MultiBot.itemus:Hide()
 
-MultiBot.itemus.movButton("Move", -407, 850, 32, "Right-Click to drag and move Itemus")
+MultiBot.itemus.movButton("Move", -407, 850, 32, MultiBot.tips.move.itemus)
 
 MultiBot.itemus.wowButton("<", -319, 841, 15, 18, 13).doHide()
 .doLeft = function(pButton)
@@ -2575,7 +2598,7 @@ MultiBot.iconos.now = 1
 MultiBot.iconos:SetMovable(true)
 MultiBot.iconos:Hide()
 
-MultiBot.iconos.movButton("Move", -407, 850, 32, "Right-Click to drag and move Iconos")
+MultiBot.iconos.movButton("Move", -407, 850, 32, MultiBot.tips.move.iconos)
 
 MultiBot.iconos.wowButton("<", -319, 841, 15, 18, 13).doHide()
 .doLeft = function(pButton)
@@ -2634,7 +2657,7 @@ tOverlay.addText("Title", "Spellbook", "CENTER", 14, 200, 13)
 tOverlay.addText("Pages", "0/0", "CENTER", 14, 173, 13)
 tOverlay:SetFrameLevel(5)
 
-tOverlay.movButton("Move", -226, 310, 50, "Right-Click to drag and move the Spellbook")
+tOverlay.movButton("Move", -226, 310, 50, MultiBot.tips.move.spellbook)
 
 tOverlay.wowButton("<", -159, 309, 15, 18, 13)
 .doLeft = function(pButton)
@@ -2880,7 +2903,7 @@ tOverlay.addText("Title", "Select the Rewards", "CENTER", 16, 226, 13)
 tOverlay.addText("Pages", "0/0", "CENTER", 16, 196, 13)
 tOverlay:SetFrameLevel(5)
 
-tOverlay.movButton("Move", -270, 354, 50, "Right-Click to drag and move the Reward-Selector")
+tOverlay.movButton("Move", -270, 354, 50, MultiBot.tips.move.reward)
 
 tOverlay.wowButton("<", -182, 351, 15, 18, 13)
 .doLeft = function(pButton)

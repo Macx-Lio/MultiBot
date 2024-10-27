@@ -55,7 +55,7 @@ MultiBot.doSlash = function(pCommand, pArguments)
 		end
 	end
 	
-	SendChatMessage("Command not found.", "SAY")
+	SendChatMessage("Command not found.", "SAY") -- <<< HERE
 	return false
 end
 
@@ -76,7 +76,7 @@ MultiBot.doDotWithTarget = function(pCommand, oArguments)
 		return true
 	end
 	
-	SendChatMessage("I dont have a Target.", "SAY")
+	SendChatMessage("I dont have a Target.", "SAY") -- <<< HERE
 	return false
 end
 
@@ -154,7 +154,7 @@ MultiBot.isTarget = function()
 		return true
 	end
 	
-	SendChatMessage("I dont have a Target.", "SAY")
+	SendChatMessage("I dont have a Target.", "SAY") -- <<< HERE
 	return false
 end
 
@@ -253,8 +253,8 @@ end
 MultiBot.SpellToMacro = function(pName, pSpell, pTexture)
 	local tGlobal, tAmount = GetNumMacros()
 	
-	if(pSpell == nil or pSpell == 0) then return SendChatMessage("I couldnt identify the Spell.", "SAY") end
-	if(tAmount == 18) then return SendChatMessage("I have already the maximum of private Macros.", "SAY") end
+	if(pSpell == nil or pSpell == 0) then return SendChatMessage("I couldnt identify the Spell.", "SAY") end -- <<< HERE
+	if(tAmount == 18) then return SendChatMessage("I have already the maximum of private Macros.", "SAY") end -- <<< HERE
 	
 	local tMacro = string.sub(pName, 1, 14) .. tAmount
 	local tSpell, tIcon, tBody = GetMacroInfo(tMacro)
@@ -271,7 +271,7 @@ MultiBot.ActionToTarget = function(pAction, oTarget)
 		return true
 	end
 	
-	SendChatMessage("I dont have a Target.", "SAY")
+	SendChatMessage("I dont have a Target.", "SAY") -- <<< HERE
 	return false
 end
 
@@ -293,7 +293,7 @@ MultiBot.ActionToTargetOrGroup = function(pAction)
 		return true
 	end
 	
-	SendChatMessage("I neither have a Target nor am I in a Raid or Party.", "SAY")
+	SendChatMessage("I neither have a Target nor am I in a Raid or Party.", "SAY") -- <<< HERE
 	return false
 end
 
@@ -308,7 +308,7 @@ MultiBot.ActionToGroup = function(pAction)
 		return true
 	end
 	
-	SendChatMessage("I neither in a Raid nor in a Party.", "SAY")
+	SendChatMessage("I neither in a Raid nor in a Party.", "SAY") -- <<< HERE
 	return false
 end
 
