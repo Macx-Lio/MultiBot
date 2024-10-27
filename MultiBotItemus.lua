@@ -43918,7 +43918,7 @@ MultiBot.itemus.addItems = function(pNow)
 	table.wipe(tItems.buttons)
 	
 	if(tTable == nil) then
-		SendChatMessage("There are no Items for this Combination.", "SAY")
+		SendChatMessage("There are no Items for this Combination.", "SAY") -- <<< HERE
 		MultiBot.itemus.setText("Pages", "0/0")
 		MultiBot.itemus.buttons[">"]:Hide()
 		MultiBot.itemus.buttons["<"]:Hide()

@@ -455,9 +455,9 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 		return frame.buttons[pName]
 	end
 	
-	frame.movButton = function(pName, pX, pY, pSize, pTip)
+	frame.movButton = function(pName, pX, pY, pSize, pTip, oFrame)
 		if(frame.buttons[pName] ~= nil) then frame.buttons[pName]:Hide() end
-		frame.buttons[pName] = MultiBot.movButton(frame, pX, pY, pSize, pTip)
+		frame.buttons[pName] = MultiBot.movButton(frame, pX, pY, pSize, pTip, oFrame)
 		return frame.buttons[pName]
 	end
 	
@@ -720,7 +720,7 @@ end
 
 -- BUTTON:MOVE --
 
-MultiBot.movButton = function(pParent, pX, pY, pSize, pTip)
+MultiBot.movButton = function(pParent, pX, pY, pSize, pTip, oFrame)
 	local button = CreateFrame("Button", nil, pParent)
 	button:SetPoint("BOTTOMRIGHT", pX, pY)
 	button:SetSize(pSize, pSize)
@@ -731,6 +731,7 @@ MultiBot.movButton = function(pParent, pX, pY, pSize, pTip)
 	button:RegisterForDrag("RightButton")
 	
 	button.parent = pParent
+	button.frame = oFrame
 	button.size = pSize
 	button.tip = pTip
 	button.x = pX
@@ -753,11 +754,11 @@ MultiBot.movButton = function(pParent, pX, pY, pSize, pTip)
 	end)
 	
 	button:SetScript("OnDragStart", function()
-		button.parent:StartMoving()
+		if(button.frame ~= nil) then button.frame:StartMoving() else button.parent:StartMoving() end
 	end)
 	
 	button:SetScript("OnDragStop", function()
-		button.parent:StopMovingOrSizing()
+		if(button.frame ~= nil) then button.frame:StopMovingOrSizing() else button.parent:StopMovingOrSizing() end
 	end)
 	
 	return button

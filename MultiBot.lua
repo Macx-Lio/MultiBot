@@ -764,8 +764,8 @@ tButton.doRight = function(pButton)
 	if(GetNumRaidMembers() > 0) then
 		for i = 1, GetNumRaidMembers() do
 			local tName = UnitName("raid" .. i)
-			if(MultiBot.isRoster("players", tName))	then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Playerbot-Roster.", "SAY")
-			elseif(MultiBot.isRoster("members", tName)) then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Guild-Roster.", "SAY")
+			if(MultiBot.isRoster("players", tName))	then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Playerbot-Roster.", "SAY") -- <<< HERE
+			elseif(MultiBot.isRoster("members", tName)) then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Guild-Roster.", "SAY") -- <<< HERE
 			elseif(tName ~= UnitName("player")) then SendChatMessage(".playerbot bot init=auto " .. tName, "SAY")
 			end
 		end
@@ -776,8 +776,8 @@ tButton.doRight = function(pButton)
 	if(GetNumPartyMembers() > 0) then
 		for i = 1, GetNumPartyMembers() do
 			local tName = UnitName("party" .. i)
-			if(MultiBot.isRoster("players", tName))	then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Playerbot-Roster.", "SAY")
-			elseif(MultiBot.isRoster("members", tName)) then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Guild-Roster.", "SAY")
+			if(MultiBot.isRoster("players", tName))	then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Playerbot-Roster.", "SAY") -- <<< HERE
+			elseif(MultiBot.isRoster("members", tName)) then SendChatMessage("I wont Auto-Initialize '" .. tName .. "' from the Guild-Roster.", "SAY") -- <<< HERE
 			elseif(tName ~= UnitName("player")) then SendChatMessage(".playerbot bot init=auto " .. tName, "SAY")
 			end
 		end
@@ -789,9 +789,9 @@ tButton.doRight = function(pButton)
 end
 tButton.doLeft = function(pButton)
 	local tName = UnitName("target")
-	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage("I dont have a Target.", "SAY") end
-	if(MultiBot.isRoster("players", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Playerbot-Roster.", "SAY") end
-	if(MultiBot.isRoster("members", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Guild-Roster.", "SAY") end
+	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage("I dont have a Target.", "SAY") end -- <<< HERE
+	if(MultiBot.isRoster("players", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Playerbot-Roster.", "SAY") end -- <<< HERE
+	if(MultiBot.isRoster("members", tName)) then return SendChatMessage("I wont Auto-Initialize anyone from the Guild-Roster.", "SAY") end -- <<< HERE
 	SendChatMessage(".playerbot bot init=auto " .. tName, "SAY")
 end
 
@@ -1278,7 +1278,7 @@ tInvite:Hide()
 
 tInvite.addButton("Party+5", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_party_5.blp", MultiBot.tips.units.inviteParty5)
 .doLeft = function(pButton)
-	if(MultiBot.auto.invite) then return SendChatMessage("I already invite Members, please wait until I am done.", "SAY") end
+	if(MultiBot.auto.invite) then return SendChatMessage("I already invite Members, please wait until I am done.", "SAY") end -- <<< HERE
 	local tRaid = GetNumRaidMembers()
 	local tParty = GetNumPartyMembers()
 	MultiBot.timer.invite.roster = MultiBot.frames["MultiBar"].buttons["Units"].roster
@@ -1291,7 +1291,7 @@ end
 
 tInvite.addButton("Raid+10", 56, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_raid_10.blp", MultiBot.tips.units.inviteRaid10)
 .doLeft = function(pButton)
-	if(MultiBot.auto.invite) then return SendChatMessage("I already invite Members, please wait until I am done.", "SAY") end
+	if(MultiBot.auto.invite) then return SendChatMessage("I already invite Members, please wait until I am done.", "SAY") end -- <<< HERE
 	local tRaid = GetNumRaidMembers()
 	local tParty = GetNumPartyMembers()
 	MultiBot.timer.invite.roster = MultiBot.frames["MultiBar"].buttons["Units"].roster
@@ -1304,7 +1304,7 @@ end
 
 tInvite.addButton("Raid+25", 82, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_raid_25.blp", MultiBot.tips.units.inviteRaid25)
 .doLeft = function(pButton)
-	if(MultiBot.auto.invite) then return SendChatMessage("I already invite Members, please wait until I am done.", "SAY") end
+	if(MultiBot.auto.invite) then return SendChatMessage("I already invite Members, please wait until I am done.", "SAY") end -- <<< HERE
 	local tRaid = GetNumRaidMembers()
 	local tParty = GetNumPartyMembers()
 	MultiBot.timer.invite.roster = MultiBot.frames["MultiBar"].buttons["Units"].roster
@@ -1317,7 +1317,7 @@ end
 
 tInvite.addButton("Raid+40", 108, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_raid_40.blp", MultiBot.tips.units.inviteRaid40)
 .doLeft = function(pButton)
-	if(MultiBot.auto.invite) then return SendChatMessage("I already invite Members, please wait until I am done.", "SAY") end
+	if(MultiBot.auto.invite) then return SendChatMessage("I already invite Members, please wait until I am done.", "SAY") end -- <<< HERE
 	local tRaid = GetNumRaidMembers()
 	local tParty = GetNumPartyMembers()
 	MultiBot.timer.invite.roster = MultiBot.frames["MultiBar"].buttons["Units"].roster
@@ -1618,48 +1618,48 @@ end
 local tPortal = tMasters.addFrame("Portal", 30, 36)
 tPortal:Hide()
 
-local tButton = tPortal.addButton("Red", 0, 0, "inv_jewelcrafting_gem_16", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable()
+local tButton = tPortal.addButton("Red", 0, 0, "inv_jewelcrafting_gem_16", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable() -- <<< HERE
 tButton.doRight = function(pButton)
-	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end
-	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside")
+	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end -- <<< HERE
+	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside") -- <<< HERE
 	pButton.setDisable()
 end
 tButton.doLeft = function(pButton)
 	local tPlayer = MultiBot.getBot(UnitName("player"))
 	if(tPlayer.waitFor == nil) then tPlayer.waitFor = "" end
-	if(tPlayer.waitFor ~= "") then return SendChatMessage("I am still in the process of saving my position.", "SAY") end
+	if(tPlayer.waitFor ~= "") then return SendChatMessage("I am still in the process of saving my position.", "SAY") end -- <<< HERE
 	if(pButton.state) then return SendChatMessage(".go xyz " .. pButton.goX .. " " .. pButton.goY .. " " .. pButton.goZ .. " " .. pButton.goMap, "SAY")	end
 	tPlayer.memory = pButton
 	tPlayer.waitFor = "COORDS"
 	SendChatMessage(".gps", "SAY")
 end
 
-local tButton = tPortal.addButton("Green", 30, 0, "inv_jewelcrafting_gem_13", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable()
+local tButton = tPortal.addButton("Green", 30, 0, "inv_jewelcrafting_gem_13", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable() -- <<< HERE
 tButton.doRight = function(pButton)
-	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end
-	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside")
+	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end -- <<< HERE
+	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside") -- <<< HERE
 	pButton.setDisable()
 end
 tButton.doLeft = function(pButton)
 	local tPlayer = MultiBot.getBot(UnitName("player"))
 	if(tPlayer.waitFor == nil) then tPlayer.waitFor = "" end
-	if(tPlayer.waitFor ~= "") then return SendChatMessage("I am still in the process of saving my position.", "SAY") end
+	if(tPlayer.waitFor ~= "") then return SendChatMessage("I am still in the process of saving my position.", "SAY") end -- <<< HERE
 	if(pButton.state) then return SendChatMessage(".go xyz " .. pButton.goX .. " " .. pButton.goY .. " " .. pButton.goZ .. " " .. pButton.goMap, "SAY")	end
 	tPlayer.memory = pButton
 	tPlayer.waitFor = "COORDS"
 	SendChatMessage(".gps", "SAY")
 end
 
-local tButton = tPortal.addButton("Blue", 60, 0, "inv_jewelcrafting_gem_17", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable()
+local tButton = tPortal.addButton("Blue", 60, 0, "inv_jewelcrafting_gem_17", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside.")).setDisable() -- <<< HERE
 tButton.doRight = function(pButton)
-	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end
-	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside")
+	if(pButton.state == false) then return SendChatMessage("It has no Location stored inside.", "SAY") end -- <<< HERE
+	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "has no Location stored inside") -- <<< HERE
 	pButton.setDisable()
 end
 tButton.doLeft = function(pButton)
 	local tPlayer = MultiBot.getBot(UnitName("player"))
 	if(tPlayer.waitFor == nil) then tPlayer.waitFor = "" end
-	if(tPlayer.waitFor ~= "") then return SendChatMessage("I am still in the process of saving my position.", "SAY") end
+	if(tPlayer.waitFor ~= "") then return SendChatMessage("I am still in the process of saving my position.", "SAY") end -- <<< HERE
 	if(pButton.state) then return SendChatMessage(".go xyz " .. pButton.goX .. " " .. pButton.goY .. " " .. pButton.goZ .. " " .. pButton.goMap, "SAY")	end
 	tPlayer.memory = pButton
 	tPlayer.waitFor = "COORDS"
@@ -1869,13 +1869,14 @@ tFrame:Show()
 
 MultiBot.stats = MultiBot.newFrame(MultiBot, -60, 560, 32)
 MultiBot.stats:SetMovable(true)
+MultiBot.stats:Hide()
+
+MultiBot.stats.movButton("Move", 0, -80, 160, MultiBot.tips.move.stats)
 
 MultiBot.addStats(MultiBot.stats, "party1", 0,    0, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party2", 0,  -60, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party3", 0, -120, 32, 192, 96)
 MultiBot.addStats(MultiBot.stats, "party4", 0, -180, 32, 192, 96)
-
-MultiBot.stats.movButton("Move", 0, -80, 160, MultiBot.tips.move.stats)
 
 -- ITEMUS --
 
@@ -2657,7 +2658,7 @@ tOverlay.addText("Title", "Spellbook", "CENTER", 14, 200, 13)
 tOverlay.addText("Pages", "0/0", "CENTER", 14, 173, 13)
 tOverlay:SetFrameLevel(5)
 
-tOverlay.movButton("Move", -226, 310, 50, MultiBot.tips.move.spellbook)
+tOverlay.movButton("Move", -226, 310, 50, MultiBot.tips.move.spellbook, MultiBot.spellbook)
 
 tOverlay.wowButton("<", -159, 309, 15, 18, 13)
 .doLeft = function(pButton)
@@ -2903,7 +2904,7 @@ tOverlay.addText("Title", "Select the Rewards", "CENTER", 16, 226, 13)
 tOverlay.addText("Pages", "0/0", "CENTER", 16, 196, 13)
 tOverlay:SetFrameLevel(5)
 
-tOverlay.movButton("Move", -270, 354, 50, MultiBot.tips.move.reward)
+tOverlay.movButton("Move", -270, 354, 50, MultiBot.tips.move.reward, MultiBot.reward)
 
 tOverlay.wowButton("<", -182, 351, 15, 18, 13)
 .doLeft = function(pButton)

@@ -1,4 +1,26 @@
 if(GetLocale() == "deDE") then
+-- MOVE --
+
+MultiBot.tips.move.inventory =
+"Right-Click to drag and move the Inventory";
+
+MultiBot.tips.move.stats =
+"Right-Click to drag and move Auto-Stats";
+
+MultiBot.tips.move.itemus =
+"Right-Click to drag and move Itemus";
+
+MultiBot.tips.move.iconos = 
+"Right-Click to drag and move Iconos";
+
+MultiBot.tips.move.spellbook = 
+"Right-Click to drag and move the Spellbook";
+
+MultiBot.tips.move.reward =
+"Right-Click to drag and move the Reward-Selector";
+
+-- TANKER --
+
 MultiBot.tips.tanker.master = 
 "Tank-Attack\n|cffffffff"..
 "With this Button the Tanks starting to attack your target.\n"..
@@ -1091,23 +1113,902 @@ MultiBot.tips.itemus.type =
 "|cffff0000Left-Click to enable or disable NPC-Stuff|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
--- MOVE --
+-- DEATHKNIGHT --
 
-MultiBot.tips.move.inventory =
-"Right-Click to drag and move the Inventory";
+MultiBot.tips.deathknight.presence.master =
+"Presence-Control|cffffffff\n"..
+"This Control allows you to select, enable or disable the default Precence.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable or disable the default Presence.|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
 
-MultiBot.tips.move.stats =
-"Right-Click to drag and move Auto-Stats";
+MultiBot.tips.deathknight.presence.unholy =
+"Unholy-Presence|cffffffff\n"..
+"It enables the Unholy-Presence.|r\n\n"..
+"|cffff0000Left-Click to enable Unholy-Presence|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
 
-MultiBot.tips.move.itemus =
-"Right-Click to drag and move Itemus";
+MultiBot.tips.deathknight.presence.frost =
+"Frost-Presence|cffffffff\n"..
+"It enables the Frost-Presence.|r\n\n"..
+"|cffff0000Left-Click to enable Frost-Presence|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
 
-MultiBot.tips.move.iconos = 
-"Right-Click to drag and move Iconos";
+MultiBot.tips.deathknight.presence.blood =
+"Blood-Presence|cffffffff\n"..
+"It enables the Blood-Presence.|r\n\n"..
+"|cffff0000Left-Click to enable Blood-Presence|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
 
-MultiBot.tips.move.spellbook = 
-"Right-Click to drag and move the Spellbook";
+MultiBot.tips.deathknight.dps.master =
+"DPS-Control|cffffffff\n"..
+"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
 
-MultiBot.tips.move.reward =
-"Right-Click to drag and move the Reward-Selector";
+MultiBot.tips.deathknight.dps.dpsAssist =
+"DPS-Assist|cffffffff\n"..
+"It enables the DPS-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.deathknight.dps.dpsAoe =
+"DPS-AOE|cffffffff\n"..
+"It enables the DPS-AOE-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.deathknight.tankAssist =
+"Tank-Assist|cffffffff\n"..
+"It enables the Tank-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+-- DRUID --
+
+MultiBot.tips.druid.heal =
+"Heal|cffffffff\n"..
+"It makes the Druid to the Healer of the Group.\n"..
+"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Heal|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.buff =
+"Buff|cffffffff\n"..
+"It allows the Druid to Buff the Group.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Buff|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.playbook.master =
+"Playbook|cffffffff\n"..
+"In the Playbook you will find the Strategies typical for the Class.|r\n\n"..
+"|cffff0000Left-Click to show or hide Playbook|r\n"..
+"|cf9999999(Execution-Order: System)|r";
+
+MultiBot.tips.druid.playbook.casterDebuff =
+"Caster-Debuff|cffffffff\n"..
+"Allows the Caster to use Debuff-Spells during the Combat.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Caster-Debuff|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.playbook.casterAoe =
+"Caster-AOE|cffffffff\n"..
+"Allows the Caster to use AOE-Spells during the Combat.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Caster-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.playbook.caster =
+"Caster|cffffffff\n"..
+"The Caster corresponds to a Ranged-Fighter.\n"..
+"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Caster|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.playbook.catAoe =
+"Cat-AOE|cffffffff\n"..
+"Allows the Cat to use AOE-Attacks during the Combat.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Cat-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.playbook.cat =
+"Cat|cffffffff\n"..
+"The Cat corresponds to a Melee-Fighter.\n"..
+"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Cat|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.playbook.bear =
+"Bear|cffffffff\n"..
+"The Bear corresponds to a Tank.\n"..
+"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Bear|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.dps.master =
+"DPS-Control|cffffffff\n"..
+"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.dps.dpsAssist =
+"DPS-Assist|cffffffff\n"..
+"It enables the DPS-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.dps.dpsDebuff =
+"DPS-Debuff|cffffffff\n"..
+"It enables the Debuff-Strategies.\n"..
+"The Druid can only Debuff as Caster.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Debuff|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.dps.dpsAoe = 
+"DPS-AOE|cffffffff\n"..
+"It enables the DPS-AOE-Strategies.\n"..
+"The Druid can only AOE as Cat or Caster.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.dps.dps = 
+"DPS|cffffffff\n"..
+"It enables the DPS-Strategies.\n"..
+"The Druid can only use DPS-Strategies as Cat.\n"..
+"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.tankAssist = 
+"Tank-Assist|cffffffff\n"..
+"It enables the Tank-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.druid.tank = 
+"Tank|cffffffff\n"..
+"It enables the Tank-Strategies.\n"..
+"The Druid can only Tank as Bear.\n"..
+"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+-- HUNTER --
+
+MultiBot.tips.hunter.naspect.master =
+"Non-Combat-Buff|cffffffff\n"..
+"This Control allows you to select, enable or disable the default Non-Combat-Buff.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable or disable the default Buff.|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.naspect.rnature =
+"Resist-Nature-Buff|cffffffff\n"..
+"It enables the Resist-Nature-Buff as Non-Combat-Buff.|r\n\n"..
+"|cffff0000Left-Click to enable Resist-Nature-Buff|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.naspect.bmana =
+"Mana-Buff|cffffffff\n"..
+"It enables the Mana-Buff as Non-Combat-Buff.|r\n\n"..
+"|cffff0000Left-Click to enable Mana-Buff|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.naspect.bdps =
+"DPS-Buff|cffffffff\n"..
+"It enables the DPS-Buff as Non-Combat-Buff.|r\n\n"..
+"|cffff0000Left-Click to enable DPS-Buff|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.caspect.master =
+"Combat-Buff|cffffffff\n"..
+"This Control allows you to select, enable or disable the default Combat-Buff.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable or disable the default Buff.|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.caspect.rnature =
+"Resist-Nature-Buff|cffffffff\n"..
+"It enables the Resist-Nature-Buff as Combat-Buff.|r\n\n"..
+"|cffff0000Left-Click to enable Resist-Nature-Buff|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.caspect.bmana =
+"Mana-Buff|cffffffff\n"..
+"It enables the Mana-Buff as Combat-Buff.|r\n\n"..
+"|cffff0000Left-Click to enable Mana-Buff|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.caspect.bdps =
+"DPS-Buff|cffffffff\n"..
+"It enables the DPS-Buff as Combat-Buff.|r\n\n"..
+"|cffff0000Left-Click to enable DPS-Buff|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.dps.master =
+"DPS-Control|cffffffff\n"..
+"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.dps.dpsAssist =
+"DPS-Assist|cffffffff\n"..
+"It enables the DPS-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.dps.dpsDebuff =
+"DPS-Debuff|cffffffff\n"..
+"It enables the Debuff-Strategies.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Debuff|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.dps.dpsAoe = 
+"DPS-AOE|cffffffff\n"..
+"It enables the DPS-AOE-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.dps.dps = 
+"DPS|cffffffff\n"..
+"It enables the DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.hunter.tankAssist = 
+"Tank-Assist|cffffffff\n"..
+"It enables the Tank-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+-- MAGE --
+
+MultiBot.tips.mage.buff.master =
+"Buff-Control|cffffffff\n"..
+"This Control allows you to select, enable or disable the default Buff.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable or disable the default Buff.|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.buff.bmana =
+"Mana-Buff|cffffffff\n"..
+"It enables the Mana-Buff.|r\n\n"..
+"|cffff0000Left-Click to enable Mana-Buff|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.buff.bdps =
+"DPS-Buff|cffffffff\n"..
+"It enables the DPS-Buff.|r\n\n"..
+"|cffff0000Left-Click to enable DPS-Buff|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.playbook.master =
+"Playbook|cffffffff\n"..
+"In the Playbook you will find the Strategies typical for the Class.|r\n\n"..
+"|cffff0000Left-Click to show or hide Playbook|r\n"..
+"|cf9999999(Execution-Order: System)|r";
+
+MultiBot.tips.mage.playbook.arcaneAoe =
+"Arcane-AOE|cffffffff\n"..
+"Allows the Mage to use Arcane-AOE-Spells during the Combat.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Arcane-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.playbook.arcane =
+"Arcane-Magic|cffffffff\n"..
+"Allows the Mage to use Arcane-Magic during the Combat.\n"..
+"Arcane-, Frost- and Fire-Magic are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Arcane-Magic|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.playbook.frostAoe =
+"Frost-AOE|cffffffff\n"..
+"Allows the Mage to use Frost-AOE-Spells during the Combat.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Arcane-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.playbook.frost =
+"Frost-Magic|cffffffff\n"..
+"Allows the Mage to use Frost-Magic during the Combat.\n"..
+"Arcane-, Frost- and Fire-Magic are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Frost-Magic|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.playbook.fireAoe =
+"Fire-AOE|cffffffff\n"..
+"Allows the Mage to use Fire-AOE-Spells during the Combat.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Fire-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.playbook.fire =
+"Fire-Magic|cffffffff\n"..
+"Allows the Mage to use Fire-Magic during the Combat.\n"..
+"Arcane-, Frost- and Fire-Magic are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Fire-Magic|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.dps.master =
+"DPS-Control|cffffffff\n"..
+"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.dps.dpsAssist =
+"DPS-Assist|cffffffff\n"..
+"It enables the DPS-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.dps.dpsAoe = 
+"DPS-AOE|cffffffff\n"..
+"It enables the DPS-AOE-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.mage.tankAssist = 
+"Tank-Assist|cffffffff\n"..
+"It enables the Tank-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+-- PALADIN --
+
+MultiBot.tips.paladin.heal =
+"Heal|cffffffff\n"..
+"It allows the Paladin to use Heal-Spells.\n"..
+"Tank, DPS and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Heal|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.seal.master =
+"Seal-Control|cffffffff\n"..
+"This Control allows you to select, enable or disable the default Seal.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable or disable the default Seal.|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.seal.bhealth =
+"Health-Seal|cffffffff\n"..
+"It enables the Health-Seal.|r\n\n"..
+"|cffff0000Left-Click to enable Health-Seal|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.seal.bmana =
+"Mana-Seal|cffffffff\n"..
+"It enables the Mana-Seal.|r\n\n"..
+"|cffff0000Left-Click to enable Mana-Seal|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.seal.bstats =
+"Stats-Seal|cffffffff\n"..
+"It enables the Stats-Seal.|r\n\n"..
+"|cffff0000Left-Click to enable Stats-Seal|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.seal.bdps =
+"DPS-Seal|cffffffff\n"..
+"It enables the DPS-Seal.|r\n\n"..
+"|cffff0000Left-Click to enable DPS-Seal|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.naura.master =
+"Non-Combat-Aura|cffffffff\n"..
+"This Control allows you to select, enable or disable the default Non-Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable or disable the default Aura.|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.naura.bspeed =
+"Speed-Aura|cffffffff\n"..
+"It enables the Speed-Aura as Non-Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to enable Speed-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.naura.rfire =
+"Fire-Resist-Aura|cffffffff\n"..
+"It enables the Fire-Resist-Aura as Non-Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to enable Fire-Resist-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.naura.rfrost =
+"Frost-Resist-Aura|cffffffff\n"..
+"It enables the Frost-Resist-Aura as Non-Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to enable Frost-Resist-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.naura.rshadow =
+"Shadow-Resist-Aura|cffffffff\n"..
+"It enables the Shadow-Resist-Aura as Non-Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to enable Shadow-Resist-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.naura.barmor =
+"Armor-Aura|cffffffff\n"..
+"It enables the Armor-Aura as Non-Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to enable Armor-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.caura.master =
+"Combat-Aura|cffffffff\n"..
+"This Control allows you to select, enable or disable the default Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable or disable the default Aura.|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.caura.bspeed =
+"Speed-Aura|cffffffff\n"..
+"It enables the Speed-Aura as Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to enable Speed-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.caura.rfire =
+"Fire-Resist-Aura|cffffffff\n"..
+"It enables the Fire-Resist-Aura as Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to enable Fire-Resist-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.caura.rfrost =
+"Frost-Resist-Aura|cffffffff\n"..
+"It enables the Frost-Resist-Aura as Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to enable Frost-Resist-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.caura.rshadow =
+"Shadow-Resist-Aura|cffffffff\n"..
+"It enables the Shadow-Resist-Aura as Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to enable Shadow-Resist-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.caura.barmor =
+"Armor-Aura|cffffffff\n"..
+"It enables the Armor-Aura as Combat-Arua.|r\n\n"..
+"|cffff0000Left-Click to enable Armor-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.dps.master =
+"DPS-Control|cffffffff\n"..
+"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.dps.dpsAssist =
+"DPS-Assist|cffffffff\n"..
+"It enables the DPS-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.dps.dpsAoe = 
+"DPS-AOE|cffffffff\n"..
+"It enables the DPS-AOE-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.dps.dps = 
+"DPS|cffffffff\n"..
+"It enables the DPS-Strategies.\n"..
+"Tank, DPS and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.tankAssist = 
+"Tank-Assist|cffffffff\n"..
+"It enables the Tank-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.tank = 
+"Tank|cffffffff\n"..
+"It enables the Tank-Strategies.\n"..
+"Tank, DPS and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+-- PRIEST --
+
+MultiBot.tips.priest.heal =
+"Heal|cffffffff\n"..
+"It makes the Priest to the Healer of the Group.\n"..
+"Shadow and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Heal|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.priest.buff =
+"Buff|cffffffff\n"..
+"It allows the Priest to Buff the Group.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Buff|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.priest.playbook.master =
+"Playbook|cffffffff\n"..
+"In the Playbook you will find the Strategies typical for the Class.|r\n\n"..
+"|cffff0000Left-Click to show or hide Playbook|r\n"..
+"|cf9999999(Execution-Order: System)|r";
+
+MultiBot.tips.priest.playbook.shadowDebuff =
+"Shadow-Debuff|cffffffff\n"..
+"Allows the Priest to use Shadow-Debuff-Spells during the Combat.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Shadow-Debuff|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.priest.playbook.shadowAoe =
+"Shadow-AOE|cffffffff\n"..
+"Allows the Priest to use Shadow-AOE-Spells during the Combat.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Shadow-AOE-Debuff|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.priest.playbook.shadow =
+"Shadow|cffffffff\n"..
+"Allows the Priest to use Shadow-Spells during the Combat.\n"..
+"Shadow and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Shadow|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.priest.dps.master =
+"DPS-Control|cffffffff\n"..
+"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.priest.dps.dpsAssist =
+"DPS-Assist|cffffffff\n"..
+"It enables the DPS-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.priest.dps.dpsDebuff =
+"DPS-Debuff|cffffffff\n"..
+"It enables the Debuff-Strategies.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Debuff|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.priest.dps.dpsAoe = 
+"DPS-AOE|cffffffff\n"..
+"It enables the DPS-AOE-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.priest.dps.dps = 
+"DPS|cffffffff\n"..
+"It enables the DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.priest.tankAssist = 
+"Tank-Assist|cffffffff\n"..
+"It enables the Tank-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+-- ROGUE --
+
+MultiBot.tips.rogue.dps.master =
+"DPS-Control|cffffffff\n"..
+"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.rogue.dps.dpsAssist =
+"DPS-Assist|cffffffff\n"..
+"It enables the DPS-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.rogue.dps.dpsAoe = 
+"DPS-AOE|cffffffff\n"..
+"It enables the DPS-AOE-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.rogue.dps.dps = 
+"DPS|cffffffff\n"..
+"It enables the DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.rogue.tankAssist = 
+"Tank-Assist|cffffffff\n"..
+"It enables the Tank-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+-- SHAMAN --
+
+MultiBot.tips.shaman.heal =
+"Heal|cffffffff\n"..
+"It makes the Shaman to the Healer of the Group.\n"..
+"Caster, Melee and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Heal|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.ntotem.master =
+"Non-Combat-Totem|cffffffff\n"..
+"This Control allows you to select, enable or disable the default Non-Combat-Totem.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable or disable the default Totem.|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.ntotem.bmana =
+"Mana-Totem|cffffffff\n"..
+"It enables the Mana-Totem as Non-Combat-Totem.|r\n\n"..
+"|cffff0000Left-Click to enable Mana-Totem|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.ntotem.bdps =
+"DPS-Totem|cffffffff\n"..
+"It enables the DPS-Totem as Non-Combat-Totem.|r\n\n"..
+"|cffff0000Left-Click to enable DPS-Totem|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.ctotem.master =
+"Combat-Totem|cffffffff\n"..
+"This Control allows you to select, enable or disable the default Combat-Totem.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable or disable the default Totem.|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.ctotem.bmana =
+"Mana-Totem|cffffffff\n"..
+"It enables the Mana-Totem as Combat-Totem.|r\n\n"..
+"|cffff0000Left-Click to enable Mana-Totem|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.ctotem.bdps =
+"DPS-Totem|cffffffff\n"..
+"It enables the DPS-Totem as Combat-Totem.|r\n\n"..
+"|cffff0000Left-Click to enable DPS-Totem|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.playbook.master =
+"Playbook|cffffffff\n"..
+"In the Playbook you will find the Strategies typical for the Class.|r\n\n"..
+"|cffff0000Left-Click to show or hide Playbook|r\n"..
+"|cf9999999(Execution-Order: System)|r";
+
+MultiBot.tips.shaman.playbook.totems =
+"Totems|cffffffff\n"..
+"Allows the Shaman to use Totems during the Combat.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Totems|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.playbook.casterAoe =
+"Caster-AOE|cffffffff\n"..
+"Allows the Shaman to use AOE-Spells during the Combat.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Caster-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.playbook.caster =
+"Caster|cffffffff\n"..
+"Allows the Shaman to use Spells during the Combat.\n"..
+"Caster, Melee and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Caster|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.playbook.meleeAoe =
+"Melee-AOE|cffffffff\n"..
+"Allows the Shaman to use Melee-AOE-Attacks during the Combat.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Melee-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.playbook.melee =
+"Melee|cffffffff\n"..
+"Allows the Shaman to use Melee-Attacks during the Combat.\n"..
+"Caster, Melee and Heal are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Caster|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.dps.master =
+"DPS-Control|cffffffff\n"..
+"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.dps.dpsAssist =
+"DPS-Assist|cffffffff\n"..
+"It enables the DPS-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.dps.dpsAoe = 
+"DPS-AOE|cffffffff\n"..
+"It enables the DPS-AOE-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.shaman.tankAssist = 
+"Tank-Assist|cffffffff\n"..
+"It enables the Tank-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+-- WARLOCK --
+
+MultiBot.tips.warlock.buff.master =
+"Buff|cffffffff\n"..
+"This Control allows you to select, enable or disable the default Buff.|r\n\n"..
+"|cffff0000Left-Click to show or hide Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable or disable the default Buff.|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warlock.buff.bhealth =
+"Health-Buff|cffffffff\n"..
+"It enables the Health-Buff.|r\n\n"..
+"|cffff0000Left-Click to enable Health-Buff|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warlock.buff.bmana =
+"Mana-Buff|cffffffff\n"..
+"It enables the Mana-Buff.|r\n\n"..
+"|cffff0000Left-Click to enable Mana-Buff|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warlock.buff.bdps =
+"DPS-Buff|cffffffff\n"..
+"It enables the DPS-Buff.|r\n\n"..
+"|cffff0000Left-Click to enable DPS-Buff|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warlock.dps.master =
+"DPS-Control|cffffffff\n"..
+"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warlock.dps.dpsAssist =
+"DPS-Assist|cffffffff\n"..
+"It enables the DPS-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warlock.dps.dpsDebuff =
+"DPS-Debuff|cffffffff\n"..
+"It enables the DPS-Debuff-Strategies.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Debuff|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warlock.dps.dpsAoe = 
+"DPS-AOE|cffffffff\n"..
+"It enables the DPS-AOE-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warlock.dps.dps = 
+"DPS|cffffffff\n"..
+"It enables the DPS-Strategies.\n"..
+"DPS and Tank are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warlock.tankAssist = 
+"Tank-Assist|cffffffff\n"..
+"It enables the Tank-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warlock.tank = 
+"Tank|cffffffff\n"..
+"It enables the Tank-Strategies.\n"..
+"DPS and Tank are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+-- WARRIOR --
+
+MultiBot.tips.warrior.dps.master =
+"DPS-Control|cffffffff\n"..
+"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
+"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warrior.dps.dpsAssist =
+"DPS-Assist|cffffffff\n"..
+"It enables the DPS-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warrior.dps.dpsAoe = 
+"DPS-AOE|cffffffff\n"..
+"It enables the DPS-AOE-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warrior.tankAssist = 
+"Tank-Assist|cffffffff\n"..
+"It enables the Tank-Assist-Strategies.\n"..
+"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"Only one of these Strategies can be activated.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.warrior.tank = 
+"Tank|cffffffff\n"..
+"It enables the Tank-Strategies.|r\n\n"..
+"|cffff0000Left-Click to enable or disable Tank|r\n"..
+"|cf9999999(Execution-Order: Bot)|r";
 end
