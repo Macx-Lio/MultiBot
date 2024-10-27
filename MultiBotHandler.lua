@@ -271,7 +271,6 @@ MultiBot:SetScript("OnEvent", function()
 			tPlayer.name = tName
 			
 			tPlayer.doLeft = function(pButton)
-				MultiBot.ShowHideSwitch(pButton.parent.frames[pButton.name])
 				SendChatMessage(".playerbot bot self", "SAY")
 				MultiBot.OnOffSwitch(pButton)
 			end
