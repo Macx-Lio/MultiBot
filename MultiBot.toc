@@ -5,6 +5,8 @@
 ## Author: Nico Löbbert
 ## SavedVariables: MultiBotSave
 
+MultiBot.lua
+MultiBotLanguage.lua
 MultiBotEngine.lua
 MultiBotHandler.lua
 MultiBotDeathKnight.lua
@@ -21,7 +23,7 @@ MultiBotEvery.lua
 MultiBotStats.lua
 MultiBotSpell.lua
 MultiBotItem.lua
-MultiBot.lua
+MultiBotInit.lua
 MultiBotItemus.lua
 MultiBotIconos.lua
 MultiBotReward.lua

@@ -1,1296 +1,1369 @@
 if(GetLocale() == "deDE") then
+MultiBot.info.command =
+"Befehl nicht gefunden.";
+
+MultiBot.info.target =
+"Ich habe kein Ziel.";
+
+MultiBot.info.spell =
+"Ich konnte den Zauber nicht identifizieren.";
+
+MultiBot.info.macro =
+"Ich habe bereits das Maximum an privaten Makros.";
+
+MultiBot.info.neither =
+"Ich habe weder ein Ziel noch bin ich in einem Raid oder einer Gruppe.";
+
+MultiBot.info.group =
+"Ich bin weder in einem Raid noch in einer Party.";
+
+MultiBot.info.inviting =
+"Lade NAME in die Gruppe ein.";
+
+MultiBot.info.combat =
+"Frage NAME nach Kampf-Strategien.";
+
+MultiBot.info.teleport =
+"wird dich zu 'MAP - ZONE' teleportieren";
+
+MultiBot.info.normal =
+"Frage NAME nach Nicht-Kampf-Strategien.";
+
+MultiBot.info.inventory =
+"Inventar von NAME";
+
+MultiBot.info.spellbook =
+"Zauberbuch von NAME";
+
+MultiBot.info.player =
+"Ich werde 'NAME' vom Playerbot-Roster nicht Auto-Initialisieren.";
+
+MultiBot.info.member =
+"Ich werde 'NAME' vom Gilden-Roster nicht Auto-Initialisieren.";
+
+MultiBot.info.players =
+"Ich werde niemanden vom Playerbot-Roster Auto-Initialisieren.";
+
+MultiBot.info.members =
+"Ich werden niemanden vom Gilden-Roster Auto-Initialisieren.";
+
+MultiBot.info.wait =
+"Ich lade bereits Mitglieder ein, bitte warte bis ich fertig bin.";
+
+MultiBot.info.starting =
+"Ich beginne jetzt Mitglieder einzuladen.";
+
+MultiBot.info.stats =
+"Auto-Stats ist für Party's nicht für Raid's.";
+
+MultiBot.info.location =
+"hat keine Position in sich gespeichert.";
+
+MultiBot.info.itlocation =
+"Er hat keine Position gespeichert.";
+
+MultiBot.info.saving =
+"Ich bin immer noch dabei meine Position zu speichern.";
+
+MultiBot.info.action =
+"Ich muss eine Aktion auswählen.";
+
+MultiBot.info.combination =
+"Es gibt keine Items für diese Kombination.";
+
 -- MOVE --
 
 MultiBot.tips.move.inventory =
-"Right-Click to drag and move the Inventory";
+"Rechtskicken und halten um das Inventar zu bewegen";
 
 MultiBot.tips.move.stats =
-"Right-Click to drag and move Auto-Stats";
+"Rechtsklicken und halten um die Auto-Stats zu bewegen";
 
 MultiBot.tips.move.itemus =
-"Right-Click to drag and move Itemus";
+"Rechtsklicken und halten um Itemus zu bewegen";
 
 MultiBot.tips.move.iconos = 
-"Right-Click to drag and move Iconos";
+"Rechtsklicken und halten um Iconos zu bewegen";
 
 MultiBot.tips.move.spellbook = 
-"Right-Click to drag and move the Spellbook";
+"Rechtsklicken und halten um das Zauberbuch zu bewegen";
 
 MultiBot.tips.move.reward =
-"Right-Click to drag and move the Reward-Selector";
+"Rechtsklicken und halten um den Reward-Selector zu bewegen";
 
 -- TANKER --
 
 MultiBot.tips.tanker.master = 
 "Tank-Attack\n|cffffffff"..
-"With this Button the Tanks starting to attack your target.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to execute Tank-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Mit diesem Kommando befiehlt man den gepanzerten Einheiten anzugreifen.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um Tank-Attack auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 -- ATTACK --
 
 MultiBot.tips.attack.master = 
 "Attack-Control\n|cffffffff"..
-"With this Control you can give the Command to attack.\n"..
-"Right-Click the Options to define a new default Action.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to execute the default Action|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit dieser Steuereinheit befiehlt man den Angriff.\n"..
+"Die Option rechtsklicken um eine neue Standardaktion festzulegen.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um die Standardaktion auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die Optionen ein- und auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.attack.attack = 
 "Attack\n|cffffffff"..
-"With this Command the hole Raid or Party starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man dem Raid oder der Party anzugreifen.|r\n\n"..
+"|cffff0000Linksklicken um Attack auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.attack.ranged = 
 "Ranged-Attack\n|cffffffff"..
-"With this Command the Ranged-Fighters starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute Ranged-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man den Fernkämpfern anzugreifen.|r\n\n"..
+"|cffff0000Linksklicken um Ranged-Attack auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.attack.melee = 
-"Ranged-Attack\n|cffffffff"..
-"With this Command the Melee-Fighters starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute Melee-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Melee-Attack\n|cffffffff"..
+"Mit diesem Kommando befiehlt man den Nahkämpfern anzugreifen.|r\n\n"..
+"|cffff0000Linksklicken um Melee-Attack auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.attack.healer = 
 "Healer-Attack\n|cffffffff"..
-"With this Command the Healers starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute Healer-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man den Heilern anzugreifen.|r\n\n"..
+"|cffff0000Linksklicken um Healer-Attack auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.attack.dps = 
 "DPS-Attack\n|cffffffff"..
-"With this Command the DPS starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute DPS-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man der DPS anzugreifen.|r\n\n"..
+"|cffff0000Linksklicken um DPS-Attack auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.attack.tank = 
 "Tank-Attack\n|cffffffff"..
-"With this Command the Tanks starting to attack your target.|r\n\n"..
-"|cffff0000Left-Click to execute Tank-Attack|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man dem Tank anzugreifen.|r\n\n"..
+"|cffff0000Linksklicken um Tank-Attack auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 -- MODE --
 
 MultiBot.tips.mode.master = 
-"Mode-Control\n|cffffffff"..
-"This Control allows you to switch a Combat-Mode on and off.\n"..
-"Left-Click the Options to select another Combat-Mode.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to switch the Combat-Mode|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Modus-Control\n|cffffffff"..
+"Mit dieser Steuereinheit kann man Kampfmodi ein- und ausschalten.\n"..
+"Die Option Linksklicken um einen neuen Kampfmodus auszuwählen.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um den Kampfmodus zu wechseln|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die Optionen ein- und auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.mode.passive = 
-"Passive-Mode\n|cffffffff"..
-"In the Passive-Mode, your Bots wont attack any Opponent.\n"..
-"This Mode is useful to keep the Tank from running into the Opponents during a pull.|r\n\n"..
-"|cffff0000Left-Click to selet and activate Passive-Mode|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Passiv-Modus\n|cffffffff"..
+"Im Passiv-Modus greifen Einheiten keinen Gegner an.\n"..
+"Dieser Modus verhindert, dass der Tank in die Gegner läuft während ihr welche anlockt.\n"..
+"Das Stay-Kommando hebt Passiv-Modus auf, in Kombination sollte Stay zuerst befohlen werden.\n"..
+"Das Follow-Kommando hebt den Passiv-Modus auf, in Kombination sollte Follow zuerst befohlen werden.|r\n\n"..
+"|cffff0000Linksklicken um den Passiv-Modus auszuwählen und auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.mode.grind = 
-"Grind-Mode\n|cffffffff"..
-"In the Grind-Mode, your Bots attack each Opponent at random.\n"..
-"This Mode is usefull if you under attack of to much Opponents.|r\n\n"..
-"|cffff0000Left-Click to selet and activate Grind-Mode|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Grind-Modus\n|cffffffff"..
+"Im Grind-Modus greifen Einheiten eigenständig Gegner an.\n"..
+"Dieser Modus ermöglicht ein eigenständiges Level deiner Einheiten.|r\n\n"..
+"|cffff0000Linksklicken um den Grind-Modus auszuwählen und auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 -- STAY|FOLLOW --
 
 MultiBot.tips.stallow.stay = 
 "Stay|Follow\n|cffffffff"..
-"With this Button you can give right now the Command to Stay.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to execute Stay|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Mit dieser Schaltfläche gibt man den Befehl zum Stehen-Bleiben.\n"..
+"Dieses Kommando hebt den Passiv-Modus auf, in Kombination sollte Stay zuerst befohlen werden.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um Stay auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.stallow.follow = 
 "Stay|Follow\n|cffffffff"..
-"With this Button you can give right now the Command to Follow.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to execute Follow|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Mit dieser Schaltfläche gibt man den Befehl zum Folgen.\n"..
+"Dieses Kommando hebt den Passiv-Modus auf, in Kombination sollte Follow zuerst befohlen werden.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um Follow auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 -- FLEE --
 
 MultiBot.tips.flee.master = 
 "Flee-Control\n|cffffffff"..
-"With this Control you can give the Command to flee.\n"..
-"Right-Click the Options to define a new default Action.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to execute the default Action|r\n"..
-"|cff999999(Execution-Order: 'Target', Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit dieser Steuereinheit befiehlt man die Flucht.\n"..
+"Die Option rechtsklicken um eine neue Standardaktion festzulegen.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um die Standardaktion auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die Optionen ein- und auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.flee.flee = 
 "Flee\n|cffffffff"..
-"With this Command the hole Raid or Party starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man dem Raid oder der Party zu flüchten.|r\n\n"..
+"|cffff0000Linksklicken um Flee auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.flee.ranged = 
 "Ranged-Flee\n|cffffffff"..
-"With this Command the Ranged-Fighters starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Ranged-Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man den Fernkämpfern zu flüchten.|r\n\n"..
+"|cffff0000Linksklicken um Ranged-Flee auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.flee.melee = 
 "Melee-Flee\n|cffffffff"..
-"With this Command the Melee-Fighters starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Melee-Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man den Nahkämpfern zu flüchten.|r\n\n"..
+"|cffff0000Linksklicken um Melee-Flee auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.flee.healer = 
 "Healer-Flee\n|cffffffff"..
-"With this Command the Healers starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Healer-Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man den Heilern zu flüchten.|r\n\n"..
+"|cffff0000Linksklicken um Healer-Flee auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.flee.dps = 
 "DPS-Flee\n|cffffffff"..
-"With this Command the DPS starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute DPS-Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man der DPS zu flüchten.|r\n\n"..
+"|cffff0000Linksklicken um DPS-Flee auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.flee.tank = 
 "Tank-Flee\n|cffffffff"..
-"With this Command the Tanks starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Tank-Flee|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man den Tank zu flüchten.|r\n\n"..
+"|cffff0000Linksklicken um Tank-Flee auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.flee.target = 
 "Target-Flee\n|cffffffff"..
-"With this Command the Target starting to flee.|r\n\n"..
-"|cffff0000Left-Click to execute Target-Flee|r\n"..
-"|cff999999(Execution-Order: Target)|r\n\n"..
-"|cffff0000Right-Click to define as default Action|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Kommando befiehlt man dem Ziel zu flüchten.|r\n\n"..
+"|cffff0000Linksklicken um Target-Flee auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken zum Festlegen als Standardaktion|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 -- FORMATION --
 
 MultiBot.tips.format.master = 
 "Formation-Control\n|cffffffff"..
-"This Control allows you to change the Formation of your Bots.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to ask for the current Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Mit dieser Steuereinheit kann man die Formation der Bots zu ändern.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- und auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken um die aktuellen Formation abzurufen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.format.arrow = 
 "Arrow-Formation\n|cffffffff"..
-"The Bots line up in an arrow formation.\n"..
-"The Bots line of sight is in your direction.\n\n"..
-"1. Line are Tanks\n"..
-"2. Line are Melee-Fighters\n"..
-"3. Line are Ranged-Fighters\n"..
-"4. Line are Healers|r\n\n"..
-"|cffff0000Left-Click to select the Arrow-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Die Bots stellen sich in einer Pfeil-Formation auf.\n"..
+"Die Blickrichtung der Bots entspricht der deinigen.\n\n"..
+"1. Reihe Tanks\n"..
+"2. Reihe Nahkämpfer\n"..
+"3. Reihe Fernkämpfer\n"..
+"4. Reihe Heiler|r\n\n"..
+"|cffff0000Linksklicken um die Arrow-Formation auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.format.queue = 
 "Queue-Formation\n|cffffffff"..
-"The Bots line up in an defensive formation.\n"..
-"The Bots line of sight is in your direction.|r\n\n"..
-"|cffff0000Left-Click to select the Queue-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Die Bots stellen sich in einer defensiven Formation auf.\n"..
+"Die Blickrichtung der Bots entspricht der deinigen.|r\n\n"..
+"|cffff0000Linksklicken um die Queue-Formation auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.format.near = 
 "Near-Formation\n|cffffffff"..
-"The Bots line up near by.\n"..
-"The Bots line of sight is in your direction.|r\n\n"..
-"|cffff0000Left-Click to select the Near-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Die Bots stellen sich dicht nebeneinander auf.\n"..
+"Die Blickrichtung der Bots entspricht der deinigen.|r\n\n"..
+"|cffff0000Linksklicken um die Near-Formation auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.format.melee = 
-"Near-Formation\n|cffffffff"..
-"The Bots line up for melee fights.\n"..
-"The Bots line of sight is in your direction.|r\n\n"..
-"|cffff0000Left-Click to select the Melee-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Melee-Formation\n|cffffffff"..
+"Die Bots stellen sich für den Nahkampf auf.\n"..
+"Die Blickrichtung der Bots entspricht der deinigen.|r\n\n"..
+"|cffff0000Linksklicken um die Melee-Formation auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.format.line = 
-"Near-Formation\n|cffffffff"..
-"The Bots line up on the left and right side in a parallel line.\n"..
-"The Bots line of sight is in your direction.|r\n\n"..
-"|cffff0000Left-Click to select the Line-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Line-Formation\n|cffffffff"..
+"Die Bots stellen sich links und rechts von dir in einer Linie auf.\n"..
+"Die Blickrichtung der Bots entspricht der deinigen.|r\n\n"..
+"|cffff0000Linksklicken um die Line-Formation auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.format.circle = 
 "Circle-Formation\n|cffffffff"..
-"The Bots line up in a circle around you.\n"..
-"The Bots line of sight is directed outwards.|r\n\n"..
-"|cffff0000Left-Click to select the Circle-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Die Bots stellen sich in einem Kreis um dich herum auf.\n"..
+"Die Blickrichtung der Bots ist nach außen gereichtet.|r\n\n"..
+"|cffff0000Linksklicken um die Circle-Formation auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.format.chaos = 
 "Chaos-Formation\n|cffffffff"..
-"Each Bot follows you by its own.\n"..
-"They line up everywhere they wont.\n"..
-"The line of sight could be every direction.|r\n\n"..
-"|cffff0000Left-Click to select the Chaos-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Jeder Bots folgt dir nach eigenem Ermessen.\n"..
+"Sie stellen sich völlig chaotisch auf.\n"..
+"Die Blickrichtung ist vollkommen willkürlich.|r\n\n"..
+"|cffff0000Linksklicken um die Chaos-Formation auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.format.shield = 
 "Shield-Formation\n|cffffffff"..
-"The Bots line up in the front, on the left and right side.\n"..
-"The Bots line of sight is in your direction.|r\n\n"..
-"|cffff0000Left-Click to select the Shield-Formation|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Die Bots stellen sich vor und neben dir auf.\n"..
+"Die Blickrichtung der Bots entspricht der deinigen.|r\n\n"..
+"|cffff0000Linksklicken um die Shield-Formation auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 -- BEASTMASTER --
 
 MultiBot.tips.beast.master = 
 "Beastmaster-Control\n|cffffffff"..
-"This Control is for the Mod-Beastmaster of the Azerothcore.\n"..
-"Mod-Beastmaster allows every Character to have a Pet like Hunters.\n"..
-"Your Charaters can learn the nessasary Spells from White Fang.\n"..
-"White Fang must be placed into the World by the GameMaster.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Diese Steuereinheit ist für Mod-NPC-Beastmaster des Azerothcore.\n"..
+"Mod-NPC-Beastmaster erlaubt es jedem Character eine Bestie wie Jäger zu haben.\n"..
+"Dein Character kann die notwendigen Zauber bei 'White Fang' erlernen.\n"..
+"Der GameMaster muss 'White Fang' in der Spielwelt platzieren.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- und auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.beast.release =
-"Release the Beast\n|cffffffff"..
-"This Command will release the Beast.|r\n\n"..
-"|cffff0000Left-Click to release the Beast|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"Bestie freilassen\n|cffffffff"..
+"Mit diesem Kommando kann man die Bestie freilassen.|r\n\n".. 
+"|cffff0000Linksklicken um die Bestie freizulassen|r\n"..
+"|cff999999(Ausführreihenfolge: Ziel, Raid, Party)|r";
 
 MultiBot.tips.beast.revive =
-"Revive the Beast\n|cffffffff"..
-"This Command will revive the Beast.|r\n\n"..
-"|cffff0000Left-Click to revive the Beast|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"Bestie wiederbeleben\n|cffffffff"..
+"Mit diesem Kommando kann man die Bestie wiederbeleben.|r\n\n"..
+"|cffff0000Linksklicken um die Bestie wiederzubeleben|r\n"..
+"|cff999999(Ausführreihenfolge: Ziel, Raid, Party)|r";
 
 MultiBot.tips.beast.heal =
-"Heal the Beast\n|cffffffff"..
-"This Command will heal the Beast.|r\n\n"..
-"|cffff0000Left-Click to heal the Beast|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"Bestie heilen\n|cffffffff"..
+"Mit diesem Kommando kann man die Bestie heilen.|r\n\n"..
+"|cffff0000Linksklicken um die Bestie zu heilen|r\n"..
+"|cff999999(Ausführreihenfolge: Ziel, Raid, Party)|r";
 
 MultiBot.tips.beast.feed =
-"Feed the Beast\n|cffffffff"..
-"This Command will feed the Beast.|r\n\n"..
-"|cffff0000Left-Click to feed the Beast|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"Bestie füttern\n|cffffffff"..
+"Mit diesem Kommando kann man die Bestie füttern.|r\n\n"..
+"|cffff0000Linksklicken um die Bestie zu füttern|r\n"..
+"|cff999999(Ausführreihenfolge: Ziel, Raid, Party)|r";
 
 MultiBot.tips.beast.call =
-"Call the Beast\n|cffffffff"..
-"This Command will call the Beast.|r\n\n"..
-"|cffff0000Left-Click to call the Beast|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"Bestie herbeirufen\n|cffffffff"..
+"Mit diesem Kommando kann man die Bestie herbeirufen.|r\n\n"..
+"|cffff0000Linksklicken um die Bestie herbeizurufen|r\n"..
+"|cff999999(Ausführreihenfolge: Ziel, Raid, Party)|r";
 
 -- CREATOR --
 
 MultiBot.tips.creator.master = 
 "Creator-Control\n|cffffffff"..
-"With this Control you can create Random-Bots by Class.\n"..
-"The default Limit is 40 Random-Bots per Account.\n"..
-"There is no command to delete them after use.\n"..
-"So invite them to your Friendlist for reuse.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit dieser Steuereinheit kann man Random-Bots nach Klassen erzeugen.\n"..
+"Das Standard-Limit liegt bei 40 Random-Bots pro Account.\n"..
+"Es gibt kein Kommando die Bots nach gebrauch zu löschen.\n"..
+"Ladet sie in die Freundesliste ein, um sie wiederzuverwenden.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- und auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.creator.warrior =
-"Create-Warrior\n|cffffffff"..
-"This Button will create a Random-Bot as Warrior.|r\n\n"..
-"|cffff0000Left-Click to create Warrior|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Krieger erstellen\n|cffffffff"..
+"Diese Schaltfläche erstellt einen Krieger als Random-Bot.|r\n\n"..
+"|cffff0000Linksklicken um einen Krieger zu erstellen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.creator.warlock =
-"Create-Warlock\n|cffffffff"..
-"This Button will create a Random-Bot as Warlock.|r\n\n"..
-"|cffff0000Left-Click to create Warlock|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Hexenmeister erstellen\n|cffffffff"..
+"Diese Schaltfläche erstellt einen Hexenmeister als Random-Bot.|r\n\n"..
+"|cffff0000Linksklicken um einen Hexenmeister zu erstellen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.creator.shaman =
-"Create-Shaman\n|cffffffff"..
-"This Button will create a Random-Bot as Shaman.|r\n\n"..
-"|cffff0000Left-Click to create Shaman|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Schamanen erstellen\n|cffffffff"..
+"Diese Schaltfläche erstellt einen Schamanen als Random-Bot.|r\n\n"..
+"|cffff0000Linksklicken um einen Schamanen zu erstellen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.creator.rogue =
-"Create-Rogue\n|cffffffff"..
-"This Button will create a Random-Bot as Rogue.|r\n\n"..
-"|cffff0000Left-Click to create Rogue|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Schurken erstellen\n|cffffffff"..
+"Diese Schaltfläche erstellt einen Schurken als Random-Bot.|r\n\n"..
+"|cffff0000Linksklicken um einen Schurken zu erstellen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.creator.priest =
-"Create-Priest\n|cffffffff"..
-"This Button will create a Random-Bot as Priest.|r\n\n"..
-"|cffff0000Left-Click to create Priest|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Priester erstellen\n|cffffffff"..
+"Diese Schaltfläche erstellt einen Priester als Random-Bot.|r\n\n"..
+"|cffff0000Linksklicken um einen Priester zu erstellen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.creator.paladin =
-"Create-Paladin\n|cffffffff"..
-"This Button will create a Random-Bot as Paladin.|r\n\n"..
-"|cffff0000Left-Click to create Paladin|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Paladin erstellen\n|cffffffff"..
+"Diese Schaltfläche erstellt einen Paladin als Random-Bot.|r\n\n"..
+"|cffff0000Linksklicken um einen Paladin zu erstellen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.creator.mage =
-"Create-Mage\n|cffffffff"..
-"This Button will create a Random-Bot as Mage.|r\n\n"..
-"|cffff0000Left-Click to create Mage|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Magier erstellen\n|cffffffff"..
+"Diese Schaltfläche erstellt einen Magier als Random-Bot.|r\n\n"..
+"|cffff0000Linksklicken um einen Magier zu erstellen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.creator.hunter =
-"Create-Hunter\n|cffffffff"..
-"This Button will create a Random-Bot as Hunter.|r\n\n"..
-"|cffff0000Left-Click to create Hunter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Jäger erstellen\n|cffffffff"..
+"Diese Schaltfläche erstellt einen Jäger als Random-Bot.|r\n\n"..
+"|cffff0000Linksklicken um einen Jäger zu erstellen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.creator.druid =
-"Create-Druid\n|cffffffff"..
-"This Button will create a Random-Bot as Druid.|r\n\n"..
-"|cffff0000Left-Click to create Druid|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Druide erstellen\n|cffffffff"..
+"Diese Schaltfläche erstellt einen Druiden als Random-Bot.|r\n\n"..
+"|cffff0000Linksklicken um einen Druiden zu erstellen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.creator.deathknight =
-"Create-DeathKnight\n|cffffffff"..
-"This Button will create a Random-Bot as DeathKnight.|r\n\n"..
-"|cffff0000Left-Click to create DeathKnight|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Todesritter erstellen\n|cffffffff"..
+"Diese Schaltfläche erstellt einen Todesritter als Random-Bot.|r\n\n"..
+"|cffff0000Linksklicken um einen Todesritter zu erstellen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.creator.inspect =
-"Inspect-Target\n|cffffffff"..
-"This Button will open the Inspect-Window of your Target.|r\n\n"..
-"|cffff0000Left-Click to open Inspect-Window|r\n"..
-"|cff999999(Execution-Order: Target)|r";
+"Ziel betrachten\n|cffffffff"..
+"Diese Schaltfläche öffnet ein Dialog-Fenster in dem man sein Ziel betrachten kann.|r\n\n"..
+"|cffff0000Linksklicken um das Ziel zu betrachten|r\n"..
+"|cff999999(Ausführreihenfolge: Ziel)|r";
 
 MultiBot.tips.creator.init =
-"Auto-Initialize\n|cffffffff"..
-"Use this Button to Auto-Initialize your Target, Raid or Party.\n"..
-"There are 2 Limitations, because the Equipment will be overwritten:\n"..
-"- it wont work with anyone on the Playerbot-Roster.\n"..
-"- it wont work with anyone on the Guild-Roster.|r\n\n"..
-"|cffff0000Left-Click to Auto-Initialize your Target|r\n"..
-"|cff999999(Execution-Order: Target)|r\n\n"..
-"|cffff0000Right-Click to Auto-Initialize your Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Auto-Initialisiern\n|cffffffff"..
+"Diese Schaltfläche initialisiert ein(e) Ziel, Raid oder Party automatisch.\n"..
+"Es gibt 2 Limitationen, damit keine Ausrüstung überschrieben wird:\n"..
+"- es funktioniert nicht mit Bots auf dem Playerbot-Roster.\n"..
+"- es funktioniert nicht mit Bots auf dem Gilden-Roster.|r\n\n"..
+"|cffff0000Linksklicken um ein Ziel zu initialisieren|r\n"..
+"|cff999999(Ausführreihenfolge: Ziel)|r\n\n"..
+"|cffff0000Rechtsklicken um eine Gruppe zu initialisieren|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 -- UNIT --
 
 MultiBot.tips.unit.selfbot =
 "Selfbot\n"..
-"|cffffffffThis Button switches the Selfbot-Mode on and off.|r\n\n"..
-"|cffff0000Left-Click to execute Selfbot|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"|cffffffffDiese Schaltfläche schaltet den Selfbot-Modus ein und aus.|r\n\n"..
+"|cffff0000Linksklicken um Selfbot ein- oder auszuschalten|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.unit.button =
 "|cffffffff\n"..
-"This Button adds or removes NAME to or from your Group.\n"..
-"MultiBot will ask Playerbot about the Combat- and Non-Combat-Strategies.\n"..
-"The Stretegies can be configured with the Buttonbars on the left and right side.\n"..
-"The Buttonbars will appear after adding the Bot.|r\n\n"..
-"|cffff0000Left-Click to add NAME|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to remove NAME|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit dieser Schaltfläche kann man NAME in seine Gruppe ein- oder ausladen.\n"..
+"MultiBot wird den Playerbot nach seinen Kampf- und Nicht-Kampf-Strategien fragen.\n"..
+"Die Strategien können mit der linken und rechten Schaltflächenleiste konfiguriert werden.\n"..
+"Die Schaltflächenleisten erscheinen nach dem einalden eines Bots.|r\n\n"..
+"|cffff0000Linksklicken um NAME einzuladen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken um NAME auszuladen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 -- UNITS --
 
 MultiBot.tips.units.master =
 "Unit-Control\n|cffffffff"..
-"In this Control you will find the Playerbots.\n"..
-"Each Button stands for one of your Characters, Guild-Members or Friends.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Units|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to refresh the Roster|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"In dieser Steuereinheit findet man die Playerbots.\n"..
+"Jede Schaltfläche steht für einen Character, Gilden-Mitglied oder Freund.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um die Einheiten ein- und auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken um die Roster zu aktualisieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 -- UNIT:FILTER --
 
 MultiBot.tips.units.filter =
-"Class-Filter\n|cffffffff"..
-"With the Class-Filter you can filter the Units by Classes.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to reset the Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Mit dem Klassen-Filter kann man die Einheiten nach ihrer Klasse filtern.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- und auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken um den Filter zu entfernen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.deathknight =
-"Class-Filter\n|cffffffff"..
-"Filters the Units for Death Knights.|r\n\n"..
-"|cffff0000Left-Click to filter for Death Knights|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Filtert die Einheiten nach Todesrittern.|r\n\n"..
+"|cffff0000Linksklicken um nach Todesrittern zu filtern|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.druid =
-"Class-Filter\n|cffffffff"..
-"Filters the Units for Druids.|r\n\n"..
-"|cffff0000Left-Click to filter for Druids|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Filtert die Einheiten nach Druiden.|r\n\n"..
+"|cffff0000Linksklicken um nach Druiden zu filtern|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.hunter =
-"Class-Filter\n|cffffffff"..
-"Filters the Units for Hunters.|r\n\n"..
-"|cffff0000Left-Click to filter for Hunters|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Filtert die Einheiten nach Jägern.|r\n\n"..
+"|cffff0000Linksklicken um nach Jägern zu filtern|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.mage =
-"Class-Filter\n|cffffffff"..
-"Filters the Units for Mages.|r\n\n"..
-"|cffff0000Left-Click to filter for Mages|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Filtert die Einheiten nach Magiern.|r\n\n"..
+"|cffff0000Linksklicken um nach Magiern zu filtern|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.paladin =
-"Class-Filter\n|cffffffff"..
-"Filters the Units for Paladins.|r\n\n"..
-"|cffff0000Left-Click to filter for Paladins|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Filtert die Einheiten nach Paladine.|r\n\n"..
+"|cffff0000Linksklicken um nach Paladine zu filtern|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.priest =
-"Class-Filter\n|cffffffff"..
-"Filters the Units for Priests.|r\n\n"..
-"|cffff0000Left-Click to filter for Priests|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Filtert die Einheiten nach Priestern.|r\n\n"..
+"|cffff0000Linksklicken um nach Priestern zu filtern|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.rogue =
-"Class-Filter\n|cffffffff"..
-"Filters the Units for Rogues.|r\n\n"..
-"|cffff0000Left-Click to filter for Rogues|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Filtert die Einheiten nach Schurken.|r\n\n"..
+"|cffff0000Linksklicken um nach Schurken zu filtern|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.shaman =
-"Class-Filter\n|cffffffff"..
-"Filters the Units for Shamans.|r\n\n"..
-"|cffff0000Left-Click to filter for Shamans|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Filtert die Einheiten nach Schamanen.|r\n\n"..
+"|cffff0000Linksklicken um nach Schamanen zu filtern|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.warlock =
-"Class-Filter\n|cffffffff"..
-"Filters the Units for Warlocks.|r\n\n"..
-"|cffff0000Left-Click to filter for Warlocks|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Filtert die Einheiten nach Hexenmeistern.|r\n\n"..
+"|cffff0000Linksklicken um nach Hexenmeistern zu filtern|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.warrior =
-"Class-Filter\n|cffffffff"..
-"Filters the Units for Warriors.|r\n\n"..
-"|cffff0000Left-Click to filter for Warriors|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Filtert die Einheiten nach Kriegern.|r\n\n"..
+"|cffff0000Linksklicken um nach Kriegern zu filtern|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.none =
-"Class-Filter\n|cffffffff"..
-"Removes the Class-Filter from the Units.|r\n\n"..
-"|cffff0000Left-Click to remove the Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Klassen-Filter\n|cffffffff"..
+"Entfernt den Klassen-Filter von den Einheiten.|r\n\n"..
+"|cffff0000Linksklicken um den Filter zu entfernen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 -- UNITS:ROSTER --
 
 MultiBot.tips.units.roster =
 "Roster-Filter\n|cffffffff"..
-"With the Roster-Filter you can switch between differned Rosters.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to reset the Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit dem Roster-Filter kann man zwischen den verschienden Rostern wechseln.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- und auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken um den Filter zu entfernen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.actives =
 "Roster-Filter\n|cffffffff"..
-"Shows the Active-Roster.|r\n\n"..
-"|cffff0000Left-Click to select Active-Roster|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle aktiven Gruppen-Mitglieder an.|r\n\n"..
+"|cffff0000Linksklicken um den Aktiv-Roster auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.players =
 "Roster-Filter\n|cffffffff"..
-"Shows the Playerbot-Roster.\n"..
-"Normaly your Characters and Others which stayed in your Group.|r\n\n"..
-"|cffff0000Left-Click to select Playerbot-Roster|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt den Playerbot-Roster.\n"..
+"Normalerweise deine Characteren und Andere welche in der Gruppe verblieben sind.|r\n\n"..
+"|cffff0000Linksklicken um den Playerbot-Roster auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.members =
 "Roster-Filter\n|cffffffff"..
-"Shows the Guild-Roster.\n"..
-"The Guild-Roster does not show your Characters.|r\n\n"..
-"|cffff0000Left-Click to select Guild-Roster|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt den Gilden-Roster.\n"..
+"Der Gilden-Roster zeigt nicht deine eigenen Character an.|r\n\n"..
+"|cffff0000Linksklicken um den Gilden-Roster auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.friends =
 "Roster-Filter\n|cffffffff"..
-"Shows the Friend-Roster.\n"..
-"The Friend-Roster does not show your Characters or Guild-Members.|r\n\n"..
-"|cffff0000Left-Click to select Friend-Roster|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt den Freunde-Roster.\n"..
+"Der Freund-Roster zeigt nicht deine eignen Character und nicht die Gilden-Mitglieder an.|r\n\n"..
+"|cffff0000Linksklicken um den Freunde-Roster auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 -- UNIT:BROWSE --
 
 MultiBot.tips.units.browse =
 "Browse\n|cffffffff"..
-"With this Button you can browse through the Rosters.\n"..
-"It will be hidden if the Roster has less then 10 Units.|r\n\n"..
-"|cffff0000Left-Click to browse the Roster|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit dieser Schaltfläche kann man den Roster durchblättern.\n"..
+"Sie wird ausgeblendet sobald ein Roster weniger als 11 Einheiten hat.|r\n\n"..
+"|cffff0000Linksklicken um den Roster durchzublättern|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.invite =
 "Invite-Control\n|cffffffff"..
-"With this Control you can automaticaly fill up your Group.\n"..
-"The left Button is for 'Party-Invite', the right Buttons are for 'Raid-Invite'.\n"..
-"Additionally a Right-Click on this Button will remove all Bots at once.|r\n\n".. 
-"|cffff0000Left-Click to show or hide the Control|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to remove all Bots|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit dieser Steuereinheit kann man die Gruppe automatisch auffüllen.\n"..
+"Die linke Schaltfläche ist für 'Party-Invite', die rechten Schaltflächen sind für 'Raid-Invite'.\n"..
+"Ein Rechtsklick auf diese Schaltfläche entfernt alle Bots auf einmal.|r\n\n"..
+"|cffff0000Linksklicken um die Steuereinheit ein- oder auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtklicken um alle Bots zu entfernen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.inviteParty5 =
-"Party of Five\n|cffffffff"..
-"With this Button you can fill up your Party.\n"..
-"This Feature takes the Units form the selected Roster ignoring the Class-Filter.\n"..
-"It stops at the End of the Roster or until the Group reached 5 Members.|r\n\n"..
-"|cffff0000Left-Click to invite Party-Members|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"5er Party\n|cffffffff"..
+"Mit dieser Schaltfläche füllt man seine Party auf.\n"..
+"Diese Funktion nimmt Einheiten vom aktuellen Roster und ignoriert dabei den Klassen-Filter.\n"..
+"Sie hält am Ende des Rosters oder sobald die Gruppe 5 Mitglieder hat.|r\n\n"..
+"|cffff0000Linksklicken um Party-Mitglieder einzuladen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.inviteRaid10 =
-"Raid of Ten\n|cffffffff"..
-"With this Button you can fill up your Raid.\n"..
-"This Feature takes the Units form the selected Roster ignoring the Class-Filter.\n"..
-"It stops at the End of the Roster or until the Group reached 10 Members.|r\n\n"..
-"|cffff0000Left-Click to invite Raid-Members|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"10er Raid\n|cffffffff"..
+"Mit dieser Schaltfläche füllt man sein Raid auf.\n"..
+"Diese Funktion nimmt Einheiten vom aktuellen Roster und ignoriert dabei den Klassen-Filter.\n"..
+"Sie hält am Ende des Rosters oder sobald die Gruppe 10 Mitglieder hat.|r\n\n"..
+"|cffff0000Linksklicken um Raid-Mitglieder einzuladen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.inviteRaid25 =
-"Raid of Twenty-Five\n|cffffffff"..
-"With this Button you can fill up your Raid.\n"..
-"This Feature takes the Units form the selected Roster ignoring the Class-Filter.\n"..
-"It stops at the End of the Roster or until the Group reached 25 Members.|r\n\n"..
-"|cffff0000Left-Click to invite Raid-Members|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"25er Raid\n|cffffffff"..
+"Mit dieser Schaltfläche füllt man sein Raid auf.\n"..
+"Diese Funktion nimmt Einheiten vom aktuellen Roster und ignoriert dabei den Klassen-Filter.\n"..
+"Sie hält am Ende des Rosters oder sobald die Gruppe 25 Mitglieder hat.|r\n\n"..
+"|cffff0000Linksklicken um Raid-Mitglieder einzuladen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.inviteRaid40 =
-"Raid of Forty\n|cffffffff"..
-"With this Button you can fill up your Raid.\n"..
-"This Feature takes the Units form the selected Roster ignoring the Class-Filter.\n"..
-"It stops at the End of the Roster or until the Group reached 40 Members.|r\n\n"..
-"|cffff0000Left-Click to invite Raid-Members|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"40er Raid\n|cffffffff"..
+"Mit dieser Schaltfläche füllt man sein Raid auf.\n"..
+"Diese Funktion nimmt Einheiten vom aktuellen Roster und ignoriert dabei den Klassen-Filter.\n"..
+"Sie hält am Ende des Rosters oder sobald die Gruppe 40 Mitglieder hat.|r\n\n"..
+"|cffff0000Linksklicken um Raid-Mitglieder einzuladen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 -- MAIN --
 
 MultiBot.tips.main.master =
 "Main-Control\n|cffffffff"..
-"In this Control you will find the Auto-Switches, Special-Strategies and Reset-Commands.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to close MultiBot|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"In dieser Steuereinheit findet man die Auto-Schalter und Reset-Kommandos.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- oder auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken um MultiBot zu schließen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.main.coords =
 "Reset-Coords\n|cffffffff"..
-"Reset the Coordinates of the Features:\n"..
-"MultiBar, Inventory, Spellbook, Itemus, Iconos and Reward-Selector|r\n\n"..
-"|cffff0000Left-Click to reset Coordinates|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Setzt die Koordinaten der folgenden Erweiterungen zurück:\n"..
+"MultiBar, Inventar, Zauberbuch, Itemus, Iconos und Reward-Selector|r\n\n"..
+"|cffff0000Linksklicken um die Koordinaten zurückzusetzen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.main.release =
 "Auto-Release\n|cffffffff"..
-"This Feature detects the Death of Bots.\n"..
-"Dead Bots are automatically released and summoned.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Auto-Release|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Diese Erweiterung erkennt wenn ein Bot stirbt.\n"..
+"Tode Bots werden automatisch freigelassen und herbeigerufen.\n"..
+"Dadurch werden die Bots innerhalb von Sekunden wiederbelebt.\n"..
+"|cffff0000Linksklicken um Auto-Release ein- oder auszuschalten|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.main.stats =
 "Auto-Stats\n|cffffffff"..
-"This Feature visualizes the Stats.\n"..
-"The Stats are updated every minute.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Auto-Stats|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Diese Erweiterung visualisiert die Werte vom Stats-Kommando.\n"..
+"Die Stats-Werte aktualisieren sich 45 Sekunden.|r\n\n"..
+"|cffff0000Linksklicken um Auto-Stats ein- oder auszuschalten|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.main.reward =
 "Reward-Selector\n|cffffffff"..
-"This Feature visualizes the Selection of Rewards.\n"..
-"My Advice is to select the Reward for your Character first.\n"..
-"Then you wont have any Problems using the Inspect-Buttons.\n"..
-"Currently are max 12 Bots supported.|r\n\n"..
-"Important:\n"..
-"Once your Character has completed the Quest, the Bots must also complete the Quest.\n"..
-"So dont cancel the Reward-Selector after your Character has his Reward.\n\n"..
-"|cffffffffMod-Playerbot-Configuration:\n"..
-"- (must) AiPlayerbot.AutoPickReward = no\n"..
-"- (recommanded) AiPlayerbot.SyncQuestWithPlayer = 1|r\n\n"..
-"|cffff0000Left-Click to enable or disable Reward-Selector|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to open Reward-Selector|r\n"..
-"|cff999999(Execution-Order: System)|r";
-
-MultiBot.tips.main.naxx =
-"Naxx-Strategies\n|cffffffff"..
-"This Button will activate the Naxx-Strategies of your Bots.|r\n\n"..
-"|cffff0000Left-Click to activate Naxx-Strategies|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"Diese Erweiterung visualisiert die Auswahl von Belohnungen.\n"..
+"Mein Rat ist, zuerest die Belohnung für den eigenen Character auszuwählen.\n"..
+"Dann hat man keine Probleme beim Betrachten der Bots.\n"..
+"Wichtig:\n"..
+"Sobald der eigene Character eine Quest beendet hat, müssen auch alle Bots die Quest beenden.\n"..
+"Also brecht nicht den Reward-Selector ab sobald der eigene Character seine Belohnung hat.\n"..
+"|cffffffffMod-Playerbot-Konfiguration:\n"..
+"- (muss) AiPlayerbot.AutoPickReward = no\n"..
+"- (sollte) AiPlayerbot.SyncQuestWithPlayer = 1|r\n\n"..
+"|cffff0000Linksklicken um Reward-Selector ein- oder auszuschalten|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken um Reward-Selector zu öffnen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.main.reset =
 "Reset-Bots\n|cffffffff"..
-"This Button will reset the Artificial-Intelligence of your Bots.|r\n\n"..
-"|cffff0000Left-Click to reset the Artificial-Intelligence|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"Diese Schaltfläche setzt die künstliche Intelligenz der Bots zurück.|r\n\n"..
+"|cffff0000Linksklicken um die künstliche Intelligenz zurückzusetzen|r\n"..
+"|cff999999(Ausführreihenfolge: Ziel, Raid, Party)|r";
 
 MultiBot.tips.main.action =
 "Reset-Action\n|cffffffff"..
-"This Button will reset the current Action of your Bots.\n\n"..
-"|cffff0000Left-Click to reset the Action|r\n"..
-"|cff999999(Execution-Order: Target, Raid, Party)|r";
+"Diese Schaltfläche bricht die aktuelle Aktion der Bots ab.|r\n\n"..
+"|cffff0000Linksklicken um die Aktion abzubrechen|r\n"..
+"|cff999999(Ausführreihenfolge: Ziel, Raid, Party)|r";
 
 -- GAMEMASTER --
 
 MultiBot.tips.game.master =
 "GameMaster-Control\n|cffffffff"..
-"In this Control you will find useful GameMaster-Commands.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to drag and move MultiBot|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"In dieser Steuereinheit findet man nützliche GameMaster-Kommandos und -Werkzeuge.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- oder auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken und halten um MultiBar zu verschieben|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.game.necronet =
 "Necro-Network\n|cffffffff"..
-"This Button enables or disables the Necro-Network.\n"..
-"If Necro-Network is active you will find Graveyard-Buttons on the World-Map.\n"..
-"With each Graveyard-Button you could Teleport yourself to the corresponding Graveyard.\n"..
-"You need GameMaster-Rights zo use these Buttons.|r\n\n"..
-"|cffff0000Left-Click to enable or disable the Necro-Network|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Diese Schaltfläche aktiviert oder deaktiviert das Necro-Network.\n"..
+"Wenn das Necro-Network aktiviert ist, findet man Grabstein-Schaltflächen auf der Weltkarte.\n"..
+"Mit jeder Grabstein-Schaltfläche kann man sich zum entsprehenden Friedhof teleportieren.\n"..
+"Man benötigt GameMaster-Rechte um diese Schaltflächen zu benutzen.|r\n\n"..
+"|cffff0000Linksklicken um Necro-Network ein- oder auszuschalten|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.game.portal =
 "Memory-Portal\n|cffffffff"..
-"In this Box you will find the Memory-Gems.\n"..
-"Use the Memory-Gems to store your current Location.\n"..
-"You can teleport yourself to stored Locations by using the Memory-Gems.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Soulgems|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"In dieser Kiste findet man die Memory-Steine.\n"..
+"Benutze die Memory-Steine um deine aktuelle Position zu speichern.\n"..
+"Mit einen Memory-Stein kann man sich jederzeit an die gespeicherte Position teleportieren.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- oder auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.game.memory =
 "Memory-Gem\n|cffffffff"..
-"This Memory-Gem ABOUT.\n"..
-"You need GameMaster-Rights to use this Button.|r\n\n"..
-"|cffff0000Left-Click to store or teleport to the Location|r\n"..
-"|cff999999(Execution-Order: Target)|r\n\n"..
-"|cffff0000Right-Click to forget the Location|r\n"..
-"|cff999999(Execution-Order: Target)|r";
+"Dieser Memory-Stein ABOUT.\n"..
+"Man benötigt GameMaster-Rechte um diese Schaltflächen zu benutzen.|r\n\n"..
+"|cffff0000Linksklicken um eine Position zu speichern oder abzurufen|r\n"..
+"|cff999999(Ausführreihenfolge: Selbst)|r\n\n"..
+"|cffff0000Rechtsklicken um eine Position zu vergessen|r\n"..
+"|cff999999(Ausführreihenfolge: Selbst)|r";
 
 MultiBot.tips.game.itemus = 
 "Itemus\n|cffffffff"..
-"You will find every Item in the Box of the GamerMaster.\n"..
-"Just target the Player or Bot, left click the Item and the wish come true.\n"..
-"Important, not every Item can be generated, so you must try to find out.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to open or close the Itemus|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Man findet jedes Item in der Kiste des GameMasters.\n"..
+"Ziehlt auf einen Spieler oder Bot, mit einem Linksklick auf das Item werden Träume war.\n"..
+"Wichtig, nicht jedes Item kann man generieren, daher muss man es schon ausprobieren.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um Itemus zu öffnen oder schließen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.game.iconos = 
 "Iconos\n|cffffffff"..
-"You will find every Icon and his Path in this Tool.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to open or close the Itemus|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Man findet jedes Icon inklusive Pfadangabe in diesem Werkzeug.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um Iconos zu öffnen oder schließen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.game.summon =
 "Summon\n|cffffffff"..
-"Summons your Target to your Position.\n"..
-"You need GameMaster-Rights to use this Button.|r\n\n"..
-"|cffff0000Left-Click to summon your Target|r\n"..
-"|cff999999(Execution-Order: Target)|r";
+"Beschwört einen anvisierten Spieler oder Bot an deine Position.\n"..
+"Man benötigt GameMaster-Rechte um diese Schaltflächen zu benutzen.|r\n\n"..
+"|cffff0000Linskklicken um das Ziel zu beschwören|r\n"..
+"|cff999999(Ausführreihenfolge: Ziel)|r";
 
 MultiBot.tips.game.appear =
 "Appear\n|cffffffff"..
-"You will appear at the Position of your Target.\n"..
-"You need GameMaster-Rights to use this Button.|r\n\n"..
-"|cffff0000Left-Click to appear at your Target|r\n"..
-"|cff999999(Execution-Order: Target)|r";
+"Du erscheinst an der Position des anvisierten Spielers oder Bots.\n"..
+"Man benötigt GameMaster-Rechte um diese Schaltflächen zu benutzen.|r\n\n"..
+"|cffff0000Linksklicken um beim Ziel zu erscheinen|r\n"..
+"|cff999999(Ausführreihenfolge: Ziel)|r";
 
 -- DRINK --
 
 MultiBot.tips.drink.group = 
 "Group-Drink\n|cffffffff"..
-"With this Button you order the Group to drink.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to execute Group-Drink|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Mit diesem Kommando befiehlt man der Gruppe etwas zu trinken.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um Group-Drink auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 -- RELEASE --
 
 MultiBot.tips.release.group = 
 "Group-Release\n|cffffffff"..
-"With this Button the dead Bots will release there Ghosts to the next Graveyard.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to execute Group-Release|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Mit diesem Kommando geben die toten Bots ihre Geister auf den nächsten Friedhof frei.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um Group-Release auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 -- REVIVE --
 
 MultiBot.tips.revive.group = 
 "Group-Revive\n|cffffffff"..
-"With this Button the Ghost-Bots will revive on the next Graveyard.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to execute Group-Revive|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Mit diesem Kommando werden Geister-Bots auf dem nächsten Friedhof wiederbelebt.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um Group-Revive auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 -- SUMALL --
 
 MultiBot.tips.summon.group = 
 "Group-Summon\n|cffffffff"..
-"With this Button you summon the Group to your Position.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to execute Group-Summon|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Mit diesem Kommando ruft man die Gruppe an seine Position.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um Group-Summon auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 -- INVENTORY --
 
 MultiBot.tips.inventory.sell =
-"Sell-Items|cffffffff\n"..
-"It enables the Sell-Mode of the Inventory.\n"..
-"You must have a Merchent as Target.\n"..
-"For security Resons your Bot will not sell:\n"..
-"- every Item with 'Key' in its Name\n"..
-"- the Hearthstone|r\n\n"..
-"|cffff0000Left-Click to sell a Item|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"Items verkaufen|cffffffff\n"..
+"Diese Schaltfläche aktiviert den Verkaufs-Modus des Inventars.\n"..
+"Man muss einen Händler als Ziel ausgewählt haben.\n"..
+"Aus Sicherheitsgründen verkaufen Bots keine:\n"..
+"- Items mit 'Schlüssel' in ihrem Namen\n"..
+"- den Ruhestein|r\n\n"..
+"|cffff0000Linksklicken um Verkauf zu aktiviern|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.inventory.equip =
-"Equip-Items|cffffffff\n"..
-"It enables the Equip-Mode of the Inventory.|r\n\n"..
-"|cffff0000Left-Click to equip a Item|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"Items ausrüsten|cffffffff\n"..
+"Diese Schaltfläche aktiviert den Ausrüst-Modus des Inventars.\n"..
+"|cffff0000Linksklicken um Ausrüsten zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.inventory.use =
-"Use-Items|cffffffff\n"..
-"It enables the Use-Mode of the Inventory.|r\n\n"..
-"|cffff0000Left-Click to use a Item|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"Items benutzen|cffffffff\n"..
+"Diese Schaltfläche aktiviert den Benutzen-Modus des Inventars.\n"..
+"|cffff0000Linksklicken um Benutzen zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.inventory.drop =
-"Drop-Items|cffffffff\n"..
-"It enables the Drop-Mode of the Inventory.\n"..
-"For security Resons your Bot will not drop:\n"..
-"- every Item with a Quality of Epic or higher\n"..
-"- every Item with 'Key' in its Name\n"..
-"- the Hearthstone|r\n\n"..
-"|cffff0000Left-Click to drop a Item|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"Items zerstören|cffffffff\n"..
+"Diese Schaltfläche aktiviert den Zerstör-Modus des Inventars.\n"..
+"Aus Sicherheitsgründen zerstören Bots keine:\n"..
+"- Items mit einer Qualität von Episch oder besser\n"..
+"- Items mit 'Schlüssel' in ihrem Namen\n"..
+"- den Ruhestein|r\n\n"..
+"|cffff0000Linktsklicken um Zerstören zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 -- ITEMUS:LEVEL --
 
 MultiBot.tips.itemus.level.master =
 "Level-Filter|cffffffff\n"..
-"Filters the Items by Level in a range of 10.|r\n\n"..
-"|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Filtert die Items nach Level in 10er Schritten.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- oder auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L10 =
-"Level 0 to 10|cffffffff\n"..
-"Shows the Items with a required Level between 0 and 10.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Level 0 bis 10|cffffffff\n"..
+"Zeigt alle Items mit einer Level-Vorraussetzung von 0 bis 10 an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L20 =
-"Level 11 to 20|cffffffff\n"..
-"Shows the Items with a required Level between 11 and 20.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Level 11 bis 20|cffffffff\n"..
+"Zeigt alle Items mit einer Level-Vorraussetzung von 11 bis 20 an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L30 =
-"Level 21 to 30|cffffffff\n"..
-"Shows the Items with a required Level between 21 and 30.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Level 21 bis 30|cffffffff\n"..
+"Zeigt alle Items mit einer Level-Vorraussetzung von 21 bis 30 an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L40 =
-"Level 31 to 40|cffffffff\n"..
-"Shows the Items with a required Level between 31 and 40.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Level 31 bis 40|cffffffff\n"..
+"Zeigt alle Items mit einer Level-Vorraussetzung von 31 bis 40 an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L50 =
-"Level 41 to 50|cffffffff\n"..
-"Shows the Items with a required Level between 41 and 50.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Level 41 bis 50|cffffffff\n"..
+"Zeigt alle Items mit einer Level-Vorraussetzung von 41 bis 50 an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L60 =
-"Level 51 to 60|cffffffff\n"..
-"Shows the Items with a required Level between 51 and 60.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Level 51 bis 60|cffffffff\n"..
+"Zeigt alle Items mit einer Level-Vorraussetzung von 51 bis 60 an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L70 =
-"Level 61 to 70|cffffffff\n"..
-"Shows the Items with a required Level between 61 and 70.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Level 61 bis 70|cffffffff\n"..
+"Zeigt alle Items mit einer Level-Vorraussetzung von 61 bis 70 an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L80 =
-"Level 71 to 80|cffffffff\n"..
-"Shows the Items with a required Level between 71 and 80.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Level 71 bis 80|cffffffff\n"..
+"Zeigt alle Items mit einer Level-Vorraussetzung von 71 bis 80 an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 -- ITEMUS:RARE --
 
 MultiBot.tips.itemus.rare.master =
 "Quality-Filter|cffffffff\n"..
-"Filters the Items by Quality.\n"..
-"This Filter is additive to the Level-Filter.|r\n\n"..
-"|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Filtert die Items nach Qualität.\n"..
+"Dieser Filter ist additiv zum Level-Filter.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- und auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R00 =
 "Poor-Quality|cffffffff\n"..
-"Shows the Items with a Poor-Quality.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items von schlechter Qualität an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R01 =
 "Common-Quality|cffffffff\n"..
-"Shows the Items with a Common-Quality.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items von einfacher Qualität an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R02 =
 "Non-Common-Quality|cffffffff\n"..
-"Shows the Items with a Non-Common-Quality.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items von unüblicher Qualität an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R03 =
 "Rare-Quality|cffffffff\n"..
-"Shows the Items with a Rare-Quality.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items von seltener Qualität an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R04 =
 "Epic-Quality|cffffffff\n"..
-"Shows the Items with a Epic-Quality.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items von epischer Qualität an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R05 =
 "Legendary-Quality|cffffffff\n"..
-"Shows the Items with a Legendary-Quality.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items von legendärer Qualität an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R06 =
 "Artifact-Quality|cffffffff\n"..
-"Shows the Items with a Artifact-Quality.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items der Artefakt-Qualität an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R07 =
 "Heirlooms-Quality|cffffffff\n"..
-"Shows the Items with a Heirlooms-Quality.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items der Erbstück-Qualität an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 -- ITEMUS:SLOT --
 
 MultiBot.tips.itemus.slot.master =
 "Slot-Filter|cffffffff\n"..
-"Filters the Items by Slot.\n"..
-"This Filter is additive to the Level- and Quality-Filter.|r\n\n"..
-"|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Filtert die Items nach Ausrüstungsplätzen.\n"..
+"Dieser Filter ist additiv zum Level- und Qualitäts-Filter.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- oder auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S00 =
 "Non-Equipable|cffffffff\n"..
-"Shows the Items which are not equipable.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle nicht ausrüstbaren Items an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S01 =
 "Head-Slot|cffffffff\n"..
-"Shows the Items for the Head-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man am Kopf ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S02 =
 "Neck-Slot|cffffffff\n"..
-"Shows the Items for the Neck-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man am Hals ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S03 =
 "Shoulder-Slot|cffffffff\n"..
-"Shows the Items for the Shoulder-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man an den Schultern ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S04 =
 "Shirt-Slot|cffffffff\n"..
-"Shows the Items for the Shirt-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Hemd ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S05 =
 "Chest-Slot|cffffffff\n"..
-"Shows the Items for the Chest-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man an der Brust ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S06 =
 "Waist-Slot|cffffffff\n"..
-"Shows the Items for the Waist-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeit alle Items die man an der Taille ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S07 =
 "Legs-Slot|cffffffff\n"..
-"Shows the Items for the Legs-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man an den Beinen ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S08 =
 "Feets-Slot|cffffffff\n"..
-"Shows the Items for the Feets-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man an den Füßen ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S09 =
 "Wrists-Slot|cffffffff\n"..
-"Shows the Items for the Wrists-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man am Handgelenken ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S10 =
 "Hands-Slot|cffffffff\n"..
-"Shows the Items for the Hands-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man an den Händen ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S11 =
 "Finger-Slot|cffffffff\n"..
-"Shows the Items for the Finger-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man an dem Fingern ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S12 =
 "Trinket-Slot|cffffffff\n"..
-"Shows the Items for the Trinket-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man an den Ohren ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S13 =
 "One-Hand-Weapon-Slot|cffffffff\n"..
-"Shows the Items for the One-Hand-Weapon-Slot.\n"..
-"Notice that this Item could be used as Main- and Off-Hand-Weapons.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Einhandwaffe ausrüsten kann an.\n"..
+"Diese Waffen können in der Haupt- und Nebenhand geführt werden.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S14 =
 "Shield-Slot|cffffffff\n"..
-"Shows the Items for the Shield-Slot.\n"..
-"Notice that this Slot is the same as Off-Hand-Weapons.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Schild ausrüsten kann an.\n"..
+"Schilde werden immer in der Nebenhand geführt.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S15 =
 "Ranged-Slot|cffffffff\n"..
-"Shows the Items for the Ranged-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Fernkampfwaffe ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S16 =
 "Back-Slot|cffffffff\n"..
-"Shows the Items for the Back-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man am Rücken ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S17 =
 "Two-Hand-Weapon-Slot|cffffffff\n"..
-"Shows the Items for the Two-Hand-Weapon-Slot.\n"..
-"Notice that this Slot is the same as Main-Hand-Weapons.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Zweihandwaffe ausrüsten kann an.\n"..
+"Diese Waffen werden in der Haupthand geführt und blockieren die Nebenhand.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S18 =
 "Bag-Slot|cffffffff\n"..
-"Shows the Items for the Bag-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Tasche ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S19 =
 "Tabard-Slot|cffffffff\n"..
-"Shows the Items for the Tabard-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die als Wappenrock ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S20 =
 "Robe-Slot|cffffffff\n"..
-"Shows the Items for the Robe-Slot.\n"..
-"Notice that this Slot is the same as for Chests.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Robe ausrüsten kann an.\n"..
+"Roben werden an der Burst ausgerüstet.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S21 =
 "Main-Hand-Weapons-Slot|cffffffff\n"..
-"Shows the Items for the Main-Hand-Weapons-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Waffen die man in der Haupthand ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S22 =
 "Off-Hand-Weapons-Slot|cffffffff\n"..
-"Shows the Items for the Off-Hand-Weapons-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Waffen die man in der Nebenhand ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S23 =
 "Off-Hand-Items-Slot|cffffffff\n"..
-"Shows the Items for the Off-Hand-Items-Slot.\n"..
-"Notice that this Slot is the same as Off-Hand-Weapons.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man in der Nebenhand ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S24 =
 "Ammo-Slot|cffffffff\n"..
-"Shows the Items for the Ammo-Slot.\n"..
-"Notice that this Slot is the same as Ranged-Right.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Munition ausrüsten kann an.\n"..
+"Dieser Rüstplatz ist der gleiche wie 'Ranged-Right'|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S25 =
 "Throw-Slot|cffffffff\n"..
-"Shows the Items for the Throw-Slot.\n"..
-"Notice that this Slot is the same as Ranged.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Wurfwaffen ausrüsten kann an.\n"..
+"Dieser Rüstplatz ist der gleiche wie 'Ranged'|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S26 =
 "Ranged-Right-Slot|cffffffff\n"..
-"Shows the Items for the Ranged-Right-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Munition ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S27 =
 "Quiver-Slot|cffffffff\n"..
-"Shows the Items for the Quiver-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Köcher ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S28 =
 "Relic-Slot|cffffffff\n"..
-"Shows the Items for the Relic-Slot.|r\n\n"..
-"|cffff0000Left-Click to set Filter|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Zeigt alle Items die man als Relikt ausrüsten kann an.|r\n\n"..
+"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 -- ITEMUS:TYPE --
 
 MultiBot.tips.itemus.type =
 "Type-Filter|cffffffff\n"..
-"With this Filter you can switch between Player-Character and Non-Player-Character Items.\n"..
-"This Filter is additive to the Level-, Quality- and Slot-Filter.|r\n\n"..
-"|cffff0000Left-Click to enable or disable NPC-Stuff|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Mit diesem Filter kann man zwischen Player-Character und Non-Player-Character Items wechseln.\n"..
+"Dieser Filter ist additiv zum Level-, Qualitäts- und Slot-Filter.|r\n\n"..
+"|cffff0000Linksklicken zwischen PC- und NPC-Ausrüstung umzuschalten|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 -- DEATHKNIGHT --
 
 MultiBot.tips.deathknight.presence.master =
-"Presence-Control|cffffffff\n"..
+"Präsenz-Control|cffffffff\n"..
+"Diese Steuereinheit erlaubt es die Präsenz auszuwählen, zu aktivieren oder deaktivieren.|r\n\n"..
 "This Control allows you to select, enable or disable the default Precence.|r\n\n"..
-"|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to enable or disable the default Presence.|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cffff0000Linksklicken um die Optionen ein- oder auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken um die Präsenz ein- oder auszuschalten.|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.deathknight.presence.unholy =
-"Unholy-Presence|cffffffff\n"..
-"It enables the Unholy-Presence.|r\n\n"..
-"|cffff0000Left-Click to enable Unholy-Presence|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"Unheilige-Präsenz|cffffffff\n"..
+"Diese Option aktiviert die Unheilige-Präsenz.|r\n\n"..
+"|cffff0000Linksklicken um die Unheilige-Präsenz zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.deathknight.presence.frost =
-"Frost-Presence|cffffffff\n"..
-"It enables the Frost-Presence.|r\n\n"..
-"|cffff0000Left-Click to enable Frost-Presence|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"Eisige-Präsenz|cffffffff\n"..
+"Diese Option aktiviert die Eisige-Präsenz.|r\n\n"..
+"|cffff0000Linksklicken um die Eisige-Präsenz zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.deathknight.presence.blood =
-"Blood-Presence|cffffffff\n"..
-"It enables the Blood-Presence.|r\n\n"..
-"|cffff0000Left-Click to enable Blood-Presence|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"Blutige-Präsenz|cffffffff\n"..
+"Diese Option aktiviert die Blutige-Präsenz.|r\n\n"..
+"|cffff0000Linksklicken um die Blutige-Präsenz zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.deathknight.dps.master =
 "DPS-Control|cffffffff\n"..
-"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
-"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Mit dieser Steuereinheit legt man die generelle DPS-Strategie fest.|r\n\n"..
+"|cffff0000Linksklicken um die Steuereinheit ein- oder auszublenden|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.deathknight.dps.dpsAssist =
 "DPS-Assist|cffffffff\n"..
-"It enables the DPS-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Schaltfläche aktiviert die DPS-Assist-Strategie.\n"..
+"DPS-AOE, DPS-Assist und Tank-Assist schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um DPS-Assist ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.deathknight.dps.dpsAoe =
 "DPS-AOE|cffffffff\n"..
-"It enables the DPS-AOE-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Schaltfläche aktiviert die DPS-AOE-Strategie.\n"..
+"DPS-AOE, DPS-Assist und Tank-Assist schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um DPS-AOE ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.deathknight.tankAssist =
 "Tank-Assist|cffffffff\n"..
-"It enables the Tank-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Schaltfläche aktiviert die Tank-Assist-Strategie.\n"..
+"DPS-AOE, DPS-Assist und Tank-Assist schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um Tank-Assist ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 -- DRUID --
 
 MultiBot.tips.druid.heal =
 "Heal|cffffffff\n"..
-"It makes the Druid to the Healer of the Group.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Heal|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Strategie macht den Druiden zum Heiler der Gruppe.\n"..
+"Bär, Katze, Zauberer und Heiler schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um Heal ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.buff =
 "Buff|cffffffff\n"..
-"It allows the Druid to Buff the Group.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Buff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Strategie erlaubt dem Druiden die Gruppe zu buffen.|r\n\n"..
+"|cffff0000Linksklicken um Buff ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.playbook.master =
 "Playbook|cffffffff\n"..
-"In the Playbook you will find the Strategies typical for the Class.|r\n\n"..
-"|cffff0000Left-Click to show or hide Playbook|r\n"..
-"|cf9999999(Execution-Order: System)|r";
+"Im Playbook findet man die Klassen-typischen Strategien.|r\n\n"..
+"|cffff0000Linksklicken um das Playbook ein- oder auszublenden|r\n"..
+"|cf9999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.druid.playbook.casterDebuff =
 "Caster-Debuff|cffffffff\n"..
-"Allows the Caster to use Debuff-Spells during the Combat.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Caster-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Strategie erlaubt dem Druiden als Zauberer Debuff-Spells während des Kampfes zu verwenden.|r\n\n"..
+"|cffff0000Linksklicken um Caster-Debuff ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.playbook.casterAoe =
 "Caster-AOE|cffffffff\n"..
-"Allows the Caster to use AOE-Spells during the Combat.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Caster-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Strategie erlaubt dem Druiden als Zauberer AOE-Spells während des Kampfes zu verwenden.|r\n\n"..
+"|cffff0000Linksklicken um Caster-AOE ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.playbook.caster =
 "Caster|cffffffff\n"..
-"The Caster corresponds to a Ranged-Fighter.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Caster|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Strategie macht den Druiden zum Zauberer.|r\n\n"..
+"Bär, Katze, Zauberer und Heiler schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um Caster ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.playbook.catAoe =
 "Cat-AOE|cffffffff\n"..
-"Allows the Cat to use AOE-Attacks during the Combat.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Cat-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Strategie erlaubt dem Druiden als Katze AOE-Attacken zu verwenden.|r\n\n"..
+"|cffff0000Linksklicken um Cat-AOE ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.playbook.cat =
 "Cat|cffffffff\n"..
-"The Cat corresponds to a Melee-Fighter.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Cat|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Strategie versetzt den Druiden in die Katzen-Gestalt.\n"..
+"Bär, Katze, Zauberer und Heiler schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um Cat ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.playbook.bear =
 "Bear|cffffffff\n"..
-"The Bear corresponds to a Tank.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Bear|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Strategie versetzt den Druiden in die Bären-Gestalt.\n"..
+"Bär, Katze, Zauberer und Heiler schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um Bear ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.dps.master =
 "DPS-Control|cffffffff\n"..
-"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
-"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Mit dieser Steuereinheit legt man die generelle DPS-Strategie fest.|r\n\n"..
+"|cffff0000Linksklicken um die Steuereinheit ein- oder auszublenden|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.dps.dpsAssist =
 "DPS-Assist|cffffffff\n"..
-"It enables the DPS-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Schaltfläche aktiviert die DPS-Assist-Strategie.\n"..
+"DPS-AOE, DPS-Assist und Tank-Assist schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um DPS-Assist ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.dps.dpsDebuff =
 "DPS-Debuff|cffffffff\n"..
-"It enables the Debuff-Strategies.\n"..
-"The Druid can only Debuff as Caster.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Schaltfläche aktiviert die Debuff-Strategie.\n"..
+"Der Druide kann diese Strategie nur als Zauberer verwenden.\n"..
+"Bär, Katze, Zauberer und Heiler schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um DPS-Debuff ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
-MultiBot.tips.druid.dps.dpsAoe = 
+MultiBot.tips.druid.dps.dpsAoe =
 "DPS-AOE|cffffffff\n"..
-"It enables the DPS-AOE-Strategies.\n"..
-"The Druid can only AOE as Cat or Caster.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Schaltfläche aktiviert die DPS-AOE-Strategie.\n"..
+"Der Druide kann diese Strategie nur als Katze oder Zauberer verwenden.\n"..
+"DPS-AOE, DPS-Assist und Tank-Assist schließen sich gegenseitig aus.\n"..
+"Bär, Katze, Zauberer und Heiler schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um DPS-AOE ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.dps.dps = 
 "DPS|cffffffff\n"..
-"It enables the DPS-Strategies.\n"..
-"The Druid can only use DPS-Strategies as Cat.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Schaltfläche aktiviert die DPS-Strategie.\n"..
+"Der Druide kann diese Strategie nur als Katze verwenden.\n"..
+"DPS-AOE, DPS-Assist und Tank-Assist schließen sich gegenseitig aus.\n"..
+"Bär, Katze, Zauberer und Heiler schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um DPS ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.tankAssist = 
 "Tank-Assist|cffffffff\n"..
-"It enables the Tank-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Schaltfläche aktiviert die Tank-Assist-Strategie.\n"..
+"DPS-AOE, DPS-Assist und Tank-Assist schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um Tank-Assist ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.druid.tank = 
 "Tank|cffffffff\n"..
-"It enables the Tank-Strategies.\n"..
-"The Druid can only Tank as Bear.\n"..
-"Bear, Cat, Caster and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Tank|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"Diese Schaltfläche aktiviert die Tank-Strategie.\n"..
+"Der Druide kann diese Strategie nur als Bär verwenden.\n"..
+"Bär, Katze, Zauberer und Heiler schließen sich gegenseitig aus.\n"..
+"Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
+"|cffff0000Linksklicken um Tank ein- oder auszuschalten|r\n"..
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 -- HUNTER --
 
@@ -1298,59 +1371,59 @@ MultiBot.tips.hunter.naspect.master =
 "Non-Combat-Buff|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Non-Combat-Buff.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Buff.|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.naspect.rnature =
 "Resist-Nature-Buff|cffffffff\n"..
 "It enables the Resist-Nature-Buff as Non-Combat-Buff.|r\n\n"..
 "|cffff0000Left-Click to enable Resist-Nature-Buff|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.naspect.bmana =
 "Mana-Buff|cffffffff\n"..
 "It enables the Mana-Buff as Non-Combat-Buff.|r\n\n"..
 "|cffff0000Left-Click to enable Mana-Buff|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.naspect.bdps =
 "DPS-Buff|cffffffff\n"..
 "It enables the DPS-Buff as Non-Combat-Buff.|r\n\n"..
 "|cffff0000Left-Click to enable DPS-Buff|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.caspect.master =
 "Combat-Buff|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Combat-Buff.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Buff.|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.caspect.rnature =
 "Resist-Nature-Buff|cffffffff\n"..
 "It enables the Resist-Nature-Buff as Combat-Buff.|r\n\n"..
 "|cffff0000Left-Click to enable Resist-Nature-Buff|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.caspect.bmana =
 "Mana-Buff|cffffffff\n"..
 "It enables the Mana-Buff as Combat-Buff.|r\n\n"..
 "|cffff0000Left-Click to enable Mana-Buff|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.caspect.bdps =
 "DPS-Buff|cffffffff\n"..
 "It enables the DPS-Buff as Combat-Buff.|r\n\n"..
 "|cffff0000Left-Click to enable DPS-Buff|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.dps.master =
 "DPS-Control|cffffffff\n"..
 "In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
 "|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.dps.dpsAssist =
 "DPS-Assist|cffffffff\n"..
@@ -1358,13 +1431,13 @@ MultiBot.tips.hunter.dps.dpsAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.dps.dpsDebuff =
 "DPS-Debuff|cffffffff\n"..
 "It enables the Debuff-Strategies.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.dps.dpsAoe = 
 "DPS-AOE|cffffffff\n"..
@@ -1372,13 +1445,13 @@ MultiBot.tips.hunter.dps.dpsAoe =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.dps.dps = 
 "DPS|cffffffff\n"..
 "It enables the DPS-Strategies.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.tankAssist = 
 "Tank-Assist|cffffffff\n"..
@@ -1386,7 +1459,7 @@ MultiBot.tips.hunter.tankAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 -- MAGE --
 
@@ -1394,33 +1467,33 @@ MultiBot.tips.mage.buff.master =
 "Buff-Control|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Buff.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Buff.|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.buff.bmana =
 "Mana-Buff|cffffffff\n"..
 "It enables the Mana-Buff.|r\n\n"..
 "|cffff0000Left-Click to enable Mana-Buff|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.buff.bdps =
 "DPS-Buff|cffffffff\n"..
 "It enables the DPS-Buff.|r\n\n"..
 "|cffff0000Left-Click to enable DPS-Buff|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.playbook.master =
 "Playbook|cffffffff\n"..
 "In the Playbook you will find the Strategies typical for the Class.|r\n\n"..
 "|cffff0000Left-Click to show or hide Playbook|r\n"..
-"|cf9999999(Execution-Order: System)|r";
+"|cf9999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.mage.playbook.arcaneAoe =
 "Arcane-AOE|cffffffff\n"..
 "Allows the Mage to use Arcane-AOE-Spells during the Combat.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Arcane-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.playbook.arcane =
 "Arcane-Magic|cffffffff\n"..
@@ -1428,13 +1501,13 @@ MultiBot.tips.mage.playbook.arcane =
 "Arcane-, Frost- and Fire-Magic are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Arcane-Magic|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.playbook.frostAoe =
 "Frost-AOE|cffffffff\n"..
 "Allows the Mage to use Frost-AOE-Spells during the Combat.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Arcane-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.playbook.frost =
 "Frost-Magic|cffffffff\n"..
@@ -1442,13 +1515,13 @@ MultiBot.tips.mage.playbook.frost =
 "Arcane-, Frost- and Fire-Magic are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Frost-Magic|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.playbook.fireAoe =
 "Fire-AOE|cffffffff\n"..
 "Allows the Mage to use Fire-AOE-Spells during the Combat.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Fire-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.playbook.fire =
 "Fire-Magic|cffffffff\n"..
@@ -1456,13 +1529,13 @@ MultiBot.tips.mage.playbook.fire =
 "Arcane-, Frost- and Fire-Magic are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Fire-Magic|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.dps.master =
 "DPS-Control|cffffffff\n"..
 "In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
 "|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.dps.dpsAssist =
 "DPS-Assist|cffffffff\n"..
@@ -1470,7 +1543,7 @@ MultiBot.tips.mage.dps.dpsAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.dps.dpsAoe = 
 "DPS-AOE|cffffffff\n"..
@@ -1478,7 +1551,7 @@ MultiBot.tips.mage.dps.dpsAoe =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.mage.tankAssist = 
 "Tank-Assist|cffffffff\n"..
@@ -1486,7 +1559,7 @@ MultiBot.tips.mage.tankAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 -- PALADIN --
 
@@ -1496,121 +1569,121 @@ MultiBot.tips.paladin.heal =
 "Tank, DPS and Heal are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Heal|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.seal.master =
 "Seal-Control|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Seal.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Seal.|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.seal.bhealth =
 "Health-Seal|cffffffff\n"..
 "It enables the Health-Seal.|r\n\n"..
 "|cffff0000Left-Click to enable Health-Seal|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.seal.bmana =
 "Mana-Seal|cffffffff\n"..
 "It enables the Mana-Seal.|r\n\n"..
 "|cffff0000Left-Click to enable Mana-Seal|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.seal.bstats =
 "Stats-Seal|cffffffff\n"..
 "It enables the Stats-Seal.|r\n\n"..
 "|cffff0000Left-Click to enable Stats-Seal|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.seal.bdps =
 "DPS-Seal|cffffffff\n"..
 "It enables the DPS-Seal.|r\n\n"..
 "|cffff0000Left-Click to enable DPS-Seal|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.naura.master =
 "Non-Combat-Aura|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Non-Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Aura.|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.naura.bspeed =
 "Speed-Aura|cffffffff\n"..
 "It enables the Speed-Aura as Non-Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to enable Speed-Aura|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.naura.rfire =
 "Fire-Resist-Aura|cffffffff\n"..
 "It enables the Fire-Resist-Aura as Non-Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to enable Fire-Resist-Aura|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.naura.rfrost =
 "Frost-Resist-Aura|cffffffff\n"..
 "It enables the Frost-Resist-Aura as Non-Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to enable Frost-Resist-Aura|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.naura.rshadow =
 "Shadow-Resist-Aura|cffffffff\n"..
 "It enables the Shadow-Resist-Aura as Non-Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to enable Shadow-Resist-Aura|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.naura.barmor =
 "Armor-Aura|cffffffff\n"..
 "It enables the Armor-Aura as Non-Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to enable Armor-Aura|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.caura.master =
 "Combat-Aura|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Aura.|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.caura.bspeed =
 "Speed-Aura|cffffffff\n"..
 "It enables the Speed-Aura as Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to enable Speed-Aura|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.caura.rfire =
 "Fire-Resist-Aura|cffffffff\n"..
 "It enables the Fire-Resist-Aura as Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to enable Fire-Resist-Aura|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.caura.rfrost =
 "Frost-Resist-Aura|cffffffff\n"..
 "It enables the Frost-Resist-Aura as Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to enable Frost-Resist-Aura|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.caura.rshadow =
 "Shadow-Resist-Aura|cffffffff\n"..
 "It enables the Shadow-Resist-Aura as Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to enable Shadow-Resist-Aura|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.caura.barmor =
 "Armor-Aura|cffffffff\n"..
 "It enables the Armor-Aura as Combat-Arua.|r\n\n"..
 "|cffff0000Left-Click to enable Armor-Aura|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.dps.master =
 "DPS-Control|cffffffff\n"..
 "In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
 "|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.dps.dpsAssist =
 "DPS-Assist|cffffffff\n"..
@@ -1618,7 +1691,7 @@ MultiBot.tips.paladin.dps.dpsAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.dps.dpsAoe = 
 "DPS-AOE|cffffffff\n"..
@@ -1626,7 +1699,7 @@ MultiBot.tips.paladin.dps.dpsAoe =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.dps.dps = 
 "DPS|cffffffff\n"..
@@ -1634,7 +1707,7 @@ MultiBot.tips.paladin.dps.dps =
 "Tank, DPS and Heal are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.tankAssist = 
 "Tank-Assist|cffffffff\n"..
@@ -1642,7 +1715,7 @@ MultiBot.tips.paladin.tankAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.tank = 
 "Tank|cffffffff\n"..
@@ -1650,7 +1723,7 @@ MultiBot.tips.paladin.tank =
 "Tank, DPS and Heal are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 -- PRIEST --
 
@@ -1660,31 +1733,31 @@ MultiBot.tips.priest.heal =
 "Shadow and Heal are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Heal|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.priest.buff =
 "Buff|cffffffff\n"..
 "It allows the Priest to Buff the Group.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Buff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.priest.playbook.master =
 "Playbook|cffffffff\n"..
 "In the Playbook you will find the Strategies typical for the Class.|r\n\n"..
 "|cffff0000Left-Click to show or hide Playbook|r\n"..
-"|cf9999999(Execution-Order: System)|r";
+"|cf9999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.priest.playbook.shadowDebuff =
 "Shadow-Debuff|cffffffff\n"..
 "Allows the Priest to use Shadow-Debuff-Spells during the Combat.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Shadow-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.priest.playbook.shadowAoe =
 "Shadow-AOE|cffffffff\n"..
 "Allows the Priest to use Shadow-AOE-Spells during the Combat.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Shadow-AOE-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.priest.playbook.shadow =
 "Shadow|cffffffff\n"..
@@ -1692,49 +1765,49 @@ MultiBot.tips.priest.playbook.shadow =
 "Shadow and Heal are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Shadow|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.priest.dps.master =
 "DPS-Control|cffffffff\n"..
 "In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
 "|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.priest.dps.dpsAssist =
 "DPS-Assist|cffffffff\n"..
-"It enables the DPS-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"It enables the DPS-Assist-Strategies for Healers.\n"..
+"DPS-AOE, DPS-Assist ('Healer-DPS') and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.priest.dps.dpsDebuff =
 "DPS-Debuff|cffffffff\n"..
 "It enables the Debuff-Strategies.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.priest.dps.dpsAoe = 
 "DPS-AOE|cffffffff\n"..
 "It enables the DPS-AOE-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"DPS-AOE, DPS-Assist ('Healer-DPS') and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.priest.dps.dps = 
 "DPS|cffffffff\n"..
 "It enables the DPS-Strategies.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.priest.tankAssist = 
 "Tank-Assist|cffffffff\n"..
 "It enables the Tank-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
+"DPS-AOE, DPS-Assist ('Healer-DPS') and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 -- ROGUE --
 
@@ -1742,7 +1815,7 @@ MultiBot.tips.rogue.dps.master =
 "DPS-Control|cffffffff\n"..
 "In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
 "|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.rogue.dps.dpsAssist =
 "DPS-Assist|cffffffff\n"..
@@ -1750,7 +1823,7 @@ MultiBot.tips.rogue.dps.dpsAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.rogue.dps.dpsAoe = 
 "DPS-AOE|cffffffff\n"..
@@ -1758,13 +1831,13 @@ MultiBot.tips.rogue.dps.dpsAoe =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.rogue.dps.dps = 
 "DPS|cffffffff\n"..
 "It enables the DPS-Strategies.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.rogue.tankAssist = 
 "Tank-Assist|cffffffff\n"..
@@ -1772,7 +1845,7 @@ MultiBot.tips.rogue.tankAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 -- SHAMAN --
 
@@ -1782,65 +1855,65 @@ MultiBot.tips.shaman.heal =
 "Caster, Melee and Heal are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Heal|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.ntotem.master =
 "Non-Combat-Totem|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Non-Combat-Totem.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Totem.|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.ntotem.bmana =
 "Mana-Totem|cffffffff\n"..
 "It enables the Mana-Totem as Non-Combat-Totem.|r\n\n"..
 "|cffff0000Left-Click to enable Mana-Totem|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.ntotem.bdps =
 "DPS-Totem|cffffffff\n"..
 "It enables the DPS-Totem as Non-Combat-Totem.|r\n\n"..
 "|cffff0000Left-Click to enable DPS-Totem|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.ctotem.master =
 "Combat-Totem|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Combat-Totem.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Totem.|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.ctotem.bmana =
 "Mana-Totem|cffffffff\n"..
 "It enables the Mana-Totem as Combat-Totem.|r\n\n"..
 "|cffff0000Left-Click to enable Mana-Totem|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.ctotem.bdps =
 "DPS-Totem|cffffffff\n"..
 "It enables the DPS-Totem as Combat-Totem.|r\n\n"..
 "|cffff0000Left-Click to enable DPS-Totem|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.playbook.master =
 "Playbook|cffffffff\n"..
 "In the Playbook you will find the Strategies typical for the Class.|r\n\n"..
 "|cffff0000Left-Click to show or hide Playbook|r\n"..
-"|cf9999999(Execution-Order: System)|r";
+"|cf9999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.shaman.playbook.totems =
 "Totems|cffffffff\n"..
 "Allows the Shaman to use Totems during the Combat.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Totems|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.playbook.casterAoe =
 "Caster-AOE|cffffffff\n"..
 "Allows the Shaman to use AOE-Spells during the Combat.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Caster-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.playbook.caster =
 "Caster|cffffffff\n"..
@@ -1848,13 +1921,13 @@ MultiBot.tips.shaman.playbook.caster =
 "Caster, Melee and Heal are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Caster|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.playbook.meleeAoe =
 "Melee-AOE|cffffffff\n"..
 "Allows the Shaman to use Melee-AOE-Attacks during the Combat.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Melee-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.playbook.melee =
 "Melee|cffffffff\n"..
@@ -1862,13 +1935,13 @@ MultiBot.tips.shaman.playbook.melee =
 "Caster, Melee and Heal are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Caster|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.dps.master =
 "DPS-Control|cffffffff\n"..
 "In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
 "|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.dps.dpsAssist =
 "DPS-Assist|cffffffff\n"..
@@ -1876,7 +1949,7 @@ MultiBot.tips.shaman.dps.dpsAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.dps.dpsAoe = 
 "DPS-AOE|cffffffff\n"..
@@ -1884,7 +1957,7 @@ MultiBot.tips.shaman.dps.dpsAoe =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.shaman.tankAssist = 
 "Tank-Assist|cffffffff\n"..
@@ -1892,7 +1965,7 @@ MultiBot.tips.shaman.tankAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 -- WARLOCK --
 
@@ -1900,33 +1973,33 @@ MultiBot.tips.warlock.buff.master =
 "Buff|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Buff.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Buff.|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warlock.buff.bhealth =
 "Health-Buff|cffffffff\n"..
 "It enables the Health-Buff.|r\n\n"..
 "|cffff0000Left-Click to enable Health-Buff|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warlock.buff.bmana =
 "Mana-Buff|cffffffff\n"..
 "It enables the Mana-Buff.|r\n\n"..
 "|cffff0000Left-Click to enable Mana-Buff|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warlock.buff.bdps =
 "DPS-Buff|cffffffff\n"..
 "It enables the DPS-Buff.|r\n\n"..
 "|cffff0000Left-Click to enable DPS-Buff|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warlock.dps.master =
 "DPS-Control|cffffffff\n"..
 "In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
 "|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warlock.dps.dpsAssist =
 "DPS-Assist|cffffffff\n"..
@@ -1934,13 +2007,13 @@ MultiBot.tips.warlock.dps.dpsAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warlock.dps.dpsDebuff =
 "DPS-Debuff|cffffffff\n"..
 "It enables the DPS-Debuff-Strategies.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warlock.dps.dpsAoe = 
 "DPS-AOE|cffffffff\n"..
@@ -1948,7 +2021,7 @@ MultiBot.tips.warlock.dps.dpsAoe =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warlock.dps.dps = 
 "DPS|cffffffff\n"..
@@ -1956,7 +2029,7 @@ MultiBot.tips.warlock.dps.dps =
 "DPS and Tank are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warlock.tankAssist = 
 "Tank-Assist|cffffffff\n"..
@@ -1964,7 +2037,7 @@ MultiBot.tips.warlock.tankAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warlock.tank = 
 "Tank|cffffffff\n"..
@@ -1972,7 +2045,7 @@ MultiBot.tips.warlock.tank =
 "DPS and Tank are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Tank|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 -- WARRIOR --
 
@@ -1980,7 +2053,7 @@ MultiBot.tips.warrior.dps.master =
 "DPS-Control|cffffffff\n"..
 "In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
 "|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warrior.dps.dpsAssist =
 "DPS-Assist|cffffffff\n"..
@@ -1988,7 +2061,7 @@ MultiBot.tips.warrior.dps.dpsAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warrior.dps.dpsAoe = 
 "DPS-AOE|cffffffff\n"..
@@ -1996,7 +2069,7 @@ MultiBot.tips.warrior.dps.dpsAoe =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warrior.tankAssist = 
 "Tank-Assist|cffffffff\n"..
@@ -2004,11 +2077,63 @@ MultiBot.tips.warrior.tankAssist =
 "DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
 "Only one of these Strategies can be activated.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.warrior.tank = 
 "Tank|cffffffff\n"..
 "It enables the Tank-Strategies.|r\n\n"..
 "|cffff0000Left-Click to enable or disable Tank|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
+"|cf9999999(Ausführreihenfolge: Bot)|r";
+
+-- EVERY --
+
+MultiBot.tips.every.summon =
+"Summon|cffffffff\n"..
+"Summons this Bot to your Position.|r\n\n"..
+"|cffff0000Left-Click to summons the Bot|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.every.uninvite =
+"Uninvite|cffffffff\n"..
+"Dismiss this Bot from your Group.|r\n\n"..
+"|cffff0000Left-Click to dismiss the Bot|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.every.invite =
+"Invite|cffffffff\n"..
+"Invites this Bot to your Group.|r\n\n"..
+"|cffff0000Left-Click to invite the Bot|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.every.food =
+"Food|cffffffff\n"..
+"It enables or disables the Food-Strategies.|r\n\n"..
+"|cffff0000Left-Click to allow Food|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.every.loot =
+"Loot|cffffffff\n"..
+"It enables or disables the Loot-Strategies.|r\n\n"..
+"|cffff0000Left-Click to allow Loot|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.every.gather =
+"Gather|cffffffff\n"..
+"It enables or disables the Gather-Strategies.|r\n\n"..
+"|cffff0000Left-Click to allow Gather|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.every.inventory =
+"Inventory|cffffffff\n"..
+"It opens or closes the Inventory of this Bot.|r\n\n"..
+"|cffff0000Left-Click to open or close the Inventory|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.every.spellbook =
+"Spellbook|cffffffff\n"..
+"It opens or closes the Spellbook of this Bot.\n"..
+"Left-Click the Spell to cast it immediately.\n"..
+"Right-Click the Spell to pickup a Macro for your Hotbars.|r\n\n"..
+"|cffff0000Left-Click to open or close the Spellbook|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
 end

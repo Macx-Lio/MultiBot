@@ -1,89 +1,3 @@
-MultiBot.tips.priest = {}
-MultiBot.tips.priest.dps = {}
-MultiBot.tips.priest.playbook = {}
-
-MultiBot.tips.priest.heal =
-"Heal|cffffffff\n"..
-"It makes the Priest to the Healer of the Group.\n"..
-"Shadow and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Heal|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
-
-MultiBot.tips.priest.buff =
-"Buff|cffffffff\n"..
-"It allows the Priest to Buff the Group.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Buff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
-
-MultiBot.tips.priest.playbook.master =
-"Playbook|cffffffff\n"..
-"In the Playbook you will find the Strategies typical for the Class.|r\n\n"..
-"|cffff0000Left-Click to show or hide Playbook|r\n"..
-"|cf9999999(Execution-Order: System)|r";
-
-MultiBot.tips.priest.playbook.shadowDebuff =
-"Shadow-Debuff|cffffffff\n"..
-"Allows the Priest to use Shadow-Debuff-Spells during the Combat.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Shadow-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
-
-MultiBot.tips.priest.playbook.shadowAoe =
-"Shadow-AOE|cffffffff\n"..
-"Allows the Priest to use Shadow-AOE-Spells during the Combat.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Shadow-AOE-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
-
-MultiBot.tips.priest.playbook.shadow =
-"Shadow|cffffffff\n"..
-"Allows the Priest to use Shadow-Spells during the Combat.\n"..
-"Shadow and Heal are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Shadow|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
-
-MultiBot.tips.priest.dps.master =
-"DPS-Control|cffffffff\n"..
-"In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
-"|cffff0000Left-Click to show or hide DPS-Control|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
-
-MultiBot.tips.priest.dps.dpsAssist =
-"DPS-Assist|cffffffff\n"..
-"It enables the DPS-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
-
-MultiBot.tips.priest.dps.dpsDebuff =
-"DPS-Debuff|cffffffff\n"..
-"It enables the Debuff-Strategies.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-Debuff|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
-
-MultiBot.tips.priest.dps.dpsAoe = 
-"DPS-AOE|cffffffff\n"..
-"It enables the DPS-AOE-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS-AOE|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
-
-MultiBot.tips.priest.dps.dps = 
-"DPS|cffffffff\n"..
-"It enables the DPS-Strategies.|r\n\n"..
-"|cffff0000Left-Click to enable or disable DPS|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
-
-MultiBot.tips.priest.tankAssist = 
-"Tank-Assist|cffffffff\n"..
-"It enables the Tank-Assist-Strategies.\n"..
-"DPS-AOE, DPS-Assist and Tank-Assist are mutually exclusive.\n"..
-"Only one of these Strategies can be activated.|r\n\n"..
-"|cffff0000Left-Click to enable or disable Tank-Assist|r\n"..
-"|cf9999999(Execution-Order: Bot)|r";
-
 MultiBot.addPriest = function(pFrame, pCombat, pNormal)
 	pFrame.addButton("Heal", 0, 0, "spell_holy_aspiration", MultiBot.tips.priest.heal).setDisable()
 	.doLeft = function(pButton)
@@ -146,7 +60,7 @@ MultiBot.addPriest = function(pFrame, pCombat, pNormal)
 	
 	tFrame.addButton("DpsAssist", 0, 0, "spell_holy_heroism", MultiBot.tips.priest.dps.dpsAssist).setDisable()
 	.doLeft = function(pButton)
-		if(MultiBot.OnOffActionToTarget(pButton, "co +dps assist,?", "co -dps assist,?", pButton.getName())) then
+		if(MultiBot.OnOffActionToTarget(pButton, "co +healer dps,?", "co -healer dps,?", pButton.getName())) then
 			pButton.getButton("TankAssist").setDisable()
 			pButton.getButton("DpsAoe").setDisable()
 		end
@@ -196,7 +110,7 @@ MultiBot.addPriest = function(pFrame, pCombat, pNormal)
 	if(MultiBot.isInside(pCombat, "shadow debuff")) then pFrame.getButton("ShadowDebuff").setEnable() end
 	if(MultiBot.isInside(pCombat, "shadow aoe")) then pFrame.getButton("ShadowAoe").setEnable() end
 	if(MultiBot.isInside(pCombat, "shadow,")) then pFrame.getButton("Shadow").setEnable() end
-	if(MultiBot.isInside(pCombat, "dps assist")) then pFrame.getButton("DpsAssist").setEnable() end
+	if(MultiBot.isInside(pCombat, "healer dps")) then pFrame.getButton("DpsAssist").setEnable() end
 	if(MultiBot.isInside(pCombat, "shadow debuff")) then pFrame.getButton("DpsDebuff").setEnable() end
 	if(MultiBot.isInside(pCombat, "dps aoe")) then pFrame.getButton("DpsAoe").setEnable() end
 	if(MultiBot.isInside(pCombat, "shadow,")) then pFrame.getButton("Shadow").setEnable() end

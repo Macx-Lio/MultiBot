@@ -1,46 +1,3 @@
-MultiBot = CreateFrame("Frame", nil, UIParent)
-MultiBot:RegisterEvent("ADDON_LOADED")
-MultiBot:RegisterEvent("WORLD_MAP_UPDATE")
-MultiBot:RegisterEvent("PLAYER_ENTERING_WORLD")
-MultiBot:RegisterEvent("PLAYER_TARGET_CHANGED")
-MultiBot:RegisterEvent("PLAYER_LOGOUT")
-MultiBot:RegisterEvent("CHAT_MSG_WHISPER")
-MultiBot:RegisterEvent("CHAT_MSG_SYSTEM")
-MultiBot:RegisterEvent("CHAT_MSG_ADDON")
-MultiBot:RegisterEvent("QUEST_COMPLETE")
-MultiBot:SetPoint("BOTTOMRIGHT", 0, 0)
-MultiBot:SetSize(1, 1)
-MultiBot:Show()
-
-MultiBotSave = {}
-MultiBot.data = {}
-MultiBot.index = {}
-MultiBot.index.classes = {}
-MultiBot.index.classes.actives = {}
-MultiBot.index.classes.players = {}
-MultiBot.index.classes.members = {}
-MultiBot.index.classes.friends = {}
-MultiBot.index.actives = {}
-MultiBot.index.players = {}
-MultiBot.index.members = {}
-MultiBot.index.friends = {}
-MultiBot.frames = {}
-MultiBot.units = {}
-MultiBot.tips = {}
-
-MultiBot.auto = {}
-MultiBot.auto.stats = false
-MultiBot.auto.invite = false
-MultiBot.auto.release = false
-
-MultiBot.timer = {}
-MultiBot.timer.stats = {}
-MultiBot.timer.stats.elapsed = 0
-MultiBot.timer.stats.interval = 45
-MultiBot.timer.invite = {}
-MultiBot.timer.invite.elapsed = 0
-MultiBot.timer.invite.interval = 5
-
 MultiBot.IF = function(pCondition, pSuccess, pFailure)
 	if(pCondition) then return pSuccess else return pFailure end
 end
@@ -55,7 +12,7 @@ MultiBot.doSlash = function(pCommand, pArguments)
 		end
 	end
 	
-	SendChatMessage("Command not found.", "SAY") -- <<< HERE
+	SendChatMessage(MultiBot.info.command, "SAY")
 	return false
 end
 
@@ -76,7 +33,7 @@ MultiBot.doDotWithTarget = function(pCommand, oArguments)
 		return true
 	end
 	
-	SendChatMessage("I dont have a Target.", "SAY") -- <<< HERE
+	SendChatMessage(MultiBot.info.target, "SAY")
 	return false
 end
 
@@ -154,7 +111,7 @@ MultiBot.isTarget = function()
 		return true
 	end
 	
-	SendChatMessage("I dont have a Target.", "SAY") -- <<< HERE
+	SendChatMessage(MultiBot.info.target, "SAY")
 	return false
 end
 
@@ -253,8 +210,8 @@ end
 MultiBot.SpellToMacro = function(pName, pSpell, pTexture)
 	local tGlobal, tAmount = GetNumMacros()
 	
-	if(pSpell == nil or pSpell == 0) then return SendChatMessage("I couldnt identify the Spell.", "SAY") end -- <<< HERE
-	if(tAmount == 18) then return SendChatMessage("I have already the maximum of private Macros.", "SAY") end -- <<< HERE
+	if(pSpell == nil or pSpell == 0) then return SendChatMessage(MultiBot.info.spell, "SAY") end
+	if(tAmount == 18) then return SendChatMessage(MultiBot.info.macro, "SAY") end
 	
 	local tMacro = string.sub(pName, 1, 14) .. tAmount
 	local tSpell, tIcon, tBody = GetMacroInfo(tMacro)
@@ -271,7 +228,7 @@ MultiBot.ActionToTarget = function(pAction, oTarget)
 		return true
 	end
 	
-	SendChatMessage("I dont have a Target.", "SAY") -- <<< HERE
+	SendChatMessage(MultiBot.info.target, "SAY")
 	return false
 end
 
@@ -293,7 +250,7 @@ MultiBot.ActionToTargetOrGroup = function(pAction)
 		return true
 	end
 	
-	SendChatMessage("I neither have a Target nor am I in a Raid or Party.", "SAY") -- <<< HERE
+	SendChatMessage(MultiBot.info.neither, "SAY")
 	return false
 end
 
@@ -308,7 +265,7 @@ MultiBot.ActionToGroup = function(pAction)
 		return true
 	end
 	
-	SendChatMessage("I neither in a Raid nor in a Party.", "SAY") -- <<< HERE
+	SendChatMessage(MultiBot.info.group, "SAY")
 	return false
 end
 
