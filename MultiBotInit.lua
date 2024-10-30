@@ -543,7 +543,7 @@ tButton.doLeft = function(pButton, oRoster, oFilter)
 	else tUnits.frames["Control"].setPoint(-2, (tUnits.size + 2) * pButton.to)
 	end
 	
-	if(pButton.limit < 10)
+	if(pButton.limit < 11)
 	then tUnits.frames["Control"].buttons["Browse"]:Hide()
 	else tUnits.frames["Control"].buttons["Browse"]:Show()
 	end
