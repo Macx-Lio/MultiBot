@@ -1,49 +1,4 @@
-MultiBot = CreateFrame("Frame", nil, UIParent)
-MultiBot:RegisterEvent("ADDON_LOADED")
-MultiBot:RegisterEvent("WORLD_MAP_UPDATE")
-MultiBot:RegisterEvent("PLAYER_ENTERING_WORLD")
-MultiBot:RegisterEvent("PLAYER_TARGET_CHANGED")
-MultiBot:RegisterEvent("PLAYER_LOGOUT")
-MultiBot:RegisterEvent("CHAT_MSG_WHISPER")
-MultiBot:RegisterEvent("CHAT_MSG_SYSTEM")
-MultiBot:RegisterEvent("CHAT_MSG_ADDON")
-MultiBot:RegisterEvent("QUEST_COMPLETE")
-MultiBot:SetPoint("BOTTOMRIGHT", 0, 0)
-MultiBot:SetSize(1, 1)
-MultiBot:Show()
-
-MultiBotSave = {}
-MultiBot.data = {}
-MultiBot.index = {}
-MultiBot.index.classes = {}
-MultiBot.index.classes.actives = {}
-MultiBot.index.classes.players = {}
-MultiBot.index.classes.members = {}
-MultiBot.index.classes.friends = {}
-MultiBot.index.actives = {}
-MultiBot.index.players = {}
-MultiBot.index.members = {}
-MultiBot.index.friends = {}
-MultiBot.frames = {}
-MultiBot.units = {}
-MultiBot.tips = {}
-
-MultiBot.auto = {}
-MultiBot.auto.stats = false
-MultiBot.auto.invite = false
-MultiBot.auto.release = false
-
-MultiBot.timer = {}
-MultiBot.timer.stats = {}
-MultiBot.timer.stats.elapsed = 0
-MultiBot.timer.stats.interval = 45
-MultiBot.timer.invite = {}
-MultiBot.timer.invite.elapsed = 0
-MultiBot.timer.invite.interval = 5
-
--- INFO --
-
-MultiBot.info = {}
+if(GetLocale() == "enGB") then
 MultiBot.info.command =
 "Command not found.";
 
@@ -118,7 +73,6 @@ MultiBot.info.combination =
 
 -- MOVE --
 
-MultiBot.tips.move = {}
 MultiBot.tips.move.inventory =
 "Right-Click to drag and move the Inventory";
 
@@ -139,7 +93,6 @@ MultiBot.tips.move.reward =
 
 -- TANKER --
 
-MultiBot.tips.tanker = {}
 MultiBot.tips.tanker.master = 
 "Tank-Attack\n|cffffffff"..
 "With this Button the Tanks starting to attack your target.\n"..
@@ -149,7 +102,6 @@ MultiBot.tips.tanker.master =
 
 -- ATTACK --
 
-MultiBot.tips.attack = {}
 MultiBot.tips.attack.master = 
 "Attack-Control\n|cffffffff"..
 "With this Control you can give the Command to attack.\n"..
@@ -210,7 +162,6 @@ MultiBot.tips.attack.tank =
 
 -- MODE --
 
-MultiBot.tips.mode = {}
 MultiBot.tips.mode.master = 
 "Mode-Control\n|cffffffff"..
 "This Control allows you to switch a Combat-Mode on and off.\n"..
@@ -239,7 +190,6 @@ MultiBot.tips.mode.grind =
 
 -- STAY|FOLLOW --
 
-MultiBot.tips.stallow = {}
 MultiBot.tips.stallow.stay = 
 "Stay|Follow\n|cffffffff"..
 "With this Button you can give right now the Command to Stay.\n"..
@@ -258,7 +208,6 @@ MultiBot.tips.stallow.follow =
 
 -- FLEE --
 
-MultiBot.tips.flee = {}
 MultiBot.tips.flee.master = 
 "Flee-Control\n|cffffffff"..
 "With this Control you can give the Command to flee.\n"..
@@ -327,7 +276,6 @@ MultiBot.tips.flee.target =
 
 -- FORMATION --
 
-MultiBot.tips.format = {}
 MultiBot.tips.format.master = 
 "Formation-Control\n|cffffffff"..
 "This Control allows you to change the Formation of your Bots.\n"..
@@ -400,7 +348,6 @@ MultiBot.tips.format.shield =
 
 -- BEASTMASTER --
 
-MultiBot.tips.beast = {}
 MultiBot.tips.beast.master = 
 "Beastmaster-Control\n|cffffffff"..
 "This Control is for the Mod-NPC-Beastmaster of the Azerothcore.\n"..
@@ -443,7 +390,6 @@ MultiBot.tips.beast.call =
 
 -- CREATOR --
 
-MultiBot.tips.creator = {}
 MultiBot.tips.creator.master = 
 "Creator-Control\n|cffffffff"..
 "With this Control you can create Random-Bots by Class.\n"..
@@ -533,7 +479,6 @@ MultiBot.tips.creator.init =
 
 -- UNIT --
 
-MultiBot.tips.unit = {}
 MultiBot.tips.unit.selfbot =
 "Selfbot\n"..
 "|cffffffffThis Button switches the Selfbot-Mode on and off.|r\n\n"..
@@ -730,7 +675,6 @@ MultiBot.tips.units.inviteRaid40 =
 
 -- MAIN --
 
-MultiBot.tips.main = {}
 MultiBot.tips.main.master =
 "Main-Control\n|cffffffff"..
 "In this Control you will find the Auto-Switches and Reset-Commands.\n"..
@@ -792,7 +736,6 @@ MultiBot.tips.main.action =
 
 -- GAMEMASTER --
 
-MultiBot.tips.game = {}
 MultiBot.tips.game.master =
 "GameMaster-Control\n|cffffffff"..
 "In this Control you will find useful GameMaster-Commands.\n"..
@@ -861,7 +804,6 @@ MultiBot.tips.game.appear =
 
 -- DRINK --
 
-MultiBot.tips.drink = {}
 MultiBot.tips.drink.group = 
 "Group-Drink\n|cffffffff"..
 "With this Button you order the Group to drink.\n"..
@@ -871,7 +813,6 @@ MultiBot.tips.drink.group =
 
 -- RELEASE --
 
-MultiBot.tips.release = {}
 MultiBot.tips.release.group = 
 "Group-Release\n|cffffffff"..
 "With this Button the dead Bots will release there Ghosts to the next Graveyard.\n"..
@@ -881,7 +822,6 @@ MultiBot.tips.release.group =
 
 -- REVIVE --
 
-MultiBot.tips.revive = {}
 MultiBot.tips.revive.group = 
 "Group-Revive\n|cffffffff"..
 "With this Button the Ghost-Bots will revive on the next Graveyard.\n"..
@@ -891,7 +831,6 @@ MultiBot.tips.revive.group =
 
 -- SUMALL --
 
-MultiBot.tips.summon = {}
 MultiBot.tips.summon.group = 
 "Group-Summon\n|cffffffff"..
 "With this Button you summon the Group to your Position.\n"..
@@ -901,7 +840,6 @@ MultiBot.tips.summon.group =
 
 -- INVENTORY --
 
-MultiBot.tips.inventory = {}
 MultiBot.tips.inventory.sell =
 "Sell-Items|cffffffff\n"..
 "It enables the Sell-Mode of the Inventory.\n"..
@@ -936,8 +874,6 @@ MultiBot.tips.inventory.drop =
 
 -- ITEMUS:LEVEL --
 
-MultiBot.tips.itemus = {}
-MultiBot.tips.itemus.level = {}
 MultiBot.tips.itemus.level.master =
 "Level-Filter|cffffffff\n"..
 "Filters the Items by Level in a range of 10.|r\n\n"..
@@ -994,7 +930,6 @@ MultiBot.tips.itemus.level.L80 =
 
 -- ITEMUS:RARE --
 
-MultiBot.tips.itemus.rare = {}
 MultiBot.tips.itemus.rare.master =
 "Quality-Filter|cffffffff\n"..
 "Filters the Items by Quality.\n"..
@@ -1052,7 +987,6 @@ MultiBot.tips.itemus.rare.R07 =
 
 -- ITEMUS:SLOT --
 
-MultiBot.tips.itemus.slot = {}
 MultiBot.tips.itemus.slot.master =
 "Slot-Filter|cffffffff\n"..
 "Filters the Items by Slot.\n"..
@@ -1252,10 +1186,6 @@ MultiBot.tips.itemus.type =
 
 -- DEATHKNIGHT --
 
-MultiBot.tips.deathknight = {}
-MultiBot.tips.deathknight.dps = {}
-MultiBot.tips.deathknight.presence = {}
-
 MultiBot.tips.deathknight.presence.master =
 "Presence-Control|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Precence.|r\n\n"..
@@ -1313,10 +1243,6 @@ MultiBot.tips.deathknight.tankAssist =
 "|cf9999999(Execution-Order: Bot)|r";
 
 -- DRUID --
-
-MultiBot.tips.druid = {}
-MultiBot.tips.druid.dps = {}
-MultiBot.tips.druid.playbook = {}
 
 MultiBot.tips.druid.heal =
 "Heal|cffffffff\n"..
@@ -1441,11 +1367,6 @@ MultiBot.tips.druid.tank =
 
 -- HUNTER --
 
-MultiBot.tips.hunter = {}
-MultiBot.tips.hunter.dps = {}
-MultiBot.tips.hunter.naspect = {}
-MultiBot.tips.hunter.caspect = {}
-
 MultiBot.tips.hunter.naspect.master =
 "Non-Combat-Buff|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Non-Combat-Buff.|r\n\n"..
@@ -1554,11 +1475,6 @@ MultiBot.tips.hunter.tankAssist =
 
 -- MAGE --
 
-MultiBot.tips.mage = {}
-MultiBot.tips.mage.dps = {}
-MultiBot.tips.mage.buff = {}
-MultiBot.tips.mage.playbook = {}
-
 MultiBot.tips.mage.buff.master =
 "Buff-Control|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Buff.|r\n\n"..
@@ -1658,12 +1574,6 @@ MultiBot.tips.mage.tankAssist =
 "|cf9999999(Execution-Order: Bot)|r";
 
 -- PALADIN --
-
-MultiBot.tips.paladin = {}
-MultiBot.tips.paladin.dps = {}
-MultiBot.tips.paladin.seal = {}
-MultiBot.tips.paladin.naura = {}
-MultiBot.tips.paladin.caura = {}
 
 MultiBot.tips.paladin.heal =
 "Heal|cffffffff\n"..
@@ -1829,10 +1739,6 @@ MultiBot.tips.paladin.tank =
 
 -- PRIEST --
 
-MultiBot.tips.priest = {}
-MultiBot.tips.priest.dps = {}
-MultiBot.tips.priest.playbook = {}
-
 MultiBot.tips.priest.heal =
 "Heal|cffffffff\n"..
 "It makes the Priest to the Healer of the Group.\n"..
@@ -1917,9 +1823,6 @@ MultiBot.tips.priest.tankAssist =
 
 -- ROGUE --
 
-MultiBot.tips.rogue = {}
-MultiBot.tips.rogue.dps = {}
-
 MultiBot.tips.rogue.dps.master =
 "DPS-Control|cffffffff\n"..
 "In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
@@ -1957,12 +1860,6 @@ MultiBot.tips.rogue.tankAssist =
 "|cf9999999(Execution-Order: Bot)|r";
 
 -- SHAMAN --
-
-MultiBot.tips.shaman = {}
-MultiBot.tips.shaman.dps = {}
-MultiBot.tips.shaman.ntotem = {}
-MultiBot.tips.shaman.ctotem = {}
-MultiBot.tips.shaman.playbook = {}
 
 MultiBot.tips.shaman.heal =
 "Heal|cffffffff\n"..
@@ -2084,10 +1981,6 @@ MultiBot.tips.shaman.tankAssist =
 
 -- WARLOCK --
 
-MultiBot.tips.warlock = {}
-MultiBot.tips.warlock.dps = {}
-MultiBot.tips.warlock.buff = {}
-
 MultiBot.tips.warlock.buff.master =
 "Buff|cffffffff\n"..
 "This Control allows you to select, enable or disable the default Buff.|r\n\n"..
@@ -2168,9 +2061,6 @@ MultiBot.tips.warlock.tank =
 
 -- WARRIOR --
 
-MultiBot.tips.warrior = {}
-MultiBot.tips.warrior.dps = {}
-
 MultiBot.tips.warrior.dps.master =
 "DPS-Control|cffffffff\n"..
 "In the DPS-Control you will find the general DPS-Strategies.|r\n\n"..
@@ -2209,7 +2099,6 @@ MultiBot.tips.warrior.tank =
 
 -- EVERY --
 
-MultiBot.tips.every = {}
 MultiBot.tips.every.summon =
 "Summon|cffffffff\n"..
 "Summons this Bot to your Position.|r\n\n"..
@@ -2259,3 +2148,4 @@ MultiBot.tips.every.spellbook =
 "Right-Click the Spell to pickup a Macro for your Hotbars.|r\n\n"..
 "|cffff0000Left-Click to open or close the Spellbook|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
+end
