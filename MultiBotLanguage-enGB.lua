@@ -71,6 +71,12 @@ MultiBot.info.action =
 MultiBot.info.combination = 
 "There are no Items for this Combination.";
 
+--MultiBot.info.language =
+--"I need to activate the Language-Selector first.";
+
+MultiBot.info.reward =
+"Select the Rewards";
+
 -- MOVE --
 
 MultiBot.tips.move.inventory =
@@ -690,6 +696,18 @@ MultiBot.tips.main.coords =
 "MultiBar, Inventory, Spellbook, Itemus, Iconos and Reward-Selector|r\n\n"..
 "|cffff0000Left-Click to reset Coordinates|r\n"..
 "|cff999999(Execution-Order: System)|r";
+
+--[[
+MultiBot.tips.main.lang.master =
+"Language-Selector|cffffffff\n"..
+"This Control allows you to select the Language of MultiBot.\n"..
+"If this control is active, MultiBot can have a different Language than the Client.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to show or hide the Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable or disable the Language-Selector|r\n"..
+"|cff999999(Execution-Order: System)|r";
+]]--
 
 MultiBot.tips.main.release =
 "Auto-Release\n|cffffffff"..

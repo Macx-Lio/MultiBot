@@ -1,5 +1,5 @@
 MultiBot.addShaman = function(pFrame, pCombat, pNormal)
-	pFrame.addButton("Heal", 0, 0, "spell_holy_aspiration", MultiBot.tips.priest.heal).setDisable()
+	pFrame.addButton("Heal", 0, 0, "spell_holy_aspiration", MultiBot.tips.shaman.heal).setDisable()
 	.doLeft = function(pButton)
 		if(MultiBot.OnOffActionToTarget(pButton, "co +heal,?", "co -heal,?", pButton.getName())) then
 			pButton.getButton("Caster").setDisable()

@@ -835,6 +835,41 @@ tMain.addButton("Coords", 0, 0, "inv_gizmo_03", MultiBot.tips.main.coords)
 	MultiBot.stats.setPoint(-60, 560)
 end
 
+--[[
+local tButton = tMain.addButton("Language", 0, 34, "Interface\\AddOns\\MultiBot\\Icons\\language_none.blp", MultiBot.tips.main.lang.master).setDisable()
+tButton.doRight = function(pButton)
+	MultiBot.auto.language = MultiBot.OnOffSwitch(pButton) == false
+end
+tButton.doLeft = function(pButton)
+	if(MultiBot.auto.language == true) then return SendChatMessage(MultiBot.info.language, "SAY") end
+	MultiBot.ShowHideSwitch(pButton.parent.frames["Language"])
+end
+
+local tFrame = tMain.addFrame("Language", -36, 36)
+tFrame:Hide()
+
+tFrame.addButton("deDE", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\language_deDE.blp", MultiBot.tips.main.lang.deDE)
+.doLeft = function(pButton)
+	MultiBot.Select(pButton.parent.parent, "Language", pButton.texture)
+	MultiBot.doSlash("/reload")
+	MultiBot.language = "deDE"
+end
+
+tFrame.addButton("enGB", -30, 0, "Interface\\AddOns\\MultiBot\\Icons\\language_enGB.blp", MultiBot.tips.main.lang.enGB)
+.doLeft = function(pButton)
+	MultiBot.Select(pButton.parent.parent, "Language", pButton.texture)
+	MultiBot.doSlash("/reload")
+	MultiBot.language = "enGB"
+end
+
+tFrame.addButton("None", -60, 0, "Interface\\AddOns\\MultiBot\\Icons\\language_none.blp", MultiBot.tips.main.lang.none)
+.doLeft = function(pButton)
+	MultiBot.Select(pButton.parent.parent, "Language", pButton.texture)
+	MultiBot.doSlash("/reload")
+	MultiBot.language = "none"
+end
+]]--
+
 tMain.addButton("Release", 0, 34, "achievement_bg_xkills_avgraveyard", MultiBot.tips.main.release).setDisable()
 .doLeft = function(pButton)
 	if(MultiBot.OnOffSwitch(pButton)) then
@@ -1823,7 +1858,7 @@ tFrame.addTexture("Interface/Spellbook/UI-SpellbookPanel-BotRight")
 tFrame:SetFrameLevel(4)
 
 local tOverlay = MultiBot.reward.addFrame("Overlay", -48, 97, 28, 310, 330)
-tOverlay.addText("Title", "Select the Rewards", "CENTER", 16, 226, 13)
+tOverlay.addText("Title", MultiBot.info.reward, "CENTER", 16, 226, 13)
 tOverlay.addText("Pages", "0/0", "CENTER", 16, 196, 13)
 tOverlay:SetFrameLevel(5)
 

@@ -71,6 +71,12 @@ MultiBot.info.action =
 MultiBot.info.combination =
 "Es gibt keine Items für diese Kombination.";
 
+--MultiBot.info.language =
+--"Ich muss zuerst den Language-Selector aktivieren.";
+
+MultiBot.info.reward =
+"Wähle die Belohnungen";
+
 -- MOVE --
 
 MultiBot.tips.move.inventory =
@@ -637,7 +643,7 @@ MultiBot.tips.units.invite =
 "Ein Rechtsklick auf diese Schaltfläche entfernt alle Bots auf einmal.|r\n\n"..
 "|cffff0000Linksklicken um die Steuereinheit ein- oder auszublenden|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r\n\n"..
-"|cffff0000Rechtklicken um alle Bots zu entfernen|r\n"..
+"|cffff0000Rechtsklicken um alle Bots zu entfernen|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.inviteParty5 =
@@ -690,18 +696,30 @@ MultiBot.tips.main.coords =
 "|cffff0000Linksklicken um die Koordinaten zurückzusetzen|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
+--[[
+MultiBot.tips.main.lang.master =
+"Language-Selector|cffffffff\n"..
+"Diese Steuereinheit erlaubt euch die Sprache für MultiBot auszuwählen.\n"..
+"Wenn diese Steuereinheit aktiv ist, kann MultiBot eine andere Sprache als der Client haben.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- oder auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken um die Language-Selector ein- oder auszuschalten|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
+]]--
+
 MultiBot.tips.main.release =
 "Auto-Release\n|cffffffff"..
 "Diese Erweiterung erkennt wenn ein Bot stirbt.\n"..
 "Tode Bots werden automatisch freigelassen und herbeigerufen.\n"..
-"Dadurch werden die Bots innerhalb von Sekunden wiederbelebt.\n"..
+"Dadurch werden die Bots innerhalb von Sekunden wiederbelebt.|r\n\n"..
 "|cffff0000Linksklicken um Auto-Release ein- oder auszuschalten|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.main.stats =
 "Auto-Stats\n|cffffffff"..
 "Diese Erweiterung visualisiert die Werte vom Stats-Kommando.\n"..
-"Die Stats-Werte aktualisieren sich 45 Sekunden.|r\n\n"..
+"Die Stats-Werte aktualisieren sich alle 45 Sekunden.|r\n\n"..
 "|cffff0000Linksklicken um Auto-Stats ein- oder auszuschalten|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
@@ -709,10 +727,10 @@ MultiBot.tips.main.reward =
 "Reward-Selector\n|cffffffff"..
 "Diese Erweiterung visualisiert die Auswahl von Belohnungen.\n"..
 "Mein Rat ist, zuerest die Belohnung für den eigenen Character auszuwählen.\n"..
-"Dann hat man keine Probleme beim Betrachten der Bots.\n"..
+"Dann hat man keine Probleme beim Betrachten der Bots.|r\n\n"..
 "Wichtig:\n"..
 "Sobald der eigene Character eine Quest beendet hat, müssen auch alle Bots die Quest beenden.\n"..
-"Also brecht nicht den Reward-Selector ab sobald der eigene Character seine Belohnung hat.\n"..
+"Also brecht nicht den Reward-Selector ab sobald der eigene Character seine Belohnung hat.\n\n"..
 "|cffffffffMod-Playerbot-Konfiguration:\n"..
 "- (muss) AiPlayerbot.AutoPickReward = no\n"..
 "- (sollte) AiPlayerbot.SyncQuestWithPlayer = 1|r\n\n"..
@@ -845,19 +863,19 @@ MultiBot.tips.inventory.sell =
 "Man muss einen Händler als Ziel ausgewählt haben.\n"..
 "Aus Sicherheitsgründen verkaufen Bots keine:\n"..
 "- Items mit 'Schlüssel' in ihrem Namen\n"..
-"- den Ruhestein|r\n\n"..
+"- Items wie den Ruhestein|r\n\n"..
 "|cffff0000Linksklicken um Verkauf zu aktiviern|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.inventory.equip =
 "Items ausrüsten|cffffffff\n"..
-"Diese Schaltfläche aktiviert den Ausrüst-Modus des Inventars.\n"..
+"Diese Schaltfläche aktiviert den Ausrüst-Modus des Inventars.|r\n\n"..
 "|cffff0000Linksklicken um Ausrüsten zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.inventory.use =
 "Items benutzen|cffffffff\n"..
-"Diese Schaltfläche aktiviert den Benutzen-Modus des Inventars.\n"..
+"Diese Schaltfläche aktiviert den Benutzen-Modus des Inventars.|r\n\n"..
 "|cffff0000Linksklicken um Benutzen zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
@@ -882,49 +900,49 @@ MultiBot.tips.itemus.level.master =
 MultiBot.tips.itemus.level.L10 =
 "Level 0 bis 10|cffffffff\n"..
 "Zeigt alle Items mit einer Level-Vorraussetzung von 0 bis 10 an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L20 =
 "Level 11 bis 20|cffffffff\n"..
 "Zeigt alle Items mit einer Level-Vorraussetzung von 11 bis 20 an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L30 =
 "Level 21 bis 30|cffffffff\n"..
 "Zeigt alle Items mit einer Level-Vorraussetzung von 21 bis 30 an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L40 =
 "Level 31 bis 40|cffffffff\n"..
 "Zeigt alle Items mit einer Level-Vorraussetzung von 31 bis 40 an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L50 =
 "Level 41 bis 50|cffffffff\n"..
 "Zeigt alle Items mit einer Level-Vorraussetzung von 41 bis 50 an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L60 =
 "Level 51 bis 60|cffffffff\n"..
 "Zeigt alle Items mit einer Level-Vorraussetzung von 51 bis 60 an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L70 =
 "Level 61 bis 70|cffffffff\n"..
 "Zeigt alle Items mit einer Level-Vorraussetzung von 61 bis 70 an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.level.L80 =
 "Level 71 bis 80|cffffffff\n"..
 "Zeigt alle Items mit einer Level-Vorraussetzung von 71 bis 80 an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 -- ITEMUS:RARE --
@@ -939,49 +957,49 @@ MultiBot.tips.itemus.rare.master =
 MultiBot.tips.itemus.rare.R00 =
 "Poor-Quality|cffffffff\n"..
 "Zeigt alle Items von schlechter Qualität an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R01 =
 "Common-Quality|cffffffff\n"..
 "Zeigt alle Items von einfacher Qualität an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R02 =
 "Non-Common-Quality|cffffffff\n"..
 "Zeigt alle Items von unüblicher Qualität an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R03 =
 "Rare-Quality|cffffffff\n"..
 "Zeigt alle Items von seltener Qualität an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R04 =
 "Epic-Quality|cffffffff\n"..
 "Zeigt alle Items von epischer Qualität an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R05 =
 "Legendary-Quality|cffffffff\n"..
 "Zeigt alle Items von legendärer Qualität an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R06 =
 "Artifact-Quality|cffffffff\n"..
 "Zeigt alle Items der Artefakt-Qualität an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.rare.R07 =
 "Heirlooms-Quality|cffffffff\n"..
 "Zeigt alle Items der Erbstück-Qualität an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 -- ITEMUS:SLOT --
@@ -996,181 +1014,181 @@ MultiBot.tips.itemus.slot.master =
 MultiBot.tips.itemus.slot.S00 =
 "Non-Equipable|cffffffff\n"..
 "Zeigt alle nicht ausrüstbaren Items an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S01 =
 "Head-Slot|cffffffff\n"..
 "Zeigt alle Items die man am Kopf ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S02 =
 "Neck-Slot|cffffffff\n"..
 "Zeigt alle Items die man am Hals ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S03 =
 "Shoulder-Slot|cffffffff\n"..
 "Zeigt alle Items die man an den Schultern ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S04 =
 "Shirt-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Hemd ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S05 =
 "Chest-Slot|cffffffff\n"..
 "Zeigt alle Items die man an der Brust ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S06 =
 "Waist-Slot|cffffffff\n"..
 "Zeit alle Items die man an der Taille ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S07 =
 "Legs-Slot|cffffffff\n"..
 "Zeigt alle Items die man an den Beinen ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S08 =
 "Feets-Slot|cffffffff\n"..
 "Zeigt alle Items die man an den Füßen ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S09 =
 "Wrists-Slot|cffffffff\n"..
 "Zeigt alle Items die man am Handgelenken ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S10 =
 "Hands-Slot|cffffffff\n"..
 "Zeigt alle Items die man an den Händen ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S11 =
 "Finger-Slot|cffffffff\n"..
 "Zeigt alle Items die man an dem Fingern ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S12 =
 "Trinket-Slot|cffffffff\n"..
 "Zeigt alle Items die man an den Ohren ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S13 =
 "One-Hand-Weapon-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Einhandwaffe ausrüsten kann an.\n"..
 "Diese Waffen können in der Haupt- und Nebenhand geführt werden.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S14 =
 "Shield-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Schild ausrüsten kann an.\n"..
 "Schilde werden immer in der Nebenhand geführt.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S15 =
 "Ranged-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Fernkampfwaffe ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S16 =
 "Back-Slot|cffffffff\n"..
 "Zeigt alle Items die man am Rücken ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S17 =
 "Two-Hand-Weapon-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Zweihandwaffe ausrüsten kann an.\n"..
 "Diese Waffen werden in der Haupthand geführt und blockieren die Nebenhand.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S18 =
 "Bag-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Tasche ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S19 =
 "Tabard-Slot|cffffffff\n"..
 "Zeigt alle Items die als Wappenrock ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S20 =
 "Robe-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Robe ausrüsten kann an.\n"..
 "Roben werden an der Burst ausgerüstet.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S21 =
 "Main-Hand-Weapons-Slot|cffffffff\n"..
 "Zeigt alle Waffen die man in der Haupthand ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S22 =
 "Off-Hand-Weapons-Slot|cffffffff\n"..
 "Zeigt alle Waffen die man in der Nebenhand ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S23 =
 "Off-Hand-Items-Slot|cffffffff\n"..
 "Zeigt alle Items die man in der Nebenhand ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S24 =
 "Ammo-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Munition ausrüsten kann an.\n"..
 "Dieser Rüstplatz ist der gleiche wie 'Ranged-Right'|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S25 =
 "Throw-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Wurfwaffen ausrüsten kann an.\n"..
 "Dieser Rüstplatz ist der gleiche wie 'Ranged'|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S26 =
 "Ranged-Right-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Munition ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S27 =
 "Quiver-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Köcher ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.itemus.slot.S28 =
 "Relic-Slot|cffffffff\n"..
 "Zeigt alle Items die man als Relikt ausrüsten kann an.|r\n\n"..
-"|cffff0000Linksklickem um diesen Filter zu aktivieren|r\n"..
+"|cffff0000Linksklicken um diesen Filter zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 -- ITEMUS:TYPE --
@@ -1376,13 +1394,13 @@ MultiBot.tips.hunter.naspect.master =
 
 MultiBot.tips.hunter.naspect.rnature =
 "Resist-Nature-Buff|cffffffff\n"..
-"Diese Schaltfläche aktiviert die Resist-Nature-Buff außerhalb des Kampfes.|r\n\n"..
+"Diese Schaltfläche aktiviert die Resist-Nature-Buffs außerhalb des Kampfes.|r\n\n"..
 "|cffff0000Linksklicken um Resist-Nature-Buff zu aktiviern|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.naspect.bspeed =
 "Speed-Buff|cffffffff\n"..
-"Diese Schaltfläche aktiviert die Speed-Buff außerhalb des Kampfes.|r\n\n"..
+"Diese Schaltfläche aktiviert die Speed-Buffs außerhalb des Kampfes.|r\n\n"..
 "|cffff0000Linksklicken um Speed-Buff zu aktiviernn|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
@@ -1408,13 +1426,13 @@ MultiBot.tips.hunter.caspect.master =
 
 MultiBot.tips.hunter.caspect.rnature =
 "Resist-Nature-Buff|cffffffff\n"..
-"Diese Schaltfläche aktiviert die Resist-Nature-Buff während des Kampfes.|r\n\n"..
+"Diese Schaltfläche aktiviert die Resist-Nature-Buffs während des Kampfes.|r\n\n"..
 "|cffff0000Linksklicken um Resist-Nature-Buff zu aktiviern|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.hunter.caspect.bspeed =
 "Speed-Buff|cffffffff\n"..
-"Diese Schaltfläche aktiviert die Speed-Buff während des Kampfes.|r\n\n"..
+"Diese Schaltfläche aktiviert die Speed-Buffs während des Kampfes.|r\n\n"..
 "|cffff0000Linksklicken um Speed-Buff zu aktiviern|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
@@ -1870,7 +1888,7 @@ MultiBot.tips.shaman.heal =
 
 MultiBot.tips.shaman.ntotem.master =
 "Non-Combat-Totem|cffffffff\n"..
-"Diese Steuereinheit erlaubt es die Non-Combat-Totem auszuwählen, zu aktivieren oder deaktivieren.|r\n\n"..
+"Diese Steuereinheit erlaubt es die Non-Combat-Totems auszuwählen, zu aktivieren oder deaktivieren.|r\n\n"..
 "|cffff0000Linksklicken um die Optionen ein- oder auszublenden|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r\n\n"..
 "|cffff0000Rechtsklicken um den Totem ein- oder auszuschalten.|r\n"..
@@ -1890,7 +1908,7 @@ MultiBot.tips.shaman.ntotem.bdps =
 
 MultiBot.tips.shaman.ctotem.master =
 "Combat-Totem|cffffffff\n"..
-"Diese Steuereinheit erlaubt es die Combat-Totem auszuwählen, zu aktivieren oder deaktivieren.|r\n\n"..
+"Diese Steuereinheit erlaubt es die Combat-Totems auszuwählen, zu aktivieren oder deaktivieren.|r\n\n"..
 "|cffff0000Linksklicken um die Optionen ein- oder auszublenden|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r\n\n"..
 "|cffff0000Rechtsklicken um den Totem ein- oder auszuschalten.|r\n"..
@@ -1928,7 +1946,7 @@ MultiBot.tips.shaman.playbook.casterAoe =
 
 MultiBot.tips.shaman.playbook.caster =
 "Caster|cffffffff\n"..
-"Diese Strategie mache den Shamanen zum Zauberer.\n"..
+"Diese Strategie macht den Shamanen zum Zauberer.\n"..
 "Caster, Melee und Heal schließen sich gegenseitig aus.\n"..
 "Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
 "|cffff0000Linksklicken um Caster ein- oder auszuschalten|r\n"..
@@ -1942,7 +1960,7 @@ MultiBot.tips.shaman.playbook.meleeAoe =
 
 MultiBot.tips.shaman.playbook.melee =
 "Melee|cffffffff\n"..
-"Diese Strategie mache den Shamanen zum Nahkämpfer.\n"..
+"Diese Strategie macht den Shamanen zum Nahkämpfer.\n"..
 "Caster, Melee und Heal schließen sich gegenseitig aus.\n"..
 "Nur eine dieser Strategien kann zeitgleich aktiviert sein.|r\n\n"..
 "|cffff0000Linksklicken um Melee ein- oder auszuschalten|r\n"..
