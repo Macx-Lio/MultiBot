@@ -8,6 +8,7 @@
 MultiBot.lua
 MultiBotLanguage-enGB.lua
 MultiBotLanguage-deDE.lua
+MultiBotLanguage-zhCN.lua
 MultiBotEngine.lua
 MultiBotHandler.lua
 MultiBotDeathKnight.lua
