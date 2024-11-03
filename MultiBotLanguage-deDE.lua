@@ -202,6 +202,9 @@ MultiBot.tips.move.spellbook =
 MultiBot.tips.move.reward =
 "Rechtsklicken und halten um den Reward-Selector zu bewegen";
 
+MultiBot.tips.move.talent =
+"Rechtsklicken und halten um den Talente zu bewegen";
+
 -- TANKER --
 
 MultiBot.tips.tanker.master = 

@@ -254,6 +254,9 @@ MultiBot.tips.move.spellbook =
 MultiBot.tips.move.reward =
 "Right-Click to drag and move the Reward-Selector";
 
+MultiBot.tips.move.talent =
+"Right-Click to drag and move the Talents";
+
 -- TANKER --
 
 MultiBot.tips.tanker = {}

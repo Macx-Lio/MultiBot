@@ -201,6 +201,9 @@ MultiBot.tips.move.spellbook =
 MultiBot.tips.move.reward =
 "右键点击并按住以移动奖励选择器";
 
+MultiBot.tips.move.talent =
+"Right-Click to drag and move the Talents";
+
 -- 坦克 --
 
 MultiBot.tips.tanker.master = 

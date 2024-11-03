@@ -829,7 +829,8 @@ tMain.addButton("Coords", 0, 0, "inv_gizmo_03", MultiBot.tips.main.coords)
 	MultiBot.frames["MultiBar"].setPoint(-262, 144)
 	MultiBot.inventory.setPoint(-700, -144)
 	MultiBot.spellbook.setPoint(-802, 302)
-	MultiBot.reward.setPoint(-754, 238)
+	MultiBot.talent.setPoint(-104, -276)
+	MultiBot.reward.setPoint(-754,  238)
 	MultiBot.itemus.setPoint(-860, -144)
 	MultiBot.iconos.setPoint(-860, -144)
 	MultiBot.stats.setPoint(-60, 560)
@@ -2107,7 +2108,10 @@ MultiBot.talent = MultiBot.newFrame(MultiBot, -104, -276, 28, 1024, 1024)
 MultiBot.talent.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent.blp")
 MultiBot.talent.addText("Points", MultiBot.info.talent["Points"], "CENTER", -228, -8, 13)
 MultiBot.talent.addText("Title", MultiBot.info.talent["Title"], "CENTER", -228, 491, 13)
+MultiBot.talent:SetMovable(true)
 MultiBot.talent:Hide()
+
+MultiBot.talent.movButton("Move", -960, 960, 64, MultiBot.tips.move.reward)
 
 MultiBot.talent.wowButton(MultiBot.info.talent.Apply, -474, 966, 100, 20, 13).doHide()
 .doLeft = function(pButton)
@@ -2316,9 +2320,6 @@ MultiBot.talent.doClear = function()
 		table.wipe(tTab.arrows)
 	end
 end
-
--- Skills set:
--- Interface/TalentFrame/TalentFrame-RankBorder
 
 -- FINISH --
 

@@ -77,6 +77,9 @@ MultiBot.info.combination =
 MultiBot.info.reward =
 "Select the Rewards";
 
+MultiBot.tips.move.talent =
+"Right-Click to drag and move the Talents";
+
 -- INFO:TALENT --
 
 MultiBot.info.talent.OutOfRange =

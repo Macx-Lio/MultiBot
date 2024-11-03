@@ -63,6 +63,9 @@ MultiBot:SetScript("OnEvent", function()
 		local tX, tY = MultiBot.toPoint(MultiBot.reward)
 		MultiBotSave["RewardPoint"] = tX .. ", " .. tY
 		
+		local tX, tY = MultiBot.toPoint(MultiBot.talent)
+		MultiBotSave["TalentPoint"] = tX .. ", " .. tY
+		
 		local tPortal = MultiBot.frames["MultiBar"].frames["Masters"].frames["Portal"]
 		MultiBotSave["MemoryGem1"] =  MultiBot.SavePortal(tPortal.buttons["Red"])
 		MultiBotSave["MemoryGem2"] =  MultiBot.SavePortal(tPortal.buttons["Green"])
@@ -119,6 +122,11 @@ MultiBot:SetScript("OnEvent", function()
 		if(MultiBotSave["RewardPoint"] ~= nil) then
 			local tPoint = MultiBot.doSplit(MultiBotSave["RewardPoint"], ", ")
 			MultiBot.reward.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
+		end
+		
+		if(MultiBotSave["TalentPoint"] ~= nil) then
+			local tPoint = MultiBot.doSplit(MultiBotSave["TalentPoint"], ", ")
+			MultiBot.talent.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
 		end
 		
 		if(MultiBotSave["MemoryGem1"] ~= nil) then
