@@ -80,106 +80,107 @@ MultiBot.info.reward =
 -- INFO:TALENT --
 
 MultiBot.info.talent.OutOfRange =
-"The Bot is out of Range.";
+"机器人离开太远了";
 
 MultiBot.info.talent.Apply = 
-"Apply";
+"应用";
 
 MultiBot.info.talent.Title =
-"Talents from NAME";
+"来自 NAME 的天赋";  
 
 MultiBot.info.talent.Points =
-"|cffffcc00Unspent Talents: |r";
+"|cffffcc00未分配的天赋点数：|r";  
 
 MultiBot.info.talent.DeathKnight1 =
-"|cffffcc00Blood|r";
+"|cffffcc00鲜血|r";  
 
 MultiBot.info.talent.DeathKnight2 =
-"|cffffcc00Frost|r";
+"|cffffcc00冰霜|r";  
 
 MultiBot.info.talent.DeathKnight3 =
-"|cffffcc00Unholy|r";
+"|cffffcc00邪恶|r";  
 
 MultiBot.info.talent.Druid1 =
-"|cffffcc00Balance|r";
+"|cffffcc00平衡|r";  
 
 MultiBot.info.talent.Druid2 =
-"|cffffcc00Feral Combat|r";
+"|cffffcc00野性战斗|r";  
 
 MultiBot.info.talent.Druid3 =
-"|cffffcc00Restoration|r";
+"|cffffcc00恢复|r";  
 
 MultiBot.info.talent.Hunter1 =
-"|cffffcc00Beast Mastery|r";
+"|cffffcc00野兽控制|r";  
 
 MultiBot.info.talent.Hunter2 =
-"|cffffcc00Marksmenschip|r";
+"|cffffcc00射击|r"; 
 
 MultiBot.info.talent.Hunter3 =
-"|cffffcc00Survival|r";
+"|cffffcc00生存|r";  
 
 MultiBot.info.talent.Mage1 =
-"|cffffcc00Arcane|r";
+"|cffffcc00奥术|r"; 
 
 MultiBot.info.talent.Mage2 =
-"|cffffcc00Fire|r";
+"|cffffcc00火焰|r";  
 
 MultiBot.info.talent.Mage3 =
-"|cffffcc00Frost|r";
+"|cffffcc00冰霜|r"; 
 
 MultiBot.info.talent.Paladin1 =
-"|cffffcc00Holy|r";
-
+"|cffffcc00神圣|r"; 
+  
 MultiBot.info.talent.Paladin2 =
-"|cffffcc00Protection|r";
+"|cffffcc00防护|r"; 
 
 MultiBot.info.talent.Paladin3 =
-"|cffffcc00Retribution|r";
+"|cffffcc00惩戒|r";  
 
 MultiBot.info.talent.Priest1 =
-"|cffffcc00Discipline|r";
+"|cffffcc00戒律|r"; 
 
 MultiBot.info.talent.Priest2 =
-"|cffffcc00Holy|r";
+"|cffffcc00神圣|r"; 
 
 MultiBot.info.talent.Priest3 =
-"|cffffcc00Shadow|r";
+"|cffffcc00暗影|r";  
 
 MultiBot.info.talent.Rogue1 =
-"|cffffcc00Assassination|r";
+"|cffffcc00刺杀|r";  
 
 MultiBot.info.talent.Rogue2 =
-"|cffffcc00Combat|r";
+"|cffffcc00战斗|r"; 
 
 MultiBot.info.talent.Rogue3 =
-"|cffffcc00Subtlety|r";
+"|cffffcc00敏锐|r"; 
 
 MultiBot.info.talent.Shaman1 =
-"|cffffcc00Elemental|r";
+"|cffffcc00元素|r"; 
 
 MultiBot.info.talent.Shaman2 =
-"|cffffcc00Enchanement|r";
+"|cffffcc00增强|r";  
 
 MultiBot.info.talent.Shaman3 =
-"|cffffcc00Restoration|r";
+"|cffffcc00恢复|r"; 
 
 MultiBot.info.talent.Warlock1 =
-"|cffffcc00Affliction|r";
+"|cffffcc00痛苦|r"; 
 
 MultiBot.info.talent.Warlock2 =
-"|cffffcc00Demonology|r";
+"|cffffcc00恶魔学识|r";  
 
 MultiBot.info.talent.Warlock3 =
-"|cffffcc00Destruction|r";
+"|cffffcc00毁灭|r";
 
 MultiBot.info.talent.Warrior1 =
-"|cffffcc00Arms|r";
+"|cffffcc00武器|r";  
 
 MultiBot.info.talent.Warrior2 =
-"|cffffcc00Fury|r";
+"|cffffcc00狂怒|r"; 
 
 MultiBot.info.talent.Warrior3 =
-"|cffffcc00Protection|r";
+"|cffffcc00防护|r"; 
+
 
 -- 移动 --
 
@@ -202,8 +203,8 @@ MultiBot.tips.move.reward =
 "右键点击并按住以移动奖励选择器";
 
 MultiBot.tips.move.talent =
-"Right-Click to drag and move the Talents";
-
+"右键点击拖动并移动天赋";  
+  
 -- 坦克 --
 
 MultiBot.tips.tanker.master = 
@@ -2274,9 +2275,10 @@ MultiBot.tips.every.spellbook =
 "|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.every.talent =
-"Talent|cffffffff\n"..
-"It opens or closes the Talents of this Bot.\n"..
-"It opens with a time delay while the system loads the talent values.|r\n\n",
-"|cffff0000Left-Click to open or close the Talents|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"天赋|cffffffff\n"..
+"打开或关闭此机器人的天赋界面。\n"..
+"界面会有延迟，因为系统正在加载天赋数值。|r\n\n"..
+"|cffff0000左键点击打开或关闭天赋界面|r\n"..
+"|cff999999（执行命令：机器人）|r";
+
 end
