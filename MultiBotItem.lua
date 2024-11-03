@@ -26,7 +26,7 @@ MultiBot.addItem = function(pFrame, pInfo)
 		local tName = MultiBot.inventory.name
 		
 		if(tAction == "") then
-			SendChatMessage("I need to select a Action.", "SAY")
+			SendChatMessage(MultiBot.info.action, "SAY")
 			return
 		end
 		

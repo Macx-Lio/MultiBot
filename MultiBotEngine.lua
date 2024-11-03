@@ -1,45 +1,3 @@
-MultiBot = CreateFrame("Frame", nil, UIParent)
-MultiBot:RegisterEvent("PLAYER_ENTERING_WORLD")
-MultiBot:RegisterEvent("PLAYER_TARGET_CHANGED")
-MultiBot:RegisterEvent("PLAYER_LOGOUT")
-MultiBot:RegisterEvent("CHAT_MSG_WHISPER")
-MultiBot:RegisterEvent("CHAT_MSG_SYSTEM")
-MultiBot:RegisterEvent("CHAT_MSG_ADDON")
-MultiBot:RegisterEvent("ADDON_LOADED")
-MultiBot:RegisterEvent("WORLD_MAP_UPDATE")
-MultiBot:SetPoint("BOTTOMRIGHT", 0, 0)
-MultiBot:SetSize(1, 1)
-MultiBot:Show()
-
-MultiBotSave = {}
-MultiBot.data = {}
-MultiBot.index = {}
-MultiBot.index.classes = {}
-MultiBot.index.classes.actives = {}
-MultiBot.index.classes.players = {}
-MultiBot.index.classes.members = {}
-MultiBot.index.classes.friends = {}
-MultiBot.index.actives = {}
-MultiBot.index.players = {}
-MultiBot.index.members = {}
-MultiBot.index.friends = {}
-MultiBot.frames = {}
-MultiBot.units = {}
-MultiBot.tips = {}
-
-MultiBot.auto = {}
-MultiBot.auto.stats = false
-MultiBot.auto.invite = false
-MultiBot.auto.release = false
-
-MultiBot.timer = {}
-MultiBot.timer.stats = {}
-MultiBot.timer.stats.elapsed = 0
-MultiBot.timer.stats.interval = 45
-MultiBot.timer.invite = {}
-MultiBot.timer.invite.elapsed = 0
-MultiBot.timer.invite.interval = 5
-
 MultiBot.IF = function(pCondition, pSuccess, pFailure)
 	if(pCondition) then return pSuccess else return pFailure end
 end
@@ -54,7 +12,7 @@ MultiBot.doSlash = function(pCommand, pArguments)
 		end
 	end
 	
-	SendChatMessage("无效命令.", "SAY")
+	SendChatMessage(MultiBot.info.command, "SAY")
 	return false
 end
 
@@ -75,7 +33,7 @@ MultiBot.doDotWithTarget = function(pCommand, oArguments)
 		return true
 	end
 	
-	SendChatMessage("我没有目标.", "SAY")
+	SendChatMessage(MultiBot.info.target, "SAY")
 	return false
 end
 
@@ -153,7 +111,7 @@ MultiBot.isTarget = function()
 		return true
 	end
 	
-	SendChatMessage("我没有目标.", "SAY")
+	SendChatMessage(MultiBot.info.target, "SAY")
 	return false
 end
 
@@ -252,8 +210,8 @@ end
 MultiBot.SpellToMacro = function(pName, pSpell, pTexture)
 	local tGlobal, tAmount = GetNumMacros()
 	
-	if(pSpell == nil or pSpell == 0) then return SendChatMessage("我无法识别这个法术.", "SAY") end
-	if(tAmount == 18) then return SendChatMessage("我已经拥有最大数量的私有宏.", "SAY") end
+	if(pSpell == nil or pSpell == 0) then return SendChatMessage(MultiBot.info.spell, "SAY") end
+	if(tAmount == 18) then return SendChatMessage(MultiBot.info.macro, "SAY") end
 	
 	local tMacro = string.sub(pName, 1, 14) .. tAmount
 	local tSpell, tIcon, tBody = GetMacroInfo(tMacro)
@@ -270,7 +228,7 @@ MultiBot.ActionToTarget = function(pAction, oTarget)
 		return true
 	end
 	
-	SendChatMessage("我没有目标.", "SAY")
+	SendChatMessage(MultiBot.info.target, "SAY")
 	return false
 end
 
@@ -292,7 +250,7 @@ MultiBot.ActionToTargetOrGroup = function(pAction)
 		return true
 	end
 	
-	SendChatMessage("我既没有目标，也没有参加团队或小队。", "SAY")
+	SendChatMessage(MultiBot.info.neither, "SAY")
 	return false
 end
 
@@ -307,7 +265,7 @@ MultiBot.ActionToGroup = function(pAction)
 		return true
 	end
 	
-	SendChatMessage("我没有在一个团队或者小队中", "SAY")
+	SendChatMessage(MultiBot.info.group, "SAY")
 	return false
 end
 
@@ -435,7 +393,7 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 	frame.addText = function(pIndex, pText, pAlign, pX, pY, pSize)
 		if(frame.texts[pIndex] ~= nil) then frame.texts[pIndex]:Hide() end
 		frame.texts[pIndex] = frame:CreateFontString(nil, "ARTWORK")
-		frame.texts[pIndex]:SetFont("Fonts\\ARIALN.ttf", pSize, "OUTLINE")
+		frame.texts[pIndex]:SetFont("Fonts\\ARIALN.ttf", pSize, "PLAIN")
 		frame.texts[pIndex]:SetPoint(pAlign, pX, pY)
 		frame.texts[pIndex]:SetText(pText)
 		frame.texts[pIndex]:Show()
@@ -454,9 +412,9 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 		return frame.buttons[pName]
 	end
 	
-	frame.movButton = function(pName, pX, pY, pSize, pTip)
+	frame.movButton = function(pName, pX, pY, pSize, pTip, oFrame)
 		if(frame.buttons[pName] ~= nil) then frame.buttons[pName]:Hide() end
-		frame.buttons[pName] = MultiBot.movButton(frame, pX, pY, pSize, pTip)
+		frame.buttons[pName] = MultiBot.movButton(frame, pX, pY, pSize, pTip, oFrame)
 		return frame.buttons[pName]
 	end
 	
@@ -719,7 +677,7 @@ end
 
 -- BUTTON:MOVE --
 
-MultiBot.movButton = function(pParent, pX, pY, pSize, pTip)
+MultiBot.movButton = function(pParent, pX, pY, pSize, pTip, oFrame)
 	local button = CreateFrame("Button", nil, pParent)
 	button:SetPoint("BOTTOMRIGHT", pX, pY)
 	button:SetSize(pSize, pSize)
@@ -730,6 +688,7 @@ MultiBot.movButton = function(pParent, pX, pY, pSize, pTip)
 	button:RegisterForDrag("RightButton")
 	
 	button.parent = pParent
+	button.frame = oFrame
 	button.size = pSize
 	button.tip = pTip
 	button.x = pX
@@ -752,11 +711,11 @@ MultiBot.movButton = function(pParent, pX, pY, pSize, pTip)
 	end)
 	
 	button:SetScript("OnDragStart", function()
-		button.parent:StartMoving()
+		if(button.frame ~= nil) then button.frame:StartMoving() else button.parent:StartMoving() end
 	end)
 	
 	button:SetScript("OnDragStop", function()
-		button.parent:StopMovingOrSizing()
+		if(button.frame ~= nil) then button.frame:StopMovingOrSizing() else button.parent:StopMovingOrSizing() end
 	end)
 	
 	return button

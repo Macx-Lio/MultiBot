@@ -1,55 +1,3 @@
-MultiBot.tips.every = {}
-
-MultiBot.tips.every.summon =
-"召唤 |cffffffff\n"..
-"将此机器人召唤到你的位置。|r\n\n"..
-"|cffff0000左键单击召唤机器人|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.every.uninvite =
-"踢出 |cffffffff\n"..
-"将此机器人从你的队伍中移除。|r\n\n"..
-"|cffff0000左键单击踢出机器人|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.every.invite =
-"邀请 |cffffffff\n"..
-"邀请此机器人加入你的队伍。|r\n\n"..
-"|cffff0000左键单击邀请机器人|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.every.food =
-"食物 |cffffffff\n"..
-"启用或禁用进食策略。|r\n\n"..
-"|cffff0000左键单击允许进食|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.every.loot =
-"拾取 |cffffffff\n"..
-"启用或禁用拾取策略。|r\n\n"..
-"|cffff0000左键单击允许拾取|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.every.gather =
-"采集 |cffffffff\n"..
-"启用或禁用采集策略。|r\n\n"..
-"|cffff0000左键单击允许采集|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.every.inventory =
-"背包 |cffffffff\n"..
-"打开或关闭此机器人的背包。|r\n\n"..
-"|cffff0000左键单击打开或关闭背包|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.every.spellbook =
-"法术书 |cffffffff\n"..
-"打开或关闭此机器人的法术书。\n"..
-"左键单击法术立即施放。\n"..
-"右键单击法术可以将宏添加到你的技能栏。|r\n\n"..
-"|cffff0000左键单击打开或关闭法术书|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
 MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 	pFrame.addButton("Summon", 64, 0, "ability_hunter_beastcall", MultiBot.tips.every.summon)
 	.doLeft = function(pButton)
@@ -94,11 +42,6 @@ MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 			local tUnits = MultiBot.frames["MultiBar"].frames["Units"]
 			for key, value in pairs(MultiBot.index.actives) do tUnits.frames[value].getButton("Inventory").setDisable() end
 			
-			--if(MultiBot.spellbook:IsVisible()) then
-			--	tUnits.frames[MultiBot.spellbook.name].buttons["Spellbook"].setDisable()
-			--	MultiBot.spellbook:Hide()
-			--end
-			
 			pButton.setEnable()
 			MultiBot.inventory.name = pButton.getName()
 			tUnits.buttons[MultiBot.inventory.name].waitFor = "INVENTORY"
@@ -115,15 +58,31 @@ MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 			local tUnits = MultiBot.frames["MultiBar"].frames["Units"]
 			for key, value in pairs(MultiBot.index.actives) do tUnits.frames[value].getButton("Spellbook").setDisable() end
 			
-			--if(MultiBot.inventory:IsVisible()) then
-			--	tUnits.frames[MultiBot.inventory.name].buttons["Inventory"].setDisable()
-			--	MultiBot.inventory:Hide()
-			--end
-			
 			pButton.setEnable()
 			MultiBot.spellbook.name = pButton.getName()
 			tUnits.buttons[MultiBot.spellbook.name].waitFor = "SPELLBOOK"
 			SendChatMessage("spells", "WHISPER", nil, pButton.getName())
+		end
+	end
+	
+	pFrame.addButton("Talent", 274, 0, "ability_marksmanship", MultiBot.tips.every.talent).setDisable()
+	.doLeft = function(pButton)
+		if(pButton.state) then
+			pButton.setDisable()
+			MultiBot.talent:Hide()
+			MultiBot.talent.doClear()
+		elseif(CheckInteractDistance(MultiBot.toUnit(pButton.getName()), 1) == nil) then
+			SendChatMessage(MultiBot.info.talent.OutOfRange, "SAY")
+		else
+			local tUnits = MultiBot.frames["MultiBar"].frames["Units"]
+			for key, value in pairs(MultiBot.index.actives) do tUnits.frames[value].getButton("Talent").setDisable() end
+			
+			InspectUnit(MultiBot.toUnit(pButton.getName()))
+			pButton.setEnable()
+			
+			MultiBot.talent.name = pButton.getName()
+			MultiBot.talent.class = pButton.getClass()
+			MultiBot.auto.talent = true
 		end
 	end
 	

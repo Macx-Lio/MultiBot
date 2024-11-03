@@ -1,38 +1,26 @@
-MultiBot.tips.unit = {}
-MultiBot.tips.unit.selfbot =
-"自我机器人 |cffffffff\n"..    -- 这表示这个按钮控制一个特殊的机器人模式，可能是让机器人模仿玩家自己的操作？？
-"此按钮开关自我机器人模式。|r\n\n"..
-"|cffff0000左键单击执行自我机器人|r\n"..
-"|cff999999(执行命令: 系统)|r";
-
-MultiBot.tips.unit.button =
-"|cffffffff\n"..
-"此按钮将 NAME 添加到或从你的队伍中移除。\n"..
-"MultiBot 将询问机器人关于战斗和非战斗策略。\n"..
-"策略可以通过左右侧的按钮栏进行配置。\n"..
-"添加机器人后按钮栏将会出现。|r\n\n"..
-"|cffff0000左键单击添加 NAME|r\n"..
-"|cff999999(执行命令: 系统)|r\n\n"..
-"|cffff0000右键单击移除 NAME|r\n"..
-"|cff999999(执行命令: 系统)|r";
-
 -- TIMER --
 
 MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
-	MultiBot.timer.invite.elapsed = MultiBot.timer.invite.elapsed + pElapsed
-	MultiBot.timer.stats.elapsed = MultiBot.timer.stats.elapsed + pElapsed
+	if(MultiBot.auto.invite) then MultiBot.timer.invite.elapsed = MultiBot.timer.invite.elapsed + pElapsed end
+	if(MultiBot.auto.talent) then MultiBot.timer.talent.elapsed = MultiBot.timer.talent.elapsed + pElapsed end
+	if(MultiBot.auto.stats) then MultiBot.timer.stats.elapsed = MultiBot.timer.stats.elapsed + pElapsed end
 	
 	if(MultiBot.auto.stats and MultiBot.timer.stats.elapsed >= MultiBot.timer.stats.interval) then
 		for i = 1, GetNumPartyMembers() do SendChatMessage("stats", "WHISPER", nil, UnitName("party" .. i)) end
 		MultiBot.timer.stats.elapsed = 0
-		return
+	end
+	
+	if(MultiBot.auto.talent and MultiBot.timer.talent.elapsed >= MultiBot.timer.talent.interval) then
+		MultiBot.talent.setTalents()
+		MultiBot.timer.talent.elapsed = 0
+		MultiBot.auto.talent = false
 	end
 	
 	if(MultiBot.auto.invite and MultiBot.timer.invite.elapsed >= MultiBot.timer.invite.interval) then
 		local tTable = MultiBot.index[MultiBot.timer.invite.roster]
 		
 		if(MultiBot.isMember(tTable[MultiBot.timer.invite.index]) == false) then
-			SendChatMessage("Inviting " .. tTable[MultiBot.timer.invite.index] .. " to the Group.", "SAY")
+			SendChatMessage(MultiBot.doReplace(MultiBot.info.inviting, "NAME", tTable[MultiBot.timer.invite.index]), "SAY")
 			SendChatMessage(".playerbot bot add " .. tTable[MultiBot.timer.invite.index], "SAY")
 			MultiBot.timer.invite.needs = MultiBot.timer.invite.needs - 1
 		end
@@ -47,7 +35,6 @@ MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
 		
 		MultiBot.timer.invite.index = MultiBot.timer.invite.index + 1
 		MultiBot.timer.invite.elapsed = 0
-		return
 	end
 end)
 
@@ -69,10 +56,16 @@ MultiBot:SetScript("OnEvent", function()
 		
 		local tX, tY = MultiBot.toPoint(MultiBot.iconos)
 		MultiBotSave["IconosPoint"] = tX .. ", " .. tY
-
+		
 		local tX, tY = MultiBot.toPoint(MultiBot.stats)
 		MultiBotSave["StatsPoint"] = tX .. ", " .. tY
-
+		
+		local tX, tY = MultiBot.toPoint(MultiBot.reward)
+		MultiBotSave["RewardPoint"] = tX .. ", " .. tY
+		
+		local tX, tY = MultiBot.toPoint(MultiBot.talent)
+		MultiBotSave["TalentPoint"] = tX .. ", " .. tY
+		
 		local tPortal = MultiBot.frames["MultiBar"].frames["Masters"].frames["Portal"]
 		MultiBotSave["MemoryGem1"] =  MultiBot.SavePortal(tPortal.buttons["Red"])
 		MultiBotSave["MemoryGem2"] =  MultiBot.SavePortal(tPortal.buttons["Green"])
@@ -85,9 +78,10 @@ MultiBot:SetScript("OnEvent", function()
 		local tValue = MultiBot.doSplit(MultiBot.frames["MultiBar"].frames["Left"].buttons["Flee"].texture, "\\")[5]
 		tValue = string.sub(tValue, 1, string.len(tValue) - 4)
 		MultiBotSave["FleeButton"] = tValue
-
+		
 		MultiBotSave["AutoRelease"] = MultiBot.IF(MultiBot.auto.release, "true", "false")
 		MultiBotSave["NecroNet"] = MultiBot.IF(MultiBot.necronet.state, "true", "false")
+		MultiBotSave["Reward"] = MultiBot.IF(MultiBot.reward.state, "true", "false")
 		
 		return
 	end
@@ -124,7 +118,17 @@ MultiBot:SetScript("OnEvent", function()
 			local tPoint = MultiBot.doSplit(MultiBotSave["StatsPoint"], ", ")
 			MultiBot.stats.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
 		end
-
+		
+		if(MultiBotSave["RewardPoint"] ~= nil) then
+			local tPoint = MultiBot.doSplit(MultiBotSave["RewardPoint"], ", ")
+			MultiBot.reward.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
+		end
+		
+		if(MultiBotSave["TalentPoint"] ~= nil) then
+			local tPoint = MultiBot.doSplit(MultiBotSave["TalentPoint"], ", ")
+			MultiBot.talent.setPoint(tonumber(tPoint[1]), tonumber(tPoint[2]))
+		end
+		
 		if(MultiBotSave["MemoryGem1"] ~= nil) then
 			local tGem = MultiBot.frames["MultiBar"].frames["Masters"].frames["Portal"].buttons["Red"]
 			MultiBot.LoadPortal(tGem, MultiBotSave["MemoryGem1"])
@@ -197,7 +201,7 @@ MultiBot:SetScript("OnEvent", function()
 				tButton.doRight(tButton)
 			end
 		end
-
+		
 		if(MultiBotSave["AutoRelease"] ~= nil) then
 			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["Release"]
 			
@@ -219,7 +223,18 @@ MultiBot:SetScript("OnEvent", function()
 			
 			tButton.doLeft(tButton)
 		end
-
+		
+		if(MultiBotSave["Reward"] ~= nil) then
+			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["Reward"]
+			
+			if(MultiBotSave["Reward"] == "true")
+			then tButton.setDisable()
+			else tButton.setEnable()
+			end
+			
+			tButton.doLeft(tButton)
+		end
+		
 		return
 	end
 	
@@ -251,7 +266,6 @@ MultiBot:SetScript("OnEvent", function()
 			tPlayer.name = tName
 			
 			tPlayer.doLeft = function(pButton)
-				MultiBot.ShowHideSwitch(pButton.parent.frames[pButton.name])
 				SendChatMessage(".playerbot bot self", "SAY")
 				MultiBot.OnOffSwitch(pButton)
 			end
@@ -319,7 +333,7 @@ MultiBot:SetScript("OnEvent", function()
 			for i = 1, 50 do
 				local tName, tLevel, tClass = GetFriendInfo(i)
 				
-				-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
+				-- Ensure that the Counter is not bigger than the Amount of Members in Friendlist
 				if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
 					local tFriend = MultiBot.addFriend(tClass, tLevel, tName).setDisable()
 					
@@ -375,7 +389,7 @@ MultiBot:SetScript("OnEvent", function()
 			
 			if(MultiBot.isMember(tName)) then
 				tButton.waitFor = "CO"
-				SendChatMessage("Asked " .. tName .. " for Combat-Strategies.", "SAY")
+				SendChatMessage(MultiBot.doReplace(MultiBot.info.combat, "NAME", tName), "SAY")
 				SendChatMessage("co ?", "WHISPER", nil, tName)
 				tButton.setEnable()
 				--MultiBot.doRaid()
@@ -411,7 +425,7 @@ MultiBot:SetScript("OnEvent", function()
 			local tButton = MultiBot.frames["MultiBar"].frames["Units"].buttons[tName]
 			if(tButton == nil) then return end
 			tButton.waitFor = "CO"
-			SendChatMessage("Asked " .. tName .. " for Combat-Strategies.", "SAY")
+			SendChatMessage(MultiBot.doReplace(MultiBot.info.combat, "NAME", tName), "SAY")
 			SendChatMessage("co ?", "WHISPER", nil, tName)
 			tButton.setEnable()
 			--MultiBot.doRaid()
@@ -436,9 +450,10 @@ MultiBot:SetScript("OnEvent", function()
 			local tLocation = MultiBot.doSplit(arg1, " ")
 			local tZone = string.sub(tLocation[6], 2, string.len(tLocation[6]) - 1)
 			local tMap = string.sub(tLocation[3], 2, string.len(tLocation[3]) - 1)
+			local tTip = MultiBot.doReplace(MultiBot.doReplace(MultiBot.info.teleport, "MAP", tMap), "ZONE", tZone)
 			
 			tPlayer.memory.goMap = tLocation[2]
-			tPlayer.memory.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", "will teleport you to '" .. tMap .. "-" .. tZone .. "'")
+			tPlayer.memory.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", tTip)
 			return
 		end
 		
@@ -537,7 +552,7 @@ MultiBot:SetScript("OnEvent", function()
 		
 		if(MultiBot.isInside(arg1, "Hello")) then
 			tButton.waitFor = "CO"
-			SendChatMessage("Asked " .. arg2 .. " for Combat-Strategies.", "SAY")
+			SendChatMessage(MultiBot.doReplace(MultiBot.info.combat, "NAME", arg2), "SAY")
 			SendChatMessage("co ?", "WHISPER", nil, arg2)
 			--MultiBot.doRaid()
 			return
@@ -570,12 +585,12 @@ MultiBot:SetScript("OnEvent", function()
 		if(tButton.waitFor == "CO" and MultiBot.isInside(arg1, "Strategies: ")) then
 			tButton.waitFor = "NC"
 			tButton.combat = string.sub(arg1, 13)
-			SendChatMessage("Asked " .. arg2 .. " for Non-Combat-Strategies.", "SAY")
+			SendChatMessage(MultiBot.doReplace(MultiBot.info.normal, "NAME", arg2), "SAY")
 			SendChatMessage("nc ?", "WHISPER", nil, arg2)
 			return
 		end
 		
-		if(tButton.waitFor ~= "ITEM" and tButton.waitFor ~= "SPELL" and MultiBot.isInside(arg1, "Bag")) then
+		if(tButton.waitFor ~= "ITEM" and tButton.waitFor ~= "SPELL" and MultiBot.auto.stats and MultiBot.isInside(arg1, "Bag")) then
 			local tUnit = MultiBot.toUnit(arg2)
 			if(MultiBot.stats.frames[tUnit] == nil) then MultiBot.addStats(MultiBot.stats, "party1", 0, 0, 32, 192, 96) end
 			MultiBot.stats.frames[tUnit].setStats(arg2, UnitLevel(tUnit), arg1)
@@ -588,7 +603,7 @@ MultiBot:SetScript("OnEvent", function()
 			local tItems = MultiBot.inventory.frames["Items"]
 			for key, value in pairs(tItems.buttons) do value:Hide() end
 			table.wipe(tItems.buttons)
-			MultiBot.inventory.setText("Title", "Inventory of " .. arg2)
+			MultiBot.inventory.setText("Title", MultiBot.doReplace(MultiBot.info.inventory, "NAME", arg2))
 			MultiBot.inventory.name = arg2
 			tItems.index = 0
 			tButton.waitFor = "ITEM"
@@ -611,24 +626,28 @@ MultiBot:SetScript("OnEvent", function()
 		-- Spellbook --
 		
 		if(tButton.waitFor == "SPELLBOOK" and MultiBot.isInside(arg1, "Spells")) then
-			table.wipe(MultiBot.spellbook.spells)
-			MultiBot.spellbook.setText("Title", "Spellbook of " .. arg2)
-			MultiBot.spellbook.name = arg2
-			MultiBot.spellbook.index = 0
-			MultiBot.spellbook.from = 1
-			MultiBot.spellbook.to = 12
+			local tOverlay = MultiBot.spellbook.frames["Overlay"]
+			local tSpellbook = MultiBot.spellbook
+			table.wipe(tSpellbook.spells)
+			tSpellbook.frames["Overlay"].setText("Title", MultiBot.doReplace(MultiBot.info.spellbook, "NAME", arg2))
+			tSpellbook.name = arg2
+			tSpellbook.index = 0
+			tSpellbook.from = 1
+			tSpellbook.to = 16
 			tButton.waitFor = "SPELL"
 			SendChatMessage("stats", "WHISPER", nil, arg2)
 			return
 		end
 		
 		if(tButton.waitFor == "SPELL" and MultiBot.isInside(arg1, "Bag", "Dur", "XP")) then
-			MultiBot.spellbook.now = 1
-			MultiBot.spellbook.max = math.ceil(MultiBot.spellbook.index / 12)
-			MultiBot.spellbook.setText("Pages", "|cffffcc00" .. MultiBot.spellbook.now .. "/" .. MultiBot.spellbook.max .. "|r")
-			if(MultiBot.spellbook.now == MultiBot.spellbook.max) then MultiBot.spellbook.buttons[">"].doHide() end
-			MultiBot.spellbook.buttons["<"].doHide()
-			MultiBot.spellbook:Show()
+			local tOverlay = MultiBot.spellbook.frames["Overlay"]
+			local tSpellbook = MultiBot.spellbook
+			tSpellbook.now = 1
+			tSpellbook.max = math.ceil(tSpellbook.index / 16)
+			tOverlay.setText("Pages", "|cffffffff" .. tSpellbook.now .. "/" .. tSpellbook.max .. "|r")
+			if(tSpellbook.now == tSpellbook.max) then tOverlay.buttons[">"].doHide() end
+			tOverlay.buttons["<"].doHide()
+			tSpellbook:Show()
 			tButton.waitFor = ""
 			InspectUnit(arg2)
 			return
@@ -639,6 +658,13 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
+		return
+	end
+	
+	-- QUEST:COMPLETE --
+	
+	if(event == "QUEST_COMPLETE") then
+		MultiBot.setRewards()
 		return
 	end
 	

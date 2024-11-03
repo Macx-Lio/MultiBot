@@ -1,106 +1,3 @@
-MultiBot.tips.hunter = {}
-MultiBot.tips.hunter.dps = {}
-MultiBot.tips.hunter.naspect = {}
-MultiBot.tips.hunter.caspect = {}
-
-MultiBot.tips.hunter.naspect.master =
-"非战斗增益|cffffffff\n"..
-"此控制允许您选择、启用或禁用默认的非战斗增益。|r\n\n"..
-"|cffff0000左键单击以显示或隐藏选项|r\n"..
-"|cff999999(执行命令: 系统)|r\n\n"..
-"|cffff0000右键单击以启用或禁用默认增益。|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.hunter.naspect.rnature =
-"自然抗性增益|cffffffff\n"..
-"它启用自然抗性增益作为非战斗增益。|r\n\n"..
-"|cffff0000左键单击以启用自然抗性增益|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.hunter.naspect.bmana =
-"法力增益|cffffffff\n"..
-"它启用法力增益作为非战斗增益。|r\n\n"..
-"|cffff0000左键单击以启用法力增益|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.hunter.naspect.bdps =
-"DPS增益|cffffffff\n"..
-"它启用DPS增益作为非战斗增益。|r\n\n"..
-"|cffff0000左键单击以启用DPS增益|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.hunter.caspect.master =
-"战斗增益|cffffffff\n"..
-"此控制允许您选择、启用或禁用默认的战斗增益。|r\n\n"..
-"|cffff0000左键单击以显示或隐藏选项|r\n"..
-"|cff999999(执行命令: 系统)|r\n\n"..
-"|cffff0000右键单击以启用或禁用默认增益。|r\n"..
-"|cff999999(执行命令: 机器人)|r";
-
--- 猎人战斗方面增益
-
-MultiBot.tips.hunter.caspect.rnature =
-"自然抗性增益|cffffffff\n" ..
-"它启用自然抗性增益作为战斗增益。|r\n\n" ..
-"|cffff0000左键单击以启用自然抗性增益|r\n" ..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.hunter.caspect.bmana =
-"法力增益|cffffffff\n" ..
-"它启用法力增益作为战斗增益。|r\n\n" ..
-"|cffff0000左键单击以启用法力增益|r\n" ..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.hunter.caspect.bdps =
-"DPS增益|cffffffff\n" ..
-"它启用DPS增益作为战斗增益。|r\n\n" ..
-"|cffff0000左键单击以启用DPS增益|r\n" ..
-"|cff999999(执行命令: 机器人)|r";
-
--- 猎人 伤害输出 (DPS) 控制
-
-MultiBot.tips.hunter.dps.master =
-"伤害输出控制 |cffffffff\n" ..
-"在伤害输出控制中，您将找到常规的伤害输出策略。|r\n\n" ..
-"|cffff0000左键单击以显示或隐藏伤害输出控制|r\n" ..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.hunter.dps.dpsAssist =
-"伤害输出辅助 |cffffffff\n" ..
-"它启用伤害输出辅助策略。\n" ..
-"伤害输出-AOE、伤害输出-辅助和坦克-辅助互斥。\n" ..
-"只能激活其中之一的策略。|r\n\n" ..
-"|cffff0000左键单击以启用或禁用伤害输出辅助|r\n" ..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.hunter.dps.dpsDebuff =
-"伤害输出减益 |cffffffff\n" ..
-"它启用减益策略。|r\n\n" ..
-"|cffff0000左键单击以启用或禁用伤害输出减益|r\n" ..
-"|cff999999(执行命令: 机器人)|r";
-
-MultiBot.tips.hunter.dps.dpsAoe = 
-"伤害输出-AOE|cffffffff\n"..
-"它启用伤害输出-AOE策略。\n"..
-"伤害输出-AOE、伤害输出-辅助和坦克-辅助互斥。\n"..
-"只能激活其中之一的策略。|r\n\n"..
-"|cffff0000左键单击以启用或禁用伤害输出-AOE|r\n"..
-"|cf9999999(执行命令: 机器人)|r";
-
-MultiBot.tips.hunter.dps.dps = 
-"伤害输出|cffffffff\n"..
-"它启用伤害输出策略。|r\n\n"..
-"|cffff0000左键单击以启用或禁用伤害输出|r\n"..
-"|cf9999999(执行命令: 机器人)|r";
-
-MultiBot.tips.hunter.tankAssist = 
-"坦克-辅助|cffffffff\n"..
-"它启用坦克-辅助策略。\n"..
-"伤害输出-AOE、伤害输出-辅助和坦克-辅助互斥。\n"..
-"只能激活其中之一的策略。|r\n\n"..
-"|cffff0000左键单击以启用或禁用坦克-辅助|r\n"..
-"|cf9999999(执行命令: 机器人)|r";
-
 MultiBot.addHunter = function(pFrame, pCombat, pNormal)
 	local tButton = pFrame.addButton("NonCombatAspect", 0, 0, "spell_nature_protectionformnature", MultiBot.tips.hunter.naspect.master)
 	tButton.doLeft = function(pButton)
@@ -118,7 +15,15 @@ MultiBot.addHunter = function(pFrame, pCombat, pNormal)
 		end
 	end
 	
-	tFrame.addButton("NonCombatMana", 0, 26, "ability_hunter_aspectoftheviper", MultiBot.tips.hunter.naspect.bmana)
+	tFrame.addButton("NonCombatSpeed", 0, 26, "ability_mount_whitetiger", MultiBot.tips.hunter.naspect.bspeed)
+	.doLeft = function(pButton)
+		MultiBot.SelectToTarget(pButton.get(), "NonCombatAspect", pButton.texture, "nc +bspeed,?", pButton.getName())
+		pButton.getButton("NonCombatAspect").doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "nc +bspeed,?", "nc -bspeed,?", pButton.getName())
+		end
+	end
+	
+	tFrame.addButton("NonCombatMana", 0, 52, "ability_hunter_aspectoftheviper", MultiBot.tips.hunter.naspect.bmana)
 	.doLeft = function(pButton)
 		MultiBot.SelectToTarget(pButton.get(), "NonCombatAspect", pButton.texture, "nc +bmana,?", pButton.getName())
 		pButton.getButton("NonCombatAspect").doRight = function(pButton)
@@ -126,7 +31,7 @@ MultiBot.addHunter = function(pFrame, pCombat, pNormal)
 		end
 	end
 	
-	tFrame.addButton("NonCombatDps", 0, 52, "ability_hunter_pet_dragonhawk", MultiBot.tips.hunter.naspect.bdps)
+	tFrame.addButton("NonCombatDps", 0, 78, "ability_hunter_pet_dragonhawk", MultiBot.tips.hunter.naspect.bdps)
 	.doLeft = function(pButton)
 		MultiBot.SelectToTarget(pButton.get(), "NonCombatAspect", pButton.texture, "nc +bdps,?", pButton.getName())
 		pButton.getButton("NonCombatAspect").doRight = function(pButton)
@@ -139,6 +44,10 @@ MultiBot.addHunter = function(pFrame, pCombat, pNormal)
 	if(MultiBot.isInside(pNormal, "rnature")) then
 		tButton.setTexture("spell_nature_protectionformnature").setEnable().doRight = function(pButton)
 			MultiBot.OnOffActionToTarget(pButton, "nc +rnature,?", "nc -rnature,?", pButton.getName())
+		end
+	elseif(MultiBot.isInside(pNormal, "bspeed")) then
+		tButton.setTexture("ability_mount_whitetiger").setEnable().doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "nc +bspeed,?", "nc -bspeed,?", pButton.getName())
 		end
 	elseif(MultiBot.isInside(pNormal, "bmana")) then
 		tButton.setTexture("ability_hunter_aspectoftheviper").setEnable().doRight = function(pButton)
@@ -168,7 +77,15 @@ MultiBot.addHunter = function(pFrame, pCombat, pNormal)
 		end
 	end
 	
-	tFrame.addButton("CombatMana", 0, 26, "ability_hunter_aspectoftheviper", MultiBot.tips.hunter.caspect.bmana)
+	tFrame.addButton("CombatSpeed", 0, 26, "ability_mount_whitetiger", MultiBot.tips.hunter.caspect.bspeed)
+	.doLeft = function(pButton)
+		MultiBot.SelectToTarget(pButton.get(), "CombatAspect", pButton.texture, "co +bspeed,?", pButton.getName())
+		pButton.getButton("NonCombatAspect").doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "co +bspeed,?", "co -bspeed,?", pButton.getName())
+		end
+	end
+	
+	tFrame.addButton("CombatMana", 0, 52, "ability_hunter_aspectoftheviper", MultiBot.tips.hunter.caspect.bmana)
 	.doLeft = function(pButton)
 		MultiBot.SelectToTarget(pButton.get(), "CombatAspect", pButton.texture, "co +bmana,?", pButton.getName())
 		pButton.getButton("CombatAspect").doRight = function(pButton)
@@ -176,7 +93,7 @@ MultiBot.addHunter = function(pFrame, pCombat, pNormal)
 		end
 	end
 	
-	tFrame.addButton("CombatDps", 0, 52, "ability_hunter_pet_dragonhawk", MultiBot.tips.hunter.caspect.bdps)
+	tFrame.addButton("CombatDps", 0, 78, "ability_hunter_pet_dragonhawk", MultiBot.tips.hunter.caspect.bdps)
 	.doLeft = function(pButton)
 		MultiBot.SelectToTarget(pButton.get(), "CombatAspect", pButton.texture, "co +bdps,?", pButton.getName())
 		pButton.getButton("CombatAspect").doRight = function(pButton)
@@ -189,6 +106,10 @@ MultiBot.addHunter = function(pFrame, pCombat, pNormal)
 	if(MultiBot.isInside(pCombat, "rnature")) then
 		tButton.setTexture("spell_nature_protectionformnature").setEnable().doRight = function(pButton)
 			MultiBot.OnOffActionToTarget(pButton, "co +rnature,?", "co -rnature,?", pButton.getName())
+		end
+	elseif(MultiBot.isInside(pCombat, "bspeed")) then
+		tButton.setTexture("ability_mount_whitetiger").setEnable().doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "co +bspeed,?", "co -bspeed,?", pButton.getName())
 		end
 	elseif(MultiBot.isInside(pCombat, "bmana")) then
 		tButton.setTexture("ability_hunter_aspectoftheviper").setEnable().doRight = function(pButton)

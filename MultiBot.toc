@@ -5,6 +5,10 @@
 ## Author: Nico Löbbert 汉化: leewheel
 ## SavedVariables: MultiBotSave
 
+MultiBot.lua
+MultiBotLanguage-enGB.lua
+MultiBotLanguage-deDE.lua
+MultiBotLanguage-zhCN.lua
 MultiBotEngine.lua
 MultiBotHandler.lua
 MultiBotDeathKnight.lua
@@ -21,7 +25,9 @@ MultiBotEvery.lua
 MultiBotStats.lua
 MultiBotSpell.lua
 MultiBotItem.lua
-MultiBot.lua
+MultiBotInit.lua
 MultiBotItemus.lua
 MultiBotIconos.lua
+MultiBotTalent.lua
+MultiBotReward.lua
 MultiBotNecronet.lua
