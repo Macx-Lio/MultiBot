@@ -2101,6 +2101,225 @@ tFrame.addFrame("Inspector", -137, 26, 16)
 	InspectUnit(pButton.getName())
 end
 
+-- Talent --
+
+MultiBot.talent = MultiBot.newFrame(MultiBot, -104, -276, 28, 1024, 1024)
+MultiBot.talent.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent.blp")
+MultiBot.talent.addText("Points", MultiBot.info.talent["Points"], "CENTER", -228, -8, 13)
+MultiBot.talent.addText("Title", MultiBot.info.talent["Title"], "CENTER", -228, 491, 13)
+MultiBot.talent:Hide()
+
+MultiBot.talent.wowButton(MultiBot.info.talent.Apply, -474, 966, 100, 20, 13).doHide()
+.doLeft = function(pButton)
+	local tValues = ""
+	
+	for i = 1, 3 do
+		local tTab = MultiBot.talent.frames["Tab" .. i]
+		
+		for j = 1, table.getn(tTab.buttons) do
+			tValues = tValues .. tTab.buttons[j].value
+		end
+		
+		if(i < 3) then tValues = tValues .. "-" end
+	end
+	
+	SendChatMessage("talents apply " ..tValues, "WHISPER", nil, MultiBot.talent.name)
+	pButton.doHide()
+end
+
+MultiBot.talent.wowButton("X", -470, 992, 17, 20, 13)
+.doLeft = function(pButton)
+	local tUnits = MultiBot.frames["MultiBar"].frames["Units"]
+	local tButton = tUnits.frames[MultiBot.talent.name].buttons["Talent"]
+	tButton.doLeft(tButton)
+end
+
+local tTab = MultiBot.talent.addFrame("Tab1", -830, 518, 28, 170, 408)
+tTab.addTexture("Interface\\AddOns\\MultiBot\\Textures\\White.blp")
+tTab.addText("Title", "Title", "CENTER", 0, 214, 13)
+tTab.arrows = {}
+tTab.value = 0
+tTab.id = 1
+
+local tTab = MultiBot.talent.addFrame("Tab2", -656, 518, 28, 170, 408)
+tTab.addTexture("Interface\\AddOns\\MultiBot\\Textures\\White.blp")
+tTab.addText("Title", "Title", "CENTER", 0, 214, 13)
+tTab.arrows = {}
+tTab.value = 0
+tTab.id = 2
+
+local tTab = MultiBot.talent.addFrame("Tab3", -482, 518, 28, 170, 408)
+tTab.addTexture("Interface\\AddOns\\MultiBot\\Textures\\White.blp")
+tTab.addText("Title", "Title", "CENTER", 0, 214, 13)
+tTab.arrows = {}
+tTab.value = 0
+tTab.id = 3
+
+MultiBot.talent.addArrow = function(pTab, pID, pNeeds, piX, piY, pTexture)
+	local tArrow = pTab.addFrame("Arrow" .. pID, piX * 36 - 153, 395 - piY * 36, 44)
+	tArrow.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Silver_" .. pTexture .. ".blp")
+	tArrow.active = "Interface\\AddOns\\MultiBot\\Textures\\Talent_Gold_" .. pTexture .. ".blp"
+	tArrow.needs = pNeeds
+	tArrow:SetFrameLevel(7)
+	return tArrow
+end
+
+MultiBot.talent.addTalent = function(pTab, pID, pNeeds, pValue, pMax, piX, piY, pTexture, pTips)
+	local tTalent = pTab.addButton(pID, piX * 36 - 161, 403 - piY * 36, pTexture, pTips[pValue + 1])
+	tTalent.points = piY * 5 - 5
+	tTalent.needs = pNeeds
+	tTalent.value = pValue
+	tTalent.tips = pTips
+	tTalent.max = pMax
+	tTalent.id = pID
+	
+	tTalent.doLeft = function(pButton)
+		if(MultiBot.talent.points == 0) then return end
+		
+		local tButtons = pButton.parent.buttons
+		local tArrows = pButton.parent.arrows
+		local tValue = pButton.parent.frames[pButton.id]
+		local tTab = pButton.parent
+		
+		if(pButton.state == false) then return end
+		if(pButton.value == pButton.max) then return end
+		if(pButton.needs > 0 and tButtons[pButton.needs].value == 0) then return end
+		
+		MultiBot.talent.points = MultiBot.talent.points - 1
+		MultiBot.talent.setText("Points", MultiBot.info.talent["Points"] .. MultiBot.talent.points)
+		
+		tTab.value = tTab.value + 1
+		tTab.setText("Title", MultiBot.info.talent[pButton.getClass() .. tTab.id] .. " ("  .. tTab.value .. ")")
+		
+		pButton.value = pButton.value + 1
+		pButton.tip = pButton.tips[pButton.value + 1]
+		
+		local tColor = MultiBot.IF(pButton.value < pButton.max, "|cff4db24d", "|cffffcc00")
+		tValue.setText("Value", tColor .. pButton.value .. "/" .. pButton.max .. "|r")
+		tValue:Show()
+		
+		for i = 1, table.getn(tButtons) do
+			if(tButtons[i].points > tTab.value)
+			then tButtons[i].setDisable()
+			else
+				if(tButtons[i].needs > 0)
+				then if(tButtons[tButtons[i].needs].value > 0) then tButtons[i].setEnable() end
+				else tButtons[i].setEnable()
+				end
+			end
+		end
+		
+		MultiBot.talent.buttons[MultiBot.info.talent.Apply].doShow()
+		MultiBot.talent.doState()
+	end
+	
+	tTalent:SetFrameLevel(8)
+	return tTalent
+end
+
+MultiBot.talent.addValue = function(pTab, pID, piX, piY, pRank, pMax)
+	local tColor = MultiBot.IF(pRank > 0, MultiBot.IF(pRank < pMax, "|cff4db24d", "|cffffcc00"), "|cffffffff")
+	local tValue = pTab.addFrame(pID, piX * 36 - 157, 399 - piY * 36, 24, 18, 12)
+	tValue.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Black.blp")
+	tValue.addText("Value", tColor .. pRank .. "/" .. pMax .. "|r", "CENTER", -0.5, 1, 10)
+	if(MultiBot.talent.points == 0 and pRank == 0) then tValue:Hide() end
+	tValue:SetFrameLevel(9)
+	return tValue
+end
+
+MultiBot.talent.setTalents = function()
+	local tClass = MultiBot.data.talent.talents[MultiBot.talent.class]
+	local tArrow = MultiBot.data.talent.arrows[MultiBot.talent.class]
+	
+	MultiBot.talent.points = tonumber(GetUnspentTalentPoints(true))
+	MultiBot.talent.setText("Points", MultiBot.info.talent["Points"] .. MultiBot.talent.points)
+	MultiBot.talent.setText("Title", MultiBot.doReplace(MultiBot.info.talent["Title"], "NAME", MultiBot.talent.name))
+	
+	for i = 1, 3 do
+		local tTab = MultiBot.talent.frames["Tab" .. i]
+		tTab.setTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_" .. MultiBot.talent.class .. i .. ".blp")
+		tTab.value = 0
+		tTab.id = 1
+		
+		for j = 1, table.getn(tArrow[i]) do
+			local tData = MultiBot.doSplit(tArrow[i][j], ", ")
+			local tNeed = tonumber(tData[1])
+			tTab.arrows[j] = MultiBot.talent.addArrow(tTab, j, tNeed, tData[2], tData[3], tData[4])
+		end
+		
+		for j = 1, table.getn(tClass[i]) do
+			local tTale = MultiBot.doSplit(MultiBot.doSplit(GetTalentLink(i, j, true), "|")[3], ":")[2]
+			local iName, iIcon, iTier, iColumn, iRank = GetTalentInfo(i, j, true)
+			local tData = MultiBot.doSplit(tClass[i][j], ", ")
+			local tMaxi = table.getn(tData) - 4
+			local tNeed = tonumber(tData[1])
+			local tRank = tonumber(iRank)
+			local tTips = {}
+			
+			tTab.value = tTab.value + tRank
+			table.insert(tTips, "|cff4e96f7|Htalent:" .. tTale ..":-1|h[" .. iName .. "]|h|r")
+			for k = 5, table.getn(tData) do	table.insert(tTips, "|cff4e96f7|Htalent:" .. tTale ..":" .. (k - 5) .. "|h[" .. iName .. "]|h|r") end
+			
+			MultiBot.talent.addTalent(tTab, j, tNeed, tRank, tMaxi, tData[2], tData[3], tData[4], tTips)
+			MultiBot.talent.addValue(tTab, j, tData[2], tData[3], tRank, tMaxi)
+		end
+		
+		tTab.setText("Title", MultiBot.info.talent[MultiBot.talent.class .. i] .. " (" .. tTab.value .. ")")
+	end
+	
+	MultiBot.talent.doState()
+	MultiBot.talent:Show()
+end
+
+MultiBot.talent.doState = function()
+	for i = 1, 3 do
+		local tTab = MultiBot.talent.frames["Tab" .. i]
+		
+		for j = 1, table.getn(tTab.buttons) do
+			local tTalent = tTab.buttons[j]
+			local tValue = tTab.frames[j]
+			
+			if(MultiBot.talent.points == 0) then
+				if(tTalent.value == 0) then
+					tTalent.setDisable()
+					tValue:Hide()
+				else
+					tTalent.setEnable()
+					tValue:Show()
+				end
+			else
+				if(tTab.value < tTalent.points) then
+					tTalent.setDisable()
+					tValue:Hide()
+				else
+					tTalent.setEnable()
+					tValue:Show()
+				end
+			end
+		end
+		
+		for j = 1, table.getn(tTab.arrows) do
+			if(tTab.buttons[tTab.arrows[j].needs].value > 0) then
+				tTab.arrows[j].setTexture(tTab.arrows[j].active)
+			end
+		end
+	end
+end
+
+MultiBot.talent.doClear = function()
+	for i = 1, 3 do
+		local tTab = MultiBot.talent.frames["Tab" .. i]
+		for j = 1, table.getn(tTab.buttons) do tTab.buttons[j]:Hide() end
+		for j = 1, table.getn(tTab.frames) do tTab.frames[j]:Hide() end
+		table.wipe(tTab.buttons)
+		table.wipe(tTab.frames)
+		table.wipe(tTab.arrows)
+	end
+end
+
+-- Skills set:
+-- Interface/TalentFrame/TalentFrame-RankBorder
+
 -- FINISH --
 
 MultiBot.state = true

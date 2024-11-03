@@ -1,13 +1,19 @@
 -- TIMER --
 
 MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
-	MultiBot.timer.invite.elapsed = MultiBot.timer.invite.elapsed + pElapsed
-	MultiBot.timer.stats.elapsed = MultiBot.timer.stats.elapsed + pElapsed
+	if(MultiBot.auto.invite) then MultiBot.timer.invite.elapsed = MultiBot.timer.invite.elapsed + pElapsed end
+	if(MultiBot.auto.talent) then MultiBot.timer.talent.elapsed = MultiBot.timer.talent.elapsed + pElapsed end
+	if(MultiBot.auto.stats) then MultiBot.timer.stats.elapsed = MultiBot.timer.stats.elapsed + pElapsed end
 	
 	if(MultiBot.auto.stats and MultiBot.timer.stats.elapsed >= MultiBot.timer.stats.interval) then
 		for i = 1, GetNumPartyMembers() do SendChatMessage("stats", "WHISPER", nil, UnitName("party" .. i)) end
 		MultiBot.timer.stats.elapsed = 0
-		return
+	end
+	
+	if(MultiBot.auto.talent and MultiBot.timer.talent.elapsed >= MultiBot.timer.talent.interval) then
+		MultiBot.talent.setTalents()
+		MultiBot.timer.talent.elapsed = 0
+		MultiBot.auto.talent = false
 	end
 	
 	if(MultiBot.auto.invite and MultiBot.timer.invite.elapsed >= MultiBot.timer.invite.interval) then
@@ -29,7 +35,6 @@ MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
 		
 		MultiBot.timer.invite.index = MultiBot.timer.invite.index + 1
 		MultiBot.timer.invite.elapsed = 0
-		return
 	end
 end)
 

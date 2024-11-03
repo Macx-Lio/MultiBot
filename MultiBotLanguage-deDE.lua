@@ -77,6 +77,111 @@ MultiBot.info.combination =
 MultiBot.info.reward =
 "Wähle die Belohnungen";
 
+
+-- INFO:TALENT --
+
+MultiBot.info.talent.OutOfRange =
+"Der Bot ist außer Reichweite.";
+
+MultiBot.info.talent.Apply = 
+"Ausführen";
+
+MultiBot.info.talent.Title =
+"Talente von NAME";
+
+MultiBot.info.talent.Points =
+"|cffffcc00Unverteilte Talentpunkte: |r";
+
+MultiBot.info.talent.DeathKnight1 =
+"|cffffcc00Blut|r";
+
+MultiBot.info.talent.DeathKnight2 =
+"|cffffcc00Frost|r";
+
+MultiBot.info.talent.DeathKnight3 =
+"|cffffcc00Unheilig|r";
+
+MultiBot.info.talent.Druid1 =
+"|cffffcc00Gleichgewicht|r";
+
+MultiBot.info.talent.Druid2 =
+"|cffffcc00Wilder Kampf|r";
+
+MultiBot.info.talent.Druid3 =
+"|cffffcc00Wiederherstellung|r";
+
+MultiBot.info.talent.Hunter1 =
+"|cffffcc00Tierherrschaft|r";
+
+MultiBot.info.talent.Hunter2 =
+"|cffffcc00Treffsicherheit|r";
+
+MultiBot.info.talent.Hunter3 =
+"|cffffcc00Überleben|r";
+
+MultiBot.info.talent.Mage1 =
+"|cffffcc00Arkan|r";
+
+MultiBot.info.talent.Mage2 =
+"|cffffcc00Feuer|r";
+
+MultiBot.info.talent.Mage3 =
+"|cffffcc00Frost|r";
+
+MultiBot.info.talent.Paladin1 =
+"|cffffcc00Heilig|r";
+
+MultiBot.info.talent.Paladin2 =
+"|cffffcc00Schutz|r";
+
+MultiBot.info.talent.Paladin3 =
+"|cffffcc00Vergeltung|r";
+
+MultiBot.info.talent.Priest1 =
+"|cffffcc00Disziplin|r";
+
+MultiBot.info.talent.Priest2 =
+"|cffffcc00Heilig|r";
+
+MultiBot.info.talent.Priest3 =
+"|cffffcc00Schatten|r";
+
+MultiBot.info.talent.Rogue1 =
+"|cffffcc00Meucheln|r";
+
+MultiBot.info.talent.Rogue2 =
+"|cffffcc00Kampf|r";
+
+MultiBot.info.talent.Rogue3 =
+"|cffffcc00Täuschung|r";
+
+MultiBot.info.talent.Shaman1 =
+"|cffffcc00Elementar|r";
+
+MultiBot.info.talent.Shaman2 =
+"|cffffcc00Verstärker|r";
+
+MultiBot.info.talent.Shaman3 =
+"|cffffcc00Wiederherstellung|r";
+
+MultiBot.info.talent.Warlock1 =
+"|cffffcc00Gebrechen|r";
+
+MultiBot.info.talent.Warlock2 =
+"|cffffcc00Dämonologie|r";
+
+MultiBot.info.talent.Warlock3 =
+"|cffffcc00Zerstörung|r";
+
+MultiBot.info.talent.Warrior1 =
+"|cffffcc00Waffen|r";
+
+MultiBot.info.talent.Warrior2 =
+"|cffffcc00Furor|r";
+
+MultiBot.info.talent.Warrior3 =
+"|cffffcc00Schutz|r";
+
 -- MOVE --
 
 MultiBot.tips.move.inventory =
@@ -2164,5 +2269,12 @@ MultiBot.tips.every.spellbook =
 "Linksklicken um einen Zauber direkt zu verwenden.\n"..
 "Rechtsklicken um einen Zauber als Macro in die Hotbars zu legen.|r\n\n"..
 "|cffff0000Linksklicken um das Zauberbuch zu öffnen oder schließen|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.every.talent =
+"Talente|cffffffff\n"..
+"Diese Schaltfläche öffnet oder schließt die Talente des Bots.\n"..
+"Die Talente öffnen zeitverzögert, damit das System die Punkte laden kann.|r\n\n"..
+"|cffff0000Linksklicken um das Talente zu öffnen oder schließen|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 end

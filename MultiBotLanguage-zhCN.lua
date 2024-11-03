@@ -77,6 +77,110 @@ MultiBot.info.combination =
 MultiBot.info.reward =
 "选择奖励。";
 
+-- INFO:TALENT --
+
+MultiBot.info.talent.OutOfRange =
+"The Bot is out of Range.";
+
+MultiBot.info.talent.Apply = 
+"Apply";
+
+MultiBot.info.talent.Title =
+"Talents from NAME";
+
+MultiBot.info.talent.Points =
+"|cffffcc00Unspent Talents: |r";
+
+MultiBot.info.talent.DeathKnight1 =
+"|cffffcc00Blood|r";
+
+MultiBot.info.talent.DeathKnight2 =
+"|cffffcc00Frost|r";
+
+MultiBot.info.talent.DeathKnight3 =
+"|cffffcc00Unholy|r";
+
+MultiBot.info.talent.Druid1 =
+"|cffffcc00Balance|r";
+
+MultiBot.info.talent.Druid2 =
+"|cffffcc00Feral Combat|r";
+
+MultiBot.info.talent.Druid3 =
+"|cffffcc00Restoration|r";
+
+MultiBot.info.talent.Hunter1 =
+"|cffffcc00Beast Mastery|r";
+
+MultiBot.info.talent.Hunter2 =
+"|cffffcc00Marksmenschip|r";
+
+MultiBot.info.talent.Hunter3 =
+"|cffffcc00Survival|r";
+
+MultiBot.info.talent.Mage1 =
+"|cffffcc00Arcane|r";
+
+MultiBot.info.talent.Mage2 =
+"|cffffcc00Fire|r";
+
+MultiBot.info.talent.Mage3 =
+"|cffffcc00Frost|r";
+
+MultiBot.info.talent.Paladin1 =
+"|cffffcc00Holy|r";
+
+MultiBot.info.talent.Paladin2 =
+"|cffffcc00Protection|r";
+
+MultiBot.info.talent.Paladin3 =
+"|cffffcc00Retribution|r";
+
+MultiBot.info.talent.Priest1 =
+"|cffffcc00Discipline|r";
+
+MultiBot.info.talent.Priest2 =
+"|cffffcc00Holy|r";
+
+MultiBot.info.talent.Priest3 =
+"|cffffcc00Shadow|r";
+
+MultiBot.info.talent.Rogue1 =
+"|cffffcc00Assassination|r";
+
+MultiBot.info.talent.Rogue2 =
+"|cffffcc00Combat|r";
+
+MultiBot.info.talent.Rogue3 =
+"|cffffcc00Subtlety|r";
+
+MultiBot.info.talent.Shaman1 =
+"|cffffcc00Elemental|r";
+
+MultiBot.info.talent.Shaman2 =
+"|cffffcc00Enchanement|r";
+
+MultiBot.info.talent.Shaman3 =
+"|cffffcc00Restoration|r";
+
+MultiBot.info.talent.Warlock1 =
+"|cffffcc00Affliction|r";
+
+MultiBot.info.talent.Warlock2 =
+"|cffffcc00Demonology|r";
+
+MultiBot.info.talent.Warlock3 =
+"|cffffcc00Destruction|r";
+
+MultiBot.info.talent.Warrior1 =
+"|cffffcc00Arms|r";
+
+MultiBot.info.talent.Warrior2 =
+"|cffffcc00Fury|r";
+
+MultiBot.info.talent.Warrior3 =
+"|cffffcc00Protection|r";
+
 -- 移动 --
 
 MultiBot.tips.move.inventory =
@@ -2165,4 +2269,11 @@ MultiBot.tips.every.spellbook =
 "右键单击法术可以将宏添加到你的技能栏。|r\n\n"..
 "|cffff0000左键单击打开或关闭法术书|r\n"..
 "|cff999999(执行命令: 机器人)|r";
+
+MultiBot.tips.every.talent =
+"Talent|cffffffff\n"..
+"It opens or closes the Talents of this Bot.\n"..
+"It opens with a time delay while the system loads the talent values.|r\n\n",
+"|cffff0000Left-Click to open or close the Talents|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
 end
