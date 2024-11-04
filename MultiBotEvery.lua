@@ -71,6 +71,8 @@ MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 			pButton.setDisable()
 			MultiBot.talent:Hide()
 			MultiBot.talent.doClear()
+		elseif(UnitLevel(MultiBot.toUnit(pButton.getName())) < 10) then
+			SendChatMessage(MultiBot.info.talent.Level, "SAY")
 		elseif(CheckInteractDistance(MultiBot.toUnit(pButton.getName()), 1) == nil) then
 			SendChatMessage(MultiBot.info.talent.OutOfRange, "SAY")
 		else

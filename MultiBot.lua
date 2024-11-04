@@ -131,6 +131,9 @@ MultiBot.info.reward =
 
 MultiBot.info.talent = {}
 
+MultiBot.info.talent.Level =
+"His Level lower than 10.";
+
 MultiBot.info.talent.OutOfRange =
 "The Bot is out of Range.";
 

@@ -80,6 +80,9 @@ MultiBot.info.reward =
 
 -- INFO:TALENT --
 
+MultiBot.info.talent.Level =
+"Sein Level ist kleiner als 10.";
+
 MultiBot.info.talent.OutOfRange =
 "Der Bot ist außer Reichweite.";
 
