@@ -33,6 +33,9 @@ MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 		MultiBot.OnOffActionToTarget(pButton, "nc +gather,?", "nc -gather,?", pButton.getName())
 	end
 	
+	-- Selfbot is not allowed to use these Tools --
+	if(pFrame.getName() == UnitName("player")) then return end
+	
 	pFrame.addButton("Inventory", 214, 0, "inv_misc_bag_08", MultiBot.tips.every.inventory).setDisable()
 	.doLeft = function(pButton)
 		if(pButton.state) then
@@ -71,6 +74,8 @@ MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 			pButton.setDisable()
 			MultiBot.talent:Hide()
 			MultiBot.talent.doClear()
+		elseif(UnitLevel(MultiBot.toUnit(pButton.getName())) < 10) then
+			SendChatMessage(MultiBot.info.talent.Level, "SAY")
 		elseif(CheckInteractDistance(MultiBot.toUnit(pButton.getName()), 1) == nil) then
 			SendChatMessage(MultiBot.info.talent.OutOfRange, "SAY")
 		else

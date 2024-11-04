@@ -1046,7 +1046,7 @@ end
 
 tRight.addButton("Revive", 68, 0, "spell_holy_guardianspirit", MultiBot.tips.revive.group)
 .doLeft = function(pButton)
-	MultiBot.ActionToGroup("revive")
+	MultiBot.ActionToGroup(".revive")
 end
 
 -- SUMALL --

@@ -82,6 +82,9 @@ MultiBot.tips.move.talent =
 
 -- INFO:TALENT --
 
+MultiBot.info.talent.Level =
+"His Level is lower than 10.";
+
 MultiBot.info.talent.OutOfRange =
 "The Bot is out of Range.";
 
