@@ -585,7 +585,7 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
-		-- Ready to talk Bot is ready to Summon for the chinese Auto-Release --
+		-- Graveyard ready to talk Bot in the chinese Version --
 		if(tButton.waitFor == "你好" and arg1 == "你好") then
 			SendChatMessage("summon", "WHISPER", nil, arg2)
 			tButton.waitFor = ""
@@ -639,7 +639,7 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
-		if(tButton.waitFor == "ITEM" and MultiBot.isInside(arg1, "Bag", "Dur", "XP", "背包", "耐久度", "经验值")) then
+		if(tButton.waitFor == "ITEM" and MultiBot.isInside(arg1, "Bag,", "Dur", "XP", "背包", "耐久度", "经验值")) then
 			MultiBot.inventory:Show()
 			tButton.waitFor = ""
 			InspectUnit(arg2)
@@ -667,7 +667,7 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
-		if(tButton.waitFor == "SPELL" and MultiBot.isInside(arg1, "Bag", "Dur", "XP", "背包", "耐久度", "经验值")) then
+		if(tButton.waitFor == "SPELL" and MultiBot.isInside(arg1, "Bag,", "Dur", "XP", "背包", "耐久度", "经验值")) then
 			local tOverlay = MultiBot.spellbook.frames["Overlay"]
 			local tSpellbook = MultiBot.spellbook
 			tSpellbook.now = 1
