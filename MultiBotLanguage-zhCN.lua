@@ -80,7 +80,7 @@ MultiBot.info.reward =
 -- 信息:天赋 --
 
 MultiBot.info.talent.Level =
-"His Level is lower than 10.";
+"他的等级低于 10 级。";
 
 MultiBot.info.talent.OutOfRange =
 "机器人超出范围。";
