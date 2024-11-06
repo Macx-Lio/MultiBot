@@ -265,7 +265,11 @@ MultiBot:SetScript("OnEvent", function()
 			for i = 1, table.getn(tCommands) do SendChatMessage(i .. " : " .. tCommands[i], "SAY") end
 		end
 		
-		if(MultiBot.auto.release and MultiBot.isInside(arg1, "ist tot", "has dies", "已经死亡")) then
+		if(MultiBot.auto.release and MultiBot.isInside(arg1, "已经死亡")) then
+			SendChatMessage("release", "WHISPER", nil, MultiBot.doReplace(arg1, "已经死亡。", ""))
+		end
+		
+		if(MultiBot.auto.release and MultiBot.isInside(arg1, "ist tot", "has dies", "has died")) then
 			SendChatMessage("release", "WHISPER", nil, MultiBot.doSplit(arg1, " ")[1])
 		end
 		
@@ -486,7 +490,13 @@ MultiBot:SetScript("OnEvent", function()
 	-- CHAT:WHISPER --
 	
 	if(event == "CHAT_MSG_WHISPER") then
-		if(MultiBot.auto.release and (arg1 == "Meet me at the graveyard" or arg1 == "在墓地复活我")) then
+		-- Graveyard not ready to talk Bot in the chinese Version --
+		if(MultiBot.auto.release and arg1 == "在墓地见我") then
+			MultiBot.frames["MultiBar"].frames["Units"].buttons[arg2].waitFor = "你好"
+			return
+		end
+		
+		if(MultiBot.auto.release and arg1 == "Meet me at the graveyard") then
 			SendChatMessage("summon", "WHISPER", nil, arg2)
 			return
 		end
@@ -573,6 +583,12 @@ MultiBot:SetScript("OnEvent", function()
 		if(arg1 == "Goodbye!") then
 			--MultiBot.doRaid()
 			return
+		end
+		
+		-- Ready to talk Bot is ready to Summon for the chinese Auto-Release --
+		if(tButton.waitFor == "你好" and arg1 == "你好") then
+			SendChatMessage("summon", "WHISPER", nil, arg2)
+			tButton.waitFor = ""
 		end
 		
 		if(tButton.waitFor == "NC" and MultiBot.isInside(arg1, "Strategies: ")) then
