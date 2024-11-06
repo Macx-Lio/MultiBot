@@ -2159,6 +2159,136 @@ tTab.arrows = {}
 tTab.value = 0
 tTab.id = 3
 
+--[[
+local tTab = MultiBot.talent.addFrame("Tab4", -513, 518, 28, 456, 430)
+tTab.addFrame("Glow", 0, 0, 28, 456, 430).setAlpha(0.5).doHide().addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Glow.blp")
+tTab.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs.blp")
+tTab:Hide()
+
+-- GLYPH:SOCKET1 --
+
+-- Level 15
+local tGlyph = tTab.addFrame("Socket1", -176.5, 324, 102)
+tGlyph.addFrame("Glow",   0,  0, 102).setLevel(7).doHide().addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Major.blp")
+tGlyph.addFrame("Rune", -29, 29,  44).setLevel(8).setAlpha(0.7).doHide().addTexture("Interface/Spellbook/UI-Glyph-Rune-1")
+tGlyph.type = "Major"
+tGlyph.item = 0
+
+tGlyph.addFrame("Overlay", -10, 10, 82).setLevel(9).doHide()
+.addButton("Rune", 0, 0, "Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Major_Socket.blp", "")
+.setHighlight("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Highlight.blp")
+.doLeft = function(pButton)
+	local tType, tItem, tLink = GetCursorInfo()
+	if(tType ~= "item") then return end
+	
+	local tGlyph = MultiBot.doSplit(MultiBot.data.talent.glylphs[pButton.getClass()][pButton.parent.parent.type][cItem], ", ")
+	if(tGlyph == nil) then return SendChatMessage("This Glyph is not allowed in this Socket.", "SAY") end
+	
+	local tLevel = UnitLevel(MultiBot.toUnit(pButton.getName()))
+	if(tGlyph[1] > tLevel) then return SendChatMessage("The Level of the Bot is to low.", "SAY") end
+	
+	local tSocket = pButton.parent.parent
+	tSocket.frames["Glow"].doShow()
+	tSocket.frames["Rune"].doShow().setTexture("Interface/Spellbook/UI-Glyph-Rune" .. tGlyph[2])
+	tSocket.item = tItem
+	DeleteCursorItem()
+end
+
+-- GLYPH:SOCKET2 --
+
+-- Level 15
+local tGlyph = tTab.addFrame("Socket2", -187, 18.5, 82)
+tGlyph.addFrame("Glow",   0,  0, 82).setLevel(7).doHide().addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Minor.blp")
+tGlyph.addFrame("Rune", -25, 25, 32).setLevel(8).setAlpha(0.7).doHide().addTexture("Interface/Spellbook/UI-Glyph-Rune-1")
+tGlyph.type = "Minor"
+
+tGlyph.addFrame("Overlay", -7, 7, 68).setLevel(9).doHide()
+.addButton("Rune", 0, 0, "Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Minor_Socket.blp", "")
+.setHighlight("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Highlight.blp")
+.doLeft = function(pButton)
+end
+
+-- GLYPH:SOCKET3 --
+
+-- Level 30
+local tGlyph = tTab.addFrame("Socket3", -18.5, 50.5, 102)
+tGlyph.addFrame("Glow",   0,  0, 102).setLevel(7).doHide().addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Major.blp")
+tGlyph.addFrame("Rune", -29, 29,  44).setLevel(8).setAlpha(0.7).doHide().addTexture("Interface/Spellbook/UI-Glyph-Rune-1")
+tGlyph.type = "Major"
+
+tGlyph.addFrame("Overlay", -10, 10, 82).setLevel(9).doHide()
+.addButton("Rune", 0, 0, "Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Major_Socket.blp", "")
+.setHighlight("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Highlight.blp")
+.doLeft = function(pButton)
+end
+
+-- GLYPH:SOCKET4 --
+
+-- Level 50
+local tGlyph = tTab.addFrame("Socket4", -302.5, 218, 82)
+tGlyph.addFrame("Glow",   0,  0, 82).setLevel(7).doHide().addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Minor.blp")
+tGlyph.addFrame("Rune", -25, 25, 32).setLevel(8).setAlpha(0.7).doHide().addTexture("Interface/Spellbook/UI-Glyph-Rune-1")
+tGlyph.type = "Minor"
+
+tGlyph.addFrame("Overlay", -7, 7, 68).setLevel(9).doHide()
+.addButton("Rune", 0, 0, "Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Minor_Socket.blp", "")
+.setHighlight("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Highlight.blp")
+.doLeft = function(pButton)
+end
+
+-- GLYPH:SOCKET5 --
+
+-- Level 70
+local tGlyph = tTab.addFrame("Socket5", -72.5, 218, 82)
+tGlyph.addFrame("Glow",   0,  0, 82).setLevel(7).doHide().addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Minor.blp")
+tGlyph.addFrame("Rune", -25, 25, 32).setLevel(8).setAlpha(0.7).doHide().addTexture("Interface/Spellbook/UI-Glyph-Rune-1")
+tGlyph.type = "Minor"
+
+tGlyph.addFrame("Overlay", -7, 7, 68).setLevel(9).doHide()
+.addButton("Rune", 0, 0, "Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Minor_Socket.blp", "")
+.setHighlight("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Highlight.blp")
+.doLeft = function(pButton)
+end
+
+-- GLYPH:SOCKET6 --
+
+-- Level 80
+local tGlyph = tTab.addFrame("Socket6", -336, 50.5, 102)
+tGlyph.addFrame("Glow",   0,  0, 102).setLevel(7).doHide().addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Major.blp")
+tGlyph.addFrame("Rune", -29, 29,  44).setLevel(8).setAlpha(0.7).doHide().addTexture("Interface/Spellbook/UI-Glyph-Rune-1")
+tGlyph.type = "Major"
+
+tGlyph.addFrame("Overlay", -10, 10, 82).setLevel(9).doHide()
+.addButton("Rune", 0, 0, "Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Major_Socket.blp", "")
+.setHighlight("Interface\\AddOns\\MultiBot\\Textures\\Talent_Glyphs_Highlight.blp")
+.doLeft = function(pButton)
+end
+
+local tTab = MultiBot.talent.addFrame("Tab5", -900, 461, 28, 96, 24)
+tTab.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Tab.blp")
+tTab.wowButton("Talents", -2, 6, 92, 17, 11)
+.doLeft = function(pButton)
+	MultiBot.talent.setText("Title", MultiBot.doReplace(MultiBot.info.talent.Title, "NAME", MultiBot.talent.name))
+	MultiBot.talent.texts["Points"]:Show()
+	MultiBot.talent.frames["Tab1"]:Show()
+	MultiBot.talent.frames["Tab2"]:Show()
+	MultiBot.talent.frames["Tab3"]:Show()
+	MultiBot.talent.frames["Tab4"]:Hide()
+end
+
+local tTab = MultiBot.talent.addFrame("Tab6", -800, 461, 28, 96, 24)
+tTab.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Tab.blp")
+tTab.wowButton("Glyphs", -2, 6, 92, 17, 11)
+.doLeft = function(pButton)
+	MultiBot.talent.setText("Title", "Glyphs of " .. MultiBot.talent.name)
+	MultiBot.talent.texts["Points"]:Hide()
+	MultiBot.talent.frames["Tab1"]:Hide()
+	MultiBot.talent.frames["Tab2"]:Hide()
+	MultiBot.talent.frames["Tab3"]:Hide()
+	MultiBot.talent.frames["Tab4"]:Show()
+end
+]]--
+
 MultiBot.talent.addArrow = function(pTab, pID, pNeeds, piX, piY, pTexture)
 	local tArrow = pTab.addFrame("Arrow" .. pID, piX * 36 - 153, 395 - piY * 36, 44)
 	tArrow.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Silver_" .. pTexture .. ".blp")

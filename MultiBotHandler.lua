@@ -253,7 +253,19 @@ MultiBot:SetScript("OnEvent", function()
 	-- CHAT:SYSTEM --
 	
 	if(event == "CHAT_MSG_SYSTEM") then
-		if(MultiBot.auto.release and MultiBot.isInside(arg1, "ist tot", "has dies")) then
+		if(MultiBot.isInside(arg1, "Possible strategies")) then
+			local tStrategies = MultiBot.doSplit(arg1, ", ")
+			SendChatMessage("=== STRATEGIES ===", "SAY")
+			for i = 1, table.getn(tStrategies) do SendChatMessage(i .. " : " .. tStrategies[i], "SAY") end
+		end
+		
+		if(MultiBot.isInside(arg1, "Whisper any of")) then
+			local tCommands = MultiBot.doSplit(arg1, ", ")
+			SendChatMessage("=== WHISPER-COMMANDS ===", "SAY")
+			for i = 1, table.getn(tCommands) do SendChatMessage(i .. " : " .. tCommands[i], "SAY") end
+		end
+		
+		if(MultiBot.auto.release and MultiBot.isInside(arg1, "ist tot", "has dies", "已经死亡")) then
 			SendChatMessage("release", "WHISPER", nil, MultiBot.doSplit(arg1, " ")[1])
 		end
 		
@@ -474,7 +486,7 @@ MultiBot:SetScript("OnEvent", function()
 	-- CHAT:WHISPER --
 	
 	if(event == "CHAT_MSG_WHISPER") then
-		if(MultiBot.auto.release and arg1 == "Meet me at the graveyard") then
+		if(MultiBot.auto.release and (arg1 == "Meet me at the graveyard" or arg1 == "在墓地复活我")) then
 			SendChatMessage("summon", "WHISPER", nil, arg2)
 			return
 		end
@@ -599,7 +611,7 @@ MultiBot:SetScript("OnEvent", function()
 		
 		-- Inventory --
 		
-		if(tButton.waitFor == "INVENTORY" and MultiBot.isInside(arg1, "Inventory")) then
+		if(tButton.waitFor == "INVENTORY" and MultiBot.isInside(arg1, "Inventory", "背包")) then
 			local tItems = MultiBot.inventory.frames["Items"]
 			for key, value in pairs(tItems.buttons) do value:Hide() end
 			table.wipe(tItems.buttons)
@@ -611,7 +623,7 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
-		if(tButton.waitFor == "ITEM" and MultiBot.isInside(arg1, "Bag", "Dur", "XP")) then
+		if(tButton.waitFor == "ITEM" and MultiBot.isInside(arg1, "Bag", "Dur", "XP", "背包", "耐久度", "经验值")) then
 			MultiBot.inventory:Show()
 			tButton.waitFor = ""
 			InspectUnit(arg2)
@@ -639,7 +651,7 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
-		if(tButton.waitFor == "SPELL" and MultiBot.isInside(arg1, "Bag", "Dur", "XP")) then
+		if(tButton.waitFor == "SPELL" and MultiBot.isInside(arg1, "Bag", "Dur", "XP", "背包", "耐久度", "经验值")) then
 			local tOverlay = MultiBot.spellbook.frames["Overlay"]
 			local tSpellbook = MultiBot.spellbook
 			tSpellbook.now = 1

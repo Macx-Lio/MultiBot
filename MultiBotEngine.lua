@@ -72,10 +72,13 @@ MultiBot.doRemove = function(pIndex, pName)
 	return true
 end
 
-MultiBot.isInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern)
+MultiBot.isInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern, o4thPattern, o5thPattern, o6thPattern)
 	if(p1stPattern ~= nil and string.find(pString, p1stPattern)) then return true end
 	if(o2ndPattern ~= nil and string.find(pString, o2ndPattern)) then return true end
 	if(o3rdPattern ~= nil and string.find(pString, o3rdPattern)) then return true end
+	if(o4thPattern ~= nil and string.find(pString, o4thPattern)) then return true end
+	if(o5thPattern ~= nil and string.find(pString, o5thPattern)) then return true end
+	if(o6thPattern ~= nil and string.find(pString, o6thPattern)) then return true end
 	return false
 end
 
@@ -126,17 +129,29 @@ MultiBot.isUnit = function(pUnit)
 end
 
 MultiBot.toClass = function(pClass)
+	-- Chinese Support for Classes --
+	if(pClass == "死亡骑士") then return "DeathKnight" end
+	if(pClass == "德鲁伊") then return "Druid" end
+	if(pClass == "猎人") then return "Hunter" end
+	if(pClass == "法师") then return "Mage" end
+	if(pClass == "圣骑士") then return "Paladin" end
+	if(pClass == "牧师") then return "Priest" end
+	if(pClass == "潜行者") then return "Rogue" end
+	if(pClass == "萨满祭司") then return "Shaman" end
+	if(pClass == "术士") then return "Warlock" end
+	if(pClass == "战士") then return "Warrior" end
+	
 	local tClass = string.lower(string.sub(pClass, 1, 1) .. string.sub(pClass, 4, 4))
+	if(tClass == "te" or tClass == "dt") then return "DeathKnight" end
 	if(tClass == "di" or tClass == "di") then return "Druid" end
-	if(tClass == "he" or tClass == "wl") then return "Warlock" end
 	if(tClass == "jg" or tClass == "ht") then return "Hunter" end
-	if(tClass == "ke" or tClass == "wr") then return "Warrior" end
 	if(tClass == "mi" or tClass == "me") then return "Mage" end
 	if(tClass == "pa" or tClass == "pa") then return "Paladin" end
 	if(tClass == "pe" or tClass == "pe") then return "Priest" end
-	if(tClass == "sa" or tClass == "sm") then return "Shaman" end
 	if(tClass == "su" or tClass == "ru") then return "Rogue" end
-	if(tClass == "te" or tClass == "dt") then return "DeathKnight" end
+	if(tClass == "sa" or tClass == "sm") then return "Shaman" end
+	if(tClass == "he" or tClass == "wl") then return "Warlock" end
+	if(tClass == "ke" or tClass == "wr") then return "Warrior" end
 	return "Unknown"
 end
 
@@ -428,25 +443,35 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 	
 	frame.setPoint = function(pX, pY)
 		frame:SetPoint("BOTTOMRIGHT", pX, pY)
-		return true
+		return frame
 	end
 	
 	frame.setButton = function(pIndex, pTexture, pTip)
 		frame.buttons[pIndex].setButton(pTexture, pTip)
-		return true
+		return frame
 	end
 	
 	frame.setTexture = function(pTexture)
 		frame.texture:SetTexture(MultiBot.IF(string.sub(pTexture, 1, 9) ~= "Interface", "Interface/Icons/", "") .. pTexture)
 		frame.texture:SetAllPoints(frame)
 		frame.texture:Show()
-		return true
+		return frame
 	end
 	
 	frame.setText = function(pIndex, pText)
 		frame.texts[pIndex]:SetText(pText)
 		frame.texts[pIndex]:Show()
-		return true
+		return frame
+	end
+	
+	frame.setLevel = function(pLevel)
+		frame:SetFrameLevel(pLevel)
+		return frame
+	end
+	
+	frame.setAlpha = function(pAlpha)
+		frame:SetAlpha(pAlpha)
+		return frame
 	end
 	
 	-- GET --
@@ -492,6 +517,18 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 		return frame.parent.get()
 	end
 	
+	-- DO --
+	
+	frame.doShow = function()
+		frame:Show()
+		return frame
+	end
+	
+	frame.doHide = function()
+		frame:Hide()
+		return frame
+	end
+	
 	return frame
 end
 
@@ -534,6 +571,11 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
 		button.icon:SetAllPoints(button)
 		button.texture = pTexture
 		button.tip = pTip
+		return button
+	end
+	
+	button.setHighlight = function(pTexture)
+		button:SetHighlightTexture(pTexture, "ADD")
 		return button
 	end
 	
