@@ -84,7 +84,8 @@ MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 			
 			InspectUnit(MultiBot.toUnit(pButton.getName()))
 			pButton.setEnable()
-			
+			MultiBot.talent:Hide()
+			MultiBot.talent.doClear()
 			MultiBot.talent.name = pButton.getName()
 			MultiBot.talent.class = pButton.getClass()
 			MultiBot.auto.talent = true

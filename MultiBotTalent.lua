@@ -1131,7 +1131,7 @@ MultiBot.data.talent.talents = {
 }
 }
 }
-
+--[[
 MultiBot.data.talent.glyphs = {
 ["DeathKnight"] = {
 ["Minor"] = {
@@ -1547,3 +1547,4 @@ MultiBot.data.talent.glyphs = {
 }
 }
 }
+]]--

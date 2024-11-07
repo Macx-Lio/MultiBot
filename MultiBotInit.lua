@@ -2311,7 +2311,6 @@ MultiBot.talent.addTalent = function(pTab, pID, pNeeds, pValue, pMax, piX, piY, 
 		if(MultiBot.talent.points == 0) then return end
 		
 		local tButtons = pButton.parent.buttons
-		local tArrows = pButton.parent.arrows
 		local tValue = pButton.parent.frames[pButton.id]
 		local tTab = pButton.parent
 		
@@ -2445,9 +2444,13 @@ MultiBot.talent.doClear = function()
 		local tTab = MultiBot.talent.frames["Tab" .. i]
 		for j = 1, table.getn(tTab.buttons) do tTab.buttons[j]:Hide() end
 		for j = 1, table.getn(tTab.frames) do tTab.frames[j]:Hide() end
+		for j = 1, table.getn(tTab.arrows) do tTab.arrows[j]:Hide() end
 		table.wipe(tTab.buttons)
 		table.wipe(tTab.frames)
 		table.wipe(tTab.arrows)
+		tTab.buttons = {}
+		tTab.frames = {}
+		tTab.arrows = {}
 	end
 end
 
