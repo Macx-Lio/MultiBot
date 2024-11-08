@@ -1822,7 +1822,7 @@ MultiBot.reward:Hide()
 
 MultiBot.reward.doClose = function()
 	local tOverlay = MultiBot.reward.frames["Overlay"]
-	for i = 1, 12 do if(tOverlay.frames["U" .. MultiBot.IF(i < 10, "0", "") .. i]:IsVisible()) then return end end
+	for key, value in pairs(MultiBot.reward.units) do if(value.rewarded == false) then return end end
 	MultiBot.reward:Hide()
 end
 
