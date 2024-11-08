@@ -1002,9 +1002,9 @@ MultiBot.tips.inventory.drop =
 
 MultiBot.tips.inventory.open =
 "Items öffnen|cffffffff\n"..
-"Diese Schaltfläche öffnet jede Tasche, Truhe oder Muschel.\n"..
-"Der Inhalt wird in das Inventar gelegt.|r\n\n"..
-"|cffff0000Linksklicken um die Taschen, Truhen oder Muscheln zu öffnen|r\n"..
+"Diese Schaltfläche öffnet die erste auffindbare Beute-Tasche im Inventar.\n"..
+"Der Inhalt wird automatisch in das Inventar gelegt.|r\n\n"..
+"|cffff0000Linksklicken um eine Beute-Tasche zu öffnen|r\n"..
 "|cff999999(Ausführreihenfolge-Order: Bot)|r";
 
 -- ITEMUS:LEVEL --

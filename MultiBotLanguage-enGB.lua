@@ -1002,9 +1002,9 @@ MultiBot.tips.inventory.drop =
 
 MultiBot.tips.inventory.open =
 "Open-Items|cffffffff\n"..
-"This Button will open every Bag, Chest or Shell.\n"..
-"The Content will be put into the Inventory.|r\n\n"..
-"|cffff0000Left-Click to open a Bag, Chest or Shell|r\n"..
+"This Button will open the first findable Loot-Bag in your Inventory.\n"..
+"The Content will be put automatically into the Inventory.|r\n\n"..
+"|cffff0000Left-Click to open a Loot-Bag|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 -- ITEMUS:LEVEL --

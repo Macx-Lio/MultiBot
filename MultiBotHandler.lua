@@ -688,9 +688,41 @@ MultiBot:SetScript("OnEvent", function()
 		
 		-- EQUIPPING --
 		
-		if(MultiBot.isInside(string.lower(arg1), "equipping", "using", "eating", "drinking", "feasting", "opened", "destroyed")) then
+		if(MultiBot.inventory:IsVisible() and MultiBot.isInside(arg1, "装备", "使用", "吃", "喝", "盛宴", "摧毁")) then
 			tButton.waitFor = "INVENTORY"
 			SendChatMessage("items", "WHISPER", nil, tButton.name)
+		end
+		
+		if(MultiBot.inventory:IsVisible() and MultiBot.isInside(string.lower(arg1), "equipping", "using", "eating", "drinking", "feasting", "destroyed")) then
+			tButton.waitFor = "INVENTORY"
+			SendChatMessage("items", "WHISPER", nil, tButton.name)
+		end
+		
+		if(MultiBot.inventory:IsVisible() and MultiBot.isInside(string.lower(arg1), "opened")) then
+			tButton.waitFor = "LOOT"
+		end
+		
+		return
+	end
+	
+	if(event == "CHAT_MSG_LOOT") then
+		local tButton = nil
+		
+		if(MultiBot.inventory:IsVisible() and MultiBot.isInside(string.lower(arg1), "beute", "receives")) then
+			local tName = MultiBot.doSplit(arg1, " ")[1]
+			tButton = MultiBot.frames["MultiBar"].frames["Units"].buttons[tName]
+		end
+		
+		if(MultiBot.inventory:IsVisible() and MultiBot.isInside(arg1, "获得了物品")) then
+			local tName = MultiBot.doReplace(MultiBot.doSplit(arg1, ":")[1], "获得了物品", "")
+			tButton = MultiBot.frames["MultiBar"].frames["Units"].buttons[tName]
+		end
+		
+		if(MultiBot.inventory:IsVisible() and tButton ~= nil and tButton.waitFor == "LOOT" and tButton ~= nil) then
+			tButton.waitFor = "INVENTORY"
+			SendChatMessage("items", "WHISPER", nil, tButton.name)
+			PlaySound("ITEMARMORSOUND", "SFX")
+			return
 		end
 		
 		return
