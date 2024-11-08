@@ -32,6 +32,7 @@ MultiBot.addStats = function(pFrame, pIndex, pX, pY, pSize, pWidth, pHeight)
 	tFrame.setStats = function(pName, pLevel, pStats, oPlayer)
 		local tFrame = MultiBot.stats.frames[MultiBot.toUnit(pName)]
 		local tAddon = tFrame.frames["Addon"]
+		local tChina = GetLocale() == "zhCN"
 		
 		if(oPlayer ~= nil and oPlayer == true) then
 			local tStats = MultiBot.doSplit(pStats, ", ")
@@ -45,7 +46,7 @@ MultiBot.addStats = function(pFrame, pIndex, pX, pY, pSize, pWidth, pHeight)
 			if(pLevel == 80) then
 				tAddon.texts["Percent"]:SetText(tFrame.setProgress(tFrame, tMana) .. "%\nMP")
 			else
-				tAddon.texts["Percent"]:SetText(tFrame.setProgress(tFrame, tXP) .. "%\nXP")
+				tAddon.texts["Percent"]:SetText(tFrame.setProgress(tFrame, tXP) .. "%\n" .. MultiBot.IF(tChina, "经验值", "XP"))
 			end
 			
 			tFrame:Show()
@@ -54,7 +55,7 @@ MultiBot.addStats = function(pFrame, pIndex, pX, pY, pSize, pWidth, pHeight)
 		
 		local tStats = MultiBot.doSplit(pStats, ", ")
 		local tMoney = "|cffffdd55" .. tStats[1] .. "|r, "
-		local tBag = tStats[2]
+		local tBag = MultiBot.IF(tChina, MultiBot.replace(tStats[2], "Bag", "背包"), tStats[2])
 		
 		tFrame.texts["Name"]:SetText(pName)
 		tFrame.texts["Level"]:SetText(pLevel)
@@ -65,10 +66,10 @@ MultiBot.addStats = function(pFrame, pIndex, pX, pY, pSize, pWidth, pHeight)
 			local tQuality = tonumber(string.sub(tDur[1], 1, string.len(tDur[1]) - 1))
 			local tRepair = tonumber(string.sub(tDur[2], 2, string.len(tDur[2]) - 1))
 			if(tQuality == 0 and tRepair == 0) then tQuality = 100 end
-			tAddon.texts["Percent"]:SetText(tFrame.setProgress(tFrame, tQuality) .. "%\nDur")
+			tAddon.texts["Percent"]:SetText(tFrame.setProgress(tFrame, tQuality) .. "%\n" .. MultiBot.IF(tChina, "耐久度", "Dur"))
 		else
 			local tXP = tonumber(string.sub(MultiBot.doSplit(tStats[4], "|")[2], 10))
-			tAddon.texts["Percent"]:SetText(tFrame.setProgress(tFrame, tXP) .. "%\nXP")
+			tAddon.texts["Percent"]:SetText(tFrame.setProgress(tFrame, tXP) .. "%\n" .. MultiBot.IF(tChina, "经验值", "XP"))
 		end
 		
 		tFrame:Show()
