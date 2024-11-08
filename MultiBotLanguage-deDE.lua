@@ -1000,6 +1000,13 @@ MultiBot.tips.inventory.drop =
 "|cffff0000Linktsklicken um Zerstören zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
+MultiBot.tips.inventory.open =
+"Items öffnen|cffffffff\n"..
+"Diese Schaltfläche öffnet jede Tasche, Truhe oder Muschel.\n"..
+"Der Inhalt wird in das Inventar gelegt.|r\n\n"..
+"|cffff0000Linksklicken um die Taschen, Truhen oder Muscheln zu öffnen|r\n"..
+"|cff999999(Ausführreihenfolge-Order: Bot)|r";
+
 -- ITEMUS:LEVEL --
 
 MultiBot.tips.itemus.level.master =

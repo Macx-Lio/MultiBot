@@ -407,10 +407,10 @@ tButton.roster = "players"
 tButton.filter = "none"
 
 tButton.doRight = function(pButton)
-	local tUnits = pButton.parent.frames["Units"]
-	for key, value in pairs(tUnits.buttons) do value:Hide() end
-	for key, value in pairs(tUnits.frames) do value:Hide() end
-	tUnits.frames["Control"]:Hide()
+	--local tUnits = pButton.parent.frames["Units"]
+	--for key, value in pairs(tUnits.buttons) do value:Hide() end
+	--for key, value in pairs(tUnits.frames) do value:Hide() end
+	--tUnits.frames["Control"]:Hide()
 	
 	-- MEMBERBOTS --
 	
@@ -419,7 +419,12 @@ tButton.doRight = function(pButton)
 		
 		-- Ensure that the Counter is not bigger than the Amount of Members in Guildlist
 		if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
-			local tMember = MultiBot.addMember(tClass, tLevel, tName).setDisable()
+			local tMember = MultiBot.addMember(tClass, tLevel, tName)
+			
+			if(tMember.state == false)
+			then tMember.setDisable()
+			else tMember.setEnable()
+			end
 			
 			tMember.doRight = function(pButton)
 				if(pButton.state == false) then return end
@@ -448,7 +453,12 @@ tButton.doRight = function(pButton)
 		
 		-- Ensure that the Counter is not bigger than the Amount of Members in Friendlist
 		if(tName ~= nil and tLevel ~= nil and tClass ~= nil and tName ~= UnitName("player")) then
-			local tFriend = MultiBot.addFriend(tClass, tLevel, tName).setDisable()
+			local tFriend = MultiBot.addFriend(tClass, tLevel, tName)
+			
+			if(tFriend.state == false)
+			then tFriend.setDisable()
+			else tFriend.setEnable()
+			end
 			
 			tFriend.doRight = function(pButton)
 				if(pButton.state == false) then return end
@@ -470,6 +480,7 @@ tButton.doRight = function(pButton)
 		end
 	end
 	
+	--[[
 	-- REFRESH:RAID --
 	
 	if(GetNumRaidMembers() > 4) then
@@ -491,6 +502,7 @@ tButton.doRight = function(pButton)
 		
 		return
 	end
+	]]--
 	
 	pButton.doLeft(pButton, pButton.roster, pButton.filter)
 end
@@ -1128,6 +1140,11 @@ MultiBot.inventory.addButton("Destroy", -94, 694, "inv_hammer_15", MultiBot.tips
 		pButton.getButton("Use").setDisable()
 		pButton.setEnable()
 	end
+end
+
+MultiBot.inventory.addButton("Open", -94, 657, "inv_misc_gift_05", MultiBot.tips.inventory.open)
+.doLeft = function(pButton)
+	SendChatMessage("open items", "WHISPER", nil, pButton.getName())
 end
 
 local tFrame = MultiBot.inventory.addFrame("Items", -397, 807, 32)

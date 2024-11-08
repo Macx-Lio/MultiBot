@@ -1088,6 +1088,13 @@ MultiBot.tips.inventory.drop =
 "|cffff0000Left-Click to drop a Item|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
+MultiBot.tips.inventory.open =
+"Open-Items|cffffffff\n"..
+"This Button will open every Bag, Chest or Shell.\n"..
+"The Content will be put into the Inventory.|r\n\n"..
+"|cffff0000Left-Click to open a Bag, Chest or Shell|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
 -- ITEMUS:LEVEL --
 
 MultiBot.tips.itemus = {}

@@ -73,19 +73,20 @@ MultiBot.addEvery = function(pFrame, pCombat, pNormal)
 		if(pButton.state) then
 			pButton.setDisable()
 			MultiBot.talent:Hide()
-			MultiBot.talent.doClear()
 		elseif(UnitLevel(MultiBot.toUnit(pButton.getName())) < 10) then
 			SendChatMessage(MultiBot.info.talent.Level, "SAY")
 		elseif(CheckInteractDistance(MultiBot.toUnit(pButton.getName()), 1) == nil) then
 			SendChatMessage(MultiBot.info.talent.OutOfRange, "SAY")
 		else
+			MultiBot.talent:Hide()
+			MultiBot.talent.doClear()
+			
 			local tUnits = MultiBot.frames["MultiBar"].frames["Units"]
 			for key, value in pairs(MultiBot.index.actives) do tUnits.frames[value].getButton("Talent").setDisable() end
 			
 			InspectUnit(MultiBot.toUnit(pButton.getName()))
 			pButton.setEnable()
-			MultiBot.talent:Hide()
-			MultiBot.talent.doClear()
+			
 			MultiBot.talent.name = pButton.getName()
 			MultiBot.talent.class = pButton.getClass()
 			MultiBot.auto.talent = true

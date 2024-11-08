@@ -686,6 +686,13 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
+		-- EQUIPPING --
+		
+		if(MultiBot.isInside(string.lower(arg1), "equipping", "using", "eating", "drinking", "feasting", "opened", "destroyed")) then
+			tButton.waitFor = "INVENTORY"
+			SendChatMessage("items", "WHISPER", nil, tButton.name)
+		end
+		
 		return
 	end
 	

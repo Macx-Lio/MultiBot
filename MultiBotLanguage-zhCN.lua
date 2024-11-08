@@ -999,6 +999,13 @@ MultiBot.tips.inventory.drop =
 "|cffff0000左键单击丢弃物品|r\n"..
 "|cff999999(执行命令: 机器人)|r";
 
+MultiBot.tips.inventory.open =
+"Open-Items|cffffffff\n"..
+"This Button will open every Bag, Chest or Shell.\n"..
+"The Content will be put into the Inventory.|r\n\n"..
+"|cffff0000Left-Click to open a Bag, Chest or Shell|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
 -- 等级过滤器 --
 
 MultiBot.tips.itemus.level.master =

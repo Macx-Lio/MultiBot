@@ -72,13 +72,16 @@ MultiBot.doRemove = function(pIndex, pName)
 	return true
 end
 
-MultiBot.isInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern, o4thPattern, o5thPattern, o6thPattern)
+MultiBot.isInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern, o4thPattern, o5thPattern, o6thPattern, o7thPattern, o8thPattern, o9thPattern)
 	if(p1stPattern ~= nil and string.find(pString, p1stPattern)) then return true end
 	if(o2ndPattern ~= nil and string.find(pString, o2ndPattern)) then return true end
 	if(o3rdPattern ~= nil and string.find(pString, o3rdPattern)) then return true end
 	if(o4thPattern ~= nil and string.find(pString, o4thPattern)) then return true end
 	if(o5thPattern ~= nil and string.find(pString, o5thPattern)) then return true end
 	if(o6thPattern ~= nil and string.find(pString, o6thPattern)) then return true end
+	if(o7thPattern ~= nil and string.find(pString, o7thPattern)) then return true end
+	if(o8thPattern ~= nil and string.find(pString, o8thPattern)) then return true end
+	if(o9thPattern ~= nil and string.find(pString, o9thPattern)) then return true end
 	return false
 end
 
@@ -574,11 +577,6 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
 		return button
 	end
 	
-	button.setHighlight = function(pTexture)
-		button:SetHighlightTexture(pTexture, "ADD")
-		return button
-	end
-	
 	button.setTexture = function(pTexture)
 		button.icon:SetTexture(MultiBot.IF(string.sub(pTexture, 1, 9) ~= "Interface", "Interface/Icons/", "") .. pTexture)
 		button.icon:SetAllPoints(button)
@@ -586,7 +584,13 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
 		return button
 	end
 	
+	button.setHighlight = function(pTexture)
+		button:SetHighlightTexture(pTexture, "ADD")
+		return button
+	end
+	
 	button.setAmount = function(pAmount)
+		if(button.amount ~= nil) then button.amount:Hide() end
 		button.amount = button:CreateFontString(nil, "ARTWORK")
 		button.amount:SetFont("Fonts\\ARIALN.ttf", 13, "OUTLINE")
 		button.amount:SetPoint("BOTTOMRIGHT", 0, 0)

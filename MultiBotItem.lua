@@ -41,8 +41,6 @@ MultiBot.addItem = function(pFrame, pInfo)
 		
 		if(tAction == "e" or tAction == "u") then
 			SendChatMessage(tAction .. " " .. pButton.tip, "WHISPER", nil, tName)
-			MultiBot.frames["MultiBar"].frames["Units"].buttons[tName].waitFor = "INVENTORY"
-			SendChatMessage("items", "WHISPER", nil, tName)
 			return
 		end
 		
