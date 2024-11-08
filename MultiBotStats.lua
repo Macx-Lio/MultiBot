@@ -55,7 +55,7 @@ MultiBot.addStats = function(pFrame, pIndex, pX, pY, pSize, pWidth, pHeight)
 		
 		local tStats = MultiBot.doSplit(pStats, ", ")
 		local tMoney = "|cffffdd55" .. tStats[1] .. "|r, "
-		local tBag = MultiBot.IF(tChina, MultiBot.replace(tStats[2], "Bag", "背包"), tStats[2])
+		local tBag = MultiBot.IF(tChina, MultiBot.doReplace(tStats[2], "Bag", "背包"), tStats[2])
 		
 		tFrame.texts["Name"]:SetText(pName)
 		tFrame.texts["Level"]:SetText(pLevel)
