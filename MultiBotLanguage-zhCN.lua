@@ -968,11 +968,14 @@ MultiBot.tips.summon.group =
 -- 物品 --
 
 MultiBot.tips.inventory.sell =
-"Open-Items|cffffffff\n"..
-"This Button will open the first findable Loot-Bag in your Inventory.\n"..
-"The Content will be put automatically into the Inventory.|r\n\n"..
-"|cffff0000Left-Click to open a Loot-Bag|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"出售物品 |cffffffff\n"..
+"此功能启用背包的出售模式。\n"..
+"你必须将商人设置为目标。\n"..
+"出于安全原因，你的机器人不会出售：\n"..
+" - 名称中包含 '钥匙' 的任何物品\n"..
+" - 炉石 |r\n\n"..
+"|cffff0000左键单击出售物品|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.inventory.equip =
 "装备物品 |cffffffff\n"..
@@ -998,9 +1001,9 @@ MultiBot.tips.inventory.drop =
 
 MultiBot.tips.inventory.open =
 "打开物品|cffffffff\n"..
-"此按钮将打开每个背包、箱子或贝壳。\n"..
-"东西将被放入物品栏中。|r\n\n"..
-"|cffff0000左键点击打开一个背包、箱子或贝壳|r\n"..
+"此按钮将打开你物品栏中第一个能找到的拾取袋。\n"..
+"物品内容将自动放入物品栏中|r\n\n"..
+"|cffff0000左键点击打开一个拾取袋|r\n"..
 "|cff999999(执行命令: 机器人)|r";
 
 -- 等级过滤器 --

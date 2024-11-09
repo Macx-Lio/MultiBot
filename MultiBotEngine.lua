@@ -58,6 +58,7 @@ MultiBot.doReplace = function(pString, pSearch, pReplace)
 end
 
 MultiBot.doRemove = function(pIndex, pName)
+	if(pIndex == nil) then return end
 	local tFound = 0
 	
 	for i = 1, table.getn(pIndex) do

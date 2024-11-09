@@ -44,7 +44,7 @@ MultiBot.addStats = function(pFrame, pIndex, pX, pY, pSize, pWidth, pHeight)
 			tFrame.texts["Values"]:SetText("Player")
 			
 			if(pLevel == 80) then
-				tAddon.texts["Percent"]:SetText(tFrame.setProgress(tFrame, tMana) .. "%\nMP")
+				tAddon.texts["Percent"]:SetText(tFrame.setProgress(tFrame, tMana) .. "%\n" .. MultiBot.IF(tChina, "法力值", "MP"))
 			else
 				tAddon.texts["Percent"]:SetText(tFrame.setProgress(tFrame, tXP) .. "%\n" .. MultiBot.IF(tChina, "经验值", "XP"))
 			end
