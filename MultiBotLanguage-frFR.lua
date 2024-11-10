@@ -78,7 +78,7 @@ MultiBot.info.reward =
 "Sélectionner les récompenses";
 
 MultiBot.info.shorts.bag =
-"Bag";
+"Sac";
 
 MultiBot.info.shorts.dur =
 "Dur";
