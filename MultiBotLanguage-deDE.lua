@@ -833,7 +833,7 @@ MultiBot.tips.main.lang.master =
 MultiBot.tips.main.release =
 "Auto-Release\n|cffffffff"..
 "Diese Erweiterung erkennt wenn ein Bot stirbt.\n"..
-"Tode Bots werden automatisch freigelassen und herbeigerufen.\n"..
+"Tote Bots werden automatisch freigelassen und herbeigerufen.\n"..
 "Dadurch werden die Bots innerhalb von Sekunden wiederbelebt.|r\n\n"..
 "|cffff0000Linksklicken um Auto-Release ein- oder auszuschalten|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
