@@ -77,6 +77,18 @@ MultiBot.info.combination =
 MultiBot.info.reward =
 "选择奖励。";
 
+MultiBot.info.shorts.bag =
+"背包";
+
+MultiBot.info.shorts.dur =
+"耐久度";
+
+MultiBot.info.shorts.xp =
+"经验值";
+
+MultiBot.info.shorts.mp =
+"法力值";
+
 -- 信息:天赋 --
 
 MultiBot.info.talent.Level =

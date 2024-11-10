@@ -77,8 +77,17 @@ MultiBot.info.combination =
 MultiBot.info.reward =
 "Select the Rewards";
 
-MultiBot.tips.move.talent =
-"Right-Click to drag and move the Talents";
+MultiBot.info.shorts.bag =
+"Bag";
+
+MultiBot.info.shorts.dur =
+"Dur";
+
+MultiBot.info.shorts.xp =
+"XP";
+
+MultiBot.info.shorts.mp =
+"MP";
 
 -- INFO:TALENT --
 
@@ -206,6 +215,9 @@ MultiBot.tips.move.spellbook =
 
 MultiBot.tips.move.reward =
 "Right-Click to drag and move the Reward-Selector";
+
+MultiBot.tips.move.talent =
+"Right-Click to drag and move the Talents";
 
 -- TANKER --
 

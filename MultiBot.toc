@@ -6,8 +6,10 @@
 ## SavedVariables: MultiBotSave
 
 MultiBot.lua
-MultiBotLanguage-enGB.lua
 MultiBotLanguage-deDE.lua
+MultiBotLanguage-enGB.lua
+MultiBotLanguage-enUS.lua
+MultiBotLanguage-frFR.lua
 MultiBotLanguage-zhCN.lua
 MultiBotEngine.lua
 MultiBotHandler.lua

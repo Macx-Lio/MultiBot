@@ -77,6 +77,17 @@ MultiBot.info.combination =
 MultiBot.info.reward =
 "Wähle die Belohnungen";
 
+MultiBot.info.shorts.bag =
+"Bag";
+
+MultiBot.info.shorts.dur =
+"Dur";
+
+MultiBot.info.shorts.xp =
+"XP";
+
+MultiBot.info.shorts.mp =
+"MP";
 
 -- INFO:TALENT --
 
