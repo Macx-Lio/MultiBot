@@ -1,4 +1,4 @@
-if(GetLocale() == "frFR") then
+if(GetLocale() == "deDE") then
 MultiBot.info.command =
 "Commande non trouvée.";
 
@@ -914,13 +914,13 @@ MultiBot.tips.game.portal =
 "|cff999999(Ordre d'exécution : Système)|r";
 
 MultiBot.tips.game.memory =
-"Gemme de Mémoire\n|cffffffff"..
-"Cette Gemme de Mémoire sert à...\n"..
-"Vous avez besoin de droits de Maître de Jeu pour utiliser ce bouton.|r\n\n"..
-"|cffff0000Clic gauche pour stocker ou téléporter à l'emplacement|r\n"..
-"|cff999999(Ordre d'exécution : Vous-même)|r\n\n"..
-"|cffff0000Clic droit pour oublier l'emplacement|r\n"..
-"|cff999999(Ordre d'exécution : Vous-même)|r";
+"Memory-Gem\n|cffffffff"..
+"This Memory-Gem ABOUT.\n"..
+"You need GameMaster-Rights to use this Button.|r\n\n"..
+"|cffff0000Left-Click to store or teleport to the Location|r\n"..
+"|cff999999(Execution-Order: Yourself)|r\n\n"..
+"|cffff0000Right-Click to forget the Location|r\n"..
+"|cff999999(Execution-Order: Yourself)|r";
 
 MultiBot.tips.game.itemus = 
 "Itemus\n|cffffffff"..
