@@ -9,13 +9,13 @@ MultiBot.info.spell =
 "I couldnt identify the Spell.";
 
 MultiBot.info.macro =
-"I have already the maximum of private Macros.";
+"I already have the maximum # of private Macros.";
 
 MultiBot.info.neither =
 "I neither have a Target nor am I in a Raid or Party.";
 
 MultiBot.info.group =
-"I neither in a Raid nor in a Party.";
+"I'm neither in a Raid nor in a Party.";
 
 MultiBot.info.inviting =
 "Inviting NAME to the Group.";
@@ -48,13 +48,13 @@ MultiBot.info.members =
 "I wont Auto-Initialize anyone from the Guild-Roster.";
 
 MultiBot.info.wait =
-"I already invite Members, please wait until I am done.";
+"I already invited Members, please wait until I am done.";
 
 MultiBot.info.starting =
 "Starting to invite Members.";
 
 MultiBot.info.stats =
-"Auto-Stats is for Party's not for a Raid's.";
+"Auto-Stats is for Parties, not for a Raids.";
 
 MultiBot.info.location =
 "has no Location stored inside.";
@@ -223,8 +223,8 @@ MultiBot.tips.move.talent =
 
 MultiBot.tips.tanker.master = 
 "Tank-Attack\n|cffffffff"..
-"With this Button the Tanks starting to attack your target.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"With this Button the Tanks will attack your target.\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to execute Tank-Attack|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
@@ -234,7 +234,7 @@ MultiBot.tips.attack.master =
 "Attack-Control\n|cffffffff"..
 "With this Control you can give the Command to attack.\n"..
 "Right-Click the Options to define a new default Action.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to execute the default Action|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to show or hide the Options|r\n"..
@@ -242,7 +242,7 @@ MultiBot.tips.attack.master =
 
 MultiBot.tips.attack.attack = 
 "Attack\n|cffffffff"..
-"With this Command the hole Raid or Party starting to attack your target.|r\n\n"..
+"With this Command the whole Raid or Party will attack your target.|r\n\n"..
 "|cffff0000Left-Click to execute Attack|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -250,7 +250,7 @@ MultiBot.tips.attack.attack =
 
 MultiBot.tips.attack.ranged = 
 "Ranged-Attack\n|cffffffff"..
-"With this Command the Ranged-Fighters starting to attack your target.|r\n\n"..
+"With this Command the Ranged-Fighters will attack your target.|r\n\n"..
 "|cffff0000Left-Click to execute Ranged-Attack|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -258,7 +258,7 @@ MultiBot.tips.attack.ranged =
 
 MultiBot.tips.attack.melee = 
 "Melee-Attack\n|cffffffff"..
-"With this Command the Melee-Fighters starting to attack your target.|r\n\n"..
+"With this Command the Melee-Fighters will attack your target.|r\n\n"..
 "|cffff0000Left-Click to execute Melee-Attack|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -266,7 +266,7 @@ MultiBot.tips.attack.melee =
 
 MultiBot.tips.attack.healer = 
 "Healer-Attack\n|cffffffff"..
-"With this Command the Healers starting to attack your target.|r\n\n"..
+"With this Command the Healers will attack your target.|r\n\n"..
 "|cffff0000Left-Click to execute Healer-Attack|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -274,7 +274,7 @@ MultiBot.tips.attack.healer =
 
 MultiBot.tips.attack.dps = 
 "DPS-Attack\n|cffffffff"..
-"With this Command the DPS starting to attack your target.|r\n\n"..
+"With this Command the DPS will attack your target.|r\n\n"..
 "|cffff0000Left-Click to execute DPS-Attack|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -282,7 +282,7 @@ MultiBot.tips.attack.dps =
 
 MultiBot.tips.attack.tank = 
 "Tank-Attack\n|cffffffff"..
-"With this Command the Tanks starting to attack your target.|r\n\n"..
+"With this Command the Tanks will attack your target.|r\n\n"..
 "|cffff0000Left-Click to execute Tank-Attack|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -311,7 +311,7 @@ MultiBot.tips.mode.passive =
 
 MultiBot.tips.mode.grind = 
 "Grind-Mode\n|cffffffff"..
-"In the Grind-Mode, your Bots attack Opponent independently.\n"..
+"In the Grind-Mode, your Bots attack Opponents independently.\n"..
 "This Mode is usefull to level up your Bots.|r\n\n"..
 "|cffff0000Left-Click to selet and activate Grind-Mode|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
@@ -320,7 +320,7 @@ MultiBot.tips.mode.grind =
 
 MultiBot.tips.stallow.stay = 
 "Stay|Follow\n|cffffffff"..
-"With this Button you can give right now the Command to Stay.\n"..
+"With this Button you can give the Command to Stay.\n"..
 "This Command cancels the Passive-Mode, in combination Stay should be commanded first.\n"..
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
 "|cffff0000Left-Click to execute Stay|r\n"..
@@ -328,7 +328,7 @@ MultiBot.tips.stallow.stay =
 
 MultiBot.tips.stallow.follow = 
 "Stay|Follow\n|cffffffff"..
-"With this Button you can give right now the Command to Follow.\n"..
+"With this Button you can give the Command to Follow.\n"..
 "This Command cancels the Passive-Mode, in combination Follow should be commanded first.\n"..
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
 "|cffff0000Left-Click to execute Follow|r\n"..
@@ -338,7 +338,7 @@ MultiBot.tips.stallow.follow =
 
 MultiBot.tips.flee.master = 
 "Flee-Control\n|cffffffff"..
-"With this Control you can give the Command to flee.\n"..
+"With this Button you can give the Command to Flee.\n"..
 "Right-Click the Options to define a new default Action.\n"..
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
 "|cffff0000Left-Click to execute the default Action|r\n"..
@@ -348,7 +348,7 @@ MultiBot.tips.flee.master =
 
 MultiBot.tips.flee.flee = 
 "Flee\n|cffffffff"..
-"With this Command the hole Raid or Party starting to flee.|r\n\n"..
+"With this Button the whole Raid or Party will flee.|r\n\n"..
 "|cffff0000Left-Click to execute Flee|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -356,7 +356,7 @@ MultiBot.tips.flee.flee =
 
 MultiBot.tips.flee.ranged = 
 "Ranged-Flee\n|cffffffff"..
-"With this Command the Ranged-Fighters starting to flee.|r\n\n"..
+"With this Button the Ranged-Fighters will flee.|r\n\n"..
 "|cffff0000Left-Click to execute Ranged-Flee|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -364,7 +364,7 @@ MultiBot.tips.flee.ranged =
 
 MultiBot.tips.flee.melee = 
 "Melee-Flee\n|cffffffff"..
-"With this Command the Melee-Fighters starting to flee.|r\n\n"..
+"With this Button the Melee-Fighters will flee.|r\n\n"..
 "|cffff0000Left-Click to execute Melee-Flee|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -372,7 +372,7 @@ MultiBot.tips.flee.melee =
 
 MultiBot.tips.flee.healer = 
 "Healer-Flee\n|cffffffff"..
-"With this Command the Healers starting to flee.|r\n\n"..
+"With this Button the Healers will flee.|r\n\n"..
 "|cffff0000Left-Click to execute Healer-Flee|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -380,7 +380,7 @@ MultiBot.tips.flee.healer =
 
 MultiBot.tips.flee.dps = 
 "DPS-Flee\n|cffffffff"..
-"With this Command the DPS starting to flee.|r\n\n"..
+"With this Button the DPS will flee.|r\n\n"..
 "|cffff0000Left-Click to execute DPS-Flee|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -388,7 +388,7 @@ MultiBot.tips.flee.dps =
 
 MultiBot.tips.flee.tank = 
 "Tank-Flee\n|cffffffff"..
-"With this Command the Tanks starting to flee.|r\n\n"..
+"With this Button the Tanks will flee.|r\n\n"..
 "|cffff0000Left-Click to execute Tank-Flee|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -396,7 +396,7 @@ MultiBot.tips.flee.tank =
 
 MultiBot.tips.flee.target = 
 "Target-Flee\n|cffffffff"..
-"With this Command the Target starting to flee.|r\n\n"..
+"With this Button the Target will flee.|r\n\n"..
 "|cffff0000Left-Click to execute Target-Flee|r\n"..
 "|cff999999(Execution-Order: Target)|r\n\n"..
 "|cffff0000Right-Click to define as default Action|r\n"..
@@ -406,8 +406,8 @@ MultiBot.tips.flee.target =
 
 MultiBot.tips.format.master = 
 "Formation-Control\n|cffffffff"..
-"This Control allows you to change the Formation of your Bots.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"This Button allows you to change the Formation of your Bots.\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to ask for the current Formation|r\n"..
@@ -461,7 +461,7 @@ MultiBot.tips.format.circle =
 
 MultiBot.tips.format.chaos = 
 "Chaos-Formation\n|cffffffff"..
-"Each Bot follows you by its own.\n"..
+"Each Bot follows you on its own.\n"..
 "They line up everywhere they wont.\n"..
 "The line of sight could be every direction.|r\n\n"..
 "|cffff0000Left-Click to select the Chaos-Formation|r\n"..
@@ -478,7 +478,7 @@ MultiBot.tips.format.shield =
 
 MultiBot.tips.beast.master = 
 "Beastmaster-Control\n|cffffffff"..
-"This Control is for the Mod-NPC-Beastmaster of the Azerothcore.\n"..
+"This Button is for the Mod-NPC-Beastmaster of the Azerothcore.\n"..
 "Mod-NPC-Beastmaster allows every Character to have a Pet like Hunters.\n"..
 "Your Charaters can learn the nessasary Spells from White Fang.\n"..
 "White Fang must be placed into the World by the GameMaster.\n"..
@@ -488,31 +488,31 @@ MultiBot.tips.beast.master =
 
 MultiBot.tips.beast.release =
 "Release the Beast\n|cffffffff"..
-"This Command will release the Beast.|r\n\n"..
+"This Button will release the Beast.|r\n\n"..
 "|cffff0000Left-Click to release the Beast|r\n"..
 "|cff999999(Execution-Order: Target, Raid, Party)|r";
 
 MultiBot.tips.beast.revive =
 "Revive the Beast\n|cffffffff"..
-"This Command will revive the Beast.|r\n\n"..
+"This Button will revive the Beast.|r\n\n"..
 "|cffff0000Left-Click to revive the Beast|r\n"..
 "|cff999999(Execution-Order: Target, Raid, Party)|r";
 
 MultiBot.tips.beast.heal =
 "Heal the Beast\n|cffffffff"..
-"This Command will heal the Beast.|r\n\n"..
+"This Button will heal the Beast.|r\n\n"..
 "|cffff0000Left-Click to heal the Beast|r\n"..
 "|cff999999(Execution-Order: Target, Raid, Party)|r";
 
 MultiBot.tips.beast.feed =
 "Feed the Beast\n|cffffffff"..
-"This Command will feed the Beast.|r\n\n"..
+"This Button will feed the Beast.|r\n\n"..
 "|cffff0000Left-Click to feed the Beast|r\n"..
 "|cff999999(Execution-Order: Target, Raid, Party)|r";
 
 MultiBot.tips.beast.call =
 "Call the Beast\n|cffffffff"..
-"This Command will call the Beast.|r\n\n"..
+"This Button will call the Beast.|r\n\n"..
 "|cffff0000Left-Click to call the Beast|r\n"..
 "|cff999999(Execution-Order: Target, Raid, Party)|r";
 
@@ -520,7 +520,7 @@ MultiBot.tips.beast.call =
 
 MultiBot.tips.creator.master = 
 "Creator-Control\n|cffffffff"..
-"With this Control you can create Random-Bots by Class.\n"..
+"With this Button you can create Random-Bots by Class.\n"..
 "The default Limit is 40 Random-Bots per Account.\n"..
 "There is no command to delete them after use.\n"..
 "So invite them to your Friendlist for reuse.\n"..
@@ -530,62 +530,62 @@ MultiBot.tips.creator.master =
 
 MultiBot.tips.creator.warrior =
 "Create-Warrior\n|cffffffff"..
-"This Button will create a Random-Bot as Warrior.|r\n\n"..
-"|cffff0000Left-Click to create Warrior|r\n"..
+"This Button will create a Random-Bot as a Warrior.|r\n\n"..
+"|cffff0000Left-Click to create a Warrior|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.creator.warlock =
 "Create-Warlock\n|cffffffff"..
-"This Button will create a Random-Bot as Warlock.|r\n\n"..
-"|cffff0000Left-Click to create Warlock|r\n"..
+"This Button will create a Random-Bot as a Warlock.|r\n\n"..
+"|cffff0000Left-Click to create a Warlock|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.creator.shaman =
 "Create-Shaman\n|cffffffff"..
-"This Button will create a Random-Bot as Shaman.|r\n\n"..
-"|cffff0000Left-Click to create Shaman|r\n"..
+"This Button will create a Random-Bot as a Shaman.|r\n\n"..
+"|cffff0000Left-Click to create a Shaman|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.creator.rogue =
 "Create-Rogue\n|cffffffff"..
-"This Button will create a Random-Bot as Rogue.|r\n\n"..
-"|cffff0000Left-Click to create Rogue|r\n"..
+"This Button will create a Random-Bot as a Rogue.|r\n\n"..
+"|cffff0000Left-Click to create a Rogue|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.creator.priest =
 "Create-Priest\n|cffffffff"..
-"This Button will create a Random-Bot as Priest.|r\n\n"..
-"|cffff0000Left-Click to create Priest|r\n"..
+"This Button will create a Random-Bot as a Priest.|r\n\n"..
+"|cffff0000Left-Click to create a Priest|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.creator.paladin =
 "Create-Paladin\n|cffffffff"..
-"This Button will create a Random-Bot as Paladin.|r\n\n"..
-"|cffff0000Left-Click to create Paladin|r\n"..
+"This Button will create a Random-Bot as a Paladin.|r\n\n"..
+"|cffff0000Left-Click to create a Paladin|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.creator.mage =
 "Create-Mage\n|cffffffff"..
-"This Button will create a Random-Bot as Mage.|r\n\n"..
-"|cffff0000Left-Click to create Mage|r\n"..
+"This Button will create a Random-Bot as a Mage.|r\n\n"..
+"|cffff0000Left-Click to create a Mage|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.creator.hunter =
 "Create-Hunter\n|cffffffff"..
-"This Button will create a Random-Bot as Hunter.|r\n\n"..
-"|cffff0000Left-Click to create Hunter|r\n"..
+"This Button will create a Random-Bot as a Hunter.|r\n\n"..
+"|cffff0000Left-Click to create a Hunter|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.creator.druid =
 "Create-Druid\n|cffffffff"..
-"This Button will create a Random-Bot as Druid.|r\n\n"..
-"|cffff0000Left-Click to create Druid|r\n"..
+"This Button will create a Random-Bot as a Druid.|r\n\n"..
+"|cffff0000Left-Click to create a Druid|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.creator.deathknight =
 "Create-DeathKnight\n|cffffffff"..
-"This Button will create a Random-Bot as DeathKnight.|r\n\n"..
-"|cffff0000Left-Click to create DeathKnight|r\n"..
+"This Button will create a Random-Bot as a DeathKnight.|r\n\n"..
+"|cffff0000Left-Click to create a DeathKnight|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.creator.inspect =
@@ -717,7 +717,7 @@ MultiBot.tips.units.none =
 
 MultiBot.tips.units.roster =
 "Roster-Filter\n|cffffffff"..
-"With the Roster-Filter you can switch between differned Rosters.|r\n\n"..
+"With the Roster-Filter you can switch between different Rosters.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to reset the Filter|r\n"..
