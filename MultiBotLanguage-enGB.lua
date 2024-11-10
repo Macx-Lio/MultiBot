@@ -294,7 +294,7 @@ MultiBot.tips.mode.master =
 "Mode-Control\n|cffffffff"..
 "This Control allows you to switch a Combat-Mode on and off.\n"..
 "Left-Click the Options to select another Combat-Mode.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to switch the Combat-Mode|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to show or hide Options|r\n"..
@@ -322,7 +322,7 @@ MultiBot.tips.stallow.stay =
 "Stay|Follow\n|cffffffff"..
 "With this Button you can give the Command to Stay.\n"..
 "This Command cancels the Passive-Mode, in combination Stay should be commanded first.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to execute Stay|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
@@ -330,7 +330,7 @@ MultiBot.tips.stallow.follow =
 "Stay|Follow\n|cffffffff"..
 "With this Button you can give the Command to Follow.\n"..
 "This Command cancels the Passive-Mode, in combination Follow should be commanded first.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to execute Follow|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
@@ -340,7 +340,7 @@ MultiBot.tips.flee.master =
 "Flee-Control\n|cffffffff"..
 "With this Button you can give the Command to Flee.\n"..
 "Right-Click the Options to define a new default Action.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to execute the default Action|r\n"..
 "|cff999999(Execution-Order: 'Target', Raid, Party)|r\n\n"..
 "|cffff0000Right-Click to show or hide the Options|r\n"..
@@ -482,7 +482,7 @@ MultiBot.tips.beast.master =
 "Mod-NPC-Beastmaster allows every Character to have a Pet like Hunters.\n"..
 "Your Charaters can learn the nessasary Spells from White Fang.\n"..
 "White Fang must be placed into the World by the GameMaster.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
@@ -524,7 +524,7 @@ MultiBot.tips.creator.master =
 "The default Limit is 40 Random-Bots per Account.\n"..
 "There is no command to delete them after use.\n"..
 "So invite them to your Friendlist for reuse.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
@@ -631,7 +631,7 @@ MultiBot.tips.units.master =
 "Unit-Control\n|cffffffff"..
 "In this Control you will find the Playerbots.\n"..
 "Each Button stands for one of your Characters, Guild-Members or Friends.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Units|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to refresh the Roster|r\n"..
@@ -806,7 +806,7 @@ MultiBot.tips.units.inviteRaid40 =
 MultiBot.tips.main.master =
 "Main-Control\n|cffffffff"..
 "In this Control you will find the Auto-Switches and Reset-Commands.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to close MultiBot|r\n"..
@@ -824,7 +824,7 @@ MultiBot.tips.main.lang.master =
 "Language-Selector|cffffffff\n"..
 "This Control allows you to select the Language of MultiBot.\n"..
 "If this control is active, MultiBot can have a different Language than the Client.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the Language-Selector|r\n"..
@@ -879,7 +879,7 @@ MultiBot.tips.main.action =
 MultiBot.tips.game.master =
 "GameMaster-Control\n|cffffffff"..
 "In this Control you will find useful GameMaster-Commands.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to drag and move MultiBot|r\n"..
@@ -899,7 +899,7 @@ MultiBot.tips.game.portal =
 "In this Box you will find the Memory-Gems.\n"..
 "Use the Memory-Gems to store your current Location.\n"..
 "You can teleport yourself to stored Locations by using the Memory-Gems.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Soulgems|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
@@ -917,14 +917,14 @@ MultiBot.tips.game.itemus =
 "You will find every Item in the Box of the GamerMaster.\n"..
 "Just target the Player or Bot, left click the Item and the wish come true.\n"..
 "Important, not every Item can be generated, so you must try to find out.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to open or close the Itemus|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.game.iconos = 
 "Iconos\n|cffffffff"..
 "You will find every Icon and his Path in this Tool.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to open or close the Iconos|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
@@ -947,7 +947,7 @@ MultiBot.tips.game.appear =
 MultiBot.tips.drink.group = 
 "Group-Drink\n|cffffffff"..
 "With this Button you order the Group to drink.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to execute Group-Drink|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
@@ -956,7 +956,7 @@ MultiBot.tips.drink.group =
 MultiBot.tips.release.group = 
 "Group-Release\n|cffffffff"..
 "With this Button the dead Bots will release there Ghosts to the next Graveyard.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to execute Group-Release|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
@@ -965,7 +965,7 @@ MultiBot.tips.release.group =
 MultiBot.tips.revive.group = 
 "Group-Revive\n|cffffffff"..
 "With this Button the Ghost-Bots will revive on the next Graveyard.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to execute Group-Revive|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
@@ -974,7 +974,7 @@ MultiBot.tips.revive.group =
 MultiBot.tips.summon.group = 
 "Group-Summon\n|cffffffff"..
 "With this Button you summon the Group to your Position.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"The Execution-Order shows the Receiver for Commands.|r\n\n"..
 "|cffff0000Left-Click to execute Group-Summon|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
