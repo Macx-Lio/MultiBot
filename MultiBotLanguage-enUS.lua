@@ -1,4 +1,4 @@
-if(GetLocale() == "enGB") then
+if(GetLocale() == "enUS") then
 MultiBot.info.command =
 "Command not found.";
 
