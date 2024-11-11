@@ -83,6 +83,10 @@ MultiBot:SetScript("OnEvent", function()
 		MultiBotSave["NecroNet"] = MultiBot.IF(MultiBot.necronet.state, "true", "false")
 		MultiBotSave["Reward"] = MultiBot.IF(MultiBot.reward.state, "true", "false")
 		
+		MultiBotSave["Masters"] = MultiBot.IF(MultiBot.frames["MultiBar"].frames["Main"].buttons["Masters"].state, "true", "false")
+		MultiBotSave["Creator"] = MultiBot.IF(MultiBot.frames["MultiBar"].frames["Main"].buttons["Creator"].state, "true", "false")
+		MultiBotSave["Beast"] = MultiBot.IF(MultiBot.frames["MultiBar"].frames["Main"].buttons["Beast"].state, "true", "false")
+		
 		return
 	end
 	
@@ -235,12 +239,41 @@ MultiBot:SetScript("OnEvent", function()
 			tButton.doLeft(tButton)
 		end
 		
+		if(MultiBotSave["Masters"] ~= nil) then
+			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["Masters"]
+			
+			if(MultiBotSave["Masters"] == "true") then
+				tButton.setDisable()
+				tButton.doLeft(tButton)
+			end
+		end
+		
+		if(MultiBotSave["Creator"] ~= nil) then
+			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["Creator"]
+			
+			if(MultiBotSave["Creator"] == "true") then
+				tButton.setDisable()
+				tButton.doLeft(tButton)
+			end
+		end
+		
+		if(MultiBotSave["Beast"] ~= nil) then
+			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["Beast"]
+			
+			if(MultiBotSave["Beast"] == "true") then
+				tButton.setDisable()
+				tButton.doLeft(tButton)
+			end
+		end
+		
 		return
 	end
 	
 	-- PLAYER:ENTERING --
 	
 	if(event == "PLAYER_ENTERING_WORLD") then
+		SendChatMessage(".account", "SAY")
+		
 		if(MultiBot.init == nil) then
 			SendChatMessage(".playerbot bot list", "SAY")
 			MultiBot.init = true
@@ -253,6 +286,11 @@ MultiBot:SetScript("OnEvent", function()
 	-- CHAT:SYSTEM --
 	
 	if(event == "CHAT_MSG_SYSTEM") then
+		if(MultiBot.isInside(arg1, "Accountlevel")) then
+			local tLevel = tonumber(MultiBot.doSplit(arg1, ": ")[2])
+			MultiBot.GM = MultiBot.IF(tLevel > 1, true, false)
+		end
+		
 		if(MultiBot.isInside(arg1, "Possible strategies")) then
 			local tStrategies = MultiBot.doSplit(arg1, ", ")
 			SendChatMessage("=== STRATEGIES ===", "SAY")

@@ -126,6 +126,9 @@ MultiBot.info.combination =
 --MultiBot.info.language =
 --"I need to activate the Language-Selector first.";
 
+MultiBot.info.rights =
+"I have not the GameMaster-Rights.";
+
 MultiBot.info.reward =
 "Select the Rewards";
 
@@ -875,7 +878,7 @@ MultiBot.tips.main.master =
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to close MultiBot|r\n"..
+"|cffff0000Right-Click to drag and move MultiBot|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.main.coords =
@@ -883,6 +886,29 @@ MultiBot.tips.main.coords =
 "Reset the Coordinates of the Features:\n"..
 "MultiBar, Inventory, Spellbook, Itemus, Iconos and Reward-Selector|r\n\n"..
 "|cffff0000Left-Click to reset Coordinates|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.main.masters =
+"GameMaster-Switch\n|cffffffff"..
+"This Switch will enable or disable the GameMaster-Control.\n"..
+"You will need GameMaster-Rights to enable the GameMaster-Control|r\n\n"..
+"|cffff0000Left-Click to enable or disable the GameMaster-Control|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.main.creator =
+"Creator-Switch\n|cffffffff"..
+"This Switch will enable or disable the Creator-Control.|r\n\n"..
+"|cffff0000Left-Click to enable or disable the Creator-Control|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.main.beast =
+"Beastmaster-Switch\n|cffffffff"..
+"This Switch will enable or disable the Beastmaster-Control.\n"..
+"The Beastmaster-Control is for the Mod-NPC-Beastmaster of the Azerothcore.\n"..
+"Mod-NPC-Beastmaster allows every Character to have a Pet like Hunters.\n"..
+"Your Charaters can learn the nessasary Spells from White Fang.\n"..
+"White Fang must be placed into the World by the GameMaster.|r\n\n"..
+"|cffff0000Left-Click to enable or disable the Beastmaster-Control|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 --[[
@@ -967,7 +993,7 @@ MultiBot.tips.game.master =
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
 "|cffff0000Left-Click to show or hide the Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to drag and move MultiBot|r\n"..
+"|cffff0000Right-Click to close MultiBot|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.game.necronet =

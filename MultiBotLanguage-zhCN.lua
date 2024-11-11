@@ -74,6 +74,9 @@ MultiBot.info.combination =
 --MultiBot.info.language =
 --"我需要先激活语言选择器。";
 
+MultiBot.info.rights =
+"I have not the GameMaster-Rights.";
+
 MultiBot.info.reward =
 "选择奖励。";
 
@@ -808,7 +811,7 @@ MultiBot.tips.main.master =
 "执行命令时会显示命令的接收者。|r\n\n"..
 "|cffff0000左键单击显示或隐藏选项|r\n"..
 "|cff999999(执行命令: 系统)|r\n\n"..
-"|cffff0000右键单击关闭 MultiBot|r\n"..
+"|cffff0000右键单击拖动和移动 MultiBot|r\n"..
 "|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.main.coords =
@@ -817,6 +820,29 @@ MultiBot.tips.main.coords =
 "多功能栏、背包、技能书、物品栏、图标和奖励选择器|r\n\n"..
 "|cffff0000左键单击重置坐标|r\n"..
 "|cff999999(执行命令: 系统)|r";
+
+MultiBot.tips.main.masters =
+"GameMaster-Switch\n|cffffffff"..
+"This Switch will enable or disable the GameMaster-Control.\n"..
+"You will need GameMaster-Rights to enable the GameMaster-Control|r\n\n"..
+"|cffff0000Left-Click to enable or disable the GameMaster-Control|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.main.creator =
+"Creator-Switch\n|cffffffff"..
+"This Switch will enable or disable the Creator-Control.|r\n\n"..
+"|cffff0000Left-Click to enable or disable the Creator-Control|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.main.beast =
+"Beastmaster-Switch\n|cffffffff"..
+"This Switch will enable or disable the Beastmaster-Control.\n"..
+"The Beastmaster-Control is for the Mod-NPC-Beastmaster of the Azerothcore.\n"..
+"Mod-NPC-Beastmaster allows every Character to have a Pet like Hunters.\n"..
+"Your Charaters can learn the nessasary Spells from White Fang.\n"..
+"White Fang must be placed into the World by the GameMaster.|r\n\n"..
+"|cffff0000Left-Click to enable or disable the Beastmaster-Control|r\n"..
+"|cff999999(Execution-Order: System)|r";
 
 --[[
 MultiBot.tips.main.lang.master =
@@ -881,7 +907,7 @@ MultiBot.tips.game.master =
 "执行命令时显示命令的接收者。|r\n\n"..
 "|cffff0000左键单击显示或隐藏选项|r\n"..
 "|cff999999(执行命令: 系统)|r\n\n"..
-"|cffff0000右键单击拖动和移动 MultiBot|r\n"..
+"|cffff0000右键单击关闭 MultiBot|r\n"..
 "|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.game.necronet =

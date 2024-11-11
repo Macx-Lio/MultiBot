@@ -73,6 +73,18 @@ MultiBot.doRemove = function(pIndex, pName)
 	return true
 end
 
+MultiBot.doRepos = function(pIndex, pOffsetX)
+	local tButton = MultiBot.frames["MultiBar"].buttons[pIndex]
+	local tFrame = MultiBot.frames["MultiBar"].frames[pIndex]
+	if(tButton == nil) then tButton = MultiBot.frames["MultiBar"].frames["Left"].buttons[pIndex] end
+	if(tFrame == nil) then tFrame = MultiBot.frames["MultiBar"].frames["Left"].frames[pIndex] end
+	if(tButton == nil) then tButton = MultiBot.frames["MultiBar"].frames["Right"].buttons[pIndex] end
+	if(tFrame == nil) then tFrame = MultiBot.frames["MultiBar"].frames["Right"].frames[pIndex] end
+	if(tButton ~= nil) then tButton.setPoint(tButton.x + pOffsetX, tButton.y) end
+	if(tFrame ~= nil) then tFrame.setPoint(tFrame.x + pOffsetX, tFrame.y) end
+	return true
+end
+
 MultiBot.isInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern, o4thPattern, o5thPattern, o6thPattern, o7thPattern, o8thPattern, o9thPattern)
 	if(p1stPattern ~= nil and string.find(pString, p1stPattern)) then return true end
 	if(o2ndPattern ~= nil and string.find(pString, o2ndPattern)) then return true end
@@ -397,6 +409,8 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 	
 	frame.parent = pParent
 	frame.size = pSize
+	frame.x = pX
+	frame.y = pY
 	
 	-- ADD --
 	
@@ -447,6 +461,8 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 	
 	frame.setPoint = function(pX, pY)
 		frame:SetPoint("BOTTOMRIGHT", pX, pY)
+		frame.x = pX
+		frame.y = pY
 		return frame
 	end
 	

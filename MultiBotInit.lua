@@ -9,14 +9,14 @@ local tLeft = tMultiBar.addFrame("Left", -76, 2, 32)
 
 -- TANKER --
 
-tLeft.addButton("Tanker", -238, 0, "ability_warrior_shieldbash", MultiBot.tips.tanker.master)
+tLeft.addButton("Tanker", -170, 0, "ability_warrior_shieldbash", MultiBot.tips.tanker.master)
 .doLeft = function(pButton)
 	if(MultiBot.isTarget()) then MultiBot.ActionToGroup("@tank do attack my target") end
 end
 
 -- ATTACK --
 
-local tButton = tLeft.addButton("Attack", -204, 0, "Interface\\AddOns\\MultiBot\\Icons\\attack.blp", MultiBot.tips.attack.master)
+local tButton = tLeft.addButton("Attack", -136, 0, "Interface\\AddOns\\MultiBot\\Icons\\attack.blp", MultiBot.tips.attack.master)
 tButton.doRight = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Attack"])
 end
@@ -24,7 +24,7 @@ tButton.doLeft = function(pButton)
 	if(MultiBot.isTarget()) then MultiBot.ActionToGroup("do attack my target") end
 end
 
-local tAttack = tLeft.addFrame("Attack", -206, 34)
+local tAttack = tLeft.addFrame("Attack", -138, 34)
 tAttack:Hide()
 
 local tButton = tAttack.addButton("Attack", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\attack.blp", MultiBot.tips.attack.attack)
@@ -77,7 +77,7 @@ end
 
 -- MODE --
 
-local tButton = tLeft.addButton("Mode", -170, 0, "Interface\\AddOns\\MultiBot\\Icons\\mode_passive.blp", MultiBot.tips.mode.master).setDisable()
+local tButton = tLeft.addButton("Mode", -102, 0, "Interface\\AddOns\\MultiBot\\Icons\\mode_passive.blp", MultiBot.tips.mode.master).setDisable()
 tButton.doRight = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Mode"])
 end
@@ -90,7 +90,7 @@ tButton.doLeft = function(pButton)
 	end
 end
 
-local tMode = tLeft.addFrame("Mode", -172, 34)
+local tMode = tLeft.addFrame("Mode", -104, 34)
 tMode:Hide()
 
 tMode.addButton("Passive", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\mode_passive.blp", MultiBot.tips.mode.passive)
@@ -123,7 +123,7 @@ end
 
 -- STAY|FOLLOW --
 
-tLeft.addButton("Stay", -136, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_follow.blp", MultiBot.tips.stallow.stay)
+tLeft.addButton("Stay", -68, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_follow.blp", MultiBot.tips.stallow.stay)
 .doLeft = function(pButton)
 	if(MultiBot.ActionToGroup("stay")) then
 		pButton.parent.buttons["Follow"].doShow()
@@ -131,7 +131,7 @@ tLeft.addButton("Stay", -136, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_fo
 	end
 end
 
-tLeft.addButton("Follow", -136, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_stay.blp", MultiBot.tips.stallow.follow).doHide()
+tLeft.addButton("Follow", -68, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_stay.blp", MultiBot.tips.stallow.follow).doHide()
 .doLeft = function(pButton)
 	if(MultiBot.ActionToGroup("follow")) then
 		pButton.parent.buttons["Stay"].doShow()
@@ -141,7 +141,7 @@ end
 
 -- FLEE --
 
-local tButton = tLeft.addButton("Flee", -102, 0, "Interface\\AddOns\\MultiBot\\Icons\\flee.blp", MultiBot.tips.flee.master)
+local tButton = tLeft.addButton("Flee", -34, 0, "Interface\\AddOns\\MultiBot\\Icons\\flee.blp", MultiBot.tips.flee.master)
 tButton.doRight = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Flee"])
 end
@@ -149,7 +149,7 @@ tButton.doLeft = function(pButton)
 	MultiBot.ActionToGroup("flee")
 end
 
-local tFlee = tLeft.addFrame("Flee", -104, 34)
+local tFlee = tLeft.addFrame("Flee", -36, 34)
 tFlee:Hide()
 
 local tButton = tFlee.addButton("Flee", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\flee.blp", MultiBot.tips.flee.flee)
@@ -210,7 +210,7 @@ end
 
 -- FORMATION --
 
-local tButton = tLeft.addButton("Format", -68, 0, "Interface\\AddOns\\MultiBot\\Icons\\formation_near.blp", MultiBot.tips.format.master)
+local tButton = tLeft.addButton("Format", -0, 0, "Interface\\AddOns\\MultiBot\\Icons\\formation_near.blp", MultiBot.tips.format.master)
 tButton.doRight = function(pButton)
 	MultiBot.ActionToGroup("formation")
 end
@@ -218,7 +218,7 @@ tButton.doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Format"])
 end
 
-local tFormat = tLeft.addFrame("Format", -70, 34)
+local tFormat = tLeft.addFrame("Format", -2, 34)
 tFormat:Hide()
 
 tFormat.addButton("Arrow", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\formation_arrow.blp", MultiBot.tips.format.arrow)
@@ -263,12 +263,12 @@ end
 
 -- BEASTMASTER --
 
-tLeft.addButton("Beast", -34, 0, "ability_mount_swiftredwindrider", MultiBot.tips.beast.master)
+tLeft.addButton("Beast", -0, 0, "ability_mount_swiftredwindrider", MultiBot.tips.beast.master).doHide()
 .doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Beast"])
 end
 
-local tBeast = tLeft.addFrame("Beast", -36, 34)
+local tBeast = tLeft.addFrame("Beast", -2, 34)
 tBeast:Hide()
 
 tBeast.addButton("Release", 0, 0, "spell_nature_spiritwolf", MultiBot.tips.beast.release)
@@ -298,7 +298,7 @@ end
 
 -- CREATOR --
 
-tLeft.addButton("Creator", -0, 0, "inv_helmet_145a", MultiBot.tips.creator.master)
+tLeft.addButton("Creator", -0, 0, "inv_helmet_145a", MultiBot.tips.creator.master).doHide()
 .doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Creator"])
 	MultiBot.frames["MultiBar"].frames["Units"]:Hide()
@@ -797,9 +797,13 @@ end
 -- MAIN --
 
 local tButton = tMultiBar.addButton("Main", 0, 0, "inv_gizmo_02", MultiBot.tips.main.master)
-tButton.doRight = function(pButton)
-	MultiBot.doSlash("/MultiBot", "")
-end
+tButton:RegisterForDrag("RightButton")
+tButton:SetScript("OnDragStart", function()
+	MultiBot.frames["MultiBar"]:StartMoving()
+end)
+tButton:SetScript("OnDragStop", function()
+	MultiBot.frames["MultiBar"]:StopMovingOrSizing()
+end)
 tButton.doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Main"])
 end
@@ -817,6 +821,72 @@ tMain.addButton("Coords", 0, 0, "inv_gizmo_03", MultiBot.tips.main.coords)
 	MultiBot.itemus.setPoint(-860, -144)
 	MultiBot.iconos.setPoint(-860, -144)
 	MultiBot.stats.setPoint(-60, 560)
+end
+
+tMain.addButton("Masters", 0, 34, "mail_gmicon", MultiBot.tips.main.masters).setDisable()
+.doLeft = function(pButton)
+	if(MultiBot.GM == false) then return SendChatMessage(MultiBot.info.rights, "SAY") end
+	if(MultiBot.OnOffSwitch(pButton)) then
+		MultiBot.doRepos("Right", 38)
+		MultiBot.frames["MultiBar"].frames["Masters"]:Hide()
+		MultiBot.frames["MultiBar"].buttons["Masters"]:Show()
+	else
+		MultiBot.doRepos("Right", -38)
+		MultiBot.frames["MultiBar"].frames["Masters"]:Hide()
+		MultiBot.frames["MultiBar"].buttons["Masters"]:Hide()
+	end
+end
+
+tMain.addButton("Creator", 0, 68, "inv_helmet_145a", MultiBot.tips.main.creator).setDisable()
+.doLeft = function(pButton)
+	if(MultiBot.OnOffSwitch(pButton)) then
+		MultiBot.doRepos("Tanker", -34)
+		MultiBot.doRepos("Attack", -34)
+		MultiBot.doRepos("Mode", -34)
+		MultiBot.doRepos("Stay", -34)
+		MultiBot.doRepos("Follow", -34)
+		MultiBot.doRepos("Flee", -34)
+		MultiBot.doRepos("Format", -34)
+		MultiBot.doRepos("Beast", -34)
+		MultiBot.frames["MultiBar"].frames["Left"].frames["Creator"]:Hide()
+		MultiBot.frames["MultiBar"].frames["Left"].buttons["Creator"]:Show()
+	else
+		MultiBot.doRepos("Tanker", 34)
+		MultiBot.doRepos("Attack", 34)
+		MultiBot.doRepos("Mode", 34)
+		MultiBot.doRepos("Stay", 34)
+		MultiBot.doRepos("Follow", 34)
+		MultiBot.doRepos("Flee", 34)
+		MultiBot.doRepos("Format", 34)
+		MultiBot.doRepos("Beast", 34)
+		MultiBot.frames["MultiBar"].frames["Left"].frames["Creator"]:Hide()
+		MultiBot.frames["MultiBar"].frames["Left"].buttons["Creator"]:Hide()
+	end
+end
+
+tMain.addButton("Beast", 0, 102, "ability_mount_swiftredwindrider", MultiBot.tips.main.beast).setDisable()
+.doLeft = function(pButton)
+	if(MultiBot.OnOffSwitch(pButton)) then
+		MultiBot.doRepos("Tanker", -34)
+		MultiBot.doRepos("Attack", -34)
+		MultiBot.doRepos("Mode", -34)
+		MultiBot.doRepos("Stay", -34)
+		MultiBot.doRepos("Follow", -34)
+		MultiBot.doRepos("Flee", -34)
+		MultiBot.doRepos("Format", -34)
+		MultiBot.frames["MultiBar"].frames["Left"].frames["Beast"]:Hide()
+		MultiBot.frames["MultiBar"].frames["Left"].buttons["Beast"]:Show()
+	else
+		MultiBot.doRepos("Tanker", 34)
+		MultiBot.doRepos("Attack", 34)
+		MultiBot.doRepos("Mode", 34)
+		MultiBot.doRepos("Stay", 34)
+		MultiBot.doRepos("Follow", 34)
+		MultiBot.doRepos("Flee", 34)
+		MultiBot.doRepos("Format", 34)
+		MultiBot.frames["MultiBar"].frames["Left"].frames["Beast"]:Hide()
+		MultiBot.frames["MultiBar"].frames["Left"].buttons["Beast"]:Hide()
+	end
 end
 
 --[[
@@ -854,7 +924,7 @@ tFrame.addButton("None", -60, 0, "Interface\\AddOns\\MultiBot\\Icons\\language_n
 end
 ]]--
 
-tMain.addButton("Release", 0, 34, "achievement_bg_xkills_avgraveyard", MultiBot.tips.main.release).setDisable()
+tMain.addButton("Release", 0, 136, "achievement_bg_xkills_avgraveyard", MultiBot.tips.main.release).setDisable()
 .doLeft = function(pButton)
 	if(MultiBot.OnOffSwitch(pButton)) then
 		MultiBot.auto.release = true
@@ -863,7 +933,7 @@ tMain.addButton("Release", 0, 34, "achievement_bg_xkills_avgraveyard", MultiBot.
 	end
 end
 
-tMain.addButton("Stats", 0, 68, "inv_scroll_08", MultiBot.tips.main.stats).setDisable()
+tMain.addButton("Stats", 0, 170, "inv_scroll_08", MultiBot.tips.main.stats).setDisable()
 .doLeft = function(pButton)
 	if(GetNumRaidMembers() > 0) then return SendChatMessage(MultiBot.info.stats, "SAY") end
 	if(MultiBot.OnOffSwitch(pButton)) then
@@ -877,7 +947,7 @@ tMain.addButton("Stats", 0, 68, "inv_scroll_08", MultiBot.tips.main.stats).setDi
 	end
 end
 
-local tButton = tMain.addButton("Reward", 0, 102, "Interface\\AddOns\\MultiBot\\Icons\\reward.blp", MultiBot.tips.main.reward).setDisable()
+local tButton = tMain.addButton("Reward", 0, 204, "Interface\\AddOns\\MultiBot\\Icons\\reward.blp", MultiBot.tips.main.reward).setDisable()
 tButton.doRight = function(pButton)
 	if(table.getn(MultiBot.reward.rewards) > 0 and table.getn(MultiBot.reward.units) > 0) then MultiBot.reward:Show() end
 end
@@ -885,26 +955,22 @@ tButton.doLeft = function(pButton)
 	MultiBot.reward.state = MultiBot.OnOffSwitch(pButton)
 end
 
-tMain.addButton("Reset", 0, 136, "inv_misc_tournaments_symbol_gnome", MultiBot.tips.main.reset)
+tMain.addButton("Reset", 0, 238, "inv_misc_tournaments_symbol_gnome", MultiBot.tips.main.reset)
 .doLeft = function(pButton)
 	MultiBot.ActionToTargetOrGroup("reset botAI")
 end
 
-tMain.addButton("Actions", 0, 170, "inv_helmet_02", MultiBot.tips.main.action)
+tMain.addButton("Actions", 0, 272, "inv_helmet_02", MultiBot.tips.main.action)
 .doLeft = function(pButton)
 	MultiBot.ActionToTargetOrGroup("reset")
 end
 
 -- GAMEMASTER --
 
-local tButton = tMultiBar.addButton("Masters", 38, 0, "mail_gmicon", MultiBot.tips.game.master)
-tButton:RegisterForDrag("RightButton")
-tButton:SetScript("OnDragStart", function()
-	MultiBot.frames["MultiBar"]:StartMoving()
-end)
-tButton:SetScript("OnDragStop", function()
-	MultiBot.frames["MultiBar"]:StopMovingOrSizing()
-end)
+local tButton = tMultiBar.addButton("Masters", 38, 0, "mail_gmicon", MultiBot.tips.game.master).doHide()
+tButton.doRight = function(pButton)
+	MultiBot.doSlash("/MultiBot", "")
+end
 tButton.doLeft = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Masters"])
 end
@@ -1009,7 +1075,7 @@ end
 
 -- RIGHT --
 
-local tRight = tMultiBar.addFrame("Right", 72, 2, 32)
+local tRight = tMultiBar.addFrame("Right", 34, 2, 32)
 
 -- DRINK --
 
