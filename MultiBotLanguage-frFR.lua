@@ -75,7 +75,7 @@ MultiBot.info.combination =
 --"Je dois d'abord activer le sélecteur de langue.";
 
 MultiBot.info.rights =
-"I have not the GameMaster-Rights.";
+"Je n'ai pas les droits MJ.";
 
 MultiBot.info.reward =
 "Sélectionner les récompenses";
@@ -832,27 +832,28 @@ MultiBot.tips.main.coords =
 "|cff999999(Ordre d'exécution : Système)|r";
 
 MultiBot.tips.main.masters =
-"GameMaster-Switch\n|cffffffff"..
-"This Switch will enable or disable the GameMaster-Control.\n"..
-"You will need GameMaster-Rights to enable the GameMaster-Control|r\n\n"..
-"|cffff0000Left-Click to enable or disable the GameMaster-Control|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Switch Maitre du Jeu\n|cffffffff"..
+"Ce switch activera ou désactivera le contrôle MJ.\n"..
+"Vous devez avoir les droits MJ pour activer le contrôle.|r\n\n"..
+"|cffff0000Cliquez-gauche pour activer ou désactiver le contrôle MJ|r\n"..
+"|cff999999(Ordre d'exécution : Système)|r";
 
 MultiBot.tips.main.creator =
-"Creator-Switch\n|cffffffff"..
-"This Switch will enable or disable the Creator-Control.|r\n\n"..
-"|cffff0000Left-Click to enable or disable the Creator-Control|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Switch Créateur\n|cffffffff"..
+"Ce switch activera ou désactivera le mode créateur de Bot.|r\n\n"..
+"|cffff0000Cliquez-gauche pour activer ou désactiver le mode créateur de Bot|r\n"..
+"|cff999999(Ordre d'exécution : Système)|r";
 
 MultiBot.tips.main.beast =
-"Beastmaster-Switch\n|cffffffff"..
-"This Switch will enable or disable the Beastmaster-Control.\n"..
-"The Beastmaster-Control is for the Mod-NPC-Beastmaster of the Azerothcore.\n"..
-"Mod-NPC-Beastmaster allows every Character to have a Pet like Hunters.\n"..
-"Your Charaters can learn the nessasary Spells from White Fang.\n"..
-"White Fang must be placed into the World by the GameMaster.|r\n\n"..
-"|cffff0000Left-Click to enable or disable the Beastmaster-Control|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Switch Maître des Bêtes\n|cffffffff"..
+"Ce switch activera ou désactivera le contrôle Maître des Bêtes.\n"..
+"Le contrôle Maître des Bêtes gère le Module Maître des Bêtes d'Azerothcore.\n"..
+"Le Module Maître des Bêtes permet à chaque personnage d'avoir un familier comme les chasseurs.\n"..
+"Vos personnages peuvent apprendre les sorts nécessaires auprès de White Fang.\n"..
+"White Fang doit être placé dans le monde par l'Admin.|r\n\n"..
+"|cffff0000Cliquez-gauche pour activer ou désactiver le contrôle Maître des Bêtes|r\n"..
+"|cff999999(Ordre d'exécution : Système)|r";
+
 
 --[[ 
 MultiBot.tips.main.lang.master =
