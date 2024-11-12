@@ -75,7 +75,7 @@ MultiBot.info.combination =
 --"我需要先激活语言选择器。";
 
 MultiBot.info.rights =
-"I have not the GameMaster-Rights.";
+"我没有游戏管理员权限。";
 
 MultiBot.info.reward =
 "选择奖励。";
@@ -822,27 +822,27 @@ MultiBot.tips.main.coords =
 "|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.main.masters =
-"GameMaster-Switch\n|cffffffff"..
-"This Switch will enable or disable the GameMaster-Control.\n"..
-"You will need GameMaster-Rights to enable the GameMaster-Control|r\n\n"..
-"|cffff0000Left-Click to enable or disable the GameMaster-Control|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"游戏管理员切换 \n|cffffffff"..
+"这个切换开关将启用或禁用游戏管理员控制功能。\n"..
+"你需要拥有游戏管理员权限才能启用游戏管理员控制功能|r\n\n"..
+"|cffff0000左键点击以启用或禁用游戏管理员控制功能|r\n"..
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.main.creator =
-"Creator-Switch\n|cffffffff"..
-"This Switch will enable or disable the Creator-Control.|r\n\n"..
-"|cffff0000Left-Click to enable or disable the Creator-Control|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"创造者切换\n|cffffffff"..
+"这个切换开关将启用或禁用创造者控制功能。|r\n\n"..
+"|cffff0000左键点击以启用或禁用创造者控制功能|r\n"..
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.main.beast =
-"Beastmaster-Switch\n|cffffffff"..
-"This Switch will enable or disable the Beastmaster-Control.\n"..
-"The Beastmaster-Control is for the Mod-NPC-Beastmaster of the Azerothcore.\n"..
-"Mod-NPC-Beastmaster allows every Character to have a Pet like Hunters.\n"..
-"Your Charaters can learn the nessasary Spells from White Fang.\n"..
-"White Fang must be placed into the World by the GameMaster.|r\n\n"..
-"|cffff0000Left-Click to enable or disable the Beastmaster-Control|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"兽王控制切换\n|cffffffff"..
+"这个切换开关将启用或禁用兽王控制功能。\n"..
+"兽王控制功能是针对艾泽拉斯核心（Azerothcore）的模组 NPC 驯兽师的。\n"..
+"模组 NPC 驯兽师允许每个角色像猎人一样拥有宠物。\n"..
+"你的角色可以从 “白牙” 那里学习必要的法术。\n"..
+"白牙” 必须由游戏管理员放置到游戏世界中。|r\n\n"..
+"|cffff0000左键点击以启用或禁用兽王控制功能|r\n"..
+"|cff999999(执行命令: 系统)|r";
 
 --[[
 MultiBot.tips.main.lang.master =
