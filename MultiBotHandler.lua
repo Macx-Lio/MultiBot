@@ -329,6 +329,7 @@ MultiBot:SetScript("OnEvent", function()
 			local tTable = MultiBot.doSplit(string.sub(arg1, 13), ", ")
 			
 			for key, value in pairs(tTable) do
+				if(value == "") then break end
 				local tBot = MultiBot.doSplit(value, " ")
 				local tName = string.sub(tBot[1], 2)
 				local tClass = MultiBot.toClass(tBot[2])
