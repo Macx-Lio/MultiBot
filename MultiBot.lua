@@ -2476,3 +2476,5 @@ MultiBot.tips.every.talent =
 "It opens with a time delay while the system loads the talent values.|r\n\n",
 "|cffff0000Left-Click to open or close the Talents|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.GM = false
