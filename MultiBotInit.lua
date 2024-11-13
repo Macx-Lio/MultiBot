@@ -2191,9 +2191,9 @@ MultiBot.talent.wowButton(MultiBot.info.talent.Copy, -854, 966, 100, 20, 12)
 	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage(MultiBot.info.target, "SAY") end
 	
 	local tLocClass, tClass = UnitClass("target")
-	if(pButton.getClass() ~= MultiBot.toClass(tClass)) then return SendChatMessage("The Classes do not match.", "SAY") end
+	if(MultiBot.talent.class ~= MultiBot.toClass(tClass)) then return SendChatMessage("The Classes do not match.", "SAY") end
 	
-	local tUnit = MultiBot.toUnit(pButton.getName())
+	local tUnit = MultiBot.toUnit(MultiBot.talent.name)
 	if(UnitLevel(tUnit) ~= UnitLevel("target")) then return SendChatMessage("The Levels do not match.", "SAY") end
 	
 	local tValues = ""
