@@ -5,6 +5,12 @@ MultiBot.info.command =
 MultiBot.info.target =
 "Ich habe kein Ziel.";
 
+MultiBot.info.classes =
+"Die Klassen stimmen nicht überein.";
+
+MultiBot.info.levels =
+"Die Level stimmen nicht überein.";
+
 MultiBot.info.spell =
 "Ich konnte den Zauber nicht identifizieren.";
 
@@ -102,6 +108,9 @@ MultiBot.info.talent.OutOfRange =
 
 MultiBot.info.talent.Apply = 
 "Ausführen";
+
+MultiBot.info.talent.Copy = 
+"Kopieren";
 
 MultiBot.info.talent.Title =
 "Talente von NAME";

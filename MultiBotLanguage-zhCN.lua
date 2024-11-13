@@ -5,6 +5,12 @@ MultiBot.info.command =
 MultiBot.info.target =
 "我没有目标。";
 
+MultiBot.info.classes =
+"The Classes do not match.";
+
+MultiBot.info.levels =
+"The Levels do not match.";
+
 MultiBot.info.spell =
 "我无法识别该法术。";
 
@@ -75,7 +81,7 @@ MultiBot.info.combination =
 --"我需要先激活语言选择器。";
 
 MultiBot.info.rights =
-"我没有游戏管理员权限。";
+"我没有GM权限。";
 
 MultiBot.info.reward =
 "选择奖励。";
@@ -102,6 +108,9 @@ MultiBot.info.talent.OutOfRange =
 
 MultiBot.info.talent.Apply = 
 "应用";
+
+MultiBot.info.talent.Copy = 
+"复制";
 
 MultiBot.info.talent.Title =
 "来自 NAME 的天赋";
@@ -610,9 +619,9 @@ MultiBot.tips.creator.init =
 -- 单位 --
 
 MultiBot.tips.unit.selfbot =
-"自用机器人 |cffffffff\n"..
-"此按钮开关自用机器人模式。|r\n\n"..
-"|cffff0000左键单击执行自用机器人|r\n"..
+"自我机器人 |cffffffff\n"..
+"此按钮开关自我机器人模式。|r\n\n"..
+"|cffff0000左键单击执行自我机器人|r\n"..
 "|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.unit.button =
@@ -822,10 +831,10 @@ MultiBot.tips.main.coords =
 "|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.main.masters =
-"游戏管理员切换 \n|cffffffff"..
-"这个切换开关将启用或禁用游戏管理员控制功能。\n"..
-"你需要拥有游戏管理员权限才能启用游戏管理员控制功能|r\n\n"..
-"|cffff0000左键点击以启用或禁用游戏管理员控制功能|r\n"..
+"GM功能切换 \n|cffffffff"..
+"这个切换开关将启用或禁用GM控制功能。\n"..
+"你需要拥有GM权限才能启用GM控制功能|r\n\n"..
+"|cffff0000左键点击以启用或禁用GM控制功能|r\n"..
 "|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.main.creator =

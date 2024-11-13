@@ -5,6 +5,12 @@ MultiBot.info.command =
 MultiBot.info.target =
 "Je n'ai pas de cible.";
 
+MultiBot.info.classes =
+"The Classes do not match.";
+
+MultiBot.info.levels =
+"The Levels do not match.";
+
 MultiBot.info.spell =
 "Je n'ai pas pu identifier le sort.";
 
@@ -102,6 +108,9 @@ MultiBot.info.talent.OutOfRange =
 
 MultiBot.info.talent.Apply = 
 "Appliquer";
+
+MultiBot.info.talent.Copy = 
+"Copie";
 
 MultiBot.info.talent.Title =
 "Talents de NAME";

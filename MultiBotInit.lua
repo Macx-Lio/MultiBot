@@ -2167,7 +2167,7 @@ MultiBot.talent:Hide()
 
 MultiBot.talent.movButton("Move", -960, 960, 64, MultiBot.tips.move.reward)
 
-MultiBot.talent.wowButton(MultiBot.info.talent.Apply, -474, 966, 100, 20, 13).doHide()
+MultiBot.talent.wowButton(MultiBot.info.talent.Apply, -474, 966, 100, 20, 12).doHide()
 .doLeft = function(pButton)
 	local tValues = ""
 	
@@ -2183,6 +2183,32 @@ MultiBot.talent.wowButton(MultiBot.info.talent.Apply, -474, 966, 100, 20, 13).do
 	
 	SendChatMessage("talents apply " ..tValues, "WHISPER", nil, MultiBot.talent.name)
 	pButton.doHide()
+end
+
+MultiBot.talent.wowButton(MultiBot.info.talent.Copy, -854, 966, 100, 20, 12)
+.doLeft = function(pButton)
+	local tName = UnitName("target")
+	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage(MultiBot.info.target, "SAY") end
+	
+	local tLocClass, tClass = UnitClass("target")
+	if(pButton.getClass() ~= MultiBot.toClass(tClass)) then return SendChatMessage("The Classes do not match.", "SAY") end
+	
+	local tUnit = MultiBot.toUnit(pButton.getName())
+	if(UnitLevel(tUnit) ~= UnitLevel("target")) then return SendChatMessage("The Levels do not match.", "SAY") end
+	
+	local tValues = ""
+	
+	for i = 1, 3 do
+		local tTab = MultiBot.talent.frames["Tab" .. i]
+		
+		for j = 1, table.getn(tTab.buttons) do
+			tValues = tValues .. tTab.buttons[j].value
+		end
+		
+		if(i < 3) then tValues = tValues .. "-" end
+	end
+
+	SendChatMessage("talents apply " ..tValues, "WHISPER", nil, tName)
 end
 
 MultiBot.talent.wowButton("X", -470, 992, 17, 20, 13)
