@@ -243,6 +243,7 @@ MultiBot:SetScript("OnEvent", function()
 			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["Masters"]
 			
 			if(MultiBotSave["Masters"] == "true") then
+				MultiBot.GM = true
 				tButton.setDisable()
 				tButton.doLeft(tButton)
 			end
@@ -288,7 +289,7 @@ MultiBot:SetScript("OnEvent", function()
 	if(event == "CHAT_MSG_SYSTEM") then
 		if(MultiBot.isInside(arg1, "Accountlevel", "你帐号的等级为")) then
 			local tLevel = tonumber(MultiBot.doSplit(arg1, ": ")[2])
-			MultiBot.GM = MultiBot.IF(tLevel > 1, true, false)
+			MultiBot.GM = tLevel > 1
 		end
 		
 		if(MultiBot.isInside(arg1, "Possible strategies")) then
