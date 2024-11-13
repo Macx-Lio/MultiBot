@@ -6,10 +6,10 @@ MultiBot.info.target =
 "我没有目标。";
 
 MultiBot.info.classes =
-"The Classes do not match.";
+"职业不匹配。";
 
 MultiBot.info.levels =
-"The Levels do not match.";
+"等级不匹配。";
 
 MultiBot.info.spell =
 "我无法识别该法术。";
