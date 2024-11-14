@@ -6,10 +6,10 @@ MultiBot.info.target =
 "Je n'ai pas de cible.";
 
 MultiBot.info.classes =
-"The Classes do not match.";
+"Les Classes ne correspondent pas.";
 
 MultiBot.info.levels =
-"The Levels do not match.";
+"Les Niveaux ne correspondent pas.";
 
 MultiBot.info.spell =
 "Je n'ai pas pu identifier le sort.";
