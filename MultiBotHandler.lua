@@ -654,8 +654,10 @@ MultiBot:SetScript("OnEvent", function()
 			MultiBot.addEvery(tFrame, tButton.combat, tButton.normal)
 			
 			if(MultiBot.index.classes.actives[tButton.class] == nil) then MultiBot.index.classes.actives[tButton.class] = {} end
-			table.insert(MultiBot.index.classes.actives[tButton.class], tButton.name)
-			table.insert(MultiBot.index.actives, tButton.name)
+			if(MultiBot.isActive(tButton.name) == false) then
+				table.insert(MultiBot.index.classes.actives[tButton.class], tButton.name)
+				table.insert(MultiBot.index.actives, tButton.name)
+			end
 			
 			tButton.setEnable()
 			return

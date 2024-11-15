@@ -85,6 +85,11 @@ MultiBot.doRepos = function(pIndex, pOffsetX)
 	return true
 end
 
+MultiBot.isActive = function(pName)
+	for key, value in pairs(MultiBot.index.actives) do if(value == pName) then return true end end
+	return false
+end
+
 MultiBot.isInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern, o4thPattern, o5thPattern, o6thPattern, o7thPattern, o8thPattern, o9thPattern)
 	if(p1stPattern ~= nil and string.find(pString, p1stPattern)) then return true end
 	if(o2ndPattern ~= nil and string.find(pString, o2ndPattern)) then return true end
@@ -797,7 +802,7 @@ MultiBot.addSelf = function(pClass, pName)
 	local tClass = MultiBot.toClass(pClass)
 	local tButton = MultiBot.frames["MultiBar"].frames["Units"].addButton(pName, 0, 0, "inv_misc_head_clockworkgnome_01", MultiBot.tips.unit.selfbot)
 	if(MultiBot.index.classes.players[tClass] == nil) then MultiBot.index.classes.players[tClass] = {} end
-	if(MultiBot.index.classes.players[tClass] == nil) then table.insert(MultiBot.index.classes.players[tClass], pName) end
+	table.insert(MultiBot.index.classes.players[tClass], pName)
 	table.insert(MultiBot.index.players, pName)
 	tButton.roster = "players"
 	tButton.class = tClass
