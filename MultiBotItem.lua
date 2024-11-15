@@ -39,7 +39,7 @@ MultiBot.addItem = function(pFrame, pInfo)
 			return
 		end
 		
-		if(tAction == "e" or tAction == "u") then
+		if(tAction == "e" or tAction == "u" or tAction == "give") then
 			SendChatMessage(tAction .. " " .. pButton.tip, "WHISPER", nil, tName)
 			return
 		end

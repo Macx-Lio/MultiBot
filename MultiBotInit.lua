@@ -82,11 +82,10 @@ tButton.doRight = function(pButton)
 	MultiBot.ShowHideSwitch(pButton.parent.frames["Mode"])
 end
 tButton.doLeft = function(pButton)
-	if(MultiBot.OnOffSwitch(pButton))
-	then MultiBot.ActionToGroup("co +passive,?")
+	if(MultiBot.OnOffSwitch(pButton)) then
+		MultiBot.ActionToGroup("co +passive,?")
 	else
 		MultiBot.ActionToGroup("co -passive,?")
-		MultiBot.ActionToGroup("follow")
 	end
 end
 
@@ -97,11 +96,10 @@ tMode.addButton("Passive", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\mode_passi
 .doLeft = function(pButton)
 	if(MultiBot.SelectToGroup(pButton.parent.parent, "Mode", pButton.texture, "co +passive,?")) then
 		pButton.parent.parent.buttons["Mode"].setEnable().doLeft = function(pButton)
-			if(MultiBot.OnOffSwitch(pButton))
-			then MultiBot.ActionToGroup("co +passive,?")
+			if(MultiBot.OnOffSwitch(pButton)) then
+				MultiBot.ActionToGroup("co +passive,?")
 			else
 				MultiBot.ActionToGroup("co -passive,?")
-				MultiBot.ActionToGroup("follow")
 			end
 		end
 	end
@@ -111,10 +109,9 @@ tMode.addButton("Grind", 0, 30, "Interface\\AddOns\\MultiBot\\Icons\\mode_grind.
 .doLeft = function(pButton)
 	if(MultiBot.SelectToGroup(pButton.parent.parent, "Mode", pButton.texture, "grind")) then
 		pButton.parent.parent.buttons["Mode"].setEnable().doLeft = function(pButton)
-			if(MultiBot.OnOffSwitch(pButton))
-			then MultiBot.ActionToGroup("grind")
+			if(MultiBot.OnOffSwitch(pButton)) then
+				MultiBot.ActionToGroup("grind")
 			else
-				MultiBot.ActionToGroup("co -passive,?")
 				MultiBot.ActionToGroup("follow")
 			end
 		end
@@ -127,7 +124,7 @@ tLeft.addButton("Stay", -68, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_fol
 .doLeft = function(pButton)
 	if(MultiBot.ActionToGroup("stay")) then
 		pButton.parent.buttons["Follow"].doShow()
-		pButton:doHide()
+		pButton.doHide()
 	end
 end
 
@@ -135,7 +132,7 @@ tLeft.addButton("Follow", -68, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_s
 .doLeft = function(pButton)
 	if(MultiBot.ActionToGroup("follow")) then
 		pButton.parent.buttons["Stay"].doShow()
-		pButton:doHide()
+		pButton.doHide()
 	end
 end
 
@@ -1129,9 +1126,11 @@ MultiBot.inventory.addButton("Sell", -94, 806, "inv_misc_coin_16", MultiBot.tips
 		MultiBot.inventory.action = ""
 		pButton.setDisable()
 	else
+		CancelTrade()
 		MultiBot.inventory.action = "s"
 		pButton.getButton("Destroy").setDisable()
 		pButton.getButton("Equip").setDisable()
+		pButton.getButton("Trade").setDisable()
 		pButton.getButton("Use").setDisable()
 		pButton.setEnable()
 	end
@@ -1143,8 +1142,10 @@ MultiBot.inventory.addButton("Equip", -94, 768, "inv_helmet_22", MultiBot.tips.i
 		MultiBot.inventory.action = ""
 		pButton.setDisable()
 	else
+		CancelTrade()
 		MultiBot.inventory.action = "e"
 		pButton.getButton("Destroy").setDisable()
+		pButton.getButton("Trade").setDisable()
 		pButton.getButton("Sell").setDisable()
 		pButton.getButton("Use").setDisable()
 		pButton.setEnable()
@@ -1157,22 +1158,43 @@ MultiBot.inventory.addButton("Use", -94, 731, "inv_gauntlets_25", MultiBot.tips.
 		MultiBot.inventory.action = ""
 		pButton.setDisable()
 	else
+		CancelTrade()
 		MultiBot.inventory.action = "u"
 		pButton.getButton("Destroy").setDisable()
 		pButton.getButton("Equip").setDisable()
+		pButton.getButton("Trade").setDisable()
 		pButton.getButton("Sell").setDisable()
 		pButton.setEnable()
 	end
 end
 
-MultiBot.inventory.addButton("Destroy", -94, 694, "inv_hammer_15", MultiBot.tips.inventory.drop).setDisable()
+MultiBot.inventory.addButton("Trade", -94, 694, "achievement_reputation_01", MultiBot.tips.inventory.trade).setDisable()
+.doLeft = function(pButton)
+	if(pButton.state) then
+		MultiBot.inventory.action = ""
+		pButton.setDisable()
+		CancelTrade()
+	else
+		InitiateTrade(pButton.getName())
+		MultiBot.inventory.action = "give"
+		pButton.getButton("Destroy").setDisable()
+		pButton.getButton("Equip").setDisable()
+		pButton.getButton("Sell").setDisable()
+		pButton.getButton("Use").setDisable()
+		pButton.setEnable()
+	end
+end
+
+MultiBot.inventory.addButton("Destroy", -94, 657, "inv_hammer_15", MultiBot.tips.inventory.drop).setDisable()
 .doLeft = function(pButton)
 	if(pButton.state) then
 		MultiBot.inventory.action = ""
 		pButton.setDisable()
 	else
+		CancelTrade()
 		MultiBot.inventory.action = "destroy"
 		pButton.getButton("Equip").setDisable()
+		pButton.getButton("Trade").setDisable()
 		pButton.getButton("Sell").setDisable()
 		pButton.getButton("Use").setDisable()
 		pButton.setEnable()
@@ -2533,6 +2555,7 @@ MultiBot.talent.doClear = function()
 		tTab.arrows = {}
 	end
 end
+
 
 -- FINISH --
 

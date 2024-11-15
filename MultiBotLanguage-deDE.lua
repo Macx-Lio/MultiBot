@@ -1036,6 +1036,14 @@ MultiBot.tips.inventory.use =
 "|cffff0000Linksklicken um Benutzen zu aktivieren|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
+MultiBot.tips.inventory.trade =
+"Items tauschen|cffffffff\n"..
+"Diese Schaltfläche aktiviert den Tausch-Modus des Inventars.\n"..
+"Den Inspekt-Frame muss man manuell schließen.\n"..
+"Es gibt kein LUA-Befehl dafür.|r\n\n"..
+"|cffff0000Linksklicken um Tasuchen zu aktivieren|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
+
 MultiBot.tips.inventory.drop =
 "Items zerstören|cffffffff\n"..
 "Diese Schaltfläche aktiviert den Zerstör-Modus des Inventars.\n"..

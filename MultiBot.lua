@@ -9,6 +9,7 @@ MultiBot:RegisterEvent("CHAT_MSG_SYSTEM")
 MultiBot:RegisterEvent("CHAT_MSG_ADDON")
 MultiBot:RegisterEvent("CHAT_MSG_LOOT")
 MultiBot:RegisterEvent("QUEST_COMPLETE")
+MultiBot:RegisterEvent("TRADE_CLOSED")
 MultiBot:SetPoint("BOTTOMRIGHT", 0, 0)
 MultiBot:SetSize(1, 1)
 MultiBot:Show()
@@ -1125,6 +1126,14 @@ MultiBot.tips.inventory.use =
 "Use-Items|cffffffff\n"..
 "It enables the Use-Mode of the Inventory.|r\n\n"..
 "|cffff0000Left-Click to use a Item|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.inventory.trade =
+"Trade-Items|cffffffff\n"..
+"It enables the Trade-Mode of the Inventory.\n"..
+"The Inspect-Frame must be closed manually.\n"..
+"There is no LUA-Command for this.|r\n\n"..
+"|cffff0000Left-Click to trade a Item|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.inventory.drop =

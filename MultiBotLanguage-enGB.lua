@@ -1037,6 +1037,14 @@ MultiBot.tips.inventory.use =
 "|cffff0000Left-Click to use a Item|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
+MultiBot.tips.inventory.trade =
+"Trade-Items|cffffffff\n"..
+"It enables the Trade-Mode of the Inventory.\n"..
+"The Inspect-Frame must be closed manually.\n"..
+"There is no LUA-Command for this.|r\n\n"..
+"|cffff0000Left-Click to trade a Item|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
 MultiBot.tips.inventory.drop =
 "Drop-Items|cffffffff\n"..
 "It enables the Drop-Mode of the Inventory.\n"..

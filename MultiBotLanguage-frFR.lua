@@ -1049,6 +1049,14 @@ MultiBot.tips.inventory.use =
 "|cffff0000Clic gauche pour utiliser un objet|r\n"..
 "|cff999999(Ordre d'exécution : Bot)|r";
 
+MultiBot.tips.inventory.trade =
+"Trade-Items|cffffffff\n"..
+"It enables the Trade-Mode of the Inventory.\n"..
+"The Inspect-Frame must be closed manually.\n"..
+"There is no LUA-Command for this.|r\n\n"..
+"|cffff0000Left-Click to trade a Item|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
 MultiBot.tips.inventory.drop =
 "Jeter des Objets|cffffffff\n"..
 "Active le mode de jet de l'inventaire.\n"..
@@ -1058,6 +1066,13 @@ MultiBot.tips.inventory.drop =
 "- la Pierre de Retour|r\n\n"..
 "|cffff0000Clic gauche pour jeter un objet|r\n"..
 "|cff999999(Ordre d'exécution : Bot)|r";
+
+MultiBot.tips.inventory.open =
+"Open-Items|cffffffff\n"..
+"This Button will open every first findable Loot-Bag in your Inventory.\n"..
+"The Content will be put automatically into the Inventory.|r\n\n"..
+"|cffff0000Left-Click to open a Loot-Bag|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
 
 
 -- ITEMUS:NIVEAU --

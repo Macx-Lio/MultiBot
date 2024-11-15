@@ -1036,6 +1036,14 @@ MultiBot.tips.inventory.use =
 "|cffff0000左键单击使用物品|r\n"..
 "|cff999999(执行命令: 机器人)|r";
 
+MultiBot.tips.inventory.trade =
+"Trade-Items|cffffffff\n"..
+"It enables the Trade-Mode of the Inventory.\n"..
+"The Inspect-Frame must be closed manually.\n"..
+"There is no LUA-Command for this.|r\n\n"..
+"|cffff0000Left-Click to trade a Item|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
 MultiBot.tips.inventory.drop =
 "丢弃物品 |cffffffff\n"..
 "此功能启用背包的丢弃模式。\n"..
