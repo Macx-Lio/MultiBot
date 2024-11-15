@@ -766,7 +766,7 @@ MultiBot:SetScript("OnEvent", function()
 		if(MultiBot.inventory:IsVisible()) then
 			local tButton = nil
 			
-			if( MultiBot.isInside(arg1, "获得了物品")) then
+			if(MultiBot.isInside(arg1, "获得了物品")) then
 				local tName = MultiBot.doReplace(MultiBot.doSplit(arg1, ":")[1], "获得了物品", "")
 				tButton = MultiBot.frames["MultiBar"].frames["Units"].buttons[tName]
 			end

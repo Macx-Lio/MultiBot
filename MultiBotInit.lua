@@ -999,6 +999,11 @@ local tPortal = tMasters.addFrame("Portal", 30, 36)
 tPortal:Hide()
 
 local tButton = tPortal.addButton("Red", 0, 0, "inv_jewelcrafting_gem_16", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", MultiBot.info.location)).setDisable()
+tButton.goMap = ""
+tButton.goX = 0
+tButton.goY = 0
+tButton.goZ = 0
+
 tButton.doRight = function(pButton)
 	if(pButton.state == false) then return SendChatMessage(MultiBot.info.itlocation, "SAY") end
 	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", MultiBot.info.location)
@@ -1015,6 +1020,11 @@ tButton.doLeft = function(pButton)
 end
 
 local tButton = tPortal.addButton("Green", 30, 0, "inv_jewelcrafting_gem_13", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", MultiBot.info.location)).setDisable()
+tButton.goMap = ""
+tButton.goX = 0
+tButton.goY = 0
+tButton.goZ = 0
+
 tButton.doRight = function(pButton)
 	if(pButton.state == false) then return SendChatMessage(MultiBot.info.itlocation, "SAY") end
 	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", MultiBot.info.location)
@@ -1031,6 +1041,11 @@ tButton.doLeft = function(pButton)
 end
 
 local tButton = tPortal.addButton("Blue", 60, 0, "inv_jewelcrafting_gem_17", MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", MultiBot.info.location)).setDisable()
+tButton.goMap = ""
+tButton.goX = 0
+tButton.goY = 0
+tButton.goZ = 0
+
 tButton.doRight = function(pButton)
 	if(pButton.state == false) then return SendChatMessage(MultiBot.info.itlocation, "SAY") end
 	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", MultiBot.info.location)

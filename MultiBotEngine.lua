@@ -216,7 +216,7 @@ MultiBot.toPoint = function(pFrame)
 end
 
 MultiBot.SavePortal = function(pButton)
-	local tSave = pButton.goMap
+	local tSave = MultiBot.IF(pButton.goMap == nil, "", pButton.goMap)
 	tSave = tSave .. ";" .. (math.ceil(pButton.goX * 1000) / 1000)
 	tSave = tSave .. ";" .. (math.ceil(pButton.goY * 1000) / 1000)
 	tSave = tSave .. ";" .. (math.ceil(pButton.goZ * 1000) / 1000)
@@ -797,7 +797,7 @@ MultiBot.addSelf = function(pClass, pName)
 	local tClass = MultiBot.toClass(pClass)
 	local tButton = MultiBot.frames["MultiBar"].frames["Units"].addButton(pName, 0, 0, "inv_misc_head_clockworkgnome_01", MultiBot.tips.unit.selfbot)
 	if(MultiBot.index.classes.players[tClass] == nil) then MultiBot.index.classes.players[tClass] = {} end
-	table.insert(MultiBot.index.classes.players[tClass], pName)
+	if(MultiBot.index.classes.players[tClass] == nil) then table.insert(MultiBot.index.classes.players[tClass], pName) end
 	table.insert(MultiBot.index.players, pName)
 	tButton.roster = "players"
 	tButton.class = tClass
