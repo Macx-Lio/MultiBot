@@ -564,6 +564,15 @@ MultiBot:SetScript("OnEvent", function()
 		
 		local tButton = MultiBot.frames["MultiBar"].frames["Units"].buttons[arg2]
 		
+		if(MultiBot.auto.release == true) then
+			-- Graveyard ready to talk Bot in the chinese Version --
+			if(tButton ~= nil and tButton.waitFor == "你好" and arg1 == "你好") then
+				SendChatMessage("summon", "WHISPER", nil, arg2)
+				tButton.waitFor = ""
+				return
+			end
+		end
+		
 		if(MultiBot.isInside(arg1, "Hello", "你好") and tButton == nil) then
 			local tUnit = MultiBot.toUnit(arg2)
 			local tLocClass, tClass = UnitClass(tUnit)
@@ -631,15 +640,6 @@ MultiBot:SetScript("OnEvent", function()
 		if(MultiBot.isInside(arg1, "Goodbye", "再见")) then
 			--MultiBot.doRaid()
 			return
-		end
-		
-		if(MultiBot.auto.release == true) then
-			-- Graveyard ready to talk Bot in the chinese Version --
-			if(tButton.waitFor == "你好" and arg1 == "你好") then
-				SendChatMessage("summon", "WHISPER", nil, arg2)
-				tButton.waitFor = ""
-				return
-			end
 		end
 		
 		if(tButton.waitFor == "NC" and MultiBot.isInside(arg1, "Strategies: ")) then

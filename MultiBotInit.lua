@@ -351,7 +351,7 @@ end
 
 tCreator.addButton("DeathKnight", 0, 270, "Interface\\AddOns\\MultiBot\\Icons\\addclass_deathknight.blp", MultiBot.tips.creator.deathknight)
 .doLeft = function(pButton)
-	SendChatMessage(".playerbot bot addclass deathknight", "SAY")
+	SendChatMessage(".playerbot bot addclass dk", "SAY")
 end
 
 tCreator.addButton("Inspect", 0, 300, "Interface\\AddOns\\MultiBot\\Icons\\filter_none.blp", MultiBot.tips.creator.inspect)
