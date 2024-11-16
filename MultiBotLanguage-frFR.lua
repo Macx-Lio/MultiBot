@@ -1050,12 +1050,12 @@ MultiBot.tips.inventory.use =
 "|cff999999(Ordre d'exécution : Bot)|r";
 
 MultiBot.tips.inventory.trade =
-"Trade-Items|cffffffff\n"..
-"It enables the Trade-Mode of the Inventory.\n"..
-"The Inspect-Frame must be closed manually.\n"..
-"There is no LUA-Command for this.|r\n\n"..
-"|cffff0000Left-Click to trade a Item|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"Échanger-Objets|cffffffff\n"..
+"Active le mode Échange de l'inventaire.\n"..
+"La fenêtre d'inspection doit être fermée manuellement.\n"..
+"Il n'existe aucune commande LUA pour cela.|r\n\n"..
+"|cffff0000Clic gauche pour échanger un objet|r\n"..
+"|cff999999(Ordre d'exécution : Bot)|r";
 
 MultiBot.tips.inventory.drop =
 "Jeter des Objets|cffffffff\n"..
@@ -1068,11 +1068,11 @@ MultiBot.tips.inventory.drop =
 "|cff999999(Ordre d'exécution : Bot)|r";
 
 MultiBot.tips.inventory.open =
-"Open-Items|cffffffff\n"..
-"This Button will open every first findable Loot-Bag in your Inventory.\n"..
-"The Content will be put automatically into the Inventory.|r\n\n"..
-"|cffff0000Left-Click to open a Loot-Bag|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"Ouvrir-Objets|cffffffff\n"..
+"Ce bouton ouvrira chaque sac de butin trouvable en premier dans votre inventaire.\n"..
+"Le contenu sera automatiquement placé dans l'inventaire.|r\n\n"..
+"|cffff0000Clic gauche pour ouvrir un sac de butin|r\n"..
+"|cff999999(Ordre d'exécution : Bot)|r";
 
 
 -- ITEMUS:NIVEAU --
