@@ -3,6 +3,8 @@ MultiBot.setRewards = function()
 	local tChoices = MultiBot.IF(GetNumQuestChoices() > 6, 6, GetNumQuestChoices())
 	table.wipe(MultiBot.reward.rewards)
 	table.wipe(MultiBot.reward.units)
+	MultiBot.reward.rewards = {}
+	MultiBot.reward.units = {}
 	
 	for i = 1, tChoices do
 		local tLink = GetQuestItemLink("CHOICE", i)
@@ -18,14 +20,20 @@ MultiBot.setRewards = function()
 	end
 	
 	if(GetNumRaidMembers() > 0) then
-		for i = 1, GetNumRaidMembers() do
-			local tBot = MultiBot.getBot(UnitName("raid" .. i))
-			if(tBot ~= nil and tBot.name ~= UnitName("player")) then table.insert(MultiBot.reward.units, tBot) end
+		for i = 1, 40 do
+			local tUnit = UnitName("raid" .. i)
+			if(tUnit ~= nil) then
+				local tBot = MultiBot.getBot(tUnit)
+				if(tBot ~= nil and tBot.name ~= UnitName("player")) then table.insert(MultiBot.reward.units, tBot) end
+			end
 		end
 	elseif(GetNumPartyMembers() > 0) then
-		for i = 1, GetNumPartyMembers() do
-			local tBot = MultiBot.getBot(UnitName("party" .. i))
-			if(tBot ~= nil and tBot.name ~= UnitName("player")) then table.insert(MultiBot.reward.units, tBot) end
+		for i = 1, 5 do
+			local tUnit = UnitName("party" .. i)
+			if(tUnit ~= nil) then
+				local tBot = MultiBot.getBot(tUnit)
+				if(tBot ~= nil and tBot.name ~= UnitName("player")) then table.insert(MultiBot.reward.units, tBot) end
+			end
 		end
 	end
 	
