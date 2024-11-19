@@ -2193,7 +2193,7 @@ tFrame.addFrame("Inspector", -137, 26, 16)
 	InspectUnit(pButton.getName())
 end
 
--- Talent --
+-- TALENT --
 
 MultiBot.talent = MultiBot.newFrame(MultiBot, -104, -276, 28, 1024, 1024)
 MultiBot.talent.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent.blp")
@@ -2202,7 +2202,7 @@ MultiBot.talent.addText("Title", MultiBot.info.talent["Title"], "CENTER", -228, 
 MultiBot.talent:SetMovable(true)
 MultiBot.talent:Hide()
 
-MultiBot.talent.movButton("Move", -960, 960, 64, MultiBot.tips.move.reward)
+MultiBot.talent.movButton("Move", -960, 960, 64, MultiBot.tips.move.talent)
 
 MultiBot.talent.wowButton(MultiBot.info.talent.Apply, -474, 966, 100, 20, 12).doHide()
 .doLeft = function(pButton)
