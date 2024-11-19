@@ -25,8 +25,9 @@ MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
 			MultiBot.timer.invite.needs = MultiBot.timer.invite.needs - 1
 		end
 		
-		if(MultiBot.timer.invite.needs == 0 or tIndex == table.getn(tTable)) then
-			MultiBot.timer.invite.rooster = ""
+		if(MultiBot.timer.invite.needs == 0 or MultiBot.timer.invite.index  == table.getn(tTable)) then
+			MultiBot.timer.invite.elapsed = 0
+			MultiBot.timer.invite.roster = ""
 			MultiBot.timer.invite.index = 1
 			MultiBot.timer.invite.needs = 0
 			MultiBot.auto.invite = false
