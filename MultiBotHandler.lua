@@ -643,6 +643,16 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
+		if(MultiBot.isInside(arg1, "reset to default") and tButton.waitFor == "CO") then
+			SendChatMessage("co ,?", "WHISPER", nil, arg2)
+			return
+		end
+		
+		if(MultiBot.isInside(arg1, "reset to default") and tButton.waitFor == "NC") then
+			SendChatMessage("nc ,?", "WHISPER", nil, arg2)
+			return
+		end
+		
 		if(tButton.waitFor == "NC" and MultiBot.isInside(arg1, "Strategies: ")) then
 			tButton.waitFor = ""
 			tButton.normal = string.sub(arg1, 13)
