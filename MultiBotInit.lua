@@ -698,7 +698,7 @@ tInvite.addButton("Party+5", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_p
 	local tRaid = GetNumRaidMembers()
 	local tParty = GetNumPartyMembers()
 	MultiBot.timer.invite.roster = MultiBot.frames["MultiBar"].buttons["Units"].roster
-	MultiBot.timer.invite.needs = 5 - MultiBot.IF(tRaid > 0, tRaid, MultiBot.IF(tParty > 0, tParty + 1, 1))
+	MultiBot.timer.invite.needs = MultiBot.IF(tRaid > 0, 5 - tRaid, MultiBot.IF(tParty > 0, 4 - tParty, 4))
 	MultiBot.timer.invite.index = 1
 	MultiBot.auto.invite = true
 	pButton.parent:Hide()
