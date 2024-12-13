@@ -775,10 +775,11 @@ MultiBot.tips.units.invite =
 "Invite-Control\n|cffffffff"..
 "With this Control you can automaticaly fill up your Group.\n"..
 "The left Button is for 'Party-Invite', the right Buttons are for 'Raid-Invite'.\n"..
-"Additionally a Right-Click on this Button will remove all Bots at once.|r\n\n".. 
+"Additionally a Right-Click on this Button will add or remove all Bots at once.\n"..
+"Means, if you are not in a Group all Bots will be added else they are removed.|r\n\n".. 
 "|cffff0000Left-Click to show or hide the Control|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to remove all Bots|r\n"..
+"|cffff0000Right-Click to add or remove all Bots|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.units.inviteParty5 =

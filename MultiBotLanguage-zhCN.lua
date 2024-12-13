@@ -771,14 +771,15 @@ MultiBot.tips.units.browse =
 
 
 MultiBot.tips.units.invite =
-"邀请控制\n|cffffffff"..
-"使用此控制可以自动填充你的队伍。\n"..
-"左侧按钮用于 '组队邀请'，右侧按钮用于 '团队邀请'。\n"..
-"此外，右键点击此按钮将一次性移除所有机器人。|r\n\n".. 
-"|cffff0000左键单击显示或隐藏控制|r\n"..
-"|cff999999(执行命令: 系统)|r\n\n"..
-"|cffff0000右键点击移除所有机器人|r\n"..
-"|cff999999(执行命令: 系统)|r";
+"Invite-Control\n|cffffffff"..
+"With this Control you can automaticaly fill up your Group.\n"..
+"The left Button is for 'Party-Invite', the right Buttons are for 'Raid-Invite'.\n"..
+"Additionally a Right-Click on this Button will add or remove all Bots at once.\n"..
+"Means, if you are not in a Group all Bots will be added else they are removed.|r\n\n".. 
+"|cffff0000Left-Click to show or hide the Control|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to add or remove all Bots|r\n"..
+"|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.units.inviteParty5 =
 "五人组\n|cffffffff"..

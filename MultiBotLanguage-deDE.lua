@@ -774,10 +774,11 @@ MultiBot.tips.units.invite =
 "Invite-Control\n|cffffffff"..
 "Mit dieser Steuereinheit kann man die Gruppe automatisch auffüllen.\n"..
 "Die linke Schaltfläche ist für 'Party-Invite', die rechten Schaltflächen sind für 'Raid-Invite'.\n"..
-"Ein Rechtsklick auf diese Schaltfläche entfernt alle Bots auf einmal.|r\n\n"..
+"Ein Rechtsklick auf diese Schaltfläche addiert oder entfernt alle Bots auf einmal.\n"..
+"Seid ihr in keiner Gruppe, werden alle Bots hinzugefügt, andernfalls entfernt.|r\n\n"..
 "|cffff0000Linksklicken um die Steuereinheit ein- oder auszublenden|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r\n\n"..
-"|cffff0000Rechtsklicken um alle Bots zu entfernen|r\n"..
+"|cffff0000Rechtsklicken um alle Bots hinzuzufügen oder zu entfernen|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.units.inviteParty5 =

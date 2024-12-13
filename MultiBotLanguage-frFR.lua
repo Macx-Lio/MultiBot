@@ -779,14 +779,15 @@ MultiBot.tips.units.browse =
 "|cffff0000Clic gauche pour parcourir le Rôle|r\n"..
 "|cff999999(Ordre d'exécution : Système)|r";
 
-MultiBot.tips.units.invite =
+MultiBot.tips.units.invite = 
 "Contrôle d'Invitation\n|cffffffff"..
-"Avec ce contrôle, vous pouvez remplir automatiquement votre groupe.\n"..
-"Le bouton de gauche est pour 'Invitation de Groupe', les boutons de droite sont pour 'Invitation de Raid'.\n"..
-"De plus, un clic droit sur ce bouton retirera tous les Bots en une seule fois.|r\n\n"..
-"|cffff0000Clic gauche pour afficher ou masquer le contrôle|r\n"..
+"Avec ce Contrôle, vous pouvez remplir automatiquement votre groupe.\n"..
+"Le bouton de gauche est pour 'Invitation au Groupe', les boutons de droite sont pour 'Invitation au Raid'.\n"..
+"De plus, un clic droit sur ce bouton ajoutera ou supprimera tous les Bots à la fois.\n"..
+"Cela signifie que, si vous n'êtes pas dans un groupe, tous les Bots seront ajoutés, sinon ils seront supprimés.|r\n\n".. 
+"|cffff0000Clic gauche pour afficher ou masquer le Contrôle|r\n"..
 "|cff999999(Ordre d'exécution : Système)|r\n\n"..
-"|cffff0000Clic droit pour retirer tous les Bots|r\n"..
+"|cffff0000Clic droit pour ajouter ou supprimer tous les Bots|r\n"..
 "|cff999999(Ordre d'exécution : Système)|r";
 
 MultiBot.tips.units.inviteParty5 =
