@@ -1096,30 +1096,77 @@ end
 
 local tRight = tMultiBar.addFrame("Right", 34, 2, 32)
 
+-- QUEST --
+
+local tButton = tRight.addButton("Quests", 0, 0, "inv_misc_book_07", MultiBot.tips.quests.master)
+tButton.doRight = function(pButton)
+	local tEntries, tQuests = GetNumQuestLogEntries()
+	local tFrame = pButton.parent.frames["Quests"]
+	local tIndex = 0
+	
+	for key, value in pairs(tFrame.buttons) do value:Hide() end
+	for key, value in pairs(tFrame.texts) do value:Hide() end
+	tFrame.buttons = {}
+	tFrame.texts = {}
+		
+	for i = 1, tEntries do
+		local tLink = GetQuestLink(i)
+		local tTitle, tLevel, tGroup, tHeader, tCollapsed, tComplete = GetQuestLogTitle(i)
+		
+		if(tCollapsed == nil) then
+			local tButton = tFrame.addButton("Quest" .. i, 0, tIndex * 30, "inv_misc_note_01", tLink)
+			tButton.link = tLink
+			tButton.id = i
+			
+			tButton.doRight = function(pButton)
+				if(GetNumPartyMembers() > 0) then SendChatMessage("drop " .. pButton.link, "PARTY") end
+				if(GetNumRaidMembers() > 0) then SendChatMessage("drop " .. pButton.link, "RAID") end
+				SelectQuestLogEntry(pButton.id)
+				SetAbandonQuest()
+				AbandonQuest()
+			end
+			
+			tButton.doLeft = function(pButton)
+				SelectQuestLogEntry(pButton.id)
+				QuestLogPushQuest()
+			end
+			
+			tFrame.addText("Title" .. i, tTitle, "BOTTOMLEFT", 30, tIndex * 30 + 14, 12)
+			tIndex = tIndex + 1
+		end
+	end
+end
+tButton.doLeft = function(pButton)
+	if(MultiBot.ShowHideSwitch(pButton.parent.frames["Quests"])) then pButton.doRight(pButton) end
+end
+
+local tQuests = tRight.addFrame("Quests", -2, 34)
+tQuests:Hide()
+
 -- DRINK --
 
-tRight.addButton("Drink", 0, 0, "inv_drink_24_sealwhey", MultiBot.tips.drink.group)
+tRight.addButton("Drink", 34, 0, "inv_drink_24_sealwhey", MultiBot.tips.drink.group)
 .doLeft = function(pButton)
 	MultiBot.ActionToGroup("drink")
 end
 
 -- RELEASE --
 
-tRight.addButton("Release", 34, 0, "achievement_bg_xkills_avgraveyard", MultiBot.tips.release.group)
+tRight.addButton("Release", 68, 0, "achievement_bg_xkills_avgraveyard", MultiBot.tips.release.group)
 .doLeft = function(pButton)
 	MultiBot.ActionToGroup("release")
 end
 
 -- REVIVE --
 
-tRight.addButton("Revive", 68, 0, "spell_holy_guardianspirit", MultiBot.tips.revive.group)
+tRight.addButton("Revive", 102, 0, "spell_holy_guardianspirit", MultiBot.tips.revive.group)
 .doLeft = function(pButton)
 	MultiBot.ActionToGroup("revive")
 end
 
 -- SUMALL --
 
-tRight.addButton("Summon", 102, 0, "ability_hunter_beastcall", MultiBot.tips.summon.group)
+tRight.addButton("Summon", 136, 0, "ability_hunter_beastcall", MultiBot.tips.summon.group)
 .doLeft = function(pButton)
 	MultiBot.ActionToGroup("summon")
 end

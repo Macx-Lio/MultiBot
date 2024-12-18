@@ -771,15 +771,15 @@ MultiBot.tips.units.browse =
 
 
 MultiBot.tips.units.invite =
-"Invite-Control\n|cffffffff"..
-"With this Control you can automaticaly fill up your Group.\n"..
-"The left Button is for 'Party-Invite', the right Buttons are for 'Raid-Invite'.\n"..
-"Additionally a Right-Click on this Button will add or remove all Bots at once.\n"..
-"Means, if you are not in a Group all Bots will be added else they are removed.|r\n\n".. 
-"|cffff0000Left-Click to show or hide the Control|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to add or remove all Bots|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"邀请控制\n|cffffffff"..
+"使用此控制可以自动填充你的队伍。\n"..
+"左侧按钮用于 '组队邀请'，右侧按钮用于 '团队邀请'。\n"..
+"此外，右键点击此按钮将一次性移除所有机器人。\n"..
+"意思是，如果你不在队伍中，所有机器人将会被添加，否则它们将被移除。|r\n\n".. 
+"|cffff0000左键单击显示或隐藏控制|r\n"..
+"|cff999999(执行命令: 系统)|r\n\n"..
+"|cffff0000右键点击移除所有机器人|r\n"..
+"|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.units.inviteParty5 =
 "五人组\n|cffffffff"..
@@ -977,6 +977,20 @@ MultiBot.tips.game.appear =
 "|cffff0000左键单击传送到你的目标|r\n"..
 "|cff999999(执行命令: 目标)|r";
 
+-- QUESTS --
+
+MultiBot.tips.quests = {}
+MultiBot.tips.quests.master =
+"Quest-Control\n|cffffffff"..
+"This Control shows the current List of Quests.\n"..
+"Left-Click the Pages to share the Quest with your bots.\n"..
+"Right-Click the Pages to abandon your and your Bots Quest.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to show or hide the Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to refresh the Options|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
 -- 饮用 --
 
 MultiBot.tips.drink.group = 
@@ -1038,12 +1052,12 @@ MultiBot.tips.inventory.use =
 "|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.inventory.trade =
-"Trade-Items|cffffffff\n"..
-"It enables the Trade-Mode of the Inventory.\n"..
-"The Inspect-Frame must be closed manually.\n"..
-"There is no LUA-Command for this.|r\n\n"..
-"|cffff0000Left-Click to trade a Item|r\n"..
-"|cff999999(Execution-Order: Bot)|r";
+"交易物品|cffffffff\n"..
+"它能开启物品栏的交易模式。\n"..
+"查看窗口必须手动关闭。\n"..
+"没有针对此功能的LUA命令。|r\n\n"..
+"|cffff0000左键点击以交易一件物品|r\n"..
+"|cff999999(执行命令: 机器人)|r";
 
 MultiBot.tips.inventory.drop =
 "丢弃物品 |cffffffff\n"..

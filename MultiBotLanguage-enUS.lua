@@ -978,6 +978,20 @@ MultiBot.tips.game.appear =
 "|cffff0000Left-Click to appear at your Target|r\n"..
 "|cff999999(Execution-Order: Target)|r";
 
+-- QUESTS --
+
+MultiBot.tips.quests = {}
+MultiBot.tips.quests.master =
+"Quest-Control\n|cffffffff"..
+"This Control shows the current List of Quests.\n"..
+"Left-Click the Pages to share the Quest with your bots.\n"..
+"Right-Click the Pages to abandon your and your Bots Quest.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to show or hide the Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to refresh the Options|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
 -- DRINK --
 
 MultiBot.tips.drink.group = 

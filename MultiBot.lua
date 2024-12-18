@@ -9,6 +9,7 @@ MultiBot:RegisterEvent("CHAT_MSG_SYSTEM")
 MultiBot:RegisterEvent("CHAT_MSG_ADDON")
 MultiBot:RegisterEvent("CHAT_MSG_LOOT")
 MultiBot:RegisterEvent("QUEST_COMPLETE")
+MultiBot:RegisterEvent("UNIT_QUEST_LOG_CHANGED")
 MultiBot:RegisterEvent("TRADE_CLOSED")
 MultiBot:SetPoint("BOTTOMRIGHT", 0, 0)
 MultiBot:SetSize(1, 1)
@@ -1063,6 +1064,20 @@ MultiBot.tips.game.appear =
 "You need GameMaster-Rights to use this Button.|r\n\n"..
 "|cffff0000Left-Click to appear at your Target|r\n"..
 "|cff999999(Execution-Order: Target)|r";
+
+-- QUESTS --
+
+MultiBot.tips.quests = {}
+MultiBot.tips.quests.master =
+"Quest-Control\n|cffffffff"..
+"This Control shows the current List of Quests.\n"..
+"Left-Click the Pages to share the Quest with your bots.\n"..
+"Right-Click the Pages to abandon your and your Bots Quest.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to show or hide the Options|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to refresh the Options|r\n"..
+"|cff999999(Execution-Order: System)|r";
 
 -- DRINK --
 

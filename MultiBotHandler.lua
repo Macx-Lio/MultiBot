@@ -808,7 +808,7 @@ MultiBot:SetScript("OnEvent", function()
 		
 		return
 	end
-	
+		
 	-- QUEST:COMPLETE --
 	
 	if(event == "QUEST_COMPLETE") then
@@ -817,6 +817,14 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
+		return
+	end
+	
+	-- QUEST:CHANGED --
+	
+	if(event == "UNIT_QUEST_LOG_CHANGED") then
+		local tButton = MultiBot.frames["MultiBar"].frames["Right"].buttons["Quests"]
+		tButton.doRight(tButton)
 		return
 	end
 	

@@ -977,6 +977,20 @@ MultiBot.tips.game.appear =
 "|cffff0000Linksklicken um beim Ziel zu erscheinen|r\n"..
 "|cff999999(Ausführreihenfolge: Ziel)|r";
 
+-- QUESTS --
+
+MultiBot.tips.quests = {}
+MultiBot.tips.quests.master =
+"Quest-Control\n|cffffffff"..
+"Diese Steuereinheit zeigt die aktuelle Aufgabenliste.\n"..
+"Linksklicke eine Seite um eine Aufgabe mit deinen Bots zu teilen.\n"..
+"Rechtsklicke eine Seite um deine Aufgabe und die deiner Bots abzubrechen.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um die Optionen ein- oder auszublenden|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken um die Optionen zu aktualisieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
+
 -- DRINK --
 
 MultiBot.tips.drink.group = 
