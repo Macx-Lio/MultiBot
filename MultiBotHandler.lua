@@ -822,7 +822,7 @@ MultiBot:SetScript("OnEvent", function()
 	
 	-- QUEST:CHANGED --
 	
-	if(event == "UNIT_QUEST_LOG_CHANGED") then
+	if(event == "QUEST_LOG_UPDATE") then
 		local tButton = MultiBot.frames["MultiBar"].frames["Right"].buttons["Quests"]
 		tButton.doRight(tButton)
 		return
