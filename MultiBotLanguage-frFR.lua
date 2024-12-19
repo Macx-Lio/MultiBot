@@ -992,16 +992,16 @@ MultiBot.tips.game.appear =
 -- QUESTS --
 
 MultiBot.tips.quests = {}
-MultiBot.tips.quests.master =
-"Quest-Control\n|cffffffff"..
-"This Control shows the current List of Quests.\n"..
-"Left-Click the Pages to share the Quest with your bots.\n"..
-"Right-Click the Pages to abandon your and your Bots Quest.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to refresh the Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+MultiBot.tips.quests.master = 
+"Contrôle des Quêtes\n|cffffffff"..
+"Ce contrôle affiche la liste actuelle des quêtes.\n"..
+"Clic gauche sur les pages pour partager la quête avec vos bots.\n"..
+"Clic droit sur les pages pour abandonner votre quête et celle de vos bots.\n"..
+"L'ordre d'exécution montre le destinataire des commandes.|r\n\n"..
+"|cffff0000Clic gauche pour afficher ou masquer les options|r\n"..
+"|cff999999(Ordre d'exécution : Système)|r\n\n"..
+"|cffff0000Clic droit pour actualiser les options|r\n"..
+"|cff999999(Ordre d'exécution : Système)|r";
 
 -- BOIRE --
 
