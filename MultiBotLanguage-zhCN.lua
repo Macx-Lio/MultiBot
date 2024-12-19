@@ -977,19 +977,19 @@ MultiBot.tips.game.appear =
 "|cffff0000左键单击传送到你的目标|r\n"..
 "|cff999999(执行命令: 目标)|r";
 
--- QUESTS --
+-- 任务 --
 
 MultiBot.tips.quests = {}
 MultiBot.tips.quests.master =
-"Quest-Control\n|cffffffff"..
-"This Control shows the current List of Quests.\n"..
-"Left-Click the Pages to share the Quest with your bots.\n"..
-"Right-Click the Pages to abandon your and your Bots Quest.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to show or hide the Options|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to refresh the Options|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"任务控制\n|cffffffff"..
+"此控制功能会显示当前任务清单。\n"..
+"左键点击页面可将任务分享给你的机器人。\n"..
+"右键点击页面可放弃你以及你的机器人的任务。\n"..
+"执行命令显示队伍的接收者。|r\n\n"..
+"|cffff0000左键点击可显示或隐藏选项 |r\n"..
+"|cff999999(执行命令: 系统)|r\n\n"..
+"|cffff0000右键点击可刷新选项 |r\n"..
+"|cff999999(执行命令: 系统)|r";
 
 -- 饮用 --
 
