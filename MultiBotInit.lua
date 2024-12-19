@@ -1114,13 +1114,18 @@ tButton.doRight = function(pButton)
 		local tTitle, tLevel, tGroup, tHeader, tCollapsed, tComplete = GetQuestLogTitle(i)
 		
 		if(tCollapsed == nil) then
+			local tAmount = 0
 			local tButton = tFrame.addButton("Quest" .. i, 0, tIndex * 30, "inv_misc_note_01", tLink)
 			tButton.link = tLink
 			tButton.id = i
 			
 			tButton.doRight = function(pButton)
-				if(GetNumPartyMembers() > 0) then SendChatMessage("drop " .. pButton.link, "PARTY") end
-				if(GetNumRaidMembers() > 0) then SendChatMessage("drop " .. pButton.link, "RAID") end
+				if(GetNumRaidMembers() > 0) then
+					SendChatMessage("drop " .. pButton.link, "RAID")
+				elseif(GetNumPartyMembers() > 0) then
+					SendChatMessage("drop " .. pButton.link, "PARTY")
+				end
+				
 				SelectQuestLogEntry(pButton.id)
 				SetAbandonQuest()
 				AbandonQuest()
@@ -1131,7 +1136,17 @@ tButton.doRight = function(pButton)
 				QuestLogPushQuest()
 			end
 			
-			tFrame.addText("Title" .. i, tTitle, "BOTTOMLEFT", 30, tIndex * 30 + 14, 12)
+			if(GetNumRaidMembers() > 0) then
+				for n = 1, 40 do
+					if(IsUnitOnQuest(i, "raid" .. n)) then tAmount = tAmount + 1 end
+				end
+			elseif(GetNumPartyMembers() > 0) then
+				for n = 1, 4 do
+					if(IsUnitOnQuest(i, "party" .. n)) then tAmount = tAmount + 1 end
+				end
+			end
+			
+			tFrame.addText("Title" .. i, "[" .. tAmount .. "] " .. tTitle, "BOTTOMLEFT", 30, tIndex * 30 + 14, 12)
 			tIndex = tIndex + 1
 		end
 	end
