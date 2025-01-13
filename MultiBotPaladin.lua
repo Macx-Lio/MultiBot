@@ -192,6 +192,14 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 			MultiBot.OnOffActionToTarget(pButton, "co +barmor,?", "co -barmor,?", pButton.getName())
 		end
 	end
+
+	tFrame.addButton("CombatRetribution", 0, 104, "Spell_Holy_RetributionAura", MultiBot.tips.paladin.caura.barmor)
+	.doLeft = function(pButton)
+		MultiBot.SelectToTarget(pButton.get(), "CombatRetribution", pButton.texture, "co +baoe,?", pButton.getName())
+		pButton.getButton("CombatRetribution").doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "co +baoe,?", "co -baoe,?", pButton.getName())
+		end
+	end
 	
 	-- STRATEGIES:COMBAT-AURA --
 	
@@ -214,6 +222,10 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 	elseif(MultiBot.isInside(pCombat, "barmor")) then
 		tButton.setTexture("spell_holy_devotionaura").setEnable().doRight = function(pButton)
 			MultiBot.OnOffActionToTarget(pButton, "co +barmor,?", "co -barmor,?", pButton.getName())
+		end
+	elseif(MultiBot.isInside(pCombat, "baoe")) then
+		tButton.setTexture("Spell_Holy_RetributionAura").setEnable().doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "co +baoe,?", "co -baoe,?", pButton.getName())
 		end
 	end
 	
