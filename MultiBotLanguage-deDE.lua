@@ -1857,6 +1857,12 @@ MultiBot.tips.paladin.naura.barmor =
 "|cffff0000Linksklicken um Armor-Aura zu aktiviern|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
+MultiBot.tips.paladin.naura.baoe =
+"AoE-Aura|cffffffff\n"..
+"Diese Schaltfläche aktiviert den AoE-Aura außerhalb des Kampfes.|r\n\n"..
+"|cffff0000Linksklicken um AoE-Aura zu aktiviern|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
+
 MultiBot.tips.paladin.caura.master =
 "Combat-Aura|cffffffff\n"..
 "Diese Steuereinheit erlaubt es die Combat-Aura auszuwählen, zu aktivieren oder deaktivieren.|r\n\n"..
@@ -1893,6 +1899,12 @@ MultiBot.tips.paladin.caura.barmor =
 "Armor-Aura|cffffffff\n"..
 "Diese Schaltfläche aktiviert den Armor-Aura während des Kampfes.|r\n\n"..
 "|cffff0000Linksklicken um Armor-Aura zu aktiviern|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
+
+MultiBot.tips.paladin.caura.baoe =
+"AoE-Aura|cffffffff\n"..
+"Diese Schaltfläche aktiviert den AoE-Aura während des Kampfes.|r\n\n"..
+"|cffff0000Linksklicken um AoE-Aura zu aktiviern|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.dps.master =

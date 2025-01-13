@@ -118,6 +118,14 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 			MultiBot.OnOffActionToTarget(pButton, "nc +barmor,?", "nc -barmor,?", pButton.getName())
 		end
 	end
+
+	tFrame.addButton("NonCombatRetribution", 0, 130, "spell_holy_auraoflight", MultiBot.tips.paladin.naura.baoe)
+	.doLeft = function(pButton)
+		MultiBot.SelectToTarget(pButton.get(), "NonCombatRetribution", pButton.texture, "nc +baoe,?", pButton.getName())
+		pButton.getButton("NonCombatRetribution").doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "nc +baoe,?", "nc -baoe,?", pButton.getName())
+		end
+	end
 	
 	-- STRATEGIES:NON-COMBAT-AURA --
 	
@@ -141,7 +149,12 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 		tButton.setTexture("spell_holy_devotionaura").setEnable().doRight = function(pButton)
 			MultiBot.OnOffActionToTarget(pButton, "nc +barmor,?", "nc -barmor,?", pButton.getName())
 		end
+	elseif(MultiBot.isInside(pCombat, "baoe")) then
+		tButton.setTexture("spell_holy_auraoflight").setEnable().doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "nc +baoe,?", "nc -baoe,?", pButton.getName())
+		end
 	end
+	
 	
 	-- COMBAT-AURA --
 	
@@ -193,7 +206,7 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 		end
 	end
 
-	tFrame.addButton("CombatRetribution", 0, 104, "Spell_Holy_RetributionAura", MultiBot.tips.paladin.caura.barmor)
+	tFrame.addButton("CombatRetribution", 0, 130, "spell_holy_auraoflight", MultiBot.tips.paladin.caura.baoe)
 	.doLeft = function(pButton)
 		MultiBot.SelectToTarget(pButton.get(), "CombatRetribution", pButton.texture, "co +baoe,?", pButton.getName())
 		pButton.getButton("CombatRetribution").doRight = function(pButton)
@@ -224,7 +237,7 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 			MultiBot.OnOffActionToTarget(pButton, "co +barmor,?", "co -barmor,?", pButton.getName())
 		end
 	elseif(MultiBot.isInside(pCombat, "baoe")) then
-		tButton.setTexture("Spell_Holy_RetributionAura").setEnable().doRight = function(pButton)
+		tButton.setTexture("spell_holy_auraoflight").setEnable().doRight = function(pButton)
 			MultiBot.OnOffActionToTarget(pButton, "co +baoe,?", "co -baoe,?", pButton.getName())
 		end
 	end

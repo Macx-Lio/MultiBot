@@ -1876,6 +1876,12 @@ MultiBot.tips.paladin.naura.barmor =
 "|cffff0000Clic gauche pour activer l'aura d'armure|r\n"..
 "|cff999999(Ordre d'exécution : Bot)|r";
 
+MultiBot.tips.paladin.naura.barmor =
+"Aura de zone|cffffffff\n"..
+"Active l'aura de zone en tant qu'aura non-combat.|r\n\n"..
+"|cffff0000Clic gauche pour activer l'aura de zone|r\n"..
+"|cff999999(Ordre d'exécution : Bot)|r";
+
 MultiBot.tips.paladin.caura.master =
 "Aura de Combat|cffffffff\n"..
 "Ce contrôle vous permet de sélectionner, activer ou désactiver l'aura de combat par défaut.|r\n\n"..
@@ -1912,6 +1918,12 @@ MultiBot.tips.paladin.caura.barmor =
 "Aura d'Armure|cffffffff\n"..
 "Active l'aura d'armure en tant qu'aura de combat.|r\n\n"..
 "|cffff0000Clic gauche pour activer l'aura d'armure|r\n"..
+"|cff999999(Ordre d'exécution : Bot)|r";
+
+MultiBot.tips.paladin.naura.baoe =
+"Aura de zone|cffffffff\n"..
+"Active l'aura de zone en tant qu'aura de combat.|r\n\n"..
+"|cffff0000Clic gauche pour activer l'aura de zone|r\n"..
 "|cff999999(Ordre d'exécution : Bot)|r";
 
 MultiBot.tips.paladin.dps.master =

@@ -1857,6 +1857,12 @@ MultiBot.tips.paladin.naura.barmor =
 "|cffff0000左键点击启用护甲光环|r\n"..
 "|cff999999(执行命令: 机器人)|r";
 
+MultiBot.tips.paladin.naura.baoe =
+"AOE光环|cffffffff\n"..
+"它在非战斗状态下启用AOE光环。|r\n\n"..
+"|cffff0000左键点击启用AOE光环|r\n"..
+"|cff999999（执行顺序：机器人）|r";
+
 MultiBot.tips.paladin.caura.master =
 "战斗光环|cffffffff\n"..
 "此控制允许你选择、启用或禁用默认战斗光环。|r\n\n"..
@@ -1894,6 +1900,12 @@ MultiBot.tips.paladin.caura.barmor =
 "将护甲光环作为战斗光环启用。|r\n\n"..
 "|cffff0000左键点击启用护甲光环|r\n"..
 "|cff999999(执行命令: 机器人)|r";
+
+MultiBot.tips.paladin.caura.baoe =
+"AOE光环|cffffffff\n"..
+"它在战斗状态下启用AOE光环。|r\n\n"..
+"|cffff0000左键点击启用AOE光环|r\n"..
+"|cff999999（执行顺序：机器人）|r";
 
 MultiBot.tips.paladin.dps.master =
 "DPS控制|cffffffff\n"..

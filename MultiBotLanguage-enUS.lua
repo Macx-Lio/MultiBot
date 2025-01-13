@@ -1822,7 +1822,7 @@ MultiBot.tips.paladin.seal.bdps =
 
 MultiBot.tips.paladin.naura.master =
 "Non-Combat-Aura|cffffffff\n"..
-"This Control allows you to select, enable or disable the default Non-Combat-Arua.|r\n\n"..
+"This Control allows you to select, enable or disable the default Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Aura.|r\n"..
@@ -1830,37 +1830,43 @@ MultiBot.tips.paladin.naura.master =
 
 MultiBot.tips.paladin.naura.bspeed =
 "Speed-Aura|cffffffff\n"..
-"It enables the Speed-Aura as Non-Combat-Arua.|r\n\n"..
+"It enables the Speed-Aura as Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Speed-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.naura.rfire =
 "Fire-Resist-Aura|cffffffff\n"..
-"It enables the Fire-Resist-Aura as Non-Combat-Arua.|r\n\n"..
+"It enables the Fire-Resist-Aura as Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Fire-Resist-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.naura.rfrost =
 "Frost-Resist-Aura|cffffffff\n"..
-"It enables the Frost-Resist-Aura as Non-Combat-Arua.|r\n\n"..
+"It enables the Frost-Resist-Aura as Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Frost-Resist-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.naura.rshadow =
 "Shadow-Resist-Aura|cffffffff\n"..
-"It enables the Shadow-Resist-Aura as Non-Combat-Arua.|r\n\n"..
+"It enables the Shadow-Resist-Aura as Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Shadow-Resist-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.naura.barmor =
 "Armor-Aura|cffffffff\n"..
-"It enables the Armor-Aura as Non-Combat-Arua.|r\n\n"..
+"It enables the Armor-Aura as Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Armor-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.naura.baoe =
+"AoE-Aura|cffffffff\n"..
+"It enables the AoE-Aura as Non-Combat-Aura.|r\n\n"..
+"|cffff0000Left-Click to enable AoE-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.caura.master =
 "Combat-Aura|cffffffff\n"..
-"This Control allows you to select, enable or disable the default Combat-Arua.|r\n\n"..
+"This Control allows you to select, enable or disable the default Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Aura.|r\n"..
@@ -1868,32 +1874,38 @@ MultiBot.tips.paladin.caura.master =
 
 MultiBot.tips.paladin.caura.bspeed =
 "Speed-Aura|cffffffff\n"..
-"It enables the Speed-Aura as Combat-Arua.|r\n\n"..
+"It enables the Speed-Aura as Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Speed-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.caura.rfire =
 "Fire-Resist-Aura|cffffffff\n"..
-"It enables the Fire-Resist-Aura as Combat-Arua.|r\n\n"..
+"It enables the Fire-Resist-Aura as Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Fire-Resist-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.caura.rfrost =
 "Frost-Resist-Aura|cffffffff\n"..
-"It enables the Frost-Resist-Aura as Combat-Arua.|r\n\n"..
+"It enables the Frost-Resist-Aura as Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Frost-Resist-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.caura.rshadow =
 "Shadow-Resist-Aura|cffffffff\n"..
-"It enables the Shadow-Resist-Aura as Combat-Arua.|r\n\n"..
+"It enables the Shadow-Resist-Aura as Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Shadow-Resist-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.caura.barmor =
 "Armor-Aura|cffffffff\n"..
-"It enables the Armor-Aura as Combat-Arua.|r\n\n"..
+"It enables the Armor-Aura as Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Armor-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.caura.baoe =
+"AoE-Aura|cffffffff\n"..
+"It enables the AoE-Aura as Combat-Aura.|r\n\n"..
+"|cffff0000Left-Click to enable AoE-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.dps.master =
