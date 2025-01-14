@@ -87,6 +87,7 @@ MultiBot:SetScript("OnEvent", function()
 		MultiBotSave["Masters"] = MultiBot.IF(MultiBot.frames["MultiBar"].frames["Main"].buttons["Masters"].state, "true", "false")
 		MultiBotSave["Creator"] = MultiBot.IF(MultiBot.frames["MultiBar"].frames["Main"].buttons["Creator"].state, "true", "false")
 		MultiBotSave["Beast"] = MultiBot.IF(MultiBot.frames["MultiBar"].frames["Main"].buttons["Beast"].state, "true", "false")
+		MultiBotSave["RTSC"] = MultiBot.IF(MultiBot.frames["MultiBar"].frames["Main"].buttons["RTSC"].state, "true", "false")
 		
 		return
 	end
@@ -263,6 +264,15 @@ MultiBot:SetScript("OnEvent", function()
 			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["Beast"]
 			
 			if(MultiBotSave["Beast"] == "true") then
+				tButton.setDisable()
+				tButton.doLeft(tButton)
+			end
+		end
+		
+		if(MultiBotSave["RTSC"] ~= nil) then
+			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["RTSC"]
+			
+			if(MultiBotSave["RTSC"] == "true") then
 				tButton.setDisable()
 				tButton.doLeft(tButton)
 			end

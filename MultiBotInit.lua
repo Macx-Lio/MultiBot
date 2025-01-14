@@ -841,7 +841,18 @@ tMain.addButton("Masters", 0, 34, "mail_gmicon", MultiBot.tips.main.masters).set
 	end
 end
 
-tMain.addButton("Creator", 0, 68, "inv_helmet_145a", MultiBot.tips.main.creator).setDisable()
+tMain.addButton("RTSC", 0, 68, "ability_hunter_markedfordeath", MultiBot.tips.main.rtsc).setDisable()
+.doLeft = function(pButton)
+	if(MultiBot.OnOffSwitch(pButton)) then
+		MultiBot.frames["MultiBar"].setPoint(MultiBot.frames["MultiBar"].x, MultiBot.frames["MultiBar"].y + 34)
+		MultiBot.frames["MultiBar"].frames["RTSC"]:Show()
+	else
+		MultiBot.frames["MultiBar"].setPoint(MultiBot.frames["MultiBar"].x, MultiBot.frames["MultiBar"].y - 34)
+		MultiBot.frames["MultiBar"].frames["RTSC"]:Hide()
+	end
+end
+
+tMain.addButton("Creator", 0, 102, "inv_helmet_145a", MultiBot.tips.main.creator).setDisable()
 .doLeft = function(pButton)
 	if(MultiBot.OnOffSwitch(pButton)) then
 		MultiBot.doRepos("Tanker", -34)
@@ -868,7 +879,7 @@ tMain.addButton("Creator", 0, 68, "inv_helmet_145a", MultiBot.tips.main.creator)
 	end
 end
 
-tMain.addButton("Beast", 0, 102, "ability_mount_swiftredwindrider", MultiBot.tips.main.beast).setDisable()
+tMain.addButton("Beast", 0, 136, "ability_mount_swiftredwindrider", MultiBot.tips.main.beast).setDisable()
 .doLeft = function(pButton)
 	if(MultiBot.OnOffSwitch(pButton)) then
 		MultiBot.doRepos("Tanker", -34)
@@ -928,7 +939,7 @@ tFrame.addButton("None", -60, 0, "Interface\\AddOns\\MultiBot\\Icons\\language_n
 end
 ]]--
 
-tMain.addButton("Release", 0, 136, "achievement_bg_xkills_avgraveyard", MultiBot.tips.main.release).setDisable()
+tMain.addButton("Release", 0, 170, "achievement_bg_xkills_avgraveyard", MultiBot.tips.main.release).setDisable()
 .doLeft = function(pButton)
 	if(MultiBot.OnOffSwitch(pButton)) then
 		MultiBot.auto.release = true
@@ -937,7 +948,7 @@ tMain.addButton("Release", 0, 136, "achievement_bg_xkills_avgraveyard", MultiBot
 	end
 end
 
-tMain.addButton("Stats", 0, 170, "inv_scroll_08", MultiBot.tips.main.stats).setDisable()
+tMain.addButton("Stats", 0, 204, "inv_scroll_08", MultiBot.tips.main.stats).setDisable()
 .doLeft = function(pButton)
 	if(GetNumRaidMembers() > 0) then return SendChatMessage(MultiBot.info.stats, "SAY") end
 	if(MultiBot.OnOffSwitch(pButton)) then
@@ -951,7 +962,7 @@ tMain.addButton("Stats", 0, 170, "inv_scroll_08", MultiBot.tips.main.stats).setD
 	end
 end
 
-local tButton = tMain.addButton("Reward", 0, 204, "Interface\\AddOns\\MultiBot\\Icons\\reward.blp", MultiBot.tips.main.reward).setDisable()
+local tButton = tMain.addButton("Reward", 0, 238, "Interface\\AddOns\\MultiBot\\Icons\\reward.blp", MultiBot.tips.main.reward).setDisable()
 tButton.doRight = function(pButton)
 	if(table.getn(MultiBot.reward.rewards) > 0 and table.getn(MultiBot.reward.units) > 0) then MultiBot.reward:Show() end
 end
@@ -959,12 +970,12 @@ tButton.doLeft = function(pButton)
 	MultiBot.reward.state = MultiBot.OnOffSwitch(pButton)
 end
 
-tMain.addButton("Reset", 0, 238, "inv_misc_tournaments_symbol_gnome", MultiBot.tips.main.reset)
+tMain.addButton("Reset", 0, 272, "inv_misc_tournaments_symbol_gnome", MultiBot.tips.main.reset)
 .doLeft = function(pButton)
 	MultiBot.ActionToTargetOrGroup("reset botAI")
 end
 
-tMain.addButton("Actions", 0, 272, "inv_helmet_02", MultiBot.tips.main.action)
+tMain.addButton("Actions", 0, 306, "inv_helmet_02", MultiBot.tips.main.action)
 .doLeft = function(pButton)
 	MultiBot.ActionToTargetOrGroup("reset")
 end
@@ -2640,6 +2651,222 @@ MultiBot.talent.doClear = function()
 	end
 end
 
+-- RTSC --
+
+local tRTSC = tMultiBar.addFrame("RTSC", -2, -34, 32).doHide()
+
+local tButton = tRTSC.addButton("RTSC", 0, 0, "ability_hunter_markedfordeath", MultiBot.tips.rtsc.master).addMacro("type1", "/cast aedm")
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("co +rtsc,?")
+	MultiBot.ActionToGroup("nc +rtsc,?")
+end
+
+-- RTSC:STORAGE --
+
+local tSelector = tRTSC.addFrame("Selector", 0, 2, 28)
+
+tSelector.addButton("MACRO9", -34, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
+.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc save 9")
+	pButton.parent.buttons["RTSC9"].doShow()
+	pButton.doHide()
+end
+
+local tButton = tSelector.addButton("RTSC9", -34, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.spot).doHide()
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc unsave 9")
+	pButton.parent.buttons["MACRO9"].doShow()
+	pButton.doHide()
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc go 9")
+end
+
+tSelector.addButton("MACRO8", -64, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
+.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc save 8")
+	pButton.parent.buttons["RTSC8"].doShow()
+	pButton.doHide()
+end
+
+local tButton = tSelector.addButton("RTSC8", -64, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.spot).doHide()
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc unsave 8")
+	pButton.parent.buttons["MACRO8"].doShow()
+	pButton.doHide()
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc go 8")
+end
+
+tSelector.addButton("MACRO7", -94, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
+.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc save 7")
+	pButton.parent.buttons["RTSC7"].doShow()
+	pButton.doHide()
+end
+
+local tButton = tSelector.addButton("RTSC7", -94, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.spot).doHide()
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc unsave 7")
+	pButton.parent.buttons["MACRO7"].doShow()
+	pButton.doHide()
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc go 7")
+end
+
+tSelector.addButton("MACRO6", -124, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
+.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc save 6")
+	pButton.parent.buttons["RTSC6"].doShow()
+	pButton.doHide()
+end
+
+local tButton = tSelector.addButton("RTSC6", -124, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.spot).doHide()
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc unsave 6")
+	pButton.parent.buttons["MACRO6"].doShow()
+	pButton.doHide()
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc go 6")
+end
+
+tSelector.addButton("MACRO5", -154, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
+.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc save 5")
+	pButton.parent.buttons["RTSC5"].doShow()
+	pButton.doHide()
+end
+
+local tButton = tSelector.addButton("RTSC5", -154, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.spot).doHide()
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc unsave 5")
+	pButton.parent.buttons["MACRO5"].doShow()
+	pButton.doHide()
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc go 5")
+end
+
+tSelector.addButton("MACRO4", -184, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
+.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc save 4")
+	pButton.parent.buttons["RTSC4"].doShow()
+	pButton.doHide()
+end
+
+local tButton = tSelector.addButton("RTSC4", -184, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.spot).doHide()
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc unsave 4")
+	pButton.parent.buttons["MACRO4"].doShow()
+	pButton.doHide()
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc go 4")
+end
+
+tSelector.addButton("MACRO3", -214, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
+.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc save 3")
+	pButton.parent.buttons["RTSC3"].doShow()
+	pButton.doHide()
+end
+
+local tButton = tSelector.addButton("RTSC3", -214, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.spot).doHide()
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc unsave 3")
+	pButton.parent.buttons["MACRO3"].doShow()
+	pButton.doHide()
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc go 3")
+end
+
+tSelector.addButton("MACRO2", -244, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
+.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc save 2")
+	pButton.parent.buttons["RTSC2"].doShow()
+	pButton.doHide()
+end
+
+local tButton = tSelector.addButton("RTSC2", -244, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.spot).doHide()
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc unsave 2")
+	pButton.parent.buttons["MACRO2"].doShow()
+	pButton.doHide()
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc go 2")
+end
+
+tSelector.addButton("MACRO1", -274, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
+.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc save 1")
+	pButton.parent.buttons["RTSC1"].doShow()
+	pButton.doHide()
+end
+
+local tButton = tSelector.addButton("RTSC1", -274, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.spot).doHide()
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc unsave 1")
+	pButton.parent.buttons["MACRO1"].doShow()
+	pButton.doHide()
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc go 1")
+end
+
+-- RTSC:SELECTOR --
+
+local tButton = tSelector.addButton("Tank", 30, 0, "Interface\\AddOns\\MultiBot\\Icons\\rtsc_tank.blp", MultiBot.tips.rtsc.tank).addMacro("type1", "/cast aedm")
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc cancel")
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("@tank rtsc select")
+end
+
+local tButton = tSelector.addButton("Dps", 60, 0, "Interface\\AddOns\\MultiBot\\Icons\\rtsc_dps.blp", MultiBot.tips.rtsc.dps).addMacro("type1", "/cast aedm")
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc cancel")
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("@dps rtsc select")
+end
+
+local tButton = tSelector.addButton("Healer", 90, 0, "Interface\\AddOns\\MultiBot\\Icons\\rtsc_healer.blp", MultiBot.tips.rtsc.healer).addMacro("type1", "/cast aedm")
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc cancel")
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("@healer rtsc select")
+end
+
+local tButton = tSelector.addButton("Melee", 120, 0, "Interface\\AddOns\\MultiBot\\Icons\\rtsc_melee.blp", MultiBot.tips.rtsc.melee).addMacro("type1", "/cast aedm")
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc cancel")
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("@melee rtsc select")
+end
+
+local tButton = tSelector.addButton("Ranged", 150, 0, "Interface\\AddOns\\MultiBot\\Icons\\rtsc_ranged.blp", MultiBot.tips.rtsc.ranged).addMacro("type1", "/cast aedm")
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc cancel")
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("@ranged rtsc select")
+end
+
+local tButton = tSelector.addButton("All", 180, 0, "Interface\\AddOns\\MultiBot\\Icons\\rtsc.blp", MultiBot.tips.rtsc.all).addMacro("type1", "/cast aedm")
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("rtsc cancel")
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("rtsc select")
+end
 
 -- FINISH --
 

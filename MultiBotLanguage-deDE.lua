@@ -838,6 +838,12 @@ MultiBot.tips.main.masters =
 "|cffff0000Linksklicken um die GameMaster-Control ein- oder auszuschalten|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
+MultiBot.tips.main.rtsc =
+"RTSC-Switch\n|cffffffff"..
+"Dieser Schalter aktiviert oder deaktiviert die RTSC-Control.|r\n\n"..
+"|cffff0000Linksklicken um die RTSC-Control ein- oder auszuschalten|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
+
 MultiBot.tips.main.creator =
 "Creator-Switch\n|cffffffff"..
 "Dieser Schalter aktiviert oder deaktiviert die Creator-Control.|r\n\n"..
@@ -1851,6 +1857,12 @@ MultiBot.tips.paladin.naura.rshadow =
 "|cffff0000Linksklicken um Shadow-Resist-Aura zu aktiviern|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
+MultiBot.tips.paladin.naura.baoe =
+"Damage-Aura|cffffffff\n"..
+"Diese Schaltfläche aktiviert den Damage-Aura außerhalb des Kampfes.|r\n\n"..
+"|cffff0000Linksklicken um Damage-Aura zu aktiviern|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
+
 MultiBot.tips.paladin.naura.barmor =
 "Armor-Aura|cffffffff\n"..
 "Diese Schaltfläche aktiviert den Armor-Aura außerhalb des Kampfes.|r\n\n"..
@@ -1887,6 +1899,12 @@ MultiBot.tips.paladin.caura.rshadow =
 "Shadow-Resist-Aura|cffffffff\n"..
 "Diese Schaltfläche aktiviert den Shadow-Resist-Aura während des Kampfes.|r\n\n"..
 "|cffff0000Linksklicken um Shadow-Resist-Aura zu aktiviern|r\n"..
+"|cff999999(Ausführreihenfolge: Bot)|r";
+
+MultiBot.tips.paladin.caura.baoe =
+"Damage-Aura|cffffffff\n"..
+"Diese Schaltfläche aktiviert den Damage-Aura während des Kampfes.|r\n\n"..
+"|cffff0000Linksklicken um Damage-Aura zu aktiviern|r\n"..
 "|cff999999(Ausführreihenfolge: Bot)|r";
 
 MultiBot.tips.paladin.caura.barmor =
@@ -2359,4 +2377,86 @@ MultiBot.tips.every.talent =
 "Die Talente öffnen zeitverzögert, damit das System die Punkte laden kann.|r\n\n"..
 "|cffff0000Linksklicken um das Talente zu öffnen oder schließen|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
+
+-- RTSC --
+
+MultiBot.tips.rtsc = {}
+MultiBot.tips.rtsc.master = 
+"RTSC-Control\n|cffffffff"..
+"Mit dieser Steuereinheit können man Standorte definieren und Bots dahin entsenden.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um den AEDM-Zauber zu wirken|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r\n\n"..
+"|cffff0000Rechtsklicken um die RTSC-Strategie einzuschalten|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
+
+MultiBot.tips.rtsc.macro = 
+"Location-Storage\n|cffffffff"..
+"Diese Schaltfläche ermöglicht die Speicherung eines Standortes.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um einen Standort zu speichern|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
+MultiBot.tips.rtsc.spot =
+"Location-Storage\n|cffffffff"..
+"Linksklicken um die Bots zum gespeicherten Standort zu entsenden.\n"..
+"Rechtsklicken um den gespeicherten Standort zu löschen.|r\n\n"..
+"|cffff0000Linksklicken um die Bots zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um den Standort zu löschen|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
+
+MultiBot.tips.rtsc.tank = 
+"Tank-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche werden die Tank-Bots ausgewählt und an einen Standort entsendet.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um die Tank-Bots zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
+MultiBot.tips.rtsc.dps = 
+"DPS-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche werden die DPS-Bots ausgewählt und an einen Standort entsendet.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um die DPS-Bots zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
+MultiBot.tips.rtsc.healer = 
+"Healer-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche werden die Heiler-Bots ausgewählt und an einen Standort entsendet.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um die Heiler-Bots zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
+MultiBot.tips.rtsc.melee = 
+"Melee-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche werden die Nahkämpfer ausgewählt und an einen Standort entsendet.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um die Nahkämpfer zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
+MultiBot.tips.rtsc.ranged = 
+"Ranged-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche werden die Fernkämpfer ausgewählt und an einen Standort entsendet.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um die Fernkämpfer zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
+MultiBot.tips.rtsc.all = 
+"All-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche werden alle Bots ausgewählt und an einen Standort entsendet.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um alle Bots zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
 end

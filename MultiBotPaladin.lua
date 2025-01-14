@@ -111,7 +111,15 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 		end
 	end
 	
-	tFrame.addButton("NonCombatArmor", 0, 104, "spell_holy_devotionaura", MultiBot.tips.paladin.naura.barmor)
+	tFrame.addButton("NonCombatDamage", 0, 104, "spell_holy_auraoflight", MultiBot.tips.paladin.naura.baoe)
+	.doLeft = function(pButton)
+		MultiBot.SelectToTarget(pButton.get(), "NonCombatAura", pButton.texture, "nc +baoe,?", pButton.getName())
+		pButton.getButton("NonCombatAura").doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "nc +baoe,?", "nc -baoe,?", pButton.getName())
+		end
+	end
+	
+	tFrame.addButton("NonCombatArmor", 0, 130, "spell_holy_devotionaura", MultiBot.tips.paladin.naura.barmor)
 	.doLeft = function(pButton)
 		MultiBot.SelectToTarget(pButton.get(), "NonCombatAura", pButton.texture, "nc +barmor,?", pButton.getName())
 		pButton.getButton("NonCombatAura").doRight = function(pButton)
@@ -136,6 +144,10 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 	elseif(MultiBot.isInside(pNormal, "rshadow")) then
 		tButton.setTexture("spell_shadow_sealofkings").setEnable().doRight = function(pButton)
 			MultiBot.OnOffActionToTarget(pButton, "nc +rshadow,?", "nc -rshadow,?", pButton.getName())
+		end
+	elseif(MultiBot.isInside(pNormal, "baoe")) then
+		tButton.setTexture("spell_holy_auraoflight").setEnable().doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "nc +baoe,?", "nc -baoe,?", pButton.getName())
 		end
 	elseif(MultiBot.isInside(pNormal, "barmor")) then
 		tButton.setTexture("spell_holy_devotionaura").setEnable().doRight = function(pButton)
@@ -185,7 +197,15 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 		end
 	end
 	
-	tFrame.addButton("CombatArmor", 0, 104, "spell_holy_devotionaura", MultiBot.tips.paladin.caura.barmor)
+	tFrame.addButton("CombatDamage", 0, 104, "spell_holy_auraoflight", MultiBot.tips.paladin.caura.baoe)
+	.doLeft = function(pButton)
+		MultiBot.SelectToTarget(pButton.get(), "CombatAura", pButton.texture, "co +baoe,?", pButton.getName())
+		pButton.getButton("CombatAura").doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "co +baoe,?", "co -baoe,?", pButton.getName())
+		end
+	end
+	
+	tFrame.addButton("CombatArmor", 0, 130, "spell_holy_devotionaura", MultiBot.tips.paladin.caura.barmor)
 	.doLeft = function(pButton)
 		MultiBot.SelectToTarget(pButton.get(), "CombatAura", pButton.texture, "co +barmor,?", pButton.getName())
 		pButton.getButton("CombatAura").doRight = function(pButton)
@@ -210,6 +230,10 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 	elseif(MultiBot.isInside(pCombat, "rshadow")) then
 		tButton.setTexture("spell_shadow_sealofkings").setEnable().doRight = function(pButton)
 			MultiBot.OnOffActionToTarget(pButton, "co +rshadow,?", "co -rshadow,?", pButton.getName())
+		end
+	elseif(MultiBot.isInside(pCombat, "baoe")) then
+		tButton.setTexture("spell_holy_auraoflight").setEnable().doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "co +baoe,?", "co -baoe,?", pButton.getName())
 		end
 	elseif(MultiBot.isInside(pCombat, "barmor")) then
 		tButton.setTexture("spell_holy_devotionaura").setEnable().doRight = function(pButton)

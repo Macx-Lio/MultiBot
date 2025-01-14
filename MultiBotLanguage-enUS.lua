@@ -839,6 +839,12 @@ MultiBot.tips.main.masters =
 "|cffff0000Left-Click to enable or disable the GameMaster-Control|r\n"..
 "|cff999999(Execution-Order: System)|r";
 
+MultiBot.tips.main.rtsc =
+"RTSC-Switch\n|cffffffff"..
+"This Switch will enable or disable the RTSC-Control.|r\n\n"..
+"|cffff0000Left-Click to enable or disable the RTSC-Control|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
 MultiBot.tips.main.creator =
 "Creator-Switch\n|cffffffff"..
 "This Switch will enable or disable the Creator-Control.|r\n\n"..
@@ -1822,7 +1828,7 @@ MultiBot.tips.paladin.seal.bdps =
 
 MultiBot.tips.paladin.naura.master =
 "Non-Combat-Aura|cffffffff\n"..
-"This Control allows you to select, enable or disable the default Non-Combat-Arua.|r\n\n"..
+"This Control allows you to select, enable or disable the default Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Aura.|r\n"..
@@ -1830,37 +1836,43 @@ MultiBot.tips.paladin.naura.master =
 
 MultiBot.tips.paladin.naura.bspeed =
 "Speed-Aura|cffffffff\n"..
-"It enables the Speed-Aura as Non-Combat-Arua.|r\n\n"..
+"It enables the Speed-Aura as Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Speed-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.naura.rfire =
 "Fire-Resist-Aura|cffffffff\n"..
-"It enables the Fire-Resist-Aura as Non-Combat-Arua.|r\n\n"..
+"It enables the Fire-Resist-Aura as Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Fire-Resist-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.naura.rfrost =
 "Frost-Resist-Aura|cffffffff\n"..
-"It enables the Frost-Resist-Aura as Non-Combat-Arua.|r\n\n"..
+"It enables the Frost-Resist-Aura as Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Frost-Resist-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.naura.rshadow =
 "Shadow-Resist-Aura|cffffffff\n"..
-"It enables the Shadow-Resist-Aura as Non-Combat-Arua.|r\n\n"..
+"It enables the Shadow-Resist-Aura as Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Shadow-Resist-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.naura.baoe =
+"Damage-Aura|cffffffff\n"..
+"It enables the Damage-Aura as Non-Combat-Aura.|r\n\n"..
+"|cffff0000Left-Click to enable Damage-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.naura.barmor =
 "Armor-Aura|cffffffff\n"..
-"It enables the Armor-Aura as Non-Combat-Arua.|r\n\n"..
+"It enables the Armor-Aura as Non-Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Armor-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.caura.master =
 "Combat-Aura|cffffffff\n"..
-"This Control allows you to select, enable or disable the default Combat-Arua.|r\n\n"..
+"This Control allows you to select, enable or disable the default Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to show or hide Options|r\n"..
 "|cff999999(Execution-Order: System)|r\n\n"..
 "|cffff0000Right-Click to enable or disable the default Aura.|r\n"..
@@ -1868,31 +1880,37 @@ MultiBot.tips.paladin.caura.master =
 
 MultiBot.tips.paladin.caura.bspeed =
 "Speed-Aura|cffffffff\n"..
-"It enables the Speed-Aura as Combat-Arua.|r\n\n"..
+"It enables the Speed-Aura as Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Speed-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.caura.rfire =
 "Fire-Resist-Aura|cffffffff\n"..
-"It enables the Fire-Resist-Aura as Combat-Arua.|r\n\n"..
+"It enables the Fire-Resist-Aura as Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Fire-Resist-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.caura.rfrost =
 "Frost-Resist-Aura|cffffffff\n"..
-"It enables the Frost-Resist-Aura as Combat-Arua.|r\n\n"..
+"It enables the Frost-Resist-Aura as Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Frost-Resist-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.caura.rshadow =
 "Shadow-Resist-Aura|cffffffff\n"..
-"It enables the Shadow-Resist-Aura as Combat-Arua.|r\n\n"..
+"It enables the Shadow-Resist-Aura as Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Shadow-Resist-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
+MultiBot.tips.paladin.caura.baoe =
+"Damage-Aura|cffffffff\n"..
+"It enables the Damage-Aura as Combat-Aura.|r\n\n"..
+"|cffff0000Left-Click to enable Damage-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.caura.barmor =
 "Armor-Aura|cffffffff\n"..
-"It enables the Armor-Aura as Combat-Arua.|r\n\n"..
+"It enables the Armor-Aura as Combat-Aura.|r\n\n"..
 "|cffff0000Left-Click to enable Armor-Aura|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
@@ -2360,4 +2378,85 @@ MultiBot.tips.every.talent =
 "It opens with a time delay while the system loads the talent values.|r\n\n",
 "|cffff0000Left-Click to open or close the Talents|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
+
+-- RTSC --
+
+MultiBot.tips.rtsc.master = 
+"RTSC-Control\n|cffffffff"..
+"With this Control you can define Locations and send Bots there.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to cast the AEDM-Spell|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to enable RTSC-Strategy|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.rtsc.macro = 
+"Location-Storage\n|cffffffff"..
+"This Button allows you to save a Location.\n"..
+"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
+"|cffff0000Left-Click to save a Location|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
+MultiBot.tips.rtsc.spot =
+"Location-Storage\n|cffffffff"..
+"Left-Click to send the Bots to the saved Location.\n"..
+"Right-Click to remove the saved Location.|r\n\n"..
+"|cffff0000Left-Click to send the Bots|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
+"|cffff0000Right-Click to remove the Location|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
+MultiBot.tips.rtsc.tank = 
+"Tank-Selector\n|cffffffff"..
+"This Button selects the Tank-Bots and sends them to a Location.\n"..
+"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
+"|cffff0000Left-Click to send the Tank-Bots|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
+"|cffff0000Right-Click to cancel the Selection|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
+MultiBot.tips.rtsc.dps = 
+"DPS-Selector\n|cffffffff"..
+"This Button selects the DPS-Bots and sends them to a Location.\n"..
+"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
+"|cffff0000Left-Click to send the DPS-Bots|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
+"|cffff0000Right-Click to cancel the Selection|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
+MultiBot.tips.rtsc.healer = 
+"Healer-Selector\n|cffffffff"..
+"This Button selects the Healer-Bots and sends them to a Location.\n"..
+"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
+"|cffff0000Left-Click to send the Healer-Bots|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
+"|cffff0000Right-Click to cancel the Selection|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
+MultiBot.tips.rtsc.melee = 
+"Melee-Selector\n|cffffffff"..
+"This Button selects the Melee-Fighters and sends them to a Location.\n"..
+"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
+"|cffff0000Left-Click to send the Melee-Fighters|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
+"|cffff0000Right-Click to cancel the Selection|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
+MultiBot.tips.rtsc.ranged = 
+"Ranged-Selector\n|cffffffff"..
+"This Button selects the Ranged-Fighters and sends them to a Location.\n"..
+"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
+"|cffff0000Left-Click to send the Ranged-Fighters|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
+"|cffff0000Right-Click to cancel the Selection|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
+MultiBot.tips.rtsc.all = 
+"All-Selector\n|cffffffff"..
+"This Button selects the all Bots and sends them to a Location.\n"..
+"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
+"|cffff0000Left-Click to send all Bots|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
+"|cffff0000Right-Click to cancel the Selection|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
 end

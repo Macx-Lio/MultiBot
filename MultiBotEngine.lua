@@ -560,7 +560,7 @@ end
 -- MULTIBOT:BUTTON --
 
 MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
-	local button = CreateFrame("Button", nil, pParent)
+	local button = CreateFrame("Button", nil, pParent, "SecureActionButtonTemplate")
 	button:SetPoint("BOTTOMRIGHT", pX, pY)
 	button:SetSize(pSize, pSize)
 	button:Show()
@@ -581,6 +581,14 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
 	button.tip = pTip
 	button.x = pX
 	button.y = pY
+	
+	-- ADD --
+	
+	button.addMacro = function(pType, pMacro)
+		button:SetAttribute("macrotext", pMacro);
+		button:SetAttribute(pType, "macro");
+		return button
+	end
 	
 	-- SET --
 	
@@ -684,7 +692,7 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
 		GameTooltip:Hide()
 	end)
 	
-	button:SetScript("OnClick", function(pSelf, pEvent)
+	button:SetScript("PostClick", function(pSelf, pEvent)
 		button:SetPoint("BOTTOMRIGHT", button.x - 1, button.y + 1)
 		button:SetSize(button.size - 2, button.size - 2)
 		GameTooltip:Hide()
