@@ -273,6 +273,7 @@ MultiBot:SetScript("OnEvent", function()
 			local tButton = MultiBot.frames["MultiBar"].frames["Main"].buttons["RTSC"]
 			
 			if(MultiBotSave["RTSC"] == "true") then
+				MultiBot.frames["MultiBar"].setPoint(MultiBot.frames["MultiBar"].x, MultiBot.frames["MultiBar"].y - 34)
 				tButton.setDisable()
 				tButton.doLeft(tButton)
 			end

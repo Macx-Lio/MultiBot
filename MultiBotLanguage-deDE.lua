@@ -2406,13 +2406,49 @@ MultiBot.tips.rtsc.spot =
 "|cffff0000Rechtsklicken um den Standort zu löschen|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
+MultiBot.tips.rtsc.group1 = 
+"Group-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche wird die 1te Gruppe ausgewählt und an einen Standort entsendet.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um die 1te Gruppe zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die 1te Gruppe auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
+MultiBot.tips.rtsc.group2 = 
+"Group-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche wird die 2te Gruppe ausgewählt und an einen Standort entsendet.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um die 2te Gruppe zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die 2te Gruppe auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
+MultiBot.tips.rtsc.group3 = 
+"Group-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche wird die 3te Gruppe ausgewählt und an einen Standort entsendet.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um die 3te Gruppe zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die 3te Gruppe auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
+MultiBot.tips.rtsc.group4 = 
+"Group-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche wird die 4te Gruppe ausgewählt und an einen Standort entsendet.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um die 4te Gruppe zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die 4te Gruppe auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
 MultiBot.tips.rtsc.tank = 
 "Tank-Selector\n|cffffffff"..
 "Mit dieser Schaltfläche werden die Tank-Bots ausgewählt und an einen Standort entsendet.\n"..
 "Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
 "|cffff0000Linksklicken um die Tank-Bots zu entsenden|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
-"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cffff0000Rechtsklicken um die Tank-Bots auszuwählen|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.rtsc.dps = 
@@ -2421,7 +2457,7 @@ MultiBot.tips.rtsc.dps =
 "Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
 "|cffff0000Linksklicken um die DPS-Bots zu entsenden|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
-"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cffff0000Rechtsklicken um die DPS-Bots auszuwählen|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.rtsc.healer = 
@@ -2430,7 +2466,7 @@ MultiBot.tips.rtsc.healer =
 "Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
 "|cffff0000Linksklicken um die Heiler-Bots zu entsenden|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
-"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cffff0000Rechtsklicken um die Heiler-Bots auszuwählen|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.rtsc.melee = 
@@ -2439,7 +2475,7 @@ MultiBot.tips.rtsc.melee =
 "Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
 "|cffff0000Linksklicken um die Nahkämpfer zu entsenden|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
-"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cffff0000Rechtsklicken um die Nahkämpfer auszuwählen|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.rtsc.ranged = 
@@ -2448,7 +2484,7 @@ MultiBot.tips.rtsc.ranged =
 "Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
 "|cffff0000Linksklicken um die Fernkämpfer zu entsenden|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
-"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cffff0000Rechtsklicken um die Fernkämpfer auszuwählen|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
 MultiBot.tips.rtsc.all = 
@@ -2457,6 +2493,14 @@ MultiBot.tips.rtsc.all =
 "Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
 "|cffff0000Linksklicken um alle Bots zu entsenden|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
-"|cffff0000Rechtsklicken um die Auswahl zu löschen|r\n"..
+"|cffff0000Rechtsklicken um alle Bots auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
+MultiBot.tips.rtsc.browse = 
+"Browse-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche blättert man die Selectorbars durch.|r\n\n"..
+"|cffff0000Linksklicken um die Selectorbar zu wechseln|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die Auswahl abzubrechen|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r";
 end
