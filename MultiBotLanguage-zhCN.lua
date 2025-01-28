@@ -2406,40 +2406,40 @@ MultiBot.tips.rtsc.spot =
 "|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.rtsc.group1 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 1st Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 1st Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 1st Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"队伍选择器\n|cffffffff"..
+"此按钮用于选择第一组队伍并将其派往指定位置\n"..
+"左键点击，然后使用 AEDM 技能标记一个位置。|r\n\n"..
+"|cffff0000左键点击可派遣第一组队伍|r\n"..
+"|cff999999(执行命令：队伍，团队)|r\n\n"..
+"|cffff0000右键点击可选择第一组队伍|r\n"..
+"|cff999999(执行命令：队伍，团队)|r";
 
 MultiBot.tips.rtsc.group2 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 2nd Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 2nd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 2nd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"队伍选择器\n|cffffffff"..
+"此按钮用于选择第二组队伍并将其派往指定位置。\n"..
+"左键点击，然后使用 AEDM 技能标记一个位置|r\n\n"..
+"|cffff0000左键点击可派遣第二组队伍|r\n"..
+"|cff999999(执行命令：队伍，团队)|r\n\n"..
+"|cffff0000右键点击可选择第二组队伍|r\n"..
+"|cff999999(执行命令：队伍，团队)|r";
 
 MultiBot.tips.rtsc.group3 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 3rd Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 3rd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 3rd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"队伍选择器\n|cffffffff"..
+"此按钮用于选择第三组队伍并将其派往指定位置。\n"..
+"左键点击，然后使用 AEDM 技能标记一个位置。|r\n\n"..
+"|cffff0000左键点击可派遣第三组队伍|r\n"..
+"|cff999999(执行命令：队伍，团队)|r\n\n"..
+"|cffff0000右键点击可选择第三组队伍|r\n"..
+"|cff999999(执行命令：队伍，团队)|r";
 
 MultiBot.tips.rtsc.group4 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 4th Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 4th Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 4th Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"队伍选择器\n|cffffffff"..
+"此按钮用于选择第四组队伍并将其派往指定位置。\n"..
+"左键点击，然后使用 AEDM 技能标记一个位置。|r\n\n"..
+"|cffff0000左键点击可派遣第四组队伍|r\n"..
+"|cff999999(执行命令：队伍，团队)|r\n\n"..
+"|cffff0000右键点击可选择第四组队伍|r\n"..
+"|cff999999(执行命令：队伍，团队)|r";
 
 MultiBot.tips.rtsc.tank = 
 "坦克选择器\n|cffffffff"..
@@ -2447,7 +2447,7 @@ MultiBot.tips.rtsc.tank =
 "左键点击，然后使用 AEDM 技能标记一个位置。|r\n\n"..
 "|cffff0000左键点击发送坦克机器人|r\n"..
 "|cff999999(执行命令：队伍，团队)|r\n\n"..
-"|cffff0000Right-Click to select the Tank-Bots|r\n"..
+"|cffff0000右键点击选择坦克机器人|r\n"..
 "|cff999999(执行命令: 系统)|r";
 
 MultiBot.tips.rtsc.dps = 
@@ -2456,7 +2456,7 @@ MultiBot.tips.rtsc.dps =
 "左键点击，然后使用 AEDM 法术标记一个位置。|r\n\n"..
 "|cffff0000左键点击发送 DPS 机器人|r\n"..
 "|cff999999(执行命令：队伍，团队)|r\n\n"..
-"|cffff0000Right-Click to select the DPS-Bots|r\n"..
+"|cffff0000右键点击选择 DPS 机器人。|r\n"..
 "|cff999999(执行命令：队伍，团队)|r";
 
 MultiBot.tips.rtsc.healer = 
@@ -2465,7 +2465,7 @@ MultiBot.tips.rtsc.healer =
 "左键点击，然后使用 AEDM 技能标记一个位置。|r\n\n"..
 "|cffff0000左键点击发送治疗者机器人|r\n"..
 "|cff999999(执行命令：队伍，团队)|r\n\n"..
-"|cffff0000Right-Click to select the Healer-Bots|r\n"..
+"|cffff0000右键点击选择治疗者机器人。|r\n"..
 "|cff999999(执行命令：队伍，团队)|r";
 
 MultiBot.tips.rtsc.melee = 
@@ -2474,7 +2474,7 @@ MultiBot.tips.rtsc.melee =
 "左键点击，然后使用 AEDM 法术标记一个位置。|r\n\n"..
 "|cffff0000左键点击发送近战战士 |r\n"..
 "|cff999999(执行命令：队伍，团队)|r\n\n"..
-"|cffff0000Right-Click to select the Melee-Fighters|r\n"..
+"|cffff0000右键点击选择近战战士。|r\n"..
 "|cff999999(执行命令：队伍，团队)|r";
 
 MultiBot.tips.rtsc.ranged = 
@@ -2483,7 +2483,7 @@ MultiBot.tips.rtsc.ranged =
 "左键点击，然后使用 AEDM 法术标记一个位置。|r\n\n"..
 "|cffff0000左键点击发送远程战士|r\n"..
 "|cff999999(执行命令：队伍，团队)|r\n\n"..
-"|cffff0000Right-Click to select the Ranged-Fighters|r\n"..
+"|cffff0000右键点击选择远程战士。|r\n"..
 "|cff999999(执行命令：队伍，团队)|r";
 
 MultiBot.tips.rtsc.all = 
@@ -2492,14 +2492,14 @@ MultiBot.tips.rtsc.all =
 "左键点击，然后使用 AEDM 法术标记一个位置。|r\n\n"..
 "|cffff0000左键点击发送所有机器人|r\n"..
 "|cff999999(执行命令：队伍，团队)|r\n\n"..
-"|cffff0000Right-Click to select all Bots|r\n"..
+"|cffff0000右键点击选择所有机器人。|r\n"..
 "|cff999999(执行命令：队伍，团队)|r";
 
 MultiBot.tips.rtsc.browse = 
-"Browse-Selector\n|cffffffff"..
-"This Button switches throu the differend Selectorbars.|r\n\n"..
-"|cffff0000Left-Click to switch the Selectorbar|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to cancel the Selection|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"浏览选择器\n|cffffffff"..
+"此按钮用于切换不同的选择栏。|r\n\n"..
+"|cffff0000左键点击以切换选择栏|r\n"..
+"|cff999999(执行命令：队伍，团队)|r\n\n"..
+"|cffff0000右键点击取消选择|r\n"..
+"|cff999999(执行命令：队伍，团队)|r";
 end
