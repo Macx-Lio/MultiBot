@@ -848,11 +848,11 @@ MultiBot.tips.main.masters =
 "|cffff0000Cliquez-gauche pour activer ou désactiver le contrôle MJ|r\n"..
 "|cff999999(Ordre d'exécution : Système)|r";
 
-MultiBot.tips.main.rtsc =
-"RTSC-Switch\n|cffffffff"..
-"This Switch will enable or disable the RTSC-Control.|r\n\n"..
-"|cffff0000Left-Click to enable or disable the RTSC-Control|r\n"..
-"|cff999999(Execution-Order: System)|r";
+MultiBot.tips.main.rtsc = 
+"Interrupteur RTSC\n|cffffffff"..
+"Cet interrupteur permet d'activer ou de désactiver le contrôle RTSC.|r\n\n"..
+"|cffff0000Clic gauche pour activer ou désactiver le contrôle RTSC|r\n"..
+"|cff999999(Ordre d'exécution : Système)|r";
 
 MultiBot.tips.main.creator =
 "Switch Créateur\n|cffffffff"..
@@ -2406,125 +2406,125 @@ MultiBot.tips.every.talent =
 -- RTSC --
 
 MultiBot.tips.rtsc.master = 
-"RTSC-Control\n|cffffffff"..
-"With this Control you can define Locations and send Bots there.\n"..
-"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to cast the AEDM-Spell|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to enable RTSC-Strategy|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Contrôle RTSC\n|cffffffff"..
+"Avec ce contrôle, vous pouvez définir des emplacements et y envoyer des bots.\n"..
+"L'ordre d'exécution montre le récepteur des commandes.|r\n\n"..
+"|cffff0000Clic gauche pour lancer le sort AEDM|r\n"..
+"|cff999999(Ordre d'exécution : Système)|r\n\n"..
+"|cffff0000Clic droit pour activer la stratégie RTSC|r\n"..
+"|cff999999(Ordre d'exécution : Système)|r";
 
 MultiBot.tips.rtsc.macro = 
-"Location-Storage\n|cffffffff"..
-"This Button allows you to save a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to save a Location|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Stockage d'emplacement\n|cffffffff"..
+"Ce bouton vous permet de sauvegarder un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour sauvegarder un emplacement|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 MultiBot.tips.rtsc.spot =
-"Location-Storage\n|cffffffff"..
-"Left-Click to send the Bots to the saved Location.\n"..
-"Right-Click to remove the saved Location.|r\n\n"..
-"|cffff0000Left-Click to send the Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to remove the Location|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Stockage d'emplacement\n|cffffffff"..
+"Clic gauche pour envoyer les bots à l'emplacement sauvegardé.\n"..
+"Clic droit pour supprimer l'emplacement sauvegardé.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer les bots|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour supprimer l'emplacement|r\n"..
+"|cff999999(Ordre d'exécution : Système)|r";
 
 MultiBot.tips.rtsc.group1 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 1st Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 1st Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 1st Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Sélecteur de groupe\n|cffffffff"..
+"Ce bouton sélectionne le 1er groupe et l'envoie à un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer le 1er groupe|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour sélectionner le 1er groupe|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 MultiBot.tips.rtsc.group2 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 2nd Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 2nd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 2nd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Sélecteur de groupe\n|cffffffff"..
+"Ce bouton sélectionne le 2e groupe et l'envoie à un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer le 2e groupe|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour sélectionner le 2e groupe|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 MultiBot.tips.rtsc.group3 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 3rd Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 3rd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 3rd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Sélecteur de groupe\n|cffffffff"..
+"Ce bouton sélectionne le 3e groupe et l'envoie à un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer le 3e groupe|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour sélectionner le 3e groupe|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 MultiBot.tips.rtsc.group4 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 4th Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 4th Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 4th Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Sélecteur de groupe\n|cffffffff"..
+"Ce bouton sélectionne le 4e groupe et l'envoie à un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer le 4e groupe|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour sélectionner le 4e groupe|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 MultiBot.tips.rtsc.tank = 
-"Tank-Selector\n|cffffffff"..
-"This Button selects the Tank-Bots and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the Tank-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the Tank-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Sélecteur de Tank\n|cffffffff"..
+"Ce bouton sélectionne les bots Tank et les envoie à un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer les bots Tank|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour sélectionner les bots Tank|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 MultiBot.tips.rtsc.dps = 
-"DPS-Selector\n|cffffffff"..
-"This Button selects the DPS-Bots and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the DPS-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the DPS-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Sélecteur DPS\n|cffffffff"..
+"Ce bouton sélectionne les bots DPS et les envoie à un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer les bots DPS|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour sélectionner les bots DPS|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 MultiBot.tips.rtsc.healer = 
-"Healer-Selector\n|cffffffff"..
-"This Button selects the Healer-Bots and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the Healer-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the Healer-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Sélecteur de soigneur\n|cffffffff"..
+"Ce bouton sélectionne les bots soigneurs et les envoie à un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer les bots soigneurs|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour sélectionner les bots soigneurs|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 MultiBot.tips.rtsc.melee = 
-"Melee-Selector\n|cffffffff"..
-"This Button selects the Melee-Fighters and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the Melee-Fighters|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the Melee-Fighters|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Sélecteur de C.à.c\n|cffffffff"..
+"Ce bouton sélectionne les combattants au corps à corps et les envoie à un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer les combattants au corps à corps|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour sélectionner les combattants au corps à corps|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 MultiBot.tips.rtsc.ranged = 
-"Ranged-Selector\n|cffffffff"..
-"This Button selects the Ranged-Fighters and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the Ranged-Fighters|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the Ranged-Fighters|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Sélecteur de distance\n|cffffffff"..
+"Ce bouton sélectionne les combattants à distance et les envoie à un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer les combattants à distance|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour sélectionner les combattants à distance|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 MultiBot.tips.rtsc.all = 
-"All-Selector\n|cffffffff"..
-"This Button selects the all Bots and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send all Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select all Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Sélecteur global\n|cffffffff"..
+"Ce bouton sélectionne tous les bots et les envoie à un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer tous les bots|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour sélectionner tous les bots|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 MultiBot.tips.rtsc.browse = 
-"Browse-Selector\n|cffffffff"..
-"This Button switches throu the differend Selectorbars.|r\n\n"..
-"|cffff0000Left-Click to switch the Selectorbar|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to cancel the Selection|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Sélecteur de navigation\n|cffffffff"..
+"Ce bouton permet de naviguer entre les différentes barres de sélection.|r\n\n"..
+"|cffff0000Clic gauche pour changer de barre de sélection|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour annuler la sélection|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 end
