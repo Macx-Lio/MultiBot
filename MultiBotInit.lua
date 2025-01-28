@@ -2682,6 +2682,7 @@ tButton.doRight = function(pButton)
 end
 tButton.doLeft = function(pButton)
 	MultiBot.ActionToGroup(pButton.parent.selector .. "rtsc go 9")
+	pButton.parent.selector = ""
 end
 
 tSelector.addButton("MACRO8", -64, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
@@ -2699,6 +2700,7 @@ tButton.doRight = function(pButton)
 end
 tButton.doLeft = function(pButton)
 	MultiBot.ActionToGroup(pButton.parent.selector .. "rtsc go 8")
+	pButton.parent.selector = ""
 end
 
 tSelector.addButton("MACRO7", -94, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
@@ -2716,6 +2718,7 @@ tButton.doRight = function(pButton)
 end
 tButton.doLeft = function(pButton)
 	MultiBot.ActionToGroup(pButton.parent.selector .. "rtsc go 7")
+	pButton.parent.selector = ""
 end
 
 tSelector.addButton("MACRO6", -124, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
@@ -2733,6 +2736,7 @@ tButton.doRight = function(pButton)
 end
 tButton.doLeft = function(pButton)
 	MultiBot.ActionToGroup(pButton.parent.selector .. "rtsc go 6")
+	pButton.parent.selector = ""
 end
 
 tSelector.addButton("MACRO5", -154, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
@@ -2750,6 +2754,7 @@ tButton.doRight = function(pButton)
 end
 tButton.doLeft = function(pButton)
 	MultiBot.ActionToGroup(pButton.parent.selector .. "rtsc go 5")
+	pButton.parent.selector = ""
 end
 
 tSelector.addButton("MACRO4", -184, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
@@ -2767,6 +2772,7 @@ tButton.doRight = function(pButton)
 end
 tButton.doLeft = function(pButton)
 	MultiBot.ActionToGroup(pButton.parent.selector .. "rtsc go 4")
+	pButton.parent.selector = ""
 end
 
 tSelector.addButton("MACRO3", -214, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
@@ -2784,6 +2790,7 @@ tButton.doRight = function(pButton)
 end
 tButton.doLeft = function(pButton)
 	MultiBot.ActionToGroup(pButton.parent.selector .. "rtsc go 3")
+	pButton.parent.selector = ""
 end
 
 tSelector.addButton("MACRO2", -244, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
@@ -2801,6 +2808,7 @@ tButton.doRight = function(pButton)
 end
 tButton.doLeft = function(pButton)
 	MultiBot.ActionToGroup(pButton.parent.selector .. "rtsc go 2")
+	pButton.parent.selector = ""
 end
 
 tSelector.addButton("MACRO1", -274, 0, "achievement_bg_winwsg_3-0", MultiBot.tips.rtsc.macro).addMacro("type1", "/cast aedm").setDisable()
@@ -2818,6 +2826,7 @@ tButton.doRight = function(pButton)
 end
 tButton.doLeft = function(pButton)
 	MultiBot.ActionToGroup(pButton.parent.selector .. "rtsc go 1")
+	pButton.parent.selector = ""
 end
 
 -- RTSC:SELECTOR --
