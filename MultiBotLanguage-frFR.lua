@@ -2466,6 +2466,15 @@ MultiBot.tips.rtsc.group4 =
 "|cffff0000Clic droit pour sélectionner le 4e groupe|r\n"..
 "|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
+MultiBot.tips.rtsc.group5 = 
+"Sélecteur de groupe\n|cffffffff"..
+"Ce bouton sélectionne le 5e groupe et l'envoie à un emplacement.\n"..
+"Clic gauche puis utilisez le sort AEDM pour marquer un emplacement.|r\n\n"..
+"|cffff0000Clic gauche pour envoyer le 5e groupe|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r\n\n"..
+"|cffff0000Clic droit pour sélectionner le 5e groupe|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
+
 MultiBot.tips.rtsc.tank = 
 "Sélecteur de Tank\n|cffffffff"..
 "Ce bouton sélectionne les bots Tank et les envoie à un emplacement.\n"..

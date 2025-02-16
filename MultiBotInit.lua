@@ -2568,8 +2568,9 @@ MultiBot.talent.setTalents = function()
 	MultiBot.talent.setText("Title", MultiBot.doReplace(MultiBot.info.talent["Title"], "NAME", MultiBot.talent.name))
 	
 	for i = 1, 3 do
+		local tMarker = MultiBot.talent.class .. i
 		local tTab = MultiBot.talent.frames["Tab" .. i]
-		tTab.setTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_" .. MultiBot.talent.class .. i .. ".blp")
+		tTab.setTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_" .. tMarker .. ".blp")
 		tTab.value = 0
 		tTab.id = 1
 		
@@ -2596,7 +2597,7 @@ MultiBot.talent.setTalents = function()
 			MultiBot.talent.addValue(tTab, j, tData[2], tData[3], tRank, tMaxi)
 		end
 		
-		tTab.setText("Title", MultiBot.info.talent[MultiBot.talent.class .. i] .. " (" .. tTab.value .. ")")
+		tTab.setText("Title", MultiBot.info.talent[tMarker] .. " (" .. tTab.value .. ")")
 	end
 	
 	MultiBot.talent.doState()
@@ -2897,6 +2898,17 @@ tButton.doLeft = function(pButton)
 	pButton.parent.doReset(pButton.parent)
 end
 
+local tButton = tSelector.addButton("@group5", 150, 0, "Interface\\AddOns\\MultiBot\\Icons\\rtsc_group5.blp", MultiBot.tips.rtsc.group5).addMacro("type1", "/cast aedm").doHide().setDisable()
+tButton.doRight = function(pButton)
+	MultiBot.ActionToGroup("@group5 rtsc select")
+	pButton.parent.doSelect(pButton, "@group5")
+	pButton.setEnable()
+end
+tButton.doLeft = function(pButton)
+	MultiBot.ActionToGroup("@group5 rtsc select")
+	pButton.parent.doReset(pButton.parent)
+end
+
 local tButton = tSelector.addButton("@tank", 30, 0, "Interface\\AddOns\\MultiBot\\Icons\\rtsc_tank.blp", MultiBot.tips.rtsc.tank).addMacro("type1", "/cast aedm").setDisable()
 tButton.doRight = function(pButton)
 	MultiBot.ActionToGroup("@tank rtsc select")
@@ -2971,30 +2983,28 @@ tButton.doLeft = function(pButton)
 	local tFrame = pButton.parent
 	
 	if(pButton.state) then
-		tFrame.buttons["Dps"].doShow()
-		tFrame.buttons["Tank"].doShow()
-		tFrame.buttons["Melee"].doShow()
-		tFrame.buttons["Healer"].doShow()
-		tFrame.buttons["Ranged"].doShow()
-		tFrame.buttons["Group1"].doHide()
-		tFrame.buttons["Group2"].doHide()
-		tFrame.buttons["Group3"].doHide()
-		tFrame.buttons["Group4"].doHide()
-		tFrame.buttons["All"].setPoint(180, 0)
-		pButton.setPoint(210, 0)
+		tFrame.buttons["@dps"].doShow()
+		tFrame.buttons["@tank"].doShow()
+		tFrame.buttons["@melee"].doShow()
+		tFrame.buttons["@healer"].doShow()
+		tFrame.buttons["@ranged"].doShow()
+		tFrame.buttons["@group1"].doHide()
+		tFrame.buttons["@group2"].doHide()
+		tFrame.buttons["@group3"].doHide()
+		tFrame.buttons["@group4"].doHide()
+		tFrame.buttons["@group5"].doHide()
 		pButton.state = false
 	else
-		tFrame.buttons["Tank"].doHide()
-		tFrame.buttons["Dps"].doHide()
-		tFrame.buttons["Healer"].doHide()
-		tFrame.buttons["Melee"].doHide()
-		tFrame.buttons["Ranged"].doHide()
-		tFrame.buttons["Group1"].doShow()
-		tFrame.buttons["Group2"].doShow()
-		tFrame.buttons["Group3"].doShow()
-		tFrame.buttons["Group4"].doShow()
-		tFrame.buttons["All"].setPoint(150, 0)
-		pButton.setPoint(180, 0)
+		tFrame.buttons["@dps"].doHide()
+		tFrame.buttons["@tank"].doHide()
+		tFrame.buttons["@healer"].doHide()
+		tFrame.buttons["@melee"].doHide()
+		tFrame.buttons["@ranged"].doHide()
+		tFrame.buttons["@group1"].doShow()
+		tFrame.buttons["@group2"].doShow()
+		tFrame.buttons["@group3"].doShow()
+		tFrame.buttons["@group4"].doShow()
+		tFrame.buttons["@group5"].doShow()
 		pButton.state = true
 	end
 end

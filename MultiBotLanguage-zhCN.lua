@@ -2441,6 +2441,15 @@ MultiBot.tips.rtsc.group4 =
 "|cffff0000右键点击可选择第四组队伍|r\n"..
 "|cff999999(执行命令：队伍，团队)|r";
 
+MultiBot.tips.rtsc.group5 = 
+"Group-Selector\n|cffffffff"..
+"This Button selects the 5th Group and sends it to a Location.\n"..
+"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
+"|cffff0000Left-Click to send the 5th Group|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
+"|cffff0000Right-Click to select the 5th Group|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
 MultiBot.tips.rtsc.tank = 
 "坦克选择器\n|cffffffff"..
 "此按钮用于选择坦克机器人并将它们发送到某个位置。\n"..

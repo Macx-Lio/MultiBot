@@ -2442,6 +2442,15 @@ MultiBot.tips.rtsc.group4 =
 "|cffff0000Right-Click to select the 4th Group|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
+MultiBot.tips.rtsc.group5 = 
+"Group-Selector\n|cffffffff"..
+"This Button selects the 5th Group and sends it to a Location.\n"..
+"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
+"|cffff0000Left-Click to send the 5th Group|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
+"|cffff0000Right-Click to select the 5th Group|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
 MultiBot.tips.rtsc.tank = 
 "Tank-Selector\n|cffffffff"..
 "This Button selects the Tank-Bots and sends them to a Location.\n"..

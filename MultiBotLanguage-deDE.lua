@@ -2442,6 +2442,15 @@ MultiBot.tips.rtsc.group4 =
 "|cffff0000Rechtsklicken um die 4te Gruppe auszuwählen|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
+MultiBot.tips.rtsc.group5 = 
+"Group-Selector\n|cffffffff"..
+"Mit dieser Schaltfläche wird die 5te Gruppe ausgewählt und an einen Standort entsendet.\n"..
+"Linksklicken und anschließend mit dem AEDM-Zauber einen Standort markieren.|r\n\n"..
+"|cffff0000Linksklicken um die 5te Gruppe zu entsenden|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r\n\n"..
+"|cffff0000Rechtsklicken um die 5te Gruppe auszuwählen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
 MultiBot.tips.rtsc.tank = 
 "Tank-Selector\n|cffffffff"..
 "Mit dieser Schaltfläche werden die Tank-Bots ausgewählt und an einen Standort entsendet.\n"..
