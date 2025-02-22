@@ -1121,14 +1121,50 @@ tButton.doRight = function(pButton)
 	for key, value in pairs(tFrame.texts) do value:Hide() end
 	tFrame.buttons = {}
 	tFrame.texts = {}
+	
+	tFrame.limit = 0
+	tFrame.from = 1
+	tFrame.to = 10
+	
+	tFrame.addButton("Browse", 0, 300, "Interface\\AddOns\\MultiBot\\Icons\\filter_browse.blp", "")
+	.doLeft = function(pButton)
+		local tFrom = pButton.parent.from + 10
+		local tTo = pButton.parent.to + 10
 		
+		if(tFrom > pButton.parent.limit) then
+			tFrom = 1
+			tTo = 10
+		end
+		
+		if(tTo > pButton.parent.limit) then
+			tTo = pButton.parent.limit
+		end
+		
+		for i = 1, pButton.parent.limit do
+			if(tFrom <= i and tTo >= i) then
+				pButton.parent.buttons["Quest" .. i]:Show()
+				pButton.parent.texts["Title" .. i]:Show()
+			else
+				pButton.parent.buttons["Quest" .. i]:Hide()
+				pButton.parent.texts["Title" .. i]:Hide()
+			end
+		end
+		
+		tFrame.from = tFrom
+		tFrame.to = tTo
+		
+		pButton.setPoint(0, ((tTo - 1)%10 + 1) * 30)
+	end
+	
 	for i = 1, tEntries do
 		local tLink = GetQuestLink(i)
 		local tTitle, tLevel, tGroup, tHeader, tCollapsed, tComplete = GetQuestLogTitle(i)
 		
 		if(tCollapsed == nil) then
+			tFrame.limit = tFrame.limit + 1
+			
 			local tAmount = 0
-			local tButton = tFrame.addButton("Quest" .. i, 0, tIndex * 30, "inv_misc_note_01", tLink)
+			local tButton = tFrame.addButton("Quest" .. tFrame.limit, 0, tIndex * 30, "inv_misc_note_01", tLink)
 			tButton.link = tLink
 			tButton.id = i
 			
@@ -1159,9 +1195,23 @@ tButton.doRight = function(pButton)
 				end
 			end
 			
-			tFrame.addText("Title" .. i, "[" .. tAmount .. "] " .. tTitle, "BOTTOMLEFT", 30, tIndex * 30 + 14, 12)
-			tIndex = tIndex + 1
+			local tText = tFrame.addText("Title" .. tFrame.limit, "[" .. tAmount .. "] " .. tTitle, "BOTTOMLEFT", 30, tIndex * 30 + 14, 12)
+			
+			tIndex = (tIndex + 1)%10
+			
+			if(tFrame.from <= (tIndex + 1) and tFrame.to >= (tIndex + 1)) then
+				tButton:Show()
+				tText:Show()
+			else
+				tButton:Hide()
+				tText:Hide()
+			end
 		end
+	end
+	
+	if(tFrame.limit > 10)
+	then tFrame.buttons["Browse"]:Show()
+	else tFrame.buttons["Browse"]:Hide()
 	end
 end
 tButton.doLeft = function(pButton)
