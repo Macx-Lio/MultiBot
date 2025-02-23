@@ -2622,7 +2622,7 @@ MultiBot.talent.setTalents = function()
 		local tTab = MultiBot.talent.frames["Tab" .. i]
 		tTab.setTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_" .. tMarker .. ".blp")
 		tTab.value = 0
-		tTab.id = 1
+		tTab.id = i
 		
 		for j = 1, table.getn(tArrow[i]) do
 			local tData = MultiBot.doSplit(tArrow[i][j], ", ")
