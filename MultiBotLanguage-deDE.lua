@@ -346,6 +346,22 @@ MultiBot.tips.stallow.follow =
 "|cffff0000Linksklicken um Follow auszuführen|r\n"..
 "|cff999999(Ausführreihenfolge: Raid, Party)|r";
 
+MultiBot.tips.expand.stay = 
+"Stay\n|cffffffff"..
+"Mit dieser Schaltfläche gibt man den Befehl zum Stehen-Bleiben.\n"..
+"Dieses Kommando hebt den Passiv-Modus auf, in Kombination sollte Stay zuerst befohlen werden.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um Stay auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
+MultiBot.tips.expand.follow = 
+"Follow\n|cffffffff"..
+"Mit dieser Schaltfläche gibt man den Befehl zum Folgen.\n"..
+"Dieses Kommando hebt den Passiv-Modus auf, in Kombination sollte Follow zuerst befohlen werden.\n"..
+"Die Ausführreihenfolge zeigt die Empfänger des Befehls.|r\n\n"..
+"|cffff0000Linksklicken um Follow auszuführen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
 -- FLEE --
 
 MultiBot.tips.flee.master = 
@@ -871,6 +887,12 @@ MultiBot.tips.main.lang.master =
 "|cffff0000Rechtsklicken um die Language-Selector ein- oder auszuschalten|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 ]]--
+
+MultiBot.tips.main.expand =
+"Expand-Switch\n|cffffffff"..
+"Diese Schaltfläche expandiert oder reduziert die Stay-Follow-Control.\n"..
+"|cffff0000Linksklicken um die Stay-Follow-Control zu expandieren oder reduzieren|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.main.release =
 "Auto-Release\n|cffffffff"..

@@ -407,6 +407,23 @@ MultiBot.tips.stallow.follow =
 "|cffff0000Left-Click to execute Follow|r\n"..
 "|cff999999(Execution-Order: Raid, Party)|r";
 
+MultiBot.tips.expand = {}
+MultiBot.tips.expand.stay = 
+"Stay\n|cffffffff"..
+"With this Button you can give right now the Command to Stay.\n"..
+"This Command cancels the Passive-Mode, in combination Stay should be commanded first.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to execute Stay|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
+MultiBot.tips.expand.follow = 
+"Follow\n|cffffffff"..
+"With this Button you can give right now the Command to Follow.\n"..
+"This Command cancels the Passive-Mode, in combination Follow should be commanded first.\n"..
+"The Execution-Order shows the Receiver for Commandos.|r\n\n"..
+"|cffff0000Left-Click to execute Follow|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
 -- FLEE --
 
 MultiBot.tips.flee = {}
@@ -958,6 +975,12 @@ MultiBot.tips.main.lang.none =
 "|cffff0000Left-Click to select English|r\n"..
 "|cff999999(Execution-Order: System)|r";
 ]]--
+
+MultiBot.tips.main.expand =
+"Expand-Switch\n|cffffffff"..
+"This Switch will expand or reduce the Stay-Follow-Control.\n"..
+"|cffff0000Left-Click to expand or reduce the Stay-Follow-Control|r\n"..
+"|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.main.release =
 "Auto-Release\n|cffffffff"..

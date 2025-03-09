@@ -347,6 +347,21 @@ MultiBot.tips.stallow.follow =
 "|cffff0000Clic gauche pour exécuter la commande Suivre|r\n"..
 "|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
+MultiBot.tips.expand.stay = 
+"Rester\n|cffffffff"..
+"Avec ce bouton, vous pouvez ordonner aux bots de Rester.\n"..
+"Cette commande annule le mode passif, en combinaison Rester doit être commandé en premier.\n"..
+"L'ordre d'exécution montre les destinataires des commandes.|r\n\n"..
+"|cffff0000Clic gauche pour exécuter la commande Rester|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
+
+MultiBot.tips.expand.follow = 
+"Suivre\n|cffffffff"..
+"Avec ce bouton, vous pouvez ordonner aux bots de vous Suivre.\n"..
+"Cette commande annule le mode passif, en combinaison Suivre doit être commandé en premier.\n"..
+"L'ordre d'exécution montre les destinataires des commandes.|r\n\n"..
+"|cffff0000Clic gauche pour exécuter la commande Suivre|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 -- FUIR --
 
@@ -882,6 +897,12 @@ MultiBot.tips.main.lang.master =
 "|cffff0000Clic droit pour activer ou désactiver le Sélecteur de Langue|r\n".. 
 "|cff999999(Ordre d'exécution : Système)|r"; 
 ]]--
+
+MultiBot.tips.main.expand =
+"Expand-Switch\n|cffffffff"..
+"This Switch will expand or reduce the Stay-Follow-Control.\n"..
+"|cffff0000Left-Click to expand or reduce the Stay-Follow-Control|r\n"..
+"|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.main.release =
 "Auto-Réanimation\n|cffffffff"..
