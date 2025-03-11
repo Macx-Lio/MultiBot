@@ -899,10 +899,10 @@ MultiBot.tips.main.lang.master =
 ]]--
 
 MultiBot.tips.main.expand =
-"Expand-Switch\n|cffffffff"..
-"This Switch will expand or reduce the Stay-Follow-Control.\n"..
-"|cffff0000Left-Click to expand or reduce the Stay-Follow-Control|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Contrôle Rester-Suivre\n|cffffffff" ..
+"Ce bouton développera ou réduira la fonction Rester-Suivre.\n" ..
+"|cffff0000Clic gauche pour développer ou réduire le Contrôle Rester-Suivre|r\n" ..
+"|cff999999(Ordre d'exécution : Système)|r";
 
 MultiBot.tips.main.release =
 "Auto-Réanimation\n|cffffffff"..
