@@ -1007,7 +1007,6 @@ MultiBot.tips.game.appear =
 
 -- QUESTS --
 
-MultiBot.tips.quests = {}
 MultiBot.tips.quests.master =
 "Quest-Control\n|cffffffff"..
 "Diese Steuereinheit zeigt die aktuelle Aufgabenliste.\n"..

@@ -1007,7 +1007,6 @@ MultiBot.tips.game.appear =
 
 -- 任务 --
 
-MultiBot.tips.quests = {}
 MultiBot.tips.quests.master =
 "任务控制\n|cffffffff"..
 "此控制功能会显示当前任务清单。\n"..

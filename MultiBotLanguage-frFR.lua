@@ -659,7 +659,6 @@ MultiBot.tips.unit.button =
 
 -- UNITÉS --
 
-MultiBot.tips.units = {}
 MultiBot.tips.units.master =
 "Contrôle des unités\n|cffffffff"..
 "Dans ce contrôle, vous trouverez les Playerbots.\n"..
@@ -1018,7 +1017,6 @@ MultiBot.tips.game.appear =
 
 -- QUESTS --
 
-MultiBot.tips.quests = {}
 MultiBot.tips.quests.master = 
 "Contrôle des Quêtes\n|cffffffff"..
 "Ce contrôle affiche la liste actuelle des quêtes.\n"..

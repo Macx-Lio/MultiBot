@@ -11,6 +11,7 @@ MultiBotLanguage-enGB.lua
 MultiBotLanguage-enUS.lua
 MultiBotLanguage-frFR.lua
 MultiBotLanguage-zhCN.lua
+MultiBotLanguage-koKR.lua
 MultiBotEngine.lua
 MultiBotHandler.lua
 MultiBotDeathKnight.lua
