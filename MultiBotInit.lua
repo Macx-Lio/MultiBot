@@ -140,14 +140,14 @@ tLeft.addButton("Follow", -68, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_s
 	end
 end
 
-tLeft.addButton("ExpandStay", -102, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_stay.blp", MultiBot.tips.expand.stay).doHide().setDisable()
+tLeft.addButton("ExpandStay", -68, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_stay.blp", MultiBot.tips.expand.stay).doHide().setDisable()
 .doLeft = function(pButton)
 	MultiBot.ActionToGroup("stay")
 	pButton.parent.buttons["ExpandFollow"].setDisable()
 	pButton.setEnable()
 end
 
-tLeft.addButton("ExpandFollow", -136, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_follow.blp", MultiBot.tips.expand.follow).doHide()
+tLeft.addButton("ExpandFollow", -102, 0, "Interface\\AddOns\\MultiBot\\Icons\\command_follow.blp", MultiBot.tips.expand.follow).doHide()
 .doLeft = function(pButton)
 	MultiBot.ActionToGroup("follow")
 	pButton.parent.buttons["ExpandStay"].setDisable()
@@ -880,6 +880,8 @@ tMain.addButton("Creator", 0, 102, "inv_helmet_145a", MultiBot.tips.main.creator
 		MultiBot.doRepos("Mode", -34)
 		MultiBot.doRepos("Stay", -34)
 		MultiBot.doRepos("Follow", -34)
+		MultiBot.doRepos("ExpandStay", -34)
+		MultiBot.doRepos("ExpandFollow", -34)
 		MultiBot.doRepos("Flee", -34)
 		MultiBot.doRepos("Format", -34)
 		MultiBot.doRepos("Beast", -34)
@@ -891,6 +893,8 @@ tMain.addButton("Creator", 0, 102, "inv_helmet_145a", MultiBot.tips.main.creator
 		MultiBot.doRepos("Mode", 34)
 		MultiBot.doRepos("Stay", 34)
 		MultiBot.doRepos("Follow", 34)
+		MultiBot.doRepos("ExpandStay", 34)
+		MultiBot.doRepos("ExpandFollow", 34)
 		MultiBot.doRepos("Flee", 34)
 		MultiBot.doRepos("Format", 34)
 		MultiBot.doRepos("Beast", 34)
@@ -907,6 +911,8 @@ tMain.addButton("Beast", 0, 136, "ability_mount_swiftredwindrider", MultiBot.tip
 		MultiBot.doRepos("Mode", -34)
 		MultiBot.doRepos("Stay", -34)
 		MultiBot.doRepos("Follow", -34)
+		MultiBot.doRepos("ExpandStay", -34)
+		MultiBot.doRepos("ExpandFollow", -34)
 		MultiBot.doRepos("Flee", -34)
 		MultiBot.doRepos("Format", -34)
 		MultiBot.frames["MultiBar"].frames["Left"].frames["Beast"]:Hide()
@@ -917,6 +923,8 @@ tMain.addButton("Beast", 0, 136, "ability_mount_swiftredwindrider", MultiBot.tip
 		MultiBot.doRepos("Mode", 34)
 		MultiBot.doRepos("Stay", 34)
 		MultiBot.doRepos("Follow", 34)
+		MultiBot.doRepos("ExpandStay", 34)
+		MultiBot.doRepos("ExpandFollow", 34)
 		MultiBot.doRepos("Flee", 34)
 		MultiBot.doRepos("Format", 34)
 		MultiBot.frames["MultiBar"].frames["Left"].frames["Beast"]:Hide()
