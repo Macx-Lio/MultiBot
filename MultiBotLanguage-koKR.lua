@@ -1883,6 +1883,12 @@ MultiBot.tips.paladin.naura.barmor =
 "|cffff0000 왼쪽 클릭으로 방어구 오라 활성화|r\n"..
 "|cff999999(명령 실행: 로봇)|r";
 
+MultiBot.tips.paladin.naura.bcast =
+"Concentration-Aura|cffffffff\n"..
+"It enables the Concentration-Aura as Non-Combat-Aura.|r\n\n"..
+"|cffff0000Left-Click to enable Armor-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
 MultiBot.tips.paladin.caura.master =
 "배틀 오라|cffffffff\n"..
 "이 컨트롤을 사용하면 기본 전투 오라를 선택, 활성화 또는 비활성화할 수 있습니다.|r\n\n"..
@@ -1920,6 +1926,12 @@ MultiBot.tips.paladin.caura.barmor =
 "방어구 오라를 전투 오라로 활성화합니다.|r\n\n"..
 "|cffff0000 왼쪽 클릭으로 방어구 오라 활성화|r\n"..
 "|cff999999(명령 실행: 로봇)|r";
+
+MultiBot.tips.paladin.caura.bcast =
+"Concentration-Aura|cffffffff\n"..
+"It enables the Concentration-Aura as Combat-Aura.|r\n\n"..
+"|cffff0000Left-Click to enable Concentration-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.dps.master =
 "DPS 제어|cffffffff\n"..

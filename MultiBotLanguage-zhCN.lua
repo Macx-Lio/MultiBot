@@ -1890,6 +1890,12 @@ MultiBot.tips.paladin.naura.barmor =
 "|cffff0000左键点击启用护甲光环|r\n"..
 "|cff999999(执行命令: 机器人)|r";
 
+MultiBot.tips.paladin.naura.bcast =
+"Concentration-Aura|cffffffff\n"..
+"It enables the Concentration-Aura as Non-Combat-Aura.|r\n\n"..
+"|cffff0000Left-Click to enable Armor-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
+
 MultiBot.tips.paladin.caura.master =
 "战斗光环|cffffffff\n"..
 "此控制允许你选择、启用或禁用默认战斗光环。|r\n\n"..
@@ -1933,6 +1939,12 @@ MultiBot.tips.paladin.caura.barmor =
 "将护甲光环作为战斗光环启用。|r\n\n"..
 "|cffff0000左键点击启用护甲光环|r\n"..
 "|cff999999(执行命令: 机器人)|r";
+
+MultiBot.tips.paladin.caura.bcast =
+"Concentration-Aura|cffffffff\n"..
+"It enables the Concentration-Aura as Combat-Aura.|r\n\n"..
+"|cffff0000Left-Click to enable Concentration-Aura|r\n"..
+"|cff999999(Execution-Order: Bot)|r";
 
 MultiBot.tips.paladin.dps.master =
 "DPS控制|cffffffff\n"..

@@ -127,6 +127,14 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 		end
 	end
 	
+		tFrame.addButton("NonCombatCast", 0, 156, "spell_holy_mindsooth", MultiBot.tips.paladin.naura.bcast)
+	.doLeft = function(pButton)
+		MultiBot.SelectToTarget(pButton.get(), "NonCombatAura", pButton.texture, "nc +bcast,?", pButton.getName())
+		pButton.getButton("NonCombatAura").doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "nc +bcast,?", "nc -bcast,?", pButton.getName())
+		end
+	end
+	
 	-- STRATEGIES:NON-COMBAT-AURA --
 	
 	if(MultiBot.isInside(pNormal, "bspeed")) then
@@ -152,6 +160,10 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 	elseif(MultiBot.isInside(pNormal, "barmor")) then
 		tButton.setTexture("spell_holy_devotionaura").setEnable().doRight = function(pButton)
 			MultiBot.OnOffActionToTarget(pButton, "nc +barmor,?", "nc -barmor,?", pButton.getName())
+		end
+	elseif(MultiBot.isInside(pNormal, "bcast")) then
+		tButton.setTexture("spell_holy_mindsooth").setEnable().doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "nc +bcast,?", "nc -bcast,?", pButton.getName())
 		end
 	end
 	
@@ -213,6 +225,14 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 		end
 	end
 	
+		tFrame.addButton("CombatCast", 0, 156, "spell_holy_mindsooth", MultiBot.tips.paladin.caura.bcast)
+	.doLeft = function(pButton)
+		MultiBot.SelectToTarget(pButton.get(), "CombatAura", pButton.texture, "co +bcast,?", pButton.getName())
+		pButton.getButton("CombatAura").doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "co +bcast,?", "co -bcast,?", pButton.getName())
+		end
+	end
+	
 	-- STRATEGIES:COMBAT-AURA --
 	
 	if(MultiBot.isInside(pCombat, "bspeed")) then
@@ -238,6 +258,10 @@ MultiBot.addPaladin = function(pFrame, pCombat, pNormal)
 	elseif(MultiBot.isInside(pCombat, "barmor")) then
 		tButton.setTexture("spell_holy_devotionaura").setEnable().doRight = function(pButton)
 			MultiBot.OnOffActionToTarget(pButton, "co +barmor,?", "co -barmor,?", pButton.getName())
+		end
+	elseif(MultiBot.isInside(pCombat, "bcast")) then
+		tButton.setTexture("spell_holy_mindsooth").setEnable().doRight = function(pButton)
+			MultiBot.OnOffActionToTarget(pButton, "co +bcast,?", "co -bcast,?", pButton.getName())
 		end
 	end
 	
