@@ -674,8 +674,27 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
-		if(tButton.waitFor == "NC" and MultiBot.isInside(arg1, "Strategies: ")) then
+		if(tButton.waitFor == "IGNORE" and MultiBot.isInside(arg1, "Ignored ")) then
+			if(MultiBot.spells[arg2] == nil) then MultiBot.spells[arg2] = {} end
 			tButton.waitFor = ""
+			
+			local tSpells = {}
+			local tIgnores = MultiBot.doSplit(arg1, ": ")[2]
+			
+			if(tIgnores ~= nil) then
+				tSpells = MultiBot.doSplit(tIgnores, ", ")
+				
+				for k,v in pairs(tSpells) do
+					local tSpell = MultiBot.doSplit(v, "|")[3]
+					if(tSpell ~= nil) then MultiBot.spells[arg2][MultiBot.doSplit(tSpell, ":")[2]] = false end
+				end
+			end
+			
+			return
+		end
+		
+		if(tButton.waitFor == "NC" and MultiBot.isInside(arg1, "Strategies: ")) then
+			tButton.waitFor = "IGNORE"
 			tButton.normal = string.sub(arg1, 13)
 			
 			tFrame = MultiBot.frames["MultiBar"].frames["Units"].addFrame(arg2, tButton.x - tButton.size - 2, tButton.y + 2)
@@ -692,6 +711,7 @@ MultiBot:SetScript("OnEvent", function()
 			end
 			
 			tButton.setEnable()
+			SendChatMessage("ss ?", "WHISPER", nil, arg2)
 			return
 		end
 		
@@ -768,7 +788,7 @@ MultiBot:SetScript("OnEvent", function()
 		end
 		
 		if(tButton.waitFor == "SPELL") then
-			MultiBot.addSpell(arg1)
+			MultiBot.addSpell(arg1, arg2)
 			return
 		end
 		

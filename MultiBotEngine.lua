@@ -456,6 +456,12 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 		return frame.buttons[pName]
 	end
 	
+	frame.boxButton = function(pName, pX, pY, pSize, pState)
+		if(frame.buttons[pName] ~= nil) then frame.buttons[pName]:Hide() end
+		frame.buttons[pName] = MultiBot.boxButton(frame, pX, pY, pSize, pState)
+		return frame.buttons[pName]
+	end
+	
 	frame.addFrame = function(pName, pX, pY, oSize, oWidth, oHeight)
 		if(frame.frames[pName] ~= nil) then frame.frames[pName]:Hide() end
 		frame.frames[pName] = MultiBot.newFrame(frame, pX, pY, MultiBot.IF(oSize ~= nil, oSize, frame.size - 4), oWidth, oHeight)
@@ -721,6 +727,32 @@ MultiBot.wowButton = function(pParent, pName, pX, pY, pWidth, pHeight, pSize)
 	button:EnableMouse(true)
 	button:RegisterForClicks("LeftButtonDown", "RightButtonDown")
 	
+	button.parent = pParent
+	button.y = pY
+	button.x = pX
+	
+	-- GET --
+	
+	button.getButton = function(pIndex)
+		return button.parent.get().getButton(pIndex)
+	end
+	
+	button.getFrame = function(pIndex)
+		return button.parent.get().getFrame(pIndex)
+	end
+	
+	button.getClass = function()
+		return button.parent.getClass()
+	end
+	
+	button.getName = function()
+		return button.parent.getName()
+	end
+	
+	button.get = function()
+		return button.parent.get()
+	end
+	
 	-- DO --
 	
 	button.doHide = function()
@@ -795,6 +827,65 @@ MultiBot.movButton = function(pParent, pX, pY, pSize, pTip, oFrame)
 	end)
 	
 	return button
+end
+
+-- BUTTON:BOX --
+
+MultiBot.boxButton = function(pParent, pX, pY, pSize, pState)
+	local button = CreateFrame("CheckButton", nil, pParent, "ChatConfigCheckButtonTemplate");
+	button:SetPoint("BOTTOMRIGHT", pX, pY)
+	button:SetHitRectInsets(0, 0, 0, 0) 
+	button:SetSize(pSize, pSize)
+	button:SetChecked(pState)
+	button:Show()
+	
+	button.parent = pParent
+	button.state = pState
+	button.size = pSize
+	button.x = pX
+	button.y = pY
+	
+	-- GET --
+	
+	button.getButton = function(pIndex)
+		return button.parent.get().getButton(pIndex)
+	end
+	
+	button.getFrame = function(pIndex)
+		return button.parent.get().getFrame(pIndex)
+	end
+	
+	button.getClass = function()
+		return button.parent.getClass()
+	end
+	
+	button.getName = function()
+		return button.parent.getName()
+	end
+	
+	button.get = function()
+		return button.parent.get()
+	end
+	
+	-- DO --
+	
+	button.doHide = function()
+		button:Hide()
+		return button
+	end
+	
+	button.doShow = function()
+		button:Show()
+		return button
+	end
+	
+	-- EVENT --
+	
+	button:SetScript("OnClick", function()
+		if(button.doClick ~= nil) then button.doClick(button) end
+	end)
+	
+	return button;
 end
 
 -- MULTIBOT:ADD --
