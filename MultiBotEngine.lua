@@ -462,6 +462,12 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 		return frame.buttons[pName]
 	end
 	
+	frame.catButton = function(pName, pX, pY, pWidth, pHeight)
+		if(frame.buttons[pName] ~= nil) then frame.buttons[pName]:Hide() end
+		frame.buttons[pName] = MultiBot.catButton(frame, pX, pY, pWidth, pHeight)
+		return frame.buttons[pName]
+	end
+	
 	frame.addFrame = function(pName, pX, pY, oSize, oWidth, oHeight)
 		if(frame.frames[pName] ~= nil) then frame.frames[pName]:Hide() end
 		frame.frames[pName] = MultiBot.newFrame(frame, pX, pY, MultiBot.IF(oSize ~= nil, oSize, frame.size - 4), oWidth, oHeight)
@@ -878,6 +884,23 @@ MultiBot.boxButton = function(pParent, pX, pY, pSize, pState)
 		button:Show()
 		return button
 	end
+	
+	-- EVENT --
+	
+	button:SetScript("OnClick", function()
+		if(button.doClick ~= nil) then button.doClick(button) end
+	end)
+	
+	return button;
+end
+
+-- BUTTON:CAT --
+
+MultiBot.catButton = function(pParent, pX, pY, pWidth, pHeight)
+	local button = CreateFrame("CheckButton", nil, pParent, "SecureActionButtonTemplate");
+	button:SetPoint("BOTTOMRIGHT", pX, pY)
+	button:SetSize(pWidth, pHeight)
+	button:Show()
 	
 	-- EVENT --
 	
