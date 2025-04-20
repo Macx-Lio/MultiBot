@@ -1,5 +1,7 @@
 -- MULTIBAR --
-local playerName = UnitName("player")
+local function getPlayerName ()
+	return UnitName("player")
+end
 
 local tMultiBar = MultiBot.addFrame("MultiBar", -262, 144, 36)
 tMultiBar:SetMovable(true)
@@ -377,7 +379,7 @@ tCreator.addButton("Inspect", 0, 300, "Interface\\AddOns\\MultiBot\\Icons\\filte
 .doLeft = function(pButton)
 	local tName = UnitName("target")
 	if(tName == nil or tName == "Unknown Entity") then
-		return SendChatMessage("I dont have a Target.", "WHISPER", nil, playerName)
+		return SendChatMessage("I dont have a Target.", "WHISPER", nil, getPlayerName())
 	end
 	InspectUnit(tName)
 end
@@ -388,9 +390,9 @@ tButton.doRight = function(pButton)
 		for i = 1, GetNumRaidMembers() do
 			local tName = UnitName("raid" .. i)
 			if(MultiBot.isRoster("players", tName))	then
-				SendChatMessage(MultiBot.doReplace(MultiBot.info.player, "NAME", tName), "WHISPER", nil, playerName)
+				SendChatMessage(MultiBot.doReplace(MultiBot.info.player, "NAME", tName), "WHISPER", nil, getPlayerName())
 			elseif(MultiBot.isRoster("members", tName)) then
-				SendChatMessage(MultiBot.doReplace(MultiBot.info.member, "NAME", tName), "WHISPER", nil, playerName)
+				SendChatMessage(MultiBot.doReplace(MultiBot.info.member, "NAME", tName), "WHISPER", nil, getPlayerName())
 			elseif(tName ~= UnitName("player")) then SendChatMessage(".playerbot bot init=auto " .. tName, "SAY")
 			end
 		end
@@ -402,9 +404,9 @@ tButton.doRight = function(pButton)
 		for i = 1, GetNumPartyMembers() do
 			local tName = UnitName("party" .. i)
 			if(MultiBot.isRoster("players", tName))	then
-				SendChatMessage(MultiBot.doReplace(MultiBot.info.player, "NAME", tName), "WHISPER", nil, playerName)
+				SendChatMessage(MultiBot.doReplace(MultiBot.info.player, "NAME", tName), "WHISPER", nil, getPlayerName())
 			elseif(MultiBot.isRoster("members", tName)) then
-				SendChatMessage(MultiBot.doReplace(MultiBot.info.member, "NAME", tName), "WHISPER", nil, playerName)
+				SendChatMessage(MultiBot.doReplace(MultiBot.info.member, "NAME", tName), "WHISPER", nil, getPlayerName())
 			elseif(tName ~= UnitName("player")) then SendChatMessage(".playerbot bot init=auto " .. tName, "SAY")
 			end
 		end
@@ -412,13 +414,13 @@ tButton.doRight = function(pButton)
 		return
 	end
 
-	SendChatMessage(MultiBot.info.group, "WHISPER", nil, playerName)
+	SendChatMessage(MultiBot.info.group, "WHISPER", nil, getPlayerName())
 end
 tButton.doLeft = function(pButton)
 	local tName = UnitName("target")
-	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage(MultiBot.info.target, "WHISPER", nil, playerName) end
-	if(MultiBot.isRoster("players", tName)) then return SendChatMessage(MultiBot.info.players, "WHISPER", nil, playerName) end
-	if(MultiBot.isRoster("members", tName)) then return SendChatMessage(MultiBot.info.members, "WHISPER", nil, playerName) end
+	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage(MultiBot.info.target, "WHISPER", nil, getPlayerName()) end
+	if(MultiBot.isRoster("players", tName)) then return SendChatMessage(MultiBot.info.players, "WHISPER", nil, getPlayerName()) end
+	if(MultiBot.isRoster("members", tName)) then return SendChatMessage(MultiBot.info.members, "WHISPER", nil, getPlayerName()) end
 	SendChatMessage(".playerbot bot init=auto " .. tName, "SAY")
 end
 
@@ -714,7 +716,7 @@ tButton.doRight = function(pButton)
 		MultiBot.timer.invite.needs = table.getn(MultiBot.index[MultiBot.timer.invite.roster])
 		MultiBot.timer.invite.index = 1
 		MultiBot.auto.invite = true
-		SendChatMessage(MultiBot.info.starting, "WHISPER", nil, playerName)
+		SendChatMessage(MultiBot.info.starting, "WHISPER", nil, getPlayerName())
 	end
 end
 tButton.doLeft = function(pButton)
@@ -726,7 +728,7 @@ tInvite:Hide()
 
 tInvite.addButton("Party+5", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_party_5.blp", MultiBot.tips.units.inviteParty5)
 .doLeft = function(pButton)
-	if(MultiBot.auto.invite) then return SendChatMessage(MultiBot.info.wait, "WHISPER", nil, playerName) end
+	if(MultiBot.auto.invite) then return SendChatMessage(MultiBot.info.wait, "WHISPER", nil, getPlayerName()) end
 	local tRaid = GetNumRaidMembers()
 	local tParty = GetNumPartyMembers()
 	MultiBot.timer.invite.roster = MultiBot.frames["MultiBar"].buttons["Units"].roster
@@ -734,12 +736,12 @@ tInvite.addButton("Party+5", 0, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_p
 	MultiBot.timer.invite.index = 1
 	MultiBot.auto.invite = true
 	pButton.parent:Hide()
-	SendChatMessage(MultiBot.info.starting, "WHISPER", nil, playerName)
+	SendChatMessage(MultiBot.info.starting, "WHISPER", nil, getPlayerName())
 end
 
 tInvite.addButton("Raid+10", 56, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_raid_10.blp", MultiBot.tips.units.inviteRaid10)
 .doLeft = function(pButton)
-	if(MultiBot.auto.invite) then return SendChatMessage(MultiBot.info.wait, "WHISPER", nil, playerName) end
+	if(MultiBot.auto.invite) then return SendChatMessage(MultiBot.info.wait, "WHISPER", nil, getPlayerName()) end
 	local tRaid = GetNumRaidMembers()
 	local tParty = GetNumPartyMembers()
 	MultiBot.timer.invite.roster = MultiBot.frames["MultiBar"].buttons["Units"].roster
@@ -747,12 +749,12 @@ tInvite.addButton("Raid+10", 56, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_
 	MultiBot.timer.invite.index = 1
 	MultiBot.auto.invite = true
 	pButton.parent:Hide()
-	SendChatMessage(MultiBot.info.starting, "WHISPER", nil, playerName)
+	SendChatMessage(MultiBot.info.starting, "WHISPER", nil, getPlayerName())
 end
 
 tInvite.addButton("Raid+25", 82, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_raid_25.blp", MultiBot.tips.units.inviteRaid25)
 .doLeft = function(pButton)
-	if(MultiBot.auto.invite) then return SendChatMessage(MultiBot.info.wait, "WHISPER", nil, playerName) end
+	if(MultiBot.auto.invite) then return SendChatMessage(MultiBot.info.wait, "WHISPER", nil, getPlayerName()) end
 	local tRaid = GetNumRaidMembers()
 	local tParty = GetNumPartyMembers()
 	MultiBot.timer.invite.roster = MultiBot.frames["MultiBar"].buttons["Units"].roster
@@ -760,12 +762,12 @@ tInvite.addButton("Raid+25", 82, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_
 	MultiBot.timer.invite.index = 1
 	MultiBot.auto.invite = true
 	pButton.parent:Hide()
-	SendChatMessage(MultiBot.info.starting, "WHISPER", nil, playerName)
+	SendChatMessage(MultiBot.info.starting, "WHISPER", nil, getPlayerName())
 end
 
 tInvite.addButton("Raid+40", 108, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite_raid_40.blp", MultiBot.tips.units.inviteRaid40)
 .doLeft = function(pButton)
-	if(MultiBot.auto.invite) then return SendChatMessage(MultiBot.info.wait, "WHISPER", nil, playerName) end
+	if(MultiBot.auto.invite) then return SendChatMessage(MultiBot.info.wait, "WHISPER", nil, getPlayerName()) end
 	local tRaid = GetNumRaidMembers()
 	local tParty = GetNumPartyMembers()
 	MultiBot.timer.invite.roster = MultiBot.frames["MultiBar"].buttons["Units"].roster
@@ -773,7 +775,7 @@ tInvite.addButton("Raid+40", 108, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite
 	MultiBot.timer.invite.index = 1
 	MultiBot.auto.invite = true
 	pButton.parent:Hide()
-	SendChatMessage(MultiBot.info.starting, "WHISPER", nil, playerName)
+	SendChatMessage(MultiBot.info.starting, "WHISPER", nil, getPlayerName())
 end
 
 tControl.addButton("Browse", 0, 90, "Interface\\AddOns\\MultiBot\\Icons\\browse.blp", MultiBot.tips.units.browse)
@@ -854,7 +856,7 @@ end
 
 tMain.addButton("Masters", 0, 34, "mail_gmicon", MultiBot.tips.main.masters).setDisable()
 .doLeft = function(pButton)
-	if(MultiBot.GM == false) then return SendChatMessage(MultiBot.info.rights, "WHISPER", nil, playerName) end
+	if(MultiBot.GM == false) then return SendChatMessage(MultiBot.info.rights, "WHISPER", nil, getPlayerName()) end
 	if(MultiBot.OnOffSwitch(pButton)) then
 		MultiBot.doRepos("Right", 38)
 		MultiBot.frames["MultiBar"].frames["Masters"]:Hide()
@@ -1006,7 +1008,7 @@ end
 
 tMain.addButton("Stats", 0, 238, "inv_scroll_08", MultiBot.tips.main.stats).setDisable()
 .doLeft = function(pButton)
-	if(GetNumRaidMembers() > 0) then return SendChatMessage(MultiBot.info.stats, "WHISPER", nil, playerName) end
+	if(GetNumRaidMembers() > 0) then return SendChatMessage(MultiBot.info.stats, "WHISPER", nil, getPlayerName()) end
 	if(MultiBot.OnOffSwitch(pButton)) then
 		MultiBot.auto.stats = true
 		for i = 1, GetNumPartyMembers() do SendChatMessage("stats", "WHISPER", nil, UnitName("party" .. i)) end
@@ -1079,14 +1081,14 @@ tButton.goY = 0
 tButton.goZ = 0
 
 tButton.doRight = function(pButton)
-	if(pButton.state == false) then return SendChatMessage(MultiBot.info.itlocation, "WHISPER", nil, playerName) end
+	if(pButton.state == false) then return SendChatMessage(MultiBot.info.itlocation, "WHISPER", nil, getPlayerName()) end
 	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", MultiBot.info.location)
 	pButton.setDisable()
 end
 tButton.doLeft = function(pButton)
 	local tPlayer = MultiBot.getBot(UnitName("player"))
 	if(tPlayer.waitFor == nil) then tPlayer.waitFor = "" end
-	if(tPlayer.waitFor ~= "") then return SendChatMessage(MultiBot.info.saving, "WHISPER", nil, playerName) end
+	if(tPlayer.waitFor ~= "") then return SendChatMessage(MultiBot.info.saving, "WHISPER", nil, getPlayerName()) end
 	if(pButton.state) then return SendChatMessage(".go xyz " .. pButton.goX .. " " .. pButton.goY .. " " .. pButton.goZ .. " " .. pButton.goMap, "SAY")	end
 	tPlayer.memory = pButton
 	tPlayer.waitFor = "COORDS"
@@ -1100,14 +1102,14 @@ tButton.goY = 0
 tButton.goZ = 0
 
 tButton.doRight = function(pButton)
-	if(pButton.state == false) then return SendChatMessage(MultiBot.info.itlocation, "WHISPER", nil, playerName) end
+	if(pButton.state == false) then return SendChatMessage(MultiBot.info.itlocation, "WHISPER", nil, getPlayerName()) end
 	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", MultiBot.info.location)
 	pButton.setDisable()
 end
 tButton.doLeft = function(pButton)
 	local tPlayer = MultiBot.getBot(UnitName("player"))
 	if(tPlayer.waitFor == nil) then tPlayer.waitFor = "" end
-	if(tPlayer.waitFor ~= "") then return SendChatMessage(MultiBot.info.saving, "WHISPER", nil, playerName) end
+	if(tPlayer.waitFor ~= "") then return SendChatMessage(MultiBot.info.saving, "WHISPER", nil, getPlayerName()) end
 	if(pButton.state) then return SendChatMessage(".go xyz " .. pButton.goX .. " " .. pButton.goY .. " " .. pButton.goZ .. " " .. pButton.goMap, "SAY")	end
 	tPlayer.memory = pButton
 	tPlayer.waitFor = "COORDS"
@@ -1121,14 +1123,14 @@ tButton.goY = 0
 tButton.goZ = 0
 
 tButton.doRight = function(pButton)
-	if(pButton.state == false) then return SendChatMessage(MultiBot.info.itlocation, "WHISPER", nil, playerName) end
+	if(pButton.state == false) then return SendChatMessage(MultiBot.info.itlocation, "WHISPER", nil, getPlayerName()) end
 	pButton.tip = MultiBot.doReplace(MultiBot.tips.game.memory, "ABOUT", MultiBot.info.location)
 	pButton.setDisable()
 end
 tButton.doLeft = function(pButton)
 	local tPlayer = MultiBot.getBot(UnitName("player"))
 	if(tPlayer.waitFor == nil) then tPlayer.waitFor = "" end
-	if(tPlayer.waitFor ~= "") then return SendChatMessage(MultiBot.info.saving, "WHISPER", nil, playerName) end
+	if(tPlayer.waitFor ~= "") then return SendChatMessage(MultiBot.info.saving, "WHISPER", nil, getPlayerName()) end
 	if(pButton.state) then return SendChatMessage(".go xyz " .. pButton.goX .. " " .. pButton.goY .. " " .. pButton.goZ .. " " .. pButton.goMap, "SAY")	end
 	tPlayer.memory = pButton
 	tPlayer.waitFor = "COORDS"
@@ -2428,13 +2430,13 @@ end
 MultiBot.talent.wowButton(MultiBot.info.talent.Copy, -854, 966, 100, 20, 12)
 .doLeft = function(pButton)
 	local tName = UnitName("target")
-	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage(MultiBot.info.target, "WHISPER", nil, playerName) end
+	if(tName == nil or tName == "Unknown Entity") then return SendChatMessage(MultiBot.info.target, "WHISPER", nil, getPlayerName()) end
 
 	local tLocClass, tClass = UnitClass("target")
-	if(MultiBot.talent.class ~= MultiBot.toClass(tClass)) then return SendChatMessage("The Classes do not match.", "WHISPER", nil, playerName) end
+	if(MultiBot.talent.class ~= MultiBot.toClass(tClass)) then return SendChatMessage("The Classes do not match.", "WHISPER", nil, getPlayerName()) end
 
 	local tUnit = MultiBot.toUnit(MultiBot.talent.name)
-	if(UnitLevel(tUnit) ~= UnitLevel("target")) then return SendChatMessage("The Levels do not match.", "WHISPER", nil, playerName) end
+	if(UnitLevel(tUnit) ~= UnitLevel("target")) then return SendChatMessage("The Levels do not match.", "WHISPER", nil, getPlayerName()) end
 
 	local tValues = ""
 

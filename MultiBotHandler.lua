@@ -1,5 +1,7 @@
 -- TIMER --
-local playerName = UnitName("player")
+local function getPlayerName ()
+	return UnitName("player")
+end
 
 MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
 	if(MultiBot.auto.invite) then MultiBot.timer.invite.elapsed = MultiBot.timer.invite.elapsed + pElapsed end
@@ -21,7 +23,7 @@ MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
 		local tTable = MultiBot.index[MultiBot.timer.invite.roster]
 
 		if(MultiBot.isMember(tTable[MultiBot.timer.invite.index]) == false) then
-			SendChatMessage(MultiBot.doReplace(MultiBot.info.inviting, "NAME", tTable[MultiBot.timer.invite.index]), "WHISPER", nil, playerName)
+			SendChatMessage(MultiBot.doReplace(MultiBot.info.inviting, "NAME", tTable[MultiBot.timer.invite.index]), "WHISPER", nil, getPlayerName())
 			SendChatMessage(".playerbot bot add " .. tTable[MultiBot.timer.invite.index], "SAY")
 			MultiBot.timer.invite.needs = MultiBot.timer.invite.needs - 1
 		end
@@ -318,14 +320,14 @@ MultiBot:SetScript("OnEvent", function()
 		if(MultiBot.isInside(arg1, "Possible strategies")) then
 			local tStrategies = MultiBot.doSplit(arg1, ", ")
 			SendChatMessage("=== STRATEGIES ===", "SAY")
-			for i = 1, table.getn(tStrategies) do SendChatMessage(i .. " : " .. tStrategies[i], "WHISPER", nil, playerName) end
+			for i = 1, table.getn(tStrategies) do SendChatMessage(i .. " : " .. tStrategies[i], "WHISPER", nil, getPlayerName()) end
 			return
 		end
 
 		if(MultiBot.isInside(arg1, "Whisper any of")) then
 			local tCommands = MultiBot.doSplit(arg1, ", ")
 			SendChatMessage("=== WHISPER-COMMANDS ===", "SAY")
-			for i = 1, table.getn(tCommands) do SendChatMessage(i .. " : " .. tCommands[i], "WHISPER", nil, playerName) end
+			for i = 1, table.getn(tCommands) do SendChatMessage(i .. " : " .. tCommands[i], "WHISPER", nil, getPlayerName()) end
 			return
 		end
 
