@@ -679,11 +679,16 @@ MultiBot:SetScript("OnEvent", function()
 			
 			local tArg = arg1
 			
-			for i = 1, 14, 1 do
+			for i = 1, 20, 1 do
 				tArg = MultiBot.doReplace(tArg, "|cff%w%w%w%w%w%w", "")
 				tArg = MultiBot.doReplace(tArg, "|h", "")
 				tArg = MultiBot.doReplace(tArg, "|r", "")
 			end
+			
+			tArg = MultiBot.doReplace(tArg, "beast bastery", "Beast-Mastery")
+			tArg = MultiBot.doReplace(tArg, "feral combat", "Feral-Combat")
+			tArg = MultiBot.doReplace(tArg, "Blood Elf", "Blood-Elf")
+			tArg = MultiBot.doReplace(tArg, "Night Elf", "Night-Elf")
 			
 			MultiBotGlobalSave[arg2] = tArg
 			return

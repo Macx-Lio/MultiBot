@@ -83,6 +83,9 @@ MultiBot.raidus.wowButton("Save", -679, 360, 80, 20, 12)
 end
 
 MultiBot.raidus.wowButton("Apply", -597, 360, 80, 20, 12)
+.doLeft = function(pButton)
+	
+end
 
 MultiBot.raidus.wowButton("<", -40, 360, 16, 20, 12)
 .doLeft = function(pButton)
@@ -169,8 +172,8 @@ MultiBot.raidus.setRaidus = function()
 		tBot.special = strupper(strsub(tDetails[3], 1, 1)) .. strsub(tDetails[3], 2)
 		tBot.talents = strsub(tDetails[4], 2, strlen(tDetails[4]) - 1)
 		tBot.class = MultiBot.toClass(strlower(tDetails[5]))
-		tBot.level = tonumber(strsub(tDetails[6], 2))
-		tBot.score = tonumber(tDetails[8])
+		tBot.level = tonumber(strsub(MultiBot.IF(tDetails[6] == nil, 0, tDetails[6]), 2))
+		tBot.score = tonumber(MultiBot.IF(tDetails[8] == nil, 0, tDetails[8]))
 		
 		local tReward = tBot.level .. "." .. MultiBot.IF(tBot.score < 100, "0", MultiBot.IF(tBot.score < 10, "00", "")) .. tBot.score
 		
