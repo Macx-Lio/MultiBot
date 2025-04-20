@@ -1,9 +1,11 @@
 -- TIMER --
-local function getPlayerName ()
-	return UnitName("player")
-end
-
 MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
+	local function getPlayerName ()
+		local name, _realm = UnitName("player")
+		-- Annoyingly, whispering yourself doesnt work.
+		return nil
+	end
+
 	if(MultiBot.auto.invite) then MultiBot.timer.invite.elapsed = MultiBot.timer.invite.elapsed + pElapsed end
 	if(MultiBot.auto.talent) then MultiBot.timer.talent.elapsed = MultiBot.timer.talent.elapsed + pElapsed end
 	if(MultiBot.auto.stats) then MultiBot.timer.stats.elapsed = MultiBot.timer.stats.elapsed + pElapsed end
@@ -319,14 +321,14 @@ MultiBot:SetScript("OnEvent", function()
 
 		if(MultiBot.isInside(arg1, "Possible strategies")) then
 			local tStrategies = MultiBot.doSplit(arg1, ", ")
-			SendChatMessage("=== STRATEGIES ===", "SAY")
-			for i = 1, table.getn(tStrategies) do SendChatMessage(i .. " : " .. tStrategies[i], "WHISPER", nil, getPlayerName()) end
+			-- SendChatMessage("=== STRATEGIES ===", "SAY")
+			-- for i = 1, table.getn(tStrategies) do SendChatMessage(i .. " : " .. tStrategies[i], "WHISPER", nil, getPlayerName()) end
 			return
 		end
 
 		if(MultiBot.isInside(arg1, "Whisper any of")) then
 			local tCommands = MultiBot.doSplit(arg1, ", ")
-			SendChatMessage("=== WHISPER-COMMANDS ===", "SAY")
+			-- SendChatMessage("=== WHISPER-COMMANDS ===", "SAY")
 			for i = 1, table.getn(tCommands) do SendChatMessage(i .. " : " .. tCommands[i], "WHISPER", nil, getPlayerName()) end
 			return
 		end

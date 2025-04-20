@@ -1,6 +1,7 @@
 -- MULTIBAR --
 local function getPlayerName ()
-	return UnitName("player")
+	local name, _realm = UnitName("player")
+	return name
 end
 
 local tMultiBar = MultiBot.addFrame("MultiBar", -262, 144, 36)
