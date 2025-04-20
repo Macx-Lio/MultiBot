@@ -53,7 +53,8 @@ MultiBot.doSplit = function(pString, pPattern)
 end
 
 MultiBot.doReplace = function(pString, pSearch, pReplace)
-	local tFrom, tTo = string.find(pString, pSearch) 
+	local tFrom, tTo = string.find(pString, pSearch)
+	if(tFrom == nil or tTo == nil) then return pString end
 	return string.sub(pString, 1, tFrom - 1) .. pReplace .. string.sub(pString, tTo + 1)
 end
 
@@ -173,6 +174,7 @@ MultiBot.toClass = function(pClass)
 	if(tClass == "sa" or tClass == "sm") then return "Shaman" end
 	if(tClass == "he" or tClass == "wl") then return "Warlock" end
 	if(tClass == "ke" or tClass == "wr") then return "Warrior" end
+	if(pClass == "dk") then return "DeathKnight" end
 	return "Unknown"
 end
 
@@ -398,9 +400,9 @@ end
 
 -- MULTIBOT:FRAME --
 
-MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
+MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight, oAlign)
 	local frame = CreateFrame("Frame", nil, pParent)
-	frame:SetPoint("BOTTOMRIGHT", pX, pY)
+	frame:SetPoint(MultiBot.IF(oAlign ~= nil, oAlign, "BOTTOMRIGHT"), pX, pY)
 	frame:Show()
 	
 	if(oWidth ~= nil and oHeight ~= nil)
@@ -413,6 +415,9 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 	frame.texts = {}
 	
 	frame.parent = pParent
+	frame.height = MultiBot.IF(oHeight ~= nil, oHeight, pSize)
+	frame.width = MultiBot.IF(oWidth ~= nil, oWidth, pSize)
+	frame.align = MultiBot.IF(oAlign ~= nil, oAlign, "BOTTOMRIGHT")
 	frame.size = pSize
 	frame.x = pX
 	frame.y = pY
@@ -426,6 +431,16 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight)
 		frame.texture:SetAllPoints(frame)
 		frame.texture:Show()
 		return frame.texture
+	end
+	
+	frame.addModel = function(pName, pX, pY, pWidth, pHeight, oScale)
+		if(frame.model ~= nil) then frame.model:Hide() end
+		frame.model = CreateFrame("DressUpModel", "MyModel" .. pName, frame)
+		frame.model:SetPoint("CENTER", 0, 64)
+		frame.model:SetSize(160, 240)
+		frame.model:SetUnit(pName)
+		if(oScale ~= nil) then frame.model:SetScale(oScale) end
+		return frame.model
 	end
 	
 	frame.addText = function(pIndex, pText, pAlign, pX, pY, pSize)
@@ -693,21 +708,31 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
 	-- EVENT --
 	
 	button:SetScript("OnEnter", function()
-		GameTooltip:SetOwner(button, "ANCHOR_TOPRIGHT", 0 - button.size, 2)
-		if(string.sub(button.tip, 1, 1) == "|") then GameTooltip:SetHyperlink(button.tip) else GameTooltip:SetText(button.tip) end
-		GameTooltip:Show()
+		if(type(button.tip) == "string") then
+			GameTooltip:SetOwner(button, "ANCHOR_TOPRIGHT", 0 - button.size, 2)
+			if(string.sub(button.tip, 1, 1) == "|") then GameTooltip:SetHyperlink(button.tip) else GameTooltip:SetText(button.tip) end
+			GameTooltip:Show()
+			return
+		end
+		
+		if(type(button.tip) == "table") then
+			button.tip:Show()
+			return
+		end
 	end)
 	
 	button:SetScript("OnLeave", function()
 		button:SetPoint("BOTTOMRIGHT", button.x, button.y)
 		button:SetSize(button.size, button.size)
-		GameTooltip:Hide()
+		if(type(button.tip) == "string") then GameTooltip:Hide() end
+		if(type(button.tip) == "table") then button.tip:Hide() end
 	end)
 	
 	button:SetScript("PostClick", function(pSelf, pEvent)
 		button:SetPoint("BOTTOMRIGHT", button.x - 1, button.y + 1)
 		button:SetSize(button.size - 2, button.size - 2)
-		GameTooltip:Hide()
+		if(type(button.tip) == "string") then GameTooltip:Hide() end
+		if(type(button.tip) == "table") then button.tip:Hide() end
 		
 		if(pEvent == "RightButton" and button.doRight ~= nil) then button.doRight(button) end
 		if(pEvent == "LeftButton" and button.doLeft ~= nil) then button.doLeft(button) end

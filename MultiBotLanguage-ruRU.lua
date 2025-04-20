@@ -231,6 +231,9 @@ MultiBot.tips.move.reward =
 MultiBot.tips.move.talent =
 "Правый клик, чтобы перетащить и переместить таланты";
 
+MultiBot.tips.move.raidus =
+"Right-Click to drag and move the Raidus";
+
 -- TANKER --
 
 MultiBot.tips.tanker.master = 
@@ -859,6 +862,12 @@ MultiBot.tips.main.rtsc =
 "Включает/выключает RTSC-панель.|r\n\n"..
 "|cffff0000Левый клик - вкл/выкл RTSC-панель|r\n"..
 "|cff999999(Порядок выполнения: Система)|r";
+
+MultiBot.tips.main.raidus =
+"Raidus-Switch\n|cffffffff"..
+"This Switch will open or close the Raid-Composer.|r\n\n"..
+"|cffff0000Left-Click to open or close the Raid-Composer|r\n"..
+"|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.main.creator =
 "Переключатель создателя\n|cffffffff"..

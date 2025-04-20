@@ -231,6 +231,9 @@ MultiBot.tips.move.reward =
 MultiBot.tips.move.talent =
 "右键点击并拖动以移动天赋";
 
+MultiBot.tips.move.raidus =
+"Right-Click to drag and move the Raidus";
+
 -- 坦克 --
 
 MultiBot.tips.tanker.master = 
@@ -859,6 +862,12 @@ MultiBot.tips.main.rtsc =
 "此开关用于启用或禁用 RTSC 控制。|r\n\n"..
 "|cffff0000左键单击以启用或禁用 RTSC 控制|r\n"..
 "|cff999999(执行命令: 系统)|r";
+
+MultiBot.tips.main.raidus =
+"Raidus-Switch\n|cffffffff"..
+"This Switch will open or close the Raid-Composer.|r\n\n"..
+"|cffff0000Left-Click to open or close the Raid-Composer|r\n"..
+"|cff999999(Execution-Order: System)|r";
 
 MultiBot.tips.main.creator =
 "创造者切换\n|cffffffff"..

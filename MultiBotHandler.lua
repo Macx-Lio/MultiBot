@@ -674,9 +674,24 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
+		if(tButton.waitFor == "DETAIL" and MultiBot.isInside(arg1, "playing with")) then
+			tButton.waitFor = ""
+			
+			local tArg = arg1
+			
+			for i = 1, 14, 1 do
+				tArg = MultiBot.doReplace(tArg, "|cff%w%w%w%w%w%w", "")
+				tArg = MultiBot.doReplace(tArg, "|h", "")
+				tArg = MultiBot.doReplace(tArg, "|r", "")
+			end
+			
+			MultiBotGlobalSave[arg2] = tArg
+			return
+		end
+		
 		if(tButton.waitFor == "IGNORE" and MultiBot.isInside(arg1, "Ignored ")) then
 			if(MultiBot.spells[arg2] == nil) then MultiBot.spells[arg2] = {} end
-			tButton.waitFor = ""
+			tButton.waitFor = "DETAIL"
 			
 			local tSpells = {}
 			local tIgnores = MultiBot.doSplit(arg1, ": ")[2]
@@ -690,6 +705,7 @@ MultiBot:SetScript("OnEvent", function()
 				end
 			end
 			
+			SendChatMessage("who", "WHISPER", nil, arg2)
 			return
 		end
 		

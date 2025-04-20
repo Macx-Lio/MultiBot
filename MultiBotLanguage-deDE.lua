@@ -229,7 +229,10 @@ MultiBot.tips.move.reward =
 "Rechtsklicken und halten um den Reward-Selector zu bewegen";
 
 MultiBot.tips.move.talent =
-"Rechtsklicken und halten um den Talente zu bewegen";
+"Rechtsklicken und halten um die Talente zu bewegen";
+
+MultiBot.tips.move.raidus =
+"Rechtsklicken und halten um das Raidus zu bewegen";
 
 -- TANKER --
 
@@ -858,6 +861,12 @@ MultiBot.tips.main.rtsc =
 "RTSC-Switch\n|cffffffff"..
 "Dieser Schalter aktiviert oder deaktiviert die RTSC-Control.|r\n\n"..
 "|cffff0000Linksklicken um die RTSC-Control ein- oder auszuschalten|r\n"..
+"|cff999999(Ausführreihenfolge: System)|r";
+
+MultiBot.tips.main.raidus =
+"Raidus-Switch\n|cffffffff"..
+"Dieser Schalter öffnet oder schließt den Raid-Composer.|r\n\n"..
+"|cffff0000Linksklicken um die Raid-Composer zu öffnen oder zu schließen|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
 MultiBot.tips.main.creator =
