@@ -28,6 +28,7 @@ MultiBot.index.actives = {}
 MultiBot.index.players = {}
 MultiBot.index.members = {}
 MultiBot.index.friends = {}
+MultiBot.index.raidus = {}
 MultiBot.spells = {}
 MultiBot.frames = {}
 MultiBot.units = {}
