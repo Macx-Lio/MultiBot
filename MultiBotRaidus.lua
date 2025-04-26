@@ -376,7 +376,7 @@ MultiBot.raidus.doRaidSort = function()
 	local tTargets = MultiBot.raidus.raid.targets
 	
 	for tName, tGroup in pairs(tTargets) do
-		if(tMembers[tName].group ~= tGroup) then
+		if(tMembers[tName] ~= nil and tMembers[tName].group ~= tGroup) then
 			if(tNumbers[tGroup]) then
 				if(tNumbers[tGroup] or tNumbers[tGroup] < 5) then
 					SetRaidSubgroup(tMembers[tName].index, tGroup)
