@@ -313,6 +313,7 @@ MultiBot:SetScript("OnEvent", function()
 		if(MultiBot.isInside(arg1, "Accountlevel", "account level", "niveau de compte", "等级")) then
 			local tLevel = tonumber(MultiBot.doSplit(arg1, ": ")[2])
 			if(tLevel ~= nil) then MultiBot.GM = tLevel > 1 end
+			MultiBot.RaidPool("player")
 		end
 		
 		if(MultiBot.isInside(arg1, "Possible strategies")) then
@@ -677,21 +678,7 @@ MultiBot:SetScript("OnEvent", function()
 		
 		if(tButton.waitFor == "DETAIL" and MultiBot.isInside(arg1, "playing with")) then
 			tButton.waitFor = ""
-			
-			local tArg = arg1
-			
-			for i = 1, 20, 1 do
-				tArg = MultiBot.doReplace(tArg, "|cff%w%w%w%w%w%w", "")
-				tArg = MultiBot.doReplace(tArg, "|h", "")
-				tArg = MultiBot.doReplace(tArg, "|r", "")
-			end
-			
-			tArg = MultiBot.doReplace(tArg, "beast bastery", "Beast-Mastery")
-			tArg = MultiBot.doReplace(tArg, "feral combat", "Feral-Combat")
-			tArg = MultiBot.doReplace(tArg, "Blood Elf", "Blood-Elf")
-			tArg = MultiBot.doReplace(tArg, "Night Elf", "Night-Elf")
-			
-			MultiBotGlobalSave[arg2] = tArg
+			MultiBot.RaidPool(arg2, arg1)
 			return
 		end
 		

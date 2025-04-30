@@ -1172,10 +1172,12 @@ local tButton = tRight.addButton("Quests", 0, 0, "inv_misc_book_07", MultiBot.ti
 tButton.doRight = function(pButton)
 	local tEntries, tQuests = GetNumQuestLogEntries()
 	local tFrame = pButton.parent.frames["Quests"]
-	local tIndex = 0
+	local tIndex = 1
 	
 	for key, value in pairs(tFrame.buttons) do value:Hide() end
 	for key, value in pairs(tFrame.texts) do value:Hide() end
+	table.wipe(tFrame.buttons)
+	table.wipe(tFrame.texts)
 	tFrame.buttons = {}
 	tFrame.texts = {}
 	
@@ -1198,12 +1200,12 @@ tButton.doRight = function(pButton)
 		end
 		
 		for i = 1, pButton.parent.limit do
-			if(tFrom <= i and tTo >= i) then
-				pButton.parent.buttons["Quest" .. i]:Show()
-				pButton.parent.texts["Title" .. i]:Show()
-			else
+			if(i < tFrom or i > tTo) then
 				pButton.parent.buttons["Quest" .. i]:Hide()
 				pButton.parent.texts["Title" .. i]:Hide()
+			else
+				pButton.parent.buttons["Quest" .. i]:Show()
+				pButton.parent.texts["Title" .. i]:Show()
 			end
 		end
 		
@@ -1221,7 +1223,7 @@ tButton.doRight = function(pButton)
 			tFrame.limit = tFrame.limit + 1
 			
 			local tAmount = 0
-			local tButton = tFrame.addButton("Quest" .. tFrame.limit, 0, tIndex * 30, "inv_misc_note_01", tLink)
+			local tButton = tFrame.addButton("Quest" .. tFrame.limit, 0, (tIndex - 1) * 30, "inv_misc_note_01", tLink)
 			tButton.link = tLink
 			tButton.id = i
 			
@@ -1252,17 +1254,17 @@ tButton.doRight = function(pButton)
 				end
 			end
 			
-			local tText = tFrame.addText("Title" .. tFrame.limit, "[" .. tAmount .. "] " .. tTitle, "BOTTOMLEFT", 30, tIndex * 30 + 14, 12)
+			local tText = tFrame.addText("Title" .. tFrame.limit, "[" .. tAmount .. "] " .. tTitle, "BOTTOMLEFT", 30, (tIndex - 1) * 30 + 14, 12)
 			
-			tIndex = (tIndex + 1)%10
-			
-			if(tFrame.from <= (tIndex + 1) and tFrame.to >= (tIndex + 1)) then
-				tButton:Show()
-				tText:Show()
-			else
+			if(tIndex < tFrame.from or tIndex > tFrame.to) then
 				tButton:Hide()
 				tText:Hide()
+			else
+				tButton:Show()
+				tText:Show()
 			end
+			
+			tIndex = (tIndex + 1)%10
 		end
 	end
 	

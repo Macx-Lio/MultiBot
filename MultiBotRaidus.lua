@@ -92,7 +92,7 @@ end
 MultiBot.raidus.wowButton("Apply", -597, 360, 80, 20, 12)
 .doLeft = function(pButton)
 	MultiBot.raidus.getRaidState()
-	MultiBot.raidus.getRaidTarget()
+	if(MultiBot.raidus.getRaidTarget()) then return end
 	table.wipe(MultiBot.index.raidus)
 	
 	local tMembers = MultiBot.raidus.raid.members
@@ -190,29 +190,31 @@ MultiBot.raidus.setRaidus = function()
 	local tIndex = 1
 	
 	for tName, tValue in pairs(MultiBotGlobalSave) do
-		local tDetails = MultiBot.doSplit(tValue, " ")
+		local tDetails = MultiBot.doSplit(tValue, ",")
 		local tBot = {}
 		
 		tBot.name = tName
 		tBot.race = tDetails[1]
 		tBot.gender = tDetails[2]
-		tBot.special = strupper(strsub(tDetails[3], 1, 1)) .. strsub(tDetails[3], 2)
-		tBot.talents = strsub(tDetails[4], 2, strlen(tDetails[4]) - 1)
-		tBot.class = MultiBot.toClass(strlower(tDetails[5]))
-		tBot.level = tonumber(strsub(MultiBot.IF(tDetails[6] == nil, 0, tDetails[6]), 2))
-		tBot.score = tonumber(MultiBot.IF(tDetails[8] == nil, 0, tDetails[8]))
+		tBot.special = tDetails[3]
+		tBot.talents = tDetails[4]
+		tBot.class = tDetails[5]
+		tBot.level = tonumber(tDetails[6])
+		tBot.score = tonumber(tDetails[7])
+		
+		local tClass = MultiBot.toClass(tBot.class)
 		
 		tBot.sort = tonumber(tBot.level) * 1000
-		+ MultiBot.IF(tBot.class == "DeathKnight", 1100000
-		, MultiBot.IF(tBot.class == "Druid", 1200000
-		, MultiBot.IF(tBot.class == "Hunter", 1300000
-		, MultiBot.IF(tBot.class == "Mage", 1400000
-		, MultiBot.IF(tBot.class == "Paladin", 1500000
-		, MultiBot.IF(tBot.class == "Priest", 1600000
-		, MultiBot.IF(tBot.class == "Rogue", 1700000
-		, MultiBot.IF(tBot.class == "Shaman", 1800000
-		, MultiBot.IF(tBot.class == "Warlock", 1900000
-		, MultiBot.IF(tBot.class == "Warrior", 2000000
+		+ MultiBot.IF(tClass == "DeathKnight", 1100000
+		, MultiBot.IF(tClass == "Druid", 1200000
+		, MultiBot.IF(tClass == "Hunter", 1300000
+		, MultiBot.IF(tClass == "Mage", 1400000
+		, MultiBot.IF(tClass == "Paladin", 1500000
+		, MultiBot.IF(tClass == "Priest", 1600000
+		, MultiBot.IF(tClass == "Rogue", 1700000
+		, MultiBot.IF(tClass == "Shaman", 1800000
+		, MultiBot.IF(tClass == "Warlock", 1900000
+		, MultiBot.IF(tClass == "Warrior", 2000000
 		, 1000000)))))))))) + tonumber(tBot.score);
 		
 		tBots[tIndex] = tBot
@@ -233,25 +235,40 @@ MultiBot.raidus.setRaidus = function()
 	
 	for tIndex = 1, table.getn(tBots) do
 		local tBot = tBots[tIndex]
-		local tReward = tBot.level .. "." .. MultiBot.IF(tBot.score < 100, "0", MultiBot.IF(tBot.score < 10, "00", "")) .. tBot.score
 		
 		local tFrame = tPool.addFrame("Slot" .. tSlot, 0, tY, 28, 160, 36)
 		tFrame.addTexture("Interface\\AddOns\\MultiBot\\Textures\\grey.blp")
 		tFrame:SetResizable(false)
 		tFrame:SetMovable(true)
-		tFrame.class = tBot.class
+		tFrame.class = MultiBot.toClass(tBot.class)
 		tFrame.slot = "Slot" .. tSlot
 		tFrame.name = tBot.name
+		tFrame.bot = tBot
 		
 		local tButton = tFrame.addButton("Icon", -128, 3, "Interface\\AddOns\\MultiBot\\Icons\\class_" .. strlower(tFrame.class) .. ".blp", "")
-		tButton:RegisterForDrag("LeftButton")
 		
-		tButton:SetScript("OnDragStart", function(pButton)
+		tButton:SetScript("OnEnter", function(pButton)
+			local tBot = pButton.parent.bot
+			local tReward = tBot.level .. "." .. MultiBot.IF(tBot.score < 100, "0", MultiBot.IF(tBot.score < 10, "00", "")) .. tBot.score
+			pButton.tip = MultiBot.newFrame(pButton, -pButton.size, 160, 28, 256, 512, "TOPRIGHT")
+			pButton.tip.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Raidus_Wanted.blp")
+			pButton.tip.addModel(tBot.name, 0, 64, 160, 240, 1.0)
+			pButton.tip.addText("1", "|cff555555- WANTED -|h", "TOP", 0, -30, 24)
+			pButton.tip.addText("2", "|cff555555-DEAD OR ALIVE-|h", "TOP", 0, -55, 24)
+			pButton.tip.addText("3", "|cff333333" .. tBot.name .. " - " .. tBot.gender .. " - " .. tBot.race .. "|h", "BOTTOM", 0, 220, 15)
+			pButton.tip.addText("4", "|cff333333" .. tBot.class .. " - " .. tBot.talents .. " - " .. tBot.special .. "|h", "BOTTOM", 0, 200, 15)
+			pButton.tip.addText("5", "|cff555555--------------------------------------------|h", "BOTTOM", 0, 188, 15)
+			pButton.tip.addText("6", "|cff555555CASH - " .. tReward .. " - GOLD|h", "BOTTOM", 0, 170, 20)
+			pButton.tip.addText("7", "|cff555555--------------------------------------------|h", "BOTTOM", 0, 160, 15)
+			pButton.tip:Show()
+		end)
+		
+		tButton:SetScript("OnMouseDown", function(pButton)
 			pButton.parent:StartMoving()
 			pButton.parent.isMoving = true
 		end)
 		
-		tButton:SetScript("OnDragStop", function(pButton)
+		tButton:SetScript("OnMouseUp", function(pButton)
 			pButton.parent:StopMovingOrSizing()
 			pButton.parent.isMoving = false
 			
@@ -275,27 +292,8 @@ MultiBot.raidus.setRaidus = function()
 			end
 		end)
 		
-		tButton:SetScript("OnHide", function(pButton)
-			if(pButton.isMoving) then
-				pButton.parent:StopMovingOrSizing()
-				pButton.parent.isMoving = false
-			end
-		end)
-		
 		tFrame.addText("1", tBot.level .. " - " .. tBot.class, "BOTTOMLEFT", 36, 18, 12)
 		tFrame.addText("2", tBot.score .. " - " .. tBot.special, "BOTTOMLEFT", 36, 6, 12)
-		
-		tButton.tip = MultiBot.newFrame(tButton, -tButton.size, 160, 28, 256, 512, "TOPRIGHT")
-		tButton.tip.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Raidus_Wanted.blp")
-		tButton.tip.addModel(tBot.name, 0, 64, 160, 240, 1.0)
-		tButton.tip.addText("1", "|cff555555- WANTED -|h", "TOP", 0, -30, 24)
-		tButton.tip.addText("2", "|cff555555-DEAD OR ALIVE-|h", "TOP", 0, -55, 24)
-		tButton.tip.addText("3", "|cff333333" .. tBot.name .. " - " .. tBot.gender .. " - " .. tBot.race .. "|h", "BOTTOM", 0, 220, 15)
-		tButton.tip.addText("4", "|cff333333" .. tBot.class .. " - " .. tBot.talents .. " - " .. tBot.special .. "|h", "BOTTOM", 0, 200, 15)
-		tButton.tip.addText("5", "|cff555555--------------------------------------------|h", "BOTTOM", 0, 188, 15)
-		tButton.tip.addText("6", "|cff555555CASH - " .. tReward .. " - GOLD|h", "BOTTOM", 0, 170, 20)
-		tButton.tip.addText("7", "|cff555555--------------------------------------------|h", "BOTTOM", 0, 160, 15)
-		tButton.tip:Hide()
 		
 		if(tSlot > 11) then tFrame:Hide() else tFrame:Show() end
 		tSlot = tSlot + 1
@@ -357,12 +355,26 @@ MultiBot.raidus.getRaidTarget = function()
 	local tMembers = MultiBot.raidus.raid.members
 	local tTargets = MultiBot.raidus.raid.targets
 	
+	local tSelf = UnitName("player")
+	local tUser = true
+	local tBots = true
+	
 	for i = 1, 8 do
 		for j = 1, 5 do
 			local tName = MultiBot.raidus.frames["Group" .. i].frames["Slot" .. j].name
-			if(tName ~= nil) then tTargets[tName] = i end
+			if(tName ~= nil) then
+				if(tName == tSelf) then tUser = false end
+				tTargets[tName] = i
+				tBots = false
+			end
 		end
 	end
+	
+	if(tBots) then SendChatMessage("There is no Bot in the Raid", "SAY") else
+	if(tUser) then SendChatMessage("I must be in the Raid!", "SAY") end
+	end
+	
+	return tUser or tBots
 end
 
 -- EVENTS --
