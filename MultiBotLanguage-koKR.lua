@@ -232,7 +232,7 @@ MultiBot.tips.move.talent =
 "재능을 이동하려면 마우스 오른쪽 버튼을 클릭하고 드래그하세요.";
 
 MultiBot.tips.move.raidus =
-"Right-Click to drag and move the Raidus";
+"우측 드래그로 Raidus 이동";
 
 -- TANKER --
 
@@ -645,14 +645,14 @@ MultiBot.tips.unit.selfbot =
 
 MultiBot.tips.unit.button =
 "|cffffffff\n"..
-"This Button adds or removes NAME to or from your Group.\n"..
-"MultiBot will ask Playerbot about the Combat- and Non-Combat-Strategies.\n"..
-"The Strategies can be configured with the Buttonbars on the left and right side.\n"..
-"The Buttonbars will appear after adding the Bot.|r\n\n"..
-"|cffff0000Left-Click to add NAME|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to remove NAME|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"이 버튼은 NAME을 그룹에 추가하거나 제거합니다.\n"..
+"`Multibot'은 `Playerbot'에게 전투 및 비전투 계획에 대해 묻습니다.\n"..
+"계획 설정은 버튼바의 왼쪽과 오른쪽에서 설정할 수 있습니다.\n"..
+"봇을 추가하면 버튼바가 나타납니다.|r\n\n"..
+"|cffff0000좌클릭으로 NAME을 추가\n"..
+"|cff999999(명령 실행: 시스템)|r\n\n"..
+"|cffff0000우클릭으로 NAME을 제거\n"..
+"|cff999999(명령 실행: 시스템)|r";
 
 -- UNITS --
 
@@ -857,16 +857,16 @@ MultiBot.tips.main.masters =
 "|cff999999(명령 실행: 시스템)|r";
 
 MultiBot.tips.main.rtsc =
-"RTSC-Switch\n|cffffffff"..
-"This Switch will enable or disable the RTSC-Control.|r\n\n"..
-"|cffff0000Left-Click to enable or disable the RTSC-Control|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"RTSC 스위치\n|cffffffff"..
+"RTSC 제어를 활성화 또는 비활성화합니다.|r\n\n"..
+"|cffff0000좌클릭으로 RTSC 제어를 활성화 또는 비활성화|r\n"..
+"|cff999999(명령 실행: 시스템)|r";
 
 MultiBot.tips.main.raidus =
-"Raidus-Switch\n|cffffffff"..
-"This Switch will open or close the Raid-Composer.|r\n\n"..
-"|cffff0000Left-Click to open or close the Raid-Composer|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"공격대원 스위치\n|cffffffff"..
+"Raid Composer를 열거나 닫습니다.|r\n\n"..
+"|cffff0000좌클릭으로 Raid Composer 활성화 또는 비활성화|r\n"..
+"|cff999999(명령 실행: 시스템)|r";
 
 MultiBot.tips.main.creator =
 "크리에이터 스위치\n|cffffffff"..
@@ -897,10 +897,10 @@ MultiBot.tips.main.lang.master =
 ]]--
 
 MultiBot.tips.main.expand =
-"Expand-Switch\n|cffffffff"..
-"This Switch will expand or reduce the Stay-Follow-Control.\n"..
-"|cffff0000Left-Click to expand or reduce the Stay-Follow-Control|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"확장 스위치\n|cffffffff"..
+"이 스위치는 머물기l따르기 제어 버튼을 활성화 또는 비활성화 합니다.\n"..
+"|cffff0000좌클릭으로 머물기l따르기 제어 등록|r\n"..
+"|cff999999(명령 실행: 시스템)|r";
 
 MultiBot.tips.main.release =
 "자동 해제\n|cffffffff"..
@@ -2409,135 +2409,135 @@ MultiBot.tips.every.talent =
 
 -- RTSC --
 
-MultiBot.tips.rtsc.master = 
+MultiBot.tips.rtsc.master =
 "RTSC-Control\n|cffffffff"..
-"With this Control you can define Locations and send Bots there.\n"..
+"이 제어을 사용하면 위치를 지정하고 봇을 해당 위치로 보낼 수 있습니다.\n"..
 "The Execution-Order shows the Receiver for Commandos.|r\n\n"..
-"|cffff0000Left-Click to cast the AEDM-Spell|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to enable RTSC-Strategy|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"|cffff0000AEDM 주문을 시전하려면 왼쪽 버튼을 클릭하세요|r\n"..
+"|cff999999(명령 실행: 시스템)|r\n\n"..
+"|cffff0000RTSC 전략을 활성화하려면 오른쪽 버튼을 클릭하세요|r\n"..
+"|cff999999(명령 실행: 시스템)|r";
 
-MultiBot.tips.rtsc.macro = 
-"Location-Storage\n|cffffffff"..
-"This Button allows you to save a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to save a Location|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.macro =
+"위치 저장\n|cffffffff"..
+"이 버튼을 사용하면 위치를 저장할 수 있습니다.\n"..
+"좌클릭 후 AEDM 주문을 사용하여 위치를 표시하세요.|r\n\n"..
+"|cffff0000좌클릭으로 위치 저장|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r";
 
 MultiBot.tips.rtsc.spot =
-"Location-Storage\n|cffffffff"..
-"Left-Click to send the Bots to the saved Location.\n"..
-"Right-Click to remove the saved Location.|r\n\n"..
-"|cffff0000Left-Click to send the Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to remove the Location|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"위치 저장소\n|cffffffff"..
+"저장된 위치로 봇을 보내려면 왼쪽 버튼을 클릭하세요.\n"..
+"저장된 위치를 제거하려면 오른쪽 버튼을 클릭하세요.|r\n\n"..
+"|cffff0000봇을 보내려면 왼쪽 버튼을 클릭하세요.|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r\n\n"..
+"|cffff0000위치를 제거하려면 오른쪽 버튼을 클릭하세요.|r\n"..
+"|cff999999(명령 실행: 시스템)|r";
 
-MultiBot.tips.rtsc.group1 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 1st Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 1st Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 1st Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.group1 =
+"그룹 선택기\n|cffffffff"..
+"이 버튼은 첫 번째 그룹을 선택하여 위치로 보냅니다.\n"..
+"왼쪽 버튼을 클릭한 다음 AEDM 주문을 사용하여 위치를 표시합니다.|r\n\n"..
+"|cffff0000왼쪽 버튼을 클릭하여 첫 번째 그룹을 보냅니다.|r\n"..
+"|cff999999(명령 실행: 레이드, 파티)|r\n\n"..
+"|cffff0000오른쪽 버튼을 클릭하여 첫 번째 그룹을 선택합니다.|r\n"..
+"|cff999999(명령 실행: 레이드, 파티)|r";
 
-MultiBot.tips.rtsc.group2 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 2nd Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 2nd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 2nd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.group2 =
+"그룹 선택기\n|cffffffff"..
+"이 버튼은 두 번째 그룹을 선택하여 위치로 보냅니다.\n"..
+"왼쪽 버튼을 클릭한 다음 AEDM 주문을 사용하여 위치를 표시합니다.|r\n\n"..
+"|cffff0000왼쪽 버튼을 클릭하여 두 번째 그룹을 보냅니다.|r\n"..
+"|cff999999(명령 실행: 레이드, 파티)|r\n\n"..
+"|cffff0000오른쪽 버튼을 클릭하여 두 번째 그룹을 선택합니다.|r\n"..
+"|cff999999(명령 실행: 레이드, 파티)|r";
 
-MultiBot.tips.rtsc.group3 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 3rd Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 3rd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 3rd Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.group3 =
+"그룹 선택기\n|cffffffff"..
+"이 버튼은 세 번째 그룹을 선택하여 위치로 보냅니다.\n"..
+"좌클릭 후 AEDM 주문을 사용하여 위치를 표시합니다.|r\n\n"..
+"|cffff0000좌클릭으로 세 번째 그룹을 보냅니다|r\n"..
+"|cff999999(명령 실행: 레이드, 파티)|r\n\n"..
+"|cffff0000우클릭하여 세 번째 그룹을 선택합니다|r\n"..
+"|cff999999(명령 실행: 레이드, 파티)|r";
 
-MultiBot.tips.rtsc.group4 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 4th Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 4th Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 4th Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.group4 =
+"그룹 선택기\n|cffffffff"..
+"이 버튼은 네 번째 그룹을 선택하여 위치로 보냅니다.\n"..
+"좌클릭 후 AEDM 주문을 사용하여 위치를 표시합니다.|r\n\n"..
+"|cffff0000좌클릭으로 네 번째 그룹을 보냅니다|r\n"..
+"|cff999999(명령 실행: 레이드, 파티)|r\n\n"..
+"|cffff0000우클릭하여 네 번째 그룹을 선택합니다|r\n"..
+"|cff999999(명령 실행: 레이드, 파티)|r";
 
-MultiBot.tips.rtsc.group5 = 
-"Group-Selector\n|cffffffff"..
-"This Button selects the 5th Group and sends it to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the 5th Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the 5th Group|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.group5 =
+"그룹 선택기\n|cffffffff"..
+"이 버튼은 다섯 번째 그룹을 선택하여 위치로 보냅니다.\n"..
+"좌클릭 후 AEDM 주문을 사용하여 위치를 표시합니다.|r\n\n"..
+"|cffff0000좌클릭으로 다섯 번째 그룹을 보냅니다|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r\n\n"..
+"|cffff0000우클릭하여 다섯 번째 그룹을 선택합니다|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r";
 
-MultiBot.tips.rtsc.tank = 
-"Tank-Selector\n|cffffffff"..
-"This Button selects the Tank-Bots and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the Tank-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the Tank-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.tank =
+"탱크 선택기\n|cffffffff"..
+"이 버튼은 탱크 봇을 선택하여 위치로 보냅니다.\n"..
+"좌클릭 후 AEDM 주문을 사용하여 위치를 표시합니다.|r\n\n"..
+"|cffff0000탱크 봇을 보내려면 좌클릭합니다.|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r\n\n"..
+"|cffff0000탱크 봇을 선택하려면 우클릭합니다.|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r";
 
-MultiBot.tips.rtsc.dps = 
-"DPS-Selector\n|cffffffff"..
-"This Button selects the DPS-Bots and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the DPS-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the DPS-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.dps =
+"DPS 선택기\n|cffffffff"..
+"이 버튼은 DPS 봇을 선택하여 위치로 보냅니다.\n"..
+"좌클릭 후 AEDM 주문을 사용하여 위치를 표시합니다.|r\n\n"..
+"|cffff0000좌클릭으로 DPS 봇을 보냅니다|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r\n\n"..
+"|cffff0000우클릭하여 DPS 봇을 선택합니다|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r";
 
-MultiBot.tips.rtsc.healer = 
-"Healer-Selector\n|cffffffff"..
-"This Button selects the Healer-Bots and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the Healer-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the Healer-Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.healer =
+"힐러 선택기\n|cffffffff"..
+"이 버튼은 힐러 봇을 선택하여 위치로 보냅니다.\n"..
+"좌클릭 후 AEDM 주문을 사용하여 위치를 표시합니다.|r\n\n"..
+"|cffff0000좌클릭으로 힐러 봇을 보냅니다|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r\n\n"..
+"|cffff0000우클릭하여 힐러 봇을 선택합니다|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r";
 
-MultiBot.tips.rtsc.melee = 
-"Melee-Selector\n|cffffffff"..
-"This Button selects the Melee-Fighters and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the Melee-Fighters|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the Melee-Fighters|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.melee =
+"밀리 선택기\n|cffffffff"..
+"이 버튼은 밀리 전사를 선택하여 위치로 보냅니다.\n"..
+"좌클릭 후 AEDM 주문을 사용하여 위치를 표시합니다.|r\n\n"..
+"|cffff0000좌클릭으로 밀리 전사를 보냅니다|r\n"..
+"|cff999999(처형 순서: 공격대, 파티)|r\n\n"..
+"|cffff0000우클릭하여 밀리 전사를 선택합니다|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r";
 
-MultiBot.tips.rtsc.ranged = 
-"Ranged-Selector\n|cffffffff"..
-"This Button selects the Ranged-Fighters and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send the Ranged-Fighters|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select the Ranged-Fighters|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.ranged =
+"원거리 선택기\n|cffffffff"..
+"이 버튼은 원거리 전투기를 선택하여 위치로 보냅니다.\n"..
+"좌클릭 후 AEDM 주문을 사용하여 위치를 표시합니다.|r\n\n"..
+"|cffff0000원거리 전투기를 보내려면 좌클릭합니다.|r\n"..
+"|cff999999(명령 실행: 레이드, 파티)|r\n\n"..
+"|cffff0000원거리 전투기를 선택하려면 우클릭합니다.|r\n"..
+"|cff999999(명령 실행: 레이드, 파티)|r";
 
-MultiBot.tips.rtsc.all = 
-"All-Selector\n|cffffffff"..
-"This Button selects the all Bots and sends them to a Location.\n"..
-"Left-Click and then use the AEDM-Spell to mark a Location.|r\n\n"..
-"|cffff0000Left-Click to send all Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to select all Bots|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.all =
+"전체 선택기\n|cffffffff"..
+"이 버튼은 모든 봇을 선택하여 위치로 보냅니다.\n"..
+"왼쪽 클릭한 다음 AEDM 주문을 사용하여 위치를 표시합니다.|r\n\n"..
+"|cffff0000모든 봇을 보내려면 왼쪽 클릭|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r\n\n"..
+"|cffff0000모든 봇을 선택하려면 오른쪽 클릭|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r";
 
-MultiBot.tips.rtsc.browse = 
-"Browse-Selector\n|cffffffff"..
-"This Button switches throu the differend Selectorbars.|r\n\n"..
-"|cffff0000Left-Click to switch the Selectorbar|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r\n\n"..
-"|cffff0000Right-Click to cancel the Selection|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+MultiBot.tips.rtsc.browse =
+"탐색 선택기\n|cffffffff"..
+"이 버튼은 여러 선택 막대를 전환합니다.|r\n\n"..
+"|cffff0000선택 막대를 전환하려면 왼쪽 버튼을 클릭하세요|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r\n\n"..
+"|cffff0000선택을 취소하려면 오른쪽 버튼을 클릭하세요|r\n"..
+"|cff999999(명령 실행: 공격대, 파티)|r";
 end
