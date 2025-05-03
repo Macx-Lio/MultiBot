@@ -3,11 +3,6 @@ MultiBot.raidus.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Raidus.blp")
 MultiBot.raidus:SetMovable(true)
 MultiBot.raidus:Hide()
 
-MultiBot.raidus.raid = {}
-MultiBot.raidus.raid.members = {}
-MultiBot.raidus.raid.numbers = {}
-MultiBot.raidus.raid.targets = {}
-
 MultiBot.raidus.addFrame("Pool", -20, 360, 28, 160, 490)
 MultiBot.raidus.addFrame("Btop", -35, 822, 24, 128, 32).addTexture("Interface\\AddOns\\MultiBot\\Textures\\Raidus_Banner_Top.blp")
 MultiBot.raidus.addFrame("Bbot", -35, 354, 24, 128, 32).addTexture("Interface\\AddOns\\MultiBot\\Textures\\Raidus_Banner_Bottom.blp")
@@ -91,33 +86,33 @@ end
 
 MultiBot.raidus.wowButton("Apply", -597, 360, 80, 20, 12)
 .doLeft = function(pButton)
-	MultiBot.raidus.getRaidState()
-	if(MultiBot.raidus.getRaidTarget()) then return end
-	table.wipe(MultiBot.index.raidus)
+	local tRaidByIndex, tRaidByName = MultiBot.raidus.getRaidTarget()
+	if(tRaidByIndex == nil or tRaidByName == nil) then return end
 	
-	local tMembers = MultiBot.raidus.raid.members
-	local tNumbers = MultiBot.raidus.raid.numbers
-	local tTargets = MultiBot.raidus.raid.targets
+	local tSelf = UnitName("player")
+	MultiBot.index.raidus = {}
 	
 	for tName, tValue in pairs(MultiBot.frames["MultiBar"].frames["Units"].buttons) do
 		if(tValue.state) then
-			if(tTargets[tName] == nil) then
+			if(tName ~= tSelf and tRaidByName[tName] == nil) then
 				if(UnitInGroup(tName) or UnitInRaid(tName)) then UninviteUnit(tName) end
 				SendChatMessage(".playerbot bot remove " .. tName, "SAY")
 			end
 		else
-			if(tTargets[tName] ~= nil) then
+			if(tName ~= tSelf and tRaidByName[tName] ~= nil) then
 				table.insert(MultiBot.index.raidus, tName)
 			end
 		end
 	end
 	
-	if(table.getn(MultiBot.index.raidus) > 0) then
+	local tNeeds = table.getn(MultiBot.index.raidus)
+	
+	if(tNeeds > 0) then
+		SendChatMessage(MultiBot.info.starting, "SAY")
 		MultiBot.timer.invite.roster = "raidus"
-		MultiBot.timer.invite.needs = table.getn(MultiBot.index.raidus)
+		MultiBot.timer.invite.needs = tNeeds
 		MultiBot.timer.invite.index = 1
 		MultiBot.auto.invite = true
-		SendChatMessage(MultiBot.info.starting, "SAY")
 	else
 		MultiBot.raidus.doRaidSort()
 	end
@@ -246,6 +241,9 @@ MultiBot.raidus.setRaidus = function()
 		tFrame.bot = tBot
 		
 		local tButton = tFrame.addButton("Icon", -128, 3, "Interface\\AddOns\\MultiBot\\Icons\\class_" .. strlower(tFrame.class) .. ".blp", "")
+		tButton.doRight = function(pButton)
+			SendChatMessage(".playerbot bot add " .. pButton.parent.name, "SAY")
+		end
 		
 		tButton:SetScript("OnEnter", function(pButton)
 			local tBot = pButton.parent.bot
@@ -296,8 +294,8 @@ MultiBot.raidus.setRaidus = function()
 		tFrame.addText("2", tBot.score .. " - " .. tBot.special, "BOTTOMLEFT", 36, 6, 12)
 		
 		if(tSlot > 11) then tFrame:Hide() else tFrame:Show() end
+		tY = MultiBot.IF(mod(tSlot, 11) == 0, 426, tY - 40)
 		tSlot = tSlot + 1
-		tY = MultiBot.IF(mod(tSlot, 12) == 0, 426, tY - 40)
 	end
 	
 	for i = mod(tSlot, 11), 11, 1 do
@@ -330,83 +328,91 @@ end
 -- GETTER --
 
 MultiBot.raidus.getRaidState = function()
-	table.wipe(MultiBot.raidus.raid.members)
-	table.wipe(MultiBot.raidus.raid.numbers)
-	
-	local tMembers = MultiBot.raidus.raid.members
-	local tNumbers = MultiBot.raidus.raid.numbers
+	local tRaidByMembers = {}
+	local tRaidByGroups = {}
 	
 	local tRaid = GetNumRaidMembers()
 	local tGroup = GetNumPartyMembers()
-	local tSize = MultiBot.IF(tRaid > tGroup, tRaid, tGroup)
+	local tAmount = MultiBot.IF(tRaid > tGroup, tRaid, tGroup)
 	
-	for i = 1, tSize do
-		local tName, tRank, tGroup = GetRaidRosterInfo(i)
-		if(tName and tRank and tGroup) then
-			tMembers[tName] = { index = i, group = tGroup }
-			tNumbers[tGroup] = (tNumbers[tGroup] or 0) + 1
+	for tIndex = 1, tAmount do
+		local xName, xRank, xGroup = GetRaidRosterInfo(tIndex)
+		if(xName and xRank and xGroup) then
+			tRaidByMembers[xName] = { index = tIndex, group = xGroup }
+			tRaidByGroups[xGroup] = (tRaidByGroups[xGroup] or 0) + 1
 		end
 	end
+	
+	return tRaidByMembers, tRaidByGroups
 end
 
 MultiBot.raidus.getRaidTarget = function()
-	table.wipe(MultiBot.raidus.raid.targets)
-	
-	local tMembers = MultiBot.raidus.raid.members
-	local tTargets = MultiBot.raidus.raid.targets
+	local tRaidByIndex = {}
+	local tRaidByName = {}
+	local tIndex = 1
 	
 	local tSelf = UnitName("player")
 	local tUser = true
 	local tBots = true
 	
-	for i = 1, 8 do
-		for j = 1, 5 do
-			local tName = MultiBot.raidus.frames["Group" .. i].frames["Slot" .. j].name
+	for tGroup = 1, 8 do
+		for tSlot = 1, 5 do
+			local tName = MultiBot.raidus.frames["Group" .. tGroup].frames["Slot" .. tSlot].name
 			if(tName ~= nil) then
 				if(tName == tSelf) then tUser = false end
-				tTargets[tName] = i
+				tRaidByIndex[tIndex] = { name = tName, group = tGroup }
+				tRaidByName[tName] = tGroup
+				tIndex = tIndex + 1
 				tBots = false
 			end
 		end
 	end
 	
-	if(tBots) then SendChatMessage("There is no Bot in the Raid", "SAY") else
-	if(tUser) then SendChatMessage("I must be in the Raid!", "SAY") end
-	end
-	
-	return tUser or tBots
+	if(tBots) then return SendChatMessage("There is no Bot in the Raid", "SAY") end
+	if(tUser) then return SendChatMessage("I must be in the Raid!", "SAY") end
+	return tRaidByIndex, tRaidByName
 end
 
 -- EVENTS --
 
-MultiBot.raidus.doRaidSort = function()
-	MultiBot.raidus.getRaidState()
-	MultiBot.raidus.getRaidTarget()
+MultiBot.raidus.doRaidSortCheck = function()
+	local tRaidByIndex, tRaidByName = MultiBot.raidus.getRaidTarget()
+	local tRaidByMembers, tRaidByGroups = MultiBot.raidus.getRaidState()
 	
-	local tMembers = MultiBot.raidus.raid.members
-	local tNumbers = MultiBot.raidus.raid.numbers
-	local tTargets = MultiBot.raidus.raid.targets
+	for tName, tGroup in pairs(tRaidByName) do
+		if(tRaidByMembers[tName] ~= nil and tRaidByMembers[tName].group ~= tGroup) then return 1 end
+	end
 	
-	for tName, tGroup in pairs(tTargets) do
-		if(tMembers[tName] ~= nil and tMembers[tName].group ~= tGroup) then
-			if(tNumbers[tGroup]) then
-				if(tNumbers[tGroup] or tNumbers[tGroup] < 5) then
-					SetRaidSubgroup(tMembers[tName].index, tGroup)
-				else
-					for xName, xValue in pairs(tMembers) do
-						if(xValue.group == tGroup and tTargets[tName] ~= tGroup) then
-							SwapRaidSubgroup(tMembers[tName].index, xValue.index)
-							MultiBot.raidus.getRaidState()
-						end
+	return nil
+end
+
+MultiBot.raidus.doRaidSort = function(pIndex)
+	local tRaidByIndex, tRaidByName = MultiBot.raidus.getRaidTarget()
+	local tRaidByMembers, tRaidByGroups = MultiBot.raidus.getRaidState()
+	
+	if(pIndex > table.getn(tRaidByIndex)) then return nil end
+	
+	local tName = tRaidByIndex[pIndex].name
+	local tGroup = tRaidByIndex[pIndex].group
+	
+	if(tRaidByMembers[tName] ~= nil and tRaidByMembers[tName].group ~= tGroup) then
+		if(tRaidByGroups[tGroup] == nil) then
+			SetRaidSubgroup(tRaidByMembers[tName].index, tGroup)
+		else
+			if(tRaidByGroups[tGroup] < 5) then
+				SetRaidSubgroup(tRaidByMembers[tName].index, tGroup)
+			else
+				for xName, xValue in pairs(tRaidByMembers) do
+					if(xValue.group == tGroup and tRaidByName[xName] ~= tGroup) then
+						SwapRaidSubgroup(tRaidByMembers[tName].index, xValue.index)
+						break
 					end
 				end
-			else
-				SetRaidSubgroup(tMembers[tName].index, tGroup)
 			end
 		end
 	end
 	
-	SendChatMessage("READY FOR RAID NOW", "SAY")
+	return pIndex + 1
 end
 
 MultiBot.raidus.doDrop = function(pObject, pParent, pX, pY, pWidth, pHeight, pSlot)

@@ -35,6 +35,7 @@ MultiBot.units = {}
 MultiBot.tips = {}
 
 MultiBot.auto = {}
+MultiBot.auto.sort = false
 MultiBot.auto.stats = false
 MultiBot.auto.talent = false
 MultiBot.auto.invite = false
@@ -42,6 +43,9 @@ MultiBot.auto.release = false
 --MultiBot.auto.language = true
 
 MultiBot.timer = {}
+MultiBot.timer.sort = {}
+MultiBot.timer.sort.elapsed = 0
+MultiBot.timer.sort.interval = 1
 MultiBot.timer.stats = {}
 MultiBot.timer.stats.elapsed = 0
 MultiBot.timer.stats.interval = 45

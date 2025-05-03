@@ -4,6 +4,7 @@ MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
 	if(MultiBot.auto.invite) then MultiBot.timer.invite.elapsed = MultiBot.timer.invite.elapsed + pElapsed end
 	if(MultiBot.auto.talent) then MultiBot.timer.talent.elapsed = MultiBot.timer.talent.elapsed + pElapsed end
 	if(MultiBot.auto.stats) then MultiBot.timer.stats.elapsed = MultiBot.timer.stats.elapsed + pElapsed end
+	if(MultiBot.auto.sort) then MultiBot.timer.sort.elapsed = MultiBot.timer.sort.elapsed + pElapsed end
 	
 	if(MultiBot.auto.stats and MultiBot.timer.stats.elapsed >= MultiBot.timer.stats.interval) then
 		for i = 1, GetNumPartyMembers() do SendChatMessage("stats", "WHISPER", nil, UnitName("party" .. i)) end
@@ -20,7 +21,13 @@ MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
 		local tTable = MultiBot.index[MultiBot.timer.invite.roster]
 		
 		if(MultiBot.timer.invite.needs == 0 or MultiBot.timer.invite.index > table.getn(tTable)) then
-			if(MultiBot.timer.invite.roster == "raidus") then MultiBot.raidus.doRaidSort() end
+			if(MultiBot.timer.invite.roster == "raidus") then
+				MultiBot.timer.sort.elapsed = 0
+				MultiBot.timer.sort.index = 1
+				MultiBot.timer.sort.needs = 0
+				MultiBot.auto.sort = true
+			end
+			
 			MultiBot.timer.invite.elapsed = 0
 			MultiBot.timer.invite.roster = ""
 			MultiBot.timer.invite.index = 1
@@ -37,6 +44,25 @@ MultiBot:SetScript("OnUpdate", function(pSelf, pElapsed)
 		
 		MultiBot.timer.invite.index = MultiBot.timer.invite.index + 1
 		MultiBot.timer.invite.elapsed = 0
+	end
+	
+	if(MultiBot.auto.sort and MultiBot.timer.sort.elapsed >= MultiBot.timer.sort.interval) then
+		MultiBot.timer.sort.index = MultiBot.raidus.doRaidSort(MultiBot.timer.sort.index)
+		
+		if(MultiBot.timer.sort.index == nil) then
+			MultiBot.timer.sort.index = MultiBot.raidus.doRaidSortCheck()
+		end
+		
+		if(MultiBot.timer.sort.index == nil) then
+			SendChatMessage("Ready for Raid now.", "SAY")
+			MultiBot.timer.sort.elapsed = 0
+			MultiBot.timer.sort.index = 1
+			MultiBot.timer.sort.needs = 0
+			MultiBot.auto.sort = false
+			return
+		end
+		
+		MultiBot.timer.sort.elapsed = 0
 	end
 end)
 
