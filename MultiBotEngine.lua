@@ -676,7 +676,7 @@ end
 -- MULTIBOT:BUTTON --
 
 MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
-	local button = CreateFrame("Button", nil, pParent, "SecureActionButtonTemplate")
+	local button = CreateFrame("Button", nil, pParent, "ActionButtonTemplate")
 	button:SetPoint("BOTTOMRIGHT", pX, pY)
 	button:SetSize(pSize, pSize)
 	button:Show()
@@ -690,6 +690,7 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
 	button:RegisterForClicks("LeftButtonDown", "RightButtonDown")
 	button:SetHighlightTexture("Interface/Buttons/ButtonHilight-Square", "ADD")
 	button:SetPushedTexture("Interface/Buttons/UI-Quickslot-Depress")
+	button:SetNormalTexture("")
 	
 	button.texture = pTexture
 	button.parent = pParent
