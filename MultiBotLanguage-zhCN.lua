@@ -2416,7 +2416,7 @@ MultiBot.tips.every.spellbook =
 MultiBot.tips.every.talent =
 "天赋|cffffffff\n"..
 "打开或关闭此机器人的天赋。\n"..
-"在系统加载天赋值时会有时间延迟地打开。|r\n\n",
+"在系统加载天赋值时会有时间延迟地打开。|r\n\n"..
 "|cffff0000鼠标左键单击打开或关闭天赋|r\n"..
 "|cff999999(执行命令: 机器人)|r";
 

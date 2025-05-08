@@ -568,7 +568,6 @@ MultiBot.necronet.state = false
 for key, value in pairs(MultiBot.data.necronet) do
 	if(MultiBot.necronet.index[value[1]] == nil) then MultiBot.necronet.index[value[1]] = {} end
 	if(MultiBot.necronet.index[value[1]][value[2]] == nil) then MultiBot.necronet.index[value[1]][value[2]] = {} end
-	if(MultiBot.necronet.index[value[1]][value[2]][value[3]] == nil) then MultiBot.necronet.index[value[1]][value[2]][value[3]] = {} end
 	
 	local tX = WorldMapButton:GetWidth() * value[4] / 100 - WorldMapButton:GetWidth() + 12
 	local tY = WorldMapButton:GetHeight() * -value[5] / 100 + WorldMapButton:GetHeight() - 12
@@ -581,6 +580,6 @@ for key, value in pairs(MultiBot.data.necronet) do
 		MultiBot.doDot(".go graveyard", pButton.graveyard)
 	end
 	
-	table.insert(MultiBot.necronet.index[value[1]][value[2]][value[3]], tButton)
+	table.insert(MultiBot.necronet.index[value[1]][value[2]], tButton)
 	table.insert(MultiBot.necronet.buttons, tButton)
 end

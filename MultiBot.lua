@@ -2567,7 +2567,7 @@ MultiBot.tips.every.spellbook =
 MultiBot.tips.every.talent =
 "Talent|cffffffff\n"..
 "It opens or closes the Talents of this Bot.\n"..
-"It opens with a time delay while the system loads the talent values.|r\n\n",
+"It opens with a time delay while the system loads the talent values.|r\n\n"..
 "|cffff0000Left-Click to open or close the Talents|r\n"..
 "|cff999999(Execution-Order: Bot)|r";
 
