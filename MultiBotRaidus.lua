@@ -14,6 +14,7 @@ MultiBot.raidus.addFrame("Group4", -185, 604, 28, 160, 240)
 MultiBot.raidus.addFrame("Group3", -350, 604, 28, 160, 240)
 MultiBot.raidus.addFrame("Group2", -515, 604, 28, 160, 240)
 MultiBot.raidus.addFrame("Group1", -680, 604, 28, 160, 240)
+MultiBot.raidus.save = ""
 MultiBot.raidus.from = 1
 MultiBot.raidus.to = 11
 
@@ -28,7 +29,7 @@ end
 MultiBot.raidus.wowButton("Load", -762, 360, 80, 20, 12)
 .doLeft = function(pButton)
 	local tPool = MultiBot.raidus.frames["Pool"]
-	local tLoad = MultiBot.doSplit(MultiBotSave["Raidus"], ";")
+	local tLoad = MultiBot.doSplit(MultiBotSave["Raidus" .. MultiBot.raidus.save], ";")
 	
 	for i = 1, 8, 1 do
 		local tGroup = MultiBot.doSplit(tLoad[i], ",")
@@ -60,7 +61,52 @@ MultiBot.raidus.wowButton("Load", -762, 360, 80, 20, 12)
 	end
 end
 
-MultiBot.raidus.wowButton("Save", -679, 360, 80, 20, 12)
+MultiBot.raidus.wowButton("1", -734, 360, 22, 20, 12).setDisable()
+.doLeft = function(pButton)
+	if(pButton.state) then
+		pButton.parent.save = ""
+		pButton.setDisable()
+		MultiBot.raidus.setRaidus()
+	else
+		pButton.parent.save = "1"
+		pButton.parent.buttons["2"].setDisable()
+		pButton.parent.buttons["3"].setDisable()
+		pButton.setEnable()
+		MultiBot.raidus.setRaidus()
+	end
+end
+
+MultiBot.raidus.wowButton("2", -707, 360, 22, 20, 12).setDisable()
+.doLeft = function(pButton)
+	if(pButton.state) then
+		pButton.parent.save = ""
+		pButton.setDisable()
+		MultiBot.raidus.setRaidus()
+	else
+		pButton.parent.save = "2"
+		pButton.parent.buttons["1"].setDisable()
+		pButton.parent.buttons["3"].setDisable()
+		pButton.setEnable()
+		MultiBot.raidus.setRaidus()
+	end
+end
+
+MultiBot.raidus.wowButton("3", -680, 360, 22, 20, 12).setDisable()
+.doLeft = function(pButton)
+	if(pButton.state) then
+		pButton.parent.save = ""
+		pButton.setDisable()
+		MultiBot.raidus.setRaidus()
+	else
+		pButton.parent.save = "3"
+		pButton.parent.buttons["1"].setDisable()
+		pButton.parent.buttons["2"].setDisable()
+		pButton.setEnable()
+		MultiBot.raidus.setRaidus()
+	end
+end
+
+MultiBot.raidus.wowButton("Save", -597, 360, 80, 20, 12)
 .doLeft = function(pButton)
 	local tSave = ""
 	
@@ -78,13 +124,13 @@ MultiBot.raidus.wowButton("Save", -679, 360, 80, 20, 12)
 		tSave = tSave .. tGroup
 	end
 	
-	MultiBotSave["Raidus"] = tSave
+	MultiBotSave["Raidus" .. MultiBot.raidus.save] = tSave
 	SendChatMessage("I wrote it down.", "SAY")
 end
 
 
 
-MultiBot.raidus.wowButton("Apply", -597, 360, 80, 20, 12)
+MultiBot.raidus.wowButton("Apply", -514, 360, 80, 20, 12)
 .doLeft = function(pButton)
 	local tRaidByIndex, tRaidByName = MultiBot.raidus.getRaidTarget()
 	if(tRaidByIndex == nil or tRaidByName == nil) then return end

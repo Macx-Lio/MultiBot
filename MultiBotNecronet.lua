@@ -579,7 +579,7 @@ for key, value in pairs(MultiBot.data.necronet) do
 	tButton.doLeft = function(pButton)
 		MultiBot.doDot(".go graveyard", pButton.graveyard)
 	end
-	
+
 	table.insert(MultiBot.necronet.index[value[1]][value[2]], tButton)
 	table.insert(MultiBot.necronet.buttons, tButton)
 end
