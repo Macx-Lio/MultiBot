@@ -911,18 +911,15 @@ MultiBot:SetScript("OnEvent", function()
 		
 		local tCont = GetCurrentMapContinent()
 		local tArea = GetCurrentMapAreaID()
-		local tZone = GetCurrentMapZone()
 		
-		if(MultiBot.necronet.cont ~= tCont or MultiBot.necronet.area ~= tArea or MultiBot.necronet.zone ~= tZone) then
+		if(MultiBot.necronet.cont ~= tCont or MultiBot.necronet.area ~= tArea) then
 			for key, value in pairs(MultiBot.necronet.buttons) do value:Hide() end
 			
 			MultiBot.necronet.cont = tCont
 			MultiBot.necronet.area = tArea
-			MultiBot.necronet.zone = tZone
 			
 			local tTable = MultiBot.necronet.index[tCont]
 			if(tTable ~= nil) then tTable = tTable[tArea] end
-			if(tTable ~= nil) then tTable = tTable[tZone] end
 			if(tTable ~= nil) then for key, value in pairs(tTable) do value:Show() end end
 		end
 		

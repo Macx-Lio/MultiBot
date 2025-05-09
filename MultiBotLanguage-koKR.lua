@@ -2403,7 +2403,7 @@ MultiBot.tips.every.spellbook =
 MultiBot.tips.every.talent =
 "재능|cffffffff\n"..
 "이 로봇의 재능을 켜거나 끕니다.\n"..
-"시스템이 재능 값을 로드하여 열 때 시간 지연이 발생합니다.|r\n\n",
+"시스템이 재능 값을 로드하여 열 때 시간 지연이 발생합니다.|r\n\n"..
 "|cffff0000 재능을 켜거나 끄려면 마우스 왼쪽 버튼을 클릭하세요|r\n"..
 "|cff999999(명령 실행: 로봇)|r";
 
