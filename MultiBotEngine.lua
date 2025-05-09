@@ -548,9 +548,9 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight, oAlign)
 		return frame.buttons[pName]
 	end
 	
-	frame.addButton = function(pName, pX, pY, pTexture, pTip)
+	frame.addButton = function(pName, pX, pY, pTexture, pTip, oTemplate)
 		if(frame.buttons[pName] ~= nil) then frame.buttons[pName]:Hide() end
-		frame.buttons[pName] = MultiBot.newButton(frame, pX, pY, frame.size, pTexture, pTip)
+		frame.buttons[pName] = MultiBot.newButton(frame, pX, pY, frame.size, pTexture, pTip, oTemplate)
 		return frame.buttons[pName]
 	end
 	
@@ -675,8 +675,8 @@ end
 
 -- MULTIBOT:BUTTON --
 
-MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip)
-	local button = CreateFrame("Button", nil, pParent, "ActionButtonTemplate")
+MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip, oTemplate)
+	local button = CreateFrame("Button", nil, pParent, MultiBot.IF(oTemplate ~= nil, oTemplate, "ActionButtonTemplate"))
 	button:SetPoint("BOTTOMRIGHT", pX, pY)
 	button:SetSize(pSize, pSize)
 	button:Show()
