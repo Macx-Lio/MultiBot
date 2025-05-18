@@ -683,12 +683,14 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip, oTemplate)
 	
 	button.icon = button:CreateTexture(nil, "BACKGROUND")
 	button.icon:SetTexture(MultiBot.IF(string.sub(pTexture, 1, 9) ~= "Interface", "Interface/Icons/", "") .. pTexture)
+	button.icon:SetDrawLayer("BACKGROUND", 6)
 	button.icon:SetAllPoints(button)
 	button.icon:Show()
 	
 	button.border = button:CreateTexture(nil, "BACKGROUND")
 	button.border:SetTexture("Interface\\AddOns\\MultiBot\\Icons\\border.blp")
 	button.border:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 2, -2)
+	button.border:SetDrawLayer("BACKGROUND", 7)
 	button.border:SetSize(pSize + 4, pSize + 4)
 	button.border:Hide()
 	
