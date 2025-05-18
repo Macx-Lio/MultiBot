@@ -686,6 +686,12 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip, oTemplate)
 	button.icon:SetAllPoints(button)
 	button.icon:Show()
 	
+	button.border = button:CreateTexture(nil, "BACKGROUND")
+	button.border:SetTexture("Interface\\AddOns\\MultiBot\\Icons\\border.blp")
+	button.border:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 2, -2)
+	button.border:SetSize(pSize + 4, pSize + 4)
+	button.border:Hide()
+	
 	button:EnableMouse(true)
 	button:RegisterForClicks("LeftButtonDown", "RightButtonDown")
 	button:SetHighlightTexture("Interface/Buttons/ButtonHilight-Square", "ADD")
@@ -747,12 +753,14 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip, oTemplate)
 	
 	button.setDisable = function()
 		button.icon:SetDesaturated(1)
+		button.border:Hide()
 		button.state = false
 		return button
 	end
 	
 	button.setEnable = function()
 		button.icon:SetDesaturated(nil)
+		button.border:Show()
 		button.state = true
 		return button
 	end
@@ -814,6 +822,10 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip, oTemplate)
 	button:SetScript("OnLeave", function()
 		button:SetPoint("BOTTOMRIGHT", button.x, button.y)
 		button:SetSize(button.size, button.size)
+		
+		button.border:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 2, -2)
+		button.border:SetSize(button.size + 4, button.size + 4)
+		
 		if(type(button.tip) == "string") then GameTooltip:Hide() end
 		if(type(button.tip) == "table") then button.tip:Hide() end
 	end)
@@ -821,6 +833,10 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip, oTemplate)
 	button:SetScript("PostClick", function(pSelf, pEvent)
 		button:SetPoint("BOTTOMRIGHT", button.x - 1, button.y + 1)
 		button:SetSize(button.size - 2, button.size - 2)
+		
+		button.border:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 2, -2)
+		button.border:SetSize(button.size + 2, button.size + 2)
+		
 		if(type(button.tip) == "string") then GameTooltip:Hide() end
 		if(type(button.tip) == "table") then button.tip:Hide() end
 		
