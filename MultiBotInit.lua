@@ -1294,6 +1294,14 @@ end
 local tQuests = tRight.addFrame("Quests", -2, 34)
 tQuests:Hide()
 
+local tAccpet = tQuests.addFrame("Accept", 0, -64, 28)
+tAccpet:Show()
+
+tAccpet.addButton("Accept", 0, 0, "inv_misc_note_02", MultiBot.tips.quests.accept)
+.doLeft = function(pButton)
+	MultiBot.ActionToGroup("accept *")
+end
+
 -- DRINK --
 
 tRight.addButton("Drink", 34, 0, "inv_drink_24_sealwhey", MultiBot.tips.drink.group)

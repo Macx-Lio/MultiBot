@@ -1038,6 +1038,12 @@ MultiBot.tips.quests.master =
 "|cffff0000Rechtsklicken um die Optionen zu aktualisieren|r\n"..
 "|cff999999(Ausführreihenfolge: System)|r";
 
+MultiBot.tips.quests.accept =
+"Quest-Accpet\n|cffffffff"..
+"Diese Schalter fordert die Bots auf die Quest des anvisierten NPCs anzunehmen.\n\n"..
+"|cffff0000Linksklicken um Quests anzunehmen|r\n"..
+"|cff999999(Ausführreihenfolge: Raid, Party)|r";
+
 -- DRINK --
 
 MultiBot.tips.drink.group = 

@@ -1048,6 +1048,12 @@ MultiBot.tips.quests.master =
 "|cffff0000Clic droit pour actualiser les options|r\n"..
 "|cff999999(Ordre d'exécution : Système)|r";
 
+MultiBot.tips.quests.accept =
+"Quest-Accpet\n|cffffffff"..
+"This Button orders Bots to take every Quest of the targeted NPC.\n\n"..
+"|cffff0000Left-Click to take every Quest|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
 -- BOIRE --
 
 MultiBot.tips.drink.group = 

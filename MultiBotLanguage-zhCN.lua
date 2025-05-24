@@ -1038,6 +1038,12 @@ MultiBot.tips.quests.master =
 "|cffff0000右键点击可刷新选项 |r\n"..
 "|cff999999(执行命令: 系统)|r";
 
+MultiBot.tips.quests.accept =
+"Quest-Accpet\n|cffffffff"..
+"This Button orders Bots to take every Quest of the targeted NPC.\n\n"..
+"|cffff0000Left-Click to take every Quest|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
 -- 饮用 --
 
 MultiBot.tips.drink.group = 

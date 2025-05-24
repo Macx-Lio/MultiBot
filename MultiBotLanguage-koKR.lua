@@ -1037,6 +1037,12 @@ MultiBot.tips.quests.master =
 "|cffff0000마우스 오른쪽 버튼을 클릭하여 옵션을 새로 고침하세요|r\n"..
 "|cff999999(명령 실행: 시스템)|r";
 
+MultiBot.tips.quests.accept =
+"Quest-Accpet\n|cffffffff"..
+"This Button orders Bots to take every Quest of the targeted NPC.\n\n"..
+"|cffff0000Left-Click to take every Quest|r\n"..
+"|cff999999(Execution-Order: Raid, Party)|r";
+
 -- DRINK --
 
 MultiBot.tips.drink.group = 
