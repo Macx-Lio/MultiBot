@@ -832,6 +832,17 @@ MultiBot.tips.units.inviteRaid40 =
 "|cffff0000左键单击邀请团队成员|r\n"..
 "|cff999999(执行命令: 系统)|r";
 
+-- UNITS:ALL --
+
+MultiBot.tips.units.alliance = 
+"Alliance\n|cffffffff"..
+"With this Button you can bring all you Group-Members online or offline.\n"..
+"Maybe MultiBot wont be able to react fast enough and will not show all Botbars.\n\n"..
+"|cffff0000Left-Click to bring all Group-Members online|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to bring all Group-Members offline|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
 -- 主菜单 --
 
 MultiBot.tips.main.master =

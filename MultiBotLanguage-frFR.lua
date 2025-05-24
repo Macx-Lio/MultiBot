@@ -839,6 +839,17 @@ MultiBot.tips.units.inviteRaid40 =
 "|cffff0000Clic gauche pour inviter des membres du Raid|r\n"..
 "|cff999999(Ordre d'exécution : Système)|r";
 
+-- UNITS:ALL --
+
+MultiBot.tips.units.alliance = 
+"Alliance\n|cffffffff"..
+"With this Button you can bring all you Group-Members online or offline.\n"..
+"Maybe MultiBot wont be able to react fast enough and will not show all Botbars.\n\n"..
+"|cffff0000Left-Click to bring all Group-Members online|r\n"..
+"|cff999999(Execution-Order: System)|r\n\n"..
+"|cffff0000Right-Click to bring all Group-Members offline|r\n"..
+"|cff999999(Execution-Order: System)|r";
+
 
 -- PRINCIPAL --
 

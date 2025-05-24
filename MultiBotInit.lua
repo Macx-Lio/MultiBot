@@ -816,6 +816,16 @@ tControl.addButton("Browse", 0, 90, "Interface\\AddOns\\MultiBot\\Icons\\browse.
 	tUnits.frames["Control"].setPoint(-2, (tUnits.size + 2) * tIndex)
 end
 
+-- UNITS:ALL --
+
+tButton = tControl.addButton("Alliance", 0, -340, "inv_misc_tournaments_banner_human", MultiBot.tips.units.alliance)
+tButton.doRight = function(pButton)
+	SendChatMessage(".playerbot bot remove *", "SAY");
+end
+tButton.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot add *", "SAY");
+end
+
 -- MAIN --
 
 local tButton = tMultiBar.addButton("Main", 0, 0, "inv_gizmo_02", MultiBot.tips.main.master)
