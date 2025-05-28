@@ -832,7 +832,8 @@ MultiBot.tips.units.inviteRaid40 =
 "Se detiene al final de la lista o cuando la banda llega a 40 miembros.|r\n\n"..
 "|cffff0000Clic izquierdo para invitar miembros de la banda|r\n"..
 "|cff999999(Orden de ejecución: Sistema)|r";
-- UNITS:ALL --
+
+  -- UNITS:ALL --
 
 MultiBot.tips.units.alliance = 
 "Alliance\n|cffffffff"..
