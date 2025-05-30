@@ -499,6 +499,7 @@ tButton.doLeft = function(pButton, oRoster, oFilter)
 	
 	for key, value in pairs(tUnits.buttons) do value:Hide() end
 	for key, value in pairs(tUnits.frames) do value:Hide() end
+	tUnits.frames["Alliance"]:Show()
 	tUnits.frames["Control"]:Show()
 	
 	if(oRoster == nil and oFilter == nil) then MultiBot.ShowHideSwitch(tUnits)
@@ -547,8 +548,23 @@ tButton.doLeft = function(pButton, oRoster, oFilter)
 	end
 end
 
-local tUnits = tMultiBar.addFrame("Units", -40, 38)
+local tUnits = tMultiBar.addFrame("Units", -40, 72)
 tUnits:Hide()
+
+-- UNITS:ALLIANCE --
+
+local tAlliance = tUnits.addFrame("Alliance", 0, -34, 32)
+tAlliance:Show()
+
+local tButton = tAlliance.addButton("Alliance", 0, 0, "inv_misc_tournaments_banner_human", MultiBot.tips.units.alliance).doShow()
+tButton.doRight = function(pButton)
+	SendChatMessage(".playerbot bot remove *", "SAY");
+end
+tButton.doLeft = function(pButton)
+	SendChatMessage(".playerbot bot add *", "SAY");
+end
+
+-- UNITS:CONTROL --
 
 local tControl = tUnits.addFrame("Control", -2, 0)
 tControl:Show()
@@ -696,16 +712,6 @@ tRoster.addButton("Actives", -78, 0, "Interface\\AddOns\\MultiBot\\Icons\\roster
 	tButton.doLeft(tButton, "actives")
 end
 
--- UNITS:ALL --
-
-local tButton = tControl.addButton("Alliance", 0, 90, "inv_misc_tournaments_banner_human", MultiBot.tips.units.alliance).doShow()
-tButton.doRight = function(pButton)
-	SendChatMessage(".playerbot bot remove *", "SAY");
-end
-tButton.doLeft = function(pButton)
-	SendChatMessage(".playerbot bot add *", "SAY");
-end
-
 -- UNITS:BROWSE --
 
 local tButton = tControl.addButton("Invite", 0, 60, "Interface\\AddOns\\MultiBot\\Icons\\invite.blp", MultiBot.tips.units.invite).setEnable()
@@ -779,7 +785,7 @@ tInvite.addButton("Raid+40", 108, 0, "Interface\\AddOns\\MultiBot\\Icons\\invite
 	SendChatMessage(MultiBot.info.starting, "SAY")
 end
 
-tControl.addButton("Browse", 0, 120, "Interface\\AddOns\\MultiBot\\Icons\\browse.blp", MultiBot.tips.units.browse)
+tControl.addButton("Browse", 0, 90, "Interface\\AddOns\\MultiBot\\Icons\\browse.blp", MultiBot.tips.units.browse)
 .doLeft = function(pButton)
 	local tMaster = MultiBot.frames["MultiBar"].buttons["Units"]
 	local tFrom = tMaster.from + 10
