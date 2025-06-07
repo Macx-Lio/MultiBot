@@ -779,7 +779,7 @@ MultiBot:SetScript("OnEvent", function()
 			return
 		end
 		
-		if(tButton.waitFor == "ITEM" and MultiBot.isInside(arg1, "Bag,", "Dur", "XP", "背包", "耐久度", "经验值")) then
+		if(tButton.waitFor == "ITEM" and (MultiBot.beInside(arg1, "Bag,", "Dur") or MultiBot.beInside(arg1, "背包", "耐久度"))) then
 			MultiBot.inventory:Show()
 			tButton.waitFor = ""
 			InspectUnit(arg2)
@@ -814,7 +814,7 @@ MultiBot:SetScript("OnEvent", function()
 			tSpellbook.now = 1
 			tSpellbook.max = math.ceil(tSpellbook.index / 16)
 			tOverlay.setText("Pages", "|cffffffff" .. tSpellbook.now .. "/" .. tSpellbook.max .. "|r")
-			if(tSpellbook.now == tSpellbook.max) then tOverlay.buttons[">"].doHide() end
+			if(tSpellbook.now == tSpellbook.max) then tOverlay.buttons[">"].doHide() else tOverlay.buttons[">"].doShow() end
 			tOverlay.buttons["<"].doHide()
 			tSpellbook:Show()
 			tButton.waitFor = ""

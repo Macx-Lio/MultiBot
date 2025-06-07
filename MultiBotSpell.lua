@@ -1,6 +1,13 @@
+MultiBot.getSpellID = function(pInfo)
+	local tInfo = MultiBot.doSplit(pInfo, "|")
+	if(string.sub(tInfo[3], 1, 6) == "Hspell") then return string.sub(tInfo[3], 8) end
+	return 0
+end
+
 MultiBot.addSpell = function(pInfo, pName)
 	local tInfo = MultiBot.doSplit(pInfo, "|")
-	local tID = MultiBot.doSplit(tInfo[3], ":")[2]
+	local tID = MultiBot.getSpellID(pInfo)
+	if(tID == 0) then return end
 	
 	local tName, tRank, tIcon = GetSpellInfo(tID)
 	local tLink = GetSpellLink(tID)

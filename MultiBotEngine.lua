@@ -133,6 +133,19 @@ MultiBot.isInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern, o4t
 	return false
 end
 
+MultiBot.beInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern, o4thPattern, o5thPattern, o6thPattern, o7thPattern, o8thPattern, o9thPattern)
+	if(p1stPattern ~= nil and nil == string.find(pString, p1stPattern)) then return false end
+	if(o2ndPattern ~= nil and nil == string.find(pString, o2ndPattern)) then return false end
+	if(o3rdPattern ~= nil and nil == string.find(pString, o3rdPattern)) then return false end
+	if(o4thPattern ~= nil and nil == string.find(pString, o4thPattern)) then return false end
+	if(o5thPattern ~= nil and nil == string.find(pString, o5thPattern)) then return false end
+	if(o6thPattern ~= nil and nil == string.find(pString, o6thPattern)) then return false end
+	if(o7thPattern ~= nil and nil == string.find(pString, o7thPattern)) then return false end
+	if(o8thPattern ~= nil and nil == string.find(pString, o8thPattern)) then return false end
+	if(o9thPattern ~= nil and nil == string.find(pString, o9thPattern)) then return false end
+	return true
+end
+
 MultiBot.isRoster = function(pRoster, pName)
 	for key, value in pairs(MultiBot.index[pRoster]) do if(pName == value) then return true end end
 	return false
