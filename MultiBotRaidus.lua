@@ -160,7 +160,10 @@ MultiBot.raidus.wowButton("Apply", -514, 360, 80, 20, 12)
 		MultiBot.timer.invite.index = 1
 		MultiBot.auto.invite = true
 	else
-		MultiBot.raidus.doRaidSort()
+		MultiBot.timer.sort.elapsed = 0
+		MultiBot.timer.sort.index = 1
+		MultiBot.timer.sort.needs = 0
+		MultiBot.auto.sort = true
 	end
 end
 
