@@ -843,12 +843,12 @@ MultiBot.tips.units.inviteRaid40 =
 
 MultiBot.tips.units.alliance = 
 "Alliance\n|cffffffff"..
-"With this Button you can bring all you Group-Members online or offline.\n"..
-"Maybe MultiBot wont be able to react fast enough and will not show all Botbars.\n\n"..
-"|cffff0000Left-Click to bring all Group-Members online|r\n"..
-"|cff999999(Execution-Order: System)|r\n\n"..
-"|cffff0000Right-Click to bring all Group-Members offline|r\n"..
-"|cff999999(Execution-Order: System)|r";
+"Avec ce bouton, vous pouvez mettre en ligne ou hors ligne tous les membres de votre groupe.\n"..
+"Il se peut que MultiBot ne réagisse pas assez rapidement et n'affiche pas toutes les Botbars.\n\n"..
+"|cffff0000Clic gauche pour mettre en ligne tous les membres du groupe|r\n"..
+"|cff999999(Ordre d'exécution : Système)|r\n\n"..
+"|cffff0000Clic droit pour mettre hors ligne tous les membres du groupe|r\n"..
+"|cff999999(Ordre d'exécution : Système)|r";
 
 
 -- PRINCIPAL --
@@ -1049,10 +1049,10 @@ MultiBot.tips.quests.master =
 "|cff999999(Ordre d'exécution : Système)|r";
 
 MultiBot.tips.quests.accept =
-"Quest-Accpet\n|cffffffff"..
-"This Button orders Bots to take every Quest of the targeted NPC.\n\n"..
-"|cffff0000Left-Click to take every Quest|r\n"..
-"|cff999999(Execution-Order: Raid, Party)|r";
+"Acceptation des Quêtes\n|cffffffff"..
+"Ce bouton ordonne aux bots d'accepter toutes les quêtes du PNJ ciblé.\n\n"..
+"|cffff0000Clic gauche pour accepter toutes les quêtes|r\n"..
+"|cff999999(Ordre d'exécution : Raid, Groupe)|r";
 
 -- BOIRE --
 
