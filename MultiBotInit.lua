@@ -2766,18 +2766,18 @@ MultiBot.talent.doState = function()
 			
 			if(MultiBot.talent.points == 0) then
 				if(tTalent.value == 0) then
-					tTalent.setDisable()
+					tTalent.setDisable(false)
 					tValue:Hide()
 				else
-					tTalent.setEnable()
+					tTalent.setEnable(false)
 					tValue:Show()
 				end
 			else
 				if(tTab.value < tTalent.points) then
-					tTalent.setDisable()
+					tTalent.setDisable(false)
 					tValue:Hide()
 				else
-					tTalent.setEnable()
+					tTalent.setEnable(false)
 					tValue:Show()
 				end
 			end

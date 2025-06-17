@@ -764,16 +764,18 @@ MultiBot.newButton = function(pParent, pX, pY, pSize, pTexture, pTip, oTemplate)
 		return button
 	end
 	
-	button.setDisable = function()
+	button.setDisable = function(oBorder)
 		button.icon:SetDesaturated(1)
-		button.border:Hide()
+		if(oBorder == nil) then oBorder = true end
+		if(oBorder) then button.border:Hide() end
 		button.state = false
 		return button
 	end
 	
-	button.setEnable = function()
+	button.setEnable = function(oBorder)
 		button.icon:SetDesaturated(nil)
-		button.border:Show()
+		if(oBorder == nil) then oBorder = true end
+		if(oBorder) then button.border:Show() end
 		button.state = true
 		return button
 	end
