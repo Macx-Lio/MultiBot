@@ -67,6 +67,7 @@ MultiBot.doDotWithTarget = function(pCommand, oArguments)
 end
 
 MultiBot.doSplit = function(pString, pPattern)
+    if not pString then return {} end           -- avoid lua error if empty raid slot is selected and player click on Load button
 	local tResult = {}
 	local tStart = 1
 	local tFrom, tTo = string.find(pString, pPattern, tStart)
@@ -204,6 +205,67 @@ MultiBot.toClass = function(pClass)
 	if(pClass == "萨满祭司") then return "Shaman" end
 	if(pClass == "术士") then return "Warlock" end
 	if(pClass == "战士") then return "Warrior" end
+	
+	-- German Support (deDE) --
+    if pClass == "Todesritter"          then return "DeathKnight" end
+    if pClass == "Druide"               then return "Druid"       end
+    if pClass == "Jäger"                then return "Hunter"      end
+    if pClass == "Magier"               then return "Mage"        end
+    if pClass == "Paladin"              then return "Paladin"     end
+    if pClass == "Priester"             then return "Priest"      end
+    if pClass == "Schurke"              then return "Rogue"       end
+    if pClass == "Schamane"             then return "Shaman"      end
+    if pClass == "Hexenmeister"         then return "Warlock"     end
+    if pClass == "Krieger"              then return "Warrior"     end
+
+    -- Spanish Support (esES) --
+    if pClass == "Caballero de la muerte" then return "DeathKnight" end
+    if pClass == "Druida"                 then return "Druid"       end
+    if pClass == "Cazador"                then return "Hunter"      end
+    if pClass == "Mago"                   then return "Mage"        end
+    if pClass == "Paladín"                then return "Paladin"     end
+    if pClass == "Sacerdote"              then return "Priest"      end
+    if pClass == "Pícaro"                 then return "Rogue"       end
+    if pClass == "Chamán"                 then return "Shaman"      end
+    if pClass == "Brujo"                  then return "Warlock"     end
+    if pClass == "Guerrero"               then return "Warrior"     end
+
+    -- Korean Support (koKR) --
+    if pClass == "죽음의 기사"             then return "DeathKnight" end
+    if pClass == "드루이드"               then return "Druid"       end
+    if pClass == "사냥꾼"                 then return "Hunter"      end
+    if pClass == "마법사"                 then return "Mage"        end
+    if pClass == "성기사"                 then return "Paladin"     end
+    if pClass == "사제"                   then return "Priest"      end
+    if pClass == "도적"                   then return "Rogue"       end
+    if pClass == "주술사"                 then return "Shaman"      end
+    if pClass == "흑마법사"               then return "Warlock"     end
+    if pClass == "전사"                   then return "Warrior"     end
+
+    -- Russian Support (ruRU) --
+    if pClass == "Рыцарь смерти"           then return "DeathKnight" end
+    if pClass == "Друид"                   then return "Druid"       end
+    if pClass == "Охотник"                 then return "Hunter"      end
+    if pClass == "Маг"                     then return "Mage"        end
+    if pClass == "Паладин"                 then return "Paladin"     end
+    if pClass == "Жрец"                    then return "Priest"      end
+    if pClass == "Разбойник"               then return "Rogue"       end
+    if pClass == "Шаман"                   then return "Shaman"      end
+    if pClass == "Чернокнижник"            then return "Warlock"     end
+    if pClass == "Воин"                    then return "Warrior"     end
+
+	
+	-- French Support for Classes --
+	if(pClass == "Chevalier de la mort") then return "DeathKnight" end
+	if(pClass == "Druide")               then return "Druid"       end
+	if(pClass == "Chasseur")             then return "Hunter"      end
+	if(pClass == "Mage")                 then return "Mage"        end
+	if(pClass == "Paladin")              then return "Paladin"     end
+	if(pClass == "Prêtre")               then return "Priest"      end
+	if(pClass == "Voleur")               then return "Rogue"       end
+	if(pClass == "Chaman")               then return "Shaman"      end
+	if(pClass == "Démoniste")            then return "Warlock"     end
+	if(pClass == "Guerrier")             then return "Warrior"     end
 	
 	local tClass = string.lower(string.sub(pClass, 1, 1) .. string.sub(pClass, 4, 4))
 	if(tClass == "te" or tClass == "dt") then return "DeathKnight" end

@@ -14,7 +14,7 @@ MultiBot.raidus.addFrame("Group4", -185, 604, 28, 160, 240)
 MultiBot.raidus.addFrame("Group3", -350, 604, 28, 160, 240)
 MultiBot.raidus.addFrame("Group2", -515, 604, 28, 160, 240)
 MultiBot.raidus.addFrame("Group1", -680, 604, 28, 160, 240)
-MultiBot.raidus.save = ""
+MultiBot.raidus.save = "1" -- Prevent to save in a empty slot
 MultiBot.raidus.from = 1
 MultiBot.raidus.to = 11
 
@@ -26,21 +26,27 @@ MultiBot.raidus.wowButton("x", -13, 841, 16, 20, 12)
 	tButton.doLeft(tButton)
 end
 
+-- Avoid Lua erreor if player choose a empty slot and click Load
 MultiBot.raidus.wowButton("Load", -762, 360, 80, 20, 12)
 .doLeft = function(pButton)
 	local tPool = MultiBot.raidus.frames["Pool"]
-	local tLoad = MultiBot.doSplit(MultiBotSave["Raidus" .. MultiBot.raidus.save], ";")
+	local tData = MultiBotSave["Raidus" .. MultiBot.raidus.save]
+	if not tData or tData == "" then                       -- nothin registered
+		SendChatMessage("Nothing saved in this slot.", "SAY")
+		return                                             -- leave handler
+	end
+
+	local tLoad = MultiBot.doSplit(tData, ";")             -- make the call
+
 	
 	for i = 1, 8, 1 do
 		local tGroup = MultiBot.doSplit(tLoad[i], ",")
-		
 		for j = 1, 5, 1 do
 			local tDrop = MultiBot.raidus.frames["Group" .. i].frames["Slot" .. j]
 			local tName = tGroup[j]
-			
-			if(tName ~= "-") then
-				for tIndex, tDrag in pairs(tPool.frames) do
-					if(tDrag.name ~= nil and tDrag.name == tName) then
+			if tName and tName ~= "-" then
+				for _, tDrag in pairs(tPool.frames) do
+					if tDrag.name == tName then
 						local tVisible = tDrag:IsVisible()
 						local tParent = tDrag.parent
 						local tHeight = tDrag.height
@@ -60,7 +66,8 @@ MultiBot.raidus.wowButton("Load", -762, 360, 80, 20, 12)
 		end
 	end
 end
-
+-- end
+	
 MultiBot.raidus.wowButton("1", -734, 360, 22, 20, 12).setDisable()
 .doLeft = function(pButton)
 	if(pButton.state) then
@@ -105,6 +112,9 @@ MultiBot.raidus.wowButton("3", -680, 360, 22, 20, 12).setDisable()
 		MultiBot.raidus.setRaidus()
 	end
 end
+
+-- Set button 1 to first button
+MultiBot.raidus.buttons["1"].setEnable()
 
 MultiBot.raidus.wowButton("Save", -597, 360, 80, 20, 12)
 .doLeft = function(pButton)
@@ -246,9 +256,17 @@ MultiBot.raidus.setRaidus = function()
 		tBot.level = tonumber(tDetails[6])
 		tBot.score = tonumber(tDetails[7])
 		
+		-- Correcte LUA error MultiBotRaidus.lua:262: attempt to perform arithmetic on a nil value when clixk in Raidus-Switch button
+		local tLevel = tonumber(tDetails[6]) or 0
+		local tScore = tonumber(tDetails[7]) or 0
+		
+		tBot.level = tLevel
+		tBot.score = tScore
+		
 		local tClass = MultiBot.toClass(tBot.class)
 		
-		tBot.sort = tonumber(tBot.level) * 1000
+		-- Correcte LUA error MultiBotRaidus.lua:262: attempt to perform arithmetic on a nil value when clixk in Raidus-Switch button
+		tBot.sort = tLevel * 1000
 		+ MultiBot.IF(tClass == "DeathKnight", 1100000
 		, MultiBot.IF(tClass == "Druid", 1200000
 		, MultiBot.IF(tClass == "Hunter", 1300000
@@ -259,7 +277,7 @@ MultiBot.raidus.setRaidus = function()
 		, MultiBot.IF(tClass == "Shaman", 1800000
 		, MultiBot.IF(tClass == "Warlock", 1900000
 		, MultiBot.IF(tClass == "Warrior", 2000000
-		, 1000000)))))))))) + tonumber(tBot.score);
+		, 1000000)))))))))) + tScore; -- Correcte LUA error MultiBotRaidus.lua:262: attempt to perform arithmetic on a nil value when clixk in Raidus-Switch button
 		
 		tBots[tIndex] = tBot
 		tIndex = tIndex + 1
