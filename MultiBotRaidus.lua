@@ -128,8 +128,6 @@ MultiBot.raidus.wowButton("Save", -597, 360, 80, 20, 12)
 	SendChatMessage("I wrote it down.", "SAY")
 end
 
-
-
 MultiBot.raidus.wowButton("Apply", -514, 360, 80, 20, 12)
 .doLeft = function(pButton)
 	local tRaidByIndex, tRaidByName = MultiBot.raidus.getRaidTarget()

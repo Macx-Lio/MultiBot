@@ -193,17 +193,19 @@ MultiBot.isUnit = function(pUnit)
 end
 
 MultiBot.toClass = function(pClass)
-	-- Chinese Support for Classes --
-	if(pClass == "死亡骑士") then return "DeathKnight" end
-	if(pClass == "德鲁伊") then return "Druid" end
-	if(pClass == "猎人") then return "Hunter" end
-	if(pClass == "法师") then return "Mage" end
-	if(pClass == "圣骑士") then return "Paladin" end
-	if(pClass == "牧师") then return "Priest" end
-	if(pClass == "潜行者") then return "Rogue" end
-	if(pClass == "萨满祭司") then return "Shaman" end
-	if(pClass == "术士") then return "Warlock" end
-	if(pClass == "战士") then return "Warrior" end
+	local pLower = string.lower(pClass)
+	local pUpper = string.upper(pClass)
+	
+	for i = 1, 10 do
+		local tOutput = MultiBot.data.classes.output[i]
+		local tInput = MultiBot.data.classes.input[i]
+		local tLower = string.lower(tInput)
+		local tUpper = string.upper(tInput)
+		
+		if(pClass == tInput) then return tOutput end
+		if(pLower == tLower) then return tOutput end
+		if(pUpper == tUpper) then return tOutput end
+	end
 	
 	local tClass = string.lower(string.sub(pClass, 1, 1) .. string.sub(pClass, 4, 4))
 	if(tClass == "te" or tClass == "dt") then return "DeathKnight" end
@@ -538,8 +540,8 @@ MultiBot.newFrame = function(pParent, pX, pY, pSize, oWidth, oHeight, oAlign)
 	frame.addModel = function(pName, pX, pY, pWidth, pHeight, oScale)
 		if(frame.model ~= nil) then frame.model:Hide() end
 		frame.model = CreateFrame("DressUpModel", "MyModel" .. pName, frame)
-		frame.model:SetPoint("CENTER", 0, 64)
-		frame.model:SetSize(160, 240)
+		frame.model:SetPoint("CENTER", pX, pY)
+		frame.model:SetSize(pWidth, pHeight)
 		frame.model:SetUnit(pName)
 		if(oScale ~= nil) then frame.model:SetScale(oScale) end
 		return frame.model

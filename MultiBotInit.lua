@@ -2640,8 +2640,24 @@ tTab.wowButton("Glyphs", -2, 6, 92, 17, 11)
 end
 ]]--
 
+MultiBot.talent.setGrid = function(pTab)
+	pTab.grid = {}
+	pTab.grid.icons = {}
+	pTab.grid.icons.size = pTab.size + 8
+	pTab.grid.icons.x = pTab.width / 2 + pTab.grid.icons.size * 2 + 4
+	pTab.grid.icons.y = pTab.height / 2 + pTab.grid.icons.size * 5.5 + 4
+	pTab.grid.arrows = {}
+	pTab.grid.arrows.size = pTab.grid.icons.size + 8
+	pTab.grid.arrows.x = pTab.width / 2 + pTab.grid.icons.size * 2 - 4
+	pTab.grid.arrows.y = pTab.height / 2 + pTab.grid.icons.size * 5.5 - 4
+	pTab.grid.values = {}
+	pTab.grid.values.x = pTab.width / 2 + pTab.grid.icons.size * 2
+	pTab.grid.values.y = pTab.height / 2 + pTab.grid.icons.size * 5.5
+	return pTab
+end
+
 MultiBot.talent.addArrow = function(pTab, pID, pNeeds, piX, piY, pTexture)
-	local tArrow = pTab.addFrame("Arrow" .. pID, piX * 36 - 153, 395 - piY * 36, 44)
+	local tArrow = pTab.addFrame("Arrow" .. pID, piX * pTab.grid.icons.size - pTab.grid.arrows.x, pTab.grid.arrows.y - piY * pTab.grid.icons.size, pTab.grid.arrows.size)
 	tArrow.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Silver_" .. pTexture .. ".blp")
 	tArrow.active = "Interface\\AddOns\\MultiBot\\Textures\\Talent_Gold_" .. pTexture .. ".blp"
 	tArrow.needs = pNeeds
@@ -2650,7 +2666,7 @@ MultiBot.talent.addArrow = function(pTab, pID, pNeeds, piX, piY, pTexture)
 end
 
 MultiBot.talent.addTalent = function(pTab, pID, pNeeds, pValue, pMax, piX, piY, pTexture, pTips)
-	local tTalent = pTab.addButton(pID, piX * 36 - 161, 403 - piY * 36, pTexture, pTips[pValue + 1])
+	local tTalent = pTab.addButton(pID, piX * pTab.grid.icons.size - pTab.grid.icons.x, pTab.grid.icons.y - piY * pTab.grid.icons.size, pTexture, pTips[pValue + 1])
 	tTalent.points = piY * 5 - 5
 	tTalent.needs = pNeeds
 	tTalent.value = pValue
@@ -2703,7 +2719,7 @@ end
 
 MultiBot.talent.addValue = function(pTab, pID, piX, piY, pRank, pMax)
 	local tColor = MultiBot.IF(pRank > 0, MultiBot.IF(pRank < pMax, "|cff4db24d", "|cffffcc00"), "|cffffffff")
-	local tValue = pTab.addFrame(pID, piX * 36 - 157, 399 - piY * 36, 24, 18, 12)
+	local tValue = pTab.addFrame(pID, piX * pTab.grid.icons.size - pTab.grid.values.x, pTab.grid.values.y - piY * pTab.grid.icons.size, 24, 18, 12)
 	tValue.addTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_Black.blp")
 	tValue.addText("Value", tColor .. pRank .. "/" .. pMax .. "|r", "CENTER", -0.5, 1, 10)
 	if(MultiBot.talent.points == 0 and pRank == 0) then tValue:Hide() end
@@ -2721,7 +2737,7 @@ MultiBot.talent.setTalents = function()
 	
 	for i = 1, 3 do
 		local tMarker = MultiBot.talent.class .. i
-		local tTab = MultiBot.talent.frames["Tab" .. i]
+		local tTab = MultiBot.talent.setGrid(MultiBot.talent.frames["Tab" .. i])
 		tTab.setTexture("Interface\\AddOns\\MultiBot\\Textures\\Talent_" .. tMarker .. ".blp")
 		tTab.value = 0
 		tTab.id = i

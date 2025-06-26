@@ -1,4 +1,19 @@
 if(GetLocale() == "deDE") then
+MultiBot.data.classes.input = {
+[1] = "Todesritter",
+[2] = "Druide",
+[3] = "Jäger",
+[4] = "Magier",
+[5] = "Paladin",
+[6] = "Priester",
+[7] = "Schurke",
+[8] = "Shamane",
+[9] = "Hexenmeister",
+[10] = "Krieger"
+}
+
+-- INFO --
+
 MultiBot.info.command =
 "Befehl nicht gefunden.";
 

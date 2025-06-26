@@ -56,6 +56,35 @@ MultiBot.timer.invite = {}
 MultiBot.timer.invite.elapsed = 0
 MultiBot.timer.invite.interval = 5
 
+-- CLASSES --
+
+MultiBot.data.classes = {}
+MultiBot.data.classes.input = {
+[1] = "DeathKnight",
+[2] = "Druid",
+[3] = "Hunter",
+[4] = "Mage",
+[5] = "Paladin",
+[6] = "Priest",
+[7] = "Rogue",
+[8] = "Shaman",
+[9] = "Warlock",
+[10] = "Warrior"
+}
+
+MultiBot.data.classes.output = {
+[1] = "DeathKnight",
+[2] = "Druid",
+[3] = "Hunter",
+[4] = "Mage",
+[5] = "Paladin",
+[6] = "Priest",
+[7] = "Rogue",
+[8] = "Shaman",
+[9] = "Warlock",
+[10] = "Warrior"
+}
+
 -- INFO --
 
 MultiBot.info = {}
