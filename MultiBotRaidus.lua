@@ -29,7 +29,13 @@ end
 MultiBot.raidus.wowButton("Load", -762, 360, 80, 20, 12)
 .doLeft = function(pButton)
 	local tPool = MultiBot.raidus.frames["Pool"]
-	local tLoad = MultiBot.doSplit(MultiBotSave["Raidus" .. MultiBot.raidus.save], ";")
+	local tData = MultiBotSave["Raidus" .. MultiBot.raidus.save]
+	
+	if(tData == nil or tData == "") then
+		SendChatMessage(MultiBot.info.nothing, "SAY");
+	end
+	
+	local tLoad = MultiBot.doSplit(tData, ";")
 	
 	for i = 1, 8, 1 do
 		local tGroup = MultiBot.doSplit(tLoad[i], ",")
@@ -241,12 +247,12 @@ MultiBot.raidus.setRaidus = function()
 		tBot.special = tDetails[3]
 		tBot.talents = tDetails[4]
 		tBot.class = tDetails[5]
-		tBot.level = tonumber(tDetails[6])
-		tBot.score = tonumber(tDetails[7])
+		tBot.level = tonumber(tDetails[6]) or 0
+		tBot.score = tonumber(tDetails[7]) or 0
 		
 		local tClass = MultiBot.toClass(tBot.class)
 		
-		tBot.sort = tonumber(tBot.level) * 1000
+		tBot.sort = tBot.level * 1000
 		+ MultiBot.IF(tClass == "DeathKnight", 1100000
 		, MultiBot.IF(tClass == "Druid", 1200000
 		, MultiBot.IF(tClass == "Hunter", 1300000
@@ -257,7 +263,7 @@ MultiBot.raidus.setRaidus = function()
 		, MultiBot.IF(tClass == "Shaman", 1800000
 		, MultiBot.IF(tClass == "Warlock", 1900000
 		, MultiBot.IF(tClass == "Warrior", 2000000
-		, 1000000)))))))))) + tonumber(tBot.score);
+		, 1000000)))))))))) + tBot.score;
 		
 		tBots[tIndex] = tBot
 		tIndex = tIndex + 1

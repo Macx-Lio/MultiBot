@@ -176,6 +176,9 @@ MultiBot.info.rights =
 MultiBot.info.reward =
 "Select the Rewards";
 
+MultiBot.info.nothing =
+"Nothing is saved in this Slot.";
+
 MultiBot.info.shorts.bag =
 "Bag";
 
