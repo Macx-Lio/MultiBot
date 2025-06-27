@@ -194,17 +194,17 @@ end
 
 MultiBot.toClass = function(pClass)
 	local pLower = string.lower(pClass)
-	local pUpper = string.upper(pClass)
+	local pStart = string.sub(pLower, 1, 5)
 	
 	for i = 1, 10 do
 		local tOutput = MultiBot.data.classes.output[i]
 		local tInput = MultiBot.data.classes.input[i]
 		local tLower = string.lower(tInput)
-		local tUpper = string.upper(tInput)
+		local tStart = string.sub(tLower, 1, 5)
 		
 		if(pClass == tInput) then return tOutput end
 		if(pLower == tLower) then return tOutput end
-		if(pUpper == tUpper) then return tOutput end
+		if(pStart == tStart) then return tOutput end
 	end
 	
 	local tClass = string.lower(string.sub(pClass, 1, 1) .. string.sub(pClass, 4, 4))

@@ -7,7 +7,7 @@ MultiBot.data.classes.input = {
 [5] = "Paladin",
 [6] = "Priester",
 [7] = "Schurke",
-[8] = "Shamane",
+[8] = "Schamane",
 [9] = "Hexenmeister",
 [10] = "Krieger"
 }
