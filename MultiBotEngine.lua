@@ -1,3 +1,137 @@
+--------------------------------------------------
+-- Timer utility to delay execution until TALENT data is ready
+--------------------------------------------------
+local function After(delay, callback)
+    if _G.C_Timer and C_Timer.After then
+        C_Timer.After(delay, callback)
+    else
+        local w, elapsed = CreateFrame("Frame"), 0
+        w:SetScript("OnUpdate", function(_, dt)
+            elapsed = elapsed + dt
+            if elapsed >= delay then
+                w:SetScript("OnUpdate", nil)
+                callback()
+            end
+        end)
+    end
+end
+
+------------------------------------------------------------
+-- FIFO queue implementation for INSPECT requests
+------------------------------------------------------------
+MultiBot.inspectQueue = {}   -- inspection request queue (FIFO)
+MultiBot.isInspecting  = false
+
+-- Check if the first talent slot has both a name and a link
+local function TalentDataReady()
+    local name = select(1, GetTalentInfo(1, 1, true))
+    local link = GetTalentLink(1, 1, true)
+    return name ~= nil and link ~= nil
+end
+
+-- Retry mechanism for waiting until talent data is available
+local function WaitForTalentData(callback, maxTry)
+    maxTry = maxTry or 20            -- ~20 × 0.1s = 2s max wait
+    if TalentDataReady() then
+        callback()                   -- Talent data is ready
+    elseif maxTry > 0 then
+        After(0.10, function() WaitForTalentData(callback, maxTry - 1) end)
+    else
+        print("MultiBot: Talents not available, aborting.")
+    end
+end
+
+-------------------------------------------------------
+-- Central handler for INSPECT_READY events and talent building
+-------------------------------------------------------
+local InspectFrame = CreateFrame("Frame")
+InspectFrame:RegisterEvent("INSPECT_READY")
+
+-- GUID and unitID for the pending inspection
+MultiBot.pendingInspectGUID = nil
+MultiBot.pendingInspectUnit = nil
+
+InspectFrame:SetScript("OnEvent", function(_, event, guid)
+    if event == "INSPECT_READY"
+       and MultiBot.pendingInspectGUID
+       and guid == MultiBot.pendingInspectGUID then
+
+        -- Build the talent grid for the inspected unit
+        MultiBot.BuildTalentGrid(MultiBot.pendingInspectUnit)
+
+        -- Clear pending inspection data
+        MultiBot.pendingInspectGUID = nil
+        MultiBot.pendingInspectUnit = nil
+        ClearInspectPlayer()
+
+        -- Reset flag and process next in queue after short delay
+        MultiBot.isInspecting = false
+        After(0.5, MultiBot.ProcessInspectQueue)
+    end
+end)
+
+---------------------------------------------------------------
+-- Build UI and save talent information after inspection
+---------------------------------------------------------------
+function MultiBot.BuildTalentGrid(unitID)
+    unitID = unitID or "player"                     -- "player", "party1", ...
+
+    -- Safely get talent counts for all three trees
+    local tTabs = {
+        GetNumTalents(1) or 0,
+        GetNumTalents(2) or 0,
+        GetNumTalents(3) or 0,
+    }
+    if tTabs[1] + tTabs[2] + tTabs[3] == 0 then return end   -- niveau 1 ou bug
+
+    -- Determine the primary talent tree index
+	local tTabIndex = MultiBot.IF(
+        tTabs[3] > tTabs[2] and tTabs[3] > tTabs[1], 3,
+        MultiBot.IF(tTabs[2] > tTabs[3] and tTabs[2] > tTabs[1], 2, 1)
+    )
+
+    -- Collect unit details
+    local tGender  = MultiBot.CASE(UnitSex(unitID), "[U]", "[N]", "[M]", "[F]")
+    local locClass, engClass = UnitClass(unitID)
+    local locRace , engRace  = UnitRace(unitID)
+    local level   = UnitLevel(unitID)
+    local name    = UnitName(unitID)
+    local score   = MultiBot.ItemLevel(unitID)
+    
+	-- Get specialization info
+    local special = MultiBot.CLEAR(
+        MultiBot.info.talent[MultiBot.toClass(engClass) .. tTabIndex], 1
+    )
+    
+	-- Fallback if localization fails
+    if locClass == nil then locClass = engClass end
+    if locRace  == nil then locRace  = engRace  end
+
+    -- Save to global storage
+	MultiBotGlobalSave[name] =
+        locRace .. "," .. tGender .. "," .. special .. "," ..
+        tTabs[1] .. "/" .. tTabs[2] .. "/" .. tTabs[3] .. "," ..
+        locClass .. "," .. level .. "," .. score
+
+    -- Update UI with new talent data
+	MultiBot.talent.class = MultiBot.toClass(engClass)
+	MultiBot.talent.name  = name
+	WaitForTalentData(function()
+		MultiBot.talent.setTalents()
+	end)
+end
+
+-------------------------------------------------------------------------------------
+-- Public interface: show talents for player immediately or queue inspect for others
+-------------------------------------------------------------------------------------
+function MultiBot.ShowTalents(unitID)
+    if unitID == "player" then
+        MultiBot.BuildTalentGrid(unitID)
+    else
+        MultiBot.QueueInspect(unitID)   -- enqueue network inspection
+    end
+end
+
 MultiBot.CLEAR = function(pString, pAmount, o1, o2, o3)
 	for i = 1, pAmount, 1 do
 		if(o1 == nil) then
@@ -29,6 +163,46 @@ end
 
 MultiBot.IF = function(pCondition, pSuccess, pFailure)
 	if(pCondition) then return pSuccess else return pFailure end
+end
+
+------------------------------------------------------------
+--  FIFO queue helpers for inspection requests
+------------------------------------------------------------
+-- Enqueue a unit for inspection, avoiding duplicates and invalid targets
+function MultiBot.QueueInspect(unitID)
+    if not UnitExists(unitID) or not CanInspect(unitID) then
+        print("MultiBot: cannot inspect " .. (UnitName(unitID) or "?"))
+        return
+    end
+    -- Prevent duplicate entries in the queue
+    for _, u in ipairs(MultiBot.inspectQueue) do
+        if u == unitID then return end
+    end
+	-- Add to the end of the FIFO queue and attempt processing
+    table.insert(MultiBot.inspectQueue, unitID)
+    MultiBot.ProcessInspectQueue()
+end
+
+-- Process the next unit in the inspection queue if not already inspecting
+function MultiBot.ProcessInspectQueue()
+    -- If an inspection is in progress or queue is empty, do nothing
+    if MultiBot.isInspecting or #MultiBot.inspectQueue == 0 then 
+		return 
+	end
+
+	-- Pop the first unit from the queue
+    local unitID = table.remove(MultiBot.inspectQueue, 1)
+	-- Skip invalid or non-inspectable units and continue processing
+    if not UnitExists(unitID) or not CanInspect(unitID) then
+        MultiBot.ProcessInspectQueue()
+        return
+    end
+	
+	-- Initialize inspection state and trigger the game API call
+    MultiBot.isInspecting      = true
+    MultiBot.pendingInspectGUID = UnitGUID(unitID)
+    MultiBot.pendingInspectUnit = unitID
+    NotifyInspect(unitID)
 end
 
 MultiBot.doSlash = function(pCommand, pArguments)
@@ -66,17 +240,31 @@ MultiBot.doDotWithTarget = function(pCommand, oArguments)
 	return false
 end
 
+------------------------------------------------------------
+--  String splitting utility
+------------------------------------------------------------
+-- Splits a string into parts by a given pattern, handling non-string inputs safely
+-- @param pString: the input to split
+-- @param pPattern: the Lua pattern delimiter
+-- @return table of substrings separated by the pattern
 MultiBot.doSplit = function(pString, pPattern)
+    -- Return empty table if input is not a string
+    if type(pString) ~= "string" then 
+		return {} 
+	end
+ 
 	local tResult = {}
 	local tStart = 1
 	local tFrom, tTo = string.find(pString, pPattern, tStart)
 	
+	-- Iterate over all matches and extract substrings
 	while tFrom do
 		table.insert(tResult, string.sub(pString, tStart, tFrom - 1))
 		tStart = tTo + 1
 		tFrom, tTo = string.find(pString, pPattern, tStart)
 	end
 	
+	-- Add the final segment
 	table.insert(tResult, string.sub(pString, tStart))
 	return tResult
 end
@@ -193,33 +381,51 @@ MultiBot.isUnit = function(pUnit)
 end
 
 MultiBot.toClass = function(pClass)
-	local pLower = string.lower(pClass)
-	local pUpper = string.upper(pClass)
-	
-	for i = 1, 10 do
-		local tOutput = MultiBot.data.classes.output[i]
-		local tInput = MultiBot.data.classes.input[i]
-		local tLower = string.lower(tInput)
-		local tUpper = string.upper(tInput)
-		
-		if(pClass == tInput) then return tOutput end
-		if(pLower == tLower) then return tOutput end
-		if(pUpper == tUpper) then return tOutput end
-	end
-	
-	local tClass = string.lower(string.sub(pClass, 1, 1) .. string.sub(pClass, 4, 4))
-	if(tClass == "te" or tClass == "dt") then return "DeathKnight" end
-	if(tClass == "di" or tClass == "di") then return "Druid" end
-	if(tClass == "jg" or tClass == "ht") then return "Hunter" end
-	if(tClass == "mi" or tClass == "me") then return "Mage" end
-	if(tClass == "pa" or tClass == "pa") then return "Paladin" end
-	if(tClass == "pe" or tClass == "pe") then return "Priest" end
-	if(tClass == "su" or tClass == "ru") then return "Rogue" end
-	if(tClass == "sa" or tClass == "sm") then return "Shaman" end
-	if(tClass == "he" or tClass == "wl") then return "Warlock" end
-	if(tClass == "ke" or tClass == "wr") then return "Warrior" end
-	if(pClass == "dk") then return "DeathKnight" end
-	return "Unknown"
+    if not pClass or pClass == "" then return "Unknown" end
+    
+	-- helpers – universal solution (all languages, masculine/feminine/plural)
+    local function normalize(g)
+        g = g
+            :gsub("[éèêë]", "e")
+            :gsub("euse?s?$",  "eur")
+            :gsub("euses?$",   "eurs")
+            :gsub("esse?s?$",  "eur")
+            :gsub("trice?s?$", "teur")
+            :gsub("ière?s?$",  "ier")
+        return g
+    end
+
+    -- Normalized input
+    local pLower  = normalize(string.lower(pClass))
+    local pStart  = pLower:sub(1, 5)
+
+    -- loop over the 10 classes
+    for i = 1, 10 do
+        local tOutput = MultiBot.data.classes.output[i]
+        local tInput  = MultiBot.data.classes.input[i]
+        local tLower  = normalize(string.lower(tInput))
+        local tStart  = tLower:sub(1, 5)
+
+        if pClass == tInput  then return tOutput end
+        if pLower == tLower  then return tOutput end
+        if pStart == tStart  then return tOutput end
+    end
+
+    -- two-letter heuristic
+    local tClass = string.lower(pClass:sub(1,1) .. pClass:sub(4,4))
+    if tClass == "te" or tClass == "dt" then return "DeathKnight" end
+    if tClass == "di" or tClass == "di" then return "Druid" end
+    if tClass == "jg" or tClass == "ht" then return "Hunter" end
+    if tClass == "mi" or tClass == "me" then return "Mage" end
+    if tClass == "pa" or tClass == "pa" then return "Paladin" end
+    if tClass == "pe" or tClass == "pe" then return "Priest" end
+    if tClass == "su" or tClass == "ru" then return "Rogue" end
+    if tClass == "sa" or tClass == "sm" then return "Shaman" end
+    if tClass == "he" or tClass == "wl" then return "Warlock" end
+    if tClass == "ke" or tClass == "wr" then return "Warrior" end
+    if pClass  == "dk"            then return "DeathKnight" end
+
+    return "Unknown"
 end
 
 MultiBot.toUnit = function(pName)
@@ -296,18 +502,12 @@ MultiBot.RaidPool = function(pUnit, oWho)
 		if(tLevel == nil) then tLevel = substr(MultiBot.doSplit(tSpace[6], " ")[1], 2) end
 	else
 		tScore = MultiBot.ItemLevel(pUnit)
-		tTabs[1] = GetNumTalents(1)
-		tTabs[2] = GetNumTalents(2)
-		tTabs[3] = GetNumTalents(3)
+		-- Talents will be retrieved via INSPECT_READY;
+		-- so we trigger the inspection and exit.
+		MultiBot.QueueInspect(pUnit)
+      return -- waiting for BuildTalentGrid
 	end
-	 
-	local tTabIndex = MultiBot.IF(tTabs[3] > tTabs[2] and tTabs[3] > tTabs[1], 3, MultiBot.IF(tTabs[2] > tTabs[3] and tTabs[2] > tTabs[1], 2, 1))
-	local tSpecial = MultiBot.CLEAR(MultiBot.info.talent[MultiBot.toClass(tClass) .. tTabIndex], 1)
-	
-	if(tLocalClass == nil) then tLocalClass = tClass end
-	if(tLocalRace == nil) then tLocalRace = tRace end
-	
-	MultiBotGlobalSave[tName] =  tLocalRace .. "," .. tGender .. "," .. tSpecial .. "," .. tTabs[1] .. "/" .. tTabs[2] .. "/" .. tTabs[3] .. "," .. tLocalClass .. "," .. tLevel .. "," .. tScore
+
 end
 
 MultiBot.ItemLevel = function(pUnit)
