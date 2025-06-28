@@ -310,8 +310,6 @@ end
 -- 	MultiBotGlobalSave[tName] =  tLocalRace .. "," .. tGender .. "," .. tSpecial .. "," .. tTabs[1] .. "/" .. tTabs[2] .. "/" .. tTabs[3] .. "," .. tLocalClass .. "," .. tLevel .. "," .. tScore
 -- end
 
--- MultiBotEngine.lua
-
 MultiBot.RaidPool = function(pUnit, oWho)
 	-- do nothing if not a bot or the player themselves
 	if(pUnit ~= "player" and MultiBot.getBot(pUnit) == nil) then return end
