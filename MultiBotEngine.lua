@@ -121,6 +121,7 @@ MultiBot.isActive = function(pName)
 end
 
 MultiBot.isInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern, o4thPattern, o5thPattern, o6thPattern, o7thPattern, o8thPattern, o9thPattern)
+	if(pString == nil) then return false end
 	if(p1stPattern ~= nil and string.find(pString, p1stPattern)) then return true end
 	if(o2ndPattern ~= nil and string.find(pString, o2ndPattern)) then return true end
 	if(o3rdPattern ~= nil and string.find(pString, o3rdPattern)) then return true end
@@ -134,6 +135,7 @@ MultiBot.isInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern, o4t
 end
 
 MultiBot.beInside = function(pString, p1stPattern, o2ndPattern, o3rdPattern, o4thPattern, o5thPattern, o6thPattern, o7thPattern, o8thPattern, o9thPattern)
+	if(pString == nil) then return false end
 	if(p1stPattern ~= nil and nil == string.find(pString, p1stPattern)) then return false end
 	if(o2ndPattern ~= nil and nil == string.find(pString, o2ndPattern)) then return false end
 	if(o3rdPattern ~= nil and nil == string.find(pString, o3rdPattern)) then return false end
@@ -274,6 +276,7 @@ MultiBot.RaidPool = function(pUnit, oWho)
 	local tLocalRace, tRace = UnitRace(pUnit)
 	local tLevel = UnitLevel(pUnit)
 	local tName = UnitName(pUnit)
+	local tIndex = { 4, 5, 6 }
 	local tTabs = {}
 	local tScore = ""
 	
@@ -287,13 +290,19 @@ MultiBot.RaidPool = function(pUnit, oWho)
 		tParts = MultiBot.doSplit(tWho, ", ")
 		tSpace = MultiBot.doSplit(tParts[1], " ")
 		tScore = MultiBot.doSplit(tParts[2], " ")[1]
-		tTabs = MultiBot.doSplit(strsub(tSpace[4], 2, strlen(tSpace[4]) - 1), "/")
+		
+		if(MultiBot.isInside(tSpace[5], "/")) then tIndex = { 5, 6, 7 } else
+		if(MultiBot.isInside(tSpace[6], "/")) then tIndex = { 6, 7, 8 } else
+		if(MultiBot.isInside(tSpace[7], "/")) then tIndex = { 7, 8, 9 }
+		end end end
+		
+		tTabs = MultiBot.doSplit(strsub(tSpace[tIndex[1]], 2, strlen(tSpace[tIndex[1]]) - 1), "/")
 		
 		if(tGender == nil) then tGender = tSpace[2] end
-		if(tClass == nil) then tClass = MultiBot.toClass(tSpace[5]) end
+		if(tClass == nil) then tClass = MultiBot.toClass(tSpace[tIndex[2]]) end
 		if(tRace == nil) then tRace = tSpace[1] end
 		if(tName == nil) then tName = pUnit end
-		if(tLevel == nil) then tLevel = substr(MultiBot.doSplit(tSpace[6], " ")[1], 2) end
+		if(tLevel == nil) then tLevel = substr(MultiBot.doSplit(tSpace[tIndex[3]], " ")[1], 2) end
 	else
 		tScore = MultiBot.ItemLevel(pUnit)
 		tTabs[1] = GetNumTalents(1)
