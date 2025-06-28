@@ -279,7 +279,7 @@ MultiBot.RaidPool = function(pUnit, oWho)
 	
 	if(oWho ~= nil) then
 		local tWho = MultiBot.CLEAR(oWho, 20)
-		tWho = MultiBot.doReplace(tWho, "beast bastery", "Beast-Mastery")
+		tWho = MultiBot.doReplace(tWho, "beast mastery", "Beast-Mastery")
 		tWho = MultiBot.doReplace(tWho, "feral combat", "Feral-Combat")
 		tWho = MultiBot.doReplace(tWho, "Blood Elf", "Blood-Elf")
 		tWho = MultiBot.doReplace(tWho, "Night Elf", "Night-Elf")
