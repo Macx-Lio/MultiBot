@@ -266,48 +266,138 @@ MultiBot.toPoint = function(pFrame)
 	return math.floor(tX - (tWidth * tScale)), math.floor(tY)
 end
 
+-- MultiBot.RaidPool = function(pUnit, oWho)
+-- 	if(pUnit ~= "player" and MultiBot.getBot(pUnit) == nil) then return end
+-- 	
+-- 	local tGender = MultiBot.CASE(UnitSex(pUnit), "[U]", "[N]", "[M]", "[F]")
+-- 	local tLocalClass, tClass = UnitClass(pUnit)
+-- 	local tLocalRace, tRace = UnitRace(pUnit)
+-- 	local tLevel = UnitLevel(pUnit)
+-- 	local tName = UnitName(pUnit)
+-- 	local tTabs = {}
+-- 	local tScore = ""
+-- 	
+-- 	if(oWho ~= nil) then
+-- 		local tWho = MultiBot.CLEAR(oWho, 20)
+-- 		tWho = MultiBot.doReplace(tWho, "beast bastery", "Beast-Mastery")
+-- 		tWho = MultiBot.doReplace(tWho, "feral combat", "Feral-Combat")
+-- 		tWho = MultiBot.doReplace(tWho, "Blood Elf", "Blood-Elf")
+-- 		tWho = MultiBot.doReplace(tWho, "Night Elf", "Night-Elf")
+-- 		
+-- 		tParts = MultiBot.doSplit(tWho, ", ")
+-- 		tSpace = MultiBot.doSplit(tParts[1], " ")
+-- 		tScore = MultiBot.doSplit(tParts[2], " ")[1]
+-- 		tTabs = MultiBot.doSplit(strsub(tSpace[4], 2, strlen(tSpace[4]) - 1), "/")
+-- 		
+-- 		if(tGender == nil) then tGender = tSpace[2] end
+-- 		if(tClass == nil) then tClass = MultiBot.toClass(tSpace[5]) end
+-- 		if(tRace == nil) then tRace = tSpace[1] end
+-- 		if(tName == nil) then tName = pUnit end
+-- 		if(tLevel == nil) then tLevel = substr(MultiBot.doSplit(tSpace[6], " ")[1], 2) end
+-- 	else
+-- 		tScore = MultiBot.ItemLevel(pUnit)
+-- 		tTabs[1] = GetNumTalents(1)
+-- 		tTabs[2] = GetNumTalents(2)
+-- 		tTabs[3] = GetNumTalents(3)
+-- 	end
+-- 	 
+-- 	local tTabIndex = MultiBot.IF(tTabs[3] > tTabs[2] and tTabs[3] > tTabs[1], 3, MultiBot.IF(tTabs[2] > tTabs[3] and tTabs[2] > tTabs[1], 2, 1))
+-- 	local tSpecial = MultiBot.CLEAR(MultiBot.info.talent[MultiBot.toClass(tClass) .. tTabIndex], 1)
+-- 	
+-- 	if(tLocalClass == nil) then tLocalClass = tClass end
+-- 	if(tLocalRace == nil) then tLocalRace = tRace end
+-- 	
+-- 	MultiBotGlobalSave[tName] =  tLocalRace .. "," .. tGender .. "," .. tSpecial .. "," .. tTabs[1] .. "/" .. tTabs[2] .. "/" .. tTabs[3] .. "," .. tLocalClass .. "," .. tLevel .. "," .. tScore
+-- end
+
+-- MultiBotEngine.lua
+
 MultiBot.RaidPool = function(pUnit, oWho)
+	-- do nothing if not a bot or the player themselves
 	if(pUnit ~= "player" and MultiBot.getBot(pUnit) == nil) then return end
-	
-	local tGender = MultiBot.CASE(UnitSex(pUnit), "[U]", "[N]", "[M]", "[F]")
+
+	-- basic data
+	local tGender      = MultiBot.CASE(UnitSex(pUnit), "[U]", "[N]", "[M]", "[F]")
 	local tLocalClass, tClass = UnitClass(pUnit)
-	local tLocalRace, tRace = UnitRace(pUnit)
-	local tLevel = UnitLevel(pUnit)
-	local tName = UnitName(pUnit)
-	local tTabs = {}
+	local tLocalRace,  tRace  = UnitRace(pUnit)
+	local tLevel       = UnitLevel(pUnit)
+	local tName        = UnitName(pUnit)
+
+	-- talent table (initialized to 0/0/0 to avoid nil values)
+	local tTabs  = {0, 0, 0}
 	local tScore = ""
-	
+
+	-------------------------------------
+	-- CASE 1: receiving the /who output
+	-------------------------------------
 	if(oWho ~= nil) then
 		local tWho = MultiBot.CLEAR(oWho, 20)
-		tWho = MultiBot.doReplace(tWho, "beast mastery", "Beast-Mastery")
+		tWho = MultiBot.doReplace(tWho, "beast bastery", "Beast-Mastery")
 		tWho = MultiBot.doReplace(tWho, "feral combat", "Feral-Combat")
-		tWho = MultiBot.doReplace(tWho, "Blood Elf", "Blood-Elf")
-		tWho = MultiBot.doReplace(tWho, "Night Elf", "Night-Elf")
-		
-		tParts = MultiBot.doSplit(tWho, ", ")
-		tSpace = MultiBot.doSplit(tParts[1], " ")
-		tScore = MultiBot.doSplit(tParts[2], " ")[1]
-		tTabs = MultiBot.doSplit(strsub(tSpace[4], 2, strlen(tSpace[4]) - 1), "/")
-		
+		tWho = MultiBot.doReplace(tWho, "Blood Elf",   "Blood-Elf")
+		tWho = MultiBot.doReplace(tWho, "Night Elf",   "Night-Elf")
+
+		local tParts = MultiBot.doSplit(tWho, ", ")
+		local tSpace = MultiBot.doSplit(tParts[1], " ")
+		tScore       = MultiBot.doSplit(tParts[2], " ")[1]
+
+		----------------------------------------------------------------
+		-- Robust detection of the block (xx/yy/zz)
+		----------------------------------------------------------------
+		local tTalentStr
+		for _, tok in ipairs(tSpace) do
+			if strsub(tok, 1, 1) == "(" and tok:find("/") then
+				tTalentStr = tok         -- ex. (31/20/0)
+				break
+			end
+		end
+
+		if tTalentStr then
+			tTabs = MultiBot.doSplit(strsub(tTalentStr, 2, strlen(tTalentStr) - 1), "/")
+		end
+
+		-- conversion to numbers & safe values
+		for i = 1, 3 do
+			tTabs[i] = tonumber(tTabs[i]) or 0
+		end
+		----------------------------------------------------------------
+
+		-- compléments d’infos si absents
 		if(tGender == nil) then tGender = tSpace[2] end
-		if(tClass == nil) then tClass = MultiBot.toClass(tSpace[5]) end
-		if(tRace == nil) then tRace = tSpace[1] end
-		if(tName == nil) then tName = pUnit end
-		if(tLevel == nil) then tLevel = substr(MultiBot.doSplit(tSpace[6], " ")[1], 2) end
+		if(tClass  == nil) then tClass  = MultiBot.toClass(tSpace[5]) end
+		if(tRace   == nil) then tRace   = tSpace[1] end
+		if(tName   == nil) then tName   = pUnit end
+		if(tLevel  == nil) then tLevel  = substr(MultiBot.doSplit(tSpace[6], " ")[1], 2) end
+
+	-------------------------------------------
+	-- CASE 2: the bot is already in the group
+	-------------------------------------------
 	else
-		tScore = MultiBot.ItemLevel(pUnit)
+		tScore   = MultiBot.ItemLevel(pUnit)
 		tTabs[1] = GetNumTalents(1)
 		tTabs[2] = GetNumTalents(2)
 		tTabs[3] = GetNumTalents(3)
 	end
-	 
-	local tTabIndex = MultiBot.IF(tTabs[3] > tTabs[2] and tTabs[3] > tTabs[1], 3, MultiBot.IF(tTabs[2] > tTabs[3] and tTabs[2] > tTabs[1], 2, 1))
-	local tSpecial = MultiBot.CLEAR(MultiBot.info.talent[MultiBot.toClass(tClass) .. tTabIndex], 1)
-	
+
+	-- index of the dominant branch
+	local tTabIndex = MultiBot.IF(
+		tTabs[3] > tTabs[2] and tTabs[3] > tTabs[1], 3,
+		MultiBot.IF(tTabs[2] > tTabs[3] and tTabs[2] > tTabs[1], 2, 1)
+	)
+
+	local tSpecial = MultiBot.CLEAR(
+		MultiBot.info.talent[MultiBot.toClass(tClass) .. tTabIndex], 1
+	)
+
+	-- fallback if location is missing
 	if(tLocalClass == nil) then tLocalClass = tClass end
-	if(tLocalRace == nil) then tLocalRace = tRace end
-	
-	MultiBotGlobalSave[tName] =  tLocalRace .. "," .. tGender .. "," .. tSpecial .. "," .. tTabs[1] .. "/" .. tTabs[2] .. "/" .. tTabs[3] .. "," .. tLocalClass .. "," .. tLevel .. "," .. tScore
+	if(tLocalRace  == nil) then tLocalRace  = tRace end
+
+	-- final save
+	MultiBotGlobalSave[tName] =
+		tLocalRace .. "," .. tGender .. "," .. tSpecial .. "," ..
+		tTabs[1] .. "/" .. tTabs[2] .. "/" .. tTabs[3] .. "," ..
+		tLocalClass .. "," .. tLevel .. "," .. tScore
 end
 
 MultiBot.ItemLevel = function(pUnit)
