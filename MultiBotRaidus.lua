@@ -14,6 +14,7 @@ MultiBot.raidus.addFrame("Group4", -185, 604, 28, 160, 240)
 MultiBot.raidus.addFrame("Group3", -350, 604, 28, 160, 240)
 MultiBot.raidus.addFrame("Group2", -515, 604, 28, 160, 240)
 MultiBot.raidus.addFrame("Group1", -680, 604, 28, 160, 240)
+MultiBot.raidus.addText("RaidScore", "RaidScore: 0", "BOTTOMLEFT", 376, 364, 12)
 MultiBot.raidus.save = ""
 MultiBot.raidus.from = 1
 MultiBot.raidus.to = 11
@@ -368,6 +369,7 @@ MultiBot.raidus.setRaidus = function()
 		
 		tGroup.addText("Title", "- Group" .. i .. " : 0 -", "BOTTOM", 0, 223, 12)
 		tGroup.group = "Group" .. i
+		tGroup.score = 0
 		
 		for j = 1, 5, 1 do
 			local tFrame = tGroup.addFrame("Slot" .. j, 0, tY, 28, 160, 36)
@@ -468,20 +470,35 @@ MultiBot.raidus.doRaidSort = function(pIndex)
 	return pIndex + 1
 end
 
-MultiBot.raidus.doScore = function(pGroup)
+MultiBot.raidus.doGroupScore = function(pGroup)
 	if(pGroup == nil or pGroup.group == nil) then return end
 	local tScore = 0
 	local tSize = 0
 	
-	for key, slot in pairs(pGroup.frames) do
-		if(slot ~= nil and slot.bot ~= nil) then
-			tScore = tScore + slot.bot.score
+	for tKey, tSlot in pairs(pGroup.frames) do
+		if(tSlot ~= nil and tSlot.bot ~= nil) then
+			tScore = tScore + tSlot.bot.score
+			tSize = tSize + 1
+		end
+	end
+	
+	pGroup.score = MultiBot.IF(tSize > 0, math.floor(tScore / tSize), 0)
+	pGroup.setText("Title", "- " .. pGroup.group .. " : " .. pGroup.score .. " -")
+end
+
+MultiBot.raidus.doRaidScore = function()
+	local tScore = 0
+	local tSize = 0
+	
+	for tKey, tGroup in pairs(MultiBot.raidus.frames) do
+		if(tGroup ~= nil and tGroup.score ~= nil and tGroup.score > 0) then
+			tScore = tScore + tGroup.score
 			tSize = tSize + 1
 		end
 	end
 	
 	tScore = MultiBot.IF(tSize > 0, math.floor(tScore / tSize), 0)
-	pGroup.setText("Title", "- " .. pGroup.group .. " : " .. tScore .. " -")
+	MultiBot.raidus.setText("RaidScore", "RaidScore: " .. tScore)
 end
 
 MultiBot.raidus.doDrop = function(pObject, pParent, pX, pY, pWidth, pHeight, pSlot)
@@ -496,5 +513,6 @@ MultiBot.raidus.doDrop = function(pObject, pParent, pX, pY, pWidth, pHeight, pSl
 	pObject.slot = pSlot
 	pObject.x = pX
 	pObject.y = pY
-	MultiBot.raidus.doScore(pParent)
+	MultiBot.raidus.doGroupScore(pParent)
+	MultiBot.raidus.doRaidScore()
 end
