@@ -366,7 +366,7 @@ MultiBot.raidus.setRaidus = function()
 		local tGroup = MultiBot.raidus.frames["Group" .. i]
 		local tY = 182
 		
-		tGroup.addText("Title", "- Group" .. i .. " -", "BOTTOM", 0, 223, 12)
+		tGroup.addText("Title", "- Group" .. i .. " : 0 -", "BOTTOM", 0, 223, 12)
 		tGroup.group = "Group" .. i
 		
 		for j = 1, 5, 1 do
@@ -468,6 +468,22 @@ MultiBot.raidus.doRaidSort = function(pIndex)
 	return pIndex + 1
 end
 
+MultiBot.raidus.doScore = function(pGroup)
+	if(pGroup == nil or pGroup.group == nil) then return end
+	local tScore = 0
+	local tSize = 0
+	
+	for key, slot in pairs(pGroup.frames) do
+		if(slot ~= nil and slot.bot ~= nil) then
+			tScore = tScore + slot.bot.score
+			tSize = tSize + 1
+		end
+	end
+	
+	tScore = MultiBot.IF(tSize > 0, math.floor(tScore / tSize), 0)
+	pGroup.setText("Title", "- " .. pGroup.group .. " : " .. tScore .. " -")
+end
+
 MultiBot.raidus.doDrop = function(pObject, pParent, pX, pY, pWidth, pHeight, pSlot)
 	pParent.frames[pSlot] = pObject
 	pObject:ClearAllPoints()
@@ -480,4 +496,5 @@ MultiBot.raidus.doDrop = function(pObject, pParent, pX, pY, pWidth, pHeight, pSl
 	pObject.slot = pSlot
 	pObject.x = pX
 	pObject.y = pY
+	MultiBot.raidus.doScore(pParent)
 end
