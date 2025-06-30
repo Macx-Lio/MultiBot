@@ -325,7 +325,7 @@ MultiBot.ItemLevel = function(pUnit)
 	
 	for i = 1, 19, 1 do
 		local tItem = GetInventoryItemLink(pUnit, i)
-		if(tItem ~= nil and ~= 4) then
+		if(tItem ~= nil and i ~= 4) then
 			local iName, iLink, iRare, iLevel = GetItemInfo(tItem)
 			tScore = tScore + iLevel
 			tCount = tCount + 1
