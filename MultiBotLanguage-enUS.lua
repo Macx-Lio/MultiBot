@@ -155,7 +155,7 @@ MultiBot.info.talent.Hunter1 =
 "|cffffcc00Beast Mastery|r";
 
 MultiBot.info.talent.Hunter2 =
-"|cffffcc00Marksmenschip|r";
+"|cffffcc00Marksmenship|r";
 
 MultiBot.info.talent.Hunter3 =
 "|cffffcc00Survival|r";
@@ -200,7 +200,7 @@ MultiBot.info.talent.Shaman1 =
 "|cffffcc00Elemental|r";
 
 MultiBot.info.talent.Shaman2 =
-"|cffffcc00Enchanement|r";
+"|cffffcc00Enhancement|r";
 
 MultiBot.info.talent.Shaman3 =
 "|cffffcc00Restoration|r";
