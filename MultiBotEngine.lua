@@ -320,15 +320,16 @@ MultiBot.RaidPool = function(pUnit, oWho)
 end
 
 MultiBot.ItemLevel = function(pUnit)
-	local tCount = 0
+	local tTitan = IsSpellKnown(49152) -- Titan's Grip
+	local tCount = 16
 	local tScore = 0
 	
-	for i = 1, 19, 1 do
+	for i = 1, 18, 1 do
 		local tItem = GetInventoryItemLink(pUnit, i)
 		if(tItem ~= nil and i ~= 4) then
-			local iName, iLink, iRare, iLevel = GetItemInfo(tItem)
+			local iName, iLink, iRare, iLevel, iMinLevel, iType, iSubType, iStack, iEquipLoc = GetItemInfo(tItem)
+			if(i == 16 and (iEquipLoc ~= "INVTYPE_2HWEAPON" or tTitan)) then tCount = 17 end
 			tScore = tScore + iLevel
-			tCount = tCount + 1
 		end
 	end
 	
