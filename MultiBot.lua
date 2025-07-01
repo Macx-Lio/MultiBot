@@ -235,7 +235,7 @@ MultiBot.info.talent.Hunter1 =
 "|cffffcc00Beast Mastery|r";
 
 MultiBot.info.talent.Hunter2 =
-"|cffffcc00Marksmenship|r";
+"|cffffcc00Marksmanship|r";
 
 MultiBot.info.talent.Hunter3 =
 "|cffffcc00Survival|r";
