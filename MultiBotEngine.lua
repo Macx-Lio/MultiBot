@@ -328,7 +328,7 @@ MultiBot.ItemLevel = function(pUnit)
 		local tItem = GetInventoryItemLink(pUnit, i)
 		if(tItem ~= nil and i ~= 4) then
 			local iName, iLink, iRare, iLevel, iMinLevel, iType, iSubType, iStack, iEquipLoc = GetItemInfo(tItem)
-			if(i == 16 and (iEquipLoc ~= "INVTYPE_2HWEAPON" or tTitan)) then tCount = 17 end
+			if((i == 16 and iEquipLoc ~= "INVTYPE_2HWEAPON") or (i == 16 and tTitan) or (i == 17)) then tCount = 17 end
 			tScore = tScore + iLevel
 		end
 	end
